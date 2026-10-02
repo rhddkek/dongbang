@@ -374,6 +374,11 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 #titleBox .lg-msg{min-height:16px;font-size:12px;color:#bfe8c8;text-align:center;line-height:1.5}
 #titleBox .lg-msg.err{color:#ffb0a8}
 #titleBox .lg-note{font-size:11px;color:var(--muted);line-height:1.6;text-align:center}
+/* v321 \c774 \c0ac  \cf54 \b4dc  */
+#titleBox .mv-sec{font-size:12px;color:var(--muted);margin-top:4px}
+#titleBox .mv-sec b{color:var(--gold2);margin-right:4px}
+#titleBox .mv-ta{height:58px;resize:none;font-size:11px;line-height:1.35;word-break:break-all;font-family:ui-monospace,Menlo,monospace}
+#titleBox .mv-b{font-size:13px;padding:9px}
 #titleBox .lg-small{font-size:12px;padding:8px;white-space:normal;line-height:1.4}
 #titleBox .acct{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(20,15,10,.8);border:1px solid rgba(217,178,95,.35);border-radius:10px;padding:6px 6px 6px 12px;font-size:13px}
 #titleBox .acct b{color:var(--gold2)}
@@ -447,7 +452,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v320</div>
+    <div class="sub">v321</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -4911,6 +4916,7 @@ const MENU = {
     h += `<div class="row"><div class="tx"><div class="t1">\uc2dc\uc138 \uc804\uad11\ud310</div><div class="t2">\ud83d\udcc8 \uc2dc\uc138 \ubc84\ud2bc(Tab)\uc744 \ub204\ub974\uba74 \ud654\uba74 \uc544\ub798\uc5d0 \uc8fc\uc2dd\u00b7\ucf54\uc778 \uc2dc\uc138\uac00 \ud3bc\uccd0\uc9d1\ub2c8\ub2e4. \ub044\uba74 \ubc84\ud2bc\ub3c4 \uc228\uaca8\uc694</div></div><button class="btn ${p.settings.ticker !== false ? 'teal' : ''}" data-a="toggle" data-v="ticker">${p.settings.ticker !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uc9c0\uae08 \uc800\uc7a5</div><div class="t2">\uc790\ub3d9 \uc800\uc7a5\uc740 20\ucd08\ub9c8\ub2e4, \ub9f5 \uc774\ub3d9\ud560 \ub54c \ub429\ub2c8\ub2e4</div></div><button class="btn" data-a="save">\uc800\uc7a5</button></div>`;
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
+    h += `<div class="sep"></div><b>v321 \uce90\ub9ad\ud130 \uc774\uc0ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udce6 \uc2dc\uc791 \ud654\uba74\uc758 '\uc774\uc0ac \ucf54\ub4dc': \uc608\uc804 \uc8fc\uc18c\uc5d0\uc11c \ud0a4\uc6b4 \uce90\ub9ad\ud130\ub97c \ucf54\ub4dc\ub85c \ubcf5\uc0ac\ud574 \uc0c8 \uc8fc\uc18c\uc758 \uacc4\uc815\uc73c\ub85c \ub370\ub824\uc62c \uc218 \uc788\uc5b4\uc694</div>`;
     h += `<div class="sep"></div><b>v320 \uacc4\uc815\ub9c8\ub2e4 \ub530\ub85c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc64 \uacc4\uc815\ub9c8\ub2e4 \uce90\ub9ad\ud130 \uce78\uc744 \ub530\ub85c \uc501\ub2c8\ub2e4 \u2014 \ub2e4\ub978 \uacc4\uc815\uc73c\ub85c \ub85c\uadf8\uc778\ud574\ub3c4 \uce90\ub9ad\ud130\uac00 \uc11e\uc774\uc9c0 \uc54a\uc544\uc694<br>\ud83d\udce5 \ub85c\uadf8\uc778 \uc5c6\uc774 \ud558\ub358 \uce90\ub9ad\ud130\ub294 \uc2dc\uc791 \ud654\uba74\uc5d0\uc11c \uacc4\uc815\uc73c\ub85c \uc62e\uae38 \uc218 \uc788\uc5b4\uc694<br>\ud83d\uddd1 \ub85c\uadf8\uc778 \uc911 '\ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc'\ub294 \uc11c\ubc84\uc758 \uadf8 \uc2ac\ub86f\ub3c4 \ud568\uaed8 \uc9c0\uc6c1\ub2c8\ub2e4</div>`;
     h += `<div class="sep"></div><b>v319 \ub85c\uadf8\uc778</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc64 \uc2dc\uc791 \ud654\uba74\uc5d0\uc11c \ub85c\uadf8\uc778 \u2192 \ub0b4 \uce90\ub9ad\ud130 \u2192 \uc774\uc5b4\ud558\uae30 (\ucc98\uc74c\uc774\uba74 '\uacc4\uc815 \ub9cc\ub4e4\uae30', \ub85c\uadf8\uc778 \uc5c6\uc774\ub3c4 \uac00\ub2a5)<br>\u2601 \uac8c\uc784 \uc911\uc5d0\ub294 \uc790\ub3d9\uc73c\ub85c \uc800\uc7a5 \u2014 \uae08\uc804 \uc606 \uc791\uc740 \uad6c\ub984\uc774 \uc0c1\ud0dc\ub97c \uc54c\ub824 \uc918\uc694<br>\u2699\ufe0f \ub85c\uadf8\uc544\uc6c3\u00b7\ube44\ubc00\ubc88\ud638 \ubcc0\uacbd\uc740 \uc124\uc815 \u2192 \uacc4\uc815</div>`;
     h += `<div class="sep"></div><b>v318 \uc800\uc7a5 \uc815\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2601 \uae30\uae30 \ubc16 \uc800\uc7a5\uc740 \ud074\ub77c\uc6b0\ub4dc \ub85c\uadf8\uc778 \ud558\ub098\ub85c \u2014 \ucf54\ub4dc\u00b7\ud30c\uc77c \ub0b4\ubcf4\ub0b4\uae30 \ud654\uba74\uc740 \uc5c6\uc574\uc5b4\uc694<br>\ud83d\udd58 \uc790\ub3d9 \ubc31\uc5c5(\uc774 \uae30\uae30 \uc548\uc5d0\uc11c \uc774\uc804 \uc0c1\ud0dc\ub85c \ub418\ub3cc\ub9ac\uae30)\uc740 \uadf8\ub300\ub85c</div>`;
@@ -12888,7 +12894,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v320';
+const GAME_VER = 'v321';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -14885,6 +14891,82 @@ onModalClick = function (e) {
       return;
     }
   }
+};
+
+/* ============================================================
+   80_move (v321): \uce90\ub9ad\ud130 \uc774\uc0ac \ucf54\ub4dc
+   \uc800\uc7a5\uc740 "\uc5f0 \uc8fc\uc18c\ub9c8\ub2e4" \ub530\ub85c \ubcf4\uad00\ub41c\ub2e4. \uc608\uc804 \uc8fc\uc18c(\uc544\ud2f0\ud329\ud2b8 \ub9c1\ud06c \ub4f1)\uc5d0\uc11c \ud0a4\uc6b4 \uce90\ub9ad\ud130\ub97c \uc0c8 \uc8fc\uc18c\uc758 \uacc4\uc815\uc73c\ub85c \uc62e\uae38 \ub54c \uc4f4\ub2e4.
+     \uc608\uc804 \uc8fc\uc18c: \uc2dc\uc791 \ud654\uba74 \u2192 \ud83d\udce6 \uc774\uc0ac \ucf54\ub4dc \u2192 \u2460 \ucf54\ub4dc \ubcf5\uc0ac
+     \uc0c8 \uc8fc\uc18c  : \ub85c\uadf8\uc778 \u2192 \uc2dc\uc791 \ud654\uba74 \u2192 \ud83d\udce6 \uc774\uc0ac \ucf54\ub4dc \u2192 \u2461 \ubd99\uc5ec\ub123\uace0 \ub370\ub824\uc624\uae30
+   \ucf54\ub4dc\ub294 78_save2 \uc758 SV2.pack / unpack (DBJ1-\ud655\uc778\uac12-\uc555\ucd95) \uadf8\ub300\ub85c.
+   ============================================================ */
+function titleMove(st) {
+  st = st || {};
+  const box = $('titleBox'), u = Cloud.on() && Cloud.user;
+  const slots = [1, 2, 3].map(n => { try { const raw = Store.get(slotKey(n)); if (!raw) return null; const d = JSON.parse(raw); SV2.validate(d); return { n, raw, s: SV2.summary(d) }; } catch (e) { return null; } }).filter(Boolean);
+  const cur = slots.find(x => x.n === SAVE_SLOT);
+  box.innerHTML = `<div class="lg mv">
+    <div class="lg-h">\ud83d\udce6 \uce90\ub9ad\ud130 \uc774\uc0ac</div>
+    <div class="mv-sec"><b>\u2460 \ubcf4\ub0b4\uae30</b> \uc5ec\uae30\uc11c \ud0a4\uc6b4 \uce90\ub9ad\ud130\uc758 \ucf54\ub4dc\ub97c \ubcf5\uc0ac</div>
+    ${slots.length ? slots.map(x => `<button class="btn mv-b" data-mv="${x.n}">Lv.${x.s.lv} ${esc(x.s.name)} \u00b7 \ucf54\ub4dc \ubcf5\uc0ac</button>`).join('') : '<div class="lg-note">\uc774 \ud654\uba74\uc5d0\ub294 \uc800\uc7a5\ub41c \uce90\ub9ad\ud130\uac00 \uc5c6\uc5b4\uc694</div>'}
+    <textarea id="mvOut" class="cl-in mv-ta" readonly hidden></textarea>
+    <div class="mv-sec"><b>\u2461 \ubc1b\uae30</b> \ubcf5\uc0ac\ud574 \uc628 \ucf54\ub4dc\ub97c \ubd99\uc5ec\ub123\uae30</div>
+    <textarea id="mvIn" class="cl-in mv-ta" placeholder="DBJ1-\u2026 \ucf54\ub4dc\ub97c \uc5ec\uae30\uc5d0 \ubd99\uc5ec\ub123\uc73c\uc138\uc694" autocapitalize="off" autocomplete="off" spellcheck="false"></textarea>
+    <button class="btn big teal" id="mvGo">${u ? `\ud83d\udc64 ${esc(u.nick)} \uacc4\uc815` : '\uc774 \uae30\uae30'} \u00b7 \uc2ac\ub86f ${SAVE_SLOT}(\uc73c)\ub85c \ub370\ub824\uc624\uae30</button>
+    <div class="lg-msg" id="mvMsg"></div>
+    <button class="btn lg-alt" id="mvBack">\u2190 \ub3cc\uc544\uac00\uae30</button>
+    <div class="lg-note">\uc608\uc804 \uc8fc\uc18c\uc5d0\uc11c \u2460\ub85c \ubcf5\uc0ac \u2192 \uc0c8 \uc8fc\uc18c\uc5d0\uc11c \ub85c\uadf8\uc778 \u2192 \u2461\uc5d0 \ubd99\uc5ec\ub123\uae30${u ? '' : '<br>\ub85c\uadf8\uc778\ud55c \ub4a4\uc5d0 \ubc1b\uc73c\uba74 \uacc4\uc815\uc5d0 \ubc14\ub85c \uc800\uc7a5\ub3fc\uc694'}</div></div>`;
+  const msg = (t, err) => { const m = $('mvMsg'); if (m) { m.textContent = t; m.className = 'lg-msg' + (err ? ' err' : ''); } };
+  $('mvBack').onclick = () => { Sfx.unlock(); if (st.from === 'login') titleLogin({}); else showTitle(); };
+  for (const b of box.querySelectorAll('[data-mv]')) b.onclick = async () => {
+    Sfx.unlock();
+    try {
+      const x = slots.find(y => y.n === +b.dataset.mv), code = await SV2.pack(x.raw), ta = $('mvOut');
+      ta.hidden = false; ta.value = code;
+      let ok = false;
+      try { await navigator.clipboard.writeText(code); ok = true; } catch (e) { try { ta.focus(); ta.select(); ta.setSelectionRange(0, code.length); ok = document.execCommand('copy'); ta.blur(); } catch (e2) { ok = false; } }
+      msg(ok ? `Lv.${x.s.lv} ${x.s.name} \ucf54\ub4dc\ub97c \ubcf5\uc0ac\ud588\uc5b4\uc694. \uc0c8 \uc8fc\uc18c\uc5d0\uc11c \ub85c\uadf8\uc778\ud55c \ub4a4 \u2461\uc5d0 \ubd99\uc5ec\ub123\uc73c\uc138\uc694` : '\uc790\ub3d9 \ubcf5\uc0ac\uac00 \ub9c9\ud600 \uc788\uc5b4\uc694 \u2014 \uc704 \uce78\uc744 \uae38\uac8c \ub20c\ub7ec \uc804\uccb4 \uc120\ud0dd \u2192 \ubcf5\uc0ac\ud574 \uc8fc\uc138\uc694', !ok);
+    } catch (e) { msg(e.message || '\ucf54\ub4dc\ub97c \ub9cc\ub4e4\uc9c0 \ubabb\ud588\uc5b4\uc694', true); }
+  };
+  const go = $('mvGo');
+  $('mvIn').oninput = () => { delete go.dataset.sure; };
+  go.onclick = async () => {
+    Sfx.unlock(); if (go.dataset.busy) return; go.dataset.busy = 1;
+    try {
+      const un = await SV2.unpack($('mvIn').value), s = SV2.summary(un.data);
+      if (cur && !go.dataset.sure) { go.dataset.sure = 1; msg(`\uc2ac\ub86f ${SAVE_SLOT}\uc758 Lv.${cur.s.lv} ${cur.s.name} \ub300\uc2e0 Lv.${s.lv} ${s.name}(\uc774)\uac00 \ub4e4\uc5b4\uac00\uc694. \ud55c \ubc88 \ub354 \ub204\ub974\uba74 \ubc14\uafc9\ub2c8\ub2e4 (\uc9c0\uae08 \uce90\ub9ad\ud130\ub294 \uc790\ub3d9 \ubc31\uc5c5\uc5d0 \ub0a8\uc544\uc694)`, true); return; }
+      un.data.at = Date.now();   /* \ubc29\uae08 \ub4e4\uc5b4\uc628 \uc800\uc7a5\uc774 \uac00\uc7a5 \uc0c8\uac83 \u2014 \uacc4\uc815\uc5d0 \uadf8\ub300\ub85c \uc62c\ub77c\uac00\uac8c */
+      SV2.writeSlot(JSON.stringify(un.data));
+      const hello = `Lv.${s.lv} ${s.name}, \ubb34\uc0ac\ud788 \uc774\uc0ac \uc654\uc5b4\uc694!`;
+      if (u) { titleSync.done = false; titleSync.promise = null; titleSync.hello = hello; titleSync.helloUntil = Date.now() + 8000; }
+      showTitle();
+      const h = $('titleHint'); if (h) h.textContent = hello;
+    } catch (e) { msg(e.message || '\ucf54\ub4dc\ub97c \uc77d\uc9c0 \ubabb\ud588\uc5b4\uc694', true); }
+    finally { delete go.dataset.busy; }
+  };
+}
+/* \uc2dc\uc791 \ud654\uba74 \ub9e8 \uc544\ub798 \uc791\uc740 \ubc84\ud2bc */
+const _showTitle321 = showTitle;
+showTitle = function () {
+  _showTitle321();
+  try {
+    const box = $('titleBox'); if (!box || $('lgGo') || $('tMove') || !$('tNew')) return;
+    const b = document.createElement('button'); b.id = 'tMove'; b.className = 'lg-guest'; b.textContent = '\ud83d\udce6 \uc774\uc0ac \ucf54\ub4dc (\ub2e4\ub978 \uc8fc\uc18c\uc5d0\uc11c \ud558\ub358 \uce90\ub9ad\ud130 \uc62e\uae30\uae30)';
+    b.onclick = () => { Sfx.unlock(); titleMove({}); };
+    box.appendChild(b);
+  } catch (e) { reportError(e); }
+};
+/* \ub85c\uadf8\uc778 \ud654\uba74: \uc774 \uae30\uae30\uc5d0 \ub85c\uadf8\uc778 \uc5c6\uc774 \ud0a4\uc6b4 \uce90\ub9ad\ud130\uac00 \uc788\uc73c\uba74 \uc5ec\uae30\uc11c\ub3c4 \ubc14\ub85c \ucf54\ub4dc\ub97c \ubf51\uc744 \uc218 \uc788\uac8c */
+const _titleLogin321 = titleLogin;
+titleLogin = function (state) {
+  _titleLogin321(state);
+  try {
+    const lg = document.querySelector('#titleBox .lg'), g = $('lgGuest'); if (!lg || !g || $('lgMove')) return;
+    if (![1, 2, 3].some(n => Store.get(slotKey(n)))) return;
+    const b = document.createElement('button'); b.id = 'lgMove'; b.className = 'lg-guest'; b.textContent = '\ud83d\udce6 \uc774 \uae30\uae30 \uce90\ub9ad\ud130\uc758 \uc774\uc0ac \ucf54\ub4dc \ubc1b\uae30';
+    b.onclick = () => { Sfx.unlock(); titleMove({ from: 'login' }); };
+    g.insertAdjacentElement('afterend', b);
+  } catch (e) { reportError(e); }
 };
 
 /* 99_boot: start once every file above has defined its data and renderers */
