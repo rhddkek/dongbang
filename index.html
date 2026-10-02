@@ -399,6 +399,26 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .hcloud.ok{color:#8fe0b0}.hcloud.busy{color:#ffe08a;animation:hcl 1s ease-in-out infinite}.hcloud.fail,.hcloud.warn{color:#ff9a8a}.hcloud.off{display:none}
 @keyframes hcl{50%{opacity:.35}}
 .acctbox .row{margin-top:6px}
+
+/* v323 \c544 \c774 \d15c  \c815 \bcf4 \b294  \c704 \c5d0  \b7  \be44 \ad50  */
+.itop{position:sticky;top:-12px;z-index:6;margin:-12px -12px 8px;padding:8px 12px 8px;background:linear-gradient(180deg,#2a1e15,#211810);border-bottom:1px solid var(--line2);box-shadow:0 6px 12px rgba(0,0,0,.45);max-height:46vh;overflow:auto;overscroll-behavior:contain}
+.itop .detail{margin-top:0;position:relative}
+.itop .detail .nm3{padding-right:30px}
+.detail .dx{position:absolute;right:4px;top:4px;width:28px;height:28px;border-radius:14px;border:1px solid var(--line);background:#1b140f;color:var(--muted);font-size:13px;padding:0}
+.eqs.sel{outline:2px solid var(--gold2)}
+.cchips{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin:6px 0 2px;font-size:12px}
+.cchips b{color:var(--muted);font-weight:700;margin-right:2px}
+.cchips span{border-radius:10px;padding:1px 8px;font-weight:800;white-space:nowrap}
+.cchips .cu{background:rgba(90,200,130,.16);color:#8ff0b0;border:1px solid rgba(90,200,130,.45)}
+.cchips .cd{background:rgba(230,100,90,.14);color:#ff9d90;border:1px solid rgba(230,100,90,.4)}
+.cmp2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.cmp2 .cc{border:1px solid var(--line);border-radius:7px;padding:6px 7px;background:#17110c;min-width:0}
+.cmp2 .cc.on{border-color:var(--gold2);background:#1d150e}
+.cmp2 .cl{font-size:10px;color:var(--muted);letter-spacing:1px}
+.cmp2 .cc.on .cl{color:var(--gold2)}
+.cmp2 .cn{font-weight:900;font-size:12px;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmp2 .stat{font-size:11px}
+.cmp2 .opt,.cmp2 .gy,.cmp2 .sp,.cmp2 .myth,.cmp2 .awk,.cmp2 .muted{font-size:10.5px;line-height:1.4}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -452,7 +472,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v322</div>
+    <div class="sub">v323</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -4264,7 +4284,12 @@ function pathStep(e, tx, ty) {
 function moveToward(e, tx, ty, speed, dt, useFlow) {
   let gx = tx, gy = ty;
   if (useFlow) {
-    const clear = lineClear(e.x, e.y - 6, tx, ty - 6);
+    let clear = lineClear(e.x, e.y - 6, tx, ty - 6);
+    /* v323: \ud50c\ub808\uc774\uc5b4(\uc790\ub3d9\uc0ac\ub0e5\u00b7\ud130\uce58 \uc774\ub3d9)\ub294 \ubab8\ud1b5 \ud3ed\uae4c\uc9c0 \ubcf8\ub2e4 \u2014 \uac00\uc6b4\ub370 \uc120\ub9cc \ub6ab\ub824 \uc788\uace0 \uc5b4\uae68\uac00 \ub3cc\u00b7\ub098\ubb34\uc5d0 \uac78\ub9ac\ub294 \uae38\uc740 \ub3cc\uc544\uc11c \uac04\ub2e4 */
+    if (clear && useFlow === 'path' && e === G.player) {
+      const dd = Math.hypot(tx - e.x, ty - e.y) || 1, ox = -(ty - e.y) / dd * 10, oy = (tx - e.x) / dd * 10;
+      clear = lineClear(e.x + ox, e.y - 3 + oy, tx + ox, ty - 3 + oy) && lineClear(e.x - ox, e.y - 3 - oy, tx - ox, ty - 3 - oy);
+    }
     if (!clear) { const st = useFlow === 'path' ? pathStep(e, tx, ty) : flowStep(e); if (st) { gx = st.x; gy = st.y; } }
   }
   const dx = gx - e.x, dy = gy - e.y, d = Math.hypot(dx, dy);
@@ -4497,6 +4522,7 @@ function autoHunt(p, dt) {
     t = (G.mobs.find(m => m.bottari && m.hp > 0 && dist(m, p) < 700)) || nearestMob(p.x, p.y, 640, m => !ign.has(m) && !(m.war && !m.threat.get(p)) && (!m.boss || p.lv >= m.lv || m.state === 'chase'));
     p.target = t; p.autoStuck = 0;
   }
+  if (autoWatch(p, t, dt)) return true;   /* v323: \ub07c\uc5c8\uc73c\uba74 \ube60\uc838\ub098\uc624\ub294 \uc911 */
   if (!t) { autoWander(p, dt); return true; }
   const d = dist(p, t), magic = JOBS[p.job].magic;
   /* skills */
@@ -4516,14 +4542,76 @@ function autoHunt(p, dt) {
     if (k === 'seal' && d > (sk[i].range || 260)) continue;
     if (useSkill(p, i)) return true;
   }
-  const want = magic ? p.s.range * .8 : p.s.range + t.r - 6;
-  if (d > want) {
+  let want = magic ? p.s.range * .8 : p.s.range + t.r - 6;
+  if (p._aw && p._aw.near === t) want = Math.min(want, 52 + t.r);   /* \ud55c \ubc88 \ud5db\ucce4\ub358 \ubaa9\ud45c\ub294 \ubc14\uc9dd \ubd99\uc5b4\uc11c */
+  /* v323: \uc6d0\uac70\ub9ac \uc9c1\uc5c5\uc740 \uc0ac\uac70\ub9ac \uc548\uc774\uc5b4\ub3c4 \uc0ac\uc774\uc5d0 \ub3cc\u00b7\ub098\ubb34\uac00 \uc788\uc73c\uba74(\ud0c4\uc774 \ub9c9\ud798) \ubcf4\uc774\ub294 \uc790\ub9ac\uae4c\uc9c0 \ub3cc\uc544\uac04\ub2e4 */
+  const los = JOBS[p.job].basic === 'melee' || d > want || shotClear(p, t);
+  if (d > want || !los) {
     const before = p.x + p.y;
     moveToward(p, t.x, t.y, p.s.move, dt, 'path');
     if (Math.abs(p.x + p.y - before) < .5) { p.autoStuck = (p.autoStuck || 0) + dt; if (p.autoStuck > 1.2) { p.target = null; (p.autoIgnore || (p.autoIgnore = new Map())).set(t, G.time + 8); } }
     else p.autoStuck = 0;
   } else { p.moving = false; faceTo(p, t.x, t.y); basicAttack(p); }
   return true;
+}
+/* v323 \ub07c\uc784 \uac10\uc2dc: \uc790\ub3d9\uc0ac\ub0e5 \uc911 '\uc81c\uc790\ub9ac\uac78\uc74c'\uc744 \uc54c\uc544\ucc44\uace0 \ube60\uc838\ub098\uc628\ub2e4.
+   \u00b7 \uac00\ub824\ub294\ub370 1.5\ucd08 \ub3d9\uc548 \ud55c \uac78\uc74c(24px)\ub3c4 \ubabb \ub098\uac10  \u2192 \ub07c\uc778 \uac83
+   \u00b7 \ub54c\ub9ac\ub294\ub370 3.5\ucd08 \ub3d9\uc548 \ubaa9\ud45c \uccb4\ub825\uc774 \uadf8\ub300\ub85c       \u2192 \ud0c4\uc774 \ub9c9\ud614\uac70\ub098 \ub2ff\uc9c0 \uc54a\ub294 \uac83
+   \ucc98\uc74c\uc5d4 \ud2b8\uc778 \ucabd\uc73c\ub85c \uc790\ub9ac\ub97c \uc62e\uae30\uace0, \uac19\uc740 \ubaa9\ud45c\uc5d0\uc11c \ub610 \uadf8\ub7ec\uba74 \uadf8 \ubaa9\ud45c\ub97c 10\ucd08 \ub3d9\uc548 \uc81c\uccd0 \ub450\uace0 \ub2e4\ub978 \ubaac\uc2a4\ud130\ub97c \uace0\ub978\ub2e4. */
+/* \uc9c0\uae08 \uc790\ub9ac\uc5d0\uc11c \uae30\ubcf8 \uacf5\uaca9 \ud0c4\uc774 \ubaa9\ud45c\uc5d0 \ub2ff\ub294\uc9c0 \ubbf8\ub9ac \ub530\ub77c\uac00 \ubcf8\ub2e4 (14_combat updateProjs \uc640 \uac19\uc740 \ud310\uc815:
+   \ud0c4 \uc544\ub798 16px \uc9c0\uc810\uc774 \ub3cc\u00b7\ub098\ubb34\uba74 \uc0ac\ub77c\uc9c0\uace0, \ubaa9\ud45c \ubc18\uacbd \uc548\uc5d0 \ub4e4\uba74 \ub9de\ub294\ub2e4). \uc2e4\uc81c\ubcf4\ub2e4 \ucd18\ucd18\ud788 \ubd10\uc11c \uc544\uc2ac\uc544\uc2ac\ud55c \uc790\ub9ac\ub294 \ud53c\ud55c\ub2e4. */
+function shotClear(p, t) {
+  let x = p.x, y = p.y - 22;
+  if (p.job === 'shaman' || p.job === 'taoist') {   /* 62_motion: \ud0c4\uc740 \uc190\ub05d\uc5d0\uc11c \ub098\uac04\ub2e4 */
+    const dx = t.x - p.x, dy = t.y - p.y, dir = Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? 2 : 3) : (dy < 0 ? 1 : 0);
+    const fwd = p.job === 'taoist' ? (p.s.wt === 'geum' ? 10 : p.s.wt === 'fan' ? 20 : 16) : 16, v = [[0, 1], [0, -1], [-1, 0], [1, 0]][dir];
+    const hx = p.x + v[0] * fwd + (dir === 0 ? 6 : dir === 1 ? -6 : 0), hy = p.y - 20 + v[1] * 5;
+    if (!G.map.solidAt(hx, hy + 16)) { x = hx; y = hy; }
+  }
+  /* \uc2e4\uc81c \ud0c4\uc740 \ud55c \ud504\ub808\uc784\uc5d0 7~14px \uc529 \uac74\ub108\ub6f0\uc5b4, \ub9de\ub294 \ubc94\uc704\uc5d0 \ub4e4\uae30 \uc9c1\uc804\uc5d0 \ubaa8\uc11c\ub9ac\uc5d0 \uac78\ub9b4 \uc218 \uc788\ub2e4 \u2192 \ubc94\uc704\ub97c 14px \uc881\ud600\uc11c \ubcf8\ub2e4 */
+  const ex = t.x, ey = t.y - 16, hr = Math.max(4, t.r - 4), hitR = hr * hr;
+  for (let i = 0; i < 120; i++) {
+    const d = Math.hypot(ex - x, ey - y); if (d < 2) return true;
+    const st = Math.min(4, d); x += (ex - x) / d * st; y += (ey - y) / d * st;
+    if (G.map.solidAt(x, y + 16)) return false;
+    if (dist2(x, y, t.x, t.y - t.r) < hitR) return true;
+  }
+  return true;
+}
+function autoWatch(p, t, dt) {
+  const w = p._aw || (p._aw = { x: p.x, y: p.y, t: 0, hp: 0, tg: null, n: 0, esc: null });
+  if (w.esc) {
+    const e = w.esc, bx = p.x, by = p.y; e.t -= dt;
+    moveToward(p, e.x, e.y, p.s.move, dt, 'path');
+    if (Math.abs(p.x - bx) + Math.abs(p.y - by) < .05) e.b = (e.b || 0) + dt; else e.b = 0;
+    if (e.t <= 0 || e.b > .25 || dist2(p.x, p.y, e.x, e.y) < 144) { w.esc = null; w.x = p.x; w.y = p.y; w.t = 0; }
+    return true;
+  }
+  if (w.tg !== t) { w.tg = t; w.n = 0; w.t = 0; w.x = p.x; w.y = p.y; w.hp = t ? t.hp : 0; return false; }
+  if (dist2(p.x, p.y, w.x, w.y) > 576) { w.x = p.x; w.y = p.y; w.t = 0; return false; }
+  if (t) { if (t.hp < w.hp - .5) { w.hp = t.hp; w.t = 0; return false; } if (t.hp > w.hp) w.hp = t.hp; }
+  if (p.status && (p.status.stun || p.status.freeze)) return false;
+  w.t += dt;
+  const inReach = t && dist(p, t) <= (JOBS[p.job].magic ? p.s.range * .8 : p.s.range + t.r - 6) + 4;
+  if (w.t < (inReach ? 3.5 : 1.5)) return false;
+  /* \ub07c\uc5c8\ub2e4 */
+  w.t = 0; w.n++;
+  if (t && inReach && w.n === 1 && JOBS[p.job].basic !== 'melee' && w.near !== t) { w.near = t; return false; }   /* \ud0c4\uc774 \uc548 \ub2ff\ub294\ub2e4 \u2192 \uba3c\uc800 \ubc14\uc9dd \ub2e4\uac00\uac00 \ubcf8\ub2e4 */
+  if (t && w.n >= 2 && !t.boss) { (p.autoIgnore || (p.autoIgnore = new Map())).set(t, G.time + 10); p.target = null; w.tg = undefined; }
+  if (!t) p.wander = null;
+  /* \uac00\uc7a5 \ud2b8\uc778 \ubc29\ud5a5\uc73c\ub85c (\ubaa9\ud45c\ub97c \uc815\uba74\uc73c\ub85c \ubcf4\ub294 \ucabd\uc740 \ub4a4\ub85c \ubbf8\ub8ec\ub2e4) */
+  const base = t ? Math.atan2(t.y - p.y, t.x - p.x) : Math.random() * TAU;
+  let best = null, bs = -1;
+  for (let i = 0; i < 12; i++) {
+    const a = base + (i / 12) * TAU, cx = Math.cos(a), cy = Math.sin(a);
+    let L = 0; while (L < 112 && canStand(p, p.x + cx * (L + 8), p.y + cy * (L + 8))) L += 8;
+    if (L < 24) continue;
+    const side = Math.abs(Math.sin(a - base));           /* 1 = \uc606\uac78\uc74c, 0 = \uc815\uba74\u00b7\uc815\ubc18\ub300 */
+    const sc = L * (.55 + .45 * side) + Math.random() * 14 - (Math.cos(a - base) > .9 ? 30 : 0);
+    if (sc > bs) { bs = sc; best = { x: p.x + cx * L, y: p.y + cy * L }; }
+  }
+  if (best) { w.esc = { x: best.x, y: best.y, t: .9 }; return true; }
+  return false;
 }
 function autoWander(p, dt) {
   if (!p.wander || dist(p, p.wander) < 30 || (p.wanderT -= dt) <= 0) {
@@ -4918,6 +5006,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v323 \uc790\ub3d9\uc0ac\ub0e5 \u00b7 \uac00\ubc29 \ube44\uad50</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udd16 \uc790\ub3d9\uc0ac\ub0e5\uc774 \ub3cc\u00b7\ub098\ubb34\uc5d0 \ub07c\uc9c0 \uc54a\uc544\uc694: \ubab8\ud1b5 \ud3ed\uae4c\uc9c0 \ubcf4\uace0 \ub3cc\uc544\uac00\uace0, \ud0c4\uc774 \ub9c9\ud788\ub294 \uc790\ub9ac\uc5d0\uc11c\ub294 \ubcf4\uc774\ub294 \uacf3\uc73c\ub85c \uc62e\uae30\uace0, \uadf8\ub798\ub3c4 \uc81c\uc790\ub9ac\uac78\uc74c\uc774\uba74 \uc790\ub9ac\ub97c \uc62e\uae30\uac70\ub098 \ub2e4\ub978 \ubaac\uc2a4\ud130\ub97c \uace0\ub985\ub2c8\ub2e4<br>\ud83c\udf92 \uc544\uc774\ud15c\uc744 \ub204\ub974\uba74 \uc815\ubcf4\uac00 \ucc3d \ub9e8 \uc704\uc5d0 \ub739\ub2c8\ub2e4 (\ubaa9\ub85d\uc744 \ub0b4\ub824\ub3c4 \ub530\ub77c\uc640\uc694) \u00b7 \uc7a5\ube44\ub294 [\ucc29\uc6a9\uc911 | \uc774 \uc544\uc774\ud15c] \ub098\ub780\ud788 \ube44\uad50 + \ubc14\uafd4 \ub07c\uba74 \ubb34\uc5c7\uc774 \uc624\ub974\ub0b4\ub9ac\ub294\uc9c0 \ud55c \uc904 \uc694\uc57d<br>\ud83e\ude84 \ub3cc \ubc14\ub85c \uc606\uc5d0\uc11c \uc3dc \uc8fc\ubb38\uc774 \ub098\uc624\uc790\ub9c8\uc790 \uc0ac\ub77c\uc9c0\ub358 \ubb38\uc81c \uc218\uc815</div>`;
     notes += `<div class="sep"></div><b>v322 \uc124\uc815 \uc815\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcdc \uc124\uc815\uc758 \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc744 \uc811\uc5b4 \ub461\ub2c8\ub2e4 \u2014 '\ud3bc\uce58\uae30'\ub97c \ub204\ub974\uba74 \ubcf4\uc5ec\uc694</div>`;
     notes += `<div class="sep"></div><b>v321 \uce90\ub9ad\ud130 \uc774\uc0ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udce6 \uc2dc\uc791 \ud654\uba74\uc758 '\uc774\uc0ac \ucf54\ub4dc': \uc608\uc804 \uc8fc\uc18c\uc5d0\uc11c \ud0a4\uc6b4 \uce90\ub9ad\ud130\ub97c \ucf54\ub4dc\ub85c \ubcf5\uc0ac\ud574 \uc0c8 \uc8fc\uc18c\uc758 \uacc4\uc815\uc73c\ub85c \ub370\ub824\uc62c \uc218 \uc788\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v320 \uacc4\uc815\ub9c8\ub2e4 \ub530\ub85c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc64 \uacc4\uc815\ub9c8\ub2e4 \uce90\ub9ad\ud130 \uce78\uc744 \ub530\ub85c \uc501\ub2c8\ub2e4 \u2014 \ub2e4\ub978 \uacc4\uc815\uc73c\ub85c \ub85c\uadf8\uc778\ud574\ub3c4 \uce90\ub9ad\ud130\uac00 \uc11e\uc774\uc9c0 \uc54a\uc544\uc694<br>\ud83d\udce5 \ub85c\uadf8\uc778 \uc5c6\uc774 \ud558\ub358 \uce90\ub9ad\ud130\ub294 \uc2dc\uc791 \ud654\uba74\uc5d0\uc11c \uacc4\uc815\uc73c\ub85c \uc62e\uae38 \uc218 \uc788\uc5b4\uc694<br>\ud83d\uddd1 \ub85c\uadf8\uc778 \uc911 '\ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc'\ub294 \uc11c\ubc84\uc758 \uadf8 \uc2ac\ub86f\ub3c4 \ud568\uaed8 \uc9c0\uc6c1\ub2c8\ub2e4</div>`;
@@ -12604,6 +12693,8 @@ update = function (dt) {
     if (G.time < q.at) continue;
     PENDING_PROJ.splice(i, 1);
     const h = handPos(s, q.kind === 'geum' ? 10 : q.kind === 'fan' ? 20 : 16);
+    /* v323: \uc190\ub05d\uc774 \ub3cc\u00b7\ub098\ubb34 \uc18d\uc774\uba74(\ubc14\ub85c \uc606\uc5d0 \ubd99\uc5b4 \uc120 \uacbd\uc6b0) \ud0c4\uc774 \ub098\uc624\uc790\ub9c8\uc790 \uc0ac\ub77c\uc9c4\ub2e4 \u2192 \ubab8 \uc911\uc2ec\uc5d0\uc11c \uc3dc\ub2e4 */
+    if (!q.p.fly && G.map.solidAt(h.x, h.y + 16)) { h.x = s.x; h.y = s.y - 22; }
     q.p.x = h.x; q.p.y = h.y;
     const t = q.p.homing; if (t && t.hp > 0) { const sp = Math.hypot(q.p.vx, q.p.vy), a = Math.atan2(t.y - 16 - h.y, t.x - h.x); q.p.vx = Math.cos(a) * sp; q.p.vy = Math.sin(a) * sp; }
     G.projs.push(q.p);
@@ -12900,7 +12991,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v322';
+const GAME_VER = 'v323';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -14973,6 +15064,81 @@ titleLogin = function (state) {
     b.onclick = () => { Sfx.unlock(); titleMove({ from: 'login' }); };
     g.insertAdjacentElement('afterend', b);
   } catch (e) { reportError(e); }
+};
+
+/* ============================================================
+   81_bagui (v323): \uc544\uc774\ud15c \uc815\ubcf4\ub294 \uc704\uc5d0, \ube44\uad50\ub294 \ud55c\ub208\uc5d0
+   \u00b7 \uac00\ubc29\u00b7\uc0c1\uc810(\ud314\uae30)\u00b7\ub300\uc7a5\uac04(\uac15\ud654)\uc5d0\uc11c \uc544\uc774\ud15c\uc744 \ub204\ub974\uba74 \uc815\ubcf4 \uce78\uc774 \ubaa9\ub85d "\uc544\ub798"\uac00 \uc544\ub2c8\ub77c \ucc3d \ub9e8 \uc704\uc5d0 \ubd99\uc5b4\uc11c \ub72c\ub2e4
+     (\ubaa9\ub85d\uc744 \uc2a4\ud06c\ub864\ud574\ub3c4 \ub530\ub77c\uc628\ub2e4 \u2192 \ub2e4\ub978 \uc544\uc774\ud15c\uc744 \ub20c\ub7ec \uac00\uba70 \ubc14\ub85c \ube44\uad50)
+   \u00b7 \uac00\ubc29\uc758 \uc7a5\ube44: [\ucc29\uc6a9\uc911] | [\uc774 \uc544\uc774\ud15c] \ub450 \uce78 \ub098\ub780\ud788 + "\uc7a5\ucc29\ud558\uba74 \uacf5\uaca9\ub825 \u25b2120 \u00b7 \ubc29\uc5b4\ub825 \u25bc30" \ud55c \uc904 \uc694\uc57d
+   \u00b7 \uc815\ubcf4 \uce78\uc774 \uc0dd\uae30\uac70\ub098 \ub192\uc774\uac00 \ubc14\ub00c\uc5b4\ub3c4 \ub204\ub978 \uc544\uc774\ud15c\uc774 \uc190\uac00\ub77d \ubc11\uc5d0\uc11c \ub2ec\uc544\ub098\uc9c0 \uc54a\uac8c \uc2a4\ud06c\ub864\uc744 \ub9de\ucd98\ub2e4
+   ============================================================ */
+function divEnd(h, i) {   /* h[i] \uc5d0\uc11c \uc2dc\uc791\ud558\ub294 <div \u2026> \uc758 \ub2eb\ub294 \ud0dc\uadf8 \ubc14\ub85c \ub4a4 \uc704\uce58 */
+  const re = /<\/?div\b/g; re.lastIndex = i; let depth = 0, m;
+  while ((m = re.exec(h))) { if (m[0] === '<div') depth++; else if (--depth === 0) return h.indexOf('>', m.index) + 1; }
+  return h.length;
+}
+/* \uc5b4\ub5a4 \ucc3d\uc774\ub4e0 .detail \uce78\uc774 \uc788\uc73c\uba74 \ub9e8 \uc704\ub85c \uc62c\ub9b0\ub2e4 */
+function liftDetail(html) {
+  if (typeof html !== 'string') return html;
+  const i = html.indexOf('<div class="detail'); if (i < 0 || html.indexOf('class="itop"') >= 0) return html;
+  const e = divEnd(html, i);
+  return `<div class="itop">${html.slice(i, e)}</div>` + html.slice(0, i) + html.slice(e);
+}
+const _openModal323 = openModal;
+openModal = function (title, html, ctx) { return _openModal323(title, liftDetail(html), ctx); };
+const _refreshModal323 = refreshModal;
+refreshModal = function (title, html) {
+  const mb = $('mBody'), th = () => { const t = mb.querySelector('.itop'); return t ? t.offsetHeight + 8 : 0; };
+  const before = th();
+  _refreshModal323(title, liftDetail(html));
+  try {
+    const after = th(); if (after !== before) mb.scrollTop += after - before;      /* \ubaa9\ub85d\uc774 \ud654\uba74\uc5d0\uc11c \uc81c\uc790\ub9ac\uc5d0 \uc788\uac8c */
+    const top = mb.querySelector('.itop'), s = mb.querySelector('.slot.sel, .eqs.sel');
+    if (top && s) {                                                               /* \ub204\ub978 \uc544\uc774\ud15c\uc774 \uc815\ubcf4 \uce78 \ub4a4\ub85c \uc228\uc9c0 \uc54a\uac8c */
+      const r = s.getBoundingClientRect(), t = top.getBoundingClientRect(), m = mb.getBoundingClientRect();
+      if (r.top < t.bottom + 6) mb.scrollTop -= t.bottom + 6 - r.top;
+      else if (r.bottom > m.bottom - 6) mb.scrollTop += r.bottom - m.bottom + 6;
+    }
+  } catch (e) { reportError(e); }
+};
+
+/* ---------------- \uac00\ubc29: \ucc29\uc6a9\uc911 vs \uc774 \uc544\uc774\ud15c ---------------- */
+const CMP_KEYS = [['atk', '\uacf5\uaca9\ub825'], ['mag', '\ub9c8\ub825'], ['def', '\ubc29\uc5b4\ub825'], ['hp', 'HP'], ['mp', 'MP']];
+function cmpChips(sel, cur) {
+  const a = ITEMS[sel.id], b = cur ? ITEMS[cur.id] : {}, ma = enhMul(sel), mb = cur ? enhMul(cur) : 1, out = [];
+  for (const [k, n] of CMP_KEYS) { const d = Math.round((a[k] || 0) * ma) - Math.round((b[k] || 0) * mb); if (d) out.push(`<span class="${d > 0 ? 'cu' : 'cd'}">${n} ${d > 0 ? '\u25b2' : '\u25bc'}${fmt(Math.abs(d))}</span>`); }
+  const dc = Math.round(((a.crit || 0) - (b.crit || 0)) * 1000) / 10; if (dc) out.push(`<span class="${dc > 0 ? 'cu' : 'cd'}">\uce58\uba85\ud0c0 ${dc > 0 ? '\u25b2' : '\u25bc'}${Math.abs(dc)}%</span>`);
+  const no = (sel.opts || []).length - ((cur && cur.opts) || []).length; if (no) out.push(`<span class="${no > 0 ? 'cu' : 'cd'}">\uc635\uc158 ${no > 0 ? '+' : '\u2212'}${Math.abs(no)}\uc904</span>`);
+  return out;
+}
+const _menuBag323 = MENU.bag;
+MENU.bag = function (ctx) {
+  const r = _menuBag323(ctx); if (!Array.isArray(r)) return r;
+  let h = r[1]; const p = G.player;
+  try {
+    if (ctx.selEq) h = h.replace(`class="eqs" data-a="selEq" data-s="${ctx.selEq}"`, `class="eqs sel" data-a="selEq" data-s="${ctx.selEq}"`);
+    const i = h.indexOf('<div class="detail">');
+    const sel = ctx.sel && (p.inv.find(x => x.uid === ctx.sel) || (ctx.selEq && p.eq[ctx.selEq]?.uid === ctx.sel && p.eq[ctx.selEq]));
+    if (i < 0 || !sel) return [r[0], h];
+    const e = divEnd(h, i), old = h.slice(i, e), d = ITEMS[sel.id], equipped = !!(ctx.selEq && p.eq[ctx.selEq] === sel);
+    const x = `<button class="dx" data-a="sel" data-u="${sel.uid}" aria-label="\uc815\ubcf4 \ub2eb\uae30">\u2715</button>`;
+    let panel;
+    if (isGear(d) && !equipped) {
+      const slot = d.slot === 'ring' ? (p.eq.ring1 ? (p.eq.ring2 ? 'ring1' : 'ring2') : 'ring1') : d.slot, cur = p.eq[slot] || null;
+      const bi = old.indexOf('<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">'), btns = bi >= 0 ? old.slice(bi, old.length - 6) : '';
+      const chips = cmpChips(sel, cur);
+      const head = itemHead(sel).replace(/<div class="muted">[^<]*<\/div>$/, '');   /* \ube44\uad50 \ud654\uba74\uc5d0\uc11c\ub294 \uc124\uba85 \uae00 \ud55c \uc904\uc744 \ube7c\uc11c \uc790\ub9ac\ub97c \uc544\ub080\ub2e4 */
+      panel = `<div class="detail cmpd">${x}${head}
+        <div class="cchips"><b>${cur ? '\ubc14\uafd4 \ub07c\uba74' : '\uc7a5\ucc29\ud558\uba74'}</b>${chips.length ? chips.join('') : '<span class="muted">\ub2a5\ub825\uce58 \ucc28\uc774 \uc5c6\uc74c</span>'}</div>
+        <div class="cmp2">
+          <div class="cc"><div class="cl">\ucc29\uc6a9\uc911</div>${cur ? `<div class="cn">${itemName(cur)}</div>${itemStatsHtml(cur)}` : '<div class="muted">\uc774 \uc790\ub9ac\ub294 \ube44\uc5b4 \uc788\uc5b4\uc694</div>'}</div>
+          <div class="cc on"><div class="cl">\uc774 \uc544\uc774\ud15c</div><div class="cn">${itemName(sel)}</div>${itemStatsHtml(sel)}</div>
+        </div>${btns}</div>`;
+    } else panel = old.replace('<div class="detail">', '<div class="detail">' + x);
+    h = h.slice(0, i) + panel + h.slice(e);
+  } catch (err) { reportError(err); return r; }
+  return [r[0], h];
 };
 
 /* 99_boot: start once every file above has defined its data and renderers */
