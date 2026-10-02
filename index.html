@@ -374,7 +374,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 #titleBox .lg-msg{min-height:16px;font-size:12px;color:#bfe8c8;text-align:center;line-height:1.5}
 #titleBox .lg-msg.err{color:#ffb0a8}
 #titleBox .lg-note{font-size:11px;color:var(--muted);line-height:1.6;text-align:center}
-#titleBox .lg-small{font-size:12px;padding:8px}
+#titleBox .lg-small{font-size:12px;padding:8px;white-space:normal;line-height:1.4}
 #titleBox .acct{display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(20,15,10,.8);border:1px solid rgba(217,178,95,.35);border-radius:10px;padding:6px 6px 6px 12px;font-size:13px}
 #titleBox .acct b{color:var(--gold2)}
 #titleBox .acct i{font-style:normal;font-size:11px;color:#9fe0b8;margin-left:6px}
@@ -447,7 +447,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v319</div>
+    <div class="sub">v320</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -4911,6 +4911,7 @@ const MENU = {
     h += `<div class="row"><div class="tx"><div class="t1">\uc2dc\uc138 \uc804\uad11\ud310</div><div class="t2">\ud83d\udcc8 \uc2dc\uc138 \ubc84\ud2bc(Tab)\uc744 \ub204\ub974\uba74 \ud654\uba74 \uc544\ub798\uc5d0 \uc8fc\uc2dd\u00b7\ucf54\uc778 \uc2dc\uc138\uac00 \ud3bc\uccd0\uc9d1\ub2c8\ub2e4. \ub044\uba74 \ubc84\ud2bc\ub3c4 \uc228\uaca8\uc694</div></div><button class="btn ${p.settings.ticker !== false ? 'teal' : ''}" data-a="toggle" data-v="ticker">${p.settings.ticker !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uc9c0\uae08 \uc800\uc7a5</div><div class="t2">\uc790\ub3d9 \uc800\uc7a5\uc740 20\ucd08\ub9c8\ub2e4, \ub9f5 \uc774\ub3d9\ud560 \ub54c \ub429\ub2c8\ub2e4</div></div><button class="btn" data-a="save">\uc800\uc7a5</button></div>`;
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
+    h += `<div class="sep"></div><b>v320 \uacc4\uc815\ub9c8\ub2e4 \ub530\ub85c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc64 \uacc4\uc815\ub9c8\ub2e4 \uce90\ub9ad\ud130 \uce78\uc744 \ub530\ub85c \uc501\ub2c8\ub2e4 \u2014 \ub2e4\ub978 \uacc4\uc815\uc73c\ub85c \ub85c\uadf8\uc778\ud574\ub3c4 \uce90\ub9ad\ud130\uac00 \uc11e\uc774\uc9c0 \uc54a\uc544\uc694<br>\ud83d\udce5 \ub85c\uadf8\uc778 \uc5c6\uc774 \ud558\ub358 \uce90\ub9ad\ud130\ub294 \uc2dc\uc791 \ud654\uba74\uc5d0\uc11c \uacc4\uc815\uc73c\ub85c \uc62e\uae38 \uc218 \uc788\uc5b4\uc694<br>\ud83d\uddd1 \ub85c\uadf8\uc778 \uc911 '\ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc'\ub294 \uc11c\ubc84\uc758 \uadf8 \uc2ac\ub86f\ub3c4 \ud568\uaed8 \uc9c0\uc6c1\ub2c8\ub2e4</div>`;
     h += `<div class="sep"></div><b>v319 \ub85c\uadf8\uc778</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc64 \uc2dc\uc791 \ud654\uba74\uc5d0\uc11c \ub85c\uadf8\uc778 \u2192 \ub0b4 \uce90\ub9ad\ud130 \u2192 \uc774\uc5b4\ud558\uae30 (\ucc98\uc74c\uc774\uba74 '\uacc4\uc815 \ub9cc\ub4e4\uae30', \ub85c\uadf8\uc778 \uc5c6\uc774\ub3c4 \uac00\ub2a5)<br>\u2601 \uac8c\uc784 \uc911\uc5d0\ub294 \uc790\ub3d9\uc73c\ub85c \uc800\uc7a5 \u2014 \uae08\uc804 \uc606 \uc791\uc740 \uad6c\ub984\uc774 \uc0c1\ud0dc\ub97c \uc54c\ub824 \uc918\uc694<br>\u2699\ufe0f \ub85c\uadf8\uc544\uc6c3\u00b7\ube44\ubc00\ubc88\ud638 \ubcc0\uacbd\uc740 \uc124\uc815 \u2192 \uacc4\uc815</div>`;
     h += `<div class="sep"></div><b>v318 \uc800\uc7a5 \uc815\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2601 \uae30\uae30 \ubc16 \uc800\uc7a5\uc740 \ud074\ub77c\uc6b0\ub4dc \ub85c\uadf8\uc778 \ud558\ub098\ub85c \u2014 \ucf54\ub4dc\u00b7\ud30c\uc77c \ub0b4\ubcf4\ub0b4\uae30 \ud654\uba74\uc740 \uc5c6\uc574\uc5b4\uc694<br>\ud83d\udd58 \uc790\ub3d9 \ubc31\uc5c5(\uc774 \uae30\uae30 \uc548\uc5d0\uc11c \uc774\uc804 \uc0c1\ud0dc\ub85c \ub418\ub3cc\ub9ac\uae30)\uc740 \uadf8\ub300\ub85c</div>`;
     h += `<div class="sep"></div><b>v317 \ud074\ub77c\uc6b0\ub4dc \uc800\uc7a5</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2601 \ub2c9\ub124\uc784\u00b7\ube44\ubc00\ubc88\ud638\ub85c \ub85c\uadf8\uc778\ud558\uba74 \uc138\uc774\ube0c\uac00 \uc790\ub3d9\uc73c\ub85c \uc11c\ubc84\uc5d0 \uc62c\ub77c\uac00\uace0 \uc5b4\ub290 \uae30\uae30\uc5d0\uc11c\ub4e0 \uc774\uc5b4\ud558\uae30 (\uc124\uc815 \ub9e8 \uc704 \u00b7 \uc2dc\uc791 \ud654\uba74)<br>\ud83d\udcf1 \uc778\ud130\ub137\uc774 \uc5c6\uc744 \ub550 \uae30\uae30\uc5d0\ub9cc \uc800\uc7a5, \uc5f0\uacb0\ub418\uba74 \ub2e4\uc2dc \uc62c\ub9bc \u00b7 \ub450 \uae30\uae30\uc758 \uc800\uc7a5\uc774 \ub2e4\ub974\uba74 \ub354 \ucd5c\uc2e0\uc778 \ucabd\uc744 \uc54c\ub824 \uc8fc\uace0 \uace0\ub974\uac8c \ud568</div>`;
@@ -5613,7 +5614,9 @@ const SAVE_KEY = 'dongbang_jeongi_v100';
 /* v300: \uc800\uc7a5 \uc2ac\ub86f 3\uac1c \u2014 1\ubc88 \uc2ac\ub86f\uc740 \uae30\uc874 \uc800\uc7a5 \ud0a4\ub97c \uadf8\ub300\ub85c \uc4f4\ub2e4 (\uc608\uc804 \uc138\uc774\ube0c \uc720\uc9c0) */
 const SLOT_KEY = 'dongbang_jeongi_slot';
 let SAVE_SLOT = clamp(+(Store.get(SLOT_KEY) || 1) || 1, 1, 3);
-const slotKey = n => n > 1 ? SAVE_KEY + '_s' + n : SAVE_KEY;
+/* v320: \uacc4\uc815\ub9c8\ub2e4 \uae30\uae30 \uc800\uc7a5 \uce78\uc744 \ub530\ub85c \uc4f4\ub2e4 (SAVE_NS = '_u<uid>'). \ub85c\uadf8\uc778 \uc5c6\uc774 \ud560 \ub54c\ub294 \uc608\uc804 \ud0a4 \uadf8\ub300\ub85c */
+let SAVE_NS = '';
+const slotKey = n => SAVE_NS ? SAVE_KEY + SAVE_NS + '_s' + n : (n > 1 ? SAVE_KEY + '_s' + n : SAVE_KEY);
 function setSlot(n) { SAVE_SLOT = clamp(n | 0, 1, 3); Store.set(SLOT_KEY, String(SAVE_SLOT)); }
 const SAVE_FIELDS = ['name', 'job', 'rank', 'lv', 'xp', 'gold', 'hp', 'mp', 'inv', 'invCap', 'eq', 'story', 'cityReq', 'visited', 'lastTown', 'st', 'ach', 'title', 'titles', 'codex', 'bossKills', 'partyDefs', 'props', 'invest', 'settings', 'playTime', 'buffs', 'gyeok', 'legSeen', 'bossBest', 'bounty', 'costume', 'costumes', 'stamps', 'test', 'market', 'seenMenus'];
 function saveGame(force) {
@@ -12885,7 +12888,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v319';
+const GAME_VER = 'v320';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -14428,7 +14431,7 @@ const SV2 = (() => {
     for (const [k, nm] of names) if (B[k]) h += `<div class="row"><div class="tx"><div class="t1">${nm} <span class="muted">${ago(B[k].t)}</span></div><div class="t2">${sumLine(B[k])}</div></div><button class="btn" data-a="${act}" data-v="${k}">\ub418\ub3cc\ub9ac\uae30</button></div>`;
     return h || '<div class="muted">\uc544\uc9c1 \uc790\ub3d9 \ubc31\uc5c5\uc774 \uc5c6\uc5b4\uc694. \ud50c\ub808\uc774\ud558\uba74 10\ubd84\ub9c8\ub2e4 \ud558\ub098\uc529 \uc313\uc785\ub2c8\ub2e4.</div>';
   }
-  return { pack, unpack, validate, summary, sumLine, ago, backups, tick, keepPrev, bkState, writeSlot, applyInGame, currentRaw, backupRows, get block() { return block; } };
+  return { pack, unpack, validate, summary, sumLine, ago, backups, tick, keepPrev, bkState, writeSlot, applyInGame, currentRaw, backupRows, get block() { return block; }, set block(v) { block = !!v; } };
 })();
 
 /* autosave feeds the backup rotation; nothing is written once an import is about to reload the page */
@@ -14519,7 +14522,9 @@ const Cloud = (() => {
   let S = null;                       /* session: { nick, uid, rt, tok, exp, at:{slot: cloud t we know} } */
   try { S = JSON.parse(Store.get(SKEY) || 'null'); } catch (e) { S = null; }
   const st = { busy: false, lastUp: 0, lastErr: '', pending: false, conflict: null, checked: {}, div: {} };
-  const keep = () => { if (S) Store.set(SKEY, JSON.stringify(S)); else Store.del(SKEY); };
+  /* \uacc4\uc815\ubcc4 '\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc11c\ubc84\uc640 \ub9de\ucd98 \uc2dc\uc810'\uc740 \ub85c\uadf8\uc544\uc6c3\ud574\ub3c4 \uae30\uae30\uc5d0 \ub0a8\uae34\ub2e4 (\ub2e4\uc2dc \ub85c\uadf8\uc778\ud588\uc744 \ub54c \uad1c\ud788 '\ub450 \uac08\ub798'\ub85c \ubcf4\uc9c0 \uc54a\uac8c) */
+  const atKey = uid => SKEY + '_at_' + uid;
+  const keep = () => { if (S) { Store.set(SKEY, JSON.stringify(S)); if (S.uid && S.at) Store.set(atKey(S.uid), JSON.stringify(S.at)); } else Store.del(SKEY); };
   const db = () => CLOUD_CFG.db.replace(/\/+$/, '');
   /* \ub2c9\ub124\uc784 \u2192 \uacc4\uc815 \uc774\uba54\uc77c (\ud55c\uae00\ub3c4 \ub418\uac8c UTF-8 16\uc9c4\uc218) */
   function normNick(n) { return String(n || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase().slice(0, 12); }
@@ -14544,12 +14549,12 @@ const Cloud = (() => {
     return body;
   }
   const post = (url, obj) => call(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(obj) });
-  function adopt(nick, r) { S = { nick: normNick(nick), uid: r.localId || r.user_id, rt: r.refreshToken || r.refresh_token, tok: r.idToken || r.id_token, exp: Date.now() + (+(r.expiresIn || r.expires_in) || 3600) * 1000 - 60000, at: (S && S.uid === (r.localId || r.user_id) && S.at) || {} }; keep(); }
+  function adopt(nick, r) { S = { nick: normNick(nick), uid: r.localId || r.user_id, rt: r.refreshToken || r.refresh_token, tok: r.idToken || r.id_token, exp: Date.now() + (+(r.expiresIn || r.expires_in) || 3600) * 1000 - 60000, at: (S && S.uid === (r.localId || r.user_id) && S.at) || (() => { try { return JSON.parse(Store.get(atKey(r.localId || r.user_id)) || 'null'); } catch (e) { return null; } })() || {} }; keep(); }
   async function sign(kind, nick, pw) {
     if (normNick(nick).length < 2) throw new CloudErr('NICK', '\ub2c9\ub124\uc784\uc740 2\uc790 \uc774\uc0c1\uc73c\ub85c \ud574 \uc8fc\uc138\uc694');
     if (String(pw || '').length < 6) throw new CloudErr('WEAK_PASSWORD', MSG.WEAK_PASSWORD);
     const r = await post(`${CLOUD_CFG.authBase}/accounts:${kind === 'up' ? 'signUp' : 'signInWithPassword'}?key=${CLOUD_CFG.apiKey}`, { email: mailOf(nick), password: String(pw), returnSecureToken: true });
-    adopt(nick, r); st.lastErr = ''; st.checked = {}; return S;
+    adopt(nick, r); applyNs(); st.lastErr = ''; st.checked = {}; st.div = {}; return S;
   }
   async function token() {
     if (!S) throw new CloudErr('NOLOGIN', '\ub85c\uadf8\uc778\uc774 \ud544\uc694\ud574\uc694');
@@ -14606,6 +14611,8 @@ const Cloud = (() => {
     })();
   }
   function based(n, t) { if (S) { S.at[n] = t; keep(); } }
+  /* \uc774 \uacc4\uc815\uc758 \uc2ac\ub86f \ud558\ub098\ub97c \uc11c\ubc84\uc5d0\uc11c\ub3c4 \uc9c0\uc6b4\ub2e4 (\ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc) */
+  async function drop(n = SAVE_SLOT) { const tk = await token(); await call(`${path(n)}.json?auth=${tk}`, { method: 'DELETE' }); delete S.at[n]; keep(); return true; }
   /* \ub85c\uadf8\uc778 \uc9c1\ud6c4/\uc2dc\uc791 \ud654\uba74: \uc138 \uc2ac\ub86f\uc744 \uc54c\uc544\uc11c \ub9de\ucd98\ub2e4. \uc0ac\ub78c\uc774 \uace8\ub77c\uc57c \ud558\ub294 \uacbd\uc6b0(\uc591\ucabd\uc774 \ub530\ub85c \uc9c4\ud589\ub428)\ub9cc st.div \uc5d0 \ub0a8\uae34\ub2e4 */
   async function syncAll() {
     let changed = false; st.div = {};
@@ -14624,6 +14631,18 @@ const Cloud = (() => {
     if (r.idToken) { S.tok = r.idToken; S.rt = r.refreshToken || S.rt; S.exp = Date.now() + (+r.expiresIn || 3600) * 1000 - 60000; keep(); }
     return true;
   }
+  /* \uc774 \uae30\uae30\uc758 \uc800\uc7a5 \uce78\uc744 \uc9c0\uae08 \ub85c\uadf8\uc778\ud55c \uacc4\uc815 \uac83\uc73c\ub85c \ubc14\uafbc\ub2e4 (\uacc4\uc815\ub07c\ub9ac, \uadf8\ub9ac\uace0 \uac8c\uc2a4\ud2b8\uc640 \uc11e\uc774\uc9c0 \uc54a\uac8c) */
+  function applyNs() { SAVE_NS = S && S.rt && S.uid ? '_u' + S.uid : ''; }
+  applyNs();
+  const guestKey = n => n > 1 ? SAVE_KEY + '_s' + n : SAVE_KEY;
+  /* v320 \uc774\uc804\uc5d0\ub294 \ub85c\uadf8\uc778\ud574\ub3c4 '\ub85c\uadf8\uc778 \uc5c6\uc774' \uce78\uc744 \uac19\uc774 \uc37c\ub2e4. \uc5c5\ub370\uc774\ud2b8 \uc21c\uac04 \ub85c\uadf8\uc778\ub3fc \uc788\ub358 \uacc4\uc815\uc774 \uc11c\ubc84\uc640 \ub9de\ucdb0 \ub450\uc5c8\ub358 \uc2ac\ub86f\uc740
+     \uadf8 \uacc4\uc815 \uce78\uc73c\ub85c \ud55c \ubc88 \ubcf5\uc0ac\ud574 \ub454\ub2e4 (\uc11c\ubc84\uc5d0 \uc544\uc9c1 \ubabb \uc62c\ub9b0 \uc9c4\ud589\uc774 \uc788\uc5b4\ub3c4 \uc783\uc9c0 \uc54a\uac8c). \uc6d0\ubcf8\uc740 \uac74\ub4dc\ub9ac\uc9c0 \uc54a\ub294\ub2e4 */
+  try {
+    if (SAVE_NS && !Store.get(SKEY + '_ns320')) {
+      Store.set(SKEY + '_ns320', '1');
+      for (let n = 1; n <= 3; n++) { const g = Store.get(guestKey(n)); if (g && S.at && S.at[n] !== undefined && !Store.get(slotKey(n))) Store.set(slotKey(n), g); }
+    }
+  } catch (e) { }
   const GKEY = 'dongbang_jeongi_guest';
   /* \ud654\uba74 \uad6c\uc11d\uc5d0 \ubcf4\uc77c \ud55c \uc904 \uc0c1\ud0dc */
   function chip() {
@@ -14634,7 +14653,7 @@ const Cloud = (() => {
     const D = st.lastUp ? new Date(st.lastUp) : null;
     return { cls: 'ok', icon: '\u2601', text: D ? `\uc800\uc7a5\ub428 ${String(D.getHours()).padStart(2, '0')}:${String(D.getMinutes()).padStart(2, '0')}` : '\uc5f0\uacb0\ub428' };
   }
-  function logout() { S = null; keep(); st.conflict = null; st.checked = {}; st.div = {}; st.lastErr = ''; st.lastUp = 0; }
+  function logout() { S = null; keep(); applyNs(); st.conflict = null; st.checked = {}; st.div = {}; st.lastErr = ''; st.lastUp = 0; }
   function statusLine() {
     if (!S) return '\ub85c\uadf8\uc778\ud558\uba74 \uc5b4\ub290 \uae30\uae30\uc5d0\uc11c\ub4e0 \uc774\uc5b4\ud560 \uc218 \uc788\uc5b4\uc694';
     if (!S.rt) return '\ub85c\uadf8\uc778\uc774 \ub9cc\ub8cc\ub410\uc5b4\uc694 \u2014 \ub2e4\uc2dc \ub85c\uadf8\uc778\ud574 \uc8fc\uc138\uc694';
@@ -14642,7 +14661,7 @@ const Cloud = (() => {
     if (st.lastErr) return '\u26a0 ' + st.lastErr + ' \u2014 \uae30\uae30\uc5d0\ub294 \uc800\uc7a5\ub418\uace0 \uc788\uc5b4\uc694';
     return st.lastUp ? `\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc62c\ub9b0 \ub54c: ${SV2.ago(st.lastUp)}` : (S.at[SAVE_SLOT] ? `\ud074\ub77c\uc6b0\ub4dc \uc800\uc7a5: ${SV2.ago(S.at[SAVE_SLOT])}` : '\uc544\uc9c1 \uc62c\ub9b0 \uc801 \uc5c6\uc74c \u2014 \uace7 \uc790\ub3d9\uc73c\ub85c \uc62c\ub77c\uac00\uc694');
   }
-  return { on, sign, pull, push, meta, compare, syncAll, changePw, chip, autoUp, based, logout, statusLine, normNick, mailOf, st, /* \uc790\ub3d9 \ud14c\uc2a4\ud2b8(webdriver)\uc5d0\uc11c\ub294 \ub530\ub85c \uc815\ud558\uc9c0 \uc54a\ub294 \ud55c \uac8c\uc2a4\ud2b8\ub85c \ubcf8\ub2e4 */ get guest() { const v = Store.get(GKEY); return v === '1' || (v !== '0' && typeof navigator !== 'undefined' && navigator.webdriver === true); }, set guest(v) { Store.set(GKEY, v ? '1' : '0'); }, get user() { return S && S.rt ? S : null; }, get session() { return S; } };
+  return { on, sign, pull, push, meta, compare, syncAll, changePw, drop, chip, applyNs, guestKey, autoUp, based, logout, statusLine, normNick, mailOf, st, /* \uc790\ub3d9 \ud14c\uc2a4\ud2b8(webdriver)\uc5d0\uc11c\ub294 \ub530\ub85c \uc815\ud558\uc9c0 \uc54a\ub294 \ud55c \uac8c\uc2a4\ud2b8\ub85c \ubcf8\ub2e4 */ get guest() { const v = Store.get(GKEY); return v === '1' || (v !== '0' && typeof navigator !== 'undefined' && navigator.webdriver === true); }, set guest(v) { Store.set(GKEY, v ? '1' : '0'); }, get user() { return S && S.rt ? S : null; }, get session() { return S; } };
 })();
 
 /* local save \u2192 (throttled) cloud upload; leaving the page tries one last upload */
@@ -14679,6 +14698,7 @@ function cloudConflictPopup() {
 const titleSync = { done: false, promise: null, failed: false, hello: '', helloUntil: 0 };
 const _showTitle316 = showTitle;
 showTitle = function () {
+  if (Cloud.on()) Cloud.applyNs();
   _showTitle316();
   if (!Cloud.on()) return;
   try {
@@ -14694,7 +14714,15 @@ showTitle = function () {
     bar.innerHTML = `<span>\ud83d\udc64 <b>${esc(u.nick)}</b> <i id="tSync"></i></span><button class="btn" id="tOut">\ub85c\uadf8\uc544\uc6c3</button>`;
     box.insertBefore(bar, box.firstChild);
     $('tOut').onclick = () => { Sfx.unlock(); Cloud.logout(); titleSync.done = false; titleSync.promise = null; showTitle(); };
-    const nm = $('tName'); if (nm && !nm.value) nm.value = u.nick;
+    const nm = $('tName'); if (nm && (!nm.value || nm.value === '\uad11\uc6b0') && !Store.get(slotKey(SAVE_SLOT))) nm.value = u.nick.slice(0, 8);
+    /* \uacc4\uc815\uc758 \uc774 \uc2ac\ub86f\uc774 \ube44\uc5b4 \uc788\uace0, \ub85c\uadf8\uc778 \uc5c6\uc774 \ud558\ub358 \uce90\ub9ad\ud130\uac00 \uc774 \uae30\uae30\uc5d0 \uc788\uc73c\uba74 \uac00\uc838\uc62c \uc218 \uc788\uac8c */
+    try {
+      const graw = !Store.get(slotKey(SAVE_SLOT)) && Store.get(Cloud.guestKey(SAVE_SLOT));
+      if (graw) { const gd = JSON.parse(graw); SV2.validate(gd); const gs = SV2.summary(gd);
+        const ib = document.createElement('button'); ib.id = 'tImport'; ib.className = 'btn lg-small'; ib.textContent = `\ud83d\udce5 \ub85c\uadf8\uc778 \uc5c6\uc774 \ud558\ub358 Lv.${gs.lv} ${gs.name} \ub370\ub824\uc624\uae30`;
+        ib.onclick = () => { Sfx.unlock(); if (!ib.dataset.sure) { ib.dataset.sure = 1; ib.textContent = `\uc774 \uacc4\uc815 \uc2ac\ub86f ${SAVE_SLOT}\ub85c \uc62e\uae38\uae4c\uc694? \ud55c \ubc88 \ub354 \ub204\ub974\uc138\uc694`; return; } try { SV2.writeSlot(graw); Store.del(Cloud.guestKey(SAVE_SLOT)); titleSync.done = false; titleSync.promise = null; showTitle(); } catch (e) { ib.textContent = e.message; } };
+        box.appendChild(ib); }
+    } catch (e) { }
     const setSync = () => { const el = $('tSync'); if (!el) return; el.textContent = titleSync.failed ? '\uc624\ud504\ub77c\uc778 \u2014 \uc774 \uae30\uae30 \uc800\uc7a5\uc73c\ub85c \uc2dc\uc791\ud574\uc694' : titleSync.done ? '\u2601 \uc800\uc7a5\ub428' : '\u2601 \ub9de\ucd94\ub294 \uc911\u2026'; el.className = titleSync.failed ? 'bad' : ''; };
     if (!titleSync.promise) {
       titleSync.done = false; titleSync.failed = false;
@@ -14809,6 +14837,14 @@ MENU.set = function (ctx) {
 };
 const _onModalClick316 = onModalClick;
 onModalClick = function (e) {
+  /* \ub85c\uadf8\uc778 \uc911 '\ucc98\uc74c\ubd80\ud130 \ub2e4\uc2dc': \uc11c\ubc84\uc758 \uc774 \uc2ac\ub86f\ub3c4 \uac19\uc774 \uc9c0\uc6b4\ub2e4 (\uc548 \uadf8\ub7ec\uba74 \ub2e4\uc74c \uc811\uc18d \ub54c \ub418\uc0b4\uc544\ub0a8) */
+  { const rb = e.target.closest && e.target.closest('[data-a="reset"]');
+    if (rb && modalCtx && modalCtx.confirm === 'reset' && Cloud.on() && Cloud.user) {
+      if (rb.dataset.busy) return; rb.dataset.busy = 1; rb.textContent = '\uc9c0\uc6b0\ub294 \uc911\u2026'; SV2.block = true;
+      Cloud.drop(SAVE_SLOT).then(() => { Store.del(slotKey(SAVE_SLOT)); location.reload(); })
+        .catch(err => { SV2.block = false; delete rb.dataset.busy; if (modalCtx) { modalCtx.confirm = null; if (modalCtx.menu) openMenu(modalCtx.menu, true); } toast('\u26a0 \uc11c\ubc84\uc5d0\uc11c \uc9c0\uc6b0\uc9c0 \ubabb\ud588\uc5b4\uc694 \u2014 ' + err.message, 'red'); });
+      return;
+    } }
   const ctx = modalCtx, p = G.player, a = e.target.closest('[data-a]')?.dataset.a, cl = e.target.closest('[data-cl]')?.dataset.cl;
   if (!ctx || !p || !Cloud.on() || !(cl || a === 'clOpen' || a === 'clBack')) return _onModalClick316(e);
   Sfx.click();
@@ -14828,7 +14864,8 @@ onModalClick = function (e) {
     case 'out': {
       if (ctx.confirm !== 'clout') { ctx.confirm = 'clout'; rerender(); return; }
       /* \ub9c8\uc9c0\ub9c9\uc73c\ub85c \ud55c \ubc88 \uc62c\ub9ac\uace0, \uc2dc\uc791 \ud654\uba74(\ub85c\uadf8\uc778)\uc73c\ub85c */
-      run(async () => { saveGame(true); try { await Cloud.push(SAVE_SLOT); } catch (e) { } Cloud.logout(); toast('\ub85c\uadf8\uc544\uc6c3\ud588\uc5b4\uc694', 'blue'); closeModal(); setTimeout(() => location.reload(), 400); });
+      run(async () => { saveGame(true); try { await Cloud.push(SAVE_SLOT); } catch (e) { } SV2.block = true;   /* \ub85c\uadf8\uc544\uc6c3 \ub4a4 \uc0c8\ub85c\uace0\uce68 \ub54c \uc774 \uce90\ub9ad\ud130\uac00 '\ub85c\uadf8\uc778 \uc5c6\uc774' \uce78\uc5d0 \uc800\uc7a5\ub418\uc9c0 \uc54a\uac8c */
+        Cloud.logout(); toast('\ub85c\uadf8\uc544\uc6c3\ud588\uc5b4\uc694', 'blue'); closeModal(); setTimeout(() => location.reload(), 400); });
       return;
     }
     case 'sync': run(async () => { saveGame(true); const c = await Cloud.compare(SAVE_SLOT); if (c.state === 'cloudNewer' || c.state === 'diverged') { openModal('\ud83d\udcbe \uc800\uc7a5 \ub370\uc774\ud130\uac00 \ub450 \uac1c \uc788\uc5b4\uc694', cloudCmpHtml(c), { cloudPop: true, clCmp: c }); return; } await Cloud.push(SAVE_SLOT); Cloud.st.conflict = null; say('\uc800\uc7a5\ud588\uc5b4\uc694'); }); return;
@@ -14837,10 +14874,12 @@ onModalClick = function (e) {
       if (cl === 'up' && pw !== val('clPw2')) { say('\ube44\ubc00\ubc88\ud638 \ub450 \uce78\uc774 \uc11c\ub85c \ub2ec\ub77c\uc694', true); return; }
       say(cl === 'up' ? '\uacc4\uc815\uc744 \ub9cc\ub4dc\ub294 \uc911\u2026' : '\ub85c\uadf8\uc778\ud558\ub294 \uc911\u2026');
       run(async () => {
-        await Cloud.sign(cl, nick, pw); Cloud.guest = false; saveGame(true);
+        const wasGuest = !Cloud.user;
+        await Cloud.sign(cl, nick, pw); Cloud.guest = false; G.lastSave = -99; saveGame(true);   /* sign() \uc774 \uc800\uc7a5 \uce78\uc744 \uacc4\uc815 \uac83\uc73c\ub85c \ubc14\uafe8\uc73c\ub2c8, \uc9c0\uae08 \uce90\ub9ad\ud130\ub97c \uadf8 \uce78\uc5d0 \uc4f4\ub2e4 */
         const c = await Cloud.compare(SAVE_SLOT);
         if (c.state === 'cloudNewer' || c.state === 'diverged') { openModal('\ud83d\udcbe \uc800\uc7a5 \ub370\uc774\ud130\uac00 \ub450 \uac1c \uc788\uc5b4\uc694', cloudCmpHtml(c), { cloudPop: true, clCmp: c }); return; }
         if (c.state !== 'same') await Cloud.push(SAVE_SLOT);
+        if (wasGuest) Store.del(Cloud.guestKey(SAVE_SLOT));   /* \uce90\ub9ad\ud130\uac00 \uacc4\uc815\uc73c\ub85c \uc62e\uaca8\uc84c\uc73c\ub2c8 '\ub85c\uadf8\uc778 \uc5c6\uc774' \ucabd \uc0ac\ubcf8\uc740 \uce58\uc6b4\ub2e4 */
         say(cl === 'up' ? `${Cloud.user.nick}\ub2d8, \ud658\uc601\ud569\ub2c8\ub2e4! \uc774\uc81c \uc790\ub3d9\uc73c\ub85c \uc800\uc7a5\ub3fc\uc694` : `${Cloud.user.nick}\ub2d8, \uc5b4\uc11c \uc624\uc138\uc694.`);
       });
       return;
