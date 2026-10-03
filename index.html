@@ -9492,7 +9492,7 @@ function drawWorldMap(view) {
   }
   const hitBox = q => placed.some(o => q.x < o.x + o.w && q.x + q.w > o.x && q.y < o.y + o.h && q.y + q.h > o.y) || q.x < 2 || q.x + q.w > W - 2 || q.y < 2 || q.y + q.h > H - 2;
   for (const { id, C, x, y, r, seen } of dots) {
-    if (C.locked && !zoom && !C.major) continue;
+    if (C.locked && !zoom) continue;   /* \uc138\uacc4\uc804\ub3c4\ub294 \uc774\ubbf8 \ubd90\ube48\ub2e4 \u2014 \uc7a0\uae34 \uacf3\uc740 \uc810\uacfc \uc810\uc120\ub9cc, \uc774\ub984\uc740 \ud55c\uad6d\u00b7\ub300\ub959 \ubcf4\uae30\uc5d0\uc11c */
     if (view === 'north' && !C.locked && id !== 'city_seoul' && id !== 'city_incheon') continue;   /* \ub300\ub959 \ubcf4\uae30: \ub0a8\ucabd \ub3c4\uc2dc\ub294 \uc810\ub9cc */   /* \uc138\uacc4\uc804\ub3c4\uc5d0\uc11c\ub294 \ubd90\ube44\uc9c0 \uc54a\uac8c \ud3c9\uc591\ub9cc \uc774\ub984\uc744 \ub2e8\ub2e4 */
     const band = wmBand(id), fs = (zoom ? 14 : 11) * sc, bs = (zoom ? 10.5 : 9) * sc, pad = 4 * sc;
     const bandTxt = C.locked ? '\ud83d\udd12 \uae38 \ub9c9\ud798' : band && (zoom || !C.small) ? `Lv.${band[0]}~${Math.min(120, band[1])}` : '';
