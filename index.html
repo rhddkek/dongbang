@@ -435,6 +435,14 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .setbox{margin-top:5px;border-left:2px solid var(--gold);padding:2px 0 2px 7px;font-size:11.5px;color:var(--muted)}
 .setbox b{color:var(--gold2)}.setbox .on{color:#8ff0b0;font-weight:700}
 .gtabs{margin-top:-2px}
+
+/* v342 \b3c4 \ac10  */
+.tabs.cx6,.tabs:not(.stabs):not(.mk-tabs):has(> .tab:nth-child(6):last-child){flex-wrap:nowrap}
+.tabs.cx6 .tab,.tabs:not(.stabs):not(.mk-tabs):has(> .tab:nth-child(6):last-child) .tab{min-width:0;padding:7px 2px;letter-spacing:-.3px}
+.tabs.cxs .tab{min-width:0;line-height:1.25}.tabs.cxs .tab i{display:block;font-style:normal;font-weight:400;font-size:10px;opacity:.75}
+.cxg.c4{grid-template-columns:repeat(auto-fill,minmax(76px,1fr))}
+.cxh{display:flex;align-items:baseline;gap:6px;margin:10px 0 6px}.cxh:first-of-type{margin-top:2px}
+@media (max-width:360px){.tabs.cx6 .tab,.tabs:not(.stabs):not(.mk-tabs):has(> .tab:nth-child(6):last-child) .tab{font-size:11px}}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -488,7 +496,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v341</div>
+    <div class="sub">v342</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2218,7 +2226,7 @@ Object.assign(MOBS, {
    \u00b7 \ub450 \uac08\ub798: \ud22c\uad6c(\uccb4\ub825\u00b7\ubc29\uc5b4) / \uac13(\uccb4\ub825\u00b7\ubc29\uc5b4\ub294 \uc870\uae08 \ub0ae\uace0 MP) \u2014 \uac11\uc637\u00b7\ub3c4\ud3ec\uc640 \uac19\uc740 \uad6c\ub3c4, \uc218\uce58\ub294 \uac11\uc637\uc758 \uc57d 40%
    \u00b7 \uae30\ubcf8(\ub300\uc7a5\uac04) \ud22c\uad6c: \uae30\ubcf8 \uac11\uc637\uc774 \uc788\ub294 \ub808\ubca8\ub9c8\ub2e4 b{L}_helm \u00b7 b{L}_hat
    \u00b7 \ud76c\uadc0\u00b7\uc601\uc6c5 \ub4dc\ub86d: Lv.12 \ubd80\ud130 8\ub808\ubca8\ub9c8\ub2e4 h{L}r{2|3}_helm \u00b7 _hat
-   \u00b7 \uc804\uc124 \ud22c\uad6c\ub294 \uc544\uc9c1 \uc5c6\ub2e4 (\uc804\uc124 \ub3c4\uac10 \uc218\ub97c \uac74\ub4dc\ub9ac\uc9c0 \uc54a\uc73c\ub824\uace0)
+   \u00b7 \uc804\uc124\u00b7\uc720\uc77c \ud22c\uad6c(v342): \ubcf4\uc2a4 \uc774\ub984\uc744 \ub534 16\uc885 + \uc720\uc77c 2\uc885 \u2014 \ub9e8 \uc544\ub798 LEG_HELMS
    ============================================================ */
 function mkHat(name, L, t, o) {
   const d = mkGear(name, 'helmet', L, t, o), r = _RM[t];
@@ -2241,6 +2249,41 @@ for (const k of Object.keys(ITEMS)) {
       for (const [id, d] of [[`h${L}r${r}_helm`, hm], [`h${L}r${r}_hat`, ht]]) { d.price = Math.round(d.price * .6); ITEMS[id] = d; }
     }
   }
+}
+
+/* ---------------- v342: \uc804\uc124\u00b7\uc720\uc77c \ud22c\uad6c ----------------
+   [id, \uc774\ub984, \ub808\ubca8, 'helm'|'hat', \ub4f1\uae09, \ub5a8\uad6c\ub294 \ubcf4\uc2a4(\uc5c6\uc73c\uba74 null), \uc124\uba85, \ub367\ubd99\ub294 \ub2a5\ub825]
+   \u00b7 \ubcf4\uc2a4 \uc804\uc6a9 \ub4dc\ub86d\uc740 91_v342.js \uc5d0\uc11c \ub530\ub85c \uad74\ub9b0\ub2e4 (\uae30\uc874 \uc804\uc124 \ub4dc\ub86d \ud655\ub960\uc744 \uae4e\uc9c0 \uc54a\uc73c\ub824\uace0 \ubcf4\uc2a4 drops \ubaa9\ub85d\uc5d0\ub294 \ub123\uc9c0 \uc54a\ub294\ub2e4)
+   \u00b7 \uc138\ud2b8\u00b7\ud53c\ud574 \uc624\ub77c \uac19\uc740 \uc804\ud22c \ud6a8\uacfc\ub294 \ubd99\uc774\uc9c0 \uc54a\ub294\ub2e4 \u2014 \uc218\uce58\ub294 \uac19\uc740 \uacf5\uc2dd(mkGear / mkHat)\uc758 \uc804\uc124\u00b7\uc720\uc77c \ubc30\uc728 \uadf8\ub300\ub85c */
+const LEG_HELMS = [
+  ['lh_tiger', '\ud751\ud638\uc655 \ud638\uba74\ud22c\uad6c', 48, 'helm', 4, 'tigerLord', '\uac80\uc740 \ud638\ub791\uc774\uc758 \uc5bc\uad74\uc744 \ubcf8\ub72c \ud22c\uad6c.'],
+  ['lh_dokkaebi', '\ucc9c\ub144 \ub3c4\uae68\ube44\uac10\ud22c', 49, 'hat', 4, 'thousandDokkaebi', '\uc4f0\uba74 \ubaa8\uc2b5\uc774 \ud750\ub824\uc9c4\ub2e4\ub294 \ub3c4\uae68\ube44\uc758 \uac10\ud22c.'],
+  ['lh_hwagwi', '\ud314\uacf5 \uc5fc\ud654\ud22c\uad6c', 57, 'helm', 4, 'palgongFireKing', '\ubd88\uae38\uc774 \uc2dd\uc9c0 \uc54a\ub294 \ud314\uacf5\uc0b0\uc758 \ud22c\uad6c.'],
+  ['lh_gwiwang', '\uadc0\uc655 \uadc0\uba74\ud22c\uad6c', 65, 'helm', 4, 'gwiwang', '\uadc0\uc655\uc758 \uc5bc\uad74\uc744 \uc0c8\uae34 \uac80\uc740 \ud22c\uad6c.'],
+  ['lh_yongwang', '\uc6a9\uc655 \uc6a9\ub450\uad00', 68, 'hat', 4, 'dragonKing', '\uc6a9\uba38\ub9ac \uc7a5\uc2dd\uc744 \uc62c\ub9b0 \uc6a9\uad81\uc758 \uad00.'],
+  ['lh_haeryong', '\ud574\ub8e1 \ube44\ub298\ud22c\uad6c', 75, 'helm', 4, 'seaDragonKing', '\ud574\ub8e1\uc758 \ube44\ub298\uc744 \uacb9\uacb9\uc774 \uc774\uc740 \ud22c\uad6c.'],
+  ['lh_sugun', '\uc218\uad70\uc81c\ub3c5 \uc6d0\uc218\ud22c\uad6c', 84, 'helm', 4, 'seaAdmiral', '\uac00\ub77c\uc549\uc740 \ud568\ub300\uc758 \uc81c\ub3c5\uc774 \uc4f0\ub358 \ud22c\uad6c.'],
+  ['lh_goldcrown', '\uc655\ub989 \uae08\uad00', 88, 'hat', 4, 'royalTombKing', '\uc655\ub989 \uae4a\uc740 \uacf3\uc5d0\uc11c \ub098\uc628 \uae08\ube5b \uad00.'],
+  ['lh_hyeonmu', '\ud55c\ub77c \ud604\ubb34\ud22c\uad6c', 97, 'helm', 4, 'seolmundae', '\uad73\uc740 \uc6a9\uc554\uc73c\ub85c \ube5a\uc740 \uac70\ubd81\ub4f1 \ud22c\uad6c.', { hpRegen: 3 }],
+  ['lh_umibozu', '\uc6b0\ubbf8\ubcf4\uc988 \ubb3c\uc548\uac1c \uc0bf\uac13', 105, 'hat', 4, 'umibozu', '\ubc14\ub2e4 \uc548\uac1c\uac00 \uc11c\ub824 \uc788\ub294 \uc0bf\uac13.'],
+  ['lh_oni', '\ub300\uadc0\uc2e0 \ubfd4\ud22c\uad6c', 108, 'helm', 4, 'daiOni', '\ub300\uadc0\uc2e0\uc758 \ubfd4\uc744 \uadf8\ub300\ub85c \uc138\uc6b4 \ud22c\uad6c.'],
+  ['lh_kyuubi', '\uad6c\ubbf8\ud638 \ud654\uad00', 111, 'hat', 4, 'kyuubi', '\uc544\ud649 \uaf2c\ub9ac \uc5ec\uc655\uc774 \uc4f0\ub358 \uaf43\uad00.'],
+  ['lh_raijin', '\ub1cc\uc2e0 \ub1cc\ubb38\uad00', 114, 'hat', 4, 'raijin', '\ubc88\uac1c \ubb34\ub2ac\uac00 \ubc88\uca4d\uc774\ub294 \ub1cc\uc2e0\uc758 \uad00.'],
+  ['lh_masakado', '\uc6d0\ub839 \ubb34\uc0ac \ud22c\uad6c', 117, 'helm', 4, 'masakado', '\uc6d0\ub839 \ubb34\uc0ac\uc655\uc758 \ud55c\uc774 \uc11c\ub9b0 \ud22c\uad6c.'],
+  ['lh_date', '\ub3c5\uc548\ub8e1 \ucd08\uc2b9\ub2ec \ud22c\uad6c', 119, 'helm', 4, 'dokuganryu', '\ucee4\ub2e4\ub780 \ucd08\uc2b9\ub2ec \uc7a5\uc2dd\uc744 \ub2e8 \uac80\uc740 \ud22c\uad6c.', { hpRegen: 3 }],
+  ['lh_yuki', '\uc124\ub140 \uc5ec\uc655\uc758 \ube59\ud654\uad00', 120, 'hat', 4, 'yukiQueen', '\uc5bc\uc74c\uaf43\uc774 \uc9c0\uc9c0 \uc54a\ub294 \uc5ec\uc655\uc758 \uad00.'],
+  ['lh_chiu', '\uce58\uc6b0\ucc9c\uc655 \ud22c\uad6c', 118, 'helm', 5, null, '\uc804\uc7c1\uc758 \uc2e0 \uce58\uc6b0\ucc9c\uc655\uc774 \uc37c\ub2e4\ub294 \ubfd4\ud22c\uad6c. \uc138\uc0c1\uc5d0 \ud558\ub098\ubfd0\uc774\ub2e4.', { hpRegen: 3 }],
+  ['lh_samjogo', '\uc0bc\uc871\uc624 \uae08\uad00', 118, 'hat', 5, null, '\uc138 \ubc1c \uae4c\ub9c8\uadc0\uac00 \ub0b4\ub824\uc549\uc740 \ud0dc\uc591\uc758 \uad00. \uc138\uc0c1\uc5d0 \ud558\ub098\ubfd0\uc774\ub2e4.', { mpRegen: 2 }]
+];
+/* \uc544\uc774\ucf58 \ube5b\uae54 (\uac19\uc740 \uadf8\ub9bc\uc744 \uc0c9\uc870\ub9cc \ubc14\uafd4 \uc4f4\ub2e4; null = \uc6d0\ub798 \uae08\ube5b) */
+const LEG_HELM_TINT = {'lh_tiger': '#b06cff', 'lh_dokkaebi': '#8ce06a', 'lh_hwagwi': '#ff7a3a', 'lh_gwiwang': '#7a5cff', 'lh_yongwang': '#49b9f4', 'lh_haeryong': '#49b9f4', 'lh_sugun': '#3ad0c0', 'lh_goldcrown': null, 'lh_hyeonmu': '#8ce06a', 'lh_umibozu': '#3ad0c0', 'lh_oni': '#ff4a4a', 'lh_kyuubi': '#ff7ab8', 'lh_raijin': '#fff27a', 'lh_masakado': '#b06cff', 'lh_date': '#6f8fd8', 'lh_yuki': '#9fd8ff'};
+const HELM_BOSS = {};
+for (const [id, name, L, kind, r, boss, desc, extra] of LEG_HELMS) {
+  const o = { icon: kind === 'hat' ? '\ud83c\udfa9' : '\ud83e\ude96', desc };
+  const d = kind === 'hat' ? mkHat(name, L, r, o) : mkGear(name, 'helmet', L, r, o);
+  if (id in LEG_HELM_TINT) d.tint = LEG_HELM_TINT[id];
+  Object.assign(d, extra || {}); d.price = Math.round(d.price * .6); ITEMS[id] = d;
+  if (boss) HELM_BOSS[boss] = id;
 }
 
 /* ============================================================
@@ -5228,6 +5271,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v342 \uc804\uc124 \ud22c\uad6c \u00b7 \ub3c4\uac10 \uc815\ube44</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\ude96 \uc804\uc124 \ud22c\uad6c\u00b7\uac13 16\uc885 + \uc720\uc77c 2\uc885 \u2014 \uc774\ub984\uc5d0 \ubd99\uc740 \ubcf4\uc2a4\uac00 \ub5a8\uad7d\ub2c8\ub2e4 (\uc720\uc77c\uc740 \uc2e0\ube44\ud55c \uc720\ubb3c)<br>\ud83d\udcd6 \ub3c4\uac10\uc744 \uc815\ub9ac\ud588\uc5b4\uc694 \u2014 \uc791\uc740 \ud0ed\uc73c\ub85c \ub098\ub204\uace0 \ub808\ubca8\uc21c \uc815\ub82c, \ubabb \ucc3e\uc740 \uce78\uc5d4 \ub098\uc624\ub294 \uacf3 \ud45c\uc2dc<br>\ud83c\udfc3 \uae30\ubcf8 \uc774\ub3d9 \uc18d\ub3c4 +5%</div>`;
     notes += `<div class="sep"></div><b>v341 \uc548\uc815\ud654 \uc810\uac80</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd0d \uc804 \uc9c0\uc5ed 176\uacf3 \u00d7 \uc804 \uc9c1\uc5c5 \uc790\ub3d9 \uc810\uac80 \u2014 \uc624\ub958\u00b7\ub07c\uc784 \uc5c6\uc74c<br>\ud83c\udfea \uc7a5\ube44\uc0c1 \ub300\uc0ac\ub97c \ub9c8\uc744\ubcc4 \ub808\ubca8\ub300 \ud310\ub9e4\uc5d0 \ub9de\uac8c \uace0\ucce4\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v340 \uc74c\uc545 \ubd84\ub9ac \u2014 \ube68\ub77c\uc9c4 \uccab \ub85c\ub529</b><div class="muted" style="margin-top:4px;line-height:1.8">\u26a1 \uc74c\uc545\uc744 \uac8c\uc784 \ud30c\uc77c\uc5d0\uc11c \ub5bc\uc5b4 \ub0c8\uc5b4\uc694 \u2014 \ucc98\uc74c \uc5ec\ub294 \uc2dc\uac04\uc774 \ud6e8\uc52c \uc9e7\uc544\uc9c0\uace0, \uc74c\uc545\uc740 \uadf8 \uace1\uc774 \ud544\uc694\ud560 \ub54c \ubc1b\uc544\uc640\uc694<br>\ud83c\udfb5 \uace1\uc744 \ubc1b\uc9c0 \ubabb\ud558\uba74(\uc778\ud130\ub137 \ub04a\uae40) \uc608\uc804 \ud569\uc131 \uc74c\uc545\uc774 \ub300\uc2e0 \ub098\uc640\uc694<br>\uac8c\uc784 \ub0b4\uc6a9\uc740 v339 \uc640 \uac19\uc544\uc694</div>`;
     notes += `<div class="sep"></div><b>v339 \ubcf4\uc2a4\uc804 \uc74c\uc545 \u00b7 \ub9c8\uc744 \uc74c\uc545</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udd41 \ubcf4\uc2a4\uc804 \uc74c\uc545 4\uace1 \u2014 \ubcf4\uc2a4\ub9c8\ub2e4 \uc815\ud574\uc9c4 \uace1\uc774 \ub098\uc640\uc694<br>\ud83d\udd25 \ubcf4\uc2a4\uac00 \uad11\ud3ed\ud654\ud558\uba74 \uadf8 \uace1\uc774 \ub04a\uae30\uc9c0 \uc54a\uace0 \ube68\ub77c\uc9c0\uace0 \ucee4\uc838\uc694<br>\ud83c\udfd8\ufe0f \ub300\uad6c\u00b7\uc6b8\uc0b0\u00b7\uc81c\uc8fc\u00b7\uc0bf\ud3ec\ub85c \ub9c8\uc744 \uc74c\uc545\uc744 \uc74c\uc6d0\uc73c\ub85c (\uc774\uc81c \ubaa8\ub4e0 \ub9c8\uc744\uc774 \uc74c\uc6d0)<br>\u26f5 \ubc30\ub97c \ud0c8 \ub54c\uc758 \uc74c\uc545\ub3c4 \uc74c\uc6d0\uc73c\ub85c</div>`;
@@ -7527,6 +7571,7 @@ const GRIP = ['#6b4a2a', '#5a3b25', '#3a4a6a', '#4a2a5a', '#7a2a1a', '#6a1010'];
 const GUARD = ['#8a7a5a', '#a88a4a', '#8aa0c0', '#a080d0', '#e8b83a', '#ff7a3a'];
 function itemTint(id, d) {
   const g = WEAPON_GYEOK[id]; if (g) return GYEOK[g[0]].col;
+  if (d && 'tint' in d) return d.tint;   /* v342: \uc774\ub984\uc73c\ub85c \ubabb \uac00\ub974\ub294 \uac83\uc740 \uc9c1\uc811 \uc815\ud55c \ube5b\uae54 */
   const n = d.name || '';
   if (/\ud654\uc5fc|\ubd88|\uc5fc|\uc801|\ud64d|\ud654\uadc0|\ubd09\ud669|\ud0dc\uc591/.test(n)) return '#ff7a3a';
   if (/\ube59|\uc124|\uc11c\ub9ac|\uc5bc\uc74c|\uc6d4|\ub2ec|\uccad/.test(n)) return '#9fd8ff';
@@ -13367,7 +13412,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v341';
+const GAME_VER = 'v342';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -16401,6 +16446,120 @@ onModalClick = function (e) {
     modalCtx.gsub = null;   /* \ud070 \ud0ed\uc744 \ubc14\uafb8\uba74 \uc791\uc740 \ud0ed\uc740 \ucc98\uc74c\ubd80\ud130 */
   }
   return _onModalClick338(e);
+};
+
+/* ============================================================
+   91_v342: \uc804\uc124 \ud22c\uad6c \ub4dc\ub86d \u00b7 \ub3c4\uac10 \uc815\ube44 \u00b7 \uae30\ubcf8 \uc774\ub3d9 \uc18d\ub3c4 +5%
+   \u00b7 \uc804\uc124 \ud22c\uad6c\ub294 \uadf8 \uc774\ub984\uc758 \ubcf4\uc2a4\uac00 \ub530\ub85c 5% \ub85c \ub5a8\uad70\ub2e4 (\uae30\uc874 \uc804\uc124 \ub4dc\ub86d \uad74\ub9bc\uacfc \ubcc4\uac1c \u2014 \ub2e4\ub978 \uc804\uc124 \ud655\ub960\uc740 \uadf8\ub300\ub85c)
+   \u00b7 \ub3c4\uac10: \ud0ed \uc5ec\uc12f \uac1c\ub97c \ud55c \uc904\ub85c, \ubaac\uc2a4\ud130\u00b7\uc804\uc124\uc740 \uc791\uc740 \ud0ed\uc73c\ub85c \ub098\ub204\uace0 \ub808\ubca8\uc21c\uc73c\ub85c \uc815\ub82c,
+     \ubabb \ucc3e\uc740 \uce78\uc5d0\ub294 '\uc5b4\ub514\uc11c \ub098\uc624\ub294\uc9c0'\ub97c \uc801\ub294\ub2e4
+   \u00b7 \uc774\ub3d9 \uc18d\ub3c4: \ud50c\ub808\uc774\uc5b4\u00b7\ub3d9\ub8cc\u00b7\uc18c\ud658\uc218 \ubaa8\ub450 \u00d71.05 (\ub3d9\ub8cc\uac00 \ub4a4\ucc98\uc9c0\uc9c0 \uc54a\uac8c \uac19\uc774 \uc62c\ub9b0\ub2e4)
+   ============================================================ */
+const _bossDrops342 = bossDrops210;
+bossDrops210 = function (m, drop) {
+  _bossDrops342(m, drop);
+  const id = HELM_BOSS[m.boss];
+  if (id && ITEMS[id] && Math.random() < .05) drop(id, { plus: rint(0, 2) });
+};
+
+const _calcStats342 = calcStats;
+calcStats = function (e) { const s = _calcStats342(e); if (s && e && (e.kind === 'player' || e.kind === 'comp' || e.kind === 'summon')) s.move *= 1.05; return s; };
+
+/* ---------------- \ub3c4\uac10 ---------------- */
+const CX = { ctx: null, info: null, src: null };
+/* \ubaac\uc2a4\ud130\u00b7\ubcf4\uc2a4\uac00 \ucc98\uc74c \ub098\uc624\ub294 \ub9f5\uacfc \ub808\ubca8 */
+function cxInfo() {
+  if (CX.info) return CX.info;
+  const lv = {}, at = {}, put = (k, L, n) => { if (k && (lv[k] === undefined || L < lv[k])) { lv[k] = L; at[k] = n; } };
+  for (const m of Object.values(MAPS)) {
+    if (!m || !Array.isArray(m.lv)) continue;
+    for (const s of m.spawns || []) put(s.m, m.lv[0], m.n);
+    if (m.sig) put(m.sig, m.lv[1], m.n);
+    for (const b of [].concat(m.boss || [])) put('b:' + (typeof b === 'string' ? b : b && b.id), m.bossLv || m.lv[1], m.n);
+    if (m.rareBoss) put('b:' + m.rareBoss, m.rareLv || m.lv[1], m.n + ' (\ub4dc\ubb3c\uac8c)');
+  }
+  /* \ub9f5 \ubaa9\ub85d\uc5d0 \uc5c6\ub294 \uac83\ub4e4: \ud3b8\ub300 \ubc29\ud328\ubcd1 \u00b7 \uc220\uc0ac\uac00 \ubd80\ub974\ub294 \uc2dd\uc2e0 \u00b7 \ub5a0\ub3cc\uc774 \ud544\ub4dc\ubcf4\uc2a4 */
+  if (typeof SQUAD_DEFS !== 'undefined') for (const q of SQUAD_DEFS) for (const [id, m] of Object.entries(MAPS)) if (q.shield && m && Array.isArray(m.lv) && q.re.test(id)) put(q.shield, m.lv[0], q.n);
+  if (lv.shikigami === undefined && MOBS.shikigami) at.shikigami = '\uc220\uc0ac\uac00 \ubd88\ub7ec\ub0c5\ub2c8\ub2e4';
+  for (const k of (typeof FIELD_BOSSES !== 'undefined' ? FIELD_BOSSES : [])) if (lv['b:' + k] === undefined) at['b:' + k] = '\ub4e4\ud310\uc5d0 \uac00\ub054 \ub098\ud0c0\ub0a9\ub2c8\ub2e4';
+  return CX.info = { lv, at };
+}
+/* \uc804\uc124 \uc7a5\ube44\uac00 \uc5b4\ub514\uc11c \ub098\uc624\ub294\uc9c0 */
+function cxSource(id) {
+  if (!CX.src) {
+    const s = CX.src = {}, add = (k, t) => { if (!s[k]) s[k] = t; };
+    for (const [k, b] of Object.entries(BOSSES)) for (const it of b.drops || []) add(it, b.n);
+    for (const [k, it] of Object.entries(HELM_BOSS)) if (BOSSES[k]) add(it, BOSSES[k].n);
+    for (const v of Object.values(VARIANTS).flat()) if (v.item) add(v.item[0], v.n);
+    for (const m of Object.values(MAPS)) for (const it of (m && m.drops) || []) add(it, m.n);
+  }
+  return CX.src[id] || (ITEMS[id].rarity >= 5 ? '\uc2e0\ube44\ud55c \uc720\ubb3c' : '\ub124\uc784\ub4dc \u00b7 \uc0c1\uc790');
+}
+function cxBar(n, all) { return `<div class="gybar" style="margin:4px 0 10px"><i style="width:${all ? Math.round(n / all * 100) : 0}%"></i></div>`; }
+function cxSubs(key, list, cur) {
+  return `<div class="tabs stabs cxs">${list.map(([k, l, n, all]) => `<button class="tab ${cur === k ? 'on' : ''}" data-a="cxsub" data-k="${key}" data-v="${k}">${l}<i>${n}/${all}</i></button>`).join('')}</div>`;
+}
+codexMobHtml = function (p) {
+  const { lv, at } = cxInfo(), L = k => lv[k] === undefined ? 999 : lv[k], byLv = (a, b) => L(a) - L(b);
+  const normal = Object.keys(MOBS).filter(k => !MOBS[k].sig && !k.startsWith('bottari')).sort(byLv);
+  const sig = Object.keys(MOBS).filter(k => MOBS[k].sig).sort(byLv);
+  const vars = Object.values(VARIANTS).flat().slice().sort((a, b) => L(a.base) - L(b.base) || a.tier - b.tier);
+  const bosses = Object.keys(BOSSES).sort((a, b) => L('b:' + a) - L('b:' + b));
+  const nN = normal.filter(k => p.codex[k]).length, nS = sig.filter(k => p.codex[k]).length, nV = vars.filter(v => p.codex['v:' + v.id]).length, nB = bosses.filter(k => p.codex[k]).length;
+  const seen = nN + nS + nV + nB, total = normal.length + sig.length + vars.length + bosses.length;
+  const subs = [['n', '\uc77c\ubc18', nN, normal.length], ['s', '\ub300\ud45c', nS, sig.length], ['b', '\ubcf4\uc2a4', nB, bosses.length], ['v', '\ud76c\uadc0', nV, vars.length]];
+  const cur = subs.some(s => s[0] === CX.ctx?.cxm) ? CX.ctx.cxm : 'n';
+  const lvTag = k => lv[k] === undefined ? '' : `Lv.${lv[k]} \u00b7 `, where = k => at[k] ? '\ud83d\udccd ' + esc(at[k].split(' \u00b7 ')[0]) : '\ubbf8\ubc1c\uacac';   /* '3\uce35 \u00b7 \ub179\uac01\uc655\uc758 \ubc29' \ucc98\ub7fc \uc774\ub984\uc774 \uc0c8\ub294 \ub4b7\ubd80\ubd84\uc740 \ub5c0\ub2e4 */
+  const cell = (key, name, cnt, cls, sub, hint) => `<div class="cell ${cls}"><canvas class="cx" width="48" height="40" data-k="${key}" data-sil="${cnt ? 0 : 1}"></canvas><b>${cnt ? esc(name) : '???'}</b><span>${cnt ? sub : hint}</span></div>`;
+  let h = `<div class="muted">\ubc1c\uacac ${seen} / ${total} \u00b7 \uc7a1\uc73c\uba74 \uc2e4\ub8e8\uc5e3\uc774 \ubc97\uaca8\uc838\uc694</div>${cxBar(seen, total)}${cxSubs('cxm', subs, cur)}`;
+  if (cur === 'v') {
+    h += `<div class="muted" style="margin-bottom:6px">\uc544\uc8fc \ub0ae\uc740 \ud655\ub960\ub85c \ub098\ud0c0\ub098\uba70, \uc7a1\uc73c\uba74 \uce6d\ud638\ub97c \uc90d\ub2c8\ub2e4.</div><div class="cxg c4">${vars.map(v => cell('v:' + v.id, v.n, p.codex['v:' + v.id], 'var', `\u300c${esc(v.title)}\u300d`, p.codex[v.base] ? esc(MOBS[v.base].n) + '\uc758 \ubcc0\uc885' : '\ubbf8\ubc1c\uacac')).join('')}</div>`;
+  } else if (cur === 's') {
+    h += `<div class="muted" style="margin-bottom:6px">\uc9c0\uc5ed\ub9c8\ub2e4 \ud558\ub098\uc529 \uc788\ub294 \uac15\ud55c \ubaac\uc2a4\ud130. \uadf8 \uc9c0\uc5ed \ud2b9\uc0b0 \uc7ac\ub8cc\ub97c \ub5a8\uad7d\ub2c8\ub2e4.</div><div class="cxg c4">${sig.map(k => cell(k, MOBS[k].n, p.codex[k], 'boss', lvTag(k) + esc(ITEMS[MOBS[k].mat]?.name || fmt(p.codex[k]) + '\ub9c8\ub9ac'), where(k))).join('')}</div>`;
+  } else if (cur === 'b') {
+    h += `<div class="cxg c4">${bosses.map(k => cell('b:' + k, BOSSES[k].n, p.codex[k], 'boss', lvTag('b:' + k) + (p.bossBest[k] ? '\ucd5c\ub2e8 ' + mmss(p.bossBest[k]) : fmt(p.codex[k] || 0) + '\ud68c'), where('b:' + k))).join('')}</div>`;
+  } else {
+    const bands = [[1, 20], [21, 40], [41, 60], [61, 80], [81, 100], [101, 120], [121, 999]];
+    for (const [a, b] of bands) {
+      const ks = normal.filter(k => L(k) >= a && L(k) <= b); if (!ks.length) continue;
+      h += `<div class="cxh"><b>${b >= 999 ? '\uadf8 \ubc16' : `Lv.${a}~${b}`}</b><span class="muted">${ks.filter(k => p.codex[k]).length}/${ks.length}</span></div><div class="cxg c4">${ks.map(k => cell(k, MOBS[k].n, p.codex[k], '', lvTag(k) + fmt(p.codex[k] || 0) + '\ub9c8\ub9ac', where(k))).join('')}</div>`;
+    }
+  }
+  return h;
+};
+codexLegendHtml = function (p) {
+  const byLv = (a, b) => ITEMS[a].lv - ITEMS[b].lv || ITEMS[a].rarity - ITEMS[b].rarity;
+  const of = f => LEGEND_IDS.filter(k => f(ITEMS[k].slot)).sort(byLv);
+  const groups = { w: of(s => s === 'weapon'), a: of(s => s === 'armor'), h: of(s => s === 'helmet'), x: of(s => !['weapon', 'armor', 'helmet'].includes(s)) };
+  const cnt = ids => ids.filter(k => p.legSeen[k]).length;
+  const all = LEGEND_IDS.length, seen = cnt(LEGEND_IDS);
+  const subs = [['w', '\ubb34\uae30', cnt(groups.w), groups.w.length], ['a', '\uac11\uc637', cnt(groups.a), groups.a.length], ['h', '\ud22c\uad6c', cnt(groups.h), groups.h.length], ['x', '\uc7a5\uc2e0\uad6c', cnt(groups.x), groups.x.length]];
+  const cur = groups[CX.ctx?.cxl] ? CX.ctx.cxl : 'w';
+  let h = `<div class="opt">\uc804\uc124 \ub3c4\uac10 ${seen} / ${all} \u00b7 25% \u300c\uc804\uc124 \uc218\uc9d1\uac00\u300d \u00b7 100% \u300c\ud314\ub3c4\uc758 \ubcf4\ubb3c\uc655\u300d</div>${cxBar(seen, all)}${cxSubs('cxl', subs, cur)}<div class="cxg">`;
+  for (const k of groups[cur]) {
+    const d = ITEMS[k], s = p.legSeen[k], gy = WEAPON_GYEOK[k] ? WEAPON_GYEOK[k].map(g => GYEOK[g].icon).join('') + ' ' : '';
+    h += `<div class="cell ${d.rarity >= 5 ? 'boss' : ''}" style="${s ? '' : 'opacity:.55'}"><span style="font-size:22px">${s ? ic(d) : '\u2754'}</span><b style="color:${s ? rcol(d.rarity) : ''}">${s ? esc(d.name) : '???'}</b><span>${s ? `${gy}Lv.${d.lv} \u00b7 ${RARITY[d.rarity].n}` : `Lv.${d.lv} \u00b7 ${esc(cxSource(k))}`}</span></div>`;
+  }
+  return h + `</div>`;
+};
+const _codex342 = MENU.codex;
+MENU.codex = function (ctx) {
+  CX.ctx = ctx;
+  const r = _codex342(ctx);
+  if (!Array.isArray(r)) return r;
+  r[1] = r[1].replace('<div class="tabs">', '<div class="tabs cx6">');
+  if (ctx.tab === 'ach') {
+    const p = G.player, n = ACHIEVEMENTS.filter(a => p.ach[a.id]).length, i = r[1].indexOf('</div>');
+    r[1] = r[1].slice(0, i + 6) + `<div class="opt">\uc5c5\uc801 ${n} / ${ACHIEVEMENTS.length} \u00b7 \ub2ec\uc131\ud558\uba74 \uac19\uc740 \uc774\ub984\uc758 \uce6d\ud638\ub97c \uc5bb\uc2b5\ub2c8\ub2e4</div>${cxBar(n, ACHIEVEMENTS.length)}` + r[1].slice(i + 6);
+    r[0] = '\ud83c\udfc6 \uc5c5\uc801';
+  }
+  return r;
+};
+const _onModalClick342 = onModalClick;
+onModalClick = function (e) {
+  const b = e.target.closest && e.target.closest('[data-a="cxsub"]');
+  if (b && modalCtx) { modalCtx[b.dataset.k] = b.dataset.v; Sfx.click(); rerender(); return; }
+  return _onModalClick342(e);
 };
 
 /* 99_boot: start once every file above has defined its data and renderers */
