@@ -504,7 +504,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v347</div>
+    <div class="sub">v348</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -725,7 +725,7 @@ const JOBS = {
   thief:   { n: '\ube44\uac1d', ranks: ['\ube44\uac1d', '\uc790\uac1d', '\uadf8\ub9bc\uc790\uad70\uc8fc'], grow: [2, 3, 0, 2], weapons: ['dagger', 'sword'], magic: false, range: 50, basic: 'melee', color: '#4a4f5c',
              desc: '\ub2e8\uac80\uc744 \uc4f0\ub294 \ubbfc\ucca9\ud55c \uadf8\ub9bc\uc790. \ube60\ub978 \uacf5\uaca9\uacfc \ub192\uc740 \uce58\uba85\ud0c0. \ub3c5\uacfc \ubd84\uc2e0\uc73c\ub85c \ud55c \ubc88\uc5d0 \ubab0\uc544\uce58\ub294 \uc554\uc0b4\uc790.' },
   shaman:  { n: '\ubc29\uc220\uac00', ranks: ['\ubc29\uc220\uac00', '\ud604\uc220\uc0ac', '\ucc9c\uc220\uc0ac'], grow: [0, 1, 4, 2], weapons: ['staff', 'fan'], magic: true, range: 230, basic: 'bolt', color: '#6b3fa0',
-             desc: '\uc190\uc73c\ub85c \uc9c1\uc811 \uc220\ubc95\uc744 \ubd80\ub9ac\ub294 \uc6d0\uac70\ub9ac \uc9c1\uc5c5. \uba40\ub9ac\uc11c \ubd88\u00b7\uc5bc\uc74c\u00b7\ubc88\uac1c\ub97c \ub2e4\ub8f9\ub2c8\ub2e4. \ub113\uc740 \ubc94\uc704\ub97c \ud55c \ubc88\uc5d0 \uc4f8\uc5b4\ub0c5\ub2c8\ub2e4.' },
+             desc: '\uc190\uc73c\ub85c \uc9c1\uc811 \uc220\ubc95\uc744 \ubd80\ub9ac\ub294 \uc6d0\uac70\ub9ac \uc9c1\uc5c5. \uba40\ub9ac\uc11c \ubd88\u00b7\uc5bc\uc74c\u00b7\ubc88\uac1c\ub97c \ub2e4\ub8f9\ub2c8\ub2e4. \ub113\uc740 \ubc94\uc704\ub97c \ud55c \ubc88\uc5d0 \uc4f8\uc5b4\ub0c5\ub2c8\ub2e4. \ubab8\uc740 \uc57d\ud558\uc9c0\ub9cc 1\ucc28 \uc2b9\uae09\ubd80\ud130 \ud070 \ud53c\ud574\ub97c MP\ub85c \ub9c9\ub294 \uacb0\uacc4\ub97c \ub450\ub985\ub2c8\ub2e4.' },
   taoist:  { n: '\ud48d\ub958\uac1d', ranks: ['\ud48d\ub958\uac1d', '\ud48d\uc6d4\uac1d', '\uc2e0\uc120'], grow: [0, 1, 3, 3], weapons: ['fan', 'staff'], magic: true, range: 210, basic: 'talisman', color: '#e8e2cf',
              desc: '\uc74c\ub960\ub85c \uc2e0\ub839\uc744 \ubd80\ub9ac\ub294 \uc790. \ubd80\ucc44\uc640 \uac00\uc57c\uae08\u00b7\uac70\ubb38\uace0\ub97c \ub4e4\uace0 \ubd80\uc801\uc73c\ub85c \uc0ac\uc545\ud55c \uac83\uc744 \uae68\ub728\ub9ac\uace0, \uba39\uacfc \uc885\uc774\ub85c \ube5a\uc740 \uc218\ud638\uc218 \ud574\ud0dc\uc640 \ud568\uaed8 \uc2f8\uc6b0\ub294 \ud1f4\ub9c8\uc0ac. \ud68c\ubcf5\uacfc \ud638\uc2e0\uc73c\ub85c \ub3d9\ub8cc\uc640 \ud574\ud0dc\ub97c \uc9c0\ud0b5\ub2c8\ub2e4.' }
 };
@@ -1119,7 +1119,7 @@ const STORY = [
   { id: 'daegu', act: 2, t: '\ud314\uacf5\uc0b0\uc758 \ubd88', sum: '\uc0bc\ubc31 \ub144 \uc804\uc5d0 \uaebc\uc9c4 \ud654\uadc0\uc655\uc774 \ub418\uc0b4\uc544\ub0ac\ub2e4. \ubd09\uc778\uc740 \ud314\ub3c4\uc5d0 \ubc15\uc740 \uc1e0\ubabb \uc5ec\ub35f \uac1c\ub77c\uace0 \ud55c\ub2e4.', steps: [
       { t: 'reach', map: 'city_daegu', hint: '\ub300\uc804 \u2192 \ub300\uc804-\ub300\uad6c \uac00\ub294 \uae38 \u2192 \ub300\uad6c' },
       { t: 'talk', npc: 'daegu_g', say: '\ud3d0\uc131\uc758 \ubd09\uc778\uc774\ub77c\u2026 \uc18c\uc2b9\uc758 \uc2a4\uc2b9\uc774 \uadf8 \ubd09\uc778\uc5d0 \ubd88\uc528\ub97c \ubcf4\ud0f0\uc9c0\uc694. \ud5cc\ub370 \uc0bc\ubc31 \ub144 \uc804\uc5d0 \uaebc\ub728\ub9b0 \ud654\uadc0\uc655\uc774 \ub418\uc0b4\uc544\ub0ac\uc2b5\ub2c8\ub2e4. \ubd09\uc778\uc774 \uc57d\ud574\uc84c\ub2e4\ub294 \uc99d\uac70\uc9c0\uc694. \ud654\uadc0\uad74\uc758 \ubd88\ubd80\ud130 \uaebc \uc8fc\uc2ed\uc2dc\uc624.' },
-      { t: 'boss', id: 'palgongFireKing', hint: '\ub300\uad6c \u2192 \ud314\uacf5\uc0b0 \uac00\ub3c4 \u2192 \ud314\uacf5 \uac08\ub9bc\uae38 \u2192 \ud654\uadc0\uad74 3\uce35\uc758 \ud314\uacf5 \ud654\uadc0\uc655 \ucc98\uce58' },
+      { t: 'boss', id: 'palgongFireKing', hint: '\ub300\uad6c \u2192 \ud314\uacf5\uc0b0 \uac00\ub3c4 \u2192 \ud314\uacf5 \uac08\ub9bc\uae38 \u2192 \ud654\uadc0\uad74 3\uce35\uc758 \ud314\uacf5 \ud654\uadc0\uc655 \ucc98\uce58 (Lv.60 \uad8c\uc7a5)' },
       { t: 'talk', npc: 'daegu_g', say: '\ubd88\uc774 \uc7a6\uc544\ub4e4\uc5c8\uad70\uc694. \ubd09\uc778\uc740 \uc800\uc808\ub85c \ud480\ub9ac\ub294 \ubb3c\uac74\uc774 \uc544\ub2d9\ub2c8\ub2e4. \uc1e0\ubabb \uc5ec\ub35f \uac1c\ub97c \ud314\ub3c4 \uc5ec\ub35f \uace0\uc744\uc5d0 \ubc15\uc544 \ub450\uc5c8\uc73c\ub2c8\uae4c\uc694. \ubabb\uc774 \ubf51\ud78c \uacf3\ub9c8\ub2e4 \ubb35\uc740 \uac83\ub4e4\uc774 \uae68\uc5b4\ub098\ub294 \uac81\ub2c8\ub2e4. \uadf8 \ubabb\uc744 \ubcbc\ub9b0 \uc774\uac00 \uc6b8\uc0b0\uc758 \uc61b \uc7a5\uc778\uc774\ub2c8, \ud0dc\ud654 \uc7a5\uc778 \ucca0\uad6c\ub97c \ucc3e\uc544\uac00 \ubcf4\uc2ed\uc2dc\uc624.' }
     ], reward: { gold: 5000, xpPct: .25, items: [['enhPolish', 2]] } },
   { id: 'ulsan', act: 2, t: '\ucca0\uc758 \ud63c', sum: '\ucca0\uc7a5\uc778\uc758 \ud63c\ub839\uc774 \ub9d0\ud588\ub2e4. "\ubabb\uc740 \uc0ad\uc9c0 \uc54a\uc558\ub2e4. \uc0ac\ub78c \uc190\uc774 \ubf51\uc558\ub2e4."', steps: [
@@ -4276,6 +4276,7 @@ function damageAlly(t, raw, src, opt = {}) {
   const def = t === G.player ? playerDefenseMods(t, raw, src) : t.s.def;
   let dmg = Math.max(raw * .2, raw - def * .6);
   dmg = Math.max(1, Math.round(dmg * rnd(.9, 1.1)));
+  if (t === G.player) dmg = playerBarrier(t, dmg, src);   /* v348: \ubc29\uc220\uac00 \uacb0\uacc4 \u2014 \ud070 \ud53c\ud574\uc758 \uc77c\ubd80\ub97c MP \ub85c \ubc1b\ub294\ub2e4 (97_barrier348.js) */
   t.hp -= dmg; t.flashT = .12; t.hurtT = .3;
   if (t === G.player) { playerOnHurt(t, dmg, src); if (t.hp <= 0 && playerLethal(t)) return; }
   if (t === G.player) { G.player.combatT = 3; floatText(t.x, t.y - 44, '-' + fmt(dmg), '#ff5a4c'); G.shake = Math.max(G.shake || 0, 3); Sfx.hurt(); }
@@ -5376,6 +5377,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v348 \ubc29\uc220\uac00\uc758 \uacb0\uacc4</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd35 \ubc29\uc220\uac00\uac00 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uacb0\uacc4\ub97c \ub450\ub985\ub2c8\ub2e4 \u2014 \ud55c \ubc88\uc5d0 \ud070 \ud53c\ud574\ub97c \ubc1b\uc73c\uba74 \uadf8 \uc77c\ubd80\ub97c MP\ub85c \ub300\uc2e0 \ubc1b\uc544\uc694<br>\ud83d\udc40 \ud3c9\uc18c\uc5d4 \ubcf4\uc774\uc9c0 \uc54a\uace0, \ub9c9\ub294 \uc21c\uac04\uc5d0\ub9cc \ud478\ub978 \ub9c9\uc774 \ub739\ub2c8\ub2e4. \uc124\uba85\uc740 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798<br>\ud83d\udcdc 10\uc7a5 \ud654\uadc0\uc655 \ub2e8\uacc4\uc5d0 \uad8c\uc7a5 \ub808\ubca8(Lv.60)\uc744 \uc801\uc5c8\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v347 \ud648 \ud654\uba74\uc5d0 \uc124\uce58</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf2 \ud3f0 \ud648 \ud654\uba74\uc5d0 \uc544\uc774\ucf58\uc73c\ub85c \uc124\uce58\ud560 \uc218 \uc788\uc5b4\uc694 \u2014 \uc124\uc815\uc5d0\uc11c \ubc29\ubc95\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4<br>\ud83d\udda5\ufe0f \uc124\uce58\ud558\uba74 \uc8fc\uc18c\ucc3d \uc5c6\uc774 \uc804\uccb4 \ud654\uba74\uc73c\ub85c \uc5f4\ub9ac\uace0, \uc800\uc7a5\uc740 \uadf8\ub300\ub85c \uc774\uc5b4\uc838\uc694</div>`;
     notes += `<div class="sep"></div><b>v346 \ub3d9\ud589 \uc601\ubb3c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc3e \uc9c0\uc5ed \ubcf4\uc2a4\ub97c \uc7a1\uc73c\uba74 \uc601\ubb3c\uc774 \ub530\ub77c\uc640\uc694 \u2014 15\uc885, \uac19\uc740 \ubcf4\uc2a4 8\ubc88\uc774\uba74 \ubc18\ub4dc\uc2dc<br>\u2728 \ud55c \ub9c8\ub9ac\ub9cc \ub370\ub9ac\uace0 \ub2e4\ub2c8\uba70 \uc791\uc740 \ud6a8\uacfc\ub97c \ubc1b\uc2b5\ub2c8\ub2e4 (3~6%) \u2014 \ub3d9\ub8cc(P) \ucc3d\uc5d0\uc11c \uace0\ub974\uae30<br>\ud83d\udc40 \uc2f8\uc6b0\uc9c0\ub294 \uc54a\uace0 \ub4a4\ub97c \ub530\ub77c\ub2e4\ub2d9\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v345 \uc720\uc800 \ud754\uc801</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc65 \ub9c8\uc744\uc5d0 \uce5c\uad6c\ub4e4\uc758 \uce90\ub9ad\ud130\uac00 \ub098\ud0c0\ub098\uc694 \u2014 \ub7ad\ud0b9\uc5d0 \uc62c\ub77c\uc628 \uc2e4\uc81c \uce90\ub9ad\ud130\uc758 \ucd5c\uadfc \ubaa8\uc2b5\uc785\ub2c8\ub2e4 (\uae08\ube5b \uc774\ub984)<br>\ud83d\udd0d \ub204\ub974\uba74 \uc7a5\ube44\u00b7\uae30\ub85d\u00b7\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uba38\ubb38 \uacf3\uc774 \ubcf4\uc5ec\uc694. \uc2e4\uc2dc\uac04 \uc811\uc18d\uc740 \uc544\ub2c8\uc5d0\uc694<br>\ud83d\udd11 \ub85c\uadf8\uc778\ud574\uc57c \ubcf4\uc774\uace0, \uc7a5\ube44 \ubaa8\uc2b5\uc740 \uc0c1\ub300\uac00 \uc0c8 \ubc84\uc804\uc73c\ub85c \ud55c \ubc88 \uc800\uc7a5\ud55c \ub4a4\ubd80\ud130 \ub098\uc635\ub2c8\ub2e4</div>`;
@@ -13538,7 +13540,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v347';
+const GAME_VER = 'v348';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -17066,6 +17068,66 @@ onModalClick = function (e) {
   const b = e.target.closest && e.target.closest('[data-a="pwaInstall"]');
   if (b) { const ask = PWA.ask; if (ask) { PWA.ask = null; try { ask.prompt(); (ask.userChoice || Promise.resolve()).then(() => { if (modalOpen()) rerender(); }); } catch (err) { } } Sfx.click(); return; }
   return _onModalClick347(e);
+};
+
+/* ============================================================
+   97_barrier348 (v348): \ubc29\uc220\uac00\uc758 \uacb0\uacc4 \u2014 \ud070 \ud55c \ubc29\uc744 MP \ub85c \ub098\ub220 \ubc1b\ub294 \ud328\uc2dc\ube0c
+   \u00b7 \uc65c: \ubc29\uc220\uac00\ub294 \uccb4\ub825\u00b7\ubc29\uc5b4\uac00 \uac00\uc7a5 \ub0ae\uc740\ub370 \ud654\ub825\uc73c\ub85c \ubcf4\uc0c1\ubc1b\uc9c0 \ubabb\ud588\uace0, \ubcf4\uc2a4\uc758 \ud070 \uacf5\uaca9 \ud55c \ubc29\uc5d0 \uc8fd\ub294 \uc77c\uc774 \uc7a6\uc558\ub2e4
+     (\uc2a4\ud1a0\ub9ac \ubcf4\uc2a4 \uc790\ub3d9 \uc804\ud22c \uc2b9\ub960 \ubc29\uc220\uac00 45% \u00b7 \ube44\uac1d 64% \u00b7 \ubb34\uc0ac 82% \u00b7 \ud48d\ub958\uac1d 97%)
+   \u00b7 \uc5b8\uc81c: 1\ucc28 \uc2b9\uae09\ubd80\ud130. \ud55c \ubc88\uc5d0 \ucd5c\ub300 \uccb4\ub825\uc758 MIN \uc744 \ub118\ub294 \ud53c\ud574\ub97c \ubc1b\uc744 \ub54c\ub9cc (\uc794\ud53c\ud574\uc5d0\ub294 MP \uac00 \uc548 \ube60\uc9c4\ub2e4)
+   \u00b7 \uc5bc\ub9c8\ub098: \uadf8 \ud53c\ud574\uc758 PCT \ub97c MP \ub85c \ub300\uc2e0 \ubc1b\ub294\ub2e4 \u2014 \ud761\uc218 1 \uc5d0 MP RATE. MP \uac00 \ubaa8\uc790\ub77c\uba74 \uc788\ub294 \ub9cc\ud07c\ub9cc
+   \u00b7 \ub20c\ub7ec \uc4f0\ub294 \uae30\uc220\uc774 \uc544\ub2c8\ub2e4 (\uc790\ub3d9\uc0ac\ub0e5\u00b7\ud55c \ubc29 \ubb38\uc81c\uc5d0 \ub9de\ucdb0 \ud328\uc2dc\ube0c). \ud3c9\uc18c\uc5d0\ub294 \uc544\ubb34\uac83\ub3c4 \ubcf4\uc774\uc9c0 \uc54a\ub294\ub2e4
+   ============================================================ */
+const BARRIER = { MIN: .15, PCT: .30, RATE: 1 };
+const barrierOn = p => !!p && p.job === 'shaman' && (p.rank | 0) >= 1;
+function playerBarrier(t, dmg, src) {
+  if (!barrierOn(t) || !(t.mp > 0) || !t.s || dmg < t.s.maxHp * BARRIER.MIN) return dmg;
+  const pay = Math.min(t.mp, dmg * BARRIER.PCT * BARRIER.RATE), take = Math.floor(pay / BARRIER.RATE);
+  if (take <= 0) return dmg;
+  t.mp -= take * BARRIER.RATE;
+  addFx('barrier', t.x, t.y, { dur: .55, src: t });
+  floatText(t.x, t.y - 88, `\uacb0\uacc4 \u00b7 MP -${fmt(Math.round(take * BARRIER.RATE))}`, '#9fe4ff');
+  const st = t.st || (t.st = {}); st.barrier = (st.barrier || 0) + 1; st.barrierHp = (st.barrierHp || 0) + take;
+  if (st.barrier === 1) toast('\ud83d\udd35 \uacb0\uacc4\uac00 \ud070 \ud53c\ud574\ub97c MP\ub85c \ub098\ub220 \ubc1b\uc558\uc2b5\ub2c8\ub2e4 \u2014 \uae30\uc220(K) \ucc3d\uc5d0\uc11c \uc124\uba85\uc744 \ubcfc \uc218 \uc788\uc5b4\uc694', 'blue');
+  return Math.max(1, dmg - take);
+}
+/* \uadf8\ub9bc: \ubc18\uad6c \ud14c\ub450\ub9ac + \ub9de\ub294 \uc21c\uac04\uc758 \ud770 \ubc88\uca4d\uc784 + \ubc1c\ubc11 \uc587\uc740 \uace0\ub9ac (\ub3c4\ud2b8 1\uce78 = ART \ud53d\uc140) */
+const BarrierFx = { W: 60, H: 70, CX: 30, FY: 58, cv: null };
+function barrierPaint(k) {
+  const B = BarrierFx; if (!B.cv) B.cv = makeCanvas(B.W, B.H);
+  const g = B.cv.getContext('2d'); g.clearRect(0, 0, B.W, B.H);
+  const a = k < .12 ? k / .12 : Math.max(0, 1 - (k - .12) / .88);
+  const px = (x, y, c, al) => { g.globalAlpha = al; g.fillStyle = c; g.fillRect(Math.round(x), Math.round(y), 1, 1); };
+  const ell = (cx, cy, rx, ry, c, al, a0 = 0, a1 = TAU, step = .035) => { for (let th = a0; th < a1; th += step) px(cx + Math.cos(th) * rx, cy + Math.sin(th) * ry, c, al); };
+  const fill = (cx, cy, rx, ry, c, al) => { g.globalAlpha = al; g.fillStyle = c; for (let y = -ry; y <= ry; y++) { const w = Math.round(rx * Math.sqrt(Math.max(0, 1 - (y * y) / (ry * ry)))); g.fillRect(Math.round(cx - w), Math.round(cy + y), w * 2 + 1, 1); } };
+  ell(B.CX, B.FY, 19, 6, '#8fe0ff', .7 * a);
+  fill(B.CX, 34, 19, 25, '#6fc0ff', .13 * a); if (k < .18) fill(B.CX, 34, 19, 25, '#ffffff', .5 * (1 - k / .18));
+  ell(B.CX, 34, 19, 25, '#bfefff', .95 * a);
+  ell(B.CX, 34, 15, 21, '#ffffff', .9 * a, Math.PI * 1.05, Math.PI * 1.45, .03);
+  g.globalAlpha = 1; return B.cv;
+}
+AIR_FX.barrier = function (f) {
+  const e = f.src && f.src.hp > 0 ? f.src : f, B = BarrierFx, k = clamp(f.t / f.dur, 0, 1);
+  const img = barrierPaint(k), sm = ctx.imageSmoothingEnabled; ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(img, Math.round(e.x - B.CX * ART), Math.round(e.y + 4 - B.FY * ART), B.W * ART, B.H * ART);
+  ctx.imageSmoothingEnabled = sm;
+};
+/* \uc124\uba85: \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798 + \uc2b9\uae09\ud560 \ub54c \ud55c \ubc88 */
+const BARRIER_TEXT = () => `\ud55c \ubc88\uc5d0 \ucd5c\ub300 \uccb4\ub825\uc758 ${Math.round(BARRIER.MIN * 100)}%\uac00 \ub118\ub294 \ud070 \ud53c\ud574\ub97c \ubc1b\uc73c\uba74, \uadf8 \ud53c\ud574\uc758 ${Math.round(BARRIER.PCT * 100)}%\ub97c \uccb4\ub825 \ub300\uc2e0 MP\ub85c \ubc1b\uc2b5\ub2c8\ub2e4. \uc791\uc740 \ud53c\ud574\uc5d0\ub294 \uc791\ub3d9\ud558\uc9c0 \uc54a\uace0, MP\uac00 \ubc14\ub2e5\ub098\uba74 \ub9c9\uc9c0 \ubabb\ud569\ub2c8\ub2e4. \ub204\ub974\ub294 \uae30\uc220\uc774 \uc544\ub2c8\ub77c \ub298 \ucf1c\uc838 \uc788\uc5b4\uc694.`;
+const _menuSkill348 = MENU.skill;
+MENU.skill = function (ctx) {
+  const r = _menuSkill348(ctx), p = G.player;
+  if (Array.isArray(r) && p && p.job === 'shaman') {
+    const on = barrierOn(p), st = p.st || {};
+    r[1] += `<div class="sep"></div><div class="row" style="${on ? 'border-color:#4a9fe8' : 'opacity:.55'}"><div class="ic" style="font-size:22px">\ud83d\udd35</div><div class="tx"><div class="t1" style="color:#9fe4ff">\uacb0\uacc4 <span class="muted">\ud328\uc2dc\ube0c</span></div><div class="t2">${BARRIER_TEXT()}</div><div class="t3">${on ? (st.barrier ? `\uc9c0\uae08\uae4c\uc9c0 ${fmt(st.barrier)}\ubc88 \uc791\ub3d9 \u00b7 \ub300\uc2e0 \ubc1b\uc740 \ud53c\ud574 ${fmt(Math.round(st.barrierHp || 0))}` : '\uc544\uc9c1 \uc791\ub3d9\ud55c \uc801\uc774 \uc5c6\uc5b4\uc694') : `1\ucc28 \uc2b9\uae09 (Lv.${PROMOTE_LV[0]})\uc5d0 \uc5f4\ub824\uc694`}</div></div></div>`;
+  }
+  return r;
+};
+const _doPromote348 = doPromote;
+doPromote = function (p) {
+  const before = p ? p.rank | 0 : 0, r = _doPromote348(p);
+  try { if (p && p.job === 'shaman' && before < 1 && (p.rank | 0) >= 1) setTimeout(() => toast('\ud83d\udd35 \uacb0\uacc4\ub97c \uc775\ud614\uc2b5\ub2c8\ub2e4 \u2014 \ud070 \ud53c\ud574\uc758 \uc77c\ubd80\ub97c MP\ub85c \ub300\uc2e0 \ubc1b\uc2b5\ub2c8\ub2e4 (\uae30\uc220 \ucc3d \ucc38\uace0)', 'blue'), 1800); } catch (e) { }
+  return r;
 };
 
 /* 99_boot: start once every file above has defined its data and renderers */
