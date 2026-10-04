@@ -504,7 +504,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v348</div>
+    <div class="sub">v349</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -721,7 +721,7 @@ function mobStats(level, def) {
 const JOBS = {
   none:    { n: '\ud3c9\ubbfc', ranks: ['\ud3c9\ubbfc', '\ud3c9\ubbfc', '\ud3c9\ubbfc'], grow: [1, 1, 1, 1], weapons: ['sword', 'dagger', 'spear', 'axe', 'greatsword', 'staff', 'fan'], magic: false, range: 52, basic: 'melee', color: '#d9cfb8' },
   warrior: { n: '\ubb34\uc0ac', ranks: ['\ubb34\uc0ac', '\uac80\uac1d', '\uac80\uc131'], grow: [3, 1, 0, 3], weapons: ['sword', 'greatsword', 'axe', 'spear'], magic: false, range: 58, basic: 'melee', color: '#c0503c',
-             desc: '\uac80\u00b7\ub3c4\u00b7\ucc3d\uc744 \uc4f0\ub294 \uc815\ud1b5 \ubb34\uc778. \ub192\uc740 \uccb4\ub825\uacfc \ubc29\uc5b4\ub825\uc73c\ub85c \uc55e\uc5d0\uc11c \uc801\uc744 \ub9c9\ub294 \uadfc\uc811 \uc9c1\uc5c5. \uad11\uc5ed \ubca0\uae30\uc640 \ub3c4\ubc1c\ub85c \ud30c\ud2f0\ub97c \uc9c0\ud0b5\ub2c8\ub2e4.' },
+             desc: '\uac80\u00b7\ub3c4\u00b7\ucc3d\uc744 \uc4f0\ub294 \uc815\ud1b5 \ubb34\uc778. \ub192\uc740 \uccb4\ub825\uacfc \ubc29\uc5b4\ub825\uc73c\ub85c \uc55e\uc5d0\uc11c \uc801\uc744 \ub9c9\ub294 \uadfc\uc811 \uc9c1\uc5c5. \uad11\uc5ed \ubca0\uae30\uc640 \ub3c4\ubc1c\ub85c \ud30c\ud2f0\ub97c \uc9c0\ud0b5\ub2c8\ub2e4. 1\ucc28 \uc2b9\uae09\ubd80\ud130\ub294 \ub9de\uc744\uc218\ub85d \uacf5\uaca9\uc774 \uc138\uc9c0\ub294 \ud22c\uc9c0\ub97c \uc5bb\uc2b5\ub2c8\ub2e4.' },
   thief:   { n: '\ube44\uac1d', ranks: ['\ube44\uac1d', '\uc790\uac1d', '\uadf8\ub9bc\uc790\uad70\uc8fc'], grow: [2, 3, 0, 2], weapons: ['dagger', 'sword'], magic: false, range: 50, basic: 'melee', color: '#4a4f5c',
              desc: '\ub2e8\uac80\uc744 \uc4f0\ub294 \ubbfc\ucca9\ud55c \uadf8\ub9bc\uc790. \ube60\ub978 \uacf5\uaca9\uacfc \ub192\uc740 \uce58\uba85\ud0c0. \ub3c5\uacfc \ubd84\uc2e0\uc73c\ub85c \ud55c \ubc88\uc5d0 \ubab0\uc544\uce58\ub294 \uc554\uc0b4\uc790.' },
   shaman:  { n: '\ubc29\uc220\uac00', ranks: ['\ubc29\uc220\uac00', '\ud604\uc220\uc0ac', '\ucc9c\uc220\uc0ac'], grow: [0, 1, 4, 2], weapons: ['staff', 'fan'], magic: true, range: 230, basic: 'bolt', color: '#6b3fa0',
@@ -5377,6 +5377,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v349 \ubb34\uc0ac\uc758 \ud22c\uc9c0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd25 \ubb34\uc0ac\uac00 1\ucc28 \uc2b9\uae09\ubd80\ud130 \ud22c\uc9c0\ub97c \uc5bb\uc2b5\ub2c8\ub2e4 \u2014 \ub9de\uc744 \ub54c\ub9c8\ub2e4 \ub0b4\uac00 \uc8fc\ub294 \ud53c\ud574 +1% (\ucd5c\ub300 +8%), 6\ucd08\uac04 \uc548 \ub9de\uc73c\uba74 \uc0ac\ub77c\uc838\uc694<br>\ud83d\udcd6 \uc124\uba85\uc740 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
     notes += `<div class="sep"></div><b>v348 \ubc29\uc220\uac00\uc758 \uacb0\uacc4</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd35 \ubc29\uc220\uac00\uac00 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uacb0\uacc4\ub97c \ub450\ub985\ub2c8\ub2e4 \u2014 \ud55c \ubc88\uc5d0 \ud070 \ud53c\ud574\ub97c \ubc1b\uc73c\uba74 \uadf8 \uc77c\ubd80\ub97c MP\ub85c \ub300\uc2e0 \ubc1b\uc544\uc694<br>\ud83d\udc40 \ud3c9\uc18c\uc5d4 \ubcf4\uc774\uc9c0 \uc54a\uace0, \ub9c9\ub294 \uc21c\uac04\uc5d0\ub9cc \ud478\ub978 \ub9c9\uc774 \ub739\ub2c8\ub2e4. \uc124\uba85\uc740 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798<br>\ud83d\udcdc 10\uc7a5 \ud654\uadc0\uc655 \ub2e8\uacc4\uc5d0 \uad8c\uc7a5 \ub808\ubca8(Lv.60)\uc744 \uc801\uc5c8\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v347 \ud648 \ud654\uba74\uc5d0 \uc124\uce58</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf2 \ud3f0 \ud648 \ud654\uba74\uc5d0 \uc544\uc774\ucf58\uc73c\ub85c \uc124\uce58\ud560 \uc218 \uc788\uc5b4\uc694 \u2014 \uc124\uc815\uc5d0\uc11c \ubc29\ubc95\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4<br>\ud83d\udda5\ufe0f \uc124\uce58\ud558\uba74 \uc8fc\uc18c\ucc3d \uc5c6\uc774 \uc804\uccb4 \ud654\uba74\uc73c\ub85c \uc5f4\ub9ac\uace0, \uc800\uc7a5\uc740 \uadf8\ub300\ub85c \uc774\uc5b4\uc838\uc694</div>`;
     notes += `<div class="sep"></div><b>v346 \ub3d9\ud589 \uc601\ubb3c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc3e \uc9c0\uc5ed \ubcf4\uc2a4\ub97c \uc7a1\uc73c\uba74 \uc601\ubb3c\uc774 \ub530\ub77c\uc640\uc694 \u2014 15\uc885, \uac19\uc740 \ubcf4\uc2a4 8\ubc88\uc774\uba74 \ubc18\ub4dc\uc2dc<br>\u2728 \ud55c \ub9c8\ub9ac\ub9cc \ub370\ub9ac\uace0 \ub2e4\ub2c8\uba70 \uc791\uc740 \ud6a8\uacfc\ub97c \ubc1b\uc2b5\ub2c8\ub2e4 (3~6%) \u2014 \ub3d9\ub8cc(P) \ucc3d\uc5d0\uc11c \uace0\ub974\uae30<br>\ud83d\udc40 \uc2f8\uc6b0\uc9c0\ub294 \uc54a\uace0 \ub4a4\ub97c \ub530\ub77c\ub2e4\ub2d9\ub2c8\ub2e4</div>`;
@@ -13540,7 +13541,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v348';
+const GAME_VER = 'v349';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -17127,6 +17128,55 @@ const _doPromote348 = doPromote;
 doPromote = function (p) {
   const before = p ? p.rank | 0 : 0, r = _doPromote348(p);
   try { if (p && p.job === 'shaman' && before < 1 && (p.rank | 0) >= 1) setTimeout(() => toast('\ud83d\udd35 \uacb0\uacc4\ub97c \uc775\ud614\uc2b5\ub2c8\ub2e4 \u2014 \ud070 \ud53c\ud574\uc758 \uc77c\ubd80\ub97c MP\ub85c \ub300\uc2e0 \ubc1b\uc2b5\ub2c8\ub2e4 (\uae30\uc220 \ucc3d \ucc38\uace0)', 'blue'), 1800); } catch (e) { }
+  return r;
+};
+
+/* ============================================================
+   98_tuji349 (v349): \ubb34\uc0ac\uc758 \ud22c\uc9c0 \u2014 \ub9de\uc744\uc218\ub85d \uc138\uc9c4\ub2e4 (\ud328\uc2dc\ube0c)
+   \u00b7 \uc65c: \ubb34\uc0ac\ub294 \uc798 \ubc84\ud2f0\uc9c0\ub9cc \ubcf4\uc2a4\ub97c \uc7a1\ub294 \ub370 \uac00\uc7a5 \uc624\ub798 \uac78\ub838\ub2e4 (\uc774\uae34 \ud310 \ud3c9\uade0 96\ucd08 \u00b7 \ud48d\ub958\uac1d 55\ucd08)
+     \u2192 \uc0dd\uc874\uc774 \uc544\ub2c8\ub77c \uc18d\ub3c4\ub97c \ub3d5\ub294\ub2e4. "\uc55e\uc5d0\uc11c \ub9de\uc73c\uba70 \ubc84\ud2f0\ub294 \uc9c1\uc5c5"\uc774\ub77c\ub294 \uc0c9\ub3c4 \uc0b4\ub9b0\ub2e4
+   \u00b7 \uc5b8\uc81c: 1\ucc28 \uc2b9\uae09\ubd80\ud130. \ud53c\ud574\ub97c \ubc1b\uc744 \ub54c\ub9c8\ub2e4 \ud55c \uacb9 (STEP \uc529, MAX \uacb9\uae4c\uc9c0). HOLD \ucd08 \ub3d9\uc548 \uc548 \ub9de\uc73c\uba74 \ubaa8\ub450 \uc0ac\ub77c\uc9c4\ub2e4
+   \u00b7 \ubb34\uc5c7: \ub0b4\uac00 \uc8fc\ub294 \ud53c\ud574\uac00 \uacb9 \u00d7 STEP \ub9cc\ud07c \ub298\uc5b4\ub09c\ub2e4 (\ub3d9\ub8cc\u00b7\uc18c\ud658\uc218\ub294 \uc544\ub2d8)
+   ============================================================ */
+const TUJI = { STEP: .01, MAX: 8, HOLD: 6 };
+const tujiOn = p => !!p && p.job === 'warrior' && (p.rank | 0) >= 1;
+function tujiStacks(p) { const s = p && p._tuji; return s && G.time < s.t ? s.n : 0; }
+function tujiHit(p) {
+  if (!tujiOn(p)) return;
+  const n0 = tujiStacks(p), n = Math.min(TUJI.MAX, n0 + 1);
+  p._tuji = { n, t: G.time + TUJI.HOLD };
+  if (n !== n0 && (n === 1 || n === TUJI.MAX)) floatText(p.x, p.y - 88, n === TUJI.MAX ? `\ud22c\uc9c0 \ucd5c\ub300 \u00b7 \ud53c\ud574 +${Math.round(TUJI.MAX * TUJI.STEP * 100)}%` : '\ud22c\uc9c0', '#ffb14a');
+  const st = p.st || (p.st = {}); if (n === TUJI.MAX && n0 < TUJI.MAX) { st.tuji = (st.tuji || 0) + 1; if (st.tuji === 1) toast('\ud83d\udd25 \ud22c\uc9c0\uac00 \ub05d\uae4c\uc9c0 \uc62c\ub790\uc2b5\ub2c8\ub2e4 \u2014 \ub9de\uc744\uc218\ub85d \ub0b4 \uacf5\uaca9\uc774 \uc138\uc838\uc694 (\uae30\uc220 \ucc3d \ucc38\uace0)', 'blue'); }
+}
+const _damageAlly349 = damageAlly;
+damageAlly = function (t, raw, src, opt) {
+  const mine = t && t === G.player, h0 = mine ? t.hp : 0;
+  const r = _damageAlly349(t, raw, src, opt);
+  try { if (mine && t.hp < h0 && t.hp > 0) tujiHit(t); } catch (e) { reportError(e); }
+  return r;
+};
+const _damageMob349 = damageMob;
+damageMob = function (src, m, base, opt) {
+  if (src && src === G.player && typeof base === 'number' && tujiOn(src)) {
+    const n = tujiStacks(src);
+    if (n > 0) { base *= 1 + n * TUJI.STEP; if (n >= TUJI.MAX && m && Math.random() < .25) addFx('spark', src.x + rnd(-10, 10), src.y - 30, { vx: rnd(-20, 20), vy: -50, col: '#ffb14a', dur: .45, size: 3 }); }
+  }
+  return _damageMob349(src, m, base, opt);
+};
+const TUJI_TEXT = () => `\ud53c\ud574\ub97c \ubc1b\uc744 \ub54c\ub9c8\ub2e4 \ub0b4\uac00 \uc8fc\ub294 \ud53c\ud574\uac00 ${Math.round(TUJI.STEP * 100)}%\uc529 \uc624\ub985\ub2c8\ub2e4 (\ucd5c\ub300 +${Math.round(TUJI.MAX * TUJI.STEP * 100)}%). ${TUJI.HOLD}\ucd08 \ub3d9\uc548 \ub9de\uc9c0 \uc54a\uc73c\uba74 \uc0ac\ub77c\uc9d1\ub2c8\ub2e4. \ub204\ub974\ub294 \uae30\uc220\uc774 \uc544\ub2c8\ub77c \ub298 \ucf1c\uc838 \uc788\uc5b4\uc694.`;
+const _menuSkill349 = MENU.skill;
+MENU.skill = function (ctx) {
+  const r = _menuSkill349(ctx), p = G.player;
+  if (Array.isArray(r) && p && p.job === 'warrior') {
+    const on = tujiOn(p), n = tujiStacks(p);
+    r[1] += `<div class="sep"></div><div class="row" style="${on ? 'border-color:#c8742a' : 'opacity:.55'}"><div class="ic" style="font-size:22px">\ud83d\udd25</div><div class="tx"><div class="t1" style="color:#ffb14a">\ud22c\uc9c0 <span class="muted">\ud328\uc2dc\ube0c</span></div><div class="t2">${TUJI_TEXT()}</div><div class="t3">${on ? (n ? `\uc9c0\uae08 ${n}\uacb9 \u00b7 \ud53c\ud574 +${Math.round(n * TUJI.STEP * 100)}%` : '\uc9c0\uae08\uc740 \uc2dd\uc5b4 \uc788\uc5b4\uc694') : `1\ucc28 \uc2b9\uae09 (Lv.${PROMOTE_LV[0]})\uc5d0 \uc5f4\ub824\uc694`}</div></div></div>`;
+  }
+  return r;
+};
+const _doPromote349 = doPromote;
+doPromote = function (p) {
+  const before = p ? p.rank | 0 : 0, r = _doPromote349(p);
+  try { if (p && p.job === 'warrior' && before < 1 && (p.rank | 0) >= 1) setTimeout(() => toast('\ud83d\udd25 \ud22c\uc9c0\ub97c \uc775\ud614\uc2b5\ub2c8\ub2e4 \u2014 \ub9de\uc744\uc218\ub85d \ub0b4 \uacf5\uaca9\uc774 \uc138\uc9d1\ub2c8\ub2e4 (\uae30\uc220 \ucc3d \ucc38\uace0)', 'blue'), 1800); } catch (e) { }
   return r;
 };
 
