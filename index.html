@@ -512,7 +512,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v368</div>
+    <div class="sub">v369</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -5464,7 +5464,7 @@ function killMob(m, killer) {
   worldKillHooks(m, killer);
   if (killer === p) playerKillHooks(p, m);
   if (m.named) p.st.named++;
-  if (m.boss) { p.st.bosses++; p.bossKills[m.boss] = (p.bossKills[m.boss] || 0) + 1; if (m.fieldBoss) p.st.fieldBoss++; G.bossReady[G.mapId + ':' + m.boss] = G.time + (m.fieldBoss ? 99999 : 150); Sfx.boss(); bossFinale(m); }
+  if (m.boss) { p.st.bosses++; p.bossKills[m.boss] = (p.bossKills[m.boss] || 0) + 1; if (m.fieldBoss) p.st.fieldBoss++; G.bossReady[G.mapId + ':' + m.boss] = G.time + (m.fieldBoss ? 99999 : BOSS_RESPAWN); if (!m.fieldBoss) bossCdSave(G.mapId + ':' + m.boss);   /* v369: 2\ubd84 30\ucd08 \u2192 5\ubd84, \uc800\uc7a5\ud55c\ub2e4 */ Sfx.boss(); bossFinale(m); }
   rollDrops(m);
   questOnKill(m);
   if (m.respawn !== false && !m.boss && !m.sig && !m.bottari && !m.war && !m.warLeader && !m.secretMob) G.respawnQ.push({ t: G.time + rnd(6, 11), type: m.type });
@@ -6300,6 +6300,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v369 \ubcf4\uc2a4\ub294 5\ubd84 \ub4a4\uc5d0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc51 \ubcf4\uc2a4\ub294 \uc7a1\uc740 \ub4a4 5\ubd84 \uc788\ub2e4\uac00 \ub2e4\uc2dc \ub098\uc635\ub2c8\ub2e4 (\uc804\uc5d0\ub294 2\ubd84 30\ucd08) \u2014 \uac8c\uc784\uc744 \uaebc \ub454 \uc2dc\uac04\ub3c4 \ud3ec\ud568\ud574\uc694<br>\ud83d\udd04 \uc0c8\ub85c\uace0\uce68\ud558\uba74 \ubcf4\uc2a4\uac00 \ubc14\ub85c \ub2e4\uc2dc \ub098\uc624\ub358 \uac83\uc744 \ub9c9\uc558\uc2b5\ub2c8\ub2e4<br>\u23f3 \ubcf4\uc2a4\uac00 \uc544\uc9c1 \uc548 \ub3cc\uc544\uc628 \uacf3\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ub0a8\uc740 \uc2dc\uac04\uc744 \uc54c\ub824 \uc90d\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v368 \ud018\uc2a4\ud2b8 \ucc3d \ubc30\uacbd</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcdc \ud654\uba74 \uc67c\ucabd \ud018\uc2a4\ud2b8 \ucc3d\uc758 \uc5b4\ub450\uc6b4 \ubc30\uacbd\uc744 \ub354 \ud22c\uba85\ud558\uac8c \ud588\uc2b5\ub2c8\ub2e4 (\uae00\uc790\ub294 \uadf8\ub9bc\uc790\ub97c \ub123\uc5b4 \uadf8\ub300\ub85c \uc77d\ud600\uc694)</div>`;
     notes += `<div class="sep"></div><b>v367 \ubaa8\ubc14\uc77c \ud654\uba74 \uace0\uce68</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd0d \uc544\uc774\ud3f0\uc5d0\uc11c \uc785\ub825\uce78(\ub2c9\ub124\uc784\u00b7\ube44\ubc00\ubc88\ud638 \ub4f1)\uc744 \ub204\ub974\uba74 \ud654\uba74\uc774 \ud655\ub300\ub41c \ucc44 \ub3cc\uc544\uc624\uc9c0 \uc54a\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\u2715 \uc9c0\ub3c4\ucc98\ub7fc \uae34 \ucc3d\uc5d0\uc11c \ub2eb\uae30 \ubc84\ud2bc\uc774 \ud654\uba74 \uc704\ub85c \uc798\ub9ac\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\ud83d\uddfa\ufe0f \uc9c0\ub3c4 \uc544\ub798 \uc9c0\uc5ed\ubcc4 \ubaa9\ub85d\uc740 \uc811\uc5b4 \ub450\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 '\ud3bc\uce58\uae30'\ub97c \ub204\ub974\uba74 \ubcf4\uc5ec\uc694</div>`;
     notes += `<div class="sep"></div><b>v366 \ub808\ubca8\uc5c5 \uc18c\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf89 \ub808\ubca8\uc774 \uc624\ub97c \ub54c \uaf79\uacfc\ub9ac \uc18c\ub9ac\uac00 \ub0a9\ub2c8\ub2e4</div>`;
@@ -9828,7 +9829,7 @@ function startGame(p, mapId, isNew) {
   G.player = p; calcStats(p);
   G.party = (p.partyDefs || []).map((d, i) => { const c = makeCompanion(d, p.lv); c.slot = i; return c; });
   $('title').hidden = true; document.body.classList.remove('intitle'); bgMap = null;
-  G.time = 0; G.bossReady = {};
+  G.time = 0; G.bossReady = {}; bossCdRestore(p);   /* v369: \uc7a1\uc544 \ub454 \ubcf4\uc2a4\uc758 \ub0a8\uc740 \uc2dc\uac04\uc744 \ub418\uc0b4\ub9b0\ub2e4 */
   enterMap(mapId, null, null);
   if (isNew) { setTimeout(() => toast('\ud83d\udcdc \ucd0c\uc7a5 \ud55c\ubc31\uc218(\ud770 \uc218\uc5fc)\uc5d0\uac8c \ub9d0\uc744 \uac78\uc5b4 \ubcf4\uc138\uc694!', 'blue'), 900); p.lastTown = 'buyeo'; }
   else toast('\ud83d\udcbe \uc800\uc7a5\ub41c \ubaa8\ud5d8\uc744 \ubd88\ub7ec\uc654\uc2b5\ub2c8\ub2e4', 'blue');
@@ -14559,7 +14560,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v368';
+const GAME_VER = 'v369';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -18970,6 +18971,38 @@ enterMap = function (id, arrive, how) {
     document.addEventListener('focusout', () => setTimeout(() => { try { if (!typing()) window.scrollTo(0, 0); } catch (e) { } unzoom(); }, 150));
   } catch (e) { }
 })();
+
+/* ============================================================
+   98k_boss369 (v369): \ubcf4\uc2a4\ub294 \uc7a1\uc740 \ub4a4 5\ubd84 \uc788\ub2e4\uac00 \ub2e4\uc2dc \ub098\uc628\ub2e4 (\uc804\uc5d0\ub294 2\ubd84 30\ucd08)
+   \u00b7 \uc65c: \uad50\uc5ed\uc73c\ub85c \ub3c8 \ubc8c \uae38\uc774 \uc0dd\uacbc\uc73c\ub2c8 \ubcf4\uc2a4(\uc804\uc124 \uc7a5\ube44\u00b7\uc601\ubb3c)\ub294 \uc880 \ub354 \uadc0\ud574\uc57c \ud55c\ub2e4. \uc774\uc57c\uae30\u00b7\uc758\ub8b0\ub294 \ubcf4\uc2a4\ub97c \ud55c \ubc88\ub9cc \uc7a1\uc73c\uba74 \ub418\ubbc0\ub85c \uc9c4\ud589\uc5d0\ub294 \uc601\ud5a5\uc774 \uc5c6\ub2e4
+       (\uc2f8\uc6b0\ub2e4 \uc4f0\ub7ec\uc9c0\uba74 \ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c \ub0a8\uc544 \uc788\ub2e4 \u2014 \uae30\ub2e4\ub9ac\ub294 \uac83\uc740 '\uc7a1\uc740 \ub4a4'\ubfd0)
+   \u00b7 \uad6c\uba4d \ub9c9\uae30: \ub0a8\uc740 \uc2dc\uac04\uc774 \uc800\uc7a5\ub418\uc9c0 \uc54a\uc544 \uc0c8\ub85c\uace0\uce68\ud558\uba74 \ubcf4\uc2a4\uac00 \ubc14\ub85c \ub2e4\uc2dc \ub098\uc654\ub2e4 \u2192 \ub2e4\uc2dc \ub098\uc62c \uc2dc\uac01\uc744 \uc800\uc7a5\ud55c\ub2e4 (p.bossCd)
+       - \uc2e4\uc81c \uc2dc\uac01\uc73c\ub85c \uc7b0\ub2e4: \uac8c\uc784\uc744 \uaebc \ub454 \uc2dc\uac04\ub3c4 5\ubd84\uc5d0 \ub4e4\uc5b4\uac04\ub2e4
+       - \uae30\uae30 \uc2dc\uacc4\ub97c \ub4a4\ub85c \ub3cc\ub824\ub3c4 \ub0a8\uc740 \uc2dc\uac04\uc774 5\ubd84\uc744 \ub118\uc9c0 \uc54a\ub294\ub2e4
+   \u00b7 \ud544\ub4dc\ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c (\ud55c \ubc88 \uc7a1\uc73c\uba74 \uadf8 \uc811\uc18d \ub3d9\uc548 \ub2e4\uc2dc \ub098\uc624\uc9c0 \uc54a\ub294\ub2e4)
+   \u00b7 \ubcf4\uc2a4\uac00 \uc544\uc9c1 \uc548 \ub3cc\uc544\uc628 \uc9c0\ub3c4\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ub0a8\uc740 \uc2dc\uac04\uc744 \uc54c\ub824 \uc900\ub2e4
+   ============================================================ */
+const BOSS_RESPAWN = 300;
+SAVE_FIELDS.push('bossCd');
+function bossCdSave(key) {
+  const p = G.player; if (!p) return; const cd = p.bossCd && typeof p.bossCd === 'object' ? p.bossCd : (p.bossCd = {}), now = Date.now();
+  for (const k of Object.keys(cd)) if (!(cd[k] > now)) delete cd[k];
+  cd[key] = now + BOSS_RESPAWN * 1000;
+}
+function bossCdLeft(key) { const p = G.player, t = p && p.bossCd && p.bossCd[key]; return t ? clamp((t - Date.now()) / 1000, 0, BOSS_RESPAWN) : 0; }
+function bossCdRestore(p) {
+  if (!p || !p.bossCd || typeof p.bossCd !== 'object') return;
+  for (const [k, t] of Object.entries(p.bossCd)) { const left = clamp((t - Date.now()) / 1000, 0, BOSS_RESPAWN); if (left > 0) G.bossReady[k] = G.time + left; else delete p.bossCd[k]; }
+}
+const _enterMap369 = enterMap;
+enterMap = function (id) {
+  const r = _enterMap369.apply(this, arguments);
+  try {
+    const d = MAPS[id]; if (d) for (const b of [d.boss, d.rareBoss]) { if (!b || !BOSSES[b]) continue; const left = Math.max(0, (G.bossReady[id + ':' + b] || 0) - G.time);
+      if (left > 5 && left <= BOSS_RESPAWN && !G.mobs.some(m => m.boss === b)) { toast(`\ud83d\udc51 ${BOSSES[b].n}\uc740(\ub294) \uc57d ${left >= 60 ? Math.ceil(left / 60) + '\ubd84' : Math.ceil(left) + '\ucd08'} \ub4a4\uc5d0 \ub2e4\uc2dc \ub098\ud0c0\ub0a9\ub2c8\ub2e4`, 'blue'); break; } }
+  } catch (e) { reportError(e); }
+  return r;
+};
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
