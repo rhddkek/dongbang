@@ -34,7 +34,7 @@ button:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 .pm.down{opacity:.55}
 #buffs{display:flex;gap:4px;flex-wrap:wrap}
 .buff{font-size:10px;background:rgba(22,16,12,.85);border:1px solid var(--line);border-radius:10px;padding:1px 6px;font-weight:700;font-variant-numeric:tabular-nums}
-#tracker{background:rgba(22,16,12,.8);border-left:3px solid var(--gold);border-radius:4px;padding:6px 8px;font-size:11px;line-height:1.45;pointer-events:auto}
+#tracker{background:rgba(22,16,12,.5);text-shadow:0 1px 2px #000,0 0 3px #000;border-left:3px solid var(--gold);border-radius:4px;padding:6px 8px;font-size:11px;line-height:1.45;pointer-events:auto}
 #tracker b{color:var(--gold2);display:block;font-size:11px}
 #tracker .req{color:#9fd8ff;margin-top:3px}
 
@@ -512,7 +512,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v367</div>
+    <div class="sub">v368</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6300,6 +6300,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v368 \ud018\uc2a4\ud2b8 \ucc3d \ubc30\uacbd</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcdc \ud654\uba74 \uc67c\ucabd \ud018\uc2a4\ud2b8 \ucc3d\uc758 \uc5b4\ub450\uc6b4 \ubc30\uacbd\uc744 \ub354 \ud22c\uba85\ud558\uac8c \ud588\uc2b5\ub2c8\ub2e4 (\uae00\uc790\ub294 \uadf8\ub9bc\uc790\ub97c \ub123\uc5b4 \uadf8\ub300\ub85c \uc77d\ud600\uc694)</div>`;
     notes += `<div class="sep"></div><b>v367 \ubaa8\ubc14\uc77c \ud654\uba74 \uace0\uce68</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd0d \uc544\uc774\ud3f0\uc5d0\uc11c \uc785\ub825\uce78(\ub2c9\ub124\uc784\u00b7\ube44\ubc00\ubc88\ud638 \ub4f1)\uc744 \ub204\ub974\uba74 \ud654\uba74\uc774 \ud655\ub300\ub41c \ucc44 \ub3cc\uc544\uc624\uc9c0 \uc54a\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\u2715 \uc9c0\ub3c4\ucc98\ub7fc \uae34 \ucc3d\uc5d0\uc11c \ub2eb\uae30 \ubc84\ud2bc\uc774 \ud654\uba74 \uc704\ub85c \uc798\ub9ac\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\ud83d\uddfa\ufe0f \uc9c0\ub3c4 \uc544\ub798 \uc9c0\uc5ed\ubcc4 \ubaa9\ub85d\uc740 \uc811\uc5b4 \ub450\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 '\ud3bc\uce58\uae30'\ub97c \ub204\ub974\uba74 \ubcf4\uc5ec\uc694</div>`;
     notes += `<div class="sep"></div><b>v366 \ub808\ubca8\uc5c5 \uc18c\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf89 \ub808\ubca8\uc774 \uc624\ub97c \ub54c \uaf79\uacfc\ub9ac \uc18c\ub9ac\uac00 \ub0a9\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v365 \ub3d9\uad74 \uc74c\uc545 \uc138 \uace1</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd73\ufe0f \ub3d9\uad74 \uc74c\uc545\uc774 \ud55c \uace1 \ub354 \ub298\uc5b4 \uc138 \uace1\uc774 \ub410\uc2b5\ub2c8\ub2e4 \u2014 \ub3d9\uad74\ub9c8\ub2e4 \ub2e4\ub978 \uace1\uc774 \ub098\uc624\uace0, \uac19\uc740 \ub3d9\uad74\uc758 \uce35\ub07c\ub9ac\ub294 \uac19\uc740 \uace1\uc774\uc5d0\uc694</div>`;
@@ -14558,7 +14559,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v367';
+const GAME_VER = 'v368';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
