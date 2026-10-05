@@ -505,7 +505,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v356</div>
+    <div class="sub">v357</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2448,6 +2448,56 @@ for (const k of Object.keys(ITEMS)) {
 }
 /* \uc7a5\ube44\uc758 \uc885\ub958: \ubb34\uae30\ub294 \ubb34\uae30 \uc885\ub958\ubcc4, \uac11\uc637\uc740 \uac11\uc637/\ub3c4\ud3ec, \ud22c\uad6c\ub294 \ud22c\uad6c/\uac13, \uadf8 \ubc16\uc740 \uce78 \uc774\ub984 */
 function gearKind(d) { return d.slot === 'weapon' ? 'w:' + d.wt : d.slot === 'armor' ? (d.robe ? 'robe' : 'plate') : d.slot === 'helmet' ? (d.robe ? 'hat' : 'helm') : d.slot; }
+
+/* ============================================================
+   09i_roads357 (v357): \ub3c4\uc2dc \uc0ac\uc774 \uac00\ub294 \uae38\uc744 \uc9c0\ub3c4 \ud55c \uc7a5 \u2192 \uc138 \uc7a5\uc73c\ub85c
+   \u00b7 \uc65c: \uae38 \ud558\ub098\ub9cc \uac74\ub108\uba74 \ubc14\ub85c \ub2e4\uc74c \ub3c4\uc2dc\ub77c \uc774\ub3d9\uc774 \ub108\ubb34 \uc26c\uc6e0\ub2e4. \ucc98\uc74c \uac00\ub294 \uae38\uacfc \uc9d0\uc744 \uc2e4\uc740 \uc7a5\uc0bf\uae38\uc740 \uc880 \uace0\uc0dd\uc2a4\ub7ec\uc6cc\uc57c \ud55c\ub2e4
+       (\ud55c \ubc88 \uac00 \ubcf8 \ub3c4\uc2dc\ub294 \uc5ed\ucc38\uc73c\ub85c \ubc14\ub85c \uac00\ubbc0\ub85c \ud3c9\uc18c \uc774\ub3d9\uc740 \uadf8\ub300\ub85c)
+   \u00b7 \uc5b4\ub5bb\uac8c: \uc6d0\ub798 \uc9c0\ub3c4\ub294 \uac00\uc6b4\ub370(\uace0\uac1c\u00b7\ubcf8\uae38)\ub85c \uadf8\ub300\ub85c \ub450\uace0, \uc55e\ub4a4\uc5d0 '\u25cb\u25cb \uc5b4\uadc0' \uc9c0\ub3c4\ub97c \ud558\ub098\uc529 \ubd99\uc778\ub2e4
+       [\ub3c4\uc2dc A] \u2192 A \uc5b4\uadc0 \u2192 \uc6d0\ub798 \uae38 \u2192 B \uc5b4\uadc0 \u2192 [\ub3c4\uc2dc B]
+       - \uc6d0\ub798 \uc9c0\ub3c4\uc758 id\u00b7\uc774\ub984\u00b7\ubaac\uc2a4\ud130\u00b7\uba85\uc18c\ub294 \uadf8\ub300\ub85c \u2192 \ud018\uc2a4\ud2b8\u00b7\uc800\uc7a5 \uc704\uce58\u00b7\ud3b8\ub300 \uc124\uc815\uc774 \uae68\uc9c0\uc9c0 \uc54a\ub294\ub2e4
+       - \ub808\ubca8\ub300\ub294 \uc138 \uc7a5\uc5d0 \ub098\ub220 \uc900\ub2e4 (\uc608: 46~52 \u2192 46~48 / 48~50 / 50~52). \uc804\uccb4 \ubc94\uc704\ub294 def.lvAll \uc5d0 \ub0a8\uae34\ub2e4
+       - \uc5b4\uadc0\ub294 \uc9c0\ud615(\ud14c\ub9c8)\uacfc \ubaac\uc2a4\ud130 \ube44\uc911\uc744 \ub2ec\ub9ac\ud55c\ub2e4: \ucd9c\ubc1c \ucabd\uc740 \ud754\ud55c \ub188 \uc704\uc8fc\u00b7\uc218\uac00 \uc801\uace0, \ub3c4\ucc29 \ucabd\uc740 \uc13c \ub188 \uc704\uc8fc
+   \u00b7 \uc6d0\ub798 \uae38 id \ub85c \ubb36\uc5ec \uc788\ub294 \uac83(\ud018\uc2a4\ud2b8 \ucc98\uce58 \uc218, \ud3b8\ub300, \uc138\ud2b8 \uc7ac\ub8cc, \uc138\uacc4\uc9c0\ub3c4)\uc740 ROAD_OF[\uc9c0\ub3c4] \ub85c \uc6d0\ub798 \uae38\uc744 \ucc3e\uc544 \uadf8\ub300\ub85c \ub530\ub978\ub2e4
+   \u00b7 \uad50\uc5ed \uac70\ub9ac\ub294 \uc9c0\ub3c4 \uc5f0\uacb0(LINKS)\uc5d0\uc11c \uc148\ud558\ubbc0\ub85c \uc800\uc808\ub85c \ub530\ub77c\uc628\ub2e4 (98f_trade356)
+   ============================================================ */
+const ROAD_SEGS = {};   /* \uc6d0\ub798 \uae38 id \u2192 [\ucd9c\ubc1c \ucabd \uc5b4\uadc0, \uc6d0\ub798 \uae38, \ub3c4\ucc29 \ucabd \uc5b4\uadc0] */
+const ROAD_OF = {};     /* \uc138 \uc7a5 \uc5b4\ub290 \uac83\uc774\ub4e0 \u2192 \uc6d0\ub798 \uae38 id */
+const ROAD_ENDS = {};   /* \uc6d0\ub798 \uae38 id \u2192 [\ub3c4\uc2dc A, \ub3c4\uc2dc B] */
+const roadBase = id => ROAD_OF[id] || id;
+/* \uc5b4\uadc0 \uc9c0\ud615: [\ucd9c\ubc1c \ucabd, \ub3c4\ucc29 \ucabd] \u2014 \uac00\uc6b4\ub370\ub294 \uc6d0\ub798 \uc9c0\ud615 \uadf8\ub300\ub85c */
+const ROAD_THEMES = {
+  east_road: ['bamboo', 'highland'], road_dj_gj: ['highland', 'bamboo'], road_dj_dg: ['grass', 'mountain'], road_dg_us: ['mountain', 'coast'], road_dg_bs: ['mountain', 'coast'],
+  road_us_bs: ['highland', 'grass'], road_dj_sw: ['grass', 'highland'], road_sw_se: ['highland', 'grass'], road_se_ic: ['grass', 'coast'],
+  road_fk_os: ['jforest', 'jmount'], road_os_ky: ['grass', 'japan'], road_ky_sz: ['jforest', 'jmount'], road_sz_tk: ['japan', 'grass'], road_tk_sd: ['grass', 'jforest'], road_sd_sp: ['jmount', 'snow']
+};
+{
+  const list = [['buyeo', 'city_daejeon', 'E', null, 'east_road'], ...CITY_ROADS.map(r => r.slice(0, 5))];
+  for (const [a, b, side, , id] of list) {
+    const M = MAPS[id]; if (!M || !MAPS[a] || !MAPS[b]) continue;
+    const i = LINKS.findIndex(L => L[1] !== 'P' && L[0] === a && L[2] === id), j = LINKS.findIndex(L => L[1] !== 'P' && L[0] === id && L[2] === b);
+    if (i < 0 || j < 0) continue;
+    const ia = id + '_a', ib = id + '_b', back = LINKS[j][3] || OPP[side];
+    const A = [[a, side, ia], [ia, side, id]], B = [[id, side, ib], [ib, side, b, back]];
+    if (i < j) { LINKS.splice(j, 1, ...B); LINKS.splice(i, 1, ...A); } else { LINKS.splice(i, 1, ...A); LINKS.splice(j, 1, ...B); }
+    const [lo, hi] = M.lv, t = (hi - lo) / 3, c1 = Math.round(lo + t), c2 = Math.round(lo + 2 * t);
+    const base = M.n.split(' \u00b7 ')[0], sp = M.spawns, th = ROAD_THEMES[id] || [M.theme, M.theme], pois = M.pois || [];
+    const seg = (sid, town, theme, lv, count, spawns, zones, poi) => {
+      MAPS[sid] = { n: `${base} \u00b7 ${MAPS[town].n} \uc5b4\uadc0`, kind: 'field', theme, w: M.w, h: M.h, lv, lvAll: [lo, hi], count, roadMap: 1, roadOf: id, spawns, events: (M.events || ['traveler', 'merchant']).slice(), drops: (M.drops || []).slice() };
+      if (zones) MAPS[sid].zones = zones; if (poi) MAPS[sid].pois = [{ id: poi.id, q: poi.q }];
+      if (theme === 'coast' || theme === 'mudflat') MAPS[sid].lake = 1;
+      ROAD_OF[sid] = id;
+    };
+    /* \ucd9c\ubc1c \ucabd: \ud754\ud55c \ub188 \ub458\uc774 \ub300\ubd80\ubd84, \uc14b\uc9f8\uac00 \uac00\ub054 */
+    seg(ia, a, th[0], [lo, c1], Math.max(14, M.count - 4), sp.slice(0, 3).map((s, k) => ({ m: s.m, w: [4, 3, 1][k] })), null, pois[0]);
+    /* \ub3c4\ucc29 \ucabd: \ube44\uc911\uc744 \ub4a4\uc9d1\uc5b4 \uc13c \ub188 \uc704\uc8fc + \uc678\uc9c4 \uae38\ubaa9 */
+    const rev = sp.map((s, k) => ({ m: s.m, w: k < 4 ? [1, 2, 3, 4][k] : s.w })), hard = [sp[2] || sp[0], sp[3] || sp[1] || sp[0]];
+    seg(ib, b, th[1], [c2, hi], Math.max(16, M.count - 2), rev, [{ q: 'C', n: '\uc678\uc9c4 \uae38\ubaa9', spawns: [{ m: hard[0].m, w: 3 }, { m: hard[1].m, w: 2 }] }], pois[1] || pois[0]);
+    M.lvAll = [lo, hi]; M.lv = [c1, c2]; M.roadOf = id;
+    ROAD_SEGS[id] = [ia, id, ib]; ROAD_OF[id] = id; ROAD_ENDS[id] = [a, b];
+    if (typeof SET_MAT_MAPS !== 'undefined' && SET_MAT_MAPS[id]) SET_MAT_MAPS[ia] = SET_MAT_MAPS[ib] = SET_MAT_MAPS[id];
+  }
+}
 
 /* ============================================================
    10_sprites: procedural pixel-art. Every sprite is drawn once
@@ -6240,7 +6290,8 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
-    notes += `<div class="sep"></div><b>v356 \ud2b9\uc0b0\ud488 \uad50\uc5ed</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 \ub9c8\uc744\ub9c8\ub2e4 \uad50\uc5ed \uac1d\uc8fc(\uc77c\ubcf8\uc740 \ub3c8\uc57c)\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744\uc5d0 \ud30c\uc138\uc694<br>\ud83d\udccf \uba40\ub9ac \ub098\ub97c\uc218\ub85d \uc6c3\ub3c8\uc774 \ubd99\uc2b5\ub2c8\ub2e4 (\uc774\uc6c3 \ub9c8\uc744 +22% \uc548\ud30e, \ucd5c\ub300 2\ubc30)<br>\ud83d\uded2 \uc9d0\uce78\uc740 \uc9c0\uac8c 8\uce78\uc5d0\uc11c \uc0c1\ub2e8 \ud589\ub82c 24\uce78\uae4c\uc9c0 \u2014 \ud074\uc218\ub85d \uc0ac\ub0e5\ubcf4\ub2e4 \ub9ce\uc774 \ubc95\ub2c8\ub2e4<br>\ud83d\udc8e \uadc0\ud55c \ubb3c\uac74\uc740 \uc774\ubb38\uc774 \ud06c\uc9c0\ub9cc \uc7ac\uace0\uac00 \ucc9c\ucc9c\ud788 \ucc39\ub2c8\ub2e4 \u00b7 \uac00\ub054 '\ud2b9\uc218'\uac00 \ubd99\uc5b4 \uac12\uc774 \ub701\ub2c8\ub2e4<br>\u26a0\ufe0f \uadc0\ud658 \ubd80\uc801\uc740 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud558\uace0, \uc5ed\ucc38\uc740 \uc9d0 \uac12\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ubc1b\uc2b5\ub2c8\ub2e4. \ubc30\ub294 \ubc43\uc0af\ub9cc \ub0c5\ub2c8\ub2e4</div>`;
+    notes += `<div class="sep"></div><b>v357 \uba3c \uae38</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udee4\ufe0f \ub3c4\uc2dc \uc0ac\uc774 \uac00\ub294 \uae38\uc774 \uc9c0\ub3c4 \ud55c \uc7a5\uc5d0\uc11c \uc138 \uc7a5\uc73c\ub85c \ub298\uc5c8\uc2b5\ub2c8\ub2e4 (\ub3c4\uc2dc \uc5b4\uadc0 \u2192 \ubcf8\uae38 \u2192 \ub3c4\uc2dc \uc5b4\uadc0)<br>\ud83c\udf32 \uc5b4\uadc0\ub9c8\ub2e4 \uc9c0\ud615\uacfc \ubaac\uc2a4\ud130\uac00 \ub2e4\ub974\uace0, \ub808\ubca8\ub300\ub294 \uc138 \uc7a5\uc5d0 \ub098\ub258\uc5b4 \uc788\uc5b4\uc694<br>\ud83d\udc0e \ud55c \ubc88 \uac00 \ubcf8 \ub3c4\uc2dc\ub294 \uc804\ucc98\ub7fc \uc5ed\ucc38\uc73c\ub85c \ubc14\ub85c \uac11\ub2c8\ub2e4<br>\ud83e\uddf3 \uae38\uc774 \uba40\uc5b4\uc9c4 \ub9cc\ud07c \uad50\uc5ed \uc6c3\ub3c8\ub3c4 \ucee4\uc84c\uc2b5\ub2c8\ub2e4 (\uc774\uc6c3 \ub9c8\uc744 +40% \uc548\ud30e)</div>`;
+    notes += `<div class="sep"></div><b>v356 \ud2b9\uc0b0\ud488 \uad50\uc5ed</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 \ub9c8\uc744\ub9c8\ub2e4 \uad50\uc5ed \uac1d\uc8fc(\uc77c\ubcf8\uc740 \ub3c8\uc57c)\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744\uc5d0 \ud30c\uc138\uc694<br>\ud83d\udccf \uba40\ub9ac \ub098\ub97c\uc218\ub85d \uc6c3\ub3c8\uc774 \ubd99\uc2b5\ub2c8\ub2e4 (\ucd5c\ub300 2\ubc30)<br>\ud83d\uded2 \uc9d0\uce78\uc740 \uc9c0\uac8c 8\uce78\uc5d0\uc11c \uc0c1\ub2e8 \ud589\ub82c 24\uce78\uae4c\uc9c0 \u2014 \ud074\uc218\ub85d \uc0ac\ub0e5\ubcf4\ub2e4 \ub9ce\uc774 \ubc95\ub2c8\ub2e4<br>\ud83d\udc8e \uadc0\ud55c \ubb3c\uac74\uc740 \uc774\ubb38\uc774 \ud06c\uc9c0\ub9cc \uc7ac\uace0\uac00 \ucc9c\ucc9c\ud788 \ucc39\ub2c8\ub2e4 \u00b7 \uac00\ub054 '\ud2b9\uc218'\uac00 \ubd99\uc5b4 \uac12\uc774 \ub701\ub2c8\ub2e4<br>\u26a0\ufe0f \uadc0\ud658 \ubd80\uc801\uc740 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud558\uace0, \uc5ed\ucc38\uc740 \uc9d0 \uac12\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ubc1b\uc2b5\ub2c8\ub2e4. \ubc30\ub294 \ubc43\uc0af\ub9cc \ub0c5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v355 \uc0ac\ub0e5 \ub4dc\ub86d \ube48 \uad6c\uac04 \uba54\uc6c0</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2694\ufe0f Lv.8~71 \uc5d0\uc11c \uc0ac\ub0e5\uc73c\ub85c \uc548 \ub098\uc624\ub358 \uc7a5\ube44 \uc885\ub958\uac00 \uc774\uc81c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\u00b7\uc601\uc6c5)<br>\ud83d\udde1\ufe0f \ud2b9\ud788 Lv.46~63 \uc740 \ubb34\uae30\uac00 \ud55c \uc885\ub958\ub3c4 \uc548 \ub098\uc654\uc5b4\uc694 \u2014 \uc774\uc81c \uc9c1\uc5c5 \ubb34\uae30\uac00 \ubaa8\ub450 \ub098\uc635\ub2c8\ub2e4<br>\ud83d\udce6 \uc774\ub984 \uc788\ub294 \uae30\uc874 \uc7a5\ube44\ub3c4 \uadf8\ub300\ub85c \ub098\uc635\ub2c8\ub2e4 (\ub098\uc624\ub294 \uc885\ub958\uac00 \ub298\uc5b4\ub09c \ub9cc\ud07c \ube44\uc911\uc740 \uc904\uc5b4\uc694)</div>`;
     notes += `<div class="sep"></div><b>v354 \ud48d\ub958\uac1d\uc758 \uad50\uac10 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \ub4dc\ub86d</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc3e \ud48d\ub958\uac1d\uc774 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uad50\uac10\uc744 \uc501\ub2c8\ub2e4 \u2014 \ub3d9\ud589 \uc601\ubb3c\uc758 \ud6a8\uacfc +30%<br>\ud83e\udde4 \ud76c\uadc0\u00b7\uc601\uc6c5 \uc7a5\uac11\uacfc \uc2e0\ubc1c\uc774 \uc0ac\ub0e5\uc5d0\uc11c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\ub294 \uc7a5\ube44\uc0c1\uc5d0\uc11c\ub3c4 \ud314\uc544\uc694)<br>\ud83d\udcd6 \uc774\uc81c \ub124 \uc9c1\uc5c5 \ubaa8\ub450 \ud328\uc2dc\ube0c\uac00 \ud558\ub098\uc529 \uc788\uc5b4\uc694 \u2014 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
     notes += `<div class="sep"></div><b>v353 \uac00\uac8c \uac04\ud310 \u00b7 \uc18c\ud488 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udea7 \uac04\ud310\uc744 \uc9c0\ubd95 \uc704\ub85c \uc62c\ub9ac\uace0 \ud0a4\uc6e0\uc5b4\uc694 \u2014 \uc591 \ub05d\uc5d0 \uc5c5\uc885 \uadf8\ub9bc<br>\ud83c\udfea \uac00\uac8c\ub9c8\ub2e4 \uc18c\ud488\uc774 \ub193\uc600\uc5b4\uc694 \u2014 \ubb34\uae30 \uac70\uce58\ub300, \uac11\uc637 \uac78\uc774, \uc57d\ucd08 \ub2e4\ubc1c, \uc220\ub3c5 \u2026<br>\ud83e\udde4 \uc7a5\uac11 \u00b7 \uc2e0\ubc1c\uc774 \uc0c8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\uc5b4\uc694</div>`;
@@ -6704,7 +6755,7 @@ function questCheck() {
 function questOnKill(m) {
   const p = G.player, s = curStep();
   if (s) {
-    if (s.t === 'kill' && (!s.maps || s.maps.includes(G.mapId)) && (!s.mob || s.mob === m.type)) { p.story.prog++; if (p.story.prog >= s.n) stepDone(); }
+    if (s.t === 'kill' && (!s.maps || s.maps.includes(roadBase(G.mapId))) && (!s.mob || s.mob === m.type)) { p.story.prog++; if (p.story.prog >= s.n) stepDone(); }
     if (s.t === 'boss' && m.boss === s.id) stepDone();
   }
   /* city requests */
@@ -10288,15 +10339,14 @@ function wmCityMaps(id) {
 }
 function wmBand(id) { const lv = wmCityMaps(id).map(m => MAPS[m]?.lv).filter(Boolean); return lv.length ? [Math.min(...lv.map(l => l[0])), Math.max(...lv.map(l => l[1]))] : null; }
 function wmRoads() {
-  const out = [['buyeo', 'city_daejeon', 'east_road']];
-  for (const L of LINKS) if (L[1] !== 'P') { const a = L[0], b = L[2]; if (MAPS[b]?.roadMap && WM_CITY[a]) { const other = LINKS.find(K => K[0] === b && K[1] !== 'P'); if (other && WM_CITY[other[2]]) out.push([a, other[2], b]); } }
-  return out;
+  /* v357: \uae38\uc740 \uc138 \uc7a5\uc73c\ub85c \uc774\uc5b4\uc9c4\ub2e4 \u2014 [\ub3c4\uc2dc A, \ub3c4\uc2dc B, \uc6d0\ub798 \uae38 id] */
+  return Object.keys(ROAD_ENDS).filter(id => WM_CITY[ROAD_ENDS[id][0]] && WM_CITY[ROAD_ENDS[id][1]]).map(id => [ROAD_ENDS[id][0], ROAD_ENDS[id][1], id]);
 }
 /* where am I on the atlas */
 function wmHere() {
   const id = G.mapId;
   if (WM_CITY[id]) return WM_CITY[id];
-  const r = wmRoads().find(r => r[2] === id); if (r) { const A = WM_CITY[r[0]], B = WM_CITY[r[1]]; return { lon: (A.lon + B.lon) / 2, lat: (A.lat + B.lat) / 2 }; }
+  const r = wmRoads().find(r => r[2] === roadBase(id)); if (r) { const A = WM_CITY[r[0]], B = WM_CITY[r[1]], f = (ROAD_SEGS[r[2]].indexOf(id) + 1) / 4; return { lon: A.lon + (B.lon - A.lon) * f, lat: A.lat + (B.lat - A.lat) * f }; }
   for (const c of Object.keys(WM_CITY)) if (wmCityMaps(c).includes(id)) return WM_CITY[c];
   return WM_CITY[G.player.lastTown] || WM_CITY.buyeo;
 }
@@ -10340,9 +10390,9 @@ function drawWorldMap(view) {
   const p = G.player;
   g.setLineDash([7 * sc, 5 * sc]); g.lineWidth = (zoom ? 3 : 2) * sc;
   for (const [a, b, rid] of wmRoads()) {
-    const A = WM_CITY[a], B = WM_CITY[b]; g.strokeStyle = p.visited[rid] ? '#8a3a1a' : 'rgba(120,70,40,.6)';
+    const A = WM_CITY[a], B = WM_CITY[b]; g.strokeStyle = ROAD_SEGS[rid].some(s => p.visited[s]) ? '#8a3a1a' : 'rgba(120,70,40,.6)';
     g.beginPath(); g.moveTo(X(A.lon), Y(A.lat)); g.lineTo(X(B.lon), Y(B.lat)); g.stroke();
-    if (zoom && MAPS[rid]?.lv) roadLbl.push({ mx: .5 * X(A.lon) + .5 * X(B.lon), my: .5 * Y(A.lat) + .5 * Y(B.lat), txt: `${MAPS[rid].lv[0]}~${MAPS[rid].lv[1]}` });
+    if (zoom && MAPS[rid]?.lvAll) roadLbl.push({ mx: .5 * X(A.lon) + .5 * X(B.lon), my: .5 * Y(A.lat) + .5 * Y(B.lat), txt: `${MAPS[rid].lvAll[0]}~${MAPS[rid].lvAll[1]}` });
   }
   /* v344: \uc544\uc9c1 \ub9c9\ud78c \uae38 (\ubd81\ucabd \uc721\ub85c \u00b7 \ud669\ud574 \ubc43\uae38) */
   g.setLineDash([2 * sc, 7 * sc]); g.lineWidth = 2 * sc; g.strokeStyle = 'rgba(40,30,20,.7)';
@@ -10421,7 +10471,7 @@ MENU.map = function (ctx) {
     h += `<b>${esc(WM_CITY[sel].n)} \uc9c0\uc5ed</b>${band ? ` <span class="muted">Lv.${band[0]}~${Math.min(120, band[1])}</span>` : ''}<div style="margin:4px 0 10px">`;
     for (const id of ids) { const d = MAPS[id]; if (!d) continue; const v = p.visited[id], here = id === G.mapId; h += `<span class="pill" style="${here ? 'border-color:var(--gold2);color:var(--gold2)' : v ? 'color:var(--ink)' : ''}">${here ? '\ud83d\udccd' : v ? '' : '\u00b7'}${esc(d.n.split(' \u00b7 ')[0])}${d.lv ? ' ' + d.lv[0] + '~' + d.lv[1] : ''}${d.boss ? ' \ud83d\udc51' : ''}</span>`; }
     const roads = wmRoads().filter(r => r[0] === sel || r[1] === sel);
-    if (roads.length) h += `</div><div class="muted" style="margin-bottom:6px">\ud83d\udee4\ufe0f ${roads.map(r => `${esc(MAPS[r[2]].n.split(' \u00b7 ')[0])} (${MAPS[r[2]].lv.join('~')})`).join(' \u00b7 ')}</div>`; else h += `</div>`;
+    if (roads.length) h += `</div><div class="muted" style="margin-bottom:6px">\ud83d\udee4\ufe0f ${roads.map(r => `${esc(MAPS[r[2]].n.split(' \u00b7 ')[0])} (${MAPS[r[2]].lvAll.join('~')})`).join(' \u00b7 ')} <span style="opacity:.7">\u2014 \uae38\ub9c8\ub2e4 \uc9c0\ub3c4 \uc138 \uc7a5\uc744 \uc9c0\ub098\uc57c \ud569\ub2c8\ub2e4</span></div>`; else h += `</div>`;
     if (sel === 'city_busan') h += `<div class="muted">\u26f5 \ubd80\uc0b0 \ud56d\uad6c\uc758 \ubc15\uc120\uc7a5\uc5d0\uac8c \ub9d0\uc744 \uac78\uba74 \uc81c\uc8fc(\uc57d 30\ucd08)\u00b7\ud6c4\ucfe0\uc624\uce74(\uc57d 1\ubd84)\ub85c \ubc30\ub97c \ud0c0\uace0 \uac08 \uc218 \uc788\uc5b4\uc694.</div>`;
   }
   setTimeout(() => {
@@ -11764,7 +11814,7 @@ const _questOnKill200 = questOnKill;
 questOnKill = function (m) {
   _questOnKill200(m);
   const p = G.player, S = p?.side; if (!S) return;
-  for (const q of SIDE_QUESTS) { const s = S[q.id]; if (!s || s.done || s.prog >= q.n || (q.boss ? m.boss !== q.boss : !q.maps.includes(G.mapId))) continue; s.prog++; if (s.prog === q.n) toast(`\ud83d\udcdc \u300c${q.t}\u300d \ubaa9\ud45c \ub2ec\uc131! ${NPCS[q.npc].n}\uc5d0\uac8c \ub3cc\uc544\uac00\uc138\uc694`, 'blue'); }
+  for (const q of SIDE_QUESTS) { const s = S[q.id]; if (!s || s.done || s.prog >= q.n || (q.boss ? m.boss !== q.boss : !q.maps.includes(roadBase(G.mapId)))) continue; s.prog++; if (s.prog === q.n) toast(`\ud83d\udcdc \u300c${q.t}\u300d \ubaa9\ud45c \ub2ec\uc131! ${NPCS[q.npc].n}\uc5d0\uac8c \ub3cc\uc544\uac00\uc138\uc694`, 'blue'); }
 };
 function sideTrackerHTML() {
   const p = G.player, S = p?.side; if (!S) return '';
@@ -14412,7 +14462,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v356';
+const GAME_VER = 'v357';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -16687,7 +16737,7 @@ function squadDefFor(def, id) {
   if (!def || !def.lv || def.lv[0] < SQUAD_MIN_LV || !def.spawns) return null;
   if (def._sq !== undefined) return def._sq;
   const types = [...new Set([...def.spawns, ...((def.zones || []).flatMap(z => z.spawns || []))].map(s => s.m))].filter(t => MOBS[t]);
-  const D = SQUAD_DEFS.find(x => x.re.test(id));
+  const D = SQUAD_DEFS.find(x => x.re.test(roadBase(id)));   /* v357: \uc5b4\uadc0 \uc9c0\ub3c4\ub294 \uc6d0\ub798 \uae38\uc758 \ud3b8\ub300\ub97c \ub530\ub978\ub2e4 */
   const melee = types.filter(t => !MOBS[t].rng && !MOBS[t].fly || (!MOBS[t].rng && MOBS[t].spr?.b === 'human'));
   const rangedHere = types.filter(isRanged);
   const sq = { n: D ? D.n : '\uc694\uad34 \ubb34\ub9ac', shield: D && MOBS[D.shield] ? D.shield : null, ranged: (D ? D.ranged.filter(t => MOBS[t]) : rangedHere), support: D && MOBS[D.support] ? D.support : (types.find(t => MOBS[t].ai === 'support') || null), melee: melee.length ? melee : types.filter(t => !MOBS[t].rng) };
@@ -18321,7 +18371,7 @@ doPromote = function (p) {
    \u00b7 \uc800\uc7a5: p.trade { tier, cargo:{\ubb3c\uac74:{q,cost}}, st:{\ub9c8\uc744:{\ubb3c\uac74:{s \uc7ac\uace0, t \uc7ac\uace0 \uc2dc\uac01, sat \ubb3c\ub9bc, st \ubb3c\ub9bc \uc2dc\uac01}}}, hot:[...], profit, sold }
    \u00b7 \uc2dc\uac04\uc740 \ud50c\ub808\uc774 \uc2dc\uac04(p.playTime)\uc73c\ub85c \uc7b0\ub2e4 \u2014 \uae30\uae30 \uc2dc\uacc4\ub97c \ub3cc\ub824\ub3c4 \uc7ac\uace0\uac00 \ucc28\uc9c0 \uc54a\ub294\ub2e4
    ============================================================ */
-const TRADE = { RATE: .00185, D0: 30, CAP: 2, HOME_SELL: .8, SAT_STEP: .004, SAT_MIN: .6, SAT_TRIP: .08, LUX_TRIP: 8, CHEAP_TRIP: 20, HOT_P: .35, HOT_ADD: .12, HOT_LEN: 2, HOT_D: 450, TILE_SEC: .254, SHOP_SEC: 8, SEA_SEC: 28 };
+const TRADE = { RATE: .00175, D0: 30, CAP: 2, HOME_SELL: .8, SAT_STEP: .004, SAT_MIN: .6, SAT_TRIP: .08, LUX_TRIP: 8, CHEAP_TRIP: 20, HOT_P: .35, HOT_ADD: .12, HOT_LEN: 2, HOT_K: 4.6, TILE_SEC: .254, SHOP_SEC: 8, SEA_SEC: 28 };
 const TR_TIERS = [[8, '\uc9c0\uac8c', 0], [12, '\uc190\uc218\ub808', 5000], [16, '\ub2ec\uad6c\uc9c0', 18000], [20, '\uc6b0\ub9c8\ucc28', 45000], [24, '\uc0c1\ub2e8 \ud589\ub82c', 100000]];
 /* \ub9c8\uc744: [\uad50\uc5ed \ub808\ubca8(\uadf8 \uace0\uc7a5\uc73c\ub85c \uac00\ub294 \uae38\uc758 \ub808\ubca8\ub300), \uc77c\ubcf8 \uc5ec\ubd80] \u2014 \ubb3c\uac74 \uac12\uc758 \ubc14\ud0d5\uc774 \ub41c\ub2e4 */
 const TR_TOWNS = {
@@ -18356,7 +18406,8 @@ function trGeo() {
   for (const [a, b, w] of TR_SEA) { D[a][b] = D[b][a] = Math.min(D[a][b], w); pace[a] = Math.min(pace[a], TRADE.SEA_SEC + TRADE.SHOP_SEC); pace[b] = Math.min(pace[b], TRADE.SEA_SEC + TRADE.SHOP_SEC); }
   for (const k of T) for (const a of T) for (const b of T) if (D[a][k] + D[k][b] < D[a][b]) D[a][b] = D[a][k] + D[k][b];
   for (const a of T) { for (const b of T) D[a][b] = Math.round(D[a][b]); pace[a] = pace[a] >= 9999 ? 80 : Math.round(pace[a] * 2); }
-  return TR_GEO = { D, pace };
+  const near = T.map(a => Math.min(...T.filter(b => b !== a && trLand(a) === trLand(b)).map(b => D[a][b]), 9999)).filter(v => v < 9999).sort((x, y) => x - y);
+  return TR_GEO = { D, pace, hotD: Math.round((near[near.length >> 1] || 100) * TRADE.HOT_K) };
 }
 const trD = (a, b) => { const r = trGeo().D[a]; return r && r[b] !== undefined ? r[b] : 9999; };
 const trPace = t => trGeo().pace[t] || 80;
@@ -18447,7 +18498,7 @@ marketUpdate = function (M) {
     const T = tradeState(); if (!T) return r;
     T.hot = T.hot.filter(h => h.until >= M.nUpd && TR_GOODS[h.g]);
     if (T.hot.length < 2 && Math.random() < TRADE.HOT_P) {
-      const g = pick(Object.keys(TR_GOODS)), d = TR_GOODS[g], towns = Object.keys(TR_TOWNS).filter(t => t !== d.town && trD(d.town, t) <= TRADE.HOT_D && trLand(t) !== 'jeju' && (trLand(t) === trLand(d.town) || d.town === 'jeju'));
+      const g = pick(Object.keys(TR_GOODS)), d = TR_GOODS[g], towns = Object.keys(TR_TOWNS).filter(t => t !== d.town && trD(d.town, t) <= trGeo().hotD && trLand(t) !== 'jeju' && (trLand(t) === trLand(d.town) || d.town === 'jeju'));
       if (towns.length) { const town = pick(towns); T.hot.push({ g, town, until: M.nUpd + TRADE.HOT_LEN }); chat('', `[\uac1d\uc8fc \uc18c\uc2dd] ${d.icon} ${MAPS[town].n}\uc5d0\uc11c ${d.n} \uac12\uc774 \ud06c\uac8c \uc62c\ub790\uc2b5\ub2c8\ub2e4`, true); if (T.cargo[g]) toast(`\ud83d\udcc8 ${MAPS[town].n}\uc5d0\uc11c ${d.n} \uac12\uc774 \ub6f0\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 \uc9d0\uc5d0 \uc788\uc5b4\uc694`, 'gold'); }
     }
   } catch (e) { reportError(e); }
