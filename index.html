@@ -452,6 +452,13 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .sq.main .sq-say{font-size:13px;line-height:1.6}
 .qact{display:flex;align-items:baseline;gap:8px;width:100%;background:none;border:0;border-bottom:1px solid var(--line);color:inherit;font:inherit;text-align:left;padding:9px 2px;margin-bottom:8px;cursor:pointer}
 .qact b{flex:1}
+/* v367 \baa8 \bc14 \c77c 
+   \b7  \c544 \c774 \d3f0 \c740  \ae00 \c790 \ac00  16px \bcf4 \b2e4  \c791 \c740  \c785 \b825 \ce78 \c744  \b204 \b974 \ba74  \d654 \ba74 \c744  \d655 \b300 \d558 \ace0  \b418 \b3cc \b9ac \c9c0  \c54a \b294 \b2e4 (\d655 \b300  \ae08 \c9c0  \c124 \c815 \b3c4  \bb34 \c2dc ) \2192  \d130 \ce58  \ae30 \ae30 \c5d0 \c11c \b294  \c785 \b825 \ce78  \ae00 \c790 \b97c  16px \b85c 
+   \b7  \cc3d  \b192 \c774 : \c544 \c774 \d3f0  \c0ac \d30c \b9ac \b294  vh \ac00  \c8fc \c18c \cc3d \c744  \be80  \c2e4 \c81c  \d654 \ba74 \bcf4 \b2e4  \cee4 \c11c , \ae34  \cc3d (\c9c0 \b3c4  \b4f1 )\c758  \ba38 \b9ac \c904 \acfc  \b2eb \ae30  \bc84 \d2bc \c774  \c704 \b85c  \c798 \b838 \b2e4  \2192  \d654 \ba74  \c601 \c5ed (#modal) \ae30 \c900 \c73c \b85c  */
+@media (pointer:coarse){input,textarea,select{font-size:16px!important}}
+@supports (-webkit-touch-callout:none){input,textarea,select{font-size:16px!important}}
+.win{max-height:min(100%,760px)}
+.wh{flex:0 0 auto}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -505,7 +512,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v366</div>
+    <div class="sub">v367</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6241,13 +6248,16 @@ const MENU = {
       ...['gwangju', 'daegu', 'ulsan', 'busan', 'incheon', 'seoul', 'jeju', 'fukuoka', 'osaka', 'kyoto', 'shizuoka', 'tokyo', 'sendai', 'sapporo'].filter(k => REGION_MAPS[k]).map(k => [MAPS[REGION_MAPS[k][0]].n + ' \uc9c0\uc5ed', REGION_MAPS[k]]),
       ['\ub3c4\uc2dc \uc0ac\uc774 \uac00\ub294 \uae38', Object.keys(MAPS).filter(id => MAPS[id].roadMap || id === 'east_road')],
       ['\uae30\ud0c0', Object.keys(MAPS).filter(id => !inRegion.has(id) && !MAPS[id].roadMap && !/^(buyeo|deer|bamboo|wolf|redvalley|boar|moonlake|spirit|snow|tiger|ruined|ghost|east)/.test(id) && !id.includes('_cave2') && !id.includes('_cave3'))]];
-    for (const [gname, ids] of groups) {
+    /* v367: \uc9c0\uc5ed\ubcc4 \ubaa9\ub85d\uc740 \uc811\uc5b4 \ub454\ub2e4 (\uae38\uc774 \uc138 \uc7a5\uc529\uc73c\ub85c \ub298\uba74\uc11c \ubaa9\ub85d\uc774 \ud654\uba74 \uba87 \uc7a5 \ubd84\ub7c9\uc774 \ub410\ub2e4) */
+    const allIds = [...new Set(groups.flatMap(g => g[1]))].filter(id => MAPS[id]);
+    h += `<div class="row"><div class="tx"><div class="t1">\ud83d\udccb \uc9c0\uc5ed\ubcc4 \uc0ac\ub0e5\ud130 \ubaa9\ub85d</div><div class="t2">\uac00 \ubcf8 \uacf3 ${allIds.filter(id => p.visited[id]).length} / ${allIds.length}</div></div><button class="btn" data-a="mapList">${ctx.mapList ? '\uc811\uae30 \u25b2' : '\ud3bc\uce58\uae30 \u25bc'}</button></div>`;
+    if (ctx.mapList) for (const [gname, ids] of groups) {
       const lvs = ids.map(id => MAPS[id]?.lv).filter(Boolean), band = lvs.length ? ` <span class="muted">Lv.${Math.min(...lvs.map(l => l[0]))}~${Math.max(...lvs.map(l => l[1]))}</span>` : '';
       h += `<b>${gname}</b>${gname === '\ub3c4\uc2dc \uc0ac\uc774 \uac00\ub294 \uae38' ? '' : band}<div style="margin:4px 0 10px">`;
       for (const id of ids) { const d = MAPS[id], v = p.visited[id], here = id === G.mapId; h += `<span class="pill" style="${here ? 'border-color:var(--gold2);color:var(--gold2)' : v ? 'color:var(--ink)' : ''}">${here ? '\ud83d\udccd' : v ? '' : '\u00b7'}${esc(d.n.split(' \u00b7 ')[0])}${d.lv ? ' ' + d.lv[0] + '~' + d.lv[1] : ''}${d.boss ? ' \ud83d\udc51' : ''}</span>`; }
       h += `</div>`;
     }
-    h += `<div class="muted">\uc5ed\ucc38(\ud83d\udc0e)\uc5d0\uc11c \uac00\ubcf8 \ub3c4\uc2dc\ub85c \ubc14\ub85c \uc774\ub3d9\ud560 \uc218 \uc788\uc5b4\uc694. \uc81c\uc8fc\u00b7\uc77c\ubcf8\uc740 \ubd80\uc0b0 \ubc15\uc120\uc7a5\uc758 \ubc30\ub85c \uac11\ub2c8\ub2e4.</div>`;
+    h += `<div class="muted" style="margin-top:6px">\uc5ed\ucc38(\ud83d\udc0e)\uc5d0\uc11c \uac00\ubcf8 \ub3c4\uc2dc\ub85c \ubc14\ub85c \uc774\ub3d9\ud560 \uc218 \uc788\uc5b4\uc694. \uc81c\uc8fc\u00b7\uc77c\ubcf8\uc740 \ubd80\uc0b0 \ubc15\uc120\uc7a5\uc758 \ubc30\ub85c \uac11\ub2c8\ub2e4.</div>`;
     setTimeout(drawBigMap, 0);
     return ['\ud83d\uddfa\ufe0f \uc9c0\ub3c4', h];
   },
@@ -6290,6 +6300,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v367 \ubaa8\ubc14\uc77c \ud654\uba74 \uace0\uce68</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd0d \uc544\uc774\ud3f0\uc5d0\uc11c \uc785\ub825\uce78(\ub2c9\ub124\uc784\u00b7\ube44\ubc00\ubc88\ud638 \ub4f1)\uc744 \ub204\ub974\uba74 \ud654\uba74\uc774 \ud655\ub300\ub41c \ucc44 \ub3cc\uc544\uc624\uc9c0 \uc54a\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\u2715 \uc9c0\ub3c4\ucc98\ub7fc \uae34 \ucc3d\uc5d0\uc11c \ub2eb\uae30 \ubc84\ud2bc\uc774 \ud654\uba74 \uc704\ub85c \uc798\ub9ac\ub358 \ubb38\uc81c\ub97c \uace0\ucce4\uc2b5\ub2c8\ub2e4<br>\ud83d\uddfa\ufe0f \uc9c0\ub3c4 \uc544\ub798 \uc9c0\uc5ed\ubcc4 \ubaa9\ub85d\uc740 \uc811\uc5b4 \ub450\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 '\ud3bc\uce58\uae30'\ub97c \ub204\ub974\uba74 \ubcf4\uc5ec\uc694</div>`;
     notes += `<div class="sep"></div><b>v366 \ub808\ubca8\uc5c5 \uc18c\ub9ac</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf89 \ub808\ubca8\uc774 \uc624\ub97c \ub54c \uaf79\uacfc\ub9ac \uc18c\ub9ac\uac00 \ub0a9\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v365 \ub3d9\uad74 \uc74c\uc545 \uc138 \uace1</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd73\ufe0f \ub3d9\uad74 \uc74c\uc545\uc774 \ud55c \uace1 \ub354 \ub298\uc5b4 \uc138 \uace1\uc774 \ub410\uc2b5\ub2c8\ub2e4 \u2014 \ub3d9\uad74\ub9c8\ub2e4 \ub2e4\ub978 \uace1\uc774 \ub098\uc624\uace0, \uac19\uc740 \ub3d9\uad74\uc758 \uce35\ub07c\ub9ac\ub294 \uac19\uc740 \uace1\uc774\uc5d0\uc694</div>`;
     notes += `<div class="sep"></div><b>v364 \uc0ac\ub0e5\ud130 \uc74c\uc545 \ucd94\uac00</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfb5 \uccad\uc6d4\ucd0c \ub0a8\ucabd \ub4e4\ud310\uacfc \ubd81\ucabd \uace0\uac2f\uae38\uc5d0 \uccab \uc0ac\ub0e5\ud130 \uc804\uc6a9 \uace1\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4<br>\ud83c\udf0a \uc778\ucc9c \u00b7 \uc6b8\uc0b0 \u00b7 \ubd80\uc0b0 \ub4e4\ud310\uc5d0 \uc804\uc6a9 \uace1\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4</div>`;
@@ -6638,6 +6649,7 @@ function onModalClick(e) {
     case 'toggle': p.settings[b.dataset.v] = !p.settings[b.dataset.v]; break;
     case 'save': saveGame(true); toast('\ud83d\udcbe \uc800\uc7a5\ud588\uc2b5\ub2c8\ub2e4', 'blue'); break;
     case 'notes': ctx.notes = !ctx.notes; break;
+    case 'mapList': ctx.mapList = !ctx.mapList; break;
     case 'reset': if (ctx.confirm !== 'reset') { ctx.confirm = 'reset'; break; } Store.del(slotKey(SAVE_SLOT)); location.reload(); return;
     case 'dismiss': { const i = +b.dataset.i; if (ctx.confirm !== 'd' + i) { ctx.confirm = 'd' + i; break; } G.party.splice(i, 1); p.partyDefs.splice(i, 1); ctx.confirm = null; break; }
     case 'buy': case 'buy10': {
@@ -14546,7 +14558,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v366';
+const GAME_VER = 'v367';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -18931,6 +18943,32 @@ enterMap = function (id, arrive, how) {
   try { if ((how === 'exit' || how === 'portal') && G.player) GameSfx.play('map_move', { gap: .3, jit: .03 }); } catch (e) { reportError(e); }
   return r;
 };
+
+/* ============================================================
+   98j_mobile367 (v367): \ubaa8\ubc14\uc77c(\ud2b9\ud788 \uc544\uc774\ud3f0 \uc0ac\ud30c\ub9ac)\uc5d0\uc11c \ud654\uba74\uc774 \ud655\ub300\ub41c \ucc44 \ub3cc\uc544\uc624\uc9c0 \uc54a\ub294 \ubb38\uc81c
+   \u00b7 \uc6d0\uc778: \uc544\uc774\ud3f0\uc740 \uae00\uc790 16px \ubbf8\ub9cc\uc778 \uc785\ub825\uce78\uc5d0 \ud3ec\ucee4\uc2a4\uac00 \uac00\uba74 \ud654\uba74\uc744 \ud655\ub300\ud55c\ub2e4. \uc774 \uac8c\uc784\uc740 \uc0ac\uc6a9\uc790\uac00 \uc190\uac00\ub77d\uc73c\ub85c \ub418\ub3cc\ub9ac\ub294 \uac83(\ud655\ub300\u00b7\ucd95\uc18c)\uc744 \ub9c9\uc544 \ub450\uc5c8\uae30 \ub54c\ubb38\uc5d0
+     \ud55c \ubc88 \ud655\ub300\ub418\uba74 \uc904\uc77c \ubc29\ubc95\uc774 \uc5c6\uc5c8\ub2e4. \ub85c\uadf8\uc778(\ub2c9\ub124\uc784\u00b7\ube44\ubc00\ubc88\ud638), \uce90\ub9ad\ud130 \uc774\ub984, \ud22c\uc790 \uc218\ub7c9 \uc785\ub825\uce78\uc774 \ubaa8\ub450 15px \uc774\ud558\uc600\ub2e4
+   \u00b7 \uace0\uce68 \u2460 \uc785\ub825\uce78 \uae00\uc790\ub97c 16px \ub85c (style.css) \u2192 \uc560\ucd08\uc5d0 \ud655\ub300\ub418\uc9c0 \uc54a\ub294\ub2e4
+          \u2461 \ub450 \uc190\uac00\ub77d \ud655\ub300(\uc0ac\ud30c\ub9ac \uc804\uc6a9 gesture \uc774\ubca4\ud2b8)\ub97c \ub9c9\ub294\ub2e4
+          \u2462 \uadf8\ub798\ub3c4 \ud655\ub300\ub41c \uc0c1\ud0dc\uac00 \ub418\uba74(\uc785\ub825\uc774 \ub05d\ub0ac\ub294\ub370 \ubc30\uc728\uc774 1 \ubcf4\ub2e4 \ud06c\uba74) \ud654\uba74 \ubc30\uc728 \uc124\uc815\uc744 \ub2e4\uc2dc \uac78\uc5b4 1 \ubc30\ub85c \ub418\ub3cc\ub9b0\ub2e4
+   \u00b7 \uac8c\uc784 \uc870\uc791(\ud130\uce58 \ud310\uc815\u00b7\ubc84\ud2bc)\uc740 \uac74\ub4dc\ub9ac\uc9c0 \uc54a\ub294\ub2e4
+   ============================================================ */
+(function () {
+  try {
+    for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) document.addEventListener(ev, e => { e.preventDefault(); }, { passive: false });
+    const meta = document.querySelector('meta[name="viewport"]'), vv = window.visualViewport; if (!meta || !vv) return;
+    const typing = () => { const a = document.activeElement; return !!a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName); };
+    let busy = 0, tmr = 0;
+    function unzoom() {
+      if (busy || typing() || !(vv.scale > 1.02)) return;
+      const base = meta.getAttribute('content'); busy = 1;
+      meta.setAttribute('content', 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover');
+      setTimeout(() => { meta.setAttribute('content', base); try { window.scrollTo(0, 0); } catch (e) { } busy = 0; }, 300);
+    }
+    vv.addEventListener('resize', () => { clearTimeout(tmr); tmr = setTimeout(unzoom, 350); });
+    document.addEventListener('focusout', () => setTimeout(() => { try { if (!typing()) window.scrollTo(0, 0); } catch (e) { } unzoom(); }, 150));
+  } catch (e) { }
+})();
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
