@@ -505,7 +505,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v354</div>
+    <div class="sub">v355</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2415,6 +2415,39 @@ for (const k of Object.keys(ITEMS)) {
     }
   }
 }
+
+/* ============================================================
+   09h_data355 (v355): \ub4dc\ub86d\uc758 \ube48 \uad6c\uac04\uc744 \uba54\uc6b0\ub294 \ud76c\uadc0\u00b7\uc601\uc6c5 \uc7a5\ube44 (Lv.10 ~ 66, 8\ub808\ubca8\ub9c8\ub2e4)
+   \u00b7 \uc65c: \ud76c\uadc0\u00b7\uc601\uc6c5 '\ud2c0' \uc7a5\ube44(g74r2_sword \u2026)\ub294 Lv.74 \ubd80\ud130\ub9cc \uc788\uc5c8\ub2e4. \uadf8 \uc544\ub798\ub294 \uc774\ub984 \uc788\ub294 \uc7a5\ube44\uac00 \ub4dc\ubb38\ub4dc\ubb38 \uc788\uc744 \ubfd0\uc774\ub77c
+     \ub808\ubca8\ub300\uc5d0 \ub530\ub77c \uc5b4\ub5a4 \uc885\ub958\ub294 \uc0ac\ub0e5\uc5d0\uc11c \uc544\uc608 \uc548 \ub098\uc654\ub2e4 \u2014 Lv.46~63 \uc740 \ubb34\uae30\uac00 \ud55c \uc885\ub958\ub3c4 \uc548 \ub098\uc624\uace0,
+     \ub300\uac80\uc740 Lv.6~40 \u00b7 54~71, \ubd80\ucc44\ub294 Lv.6~32 \u00b7 49~71 \uc5d0\uc11c \ube44\uc5b4 \uc788\uc5c8\ub2e4
+   \u00b7 \ubb34\uc5c7: Lv.74+ \uc640 \uac19\uc740 \uacf5\uc2dd\u00b7\uac19\uc740 \uc885\ub958(\ubb34\uae30 7\uc885 + \uac11\uc637\u00b7\ub3c4\ud3ec\u00b7\ubaa9\uac78\uc774\u00b7\ubc18\uc9c0\u00b7\ubd80\uc801)\ub97c Lv.10 \u00b7 18 \u00b7 \u2026 \u00b7 66 \uc5d0 \ub9cc\ub4e0\ub2e4.
+     \uc545\uae30\ub294 53_v240 \uc774 \ubd80\ucc44\uc5d0\uc11c \uc790\ub3d9\uc73c\ub85c \ub9cc\ub4e0\ub2e4. \ud22c\uad6c\u00b7\uc7a5\uac11\u00b7\uc2e0\ubc1c\uc740 \uc774\ubbf8 Lv.12 \ubd80\ud130 \ucd18\ucd18\ud574\uc11c \ub123\uc9c0 \uc54a\ub294\ub2e4
+   \u00b7 \uc5b4\ub5bb\uac8c \uc4f0\uc774\ub098 (fill \ud45c\uc2dc): \uc0ac\ub0e5 \ub4dc\ub86d\uc5d0\uc11c '\uadf8 \ub808\ubca8\ub300\uc5d0 \uadf8 \uc885\ub958\uac00 \ud558\ub098\ub3c4 \uc5c6\uc744 \ub54c'\ub9cc \ub07c\uc5b4\ub4e0\ub2e4 (16_items randomGearId).
+     \uc774\ub984 \uc788\ub294 \uae30\uc874 \uc7a5\ube44\uac00 \uc788\ub294 \uc885\ub958\uc5d0\ub294 \ub07c\uc5b4\ub4e4\uc9c0 \uc54a\ub294\ub2e4 (\uadf8 \uc885\ub958 \uc548\uc5d0\uc11c\uc758 \ube44\uc728\uc740 \uc608\uc804 \uadf8\ub300\ub85c).
+     \ub2e4\ub9cc \ub098\uc624\ub294 \uc885\ub958\uac00 \ub298\uc5b4\ub09c \ub9cc\ud07c \uc804\uccb4\uc5d0\uc11c \uae30\uc874 \uc7a5\ube44\uac00 \ucc28\uc9c0\ud558\ub294 \ubaab\uc740 \uc904\uc5b4\ub4e0\ub2e4 \u2014 Lv.50 \uc5d0\uc11c 100% \u2192 32%. Lv.74+ \uc640 \uac19\uc740 \uad6c\uc131\uc774 \ub41c\ub2e4
+     \uc0c1\uc810 \u00b7 \uba85\ud488\uc0c1\uc810 \u00b7 \uc120\ubb3c \u00b7 \uc218\ub828 \uc7a5\ube44\uc5d0\ub294 \ub098\uc624\uc9c0 \uc54a\ub294\ub2e4 (\ub4dc\ub86d \uc804\uc6a9)
+   \u00b7 \ub4dc\ub86d \ucc3d\uc740 [\ub808\ubca8-5, \ub808\ubca8+2] \uc5ec\ub35f \ub808\ubca8\uc774\ub77c, 8\ub808\ubca8 \uac04\uaca9\uc774\uba74 Lv.8~71 \uc758 \uc5b4\ub290 \ub808\ubca8\uc5d0\uc11c\ub3c4 \ud55c \ub2e8\uacc4\uac00 \uac78\ub9b0\ub2e4
+   ============================================================ */
+{
+  const F2 = ['\ubc31\ub828', '\uc1a1\ud48d', '\uc8fd\ub9bc', '\ud55c\uc6d4', '\uc790\uc6b4', '\uae08\uac15', '\ubcbd\ud574', '\ub2e8\ud48d'];
+  const F3 = ['\uc6a9\ucc9c', '\ud638\uc554', '\ubd09\ub798', '\uce60\uc131', '\ubb34\uadf9', '\ud604\ucc9c', '\uc801\ub8e1', '\ud0dc\ubc31'];
+  for (let i = 0; i < 8; i++) {
+    const L = 10 + i * 8;
+    for (const [r, pre] of [[2, F2[i]], [3, F3[i]]]) {
+      const nn = r === 3 ? 1 : 0, put = (k, d) => { d.fill = 1; ITEMS[`g${L}r${r}_${k}`] = d; };
+      for (const [wt, nouns] of Object.entries(HI_NOUN)) put(wt, mkGear(`${pre}${nouns[nn]}`, 'weapon', L, r, { wt, icon: W_NOUN[wt][1], desc: `Lv.${L} ${RARITY[r].n} ${WEAPON_NAMES[wt]}.` }));
+      put('plate', mkGear(`${pre}${['\uac11', '\uba85\uad11\uac1c'][nn]}`, 'armor', L, r, { icon: '\ud83d\udee1\ufe0f', desc: `Lv.${L} ${RARITY[r].n} \uac11\uc637.` }));
+      const rb = mkGear(`${pre}${['\ub3c4\ud3ec', '\ud559\ucc3d\uc758'][nn]}`, 'armor', L, r, { icon: '\ud83e\udd4b', desc: `Lv.${L} ${RARITY[r].n} \ub3c4\ud3ec.` }), rm = [1, 1.08, 1.18, 1.32][r];
+      Object.assign(rb, { hp: Math.round((14 + L * 6.5) * rm), def: Math.round((1 + L * .7) * rm), mp: Math.round((10 + L * 3) * rm), robe: 1 }); put('robe', rb);
+      put('neck', mkGear(`${pre}${['\ubaa9\uac78\uc774', '\uc5fc\uc8fc'][nn]}`, 'necklace', L, r, { icon: '\ud83d\udcff', desc: `Lv.${L} ${RARITY[r].n} \ubaa9\uac78\uc774.` }));
+      put('ring', mkGear(`${pre}${['\ubc18\uc9c0', '\uac00\ub77d\uc9c0'][nn]}`, 'ring', L, r, { icon: '\ud83d\udc8d', desc: `Lv.${L} ${RARITY[r].n} \ubc18\uc9c0.`, x: r === 3 ? { crit: .03 } : {} }));
+      put('charm', mkGear(`${pre}${['\ubd80\uc801', '\ud638\ubd80'][nn]}`, 'charm', L, r, { icon: '\ud83e\uddff', desc: `Lv.${L} ${RARITY[r].n} \ubd80\uc801.`, x: r === 3 ? { hpRegen: 1.5 } : {} }));
+    }
+  }
+}
+/* \uc7a5\ube44\uc758 \uc885\ub958: \ubb34\uae30\ub294 \ubb34\uae30 \uc885\ub958\ubcc4, \uac11\uc637\uc740 \uac11\uc637/\ub3c4\ud3ec, \ud22c\uad6c\ub294 \ud22c\uad6c/\uac13, \uadf8 \ubc16\uc740 \uce78 \uc774\ub984 */
+function gearKind(d) { return d.slot === 'weapon' ? 'w:' + d.wt : d.slot === 'armor' ? (d.robe ? 'robe' : 'plate') : d.slot === 'helmet' ? (d.robe ? 'hat' : 'helm') : d.slot; }
 
 /* ============================================================
    10_sprites: procedural pixel-art. Every sprite is drawn once
@@ -5889,8 +5922,10 @@ function rarityToast(r) { return r >= 4 ? 'gold' : r >= 3 ? 'purple' : 'blue'; }
 const GEAR_IDS = Object.keys(ITEMS).filter(k => isGear(ITEMS[k]));
 function randomGearId(L, o = {}) {
   const spread = o.spread || 5, minR = o.minRarity ?? 0, maxR = o.maxRarity ?? 3;
-  let pool = GEAR_IDS.filter(k => { const d = ITEMS[k]; return !d.base && d.lv <= L + 2 && d.lv >= L - spread && d.rarity >= minR && d.rarity <= maxR; });
-  if (!pool.length) pool = GEAR_IDS.filter(k => ITEMS[k].lv <= L + 3 && ITEMS[k].rarity >= Math.min(minR, 2));
+  let pool = GEAR_IDS.filter(k => { const d = ITEMS[k]; return !d.base && !d.fill && d.lv <= L + 2 && d.lv >= L - spread && d.rarity >= minR && d.rarity <= maxR; });
+  /* v355: \uc774 \ub808\ubca8\ub300\uc5d0 \ud558\ub098\ub3c4 \uc5c6\ub294 \uc885\ub958\ub294 \ucc44\uc6c0 \uc7a5\ube44(09h_data355)\ub85c \uba54\uc6b4\ub2e4 \u2014 \uc788\ub294 \uc885\ub958\ub294 \uc608\uc804 \uadf8\ub300\ub85c */
+  { const have = new Set(pool.map(k => gearKind(ITEMS[k]))); for (const k of GEAR_IDS) { const d = ITEMS[k]; if (d.fill && d.lv <= L + 2 && d.lv >= L - spread && d.rarity >= minR && d.rarity <= maxR && !have.has(gearKind(d))) pool.push(k); } }
+  if (!pool.length) pool = GEAR_IDS.filter(k => !ITEMS[k].fill && ITEMS[k].lv <= L + 3 && ITEMS[k].rarity >= Math.min(minR, 2));
   if (!pool.length) return null;
   /* rarer items are rarer */
   const w = pool.map(k => ({ k, w: [10, 7, 4, 1.6, .5, .2][ITEMS[k].rarity] }));
@@ -6199,6 +6234,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v355 \uc0ac\ub0e5 \ub4dc\ub86d \ube48 \uad6c\uac04 \uba54\uc6c0</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2694\ufe0f Lv.8~71 \uc5d0\uc11c \uc0ac\ub0e5\uc73c\ub85c \uc548 \ub098\uc624\ub358 \uc7a5\ube44 \uc885\ub958\uac00 \uc774\uc81c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\u00b7\uc601\uc6c5)<br>\ud83d\udde1\ufe0f \ud2b9\ud788 Lv.46~63 \uc740 \ubb34\uae30\uac00 \ud55c \uc885\ub958\ub3c4 \uc548 \ub098\uc654\uc5b4\uc694 \u2014 \uc774\uc81c \uc9c1\uc5c5 \ubb34\uae30\uac00 \ubaa8\ub450 \ub098\uc635\ub2c8\ub2e4<br>\ud83d\udce6 \uc774\ub984 \uc788\ub294 \uae30\uc874 \uc7a5\ube44\ub3c4 \uadf8\ub300\ub85c \ub098\uc635\ub2c8\ub2e4 (\ub098\uc624\ub294 \uc885\ub958\uac00 \ub298\uc5b4\ub09c \ub9cc\ud07c \ube44\uc911\uc740 \uc904\uc5b4\uc694)</div>`;
     notes += `<div class="sep"></div><b>v354 \ud48d\ub958\uac1d\uc758 \uad50\uac10 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \ub4dc\ub86d</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc3e \ud48d\ub958\uac1d\uc774 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uad50\uac10\uc744 \uc501\ub2c8\ub2e4 \u2014 \ub3d9\ud589 \uc601\ubb3c\uc758 \ud6a8\uacfc +30%<br>\ud83e\udde4 \ud76c\uadc0\u00b7\uc601\uc6c5 \uc7a5\uac11\uacfc \uc2e0\ubc1c\uc774 \uc0ac\ub0e5\uc5d0\uc11c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\ub294 \uc7a5\ube44\uc0c1\uc5d0\uc11c\ub3c4 \ud314\uc544\uc694)<br>\ud83d\udcd6 \uc774\uc81c \ub124 \uc9c1\uc5c5 \ubaa8\ub450 \ud328\uc2dc\ube0c\uac00 \ud558\ub098\uc529 \uc788\uc5b4\uc694 \u2014 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
     notes += `<div class="sep"></div><b>v353 \uac00\uac8c \uac04\ud310 \u00b7 \uc18c\ud488 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udea7 \uac04\ud310\uc744 \uc9c0\ubd95 \uc704\ub85c \uc62c\ub9ac\uace0 \ud0a4\uc6e0\uc5b4\uc694 \u2014 \uc591 \ub05d\uc5d0 \uc5c5\uc885 \uadf8\ub9bc<br>\ud83c\udfea \uac00\uac8c\ub9c8\ub2e4 \uc18c\ud488\uc774 \ub193\uc600\uc5b4\uc694 \u2014 \ubb34\uae30 \uac70\uce58\ub300, \uac11\uc637 \uac78\uc774, \uc57d\ucd08 \ub2e4\ubc1c, \uc220\ub3c5 \u2026<br>\ud83e\udde4 \uc7a5\uac11 \u00b7 \uc2e0\ubc1c\uc774 \uc0c8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v352 \ub9c8\uc744 \u00b7 \ubaac\uc2a4\ud130 \uadf8\ub9bc \uac1c\ud3b8</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfe0 \uc9d1\uc744 \uc0c8\ub85c \uadf8\ub838\uc5b4\uc694 \u2014 \ud55c\uc625 \u00b7 \uc77c\ubcf8 \uc9d1 \u00b7 \uc81c\uc8fc \ub3cc\ub2f4\uc9d1<br>\ud83e\uddd1\u200d\ud83c\udf3e \uac00\uac8c \uc8fc\uc778\uc774 \uac00\uac8c \uc548 \ub9e4\ub300 \ub4a4\uc5d0 \uc12d\ub2c8\ub2e4 (\uc9d1 \uc8fc\uc778\uc740 \ubaa8\ub450 \ub0a8\ucabd \ubb38 \uc55e)<br>\ud83d\udc2f \ud638\ub791\uc774 \u00b7 \ub291\ub300 \u00b7 \uc5ec\uc6b0 \u00b7 \uace0\uc591\uc774 \u00b7 \uba67\ub3fc\uc9c0\uc640 \ubcf4\uc2a4 18\uc885\uc758 \ubaa8\uc2b5\uc774 \ubc14\ub00c\uc5c8\uc5b4\uc694</div>`;
@@ -6307,7 +6343,7 @@ function shopStock(d) {
   const usable = id => ITEMS[id].slot !== 'weapon' || p.job === 'none' || JOBS[p.job].weapons.includes(ITEMS[id].wt);
   const near = id => ITEMS[id].lv <= p.lv + 6 && ITEMS[id].lv >= p.lv - 12;
   const base = GEAR_IDS.filter(id => ITEMS[id].base && inCat(id) && near(id) && usable(id));
-  const extra = GEAR_IDS.filter(id => !ITEMS[id].base && inCat(id) && ITEMS[id].rarity <= 2 && near(id) && usable(id)).sort((a, b) => Math.abs(ITEMS[a].lv - p.lv) - Math.abs(ITEMS[b].lv - p.lv)).slice(0, 5);
+  const extra = GEAR_IDS.filter(id => !ITEMS[id].base && !ITEMS[id].fill && inCat(id) && ITEMS[id].rarity <= 2 && near(id) && usable(id)).sort((a, b) => Math.abs(ITEMS[a].lv - p.lv) - Math.abs(ITEMS[b].lv - p.lv)).slice(0, 5);
   return [...base, ...extra].sort((a, b) => ITEMS[a].lv - ITEMS[b].lv || ITEMS[a].rarity - ITEMS[b].rarity).slice(0, d.cat === 'armor' ? 26 : 18);   /* v337: \ubc29\uc5b4\uad6c \ud0ed\uc740 \ud22c\uad6c\uae4c\uc9c0 \ub4e4\uc5b4\uac00\uc11c \uc870\uae08 \ub354 \uae38\uac8c */
 }
 function shopHtml(n, ctx, stock, priceMul = 1) {
@@ -6346,7 +6382,7 @@ const NPCV = {
   shop(n, ctx) { return [`\ud83c\udfee ${n.name} \u00b7 ${n.role}`, sayBox(n, n.def.line) + shopHtml(n, ctx, shopStock(n.def))]; },
   premium(n, ctx) {
     const p = G.player;
-    if (G.time > p.premium.t || !p.premium.stock.length) { p.premium.t = G.time + 600; const pool = GEAR_IDS.filter(id => ITEMS[id].rarity >= 3 && ITEMS[id].rarity <= 4 && ITEMS[id].lv <= p.lv + 10 && ITEMS[id].lv >= p.lv - 15); p.premium.stock = []; for (let i = 0; i < 8 && pool.length; i++) p.premium.stock.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]); }
+    if (G.time > p.premium.t || !p.premium.stock.length) { p.premium.t = G.time + 600; const pool = GEAR_IDS.filter(id => !ITEMS[id].fill && ITEMS[id].rarity >= 3 && ITEMS[id].rarity <= 4 && ITEMS[id].lv <= p.lv + 10 && ITEMS[id].lv >= p.lv - 15); p.premium.stock = []; for (let i = 0; i < 8 && pool.length; i++) p.premium.stock.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]); }
     return [`\ud83d\udc8e ${n.name} \u00b7 \uba85\ud488\uc0c1\uc810`, sayBox(n, n.def.line) + `<div class="muted" style="margin-bottom:6px">\uc9c4\uc5f4\uc740 10\ubd84\ub9c8\ub2e4 \ubc14\ub01d\ub2c8\ub2e4 (${Math.max(0, Math.ceil((p.premium.t - G.time) / 60))}\ubd84 \ub4a4)</div>` + shopHtml(n, ctx, p.premium.stock, 1.5)];
   },
   smith(n, ctx) {
@@ -11908,7 +11944,7 @@ function noviceJobModal() {
 function novicePickJob(p, job) {
   chooseJob(p, job); giveStarter(p);
   /* shop-grade gear for Lv.10 */
-  const pickFor = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && d.lv <= p.lv && d.rarity <= 2 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
+  const pickFor = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && !d.fill && d.lv <= p.lv && d.rarity <= 2 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
   const w = pickFor('weapon', d => JOBS[job].weapons.includes(d.wt)), a = pickFor('armor', d => JOBS[job].magic ? d.robe || d.mp : !d.robe || d.def);
   for (const id of [w, a, pickFor('necklace'), pickFor('ring'), pickFor('charm')]) if (id) { const it = makeItem(id, { roll: false }); p.inv.push(it); if (!canEquip(p, it)) equipItem(p, it); }
   calcStats(p); p.hp = p.s.maxHp; p.mp = p.s.maxMp;
@@ -14369,7 +14405,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v354';
+const GAME_VER = 'v355';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -14508,7 +14544,7 @@ calcStats = function (e) {
 };
 function testerGear(p, L) {
   const job = p.job === 'none' ? 'warrior' : p.job, magic = JOBS[job].magic;
-  const pickFor = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && d.lv <= L && d.rarity <= 2 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
+  const pickFor = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && !d.fill && d.lv <= L && d.rarity <= 2 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
   const eq = { weapon: pickFor('weapon', d => JOBS[job].weapons.includes(d.wt)), armor: pickFor('armor', d => magic ? (d.robe || d.mp) : !d.robe), necklace: pickFor('necklace'), ring1: pickFor('ring'), ring2: pickFor('ring'), charm: pickFor('charm') };
   for (const [s, id] of Object.entries(eq)) if (id) p.eq[s] = makeItem(id, { roll: false });
 }
@@ -15832,7 +15868,7 @@ function makeYungi(p) {
   for (const [id, d] of Object.entries(MAPS)) if (d.lv && d.lv[0] <= 60 && d.region !== 'japan' && !/^japan/.test(id)) p.visited[id] = 1;
   for (const [id, d] of Object.entries(MAPS)) if (d.kind === 'town' && d.region !== 'japan' && [...(d.exits || []), ...(d.portals || [])].some(e => p.visited[e.to])) p.visited[id] = 1;
   for (const id of ['buyeo', 'city_daejeon']) p.visited[id] = 1;
-  const best = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && d.lv <= 60 && d.rarity <= 3 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
+  const best = (slot, test) => GEAR_IDS.filter(id => { const d = ITEMS[id]; return d.slot === slot && !d.fill && d.lv <= 60 && d.rarity <= 3 && (!test || test(d)); }).sort((a, b) => ITEMS[b].lv - ITEMS[a].lv || ITEMS[b].rarity - ITEMS[a].rarity)[0];
   const wear = (slot, id) => { if (!id) return; const it = makeItem(id); it.plus = 5; if (it.idf === false) it.idf = true; p.eq[slot] = it; try { onObtainGear(p, it); } catch (e) { } };
   wear('weapon', best('weapon', d => JOBS.warrior.weapons.includes(d.wt)));
   wear('armor', best('armor', d => !d.robe));
@@ -17384,7 +17420,7 @@ shopStock = function (d) {
   const usable = id => ITEMS[id].slot !== 'weapon' || p.job === 'none' || JOBS[p.job].weapons.includes(ITEMS[id].wt);
   const ok = id => { const it = ITEMS[id]; return inCat(id) && usable(id) && it.lv >= band[0] && it.lv <= band[1] && (!SHOP_SUB || shopSubKey(it) === SHOP_SUB); };
   const base = GEAR_IDS.filter(id => ITEMS[id].base && ok(id));
-  const extra = GEAR_IDS.filter(id => !ITEMS[id].base && ITEMS[id].rarity <= 2 && ok(id)).sort((a, b) => Math.abs(ITEMS[a].lv - p.lv) - Math.abs(ITEMS[b].lv - p.lv)).slice(0, SHOP_SUB ? 6 : 999);
+  const extra = GEAR_IDS.filter(id => !ITEMS[id].base && !ITEMS[id].fill && ITEMS[id].rarity <= 2 && ok(id)).sort((a, b) => Math.abs(ITEMS[a].lv - p.lv) - Math.abs(ITEMS[b].lv - p.lv)).slice(0, SHOP_SUB ? 6 : 999);
   return [...base, ...extra].sort((a, b) => ITEMS[a].lv - ITEMS[b].lv || ITEMS[a].rarity - ITEMS[b].rarity);
 };
 const _npcShop338 = NPCV.shop;
