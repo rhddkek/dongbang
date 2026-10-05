@@ -476,6 +476,8 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .cgbar i{display:block;height:100%;background:linear-gradient(90deg,#8a6a2a,#d9b25f)}
 .btn.junk{border-color:#c8574a;color:#ffb8a8}
 .bulk1.junkbox{margin:0 0 10px}.bulk1.junkbox .btn.big{margin-top:0}
+/* v372: \c7a0 \ae08  \d45c \c2dc (\1f512 )\c640  \25b2 \25bc  \d45c \c2dc \ac00  \ac19 \c740  \c790 \b9ac \c5d0  \acb9 \ce58 \c9c0  \c54a \ac8c  */
+.slot.g-up .lk~.gb,.slot.g-down .lk~.gb,.slot.g-no .lk~.gb{right:15px}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -529,7 +531,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v371</div>
+    <div class="sub">v372</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2207,7 +2209,7 @@ const HI_LEGENDS = {
 };
 for (const [id, [boss, d]] of Object.entries(HI_LEGENDS)) { ITEMS[id] = d; const B = BOSSES[boss]; if (B) (B.drops = B.drops || []).push(id); }
 /* high-level shops in Japan also carry the matching tier */
-for (const [c, L] of [['japan_fukuoka', 102], ['japan_osaka', 106], ['japan_kyoto', 106], ['japan_shizuoka', 110], ['japan_tokyo', 114], ['japan_sendai', 116], ['japan_sapporo', 118]])
+for (const [c, L] of [['japan_fukuoka', 102], ['japan_osaka', 106], ['japan_kyoto', 106], ['japan_shizuoka', 110], ['japan_tokyo', 114], ['japan_sendai', 114], ['japan_sapporo', 118]])
   for (const nid of MAPS[c]?.npcs || []) { const n = NPCS[nid]; if (n?.kind === 'shop' && n.goods?.some(g => isGearDef(ITEMS[g]))) n.goods.push(...['sword', 'staff', 'fan', 'dagger'].map(w => `g${L}r2_${w}`), `g${L}r2_plate`, `g${L}r2_robe`); }
 function isGearDef(d) { return !!d && ['weapon', 'armor', 'helmet', 'gloves', 'shoes', 'necklace', 'ring', 'charm'].includes(d.slot); }
 /* guides tell you the band */
@@ -5914,7 +5916,11 @@ const BAG_CAPS = { weapon: 50, armor: 50, acc: 50, use: 30, material: 60 };
 const BAG_CAT_OF = { weapon: 'weapon', armor: 'armor', helmet: 'armor', gloves: 'armor', shoes: 'armor', necklace: 'acc', ring: 'acc', charm: 'acc', material: 'material' };
 function bagCat(id) { const d = typeof id === 'string' ? ITEMS[id] : id; return (d && BAG_CAT_OF[d.slot]) || 'use'; }
 function bagCounts(p) { const c = { weapon: 0, armor: 0, acc: 0, use: 0, material: 0 }; for (const it of p.inv) c[bagCat(it.id)]++; return c; }
-function bagNearFull(p) { const c = bagCounts(p); return Object.keys(BAG_CAPS).some(k => c[k] >= BAG_CAPS[k] - 2); }
+const BAG_CAT_NAME = { weapon: '\ubb34\uae30', armor: '\ubc29\uc5b4\uad6c', acc: '\uc7a5\uc2e0\uad6c', use: '\uc18c\ubaa8\ud488', material: '\uc7ac\ub8cc' };
+/* \uac00\ubc29 \ub2e8\ucd94\uc758 '\uace7 \uac00\ub4dd' \ud45c\uc2dc: \uc7a5\ube44 \uce78\uc740 2\uce78 \ub0a8\uc558\uc744 \ub54c\ubd80\ud130, \uacb9\uccd0\uc9c0\ub294 \uc18c\ubaa8\ud488\u00b7\uc7ac\ub8cc\ub294 \uc815\ub9d0 \uac00\ub4dd \ucc3c\uc744 \ub54c\ub9cc (v372: \uc7ac\ub8cc\ub97c 58\uc885 \ub2e4 \ubaa8\uc73c\uba74 \ub298 \ucf1c\uc838 \uc788\uc5c8\ub2e4) */
+function bagNearFull(p) { const c = bagCounts(p); return Object.keys(BAG_CAPS).some(k => c[k] >= BAG_CAPS[k] - (k === 'use' || k === 'material' ? 0 : 2)); }
+/* v372: \ubcf4\uc0c1\uc73c\ub85c \ubc1b\ub294 \ubb3c\uac74\uc740 \uce78\uc774 \uac00\ub4dd \ucc28\ub3c4 \uc783\uc9c0 \uc54a\ub294\ub2e4 (\uce78\uc744 \ub118\uaca8\uc11c\ub77c\ub3c4 \ub123\ub294\ub2e4 \u2014 \ub2e4\uc74c\ubd80\ud130 \uadf8 \uc885\ub958\ub97c \ub354 \ubabb \uc8fc\uc6b8 \ubfd0) */
+function giveItem(p, id, n = 1) { if (!ITEMS[id]) return false; if (addItem(p, id, n)) return true; if (stackable(ITEMS[id])) p.inv.push({ id, uid: uid(), n, plus: 0 }); else for (let i = 0; i < n; i++) { const it = makeItem(id); p.inv.push(it); if (p === G.player) onObtainGear(p, it); } return true; }
 function invFull(p, id) { const c = bagCounts(p); if (id) { const k = bagCat(id); return c[k] >= BAG_CAPS[k]; } return ['weapon', 'armor', 'acc'].some(k => c[k] >= BAG_CAPS[k]); }
 function addItem(p, id, n = 1, opt = {}) {
   const d = ITEMS[id]; if (!d) return false;
@@ -5958,7 +5964,7 @@ function equipItem(p, it) {
 }
 function unequip(p, slot) {
   const it = p.eq[slot]; if (!it) return;
-  if (invFull(p, it.id)) { toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694', 'red'); return; }
+  if (invFull(p, it.id)) { toast(`\uac00\ubc29 ${BAG_CAT_NAME[bagCat(it.id)]} \uce78\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694`, 'red'); return; }
   p.eq[slot] = null; p.inv.push(it); calcStats(p);
 }
 function itemPower(it) { const d = ITEMS[it.id]; if (!d) return 0; const m = enhMul(it); return ((d.atk || 0) * 1.4 + (d.mag || 0) * 1.4 + (d.hp || 0) * .35 + (d.def || 0) * 2 + (d.mp || 0) * .2 + (d.crit || 0) * 400) * m + (it.opts?.length || 0) * 6; }
@@ -5998,7 +6004,7 @@ function usePotionAuto(p, kind) {
 }
 function openBox(p, it) {
   const d = ITEMS[it.id];
-  if (invFull(p) && it.id !== 'luckyPouch') { toast('\uac00\ubc29\uc5d0 \uc790\ub9ac\uac00 \ud544\uc694\ud574\uc694', 'red'); return; }
+  if (invFull(p) && it.id !== 'luckyPouch') { toast('\uac00\ubc29 \uc7a5\ube44 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c)\uc5d0 \uc790\ub9ac\uac00 \ud544\uc694\ud574\uc694', 'red'); return; }
   takeItem(p, it.id, 1);
   if (it.id === 'luckyPouch') { const g = Math.round((40 + p.lv * 12) * rnd(.6, 2.2)); p.gold += g; toast(`\ud83c\udf81 \ubcf5\uc8fc\uba38\ub2c8\uc5d0\uc11c ${fmt(g)}\ubb38!`, 'gold'); if (Math.random() < .3) { addItem(p, pick(['largePotion', 'manaPotion', 'whetstone', 'returnScroll'])); } return; }
   const minR = it.id === 'hunterBox' ? 1 : it.id === 'artisanBox' ? 2 : 3;
@@ -6087,7 +6093,7 @@ function updateDrops(dt) {
       if (isGear(def)) { ok = !invFull(p, d.id); if (ok) { const it = Object.assign(makeItem(d.id), { plus: d.plus }); p.inv.push(it); onObtainGear(p, it); } }
       else ok = addItem(p, d.id, d.n);
       if (ok) { d.taken = true; floatText(p.x, p.y - 60, (def.icon || '') + ' ' + def.name + (d.plus ? ' +' + d.plus : ''), RARITY[def.rarity].c); if (def.rarity >= 3) toast(`${def.icon || '\u2728'} ${def.name} \ud68d\ub4dd!`, rarityToast(def.rarity)); Sfx.pickup(); }
-      else if (!d.warned) { d.warned = true; toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694! \uc7a1\ud654\uc0c1\uc5d0\uc11c \ud314\uac70\ub098 \uc815\ub9ac\ud558\uc138\uc694.', 'red'); }
+      else if (!d.warned) { d.warned = true; const k = bagCat(d.id); toast(`\uac00\ubc29 ${BAG_CAT_NAME[k]} \uce78\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694 (${BAG_CAPS[k]}\uce78)! \uc0c1\uc810\uc5d0\uc11c \ud314\uac70\ub098 \uc815\ub9ac\ud558\uc138\uc694.`, 'red'); }
     }
     if (d.t > 120) d.taken = true;
   }
@@ -6129,7 +6135,7 @@ function tryEnhance(p, it, bonus = 0, aid = {}) {
 function craft(p, r) {
   if (p.gold < r.gold) return '\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4';
   for (const [k, v] of Object.entries(r.need)) if (invCount(p, k) < v) return `${ITEMS[k].name} ${v - invCount(p, k)}\uac1c\uac00 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4`;
-  if (invFull(p, r.id)) return '\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694';
+  if (invFull(p, r.id)) return `\uac00\ubc29 ${BAG_CAT_NAME[bagCat(r.id)]} \uce78\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694`;
   p.gold -= r.gold; for (const [k, v] of Object.entries(r.need)) takeItem(p, k, v);
   addItem(p, r.id, 1); Sfx.level();
   if (ITEMS[r.id].rarity >= 4) announceDrop(ITEMS[r.id]);
@@ -6326,6 +6332,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v372 \uc804\uccb4 \uc810\uac80 \u00b7 \uc794\uc190\uc9c8</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf81 \uc758\ub8b0\u00b7\uc774\uc57c\uae30 \ubcf4\uc0c1\uc740 \uac00\ubc29 \uce78\uc774 \uac00\ub4dd \ucc28 \uc788\uc5b4\ub3c4 \uc783\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4<br>\ud83c\udf92 \uce78\uc774 \uac00\ub4dd \ucc28\uba74 \uc5b4\ub290 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c\u2026)\uc778\uc9c0 \uc54c\ub824 \uc90d\ub2c8\ub2e4 \u00b7 \uc7ac\ub8cc\ub97c \ub2e4 \ubaa8\uc544\ub3c4 \uac00\ubc29 \ub2e8\ucd94 \uacbd\uace0\uac00 \ucf1c\uc838 \uc788\ub358 \uac83 \uace0\uce68<br>\ud83d\udd12 \uc7a0\uadfc \uc7a5\ube44\uc758 \uc790\ubb3c\uc1e0\uc640 \u25b2\u25bc \ud45c\uc2dc\uac00 \uacb9\uce58\ub358 \uac83 \uace0\uce68<br>\u25bc '\uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30'\uc5d0\uc11c \uc138\ud2b8 \uc7a5\ube44 \u00b7 \uac10\uc815 \uc804 \uc7a5\ube44\ub294 \ube60\uc9d1\ub2c8\ub2e4 (\uc218\uce58\uac00 \ub0ae\uc544 \ubcf4\uc5ec\ub3c4 \ud6a8\uacfc\uac00 \uc788\uc5b4\uc11c)<br>\ud83c\udfef \uc13c\ub2e4\uc774 \uc0c1\uc810\uc5d0 \ube60\uc838 \uc788\ub358 Lv.114 \uc7a5\ube44\uac00 \ub4e4\uc5b4\uc654\uc2b5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v371 \uac00\ubc29 \uce78 \ub298\ub9bc \u00b7 \uad50\uc5ed\ud488 \ud0ed \u00b7 \ud070 \uc9d0\uce78</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \uce78\uc744 \uc885\ub958\ubcc4\ub85c \ub530\ub85c \uc149\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c 50\uce78\uc529, \uc18c\ubaa8\ud488 30\uce78, \uc7ac\ub8cc 60\uce78<br>\ud83e\uddf3 \uac00\ubc29\uc5d0 '\uad50\uc5ed\ud488' \ud0ed\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uc2e4\uc740 \uc9d0\uc744 \uc5ec\uae30\uc11c \ubd05\ub2c8\ub2e4. \uce78 \uc218\ub294 \uac1d\uc8fc\uc758 '\uc9d0\uce78'\uc744 \ub298\ub9ac\uba74 \ucee4\uc838\uc694<br>\ud83d\uded2 \uc9d0\uce78\uc774 \ucee4\uc84c\uc2b5\ub2c8\ub2e4: \uc9c0\uac8c 10 \u00b7 \uc190\uc218\ub808 20 \u00b7 \ub2ec\uad6c\uc9c0 30 \u00b7 \uc6b0\ub9c8\ucc28 40 \u00b7 \uc0c1\ub2e8 \ud589\ub82c 100\uce78. \uc2fc \ubb3c\uac74\uc774 \ub9ce\uc774 \uc313\uc774\uace0 \uac1c\ub2f9 \uac12\uc740 \ub0b4\ub838\uc2b5\ub2c8\ub2e4 (\uc2e4\uc5b4 \ub454 \uc9d0\uc740 \uac19\uc740 \uac12\uc5b4\uce58\ub85c \uac1c\uc218\uac00 \ub298\uc5b4\ub0a9\ub2c8\ub2e4)<br>\u25bc \uc0c1\uc810 \ud314\uae30\uc5d0 '\uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30'\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \ube68\uac15 \ud45c\uc2dc \uc7a5\ube44\ub9cc \ud55c \ubc88\uc5d0 (\ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \uc81c\uc678)<br>\ud83e\uddff \uadc0\ud658 \ubd80\uc801\uc744 \uc4f0\uba74 \ucc3d\uc774 \ub2eb\ud788\uace0 \ube5b\uae30\ub465\uacfc \ud568\uaed8 \ub3cc\uc544\uac11\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v370 \uac00\ubc29 \uc815\ub9ac \u00b7 \uc7a5\ube44 \ub4dc\ub78d \ud558\ud5a5</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29\uc758 '\uc804\uccb4' \ud0ed\uc744 \uc5c6\uc574\uc2b5\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c \u00b7 \uc18c\ubaa8\ud488 \u00b7 \uc7ac\ub8cc\ub85c \ubd05\ub2c8\ub2e4<br>\u25b2\u25bc \uc7a5\ube44 \uce78 \uc624\ub978\ucabd \uc704\uc5d0 \ud45c\uc2dc\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4: \uc5f0\ub450 \u25b2 \ub294 \uc9c0\uae08 \uac83\ubcf4\ub2e4 \uc88b\uc740 '\ubcf4\ubb3c', \ube68\uac15 \u25bc\u00b7\u2715 \ub294 \ud314\uc544\ub3c4 \ub418\ub294 '\uace0\ubb3c', Lv \ub294 \uc544\uc9c1 \ubabb \ucc28\ub294 \uac83<br>\ud83d\udcc9 \uc0ac\ub0e5\ud130 \uc7a5\ube44 \ub4dc\ub78d\uc744 \uc904\uc600\uc2b5\ub2c8\ub2e4 \u2014 \ubcf4\ud1b5 \ubaac\uc2a4\ud130 2% \u2192 0.7% (\uc815\uc608\u00b7\uc774\ub984 \ubd99\uc740 \ub188\u00b7\ubcc0\uc885\u00b7\ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c). \uc7a5\ube44\ub294 \uc0c1\uc810\ub3c4 \ud568\uaed8 \uc4f0\uc138\uc694<br>\ud83c\udf0b \uc81c\uc8fc \uacf6\uc790\uc648 \ub4f1\uc5d0\uc11c \uc804\uc124 \uc7a5\ube44\uac00 \ub108\ubb34 \uc790\uc8fc \ub098\uc624\ub358 \uac83\uc744 \ud06c\uac8c \uc904\uc600\uc2b5\ub2c8\ub2e4<br>\ud83d\udd73\ufe0f \uc0c8 \ub3d9\uad74 \uc74c\uc545\uc774 \ub3fc\uc9c0\uad74\uc5d0\uc11c\ub3c4 \ub098\uc635\ub2c8\ub2e4 \u00b7 \ud83d\udc65 \ub3d9\ub8cc \uccb4\ub825\ubc14 \ubc30\uacbd\uc744 \uc605\uac8c \ud588\uc2b5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v369 \ubcf4\uc2a4\ub294 5\ubd84 \ub4a4\uc5d0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc51 \ubcf4\uc2a4\ub294 \uc7a1\uc740 \ub4a4 5\ubd84 \uc788\ub2e4\uac00 \ub2e4\uc2dc \ub098\uc635\ub2c8\ub2e4 (\uc804\uc5d0\ub294 2\ubd84 30\ucd08) \u2014 \uac8c\uc784\uc744 \uaebc \ub454 \uc2dc\uac04\ub3c4 \ud3ec\ud568\ud574\uc694<br>\ud83d\udd04 \uc0c8\ub85c\uace0\uce68\ud558\uba74 \ubcf4\uc2a4\uac00 \ubc14\ub85c \ub2e4\uc2dc \ub098\uc624\ub358 \uac83\uc744 \ub9c9\uc558\uc2b5\ub2c8\ub2e4<br>\u23f3 \ubcf4\uc2a4\uac00 \uc544\uc9c1 \uc548 \ub3cc\uc544\uc628 \uacf3\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ub0a8\uc740 \uc2dc\uac04\uc744 \uc54c\ub824 \uc90d\ub2c8\ub2e4</div>`;
@@ -6780,7 +6787,7 @@ function finishChapter(c) {
   const p = G.player, r = c.reward || {};
   if (r.gold) p.gold += r.gold;
   if (r.xpPct) gainXp(Math.round(xpToNext(p.lv) * r.xpPct));
-  for (const [id, n] of r.items || []) addItem(p, id, n);
+  for (const [id, n] of r.items || []) giveItem(p, id, n);   /* v372: \uce78\uc774 \ucc28\ub3c4 \ubcf4\uc0c1\uc740 \uc783\uc9c0 \uc54a\uac8c */
   if (r.starter) giveStarter(p);
   if (r.title) grantTitle(r.title);
   toast(`\ud83d\udcdc \u300c${c.t}\u300d \uc644\ub8cc! ${r.gold ? fmt(r.gold) + '\ubb38' : ''}`, 'gold');
@@ -11851,7 +11858,7 @@ function sideAct(a, id) {
   if (a === 'sqAccept' && !S[id]) { S[id] = { prog: 0 }; toast(`\ud83d\udcdc \uc11c\ube0c \uc758\ub8b0 \u300c${q.t}\u300d\ub97c \ubc1b\uc558\uc2b5\ub2c8\ub2e4`, 'blue'); }
   if (a === 'sqDone' && S[id] && !S[id].done && S[id].prog >= q.n) {
     const rw = sideReward(q); S[id].done = 1; p.gold += rw.gold; gainXp(rw.xp);
-    for (const [it, c] of q.items || []) if (ITEMS[it]) addItem(p, it, c);
+    for (const [it, c] of q.items || []) if (ITEMS[it]) giveItem(p, it, c);   /* v372: \uce78\uc774 \ucc28\ub3c4 \ubcf4\uc0c1\uc740 \uc783\uc9c0 \uc54a\uac8c */
     toast(`\ud83d\udcdc \uc11c\ube0c \uc758\ub8b0 \u300c${q.t}\u300d \uc644\ub8cc! +${fmt(rw.gold)}\ubb38`, 'gold'); sfxOr('quest_done', () => Sfx.level?.()); p.st.sideDone = (p.st.sideDone || 0) + 1;
   }
   rerender();
@@ -13080,7 +13087,7 @@ for (const [id, [nm, L, r, desc, boss]] of Object.entries(GEUM_UNIQUE)) {
   if (boss && BOSSES[boss]) (BOSSES[boss].drops = BOSSES[boss].drops || []).push(id);
 }
 for (const id of newGeum) { if (!GEAR_IDS.includes(id)) GEAR_IDS.push(id); if (ITEMS[id].rarity >= 4 && typeof LEGEND_IDS !== 'undefined' && !LEGEND_IDS.includes(id)) LEGEND_IDS.push(id); }
-for (const [c, L] of [['japan_fukuoka', 102], ['japan_osaka', 106], ['japan_kyoto', 106], ['japan_shizuoka', 110], ['japan_tokyo', 114], ['japan_sendai', 116], ['japan_sapporo', 118]])
+for (const [c, L] of [['japan_fukuoka', 102], ['japan_osaka', 106], ['japan_kyoto', 106], ['japan_shizuoka', 110], ['japan_tokyo', 114], ['japan_sendai', 114], ['japan_sapporo', 118]])
   for (const nid of MAPS[c]?.npcs || []) { const n = NPCS[nid]; if (n?.goods?.includes(`g${L}r2_fan`) && ITEMS[`g${L}r2_geum`]) n.goods.push(`g${L}r2_geum`); }
 /* icon art: instruments */
 const _iconHQ240 = iconHQ;
@@ -14593,7 +14600,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v371';
+const GAME_VER = 'v372';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -19102,6 +19109,7 @@ MENU.bag = function (ctx) {
    \u00b7 \uc0c1\uc810 \ud314\uae30: '\u25bc \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30' \ud55c \ubc88 (\ub450 \ubc88 \ub20c\ub7ec \ud655\uc815)
        - \uace0\ubb3c = \uac00\ubc29\uc5d0\uc11c \ube68\uac15\uc73c\ub85c \ud45c\uc2dc\ub418\ub294 \uac83: \uc9c0\uae08 \ub080 \uac83\ubcf4\ub2e4 \ubabb\ud55c \uc7a5\ube44(\u25bc)\uc640 \ub0b4 \uc9c1\uc5c5\uc774 \ubabb \uc4f0\ub294 \ubb34\uae30(\u2715)
        - \ube60\uc9c0\ub294 \uac83: \ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \u00b7 (\ud3c9\ubbfc\uc77c \ub54c) \ubabb \uc4f0\ub294 \ubb34\uae30 \u2014 \uc804\uc9c1\ud558\uba74 \uc4f8 \uc218 \uc788\uc73c\ubbc0\ub85c
+       - v372: \uc138\ud2b8 \uc7a5\ube44 \u00b7 \ud2b9\uc218 \ud6a8\uacfc \u00b7 \uac10\uc815 \uc804 \u00b7 \uac01\uc131 \uc7a5\ube44\ub3c4 \ube80\ub2e4 (\ube44\uad50 \uc810\uc218\uc5d0 \uc138\ud2b8 \ud6a8\uacfc\u00b7\uc228\uc740 \uc635\uc158\uc774 \uc548 \uc7a1\ud600 \u25bc \ub85c \ubcf4\uc77c \uc218 \uc788\ub2e4)
    \u00b7 \uadc0\ud658 \ubd80\uc801: \uc4f0\uba74 \uc5f4\ub824 \uc788\ub358 \ucc3d\uc774 \ub2eb\ud788\uace0, \ubc1c\ubc11\uc5d0\uc11c \ube5b\uae30\ub465\uc774 \uc62c\ub77c\uc628 \ub4a4(0.7\ucd08) \ub9c8\uc744\ub85c \uc62e\uaca8\uc9c4\ub2e4. \ub9c8\uc744\uc5d0 \ub0b4\ub824\uc124 \ub54c\ub3c4 \ube5b\uc774 \ud37c\uc9c4\ub2e4
        - \uc2dc\uc804 \uc911\uc5d0 \uc4f0\ub7ec\uc9c0\uac70\ub098 \ub2e4\ub978 \uc9c0\ub3c4\ub85c \ub118\uc5b4\uac00\uba74 \uadc0\ud658\uc740 \ucde8\uc18c\ub418\uace0 \ubd80\uc801\uc740 \ub3cc\ub824\ubc1b\ub294\ub2e4
    ============================================================ */
@@ -19111,6 +19119,7 @@ const _menuBag371 = MENU.bag;
 MENU.bag = function (ctx) {
   const r = _menuBag371(ctx); if (!Array.isArray(r)) return r;
   const p = G.player, T = tradeState(), load = tradeLoad(), cap = tradeCap(), on = ctx.tab === 'cargo';
+  if (ctx.sel) ctx.cg = null;   /* \ucc29\uc6a9 \uce78\uc744 \ub204\ub974\uba74 \uc9d0 \uc815\ubcf4\ub294 \uc811\ub294\ub2e4 (\uc815\ubcf4 \uce78\uc774 \ub458 \ub728\uc9c0 \uc54a\uac8c) */
   let h = r[1].replace(/(<button class="tab [^"]*" data-a="tab" data-v="material">[^<]*<\/button>)/, `$1<button class="tab ${on ? 'on' : ''}" data-a="tab" data-v="cargo">\uad50\uc5ed\ud488</button>`);
   if (!on) return [r[0], h];
   const gs = Object.keys(T.cargo).sort((x, y) => TR_GOODS[y].lux - TR_GOODS[x].lux || T.cargo[y].q - T.cargo[x].q), town = G.mapId, here = !!TR_TOWNS[town];
@@ -19124,7 +19133,7 @@ MENU.bag = function (ctx) {
     let line;
     if (here && d.town !== town) { const pr = tradeSellPrice(g, town); line = `<div class="stat"><span>\uc774 \ub9c8\uc744 \uac1d\uc8fc \uac12</span><b>${fmt(pr)}\ubb38 ${trPct(pr, avg)}</b></div>`; }
     else { const best = Object.keys(TR_TOWNS).filter(t => t !== d.town && p.visited[t] && trD(d.town, t) < 9999).map(t => [t, tradeSellPrice(g, t)]).sort((a, b) => b[1] - a[1])[0]; line = best ? `<div class="stat"><span>\uac00\uc7a5 \ube44\uc2fc \uacf3 (\uac00 \ubcf8 \ub9c8\uc744)</span><b>${MAPS[best[0]].n} ${fmt(best[1])}\ubb38 ${trPct(best[1], avg)}</b></div>` : ''; }
-    body += `<div class="detail"><div class="nm3">${d.icon} ${d.n} \u00d7 ${c.q}${d.lux ? ' <span class="muted">\uadc0\ud55c \ubb3c\uac74</span>' : ''}</div><div class="sep"></div><div class="stat"><span>\uc0b0\uc9c0</span><b>${MAPS[d.town].n}</b></div><div class="stat"><span>\uc0b0 \uac12</span><b>\uac1c\ub2f9 ${fmt(Math.round(avg))}\ubb38 \u00b7 \ubaa8\ub450 ${fmt(Math.round(c.cost))}\ubb38</b></div>${line}${d.town === town ? '<div class="muted" style="margin-top:4px">\uc0b0\uc9c0\uc5d0\uc11c \ub418\ud314\uba74 \ud5d0\uac12\uc785\ub2c8\ub2e4. \uba40\ub9ac \uac00\uc838\uac08\uc218\ub85d \ube44\uc2f8\uac8c \ud314\ub824\uc694.</div>' : ''}</div>`;
+    body += `<div class="detail"><button class="dx" data-a="cgSel" data-g="${g}" aria-label="\uc815\ubcf4 \ub2eb\uae30">\u2715</button><div class="nm3">${d.icon} ${d.n} \u00d7 ${c.q}${d.lux ? ' <span class="muted">\uadc0\ud55c \ubb3c\uac74</span>' : ''}</div><div class="sep"></div><div class="stat"><span>\uc0b0\uc9c0</span><b>${MAPS[d.town].n}</b></div><div class="stat"><span>\uc0b0 \uac12</span><b>\uac1c\ub2f9 ${fmt(Math.round(avg))}\ubb38 \u00b7 \ubaa8\ub450 ${fmt(Math.round(c.cost))}\ubb38</b></div>${line}${d.town === town ? '<div class="muted" style="margin-top:4px">\uc0b0\uc9c0\uc5d0\uc11c \ub418\ud314\uba74 \ud5d0\uac12\uc785\ub2c8\ub2e4. \uba40\ub9ac \uac00\uc838\uac08\uc218\ub85d \ube44\uc2f8\uac8c \ud314\ub824\uc694.</div>' : ''}</div>`;
   }
   h = h.replace('<div class="grid"><div class="muted">\ube44\uc5b4 \uc788\uc74c</div></div>', '\u0001')
     .replace(/<div class="muted" style="margin-top:6px">\uac00\ubc29 [^<]*<\/div>/, '')
@@ -19137,6 +19146,7 @@ MENU.bag = function (ctx) {
 function junkList(p) {
   return p.inv.filter(it => {
     const d = ITEMS[it.id]; if (it.lock || !d || !isGear(d) || d.rarity >= 4) return false;
+    if (d.set || d.aura || ITEM_FX[it.id] || it.idf === false || (it.sp && it.sp.length) || it.myth || it.awk) return false;   /* v372: \uc138\ud2b8\u00b7\ud2b9\uc218 \ud6a8\uacfc\u00b7\uac10\uc815 \uc804 \uc7a5\ube44\ub294 \uc218\uce58\uac00 \ub0ae\uc544\ub3c4 \ud55c\uaebc\ubc88\uc5d0 \ud314\uc9c0 \uc54a\ub294\ub2e4 */
     const k = (gearGrade(p, it) || {}).k; return k === 'down' || (k === 'no' && p.job !== 'none');
   });
 }
@@ -19147,7 +19157,7 @@ shopHtml = function (n, ctx, stock, priceMul = 1) {
     if (ctx.tab !== 'sell') return h;
     const p = G.player, list = junkList(p); if (!list.length) return h;
     const sum = sellSum(list), sure = ctx.confirm === 'bulk_junk';
-    const btn = `<div class="bulk1 junkbox"><button class="btn big junk ${sure ? 'red' : ''}" data-a="junkSell">${sure ? `\uc815\ub9d0 \uace0\ubb3c \uc7a5\ube44 ${list.length}\uac1c\ub97c ${fmt(sum)}\ubb38\uc5d0 \ud314\uae4c\uc694?` : `\u25bc \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30 \u00b7 ${list.length}\uac1c \u00b7 ${fmt(sum)}\ubb38`}</button><div class="muted" style="margin-top:4px">\uc9c0\uae08 \ub080 \uac83\ubcf4\ub2e4 \ubabb\ud55c \uc7a5\ube44(\u25bc)\uc640 \ubabb \uc4f0\ub294 \ubb34\uae30(\u2715)\ub9cc \ud31d\ub2c8\ub2e4. \ud83d\udd12 \uc7a0\uadfc \uac83\uacfc \uc804\uc124 \uc774\uc0c1\uc740 \ube60\uc838\uc694.</div></div>`;
+    const btn = `<div class="bulk1 junkbox"><button class="btn big junk ${sure ? 'red' : ''}" data-a="junkSell">${sure ? `\uc815\ub9d0 \uace0\ubb3c \uc7a5\ube44 ${list.length}\uac1c\ub97c ${fmt(sum)}\ubb38\uc5d0 \ud314\uae4c\uc694?` : `\u25bc \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30 \u00b7 ${list.length}\uac1c \u00b7 ${fmt(sum)}\ubb38`}</button><div class="muted" style="margin-top:4px">\uc9c0\uae08 \ub080 \uac83\ubcf4\ub2e4 \ubabb\ud55c \uc7a5\ube44(\u25bc)\uc640 \ubabb \uc4f0\ub294 \ubb34\uae30(\u2715)\ub9cc \ud31d\ub2c8\ub2e4. \ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \u00b7 \uc138\ud2b8 \u00b7 \uac10\uc815 \uc804 \uc7a5\ube44\ub294 \ube60\uc838\uc694.</div></div>`;
     /* \ubb3c\uac74\uc774 \ub9ce\uc73c\uba74 \ub9e8 \uc544\ub798\uae4c\uc9c0 \ub0b4\ub824\uc57c \ud574\uc11c, \ud0ed \ubc14\ub85c \uc544\ub798(\ubaa9\ub85d \uc704)\uc5d0 \ub454\ub2e4 */
     const mark = '<div class="grid">', i = h.indexOf(mark);
     h = i >= 0 ? h.slice(0, i) + btn + h.slice(i) : h + btn;
@@ -19183,9 +19193,10 @@ update = function (dt) {
     const C = G.retCast;
     if (C) {
       const p = G.player; C.t += dt;
-      if (!p || p.hp <= 0 || G.mapId !== C.map) { G.retCast = null; if (p) addItem(p, C.id, 1); }   /* \ucde8\uc18c: \ubd80\uc801\uc740 \ub3cc\ub824\uc900\ub2e4 */
+      if (!p || p.hp <= 0 || G.mapId !== C.map) { G.retCast = null; if (p) giveItem(p, C.id, 1); }   /* \ucde8\uc18c: \ubd80\uc801\uc740 \ub3cc\ub824\uc900\ub2e4 */
       else if (C.t >= RET_CAST) {
-        G.retCast = null; G.fade = 1; enterMap(C.town, null, null);
+        G.retCast = null; if (modalOpen()) closeModal();   /* \uc2dc\uc804 \uc911\uc5d0 \uc5f0 \ucc3d\uc740 \ub2eb\ub294\ub2e4 (\ub5a0\ub09c \uc9c0\ub3c4\uc758 \uc0c1\uc810 \ucc3d\uc774 \ub0a8\uc9c0 \uc54a\uac8c) */
+        G.fade = 1; enterMap(C.town, null, null);
         const q = G.player; addFx('retArrive', q.x, q.y, { dur: 1, src: q }); screenFlash('#bfe4ff', .3);
       }
     }
