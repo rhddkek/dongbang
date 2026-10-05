@@ -505,7 +505,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v351</div>
+    <div class="sub">v352</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2595,6 +2595,7 @@ function buildHuman(spec, dir, frame) {
 
 /* ---------------- quadruped, side view facing LEFT; grid 28 x 22 ---------------- */
 function buildBeast(spec, frame) {
+  { const px = (typeof PX_BEAST2 === 'function' && PX_BEAST2(spec, frame, painter, shade, outlineCanvas)) || (typeof PX_BEAST === 'function' && PX_BEAST(spec, frame)); if (px) return px; }   /* v352: \ud638\ub791\uc774\u00b7\ub291\ub300\u00b7\uc5ec\uc6b0\u00b7\uace0\uc591\uc774\u00b7\uba67\ub3fc\uc9c0 \uc0c8 \uadf8\ub9bc */
   const W = 28, H = 22, { cv, P } = painter(W, H);
   const c = spec.c, cD = shade(c, -.25), cL = shade(c, .18), c2 = spec.c2 || cL, c3 = spec.c3 || cD;
   const f = spec.f || [], has = k => f.includes(k);
@@ -2864,6 +2865,696 @@ function drawWeapon(g, wt, x, y, ang, swing, rarity = 0, awk = false) {
     default: g.fillStyle = dark; g.fillRect(-1.5, -1, 3, 7); g.fillStyle = gold; g.fillRect(-5, -3, 10, 2); g.fillStyle = blade; g.fillRect(-2, -24, 4, 21); g.fillStyle = '#ffffff'; g.fillRect(-.5, -23, 1, 18);
   }
   g.restore();
+}
+
+/* ============================================================
+   10b_gfx352 (v352): \uadf8\ub9bc \uac1c\ud3b8 \ubb36\uc74c \u2014 \uc9d1(\ud55c\uc625\u00b7\uc77c\ubcf8 \uc9d1\u00b7\uc81c\uc8fc \ub3cc\ub2f4\uc9d1) \u00b7 \uc57c\uc218 5\uc885 \u00b7 \ubcf4\uc2a4 18\uc885
+   \u00b7 \ub2e4\ub978 \uc791\uc5c5\ubc29\uc5d0\uc11c \ubbf8\ub9ac\ubcf4\uae30\ub85c \ub9cc\ub4e0 \uadf8\ub9bc \ucf54\ub4dc\ub97c \uadf8\ub300\ub85c \uac00\uc838\uc654\ub2e4 (NEW_HOUSE \u00b7 NEW_JHOUSE \u00b7 PX_BEAST \u00b7 PX_BEAST2 \u00b7 BOSS_SPRITE)
+   \u00b7 \uc81c\uc8fc \ub3cc\ub2f4\uc9d1(NEW_JEJUHOUSE)\uacfc \uc5f0\uacb0 \ud568\uc218(mobSpr \u00b7 bossSprite)\ub294 \uc774 \ud30c\uc77c \ub9e8 \uc544\ub798\uc5d0 \uc0c8\ub85c \uc37c\ub2e4
+   \u00b7 \uadf8\ub9bc\ub9cc \ubc14\uafbc\ub2e4 \u2014 \uc9d1\uc774 \ucc28\uc9c0\ud558\ub294 \uce78, \ubaac\uc2a4\ud130\uc758 \ud310\uc815(m.r)\u00b7\ud53c\ud574\u00b7AI \ub294 \uadf8\ub300\ub85c
+   \u00b7 \uc5f0\uacb0: 12_worldrender buildHouse \uccab \uc904 / 41_shopfronts (\uc0c8 \uc9d1\uc774\uba74 \uc61b \ub367\uadf8\ub9bc \uc0dd\ub7b5) / 10_sprites buildBeast \uccab \uc904 /
+           30_game drawMob \u00b7 \uc4f0\ub7ec\uc9c0\ub294 \ud6a8\uacfc \u00b7 25_codex \ub3c4\uac10 \uadf8\ub9bc / 98d_gfx352 \uac00\uac8c \uc548 \ubc30\uce58
+   ============================================================ */
+/* ===== refined hanok (same footprint, same pixel scale & outline) ===== */
+window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
+  if (p.type !== 'hanok') return null;
+  const d = p.data || { w: 5, h: 4, face: 'S' };
+  const W = d.w * TILE / ART, H = 86;
+  const pp = painter(W, H), P = pp.P;
+  const kind = d.kind || '', cat = d.cat || '';
+  const roofC = ['#3e4a5c', '#45505f', '#384658'][p.v || 0], rL = shade(roofC, .28), rD = shade(roofC, -.28), rDD = shade(roofC, -.5);
+  const wood = '#8a5634', woodD = '#5e3a22', woodL = '#a86d43';
+  const wall = '#efe5cc', wallD = '#ddd0b0', paper = '#efe3bd', lat = '#6b4a32';
+  const stone = '#9a958a', stoneD = '#77726a', stoneL = '#b4afa2';
+  const mid = W / 2;
+
+  /* ---- \uae30\ub2e8 (stone base) + steps ---- */
+  P(2, 72, W - 4, 8, stone); P(2, 72, W - 4, 1, stoneL);
+  for (let x = 4; x < W - 4; x += 8) P(x + (x % 16 ? 4 : 0), 73, 1, 3, stoneD);
+  P(2, 76, W - 4, 1, stoneD);
+  for (let x = 8; x < W - 4; x += 8) P(x, 77, 1, 3, stoneD);
+  P(mid - 13, 80, 26, 3, stoneL); P(mid - 13, 80, 26, 1, '#cfcabd'); P(mid - 15, 83, 30, 3, stone); P(mid - 15, 83, 30, 1, stoneL);
+
+  /* ---- body: walls between pillars ---- */
+  P(4, 36, W - 8, 36, wall);
+  P(4, 62, W - 8, 10, wallD);             /* lower \uba38\ub984 panel */
+  P(4, 61, W - 8, 1, woodD);
+  const cols = [4, Math.round(W * .3) - 1, Math.round(W * .7) - 2, W - 7];
+  for (const x of cols) { P(x, 34, 3, 38, wood); P(x, 34, 1, 38, woodL); P(x - 1, 70, 5, 2, stoneD); }
+  P(4, 34, W - 8, 3, wood); P(4, 34, W - 8, 1, woodL);   /* \ucc3d\ubc29 beam */
+  P(4, 48, W - 8, 1, woodD);                               /* \uc778\ubc29 */
+
+  /* ---- windows (\ucc3d\ud638, lattice) in side bays ---- */
+  const win = (x0, x1) => {
+    const ww = 13, wx = Math.round((x0 + x1) / 2 - ww / 2), wy = 39;
+    P(wx - 1, wy - 1, ww + 2, 18, woodD); P(wx, wy, ww, 16, paper);
+    for (let x = wx + 3; x < wx + ww; x += 3) P(x, wy, 1, 16, lat);
+    for (let y = wy + 3; y < wy + 16; y += 3) P(wx, y, ww, 1, lat);
+    P(wx - 2, wy + 16, ww + 4, 2, wood);                    /* sill */
+  };
+  if (cat !== 'armor') win(cols[0] + 3, cols[1]); win(cols[2] + 3, cols[3]);
+
+  /* ---- door in the centre bay ---- */
+  const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0, dy0 = 42, dy1 = 72;
+  P(dx0 - 1, dy0 - 1, dw + 2, dy1 - dy0 + 1, woodD);
+  const shop = kind === 'shop' || kind === 'smith' || kind === 'tavern' || kind === 'premium' || kind === 'gamble';
+  if (shop) {
+    /* open shop front: dark interior + \ubc1c curtain */
+    const cur = { armor: '#2f4f86', weapon: '#7a2f2a', potion: '#3f7a52', accessory: '#6a3f86', general: '#8a6a2a' }[cat] || '#2f4f86';
+    P(dx0, dy0, dw, dy1 - dy0, '#3a2618'); P(dx0, dy1 - 6, dw, 6, '#5a3b25');
+    for (let x = dx0 + 2; x < dx1 - 1; x += 4) P(x, dy1 - 6, 1, 6, '#4a3020');
+    P(dx0, dy0, dw, 11, cur); P(dx0, dy0, dw, 1, shade(cur, .25));
+    for (let x = dx0 + Math.floor(dw / 3); x < dx1 - 1; x += Math.floor(dw / 3)) P(x, dy0 + 2, 1, 9, shade(cur, -.35));
+  } else {
+    /* closed double door: planks, rings, iron hinges */
+    P(dx0, dy0, dw, dy1 - dy0, '#7a4a2c');
+    for (let x = dx0 + 2; x < dx1; x += 3) P(x, dy0, 1, dy1 - dy0, '#66391f');
+    P(Math.round(dx0 + dw / 2) - 1, dy0, 2, dy1 - dy0, woodD);
+    for (const y of [dy0 + 4, dy1 - 6]) { P(dx0 + 1, y, 4, 2, '#3a3a3e'); P(dx1 - 5, y, 4, 2, '#3a3a3e'); }
+    const ry = Math.round((dy0 + dy1) / 2);
+    P(Math.round(dx0 + dw / 2) - 4, ry, 2, 3, '#2a2a2e'); P(Math.round(dx0 + dw / 2) + 2, ry, 2, 3, '#2a2a2e');
+    P(Math.round(dx0 + dw / 2) - 4, ry + 1, 1, 1, '#c9a35a'); P(Math.round(dx0 + dw / 2) + 3, ry + 1, 1, 1, '#c9a35a');
+  }
+
+  /* ---- sign board on the beam ---- */
+  let labelDy;
+  if (p.label) {
+    const sw = Math.min(W - 18, 10 + p.label.length * 6), sx = Math.round(mid - sw / 2);
+    P(sx - 1, 36, sw + 2, 9, woodD); P(sx, 37, sw, 7, '#c9a46a'); P(sx, 37, sw, 1, '#e0c48c');
+    labelDy = -(H + 1) * ART + 2 + 41 * ART;
+  }
+
+  /* ---- roof: tiled body with curved, upturned eaves ---- */
+  const top = 7, eave = 29;
+  for (let y = top; y <= eave; y++) {
+    const t = (y - top) / (eave - top), inset = Math.round(13 * (1 - t));
+    P(inset, y, W - inset * 2, 1, roofC);
+  }
+  /* upturned corners (\ucd94\ub140) */
+  for (let i = 0; i < 6; i++) { const lift = Math.round((6 - i) * .8); P(i, eave - lift, 1, lift + 1, roofC); P(W - 1 - i, eave - lift, 1, lift + 1, roofC); }
+  /* \uace8\uae30\uc640 columns + \uae30\uc640 courses */
+  for (let x = 3; x < W - 3; x += 4) for (let y = top + 2; y < eave; y++) {
+    const t = (y - top) / (eave - top), inset = Math.round(13 * (1 - t));
+    if (x <= inset || x >= W - inset - 1) continue;
+    P(x, y, 1, 1, rL); P(x + 2, y, 1, 1, rD);
+  }
+  for (let y = top + 5; y < eave - 1; y += 5) { const t = (y - top) / (eave - top), inset = Math.round(13 * (1 - t)) + 1; P(inset, y, W - inset * 2, 1, rD); }
+  /* \ub9c9\uc0c8 row along the eave (round tile ends) */
+  P(1, eave + 1, W - 2, 2, rDD);
+  for (let x = 2; x < W - 2; x += 4) { P(x, eave, 2, 2, '#c9cdd2'); P(x, eave, 1, 1, '#eef0f2'); }
+  /* \uc11c\uae4c\ub798 ends under the eave */
+  P(3, eave + 3, W - 6, 2, woodD);
+  for (let x = 5; x < W - 5; x += 4) { P(x, eave + 3, 2, 2, '#d8a868'); }
+  /* ridge (\uc6a9\ub9c8\ub8e8) with lifted ends */
+  P(10, 3, W - 20, 4, rDD); P(10, 3, W - 20, 1, shade(roofC, -.15));
+  P(7, 1, 4, 5, rDD); P(W - 11, 1, 4, 5, rDD); P(7, 0, 3, 1, '#c9cdd2'); P(W - 10, 0, 3, 1, '#c9cdd2');
+  for (let x = 13; x < W - 13; x += 5) P(x, 5, 3, 1, '#59606b');
+  /* \ub0b4\ub9bc\ub9c8\ub8e8 (hip ridges) running down to the corners */
+  for (let y = 7; y < eave - 1; y++) { const t = (y - 7) / (eave - 8), x = Math.round(10 - 8 * t); P(x, y, 2, 1, rDD); P(W - x - 2, y, 2, 1, rDD); }
+
+  /* ---- small touches by building ---- */
+  if (kind === 'chief') {      /* hanging lantern + jar */
+    const lx = cols[0] + 4; P(lx + 1, 37, 1, 3, woodD); P(lx - 1, 40, 5, 7, '#3a2a1a'); P(lx, 41, 3, 5, '#ffcf5a'); P(lx, 41, 1, 5, '#fff2b0');
+    P(W - 14, 64, 8, 2, '#6b4028'); P(W - 15, 66, 10, 6, '#7a4a2c'); P(W - 14, 67, 2, 2, '#9a6440');
+  }
+  if (cat === 'armor') {       /* little armour on a stand by the left pillar */
+    const ax = Math.round((cols[0] + cols[1]) / 2) - 2; P(ax + 3, 50, 1, 20, woodD); P(ax, 53, 8, 2, '#6b5a48');
+    P(ax, 55, 8, 9, '#7a6a58'); for (let y = 56; y < 64; y += 2) P(ax + 1, y, 6, 1, '#5a4a3a'); P(ax, 60, 8, 1, '#a8452f');
+    P(ax + 2, 50, 4, 3, '#9aa0a6'); P(ax + 3, 49, 2, 1, '#c8352f');
+  }
+
+  outlineCanvas(pp.cv);
+  pp.cv._own = 1;
+  return { img: pp.cv, ox: -(d.w * TILE) / 2 - ART, oy: -(H + 1) * ART + 2, labelDy };
+};
+
+/* ===== Japanese town house (machiya), same footprint / scale ===== */
+window.NEW_JHOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
+  if (p.type !== 'jhouse') return null;
+  const d = p.data || { w: 5, h: 4, face: 'S' };
+  const W = d.w * TILE / ART, H = 86, pp = painter(W, H), P = pp.P, mid = W / 2;
+  const kind = d.kind || '', acc = d.accent || '#c94f4f';
+  const roofC = ['#4a4e55', '#53504c', '#414852'][p.v || 0], rL = shade(roofC, .3), rD = shade(roofC, -.3), rDD = shade(roofC, -.5);
+  const wood = '#4e3322', woodD = '#2f1e14', woodL = '#6b4a32', plaster = '#efeadf', plasterD = '#d9d2c2';
+  const stone = '#8f8c86', stoneL = '#aaa7a0', stoneD = '#6f6c66';
+  /* base */
+  P(2, 73, W - 4, 6, stone); P(2, 73, W - 4, 1, stoneL); for (let x = 6; x < W - 4; x += 10) P(x, 74, 1, 5, stoneD);
+  P(mid - 11, 79, 22, 3, stoneL); P(mid - 11, 79, 22, 1, '#c8c5bd');
+  /* ground floor frame */
+  P(3, 45, W - 6, 28, wood);
+  const cols = [3, Math.round(W * .3) - 1, Math.round(W * .7) - 2, W - 6];
+  /* koshi lattice on the side bays */
+  const koshi = (x0, x1) => { P(x0, 47, x1 - x0, 24, '#2a1a10'); for (let x = x0 + 1; x < x1; x += 2) P(x, 47, 1, 24, '#7a5236'); P(x0, 55, x1 - x0, 1, woodD); P(x0, 63, x1 - x0, 1, woodD); };
+  koshi(cols[0] + 3, cols[1]); koshi(cols[2] + 3, cols[3]);
+  /* centre: noren over the shop front, or sliding shoji doors */
+  const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0;
+  P(dx0 - 1, 45, dw + 2, 28, woodD);
+  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'].includes(kind);
+  if (shop) {
+    P(dx0, 46, dw, 27, '#24160e'); P(dx0, 67, dw, 6, '#4a3020');
+    const nw = Math.floor(dw / 3);
+    for (let i = 0; i < 3; i++) { const x = dx0 + i * nw; P(x, 46, nw - 1, 9, acc); P(x, 46, nw - 1, 1, shade(acc, .25)); P(x + Math.floor(nw / 2) - 1, 49, 2, 2, '#f4efe4'); }
+  } else {
+    P(dx0, 46, dw, 27, '#e9e2cc');
+    for (let x = dx0 + 3; x < dx1; x += 4) P(x, 46, 1, 27, woodL);
+    for (let y = 50; y < 72; y += 5) P(dx0, y, dw, 1, woodL);
+    P(Math.round(dx0 + dw / 2), 46, 1, 27, woodD); P(dx0, 66, dw, 6, wood);
+  }
+  for (const x of cols) { P(x, 44, 3, 29, wood); P(x, 44, 1, 29, woodL); }
+  /* hisashi (lower eave roof) */
+  P(0, 37, W, 6, roofC); P(0, 37, W, 1, rL); for (let x = 1; x < W - 1; x += 3) P(x, 38, 1, 4, rD); P(0, 42, W, 2, rDD);
+  /* upper storey: white plaster + mushiko-mado slat window */
+  P(4, 22, W - 8, 15, plaster); P(4, 34, W - 8, 3, plasterD);
+  P(4, 22, 2, 15, wood); P(W - 6, 22, 2, 15, wood);
+  const slat = (x0, n) => { P(x0 - 1, 25, n * 3 + 1, 9, plasterD); for (let i = 0; i < n; i++) P(x0 + i * 3, 26, 2, 7, '#3a2a20'); };
+  let labelDy;
+  if (p.label) {
+    slat(8, 4); slat(W - 20, 4);
+    /* kanban on the upper facade, clear of the shopkeeper below */
+    const sw = Math.min(W - 34, 10 + p.label.length * 6), sx = Math.round(mid - sw / 2);
+    P(sx - 1, 25, sw + 2, 9, woodD); P(sx, 26, sw, 7, '#c9a46a'); P(sx, 26, sw, 1, '#e0c48c');
+    labelDy = -(H + 1) * ART + 2 + 30 * ART;
+  } else slat(Math.round(mid - 14), 10);
+  /* main roof: straight eaves, horizontal tile courses */
+  for (let y = 5; y <= 20; y++) { const inset = Math.round(9 * (1 - (y - 5) / 15)); P(inset, y, W - inset * 2, 1, roofC); }
+  for (let y = 7; y < 20; y += 3) { const inset = Math.round(9 * (1 - (y - 5) / 15)) + 1; P(inset, y, W - inset * 2, 1, rL); P(inset, y + 1, W - inset * 2, 1, rD); }
+  P(0, 20, W, 2, rDD);
+  /* ridge with onigawara ends */
+  P(8, 2, W - 16, 4, rDD); P(8, 2, W - 16, 1, shade(roofC, -.1));
+  P(5, 0, 5, 6, rDD); P(W - 10, 0, 5, 6, rDD); P(6, 1, 3, 1, '#9da2a8'); P(W - 9, 1, 3, 1, '#9da2a8');
+  /* red chochin for taverns and inns, blue for the rest of the shops */
+  if (shop) { const lx = cols[0] + 5, lc = kind === 'tavern' || kind === 'healer' ? '#d0402e' : '#2f5a8a'; P(lx + 2, 44, 1, 3, woodD); P(lx, 47, 5, 1, '#1a1210'); P(lx - 1, 48, 7, 6, lc); P(lx, 49, 1, 4, shade(lc, .3)); P(lx, 54, 5, 1, '#1a1210'); }
+  outlineCanvas(pp.cv);
+  pp.cv._own = 1;
+  return { img: pp.cv, ox: -(d.w * TILE) / 2 - ART, oy: -(H + 1) * ART + 2, labelDy };
+};
+
+
+/* ===== redesigned boar (same 28x22 grid, same flat style + dark outline) ===== */
+(function () {
+  const BODY = [
+    "............................",
+    "...........m..m.............",
+    "....i....mmmmmmmm.m.........",
+    "....ii..mmmmmmmmmmmmm.......",
+    "....iib.mlllllllllllmmm.....",
+    "...bbbbbblllllllllllllbbb...",
+    "..blbbbbbbbbbbbbbbbbbbbbbd..",
+    "..bebbbbbbbbbbbbbbbbbbbbbbdq",
+    ".bbbbbbbbbbbbbbbbbbbbbbbbbdq",
+    "nnbbbbdbbbbbbbbbbbbbbbbbbbd.",
+    "nktbbdbbbbbbbbbbbbbbbbbbbbd.",
+    "nntbbdbbbbbbbbbbbbbbbbbbbbd.",
+    ".ddtbdbbbbccccccccccccbbbdd.",
+    "..dddd..bbccccccccccccbbdd..",
+    "........dddddddddddddddddd..",
+  ];
+  window.PX_BEAST = function (spec, frame, raw) {
+    const f = spec.f || [];
+    if (!(f.includes('tusks') && f.includes('stocky'))) return null;
+    const { cv, P } = painter(28, 22);
+    const c = spec.c, pal = {
+      b: c, d: shade(c, -.25), l: shade(c, .16), c: spec.c2 || shade(c, .2),
+      m: shade(c, -.42), i: shade(c, -.5), e: '#141010', n: shade(spec.c2 || c, -.04), k: '#1a1210',
+      t: '#f4efe0', q: shade(c, -.42)
+    };
+    const st = frame === 1 ? 1 : frame === 2 ? -1 : 0;
+    const hoof = '#2a211b';
+    /* far legs (darker), behind body */
+    P(11 - st, 14, 2, 4, pal.d); P(11 - st, 18, 2, 1, hoof);
+    P(23 + st, 14, 2, 4, pal.d); P(23 + st, 18, 2, 1, hoof);
+    /* body grid */
+    BODY.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') P(x, y, 1, 1, pal[ch]); }));
+    /* near legs: thick front, haunched back */
+    P(8 + st, 14, 3, 4, c); P(8 + st, 14, 1, 4, pal.l); P(8 + st, 18, 3, 1, hoof);
+    P(20 - st, 14, 3, 4, c); P(20 - st, 18, 3, 1, hoof);
+    if (!raw) outlineCanvas(cv);
+    return cv;
+  };
+})();
+
+
+/* ===== redesigned canines / tigers / foxes / cats (same 28x22 grid, flat style + dark outline) ===== */
+(function () {
+  const pad = rows => rows.map(r => r.padEnd(28, '.'));
+  const WOLF = pad([
+    "..d.d",
+    ".dbdb",
+    ".bbbbb",
+    "bebbbbb",
+    "bbbbbbbm",
+    "kbbbbbmmllllllllllllllll",
+    ".cc..bmbbbbbbbbbbbbbbbbbd",
+    "......bbbbbbbbbbbbbbbbbbbd",
+    "......cbbbbbbbbbbbbbbbbbd.d",
+    ".......cbbbbbbbbbbbbbbbd..bd",
+    "........ccddddddddddddd...bd",
+    "..........................cd",
+  ]);
+  const FOX = pad([
+    "..d...d",
+    "..bd.bd",
+    "..bbbbb",
+    ".bbbbbbb",
+    "bbebbbbbb",
+    "kbbbbbbbbllllllllllll",
+    ".cccbbbbbbbbbbbbbbbbbbd..bb",
+    "..cccbbbbbbbbbbbbbbbbbbdbbbb",
+    "...cccbbbbbbbbbbbbbbbbbbbbbb",
+    "....cccbbbbbbbbbbbbbbbbdbbbb",
+    ".....ccccbbbbbbbbbbbbd..bbbc",
+    "......cccddddddddddd.....ccc",
+    "..........................c",
+  ]);
+  const TIGER = pad([
+    "..d...d",
+    ".dbd.dbd",
+    ".bbbbbbbb",
+    "bsbbsbbbbb",
+    "bebbbbbbbblllllllllllllll",
+    "bbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "kccbbbbbbbbbbbbbbbbbbbbbbbs",
+    "ccccbbbbbbbbbbbbbbbbbbbbbbdb",
+    ".ccccbbbbbbbbbbbbbbbbbbbbd.s",
+    "..cccccbbbbbbbbbbbbbbbbbd..b",
+    "....ccccccccccccccccccdd...s",
+    "...........................d",
+  ]);
+  const CAT = pad([
+    "..................d...d",
+    "..................b...b",
+    "..d..d............bd..b",
+    "..bdbdb............b.bb",
+    ".bbbbbbb...........bbbd",
+    "bbebbbbb............bb",
+    "bbbbbbbbblllllllll..bb",
+    "kcbbbbbbbbbbbbbbbbbbbd",
+    ".ccbbbbbbbbbbbbbbbbbbd",
+    "..cccbbbbbbbbbbbbbbbd",
+    "...ccccbbbbbbbbbbbbd",
+    "....cccddddddddddd",
+  ]);
+  /* type -> grid, y offset, leg layout [x, width] near/far, leg top, leg colour key */
+  const TYPES = {
+    wolf:  { G: WOLF,  oy: 1, top: 11, near: [[8, 2], [19, 2]], far: [[11, 2], [22, 2]], legKey: 'b' },
+    fox:   { G: FOX,   oy: 1, top: 12, near: [[6, 2], [17, 2]], far: [[9, 2], [20, 2]],  legKey: 'sock' },
+    tiger: { G: TIGER, oy: 1, top: 11, near: [[5, 4], [19, 4]], far: [[10, 3], [23, 3]], legKey: 'b' },
+    cat:   { G: CAT,   oy: 1, top: 12, near: [[5, 2], [16, 2]], far: [[8, 2], [19, 2]],  legKey: 'b' },
+  };
+  window.PX_BEAST2 = function (spec, frame, painter, shade, outlineCanvas, raw) {
+    const f = spec.f || [], has = k => f.includes(k);
+    let t = null;
+    if (has('stripes')) t = 'tiger';
+    else if (has('bushTail')) t = 'fox';
+    else if (has('longTail') && has('ears')) t = 'cat';
+    else if (has('ears') && has('slim')) t = 'wolf';
+    if (!t) return null;
+    const T = TYPES[t], { cv, P } = painter(28, 22), c = spec.c;
+    const pal = {
+      b: c, d: shade(c, -.25), l: shade(c, .16), c: spec.c2 || shade(c, .3),
+      m: has('mane') ? shade(c, -.3) : c, s: spec.c3 || shade(c, -.6),
+      e: spec.eye || '#141010', k: '#1a1210', sock: shade(c, -.45)
+    };
+    const st = frame === 1 ? 1 : frame === 2 ? -1 : 0, foot = 17;
+    const legC = pal[T.legKey], far = pal.d, paw = '#2a211b';
+    /* far legs first */
+    T.far.forEach(([x, w], i) => { const s = i ? st : -st; P(x + s, T.top, w, foot - T.top, far); P(x + s, foot, w, 1, paw); });
+    T.G.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') P(x, y + T.oy, 1, 1, pal[ch]); }));
+    if (t === 'tiger') for (const k of [9, 13, 17, 21]) for (let y = 4; y <= 9; y++) {
+      const x = k - Math.floor((y - 4) / 2), ch = (T.G[y] || '')[x], ch2 = (T.G[y] || '')[x + 1];
+      if (ch === 'b' || ch === 'l') { P(x, y + T.oy, 1, 1, pal.s); if (y < 7 && (ch2 === 'b' || ch2 === 'l')) P(x + 1, y + T.oy, 1, 1, pal.s); }
+    }
+    T.near.forEach(([x, w], i) => { const s = i ? -st : st; P(x + s, T.top, w, foot - T.top, legC); P(x + s, foot, w, 1, t === 'tiger' ? pal.c : paw); });
+    if (!raw) outlineCanvas(cv);
+    return cv;
+  };
+})();
+
+
+/* ===== boss sprites drawn at native size (no more 1.8x blow-up of a field mob) =====
+   Base = the renewed field-mob pixel art, smoothed 2x (Scale2x), then boss-only details. */
+(function () {
+  const IDS = ['boarKing', 'tigerLord', 'sangun', 'whiteWolf', 'kyuubi'];
+  const cache = new Map();
+  const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+  function scale2x(src) {
+    const W = src.width, H = src.height, sd = src.getContext('2d').getImageData(0, 0, W, H).data;
+    const out = mk(W * 2, H * 2), og = out.getContext('2d'), od = og.createImageData(W * 2, H * 2), d = od.data;
+    const px = (x, y) => { x = Math.max(0, Math.min(W - 1, x)); y = Math.max(0, Math.min(H - 1, y)); const i = (y * W + x) * 4; return (sd[i] << 24 | sd[i + 1] << 16 | sd[i + 2] << 8 | sd[i + 3]) >>> 0; };
+    const put = (x, y, v) => { const i = (y * W * 2 + x) * 4; d[i] = v >>> 24; d[i + 1] = v >>> 16 & 255; d[i + 2] = v >>> 8 & 255; d[i + 3] = v & 255; };
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const P = px(x, y), A = px(x, y - 1), B = px(x + 1, y), C = px(x - 1, y), D = px(x, y + 1);
+      put(2 * x, 2 * y, C === A && C !== D && A !== B ? A : P);
+      put(2 * x + 1, 2 * y, A === B && A !== C && B !== D ? B : P);
+      put(2 * x, 2 * y + 1, D === C && D !== B && C !== A ? C : P);
+      put(2 * x + 1, 2 * y + 1, B === D && B !== A && D !== C ? D : P);
+    }
+    og.putImageData(od, 0, 0); return out;
+  }
+  function crisp(cv) { const g = cv.getContext('2d'), im = g.getImageData(0, 0, cv.width, cv.height), d = im.data; for (let i = 3; i < d.length; i += 4) d[i] = d[i] > 110 ? 255 : 0; g.putImageData(im, 0, 0); }
+
+  function build(id, frame, E) {
+    const b = E.BOSSES[id], base = b.base ? E.MOBS[b.base] : null, spec = b.spr || base.spr, shade = E.shade;
+    const OX = 2, OY = 14, W = id === 'kyuubi' ? 86 : 66, H = 62;
+    const out = mk(W, H), g = out.getContext('2d');
+    const P = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(Math.round(x), Math.round(y), w, h); };
+    const G = (gx, gy) => [OX + (gx + 1) * 2, OY + (gy + 1) * 2];       /* field-grid coord -> boss canvas */
+    const raw = id === 'boarKing' ? E.PX_BEAST(spec, frame, true) : E.PX_BEAST2(spec, frame, E.painter, shade, E.outlineCanvas, true);
+    const bob = frame === 1 ? -1 : 0;
+
+    /* ---- things behind the body ---- */
+    if (id === 'kyuubi') {             /* eight extra tails fanned behind (+ the base tail = nine) */
+      const t = mk(W, H), tg = t.getContext('2d'), [rx, ry] = G(21, 8);
+      const tails = [];
+      for (let i = 0; i < 8; i++) {
+        const a = -1.9 + i * .26 + (frame === 1 ? .05 : 0), len = 16 + (i % 2) * 5;
+        tails.push([rx + Math.cos(a) * len, ry + Math.sin(a) * len, rx + Math.cos(a + .45) * len * .6, ry + Math.sin(a + .45) * len * .6]);
+      }
+      tg.lineCap = 'round';
+      for (const [ex, ey, cx, cy] of tails) {            /* each tail: dark rim, body, pink tip - drawn one by one so they stay separate */
+        tg.strokeStyle = shade(spec.c, -.35); tg.lineWidth = 7; tg.beginPath(); tg.moveTo(rx, ry); tg.quadraticCurveTo(cx, cy, ex, ey); tg.stroke();
+        tg.strokeStyle = spec.c; tg.lineWidth = 5; tg.beginPath(); tg.moveTo(rx, ry); tg.quadraticCurveTo(cx, cy, ex, ey); tg.stroke();
+        tg.fillStyle = '#ff9ab8'; tg.beginPath(); tg.arc(ex, ey, 2.2, 0, 6.3); tg.fill();
+      }
+      crisp(t); g.drawImage(t, 0, bob);
+    }
+    if (id === 'whiteWolf') {          /* ice shards rising from the back */
+      for (const [gx, hgt] of [[11, 5], [14, 7], [17, 5], [20, 3]]) { const [x, y] = G(gx, 5); for (let k = 0; k < hgt; k++) P(x + 1 - Math.floor(k / 3), y - k + bob, 2 + (k < 2 ? 1 : 0), 1, k > hgt - 3 ? '#eaf8ff' : '#9fd8f5'); }
+    }
+
+    /* ---- the body itself, smoothed 2x ---- */
+    g.drawImage(scale2x(raw), OX, OY);
+
+    /* ---- boss details on top ---- */
+    const eye = (gx, gy, c, glow) => { const [x, y] = G(gx, gy); P(x, y + bob, 2, 2, c); P(x, y + bob, 1, 1, glow); };
+    if (id === 'boarKing') {
+      const [ex, ey] = G(3, 7);
+      /* iron collar with spikes over the shoulders */
+      { const [x, y] = G(8, 4); P(x, y, 18, 3, '#3c3c44'); P(x, y, 18, 1, '#6a6c76'); for (const k of [1, 6, 11, 16]) { P(x + k, y - 2, 2, 2, '#b8bcc4'); P(x + k, y - 4, 1, 2, '#e4e7ec'); } }
+      /* long curved tusk */
+      const [tx, ty] = G(2, 12);
+      [[0, 0], [1, 0], [-1, -1], [0, -1], [-2, -2], [-1, -2], [-2, -3], [-3, -4], [-2, -4], [-3, -5], [-3, -6]].forEach(([dx, dy]) => P(tx + dx, ty + dy, 1, 1, '#f4efe0'));
+      P(tx, ty, 2, 1, '#c9bfa6');
+      /* claw scars on the flank */
+      { const [x, y] = G(14, 7); for (let s = 0; s < 3; s++) for (let k = 0; k < 5; k++) P(x + s * 3 + k, y + k, 1, 1, shade(spec.c, .35)); }
+      P(ex, ey, 2, 2, '#ff3b2f'); P(ex, ey, 1, 1, '#ffd0a0');
+    }
+    if (id === 'tigerLord') {
+      /* black-iron spine ridge + red eyes + gold arm bands */
+      for (const gx of [9, 12, 15, 18, 21]) { const [x, y] = G(gx, 4); P(x, y - 2, 2, 2, '#2a2430'); P(x, y - 4, 1, 2, '#6a5a8a'); }
+      { const [x, y] = G(5, 14); P(x, y, 8, 2, '#d8b040'); P(x, y, 8, 1, '#ffe08a'); }
+      eye(1, 5, '#ff3b2f', '#ffd0a0');
+      { const [x, y] = G(0, 3); for (let k = 0; k < 5; k++) P(x + 1 + k, y + k + bob, 1, 1, '#c8352f'); }   /* scar over the eye */
+    }
+    if (id === 'sangun') {
+      /* \u738b on the forehead, white ruff, golden eye */
+      { const [x, y] = G(3, 3), c = shade(spec.c3 || '#1a1210', 0); P(x, y + bob, 6, 1, c); P(x + 1, y + 2 + bob, 4, 1, c); P(x, y + 4 + bob, 6, 1, c); P(x + 2, y + bob, 2, 5, c); }
+      { const [x, y] = G(0, 8); for (const [dx, dy, w] of [[0, 2, 3], [2, 4, 4], [5, 5, 3], [7, 3, 3], [9, 1, 2]]) P(x + dx, y + dy + bob, w, 2, '#fbf6ea'); }
+      eye(1, 5, '#ffcf40', '#fff6c0');
+    }
+    if (id === 'whiteWolf') {
+      /* frost ruff around the neck + ice-blue eye */
+      { const [x, y] = G(5, 5); for (const [dx, dy] of [[0, 0], [2, 3], [4, 6], [1, 8], [6, 9], [-1, 4], [3, 10]]) { P(x + dx, y + dy + bob, 3, 2, '#ffffff'); P(x + dx, y + dy + 2 + bob, 2, 1, '#cfe9f7'); } }
+      eye(1, 4, '#5fc8ff', '#e0f8ff');
+    }
+    if (id === 'kyuubi') {
+      /* red kitsune markings, fox-fire orb */
+      { const [x, y] = G(2, 5); P(x, y + 2 + bob, 4, 1, '#d0402e'); P(x + 1, y + 3 + bob, 3, 1, '#d0402e'); }
+      { const [x, y] = G(4, 2); P(x, y - 1 + bob, 1, 3, '#d0402e'); }
+      eye(1, 5, '#d0402e', '#ffd0a0');
+      { const [x, y] = G(-1, 0), fl = frame === 1 ? -1 : 0; P(x + 1, y + fl, 4, 6, '#7fd8ff'); P(x, y + 1 + fl, 6, 4, '#7fd8ff'); P(x + 2, y + 1 + fl, 2, 3, '#ffffff'); P(x + 2, y - 2 + fl, 2, 2, '#bfeaff'); }
+    }
+    E.outlineCanvas(out);
+    out._bk = 1;
+    return out;
+  }
+  window.BOSS_SPRITE = function (id, frame, right, E) {
+    if (!IDS.includes(id)) return null;
+    const key = id + ':' + frame + ':' + (right ? 1 : 0);
+    let v = cache.get(key);
+    if (!v) {
+      let img = build(id, frame, E);
+      if (right) { const m = mk(img.width, img.height), mg = m.getContext('2d'); mg.translate(img.width, 0); mg.scale(-1, 1); mg.drawImage(img, 0, 0); m._bk = 1; img = m; }
+      const fl = mk(img.width, img.height), fg = fl.getContext('2d'); fg.drawImage(img, 0, 0); fg.globalCompositeOperation = 'source-atop'; fg.fillStyle = '#fff'; fg.fillRect(0, 0, fl.width, fl.height); fl._bk = 1;
+      v = { img, flash: fl }; cache.set(key, v);
+    }
+    return v;
+  };
+})();
+
+
+/* ===== bosses that shared one body: each gets its own native-size look ===== */
+(function () {
+  const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+  function strip(src) {            /* drop the 1px outline (alpha 235) so it can be redrawn thin after scaling */
+    const c = mk(src.width, src.height), g = c.getContext('2d'); g.drawImage(src, 0, 0);
+    const im = g.getImageData(0, 0, c.width, c.height), d = im.data; for (let i = 3; i < d.length; i += 4) if (d[i] === 235) d[i] = 0;
+    g.putImageData(im, 0, 0); return c;
+  }
+  function scale2x(src) {
+    const W = src.width, H = src.height, sd = src.getContext('2d').getImageData(0, 0, W, H).data;
+    const out = mk(W * 2, H * 2), og = out.getContext('2d'), od = og.createImageData(W * 2, H * 2), d = od.data;
+    const px = (x, y) => { x = Math.max(0, Math.min(W - 1, x)); y = Math.max(0, Math.min(H - 1, y)); const i = (y * W + x) * 4; return (sd[i] << 24 | sd[i + 1] << 16 | sd[i + 2] << 8 | sd[i + 3]) >>> 0; };
+    const put = (x, y, v) => { const i = (y * W * 2 + x) * 4; d[i] = v >>> 24; d[i + 1] = v >>> 16 & 255; d[i + 2] = v >>> 8 & 255; d[i + 3] = v & 255; };
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const P = px(x, y), A = px(x, y - 1), B = px(x + 1, y), C = px(x - 1, y), D = px(x, y + 1);
+      put(2 * x, 2 * y, C === A && C !== D && A !== B ? A : P); put(2 * x + 1, 2 * y, A === B && A !== C && B !== D ? B : P);
+      put(2 * x, 2 * y + 1, D === C && D !== B && C !== A ? C : P); put(2 * x + 1, 2 * y + 1, B === D && B !== A && D !== C ? D : P);
+    }
+    og.putImageData(od, 0, 0); return out;
+  }
+  const L = { /* layout per body: canvas size and where the 2x body sits */
+    human:   { W: 64, H: 76, OX: 12, OY: 14 },
+    serpent: { W: 104, H: 72, OX: 6, OY: 10 },
+    ghost:   { W: 60, H: 64, OX: 10, OY: 12 },
+  };
+  const ART = {
+    /* ---------- red oni x3 ---------- */
+    naniwaOniLord(P, F, f) {      /* Osaka lord: black-lacquer armour with gold, golden crest, iron kanabo */
+      const [hx, hy] = F(9, 1); P(hx - 4, hy - 4, 10, 2, '#d6a53d'); P(hx - 2, hy - 7, 6, 3, '#ffd24a'); P(hx, hy - 9, 2, 2, '#fff2a8');
+      for (const [x, y] of [F(4, 12), F(13, 12)]) { P(x - 2, y, 9, 10, '#1d1a22'); for (let k = 0; k < 4; k++) P(x - 2, y + 2 + k * 2, 9, 1, '#d6a53d'); }
+      const [cx, cy] = F(16, 6); P(cx, cy, 5, 30, '#3a3a42'); P(cx, cy, 2, 30, '#6a6c76'); for (let k = 2; k < 26; k += 5) { P(cx - 2, cy + k, 2, 2, '#b8bcc4'); P(cx + 5, cy + k + 2, 2, 2, '#b8bcc4'); }
+    },
+    oniLord(P, F, f) {            /* red general of \uc801\uadc0\uc0b0: tiger-skin sash, bone necklace, nailed club */
+      const [wx, wy] = F(7, 18); P(wx, wy, 16, 5, '#e8a832'); for (let k = 1; k < 16; k += 4) P(wx + k, wy, 2, 5, '#1a1210');
+      const [nx, ny] = F(7, 13); for (let k = 0; k < 7; k++) P(nx + k * 2.4, ny + (k === 3 ? 2 : k === 2 || k === 4 ? 1 : 0), 2, 3, '#f4efe0');
+      const [sx, sy] = F(8, 15); for (let k = 0; k < 6; k++) P(sx + k, sy + k, 1, 1, '#ffb0a0');
+      const [cx, cy] = F(16, 7); P(cx, cy, 6, 26, '#7a4a2c'); P(cx, cy, 2, 26, '#9a6440'); for (let k = 3; k < 22; k += 5) P(cx + 6, cy + k, 2, 1, '#c8ccd2');
+    },
+    daiOni(P, F, f) {             /* great demon: wild white mane, purple prayer beads, ember eyes */
+      const [mx, my] = F(3, 2); for (const [dx, dy, w, h] of [[0, 4, 4, 18], [-2, 10, 4, 14], [26, 4, 4, 18], [28, 10, 4, 14], [4, 0, 22, 4], [2, 2, 4, 6], [24, 2, 4, 6]]) P(mx + dx, my + dy, w, h, '#f0ece4');
+      for (let k = 0; k < 30; k += 3) P(mx + k, my + 3, 1, 2, '#c8c2b8');
+      const [bx, by] = F(6, 13); for (let k = 0; k < 8; k++) { P(bx + k * 2.8, by + Math.abs(k - 3.5) * -1 + 4, 3, 3, '#6a3f86'); P(bx + k * 2.8, by + Math.abs(k - 3.5) * -1 + 4, 1, 1, '#b48ad0'); }
+    },
+    /* ---------- generals x3 ---------- */
+    fallenCaptain(P, F, f) {      /* ruined-castle captain: torn red cape, broken plume */
+      const [px2, py2] = F(8, 0); P(px2, py2, 2, 3, '#5a5a62'); P(px2 + 2, py2 + 1, 2, 1, '#8a8c94');
+      const [cx, cy] = F(9, 14); P(cx, cy, 1, 6, '#2a2228'); P(cx + 1, cy + 5, 3, 1, '#2a2228');
+    },
+    fb_general(P, F, f) {         /* blood-moon general: crescent crest, red glaive */
+      const [mx, my] = F(7, -1); P(mx, my, 10, 2, '#e8303a'); P(mx - 2, my - 2, 3, 2, '#e8303a'); P(mx + 9, my - 2, 3, 2, '#e8303a'); P(mx - 3, my - 5, 2, 3, '#ff6a6a'); P(mx + 11, my - 5, 2, 3, '#ff6a6a');
+      const [gx, gy] = F(16, 2); P(gx, gy + 6, 3, 34, '#3a2a20'); P(gx - 3, gy, 7, 8, '#c8cdd4'); P(gx - 5, gy - 3, 5, 6, '#e8ecf0'); P(gx - 3, gy + 2, 7, 2, '#e8303a');
+      const [ax, ay] = F(6, 21); for (let k = 0; k < 9; k += 3) P(ax + k * 2, ay, 2, 4 + k % 2 * 2, '#b0202a');
+    },
+    seaAdmiral(P, F, f) {         /* drowned admiral: \uc804\ub9bd hat with red \uc0c1\ubaa8, seaweed */
+      const [hx, hy] = F(4, 2); P(hx, hy + 4, 26, 3, '#14181c'); P(hx + 6, hy - 2, 14, 7, '#1c2228'); P(hx + 6, hy - 2, 14, 1, '#3a444e'); P(hx + 11, hy - 6, 4, 4, '#c8352f'); P(hx + 10, hy - 8, 6, 3, '#e8503a');
+      for (const [sx, len] of [[F(5, 13)[0], 16], [F(14, 13)[0], 20], [F(10, 20)[0], 10]]) { const sy = F(0, 13)[1]; for (let k = 0; k < len; k++) P(sx + (k % 6 < 3 ? 0 : 1), sy + k, 2, 1, k % 5 === 0 ? '#4fa04a' : '#2f7a3a'); }
+      const [bx, by] = F(5, 12); P(bx, by, 4, 3, '#c8c0a8'); P(bx + 18, by, 4, 3, '#c8c0a8'); P(bx + 1, by, 1, 1, '#f4efe0');
+    },
+    /* ---------- kappa x2 ---------- */
+    hakataKappaLord(P, F, f) {    /* Hakata boss: red hachimaki, straw mino cape, short sword */
+      const [hx, hy] = F(5, 6); P(hx, hy, 18, 2, '#d0302a'); P(hx + 16, hy + 2, 3, 6, '#d0302a'); P(hx + 18, hy + 4, 3, 4, '#a02020');
+      const [sx, sy] = F(15, 15); P(sx, sy, 2, 14, '#c8cdd4'); P(sx - 2, sy + 12, 6, 2, '#d6a53d'); P(sx, sy + 14, 2, 4, '#3a2a20');
+    },
+    kappaLord(P, F, f) {          /* elder: long white beard and brows, gnarled staff with gourd */
+      const [bx, by] = F(6, 11); P(bx, by, 8, 6, '#f4f0e6'); P(bx + 1, by + 6, 6, 4, '#f4f0e6'); P(bx + 2, by + 10, 4, 3, '#e4ded2'); P(bx + 3, by + 13, 2, 2, '#e4ded2');
+      const [ex, ey] = F(5, 8); P(ex, ey, 5, 1, '#f4f0e6'); P(ex + 9, ey, 5, 1, '#f4f0e6');
+      const [sx, sy] = F(16, 4); P(sx, sy, 3, 46, '#6b4a2c'); P(sx + 1, sy + 8, 2, 2, '#4a3020'); P(sx - 1, sy + 20, 2, 2, '#4a3020'); P(sx - 2, sy - 3, 7, 4, '#6b4a2c');
+      P(sx + 3, sy + 2, 6, 5, '#d8a848'); P(sx + 4, sy - 1, 4, 4, '#d8a848'); P(sx + 5, sy - 2, 2, 1, '#8a3a2a');
+    },
+    /* ---------- ghosts x2 ---------- */
+    fb_ghost(P, F, f) {           /* nameless white face: noh mask, long black hair */
+      const [hx, hy] = F(3, 2); P(hx, hy, 28, 6, '#141018'); P(hx - 2, hy + 4, 5, 26, '#141018'); P(hx + 25, hy + 4, 5, 26, '#141018'); P(hx + 2, hy + 4, 3, 16, '#141018');
+      const [mx, my] = F(5, 7); P(mx + 2, my, 16, 18, '#f6f2ea'); P(mx, my + 2, 20, 13, '#f6f2ea'); P(mx + 4, my + 18, 12, 2, '#e8e2d6');
+      P(mx + 3, my + 7, 5, 1, '#141018'); P(mx + 12, my + 7, 5, 1, '#141018'); P(mx + 4, my + 6, 3, 1, '#7a7480'); P(mx + 13, my + 6, 3, 1, '#7a7480');
+      P(mx + 8, my + 14, 4, 2, '#c8202a'); P(mx + 5, my + 1, 3, 2, '#141018'); P(mx + 12, my + 1, 3, 2, '#141018');
+    },
+    palgongFireKing(P, F, f) {    /* fire king: flame crown, horns of fire, magma cracks */
+      const [cx, cy] = F(3, 1), fl = f === 1 ? 1 : 0;
+      for (const [dx, h, c] of [[2, 8, '#ff7a1a'], [7, 12, '#ffb43a'], [12, 16, '#ffe08a'], [17, 12, '#ffb43a'], [22, 8, '#ff7a1a'], [26, 5, '#ff5a1a']]) { P(cx + dx, cy - h + fl, 4, h + 2, c); P(cx + dx + 1, cy - h + 2 + fl, 2, h - 2, '#fff2b0'); }
+      const [hx, hy] = F(2, 5); P(hx, hy - 6, 3, 8, '#ff3a1a'); P(hx - 2, hy - 9, 3, 4, '#ffb43a'); P(hx + 30, hy - 6, 3, 8, '#ff3a1a'); P(hx + 32, hy - 9, 3, 4, '#ffb43a');
+      const [mx, my] = F(5, 16); for (const [dx, dy] of [[0, 0], [2, 2], [4, 1], [16, 0], [18, 2], [14, 3], [9, 5], [10, 7]]) P(mx + dx, my + dy, 2, 1, '#5a1a0a');
+    },
+    /* ---------- sea serpents x3 ---------- */
+    dragonKing(P, F, f) {         /* dragon king: gold crown, long whiskers, \uc5ec\uc758\uc8fc pearl, gold fins */
+      const [cx, cy] = F(6, 2); P(cx, cy + 2, 12, 3, '#d6a53d'); for (const k of [0, 4, 8]) P(cx + k + 1, cy - 2, 2, 4, '#ffd24a'); P(cx + 5, cy - 3, 2, 2, '#e8303a');
+      const [wx, wy] = F(1, 12); for (let k = 0; k < 14; k++) { P(wx - k, wy + Math.round(Math.sin(k / 2.2) * 2), 1, 1, '#f2c14e'); P(wx - k + 2, wy + 6 + Math.round(Math.sin(k / 2.2 + 1) * 2), 1, 1, '#f2c14e'); }
+      const [px, py] = F(0, 17); P(px - 6, py, 8, 8, '#f4f8ff'); P(px - 7, py + 2, 10, 4, '#f4f8ff'); P(px - 4, py + 2, 2, 2, '#ffffff'); P(px - 3, py + 5, 4, 2, '#bfe0ff');
+      for (const gx of [16, 21, 26, 31]) { const [x, y] = F(gx, 11); P(x, y - 4, 3, 4, '#f2c14e'); P(x + 1, y - 6, 1, 2, '#ffe08a'); }
+    },
+    seaDragonShade(P, F, f, ctx) { /* the shade: dithered shadow over the body, hollow eyes, ragged dark fins */
+      ctx.save(); ctx.globalCompositeOperation = 'source-atop'; ctx.fillStyle = '#081418';
+      for (let y = 0; y < ctx.canvas.height; y++) for (let x = (y % 2); x < ctx.canvas.width; x += 2) ctx.fillRect(x, y, 1, 1);
+      ctx.restore();
+      const [ex, ey] = F(8, 9); P(ex, ey, 5, 4, '#f4fcff'); P(ex + 1, ey + 1, 3, 2, '#9fe8ff');
+      for (const gx of [15, 19, 23, 27, 31, 35]) { const [x, y] = F(gx, 11); P(x, y - 5, 2, 5, '#1a0e2a'); P(x + 2, y - 3, 2, 3, '#1a0e2a'); P(x - 1, y - 7, 1, 2, '#3a2a5a'); }
+    },
+    seaDragonKing(P, F, f) {      /* king of the wreck: anchor chain wrapped round, coral on the back */
+      const [ax, ay] = F(18, 12); for (let k = 0; k < 9; k++) { const x = ax + k * 4, y = ay + 4 + (k % 2) * 2; P(x, y, 4, 3, '#7a7e86'); P(x + 1, y + 1, 2, 1, '#2a2e34'); }
+      for (const [gx, gy] of [[22, 12], [30, 14], [38, 10]]) { const [x, y] = F(gx, gy); P(x, y - 6, 2, 6, '#ff7a6a'); P(x - 2, y - 4, 2, 2, '#ff7a6a'); P(x + 2, y - 8, 2, 4, '#ffa08a'); P(x + 4, y - 5, 2, 2, '#ff7a6a'); }
+      const [bx, by] = F(10, 14); P(bx, by, 3, 2, '#d8d0b8'); P(bx + 5, by + 3, 2, 2, '#d8d0b8'); P(bx + 1, by + 6, 2, 2, '#c8c0a8');
+    },
+  };
+  const BEHIND = {
+    fallenCaptain(P, F) {         /* torn red cape hanging behind the armour */
+      const [x, y] = F(4, 11); P(x, y, 30, 26, '#7a2a2a'); P(x + 2, y, 26, 2, '#9a3a3a');
+      for (let k = 0; k < 30; k += 4) P(x + k, y + 26, 3, (k % 8 ? 2 : 5), '#7a2a2a');
+      P(x + 8, y + 18, 3, 6, 'rgba(0,0,0,0)');
+    },
+    hakataKappaLord(P, F) {       /* straw mino cape over the shell */
+      const [mx, my] = F(3, 11); for (let k = 0; k < 30; k += 2) P(mx + k, my + (k < 4 || k > 25 ? 3 : 0), 2, 20 + (k % 4 ? 2 : 0), k % 4 ? '#b89a5a' : '#9a7e44');
+    },
+  };
+  const cache = new Map();
+  function build(id, frame, E) {
+    const b = E.BOSSES[id], base = b.base ? E.MOBS[b.base] : null, spec = b.spr || base.spr;
+    const src = spec.b === 'human' ? E.buildHuman(spec, 2, frame) : (E.BODY_BUILDERS[spec.b])(spec, frame);
+    const lay = L[spec.b], out = mk(lay.W, lay.H), g = out.getContext('2d');
+    const P = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(Math.round(x), Math.round(y), Math.max(1, Math.round(w)), Math.max(1, Math.round(h))); };
+    const F = (x, y) => [lay.OX + x * 2, lay.OY + y * 2];
+    if (BEHIND[id]) BEHIND[id](P, F, frame);
+    g.drawImage(scale2x(strip(src)), lay.OX, lay.OY);
+    ART[id](P, F, frame, g);
+    E.outlineCanvas(out); out._bk = 1; return out;
+  }
+  const prev = window.BOSS_SPRITE;
+  window.BOSS_SPRITE = function (id, frame, right, E) {
+    if (!ART[id]) return prev ? prev(id, frame, right, E) : null;
+    const key = id + ':' + frame + ':' + (right ? 1 : 0); let v = cache.get(key);
+    if (!v) {
+      let img = build(id, frame, E);
+      if (right) { const m = mk(img.width, img.height), mg = m.getContext('2d'); mg.translate(img.width, 0); mg.scale(-1, 1); mg.drawImage(img, 0, 0); m._bk = 1; img = m; }
+      const fl = mk(img.width, img.height), fg = fl.getContext('2d'); fg.drawImage(img, 0, 0); fg.globalCompositeOperation = 'source-atop'; fg.fillStyle = '#fff'; fg.fillRect(0, 0, fl.width, fl.height); fl._bk = 1;
+      v = { img, flash: fl }; cache.set(key, v);
+    }
+    return v;
+  };
+})();
+
+
+/* ===== \uc81c\uc8fc \ub3cc\ub2f4\uc9d1: \ud604\ubb34\uc554 \ub3cc\ubcbd + \uc0c8\ub07c\uc904\ub85c \uc5ee\uc740 \ub760\uc9c0\ubd95 + \uc55e\ub9c8\ub2f9 \ub3cc\ub2f4 (\ud55c\uc625\u00b7\uc77c\ubcf8 \uc9d1\uacfc \uac19\uc740 \uaddc\uaca9) ===== */
+window.NEW_JEJUHOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
+  if (p.type !== 'jejuHouse') return null;
+  const d = p.data || { w: 5, h: 4, face: 'S' };
+  const W = d.w * TILE / ART, H = 86, pp = painter(W, H), P = pp.P, mid = W / 2;
+  const kind = d.kind || '', cat = d.cat || '';
+  const hz = (x, y) => (((x * 73856093) ^ (y * 19349663) ^ ((p.v || 0) * 83492791)) >>> 0);
+  const thatch = ['#b99a54', '#ad8e48', '#c2a45e'][p.v || 0], tL = shade(thatch, .22), tD = shade(thatch, -.28), tDD = shade(thatch, -.5), rope = '#6a5230';
+  const ST = ['#4a4d52', '#585c61', '#3e4145', '#63676c'], mortar = '#26282b';
+  const wood = '#7a4f30', woodD = '#4a2e1b', woodL = '#9a6a44', paper = '#e9dfbf';
+  /* \ub3cc \ud55c \uc904: \ud3ed\uc774 \ub4e4\ucb49\ub0a0\ucb49\ud55c \ud604\ubb34\uc554, \uc904\ub9c8\ub2e4 \ubc18 \uce78\uc529 \uc5b4\uae0b\ub09c\ub2e4 */
+  const stoneRow = (x0, x1, y, h, seed) => {
+    let x = x0 - (seed % 2 ? 3 : 0);
+    while (x < x1) {
+      const w = 5 + hz(x, y + seed) % 4, a = Math.max(x0, x), b = Math.min(x1, x + w);
+      if (b - a > 1) { const c = ST[hz(x + 7, y) % ST.length]; P(a, y, b - a - 1, h, c); P(a, y, b - a - 1, 1, shade(c, .2)); if (hz(x, y + 3) % 3 === 0) P(a + 1, y + 2, 1, 1, shade(c, -.3)); }
+      x += w;
+    }
+  };
+
+  /* ---- \ubc14\ub2e5\ub3cc + \ub514\ub524\ub3cc ---- */
+  P(3, 72, W - 6, 7, '#34373a'); P(3, 72, W - 6, 1, '#55595d');
+  P(mid - 12, 79, 24, 3, '#6a6e72'); P(mid - 12, 79, 24, 1, '#8a8e92'); P(mid - 14, 82, 28, 3, '#5a5e62'); P(mid - 14, 82, 28, 1, '#7a7e82');
+
+  /* ---- \ubab8\ucc44: \ud604\ubb34\uc554 \ub3cc\ubcbd ---- */
+  P(4, 38, W - 8, 34, mortar);
+  for (let y = 39, k = 0; y < 72; y += 5, k++) stoneRow(5, W - 5, y, 4, k);
+  const cols = [4, Math.round(W * .3) - 1, Math.round(W * .7) - 2, W - 7];
+  /* \uac00\uc6b4\ub370 \uce78\uc758 \ub098\ubb34 \ud2c0 (\uae30\ub465 \ub458 + \uc0c1\uc778\ubc29) */
+  for (const x of [cols[1], cols[2]]) { P(x, 38, 3, 34, wood); P(x, 38, 1, 34, woodL); }
+  P(cols[1], 38, cols[2] - cols[1] + 3, 3, wood); P(cols[1], 38, cols[2] - cols[1] + 3, 1, woodL);
+
+  /* ---- \uc591\ucabd \uce78\uc758 \uc791\uc740 \ucc3d ---- */
+  const win = (x0, x1) => {
+    const ww = 11, wx = Math.round((x0 + x1) / 2 - ww / 2), wy = 46;
+    P(wx - 1, wy - 1, ww + 2, 12, woodD); P(wx, wy, ww, 10, paper);
+    P(wx + 5, wy, 1, 10, wood); P(wx, wy + 4, ww, 1, wood); P(wx - 2, wy + 10, ww + 4, 2, wood);
+  };
+  win(cols[0] + 1, cols[1]); win(cols[2] + 3, cols[3] + 2);
+
+  /* ---- \uac00\uc6b4\ub370 \ubb38 ---- */
+  const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0, dy0 = 42, dy1 = 72;
+  P(dx0 - 1, dy0 - 1, dw + 2, dy1 - dy0 + 1, woodD);
+  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'].includes(kind);
+  if (shop) {   /* \uc5f4\ub9b0 \uac00\uac8c: \uc5b4\ub450\uc6b4 \uc548\ucabd + \uac08\uc637 \ube5b \ubc1c */
+    const cur = { armor: '#2f4f86', weapon: '#7a2f2a', potion: '#3f7a52', accessory: '#6a3f86', general: '#8a6a2a' }[cat] || (kind === 'healer' ? '#2f6f7a' : '#a8623a');
+    P(dx0, dy0, dw, dy1 - dy0, '#2e2018'); P(dx0, dy1 - 6, dw, 6, '#4e3524');
+    for (let x = dx0 + 2; x < dx1 - 1; x += 4) P(x, dy1 - 6, 1, 6, '#3e2a1c');
+    P(dx0, dy0, dw, 11, cur); P(dx0, dy0, dw, 1, shade(cur, .25));
+    for (let x = dx0 + Math.floor(dw / 3); x < dx1 - 1; x += Math.floor(dw / 3)) P(x, dy0 + 2, 1, 9, shade(cur, -.35));
+  } else {      /* \ub2eb\ud78c \ub110\ubb38 */
+    P(dx0, dy0, dw, dy1 - dy0, '#6e4528');
+    for (let x = dx0 + 2; x < dx1; x += 3) P(x, dy0, 1, dy1 - dy0, '#573419');
+    P(Math.round(dx0 + dw / 2) - 1, dy0, 2, dy1 - dy0, woodD);
+    P(dx0, dy0 + 5, dw, 2, woodD); P(dx0, dy1 - 8, dw, 2, woodD);
+    const ry = Math.round((dy0 + dy1) / 2); P(Math.round(dx0 + dw / 2) - 4, ry, 2, 2, '#c9a35a'); P(Math.round(dx0 + dw / 2) + 2, ry, 2, 2, '#c9a35a');
+  }
+
+  /* ---- \uac04\ud310 ---- */
+  let labelDy;
+  if (p.label) {
+    const sw = Math.min(W - 18, 10 + p.label.length * 6), sx = Math.round(mid - sw / 2);
+    P(sx - 1, 36, sw + 2, 9, woodD); P(sx, 37, sw, 7, '#c9a46a'); P(sx, 37, sw, 1, '#e0c48c');
+    labelDy = -(H + 1) * ART + 2 + 41 * ART;
+  }
+
+  /* ---- \ub760\uc9c0\ubd95: \ub465\uadfc \uc9c0\ubd95 + \uc0c8\ub07c\uc904 \uadf8\ubb3c ---- */
+  const top = 6, eave = 34, inset = y => Math.round(17 * Math.pow(1 - (y - top) / (eave - top), 1.9));
+  for (let y = top; y <= eave; y++) { const i = inset(y); P(i, y, W - i * 2, 1, y < top + 5 ? tL : thatch); }
+  for (let y = top + 2; y < eave; y++) { const i = inset(y); for (let x = i + 1; x < W - i - 1; x++) { const h = hz(x, y) % 9; if (h === 0) P(x, y, 1, 1, tD); else if (h === 1) P(x, y, 1, 1, tL); } }
+  for (let y = top + 1; y <= eave; y++) { const i = inset(y); for (let x = i; x < W - i; x++) if ((x + 3) % 8 === 0 || ((y - top) % 6 === 5)) P(x, y, 1, 1, rope); }
+  /* \ucc98\ub9c8 \ub05d: \ub4e4\ucb49\ub0a0\ucb49\ud55c \ub760 + \uadf8\ub298 */
+  for (let x = 0; x < W; x += 2) P(x, eave + 1, 2, 2 + (hz(x, 1) % 2), tD);
+  P(2, eave + 3, W - 4, 2, tDD);
+  /* \ucc98\ub9c8 \ubc11 \ub204\ub984\ub3cc \uc904 (\ubc14\ub78c\uc5d0 \ub0a0\ub9ac\uc9c0 \uc54a\uac8c \ub9e4\ub2e8 \ub3cc) */
+  for (let x = 6; x < W - 6; x += 10) { P(x, eave + 2, 3, 3, '#3e4145'); P(x, eave + 2, 3, 1, '#63676c'); }
+
+  /* ---- \uc55e\ub9c8\ub2f9 \ub3cc\ub2f4: \uc591\ucabd \ubaa8\ud241\uc774\uc5d0 \ub0ae\uac8c \uc313\uace0 \uac00\uc6b4\ub370\ub294 \ud130 \ub454\ub2e4 ---- */
+  const fence = (x0, x1) => {
+    P(x0, 76, x1 - x0, 9, mortar);
+    for (let y = 75, k = 0; y < 85; y += 4, k++) stoneRow(x0, x1, y, 3, k + 5);
+    for (let x = x0 + 1; x < x1 - 2; x += 5) if (hz(x, 9) % 2) { const c = ST[hz(x, 4) % ST.length]; P(x, 72, 3, 3, c); P(x, 72, 3, 1, shade(c, .2)); }   /* \ub9e8 \uc717\uc904\uc740 \ub4e4\ucb49\ub0a0\ucb49 */
+  };
+  fence(0, Math.round(mid - 17)); fence(Math.round(mid + 17), W);
+
+  /* ---- \uac10\uade4 \uad11\uc8fc\ub9ac ---- */
+  { const bx = cols[2] + 5; P(bx, 66, 8, 6, '#9a6a3a'); P(bx, 66, 8, 1, '#c08a52'); P(bx + 2, 68, 1, 4, '#6e4a26'); P(bx + 5, 68, 1, 4, '#6e4a26'); for (let i = 0; i < 3; i++) { P(bx + 1 + i * 2, 64, 2, 2, '#f39a2a'); P(bx + 1 + i * 2, 64, 1, 1, '#ffc260'); } }
+
+  outlineCanvas(pp.cv);
+  pp.cv._own = 1;
+  return { img: pp.cv, ox: -(d.w * TILE) / 2 - ART, oy: -(H + 1) * ART + 2, labelDy };
+};
+
+/* ===== \uc5f0\uacb0 \ud568\uc218 ===== */
+let _gfxEnv = null, _gfxErr = 0;
+function gfxEnv() { return _gfxEnv || (_gfxEnv = { BOSSES, MOBS, painter, shade, outlineCanvas, buildHuman, BODY_BUILDERS, PX_BEAST: window.PX_BEAST, PX_BEAST2: window.PX_BEAST2 }); }
+/* \ubcf4\uc2a4 \uc804\uc6a9 \uadf8\ub9bc (\uc5c6\uc73c\uba74 null). \uadf8\ub9ac\ub2e4 \ud0c8\uc774 \ub098\uba74 \uc608\uc804 \uadf8\ub9bc\uc73c\ub85c \ub3cc\uc544\uac04\ub2e4 */
+function bossSprite(id, frame, right) {
+  if (typeof id !== 'string' || typeof BOSS_SPRITE !== 'function') return null;
+  try { return BOSS_SPRITE(id, frame, right, gfxEnv()) || null; } catch (e) { if (!_gfxErr++) reportError(e); return null; }
+}
+/* \ubaac\uc2a4\ud130 \ud55c \ub9c8\ub9ac\uc758 \uadf8\ub9bc\uacfc \ubc30\uc728 \u2014 \ubcf4\uc2a4 \uc804\uc6a9 \uadf8\ub9bc\uc740 2\ubc30 \ud06c\uae30\ub85c \uadf8\ub824\uc838 \uc788\uc5b4 \ubc30\uc728\uc744 \uc808\ubc18\uc73c\ub85c \uc4f4\ub2e4 */
+function mobSpr(m, frame, right) {
+  if (m.boss && m.bdef) {
+    const base = m.bdef.spr || (m.bdef.base && MOBS[m.bdef.base] && MOBS[m.bdef.base].spr);
+    if (m.spr === base) { const b = bossSprite(m.boss, frame, right); if (b) return [b, m.scale / 2]; }
+  }
+  return [monsterSprite(m.spr, frame, right), m.scale];
+}
+/* \uc0c8 \uc9d1 \uadf8\ub9bc (\uc5c6\uc73c\uba74 null) */
+function newHouse(p) {
+  for (const f of [window.NEW_HOUSE, window.NEW_JHOUSE, window.NEW_JEJUHOUSE]) { if (typeof f !== 'function') continue; const r = f(p, painter, shade, outlineCanvas, TILE, ART); if (r) return r; }
+  return null;
 }
 
 /* ============================================================
@@ -3316,6 +4007,7 @@ function getMap(id) {
   const k = m.def.kind;
   if (k === 'town') genTown(m); else if (k === 'cave') genCave(m); else if (k === 'dungeon') genDungeon(m); else genField(m);
   decorateRegion(m);
+  if (typeof houseFronts === 'function') houseFronts(m);   /* v352: \uc9d1 \uc8fc\uc778\uc740 \ub0a8\ucabd \ubb38 \uc55e\uc5d0 (98d_gfx352.js) */
   /* everything must be reachable from the entrance points */
   const start = m.exits[0]?.arrive || m.portals[0]?.arrive || m.spawnDefault;
   const dfield = bfsField(m, start[0], start[1]);
@@ -3598,6 +4290,7 @@ function buildPalace(p) {
   return { img: pp.cv, ox: -(W + 2) * ART / 2, oy: -(H + 1) * ART + 8 };
 }
 function buildHouse(p) {
+  { const nh = newHouse(p); if (nh) return nh; }   /* v352: \uc0c8 \uc9d1 \uadf8\ub9bc (10b_gfx352.js) */
   const d = p.data || { w: 5, h: 4, face: 'S' };
   const W = d.w * TILE / ART, bodyH = d.h * TILE / ART, roofH = 22, H = bodyH + roofH - 8;
   const pp = painter(W, H), P = pp.P;
@@ -5397,6 +6090,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v352 \ub9c8\uc744 \u00b7 \ubaac\uc2a4\ud130 \uadf8\ub9bc \uac1c\ud3b8</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfe0 \uc9d1\uc744 \uc0c8\ub85c \uadf8\ub838\uc5b4\uc694 \u2014 \ud55c\uc625 \u00b7 \uc77c\ubcf8 \uc9d1 \u00b7 \uc81c\uc8fc \ub3cc\ub2f4\uc9d1<br>\ud83e\uddd1\u200d\ud83c\udf3e \uac00\uac8c \uc8fc\uc778\uc774 \uac00\uac8c \uc548 \ub9e4\ub300 \ub4a4\uc5d0 \uc12d\ub2c8\ub2e4 (\uc9d1 \uc8fc\uc778\uc740 \ubaa8\ub450 \ub0a8\ucabd \ubb38 \uc55e)<br>\ud83d\udc2f \ud638\ub791\uc774 \u00b7 \ub291\ub300 \u00b7 \uc5ec\uc6b0 \u00b7 \uace0\uc591\uc774 \u00b7 \uba67\ub3fc\uc9c0\uc640 \ubcf4\uc2a4 18\uc885\uc758 \ubaa8\uc2b5\uc774 \ubc14\ub00c\uc5c8\uc5b4\uc694</div>`;
     notes += `<div class="sep"></div><b>v351 \uc7a5\uac11 \u00b7 \uc2e0\ubc1c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udde4 \uc7a5\uac11 \uce78 \u2014 \uacf5\uaca9\uacfc \ub9c8\ubc95\uc774 \uc870\uae08 \uc624\ub985\ub2c8\ub2e4<br>\ud83d\udc62 \uc2e0\ubc1c \uce78 \u2014 \uccb4\ub825\u00b7\ubc29\uc5b4\uac00 \uc870\uae08 \uc624\ub974\uace0 \uc774\ub3d9 \uc18d\ub3c4 +3%<br>\ud83c\udfea \ub9c8\uc744 \uc7a5\ube44\uc0c1 \u2192 \ubc29\uc5b4\uad6c \u2192 \uc7a5\uac11 \u00b7 \uc2e0\ubc1c (10\ub808\ubca8\ub9c8\ub2e4 \ud55c \ubc8c, \uac15\ud654 \uac12\uc740 \uc808\ubc18)</div>`;
     notes += `<div class="sep"></div><b>v350 \ube44\uac1d\uc758 \uc794\uc601 \u00b7 \ud22c\uc9c0 \ud6a8\uacfc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf11 \ube44\uac1d\uc774 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uc794\uc601\uc744 \uc501\ub2c8\ub2e4 \u2014 \uc4f0\ub7ec\uc9c8 \ud55c \ubc29\uc744 30\ucd08\uc5d0 \ud55c \ubc88 \ud1b5\uc9f8\ub85c \ud53c\ud574\uc694<br>\ud83d\udd25 \ubb34\uc0ac\uc758 \ud22c\uc9c0\uc5d0 \ud6a8\uacfc\uac00 \ubd99\uc5c8\uc5b4\uc694 \u2014 \uacb9\uc774 \uc313\uc774\uba74 \ubd89\uc740 \uae30\uc138\uac00 \uc19f\uace0, \ucd5c\ub300 \uacb9\uc5d0 \uace0\ub9ac\uac00 \ud37c\uc9d1\ub2c8\ub2e4<br>\ud83d\udcd6 \uc124\uba85\uc740 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
     notes += `<div class="sep"></div><b>v349 \ubb34\uc0ac\uc758 \ud22c\uc9c0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udd25 \ubb34\uc0ac\uac00 1\ucc28 \uc2b9\uae09\ubd80\ud130 \ud22c\uc9c0\ub97c \uc5bb\uc2b5\ub2c8\ub2e4 \u2014 \ub9de\uc744 \ub54c\ub9c8\ub2e4 \ub0b4\uac00 \uc8fc\ub294 \ud53c\ud574 +1% (\ucd5c\ub300 +8%), 6\ucd08\uac04 \uc548 \ub9de\uc73c\uba74 \uc0ac\ub77c\uc838\uc694<br>\ud83d\udcd6 \uc124\uba85\uc740 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
@@ -7169,7 +7863,7 @@ function codexMobHtml(p) {
 function paintCodex() {
   for (const c of document.querySelectorAll('canvas.cx')) {
     const spec = codexSpec(c.dataset.k); if (!spec) continue;
-    const spr = spec.b === 'human' ? humanSprite(spec, 2, 0) : monsterSprite(spec, 0, false);
+    const spr = (String(c.dataset.k).startsWith('b:') && bossSprite(c.dataset.k.slice(2), 0, false)) || (spec.b === 'human' ? humanSprite(spec, 2, 0) : monsterSprite(spec, 0, false));   /* v352: \ubcf4\uc2a4 \uc804\uc6a9 \uadf8\ub9bc */
     let img = spr.img;
     if (c.dataset.sil === '1') img = silhouette(img);
     const g = c.getContext('2d'); g.imageSmoothingEnabled = false; g.clearRect(0, 0, c.width, c.height);
@@ -8634,9 +9328,9 @@ function draw() {
   for (const f of G.fx) if (AIR_FX[f.type] && f.t >= (f.delay || 0)) AIR_FX[f.type](f);
   /* names & bars on top */
   for (const mm of G.mobs) if (mm.hp > 0 && mm.x > L && mm.x < R && mm.y > Tp && mm.y < B) drawMobUI(mm);
-  for (const n of G.npcs) drawNameTag(n.x, n.y - 58, n.name, '#fff1b8', n.role);
+  for (const n of G.npcs) drawNameTag(n.x, n.y - 58 + (n.drawDy || 0), n.name, '#fff1b8', n.inShop ? null : n.role);   /* v352: \uac00\uac8c \uc548 \uc8fc\uc778\uc740 \uac04\ud310\uc774 \uc9c1\ud568\uc744 \ub300\uc2e0\ud55c\ub2e4 */
   for (const a of G.ais) { if (a.ghost) drawNameTag(a.x, a.y - 58, a.name, '#ffe9a8', a.sub); else drawNameTag(a.x, a.y - 56, a.name, '#9fe8b0'); if (a.bubbleT > 0) drawBubble(a.x, a.y - 76, a.bubble); }
-  for (const n of G.npcs) if (n.bubbleShow > 0 && n.bubble) drawBubble(n.x, n.y - 82, n.bubble);
+  for (const n of G.npcs) if (n.bubbleShow > 0 && n.bubble) drawBubble(n.x, n.y - 82 + (n.drawDy || 0), n.bubble);
   for (const c of G.party) { drawNameTag(c.x, c.y - 58, c.name, '#9fd8ff'); drawBar(c.x, c.y - 52, 30, c.hp / c.s.maxHp, '#4fd07a'); }
   drawNameTag(p.x, p.y - 58, p.name, '#ffffff', p.title ? `[${p.title}]` : null);
   /* floating text: tiers get bigger, pop and wobble */
@@ -8708,7 +9402,7 @@ function drawProp(pr) {
   if (pr.type === 'torch') { const f = Math.sin(G.time * 14 + pr.x) * 2; ctx.fillStyle = '#ffb14a'; ctx.fillRect(pr.x - 4, pr.y - 50 + f, 8, 10); ctx.fillStyle = '#fff2a8'; ctx.fillRect(pr.x - 2, pr.y - 46 + f, 4, 5); }
   if (pr.type === 'landmark') drawLandmarkLife(pr, s);
   if (pr.type === 'poi' && G.map) drawPOILife(pr, s);
-  if (pr.label && s.labelDy) { ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#2a1a0e'; ctx.fillText(pr.label, pr.x, pr.y + s.labelDy + 4); }
+  if (pr.label && s.labelDy) { ctx.font = s.img._own && pr.label.length > 8 ? 'bold 9px sans-serif' : 'bold 11px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#2a1a0e'; ctx.fillText(pr.label, pr.x, pr.y + s.labelDy + 4); }
   if (G.map?.smoke && pr.type === 'hanok' && pr.data?.npc) { const k = (G.time * 20 + pr.x) % 40; ctx.fillStyle = `rgba(200,200,200,${.3 - k / 140})`; ctx.beginPath(); ctx.arc(pr.x - 40 + Math.sin(k / 6) * 4, pr.y - 150 - k, 6 + k / 5, 0, TAU); ctx.fill(); }
 }
 function drawShadow(x, y, r) { ctx.fillStyle = 'rgba(0,0,0,.28)'; ctx.beginPath(); ctx.ellipse(x, y, r, r * .42, 0, 0, TAU); ctx.fill(); }
@@ -8747,8 +9441,8 @@ function drawHeldWeapon(e, wt) {
 function drawMob(m, t) {
   const moving = m.moving || m.action;
   const frame = moving ? (Math.floor(m.walkT) % 2 ? 1 : 2) : (m.def.fly || m.spr.b === 'wisp' || m.spr.b === 'ghost' || m.spr.b === 'bat' || m.spr.b === 'bird' ? (Math.floor(t * 6 + m.x) % 2) : 0);
-  const spr = monsterSprite(m.spr, frame, m.face > 0);
-  const sc = ART * m.scale, img = spr.img, w = img.width * sc, h = img.height * sc;
+  const [spr, scm] = mobSpr(m, frame, m.face > 0);   /* v352: \ubcf4\uc2a4 \uc804\uc6a9 \uadf8\ub9bc */
+  const sc = ART * scm, img = spr.img, w = img.width * sc, h = img.height * sc;
   const float = m.def.fly ? Math.sin(t * 3 + m.x) * 4 - 8 : 0, hop = m.hop || 0, lunge = m.lunge > 0 ? (m.lunge -= 1 / 60, m.face * 6) : 0;
   drawShadow(m.x, m.y, Math.max(10, w * .32));
   if (m.boss) drawBossAura(m, t);
@@ -8869,7 +9563,7 @@ const AIR_FX = {
   boltRain(f) { const k = f.t / f.dur; ctx.strokeStyle = f.col; ctx.globalAlpha = 1 - k; ctx.lineWidth = 3; for (let i = 0; i < 6; i++) { const a = i * 1.05 + f.x, x = f.x + Math.cos(a) * f.r * .6, y = f.y + Math.sin(a) * f.r * .35; ctx.beginPath(); ctx.moveTo(x + rnd(-6, 6), y - 120); ctx.lineTo(x + rnd(-6, 6), y - 60); ctx.lineTo(x, y); ctx.stroke(); } ctx.globalAlpha = 1; },
   meteor(f) { const k = clamp(f.t / f.dur, 0, 1); if (k < 1) { ctx.fillStyle = 'rgba(255,120,40,.2)'; ctx.beginPath(); ctx.ellipse(f.x, f.y, f.r * k, f.r * .5 * k, 0, 0, TAU); ctx.fill(); const y = f.y - 260 * (1 - k); ctx.fillStyle = '#ffb14e'; ctx.beginPath(); ctx.arc(f.x + (1 - k) * 60, y, 10, 0, TAU); ctx.fill(); ctx.fillStyle = '#fff2a8'; ctx.beginPath(); ctx.arc(f.x + (1 - k) * 60, y, 5, 0, TAU); ctx.fill(); } },
   levelup(f) { const k = f.t / f.dur; ctx.globalAlpha = 1 - k; const g = ctx.createLinearGradient(0, f.y - 140, 0, f.y); g.addColorStop(0, 'rgba(255,227,138,0)'); g.addColorStop(1, 'rgba(255,227,138,.6)'); ctx.fillStyle = g; ctx.fillRect(f.x - 22, f.y - 140, 44, 140); for (let i = 0; i < 6; i++) { ctx.fillStyle = '#fff2a8'; ctx.fillRect(f.x + Math.sin(i * 2 + k * 6) * 20, f.y - k * 140 - i * 12, 3, 3); } ctx.globalAlpha = 1; },
-  death(f) { const m = f.m, k = f.t / f.dur; const spr = monsterSprite(m.spr, 0, m.face > 0); const sc = ART * m.scale, w = spr.img.width * sc, h = spr.img.height * sc; ctx.globalAlpha = 1 - k; ctx.drawImage(spr.flash, m.x - w / 2, m.y - h + 4 - k * 10, w, h * (1 - k * .5)); ctx.globalAlpha = 1; },
+  death(f) { const m = f.m, k = f.t / f.dur; const [spr, scm] = mobSpr(m, 0, m.face > 0); const sc = ART * scm, w = spr.img.width * sc, h = spr.img.height * sc; ctx.globalAlpha = 1 - k; ctx.drawImage(spr.flash, m.x - w / 2, m.y - h + 4 - k * 10, w, h * (1 - k * .5)); ctx.globalAlpha = 1; },
   ghost(f) { if (!f.src) return; const k = f.t / f.dur; ctx.globalAlpha = .4 * (1 - k); const spr = f.look ? humanSprite(f.look, f.dir, 0) : humanSprite(jobLook(f.src.job || 'thief', f.src.rank || 0), 0, 0); const w = spr.img.width * ART, h = spr.img.height * ART; ctx.filter = 'hue-rotate(220deg)'; ctx.drawImage(spr.img, f.x - w / 2, f.y - h + 4, w, h); ctx.filter = 'none'; ctx.globalAlpha = 1; }
 };
 
@@ -10357,6 +11051,7 @@ function shopType(d) {
 const _buildHouse190 = buildHouse;
 buildHouse = function (p) {
   const res = _buildHouse190(p), d = p.data || {};
+  if (res.img._own) return res;   /* v352: \uc0c8 \uc9d1 \uadf8\ub9bc\uc740 \uac00\uac8c \uafb8\ubc08\uae4c\uc9c0 \uc2a4\uc2a4\ub85c \uadf8\ub9b0\ub2e4 */
   const g = res.img.getContext('2d');
   const W = d.w * TILE / ART, bodyH = d.h * TILE / ART, by = 14, base = by + bodyH - 3, jap = p.type === 'jhouse', jeju = p.type === 'jejuHouse';
   const P = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(Math.round(x) + 1, Math.round(y) + 1, w, h); };
@@ -10480,10 +11175,10 @@ drawProp = function (pr) {
   _drawProp190(pr);
   const k = pr.data?.kind; if (!k || !(pr.type === 'hanok' || pr.type === 'jhouse' || pr.type === 'jejuHouse')) return;
   if ((k === 'smith' || k === 'tavern') && Math.random() < (k === 'smith' ? .12 : .05)) {
-    const W = pr.data.w * TILE, x = k === 'smith' ? pr.x + W / 2 - 22 : pr.x - W / 2 + 40, top = pr.y - pr.data.h * TILE - 40;
+    const W = pr.data.w * TILE, x = k === 'smith' ? pr.x + W / 2 - 22 : pr.x - W / 2 + 40, top = propSprite(pr).img._own ? pr.y - 166 : pr.y - pr.data.h * TILE - 40;
     addFx('puff', x + rnd(-3, 3), top, { col: k === 'smith' ? 'rgba(90,80,70,.55)' : 'rgba(235,235,235,.45)', dur: 1.6, r: 8 });
   }
-  if (k === 'smith') { const W = pr.data.w * TILE, gx = pr.x - W / 2 + 28, gy = pr.y - pr.data.h * TILE + 40, fl = .5 + Math.sin(G.time * 9 + pr.x) * .15; const g = ctx.createRadialGradient(gx, gy, 2, gx, gy, 46); g.addColorStop(0, `rgba(255,120,40,${.35 * fl})`); g.addColorStop(1, 'rgba(255,120,40,0)'); ctx.fillStyle = g; ctx.fillRect(gx - 50, gy - 50, 100, 100); }
+  if (k === 'smith') { const W = pr.data.w * TILE, own = propSprite(pr).img._own, gx = own ? pr.x : pr.x - W / 2 + 28, gy = own ? pr.y - 52 : pr.y - pr.data.h * TILE + 40, fl = .5 + Math.sin(G.time * 9 + pr.x) * .15; const g = ctx.createRadialGradient(gx, gy, 2, gx, gy, 46); g.addColorStop(0, `rgba(255,120,40,${.35 * fl})`); g.addColorStop(1, 'rgba(255,120,40,0)'); ctx.fillStyle = g; ctx.fillRect(gx - 50, gy - 50, 100, 100); }
 };
 
 /* ============================================================
@@ -11921,7 +12616,7 @@ Object.assign(AIR_FX, {
     HD.add(() => HD.ellipseRing(f.x, f.y, r, 2.5 * a + .4, hexA(col, .8), a));
   },
   death(f) {
-    const m = f.m, k = f.t / f.dur; const spr = monsterSprite(m.spr, 0, m.face > 0); const sc = ART * m.scale, w = spr.img.width * sc, h = spr.img.height * sc;
+    const m = f.m, k = f.t / f.dur; const [spr, scm] = mobSpr(m, 0, m.face > 0); const sc = ART * scm, w = spr.img.width * sc, h = spr.img.height * sc;
     ctx.save(); ctx.globalAlpha = 1 - k; ctx.drawImage(spr.flash, m.x - w / 2, m.y - h + 4 - k * 10, w, h * (1 - k * .5)); ctx.restore();
     if (!f.motes) { f.motes = 1; const n = m.boss ? 30 : 9; for (let i = 0; i < n; i++) addFx('ember', m.x + rnd(-w * .35, w * .35), m.y - rnd(4, h * .8), { col: m.boss ? '#ffd24a' : '#e8f4ff', dur: rnd(.5, 1.1), vx: rnd(-20, 20), vy: -rnd(40, 110), r: rnd(1.5, 3) }); }
     HD.light(m.x, m.y - h * .45, Math.max(w, h) * .6, m.boss ? '#ffd24a' : '#ffffff', (1 - k) * .45);
@@ -13563,7 +14258,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v351';
+const GAME_VER = 'v352';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -17333,6 +18028,67 @@ const _enhanceCost351 = enhanceCost;
 enhanceCost = function (it) {
   const c = _enhanceCost351(it), d = it && ITEMS[it.id];
   return d && (d.slot === 'shoes' || d.slot === 'gloves') ? Math.max(1, Math.round(c * .5)) : c;
+};
+
+/* ============================================================
+   98d_gfx352 (v352): \uc9d1 \uc8fc\uc778\uc740 \uc9d1 \uc55e(\ub0a8\ucabd)\uc5d0, \uac00\uac8c \uc8fc\uc778\uc740 \uac00\uac8c \uc548 \ub9e4\ub300 \ub4a4\uc5d0 \uc120\ub2e4
+   \u00b7 \uc0c8 \uc9d1 \uadf8\ub9bc\uc740 \ubb38\uc774 \ub298 \ub0a8\ucabd\uc5d0 \uadf8\ub824\uc9c4\ub2e4 \u2192 \ubd81\ucabd \ubb38 \uc55e\uc5d0 \uc11c \uc788\ub358 \uc8fc\uc778\ub4e4\ub3c4 \ub0a8\ucabd \ubb38 \uc55e\uc73c\ub85c \uc62e\uae34\ub2e4
+     (\uadf8\ub300\ub85c \ub450\uba74 \ub192\uc544\uc9c4 \uc9c0\ubd95\uc5d0 \uac00\ub824 \uac00\uc2b4\uae4c\uc9c0 \uc548 \ubcf4\uc778\ub2e4)
+   \u00b7 \uac00\uac8c(\uc0c1\uc810\u00b7\ub300\uc7a5\uac04\u00b7\uc8fc\ub9c9\u00b7\uba85\ud488\u00b7\ub3c4\ubc15\u00b7\uce58\ub8cc)\ub294 \ubb38 \uc548\ucabd\uc5d0 \uc138\uc6b0\uace0 \uc55e\uc5d0 \ub9e4\ub300\ub97c \uadf8\ub9b0\ub2e4
+   \u00b7 \ubb38 \uc55e\uc744 \uac00\ub9ac\ub294 \ub098\ubb34\ub294 \uce58\uc6b4\ub2e4. \ub0a8\ucabd \ubb38 \uc55e \uce78\uc774 \ubb3c\u00b7\ubcbd\uc774\uba74 \uc6d0\ub798 \uc790\ub9ac \uadf8\ub300\ub85c
+   \u00b7 \uc704\uce58\ub9cc \ubc14\ub010\ub2e4 \u2014 \ub9d0 \uac78\uae30 \uac70\ub9ac(70)\u00b7\uc0c1\uc810 \ub0b4\uc6a9\uc740 \uadf8\ub300\ub85c
+   ============================================================ */
+const SHOP_KINDS352 = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'];
+const FRONT_GREEN352 = ['tree', 'pine', 'sakura', 'snowPine', 'tangerine'];
+const isHouse352 = pr => pr.type === 'hanok' || pr.type === 'jhouse' || pr.type === 'jejuHouse';
+/* \ub9c8\uc744\uc744 \ub9cc\ub4e0 \uc9c1\ud6c4 (getMap): \uc8fc\uc778 \uc788\ub294 \uc9d1\uc758 \ub0a8\ucabd \ubb38 \uc55e\uc744 \uc815\ub9ac\ud558\uace0, \uc8fc\uc778\uc774 \uc124 \uc790\ub9ac\ub97c \uadf8 \uc55e \uce78\uc73c\ub85c \uc62e\uae34\ub2e4
+   \u00b7 \ubb38 \uc55e 3\uce78 \u00d7 2\uc904\uc5d0 \uc2ec\uae34 \ub098\ubb34\ub294 \uce58\uc6b4\ub2e4 (\ubb38\uacfc \uc8fc\uc778\uc744 \uac00\ub9b0\ub2e4) \u2014 \ub09c\uc218\ub97c \uc4f0\uc9c0 \uc54a\uc73c\ubbc0\ub85c \ub9c8\uc744\uc758 \ub2e4\ub978 \ubc30\uce58\ub294 \uadf8\ub300\ub85c
+   \u00b7 \uc55e \uce78\uc5d0 \uc124 \uc218 \uc5c6\uc73c\uba74 (\ubb3c\u00b7\ubcbd) \uc6d0\ub798 \uc790\ub9ac \uadf8\ub300\ub85c */
+function houseFronts(m) {
+  if (!m || m.def.kind !== 'town' || !m.npcSpots) return;
+  for (const pr of m.props.slice()) {
+    if (!isHouse352(pr) || !pr.data || !pr.data.npc) continue;
+    const spot = m.npcSpots.find(s => s.id === pr.data.npc); if (!spot) continue;
+    const fx = pr.tx, fy = pr.ty + 1;
+    m.props = m.props.filter(q => {
+      if (!FRONT_GREEN352.includes(q.type)) return true;
+      const dx = q.tx - fx, dy = q.ty - fy; if (Math.abs(dx) > 1 || dy < 0 || dy > 1) return true;
+      for (const [ox, oy] of PROP_SOLID[q.type] || []) if (m.inb(q.tx + ox, q.ty + oy)) m.block[m.idx(q.tx + ox, q.ty + oy)] = 0;
+      return false;
+    });
+    if (m.inb(fx, fy) && !m.solidTile(fx, fy)) { spot.x = fx; spot.y = fy; spot.front = 1; }
+  }
+}
+/* \ub9c8\uc744\uc5d0 \ub4e4\uc5b4\uc124 \ub54c: \uac00\uac8c \uc8fc\uc778\uc740 \ubb38 \uc548\ucabd \ub9e4\ub300 \ub4a4\ub85c */
+function placeHouseNpcs() {
+  const m = G.map; if (!m || !m.props || !m.npcSpots || !G.npcs) return;
+  for (const pr of m.props) {
+    if (!isHouse352(pr) || !pr.data || !pr.data.npc) continue;
+    const spot = m.npcSpots.find(s => s.id === pr.data.npc); if (!spot || !spot.front) continue;
+    const n = G.npcs.find(x => x.id === pr.data.npc); if (!n) continue;
+    n.dir = 0;
+    if (SHOP_KINDS352.includes(pr.data.kind) && propSprite(pr).img._own) { n.y = pr.y + 2; n.drawDy = -4; n.inShop = 1; }
+  }
+}
+const _enterMap352 = enterMap;
+enterMap = function () {
+  const r = _enterMap352.apply(this, arguments);
+  try { placeHouseNpcs(); } catch (e) { reportError(e); }
+  return r;
+};
+/* \ub9e4\ub300: \uac00\uac8c \uc8fc\uc778 \uc55e\uc5d0 \ub193\uc778 \ub098\ubb34 \ud310\ub9e4\ub300 */
+function drawCounter(e) {
+  const x = Math.round(e.x - 30), y = Math.round(e.y + e.drawDy - 22);
+  ctx.fillStyle = '#15100c'; ctx.fillRect(x - 2, y - 2, 64, 22);
+  ctx.fillStyle = '#8a5634'; ctx.fillRect(x, y, 60, 18);
+  ctx.fillStyle = '#a86d43'; ctx.fillRect(x, y, 60, 4);
+  ctx.fillStyle = '#5e3a22'; for (let i = 6; i < 60; i += 12) ctx.fillRect(x + i, y + 6, 2, 12);
+}
+const _drawHumanoid352 = drawHumanoid;
+drawHumanoid = function (e, t) {
+  if (!e.drawDy) return _drawHumanoid352(e, t);
+  e.y += e.drawDy; try { _drawHumanoid352(e, t); } finally { e.y -= e.drawDy; }
+  if (e.inShop) drawCounter(e);
 };
 
 /* 99_boot: start once every file above has defined its data and renderers */
