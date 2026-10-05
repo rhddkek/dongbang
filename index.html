@@ -505,7 +505,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v355</div>
+    <div class="sub">v356</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2967,7 +2967,7 @@ window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   /* ---- door in the centre bay ---- */
   const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0, dy0 = 42, dy1 = 72;
   P(dx0 - 1, dy0 - 1, dw + 2, dy1 - dy0 + 1, woodD);
-  const shop = kind === 'shop' || kind === 'smith' || kind === 'tavern' || kind === 'premium' || kind === 'gamble' || kind === 'healer';   /* v352b: \uce58\ub8cc\uc18c\ub3c4 \uc8fc\uc778\uc774 \uc548\uc5d0 \uc11c\ubbc0\ub85c \ubb38\uc744 \uc5f0\ub2e4 */
+  const shop = kind === 'shop' || kind === 'smith' || kind === 'tavern' || kind === 'premium' || kind === 'gamble' || kind === 'healer' || kind === 'trade';   /* v352b: \uce58\ub8cc\uc18c\ub3c4 \uc8fc\uc778\uc774 \uc548\uc5d0 \uc11c\ubbc0\ub85c \ubb38\uc744 \uc5f0\ub2e4 \u00b7 v356: \uac1d\uc8fc */
   if (shop) {
     /* open shop front: dark interior + \ubc1c curtain */
     const cur = { armor: '#2f4f86', weapon: '#7a2f2a', potion: '#3f7a52', accessory: '#6a3f86', general: '#8a6a2a' }[cat] || '#2f4f86';
@@ -3053,7 +3053,7 @@ window.NEW_JHOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   /* centre: noren over the shop front, or sliding shoji doors */
   const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0;
   P(dx0 - 1, 45, dw + 2, 28, woodD);
-  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'].includes(kind);
+  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer', 'trade'].includes(kind);
   if (shop) {
     P(dx0, 46, dw, 27, '#24160e'); P(dx0, 67, dw, 6, '#4a3020');
     const nw = Math.floor(dw / 3);
@@ -3527,7 +3527,7 @@ window.NEW_JEJUHOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   /* ---- \uac00\uc6b4\ub370 \ubb38 ---- */
   const dx0 = cols[1] + 4, dx1 = cols[2] - 1, dw = dx1 - dx0, dy0 = 42, dy1 = 72;
   P(dx0 - 1, dy0 - 1, dw + 2, dy1 - dy0 + 1, woodD);
-  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'].includes(kind);
+  const shop = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer', 'trade'].includes(kind);
   if (shop) {   /* \uc5f4\ub9b0 \uac00\uac8c: \uc5b4\ub450\uc6b4 \uc548\ucabd + \uac08\uc637 \ube5b \ubc1c */
     const cur = { armor: '#2f4f86', weapon: '#7a2f2a', potion: '#3f7a52', accessory: '#6a3f86', general: '#8a6a2a' }[cat] || (kind === 'healer' ? '#2f6f7a' : '#a8623a');
     P(dx0, dy0, dw, dy1 - dy0, '#2e2018'); P(dx0, dy1 - 6, dw, 6, '#4e3524');
@@ -3602,7 +3602,7 @@ function newHouse(p) {
 function houseTradeOf(d) {
   if (!d || !d.kind) return null;
   if (d.kind === 'shop') return d.cat === 'accessory' ? 'acc' : d.cat === 'gear' ? 'weapon' : d.cat || 'region';
-  return ['smith', 'tavern', 'healer', 'invest', 'gamble', 'station', 'premium'].includes(d.kind) ? d.kind : null;
+  return ['smith', 'tavern', 'healer', 'invest', 'gamble', 'station', 'premium', 'trade'].includes(d.kind) ? d.kind : null;
 }
 /* \uac04\ud310 \uc591 \ub05d\uc5d0 \ub123\ub294 7\u00d77 \uc5c5\uc885 \uadf8\ub9bc */
 function tradeEmblem(P, shade, t, x, y) {
@@ -3618,6 +3618,7 @@ function tradeEmblem(P, shade, t, x, y) {
     case 'invest': P(x + 1, y, 5, 7, gold); P(x, y + 1, 7, 5, gold); P(x + 2, y + 2, 3, 3, ink); P(x + 1, y + 1, 1, 1, '#fff2a8'); break;
     case 'gamble': P(x, y, 7, 7, '#efe6d0'); P(x + 1, y + 1, 1, 1, red); P(x + 5, y + 5, 1, 1, ink); P(x + 3, y + 3, 1, 1, ink); P(x + 5, y + 1, 1, 1, ink); P(x + 1, y + 5, 1, 1, ink); break;
     case 'station': P(x, y, 2, 6, sd); P(x + 5, y, 2, 6, sd); P(x + 1, y + 5, 5, 2, sd); P(x, y, 2, 1, st); P(x + 5, y, 2, 1, st); break;
+    case 'trade': P(x + 3, y, 1, 7, wd); P(x, y + 1, 7, 1, wd); P(x, y + 2, 1, 2, '#c9bfa6'); P(x + 6, y + 2, 1, 2, '#c9bfa6'); P(x - 0, y + 4, 3, 1, gold); P(x + 4, y + 4, 3, 1, gold); P(x + 2, y + 6, 3, 1, wd); break;   /* \uc800\uc6b8 */
     case 'premium': P(x + 1, y + 2, 5, 4, gold); P(x, y + 1, 1, 2, gold); P(x + 3, y, 1, 2, gold); P(x + 6, y + 1, 1, 2, gold); P(x + 3, y + 3, 1, 2, red); P(x + 1, y + 6, 5, 1, '#b8862a'); break;
   }
 }
@@ -3688,6 +3689,11 @@ function houseTrade(P, shade, t, o) {
     case 'invest': {                       /* \uc67c\ucabd: \uc5fd\uc804 \uafb8\ub7ec\ubbf8 / \uc624\ub978\ucabd: \uc8fc\ud310 */
       const x = lc - 1; P(x, hy, 1, 3, ink); for (let i = 0; i < 4; i++) { P(x - 2, hy + 3 + i * 3, 5, 2, gold); P(x, hy + 3 + i * 3, 1, 2, ink); }
       const s = rc - 5; P(s, yb - 8, 11, 8, wd); P(s + 1, yb - 7, 9, 6, '#d8c79a'); P(s + 1, yb - 5, 9, 1, wd); for (let i = 2; i < 10; i += 2) { P(s + i, yb - 7, 1, 6, ink); P(s + i, yb - 4 + (i % 4 ? 0 : 1), 1, 1, red); }
+      break; }
+    case 'trade': {                        /* \uc67c\ucabd: \uc313\uc544 \ub454 \uada4\uc9dd\uacfc \uac00\ub9c8\ub2c8 / \uc624\ub978\ucabd: \uc190\uc218\ub808 */
+      crate(lc - 6, 8, 6, '#a87a48'); crate(lc - 4, 8, 5, '#8a6238'); P(lc - 4, yb - 11, 8, 5, '#b8864a'); P(lc - 4, yb - 11, 8, 1, '#d8a868'); P(lc + 3, yb - 5, 6, 5, '#d8c79a'); P(lc + 3, yb - 5, 6, 1, '#efe2bc'); P(lc + 5, yb - 5, 2, 5, '#b8a47a');
+      const s = rc - 6; P(s, yb - 8, 12, 4, o.jp ? '#b08a5a' : '#8a6238'); P(s, yb - 8, 12, 1, '#c8a070'); P(s + 11, yb - 9, 4, 1, wd); P(s + 1, yb - 11, 4, 3, '#d8c79a'); P(s + 6, yb - 12, 4, 4, '#a87a48');
+      P(s + 3, yb - 5, 5, 5, ink); P(s + 4, yb - 4, 3, 3, '#8a929a'); P(s + 5, yb - 3, 1, 1, ink);
       break; }
     case 'gamble': lantern(lc - 2, '#d0402e'); lantern(rc - 2, '#d0402e'); crate(rc - 4, 7, 5, '#3a2a1a'); P(rc - 3, yb - 8, 3, 3, '#efe6d0'); P(rc - 2, yb - 7, 1, 1, red); P(rc + 1, yb - 7, 2, 2, '#efe6d0'); break;
     case 'premium': {                      /* \uc591\ucabd: \ube44\ub2e8 \ud718\uc7a5 + \uae08\ube5b \ud654\ubcd1 */
@@ -6234,6 +6240,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v356 \ud2b9\uc0b0\ud488 \uad50\uc5ed</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 \ub9c8\uc744\ub9c8\ub2e4 \uad50\uc5ed \uac1d\uc8fc(\uc77c\ubcf8\uc740 \ub3c8\uc57c)\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744\uc5d0 \ud30c\uc138\uc694<br>\ud83d\udccf \uba40\ub9ac \ub098\ub97c\uc218\ub85d \uc6c3\ub3c8\uc774 \ubd99\uc2b5\ub2c8\ub2e4 (\uc774\uc6c3 \ub9c8\uc744 +22% \uc548\ud30e, \ucd5c\ub300 2\ubc30)<br>\ud83d\uded2 \uc9d0\uce78\uc740 \uc9c0\uac8c 8\uce78\uc5d0\uc11c \uc0c1\ub2e8 \ud589\ub82c 24\uce78\uae4c\uc9c0 \u2014 \ud074\uc218\ub85d \uc0ac\ub0e5\ubcf4\ub2e4 \ub9ce\uc774 \ubc95\ub2c8\ub2e4<br>\ud83d\udc8e \uadc0\ud55c \ubb3c\uac74\uc740 \uc774\ubb38\uc774 \ud06c\uc9c0\ub9cc \uc7ac\uace0\uac00 \ucc9c\ucc9c\ud788 \ucc39\ub2c8\ub2e4 \u00b7 \uac00\ub054 '\ud2b9\uc218'\uac00 \ubd99\uc5b4 \uac12\uc774 \ub701\ub2c8\ub2e4<br>\u26a0\ufe0f \uadc0\ud658 \ubd80\uc801\uc740 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud558\uace0, \uc5ed\ucc38\uc740 \uc9d0 \uac12\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ubc1b\uc2b5\ub2c8\ub2e4. \ubc30\ub294 \ubc43\uc0af\ub9cc \ub0c5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v355 \uc0ac\ub0e5 \ub4dc\ub86d \ube48 \uad6c\uac04 \uba54\uc6c0</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2694\ufe0f Lv.8~71 \uc5d0\uc11c \uc0ac\ub0e5\uc73c\ub85c \uc548 \ub098\uc624\ub358 \uc7a5\ube44 \uc885\ub958\uac00 \uc774\uc81c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\u00b7\uc601\uc6c5)<br>\ud83d\udde1\ufe0f \ud2b9\ud788 Lv.46~63 \uc740 \ubb34\uae30\uac00 \ud55c \uc885\ub958\ub3c4 \uc548 \ub098\uc654\uc5b4\uc694 \u2014 \uc774\uc81c \uc9c1\uc5c5 \ubb34\uae30\uac00 \ubaa8\ub450 \ub098\uc635\ub2c8\ub2e4<br>\ud83d\udce6 \uc774\ub984 \uc788\ub294 \uae30\uc874 \uc7a5\ube44\ub3c4 \uadf8\ub300\ub85c \ub098\uc635\ub2c8\ub2e4 (\ub098\uc624\ub294 \uc885\ub958\uac00 \ub298\uc5b4\ub09c \ub9cc\ud07c \ube44\uc911\uc740 \uc904\uc5b4\uc694)</div>`;
     notes += `<div class="sep"></div><b>v354 \ud48d\ub958\uac1d\uc758 \uad50\uac10 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \ub4dc\ub86d</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc3e \ud48d\ub958\uac1d\uc774 1\ucc28 \uc2b9\uae09\ubd80\ud130 \uad50\uac10\uc744 \uc501\ub2c8\ub2e4 \u2014 \ub3d9\ud589 \uc601\ubb3c\uc758 \ud6a8\uacfc +30%<br>\ud83e\udde4 \ud76c\uadc0\u00b7\uc601\uc6c5 \uc7a5\uac11\uacfc \uc2e0\ubc1c\uc774 \uc0ac\ub0e5\uc5d0\uc11c \ub098\uc635\ub2c8\ub2e4 (\ud76c\uadc0\ub294 \uc7a5\ube44\uc0c1\uc5d0\uc11c\ub3c4 \ud314\uc544\uc694)<br>\ud83d\udcd6 \uc774\uc81c \ub124 \uc9c1\uc5c5 \ubaa8\ub450 \ud328\uc2dc\ube0c\uac00 \ud558\ub098\uc529 \uc788\uc5b4\uc694 \u2014 \uae30\uc220(K) \ucc3d \ub9e8 \uc544\ub798</div>`;
     notes += `<div class="sep"></div><b>v353 \uac00\uac8c \uac04\ud310 \u00b7 \uc18c\ud488 \u00b7 \uc7a5\uac11 \uc2e0\ubc1c \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\udea7 \uac04\ud310\uc744 \uc9c0\ubd95 \uc704\ub85c \uc62c\ub9ac\uace0 \ud0a4\uc6e0\uc5b4\uc694 \u2014 \uc591 \ub05d\uc5d0 \uc5c5\uc885 \uadf8\ub9bc<br>\ud83c\udfea \uac00\uac8c\ub9c8\ub2e4 \uc18c\ud488\uc774 \ub193\uc600\uc5b4\uc694 \u2014 \ubb34\uae30 \uac70\uce58\ub300, \uac11\uc637 \uac78\uc774, \uc57d\ucd08 \ub2e4\ubc1c, \uc220\ub3c5 \u2026<br>\ud83e\udde4 \uc7a5\uac11 \u00b7 \uc2e0\ubc1c\uc774 \uc0c8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\uc5b4\uc694</div>`;
@@ -14405,7 +14412,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v355';
+const GAME_VER = 'v356';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -18190,7 +18197,7 @@ enhanceCost = function (it) {
    \u00b7 \ubb38 \uc55e\uc744 \uac00\ub9ac\ub294 \ub098\ubb34\ub294 \uce58\uc6b4\ub2e4. \ub0a8\ucabd \ubb38 \uc55e \uce78\uc774 \ubb3c\u00b7\ubcbd\uc774\uba74 \uc6d0\ub798 \uc790\ub9ac \uadf8\ub300\ub85c
    \u00b7 \uc704\uce58\ub9cc \ubc14\ub010\ub2e4 \u2014 \ub9d0 \uac78\uae30 \uac70\ub9ac(70)\u00b7\uc0c1\uc810 \ub0b4\uc6a9\uc740 \uadf8\ub300\ub85c
    ============================================================ */
-const SHOP_KINDS352 = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer'];
+const SHOP_KINDS352 = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer', 'trade'];
 const FRONT_GREEN352 = ['tree', 'pine', 'sakura', 'snowPine', 'tangerine'];
 const isHouse352 = pr => pr.type === 'hanok' || pr.type === 'jhouse' || pr.type === 'jejuHouse';
 /* \ub9c8\uc744\uc744 \ub9cc\ub4e0 \uc9c1\ud6c4 (getMap): \uc8fc\uc778 \uc788\ub294 \uc9d1\uc758 \ub0a8\ucabd \ubb38 \uc55e\uc744 \uc815\ub9ac\ud558\uace0, \uc8fc\uc778\uc774 \uc124 \uc790\ub9ac\ub97c \uadf8 \uc55e \uce78\uc73c\ub85c \uc62e\uae34\ub2e4
@@ -18292,6 +18299,269 @@ const _doPromote354 = doPromote;
 doPromote = function (p) {
   const before = p ? p.rank | 0 : 0, r = _doPromote354(p);
   try { if (p && p.job === 'taoist' && before < 1 && (p.rank | 0) >= 1) { calcStats(p); setTimeout(() => toast('\ud83d\udc3e \uad50\uac10\uc744 \uc775\ud614\uc2b5\ub2c8\ub2e4 \u2014 \ub3d9\ud589 \uc601\ubb3c\uc758 \ud6a8\uacfc\uac00 \ub298\uc5b4\ub0a9\ub2c8\ub2e4 (\uae30\uc220 \ucc3d \ucc38\uace0)', 'blue'), 1800); } } catch (e) { }
+  return r;
+};
+
+/* ============================================================
+   98f_trade356 (v356): \ud83e\uddf3 \ud2b9\uc0b0\ud488 \uad50\uc5ed \u2014 \uc0ac\ub0e5 \ub9d0\uace0 \ub3c8\uc744 \ubc84\ub294 \ub450 \ubc88\uc9f8 \uae38 (1\ub2e8\uacc4)
+   \u00b7 \uc65c: \uc0ac\ub0e5 \uc218\uc785\uc740 \ub808\ubca8\uc774 \uc62c\ub77c\ub3c4 \ubd84\ub2f9 3\ucc9c~7\ucc9c \ubb38\uc5d0 \uba38\ubb34\ub294\ub370 \uc7a5\ube44 \uac12\uc740 20\ubc30\ub85c \ub6f4\ub2e4 \u2192 \ud6c4\ubc18\uc73c\ub85c \uac08\uc218\ub85d \ub3c8\uc774 \ubaa8\uc790\ub780\ub2e4.
+     '\uacbd\uc81c\ub85c\ub3c4 \ub3c8\uc744 \ubc8c\uc5b4 \uc7a5\ube44\ub97c \ub9de\ucd94\uace0 \ubcf4\uc2a4\ub97c \uc7a1\ub294' \uae38\uc744 \uc5f0\ub2e4. \uc0ac\ub0e5\uc740 \uacbd\ud5d8\uce58\u00b7\uc804\ub9ac\ud488, \uad50\uc5ed\uc740 \ub3c8
+   \u00b7 \ubb34\uc5c7: \ub9c8\uc744\ub9c8\ub2e4 \uac1d\uc8fc(\uc77c\ubcf8\uc740 \ub3c8\uc57c)\uac00 \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488 \ub450 \uac00\uc9c0\ub97c \ud310\ub2e4. \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744 \uac1d\uc8fc\uc5d0 \ud310\ub2e4 \u2014 \uba40\uc218\ub85d \ube44\uc2f8\ub2e4
+   \u00b7 \uac12: \uc0b0\uc9c0 \uac12 \u00d7 (1 + \uac70\ub9ac\uc5d0 \ub530\ub978 \uc6c3\ub3c8, \ucd5c\ub300 2\ubc30) \u00d7 \uadf8\ub0a0 \uc2dc\uc138(\u00b1) \u00d7 \ubb3c\ub9bc
+       - \uc6c3\ub3c8\uc740 \uc2e4\uc81c \uac77\ub294 \uac70\ub9ac(\ub9ac = \uc9c0\ub3c4 \uce78 \uc218)\uc5d0 \ube44\ub840\ud55c\ub2e4. \uc9c0\ub3c4 \ud06c\uae30\uc640 \uae38 \uc5f0\uacb0\uc5d0\uc11c \ubc14\ub85c \uc148\ud558\ubbc0\ub85c, \uae38\uc744 \ub298\ub9ac\uba74 \uc6c3\ub3c8\u00b7\uc7ac\uace0 \uc18d\ub3c4\uac00 \uc800\uc808\ub85c \ub530\ub77c\uac04\ub2e4
+       - \uadf8\ub0a0 \uc2dc\uc138: \ud22c\uc790\uc13c\ud130\uc758 '\uc7a5 \uac31\uc2e0'(3~5\ubd84)\ub9c8\ub2e4 \ubb3c\uac74\u00b7\ub9c8\uc744\ubcc4\ub85c \uc870\uae08\uc529 \ub2ec\ub77c\uc9c4\ub2e4
+       - \ud2b9\uc218(\u7279\u9700): \uac00\ub054 \uc5b4\ub290 \ub9c8\uc744\uc5d0\uc11c \uc5b4\ub5a4 \ubb3c\uac74 \uac12\uc5d0 \uc6c3\ub3c8\uc774 12% \ub354 \ubd99\ub294\ub2e4 (\ucc44\ud305\u00b7\uc2dc\uc138 \ud0ed\uc5d0 \uc54c\ub9bc)
+       - \ubb3c\ub9bc: \ud55c \ub9c8\uc744\uc5d0 \uac19\uc740 \ubb3c\uac74\uc744 \ub9ce\uc774 \ud314\uc218\ub85d \uac12\uc774 \ub0b4\ub824\uac00\uace0(\uac1c\ub2f9 0.4%), \uc2dc\uac04\uc774 \uc9c0\ub098\uba74 \ub3cc\uc544\uc628\ub2e4
+   \u00b7 \uc218\uc785 \ubaa9\ud45c (\uc774\uc6c3 \ub9c8\uc744\uc744 \uc624\uac00\uba70 30\ubd84 \ud3c9\uade0, \uac19\uc740 \ub808\ubca8\ub300 \uc0ac\ub0e5 \uc218\uc785 \ub300\ube44): \uc9c0\uac8c 1.2\ubc30 \u2192 \uc190\uc218\ub808 1.4 \u2192 \ub2ec\uad6c\uc9c0 1.6 \u2192 \uc6b0\ub9c8\ucc28 1.8 \u2192 \uc0c1\ub2e8 \ud589\ub82c 2.0\ubc30
+       - \uadc0\ud55c \ubb3c\uac74\uc740 \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 8\uac1c\ucbe4\ub9cc \ub2e4\uc2dc \ucc28\uc11c, \ud070 \uc9d0\uce78\uc758 \ub098\uba38\uc9c0\ub294 \uc2fc \ubb3c\uac74\uc73c\ub85c \ucc44\uc6b4\ub2e4 \u2192 \uc9d0\uce78\uc774 3\ubc30\uc5ec\ub3c4 \uc774\ubb38\uc740 1.7\ubc30
+       - \uae38\uc744 2\ubc30\ub85c \ub298\ub9b0 \uac00\uc815\uc5d0\uc11c\ub3c4 \uac19\uc740 \ubc30\uc728\uc774 \ub098\uc628\ub2e4 (sim356b, ROADX=2)
+   \u00b7 \ud55c\ub3c4 (\ubb34\ud55c \ub3c8\uc904\uc744 \ub9c9\ub294 \uac83): \uc9d0\uce78(8\uce78\ubd80\ud130, \ub3c8\uc73c\ub85c 24\uce78\uae4c\uc9c0) \u00b7 \ub9c8\uc744 \uc7ac\uace0(\uc2dc\uac04\uc774 \uc9c0\ub098\uc57c \ub2e4\uc2dc \ucc2c\ub2e4) \u00b7 \uc0b0\uc9c0\uc5d0 \ub418\ud314\uba74 \uc190\ud574(80%)
+   \u00b7 \uc9d0\uc744 \uc2e4\uc73c\uba74: \uadc0\ud658 \ubd80\uc801\uc740 \ubab8\ub9cc \uc62e\uae34\ub2e4 \u2192 \uc4f0\ub824\uba74 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud55c\ub2e4 (\ud655\uc778\ucc3d).
+     \uc5ed\ucc38 \ub9d0\uc740 \ud0c8 \uc218 \uc788\uc9c0\ub9cc \uc9d0 \uac12(\uc0b0 \uac12)\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ub0b8\ub2e4 \u2192 \uc190\ud574\ub97c \ubcf4\ub418 \uc9d0\uc740 \uac74\uc9c4\ub2e4. \ubc30\ub294 \uadf8\ub0e5 \uc2e3\ub294\ub2e4
+   \u00b7 \uc800\uc7a5: p.trade { tier, cargo:{\ubb3c\uac74:{q,cost}}, st:{\ub9c8\uc744:{\ubb3c\uac74:{s \uc7ac\uace0, t \uc7ac\uace0 \uc2dc\uac01, sat \ubb3c\ub9bc, st \ubb3c\ub9bc \uc2dc\uac01}}}, hot:[...], profit, sold }
+   \u00b7 \uc2dc\uac04\uc740 \ud50c\ub808\uc774 \uc2dc\uac04(p.playTime)\uc73c\ub85c \uc7b0\ub2e4 \u2014 \uae30\uae30 \uc2dc\uacc4\ub97c \ub3cc\ub824\ub3c4 \uc7ac\uace0\uac00 \ucc28\uc9c0 \uc54a\ub294\ub2e4
+   ============================================================ */
+const TRADE = { RATE: .00185, D0: 30, CAP: 2, HOME_SELL: .8, SAT_STEP: .004, SAT_MIN: .6, SAT_TRIP: .08, LUX_TRIP: 8, CHEAP_TRIP: 20, HOT_P: .35, HOT_ADD: .12, HOT_LEN: 2, HOT_D: 450, TILE_SEC: .254, SHOP_SEC: 8, SEA_SEC: 28 };
+const TR_TIERS = [[8, '\uc9c0\uac8c', 0], [12, '\uc190\uc218\ub808', 5000], [16, '\ub2ec\uad6c\uc9c0', 18000], [20, '\uc6b0\ub9c8\ucc28', 45000], [24, '\uc0c1\ub2e8 \ud589\ub82c', 100000]];
+/* \ub9c8\uc744: [\uad50\uc5ed \ub808\ubca8(\uadf8 \uace0\uc7a5\uc73c\ub85c \uac00\ub294 \uae38\uc758 \ub808\ubca8\ub300), \uc77c\ubcf8 \uc5ec\ubd80] \u2014 \ubb3c\uac74 \uac12\uc758 \ubc14\ud0d5\uc774 \ub41c\ub2e4 */
+const TR_TOWNS = {
+  buyeo: [20], city_daejeon: [30], city_gwangju: [40], city_daegu: [50], city_ulsan: [58], city_busan: [65], city_suwon: [70], city_seoul: [78], city_incheon: [80], jeju: [90],
+  japan_fukuoka: [100, 1], japan_osaka: [104, 1], japan_kyoto: [107, 1], japan_shizuoka: [110, 1], japan_tokyo: [113, 1], japan_sendai: [115, 1], japan_sapporo: [117, 1]
+};
+/* \ubc43\uae38: [\ub9c8\uc744, \ub9c8\uc744, \uac77\ub294 \uae38\ub85c \uce5c \uac70\ub9ac(\ub9ac)] \u2014 \ubc30\ub294 \uae08\ubc29 \ub2ff\uc73c\ubbc0\ub85c \ubc43\uc0af\uc744 \ube7c\uace0 \ub545\uae38\uacfc \ube44\uc2b7\ud558\uac8c \ub0a8\ub3c4\ub85d \uc7a1\uc740 \uac12 */
+const TR_SEA = [['city_busan', 'jeju', 90], ['city_busan', 'japan_fukuoka', 110]];
+const trLand = t => t === 'jeju' ? 'jeju' : TR_TOWNS[t][1] ? 'jp' : 'kr';   /* \ubb4d\uc774 \ub2e4\ub974\uba74 \ubc43\uae38\uc744 \ud0c4\ub2e4 */
+/* \uac70\ub9ac(\ub9ac = \uc9c0\ub3c4 \uce78 \uc218): \uc9c0\ub3c4 \ud06c\uae30\uc640 \uae38 \uc5f0\uacb0(LINKS)\uc5d0\uc11c \ubc14\ub85c \uc148\ud55c\ub2e4 \u2192 \uae38\uc744 \ub298\ub9ac\uac70\ub098 \uc0ac\uc774\uc5d0 \uc0ac\ub0e5\ud130\ub97c \ub354 \ub123\uc73c\uba74 \uac12\u00b7\uc7ac\uace0 \uc18d\ub3c4\uac00 \uc800\uc808\ub85c \ub530\ub77c\uac04\ub2e4
+   \u00b7 \ub9c8\uc744 \uc548: \uac1d\uc8fc \u2194 \ub098\uac00\ub294 \ubb38 = \uadf8 \ubc29\ud5a5 \uae38\uc774\uc758 \uc808\ubc18
+   \u00b7 \uc9c0\ub098\uac00\ub294 \uc9c0\ub3c4: \ub9c8\uc8fc \ubcf4\ub294 \ubb38\uc774\uba74 \uadf8 \ubc29\ud5a5 \uae38\uc774, \uaebe\uc774\uba74 (\uac00\ub85c+\uc138\ub85c)/2
+   \u00b7 pace[\ub9c8\uc744] = \uac00\uc7a5 \uac00\uae4c\uc6b4 \uc774\uc6c3 \ub9c8\uc744\uae4c\uc9c0 \uc655\ubcf5\ud558\ub294 \ub370 \uac78\ub9ac\ub294 \ucd08 (\uac77\uae30 + \uac00\uac8c\uc5d0\uc11c \ubcf4\ub0b4\ub294 \uc2dc\uac04). \uc7ac\uace0\u00b7\ubb3c\ub9bc\uc774 \uc774 \ubc15\uc790\ub85c \ub3cc\uc544\uc628\ub2e4 */
+let TR_GEO = null;
+function trGeo() {
+  if (TR_GEO) return TR_GEO;
+  const T = Object.keys(TR_TOWNS), D = {}, pace = {}, ed = {}, E = id => ed[id] || (ed[id] = MAPS[id] ? linksFor(id).edges : []);
+  /* \uae38\uc740 \uace7\uc9c0 \uc54a\uace0 \uac1d\uc8fc\ub3c4 \ud55c\uac00\uc6b4\ub370\uac00 \uc544\ub2c8\ub77c\uc11c, \uac00\ub294 \ubc29\ud5a5 \uae38\uc774 2 : \uc606 \ubc29\ud5a5 \uae38\uc774 1 \ub85c \uc11e\uc5b4 \uc7a1\ub294\ub2e4 (\uc2e4\uc81c \uac78\uc74c \uc218\uc640 \uacac\uc918 \ub9de\ucd98 \uac12) */
+  const len = (id, s) => { const m = MAPS[id]; return s === 'W' || s === 'E' ? (2 * m.w + m.h) / 3 : (2 * m.h + m.w) / 3; };
+  const cross = (id, a, b) => a === b ? 6 : OPP[a] === b ? len(id, a) : (MAPS[id].w + MAPS[id].h) / 2;
+  for (const a of T) {
+    const seen = {}, open = E(a).map(e => [len(a, e.side) / 2, e.to, e.toSide]); D[a] = {};
+    while (open.length) {
+      open.sort((x, y) => x[0] - y[0]); const [d, id, s] = open.shift(), k = id + '|' + s;
+      if (seen[k] || !MAPS[id]) continue; seen[k] = 1;
+      if (TR_TOWNS[id] && id !== a) { const v = d + len(id, s) / 2; if (D[a][id] === undefined || v < D[a][id]) D[a][id] = v; }
+      for (const e of E(id)) open.push([d + cross(id, s, e.side), e.to, e.toSide]);
+    }
+  }
+  for (const a of T) for (const b of T) { const v = Math.min(D[a][b] === undefined ? 9999 : D[a][b], D[b][a] === undefined ? 9999 : D[b][a]); D[a][b] = D[b][a] = a === b ? 0 : v; }
+  for (const a of T) pace[a] = Math.min(...T.filter(b => b !== a && D[a][b] < 9999).map(b => D[a][b] * TRADE.TILE_SEC + TRADE.SHOP_SEC), 9999);
+  for (const [a, b, w] of TR_SEA) { D[a][b] = D[b][a] = Math.min(D[a][b], w); pace[a] = Math.min(pace[a], TRADE.SEA_SEC + TRADE.SHOP_SEC); pace[b] = Math.min(pace[b], TRADE.SEA_SEC + TRADE.SHOP_SEC); }
+  for (const k of T) for (const a of T) for (const b of T) if (D[a][k] + D[k][b] < D[a][b]) D[a][b] = D[a][k] + D[k][b];
+  for (const a of T) { for (const b of T) D[a][b] = Math.round(D[a][b]); pace[a] = pace[a] >= 9999 ? 80 : Math.round(pace[a] * 2); }
+  return TR_GEO = { D, pace };
+}
+const trD = (a, b) => { const r = trGeo().D[a]; return r && r[b] !== undefined ? r[b] : 9999; };
+const trPace = t => trGeo().pace[t] || 80;
+/* \uba40\uc218\ub85d \ubd99\ub294 \uc6c3\ub3c8: \ub9ac\ub9c8\ub2e4 RATE \u2014 \uac00\uac8c\uc5d0\uc11c \ubcf4\ub0b4\ub294 \uc2dc\uac04\ub3c4 \uac78\uc74c\uc73c\ub85c \uccd0\uc11c(D0) \ub354\ud55c\ub2e4 \u2192 \uac00\uae4c\uc6b4 \uae38\ub3c4 \uba3c \uae38\ub3c4 \uac19\uc740 \uc2dc\uac04\uc5d0 \ube44\uc2b7\ud558\uac8c \ub0a8\ub294\ub2e4 */
+const trMargin = (a, b) => TRADE.RATE * (trD(a, b) + TRADE.D0);
+/* \ubb3c\uac74: \ub9c8\uc744\ub9c8\ub2e4 \ub458 \u2014 \uc2f8\uace0 \ub9ce\uc740 \uac83(k .5, \uc7ac\uace0 30)\uacfc \ube44\uc2f8\uace0 \uadc0\ud55c \uac83(k 1.5, \uc7ac\uace0 12).
+   \uadc0\ud55c \uac83\uc740 \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 8\uac1c\ucbe4\ub9cc \ub2e4\uc2dc \ucc2c\ub2e4 \u2192 \uc791\uc740 \uc9d0\uce78\uc740 \uadc0\ud55c \uac83\ub9cc, \ud070 \uc9d0\uce78\uc740 \ub098\uba38\uc9c0\ub97c \uc2fc \uac83\uc73c\ub85c \ucc44\uc6b4\ub2e4 (\uc9d0\uce78\uc774 3\ubc30\uc5ec\ub3c4 \uc774\ubb38\uc740 1.7\ubc30) */
+const TR_GOODS = {};
+{
+  const G2 = {
+    buyeo: [['\uccad\uc6d4 \uc57d\ucd08', '\ud83c\udf3f'], ['\ud638\uc218 \ubc8c\uafc0', '\ud83c\udf6f']], city_daejeon: [['\ud55c\ubc2d \uc300', '\ud83c\udf3e'], ['\uae08\uc0b0 \uc778\uc0bc', '\ud83e\udeda']], city_gwangju: [['\ubb34\ub4f1\uc0b0 \uc218\ubc15', '\ud83c\udf49'], ['\ub2f4\uc591 \uc8fd\uacf5\uc608', '\ud83c\udf8b']],
+    city_daegu: [['\ub300\uad6c \uc0ac\uacfc', '\ud83c\udf4e'], ['\uc57d\ub839\uc2dc \uc57d\uc7ac', '\ud83c\udf30']], city_ulsan: [['\uc5b8\uc591 \ubbf8\uc5ed', '\ud83e\udd6c'], ['\uc6b8\uc0b0 \ubb34\uc1e0', '\u26cf\ufe0f']], city_busan: [['\uae30\uc7a5 \uba78\uce58', '\ud83d\udc1f'], ['\ub3d9\ub798 \uc720\uae30', '\ud83e\udd63']],
+    city_suwon: [['\uc218\uc6d0 \ud55c\uc9c0', '\ud83d\udcdc'], ['\ud654\uc131 \uac08\ube44', '\ud83c\udf56']], city_seoul: [['\uad81\uc911 \uc57d\uacfc', '\ud83c\udf6a'], ['\ud55c\uc591 \ube44\ub2e8', '\ud83e\uddf5']], city_incheon: [['\uc18c\ub798 \uc18c\uae08', '\ud83e\uddc2'], ['\uac15\ud654 \ud654\ubb38\uc11d', '\ud83e\uddf6']],
+    jeju: [['\uc81c\uc8fc \uac10\uade4', '\ud83c\udf4a'], ['\ud574\ub140 \uc804\ubcf5', '\ud83d\udc1a']], japan_fukuoka: [['\ud558\uce74\ud0c0 \uba85\ub780', '\ud83c\udf71'], ['\ud558\uce74\ud0c0 \uc9c1\ubb3c', '\ud83c\udf8f']], japan_osaka: [['\ub098\ub2c8\uc640 \ub2e4\uc2dc\ub9c8', '\ud83c\udf59'], ['\uc0ac\uce74\uc774 \uce7c', '\ud83d\udd2a']],
+    japan_kyoto: [['\uc6b0\uc9c0 \ucc28', '\ud83c\udf75'], ['\ub2c8\uc2dc\uc9c4 \ube44\ub2e8', '\ud83c\udf80']], japan_shizuoka: [['\ud6c4\uc9c0 \uc640\uc0ac\ube44', '\ud83c\udf31'], ['\uc2a4\ub8e8\uac00 \uce60\uae30', '\ud83c\udffa']], japan_tokyo: [['\uc5d0\ub3c4 \uac04\uc7a5', '\ud83c\udf76'], ['\uc5d0\ub3c4 \ud310\ud654', '\ud83d\uddbc\ufe0f']],
+    japan_sendai: [['\uc13c\ub2e4\uc774 \ub41c\uc7a5', '\ud83e\udd6b'], ['\ubb34\uc1e0 \uc8fc\uc804\uc790', '\ud83e\uded6']], japan_sapporo: [['\ubd81\ud574 \uc5f0\uc5b4', '\ud83c\udf63'], ['\uc720\ube59 \uc218\uc815', '\ud83e\uddca']]
+  };
+  for (const [town, list] of Object.entries(G2)) list.forEach(([n, icon], i) => {
+    const base = Math.round(.25 * (1000 + 50 * TR_TOWNS[town][0]) * (i ? 1.5 : .5) / 10) * 10;
+    TR_GOODS[town + '_' + i] = { n, icon, town, base, stock: i ? 12 : 30, lux: i };
+  });
+}
+SAVE_FIELDS.push('trade');
+/* ---------------- \uc0c1\ud0dc ---------------- */
+function tradeState() {
+  const p = G.player; if (!p) return null;
+  const T = p.trade && typeof p.trade === 'object' ? p.trade : (p.trade = {});
+  T.tier = clamp(T.tier | 0, 0, TR_TIERS.length - 1); T.cargo = T.cargo || {}; T.st = T.st || {}; T.hot = Array.isArray(T.hot) ? T.hot : []; T.profit = T.profit || 0; T.sold = T.sold || 0;
+  for (const g of Object.keys(T.cargo)) if (!TR_GOODS[g] || !(T.cargo[g].q > 0)) delete T.cargo[g];
+  return T;
+}
+const tradeCap = () => TR_TIERS[tradeState().tier][0];
+const tradeLoad = () => { const T = tradeState(); return T ? Object.values(T.cargo).reduce((a, c) => a + c.q, 0) : 0; };
+const tradeCargoCost = () => Math.round(Object.values(tradeState().cargo).reduce((a, c) => a + c.cost, 0));
+const trNow = () => G.player.playTime || 0;
+function trSlot(town, g) { const T = tradeState(), a = T.st[town] || (T.st[town] = {}); return a[g] || (a[g] = { s: TR_GOODS[g].stock, t: trNow(), sat: 1, st: trNow() }); }
+/* \uc7ac\uace0: \uc0b0\uc9c0\uc5d0\uc11c\ub9cc. \uac00\uae4c\uc6b4 \uc774\uc6c3 \ub9c8\uc744\uc744 \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 \uadc0\ud55c \uac83 LUX_TRIP \uac1c \u00b7 \uc2fc \uac83 CHEAP_TRIP \uac1c\uac00 \ub2e4\uc2dc \ucc2c\ub2e4 */
+function tradeStock(g) {
+  const d = TR_GOODS[g], o = trSlot(d.town, g), step = trPace(d.town) / (d.lux ? TRADE.LUX_TRIP : TRADE.CHEAP_TRIP), n = Math.floor((trNow() - o.t) / step);
+  if (n > 0) { o.s = Math.min(d.stock, o.s + n); o.t = o.s >= d.stock ? trNow() : o.t + n * step; }
+  if (o.s >= d.stock) o.t = trNow();
+  return o.s;
+}
+/* \ubb3c\ub9bc: \uadf8 \ub9c8\uc744\uc5d0 \uadf8 \ubb3c\uac74\uc744 \ub9ce\uc774 \ud314\uc218\ub85d \ub0b4\ub824\uac04 \uac12\uc774, \uc774\uc6c3 \ub9c8\uc744\uc744 \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 SAT_TRIP(8%)\ub9cc\ud07c \ub3cc\uc544\uc628\ub2e4 */
+function tradeSat(town, g) {
+  const o = trSlot(town, g), dt = trNow() - o.st;
+  if (dt > 0) { o.sat = Math.min(1, o.sat + dt * TRADE.SAT_TRIP / trPace(town)); o.st = trNow(); }
+  return o.sat;
+}
+/* \uadf8\ub0a0 \uc2dc\uc138: \uc7a5 \uac31\uc2e0 \ubc88\ud638 \u00b7 \ub9c8\uc744 \u00b7 \ubb3c\uac74\uc73c\ub85c \uc815\ud574\uc9c0\ub294 \ud754\ub4e4\ub9bc (\uc800\uc7a5\ud558\uc9c0 \uc54a\uc544\ub3c4 \uac19\uc740 \uac12\uc774 \ub098\uc628\ub2e4) */
+function trWob(town, g, lo, hi) { const M = mk(), n = (M && M.nUpd) | 0, h = hashStr(town + '|' + g + '|' + n) % 1000 / 999; return lo + (hi - lo) * h; }
+function tradeHot(town, g) { const M = mk(), n = (M && M.nUpd) | 0; return tradeState().hot.some(h => h.town === town && h.g === g && h.until >= n); }
+function tradeBuyPrice(g) { const d = TR_GOODS[g]; return Math.round(d.base * trWob(d.town, g, .96, 1.04)); }
+/* \ud30c\ub294 \uac12 (\uadf8 \ub9c8\uc744\uc5d0\uc11c \uc9c0\uae08 \ud558\ub098\ub97c \ud314 \ub54c). sat \uc744 \uc8fc\uba74 \uadf8 \ubb3c\ub9bc\uc73c\ub85c \uacc4\uc0b0\ud55c\ub2e4 */
+function tradeSellPrice(g, town, sat) {
+  const d = TR_GOODS[g];
+  if (town === d.town) return Math.round(tradeBuyPrice(g) * TRADE.HOME_SELL);
+  const dist = trD(d.town, town); if (dist >= 9999) return Math.round(d.base * TRADE.HOME_SELL);
+  /* \uac12\uc740 \uc0b0\uc9c0 \uac12\uc758 CAP \ubc30(\uac00\uc7a5 \uc300 \ub54c \uc0b0 \uac12\uc758 2\ubc30)\ub97c \ub118\uc9c0 \uc54a\ub294\ub2e4 \u2192 \uc5ed\ucc38\uc5d0 \uc9d0 \uac12\uc744 \uc6b4\uc784\uc73c\ub85c \ub0b4\uba74 \uc544\ubb34\ub9ac \uba40\uc5b4\ub3c4 \ub0a8\uc9c0 \uc54a\ub294\ub2e4 */
+  const idx = Math.min(TRADE.CAP * .96, (1 + trMargin(d.town, town) + (tradeHot(town, g) ? TRADE.HOT_ADD : 0)) * trWob(town, g, .96, 1.08));
+  return Math.round(d.base * idx * (sat === undefined ? tradeSat(town, g) : sat));
+}
+function tradeBuy(g, n) {
+  const p = G.player, T = tradeState(), d = TR_GOODS[g]; if (!d || d.town !== G.mapId) return 0;
+  const price = tradeBuyPrice(g); n = Math.min(n, tradeStock(g), tradeCap() - tradeLoad(), Math.floor(p.gold / price)); if (n <= 0) return 0;
+  p.gold -= price * n; trSlot(d.town, g).s -= n;
+  const c = T.cargo[g] || (T.cargo[g] = { q: 0, cost: 0 }); c.q += n; c.cost += price * n;
+  return n;
+}
+function tradeSell(g, n) {
+  const p = G.player, T = tradeState(), c = T.cargo[g], town = G.mapId; if (!c || !TR_TOWNS[town]) return 0;
+  n = Math.min(n, c.q); if (n <= 0) return 0;
+  const d = TR_GOODS[g], home = town === d.town, o = trSlot(town, g), avg = c.cost / c.q; let got = 0;
+  tradeSat(town, g);
+  for (let i = 0; i < n; i++) { got += tradeSellPrice(g, town, o.sat); if (!home) o.sat = Math.max(TRADE.SAT_MIN, o.sat - TRADE.SAT_STEP); }
+  o.st = trNow();
+  if (home) trSlot(town, g).s = Math.min(d.stock, tradeStock(g) + n);   /* \uc0b0\uc9c0\uc5d0 \ub418\ud314\uba74 \uc7ac\uace0\ub85c \ub3cc\uc544\uac04\ub2e4 */
+  p.gold += got; c.q -= n; c.cost -= avg * n; if (c.q <= 0) delete T.cargo[g];
+  const gain = Math.round(got - avg * n); T.profit += gain; T.sold += n; p.st.tradeGold = (p.st.tradeGold || 0) + Math.max(0, gain);
+  return [n, got, gain];
+}
+function tradeDropAll() { const T = tradeState(), n = tradeLoad(), v = tradeCargoCost(); T.cargo = {}; T.lost = (T.lost || 0) + v; return [n, v]; }
+/* ---------------- \ud2b9\uc218: \uc7a5 \uac31\uc2e0 \ub54c \uac00\ub054 ---------------- */
+const _marketUpdate356 = marketUpdate;
+marketUpdate = function (M) {
+  const r = _marketUpdate356(M);
+  try {
+    const T = tradeState(); if (!T) return r;
+    T.hot = T.hot.filter(h => h.until >= M.nUpd && TR_GOODS[h.g]);
+    if (T.hot.length < 2 && Math.random() < TRADE.HOT_P) {
+      const g = pick(Object.keys(TR_GOODS)), d = TR_GOODS[g], towns = Object.keys(TR_TOWNS).filter(t => t !== d.town && trD(d.town, t) <= TRADE.HOT_D && trLand(t) !== 'jeju' && (trLand(t) === trLand(d.town) || d.town === 'jeju'));
+      if (towns.length) { const town = pick(towns); T.hot.push({ g, town, until: M.nUpd + TRADE.HOT_LEN }); chat('', `[\uac1d\uc8fc \uc18c\uc2dd] ${d.icon} ${MAPS[town].n}\uc5d0\uc11c ${d.n} \uac12\uc774 \ud06c\uac8c \uc62c\ub790\uc2b5\ub2c8\ub2e4`, true); if (T.cargo[g]) toast(`\ud83d\udcc8 ${MAPS[town].n}\uc5d0\uc11c ${d.n} \uac12\uc774 \ub6f0\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 \uc9d0\uc5d0 \uc788\uc5b4\uc694`, 'gold'); }
+    }
+  } catch (e) { reportError(e); }
+  return r;
+};
+/* ---------------- \uac1d\uc8fc (\ub9c8\uc744\ub9c8\ub2e4 \ud558\ub098) ---------------- */
+NPCS.tradeK = { n: '\uac1d\uc8fc \ub9cc\uc11d', role: '\uad50\uc5ed \uac1d\uc8fc', kind: 'trade', look: 'merchantM', line: '\uc774 \uace0\uc7a5 \ubb3c\uac74\uc744 \uc0ac\ub2e4\uac00 \uba3c \uace0\uc744\uc5d0 \ub0b4\ub2e4 \ud30c\uc2dc\uc624. \uba40\ub9ac \uac08\uc218\ub85d \uac12\uc744 \uc798 \uccd0\uc8fc\uc9c0\uc694.' };
+NPCS.tradeJ = { n: '\ub3c8\uc57c \uae30\ud5e4\uc5d0', role: '\uad50\uc5ed \ub3c8\uc57c', kind: 'trade', look: 'jmerchant', line: '\uc774 \uace0\uc7a5 \ubb3c\uac74\uc744 \uba40\ub9ac \uac00\uc838\uac08\uc218\ub85d \uc774\ubb38\uc774 \ud07d\ub2c8\ub2e4. \uc9d0\uce78\ubd80\ud130 \ub109\ub109\ud788 \ud558\uc2dc\uc9c0\uc694.' };
+for (const [id, m] of Object.entries(MAPS)) if (TR_TOWNS[id] && m.npcs && !m.npcs.some(k => NPCS[k] && NPCS[k].kind === 'trade')) m.npcs.push(TR_TOWNS[id][1] ? 'tradeJ' : 'tradeK');
+const trPct = (a, b) => { const v = Math.round((a / b - 1) * 100); return `<span style="color:${v >= 0 ? '#7fe0a0' : '#ff9a8a'}">${v >= 0 ? '+' : ''}${v}%</span>`; };
+const trWay = (a, b) => `${trLand(a) !== trLand(b) ? '\u26f5 ' : ''}${trD(a, b)}\ub9ac`;
+NPCV.trade = function (n, ctx) {
+  const p = G.player, T = tradeState(), town = G.mapId, tab = ctx.ttab || (tradeLoad() && Object.keys(T.cargo).some(g => TR_GOODS[g].town !== town) ? 'sell' : 'buy'), load = tradeLoad(), cap = tradeCap();
+  const local = Object.keys(TR_GOODS).filter(g => TR_GOODS[g].town === town).sort((x, y) => TR_GOODS[y].lux - TR_GOODS[x].lux), M = mk();   /* \uadc0\ud55c \ubb3c\uac74\uc744 \uc704\uc5d0 */
+  let h = sayBox(n, n.def.line);
+  h += `<div class="stat" style="margin-bottom:8px"><span>\ud83e\uddf3 \uc9d0 <b>${load} / ${cap}</b> \u00b7 ${TR_TIERS[T.tier][1]}</span><span>\ud83d\udcb0 ${fmt(p.gold)}\ubb38${T.profit ? ` \u00b7 \uad50\uc5ed \uc774\ubb38 ${fmt(Math.round(T.profit))}\ubb38` : ''}</span></div>`;
+  h += `<div class="tabs">${[['buy', '\uc0ac\uae30'], ['sell', `\ud314\uae30${load ? ` (${load})` : ''}`], ['info', '\uc2dc\uc138'], ['cart', '\uc9d0\uce78']].map(([k, l]) => `<button class="tab ${tab === k ? 'on' : ''}" data-a="trTab" data-v="${k}">${l}</button>`).join('')}</div>`;
+  if (ctx.msg) h += `<div class="muted" style="margin-bottom:6px;color:#ffd98a">${ctx.msg}</div>`;
+  if (tab === 'buy') {
+    h += `<div class="muted" style="margin-bottom:6px">\uc774 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc785\ub2c8\ub2e4. \uc5ec\uae30\uc11c \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744 \uac1d\uc8fc\uc5d0 \ud30c\uc138\uc694 \u2014 \uba40\ub9ac \uac08\uc218\ub85d \uc6c3\ub3c8\uc774 \ubd99\uc2b5\ub2c8\ub2e4. \uadc0\ud55c \ubb3c\uac74\uc740 \uc774\ubb38\uc774 \ud06c\uc9c0\ub9cc \uc7ac\uace0\uac00 \ucc9c\ucc9c\ud788 \ucc39\ub2c8\ub2e4.</div>`;
+    for (const g of local) {
+      const d = TR_GOODS[g], price = tradeBuyPrice(g), st = tradeStock(g), room = cap - load, can = Math.min(st, room, Math.floor(p.gold / price));
+      /* \uac00 \ubcf8 \ub9c8\uc744 \uac00\uc6b4\ub370 \uc9c0\uae08 \uac00\uc7a5 \ube44\uc2f8\uac8c \uccd0\uc8fc\ub294 \uacf3 */
+      const best = Object.keys(TR_TOWNS).filter(t => t !== town && p.visited[t] && trD(town, t) < 9999).map(t => [t, tradeSellPrice(g, t)]).sort((a, b) => b[1] - a[1])[0];
+      h += `<div class="row"><div class="ic" style="font-size:22px">${d.icon}</div><div class="tx"><div class="t1">${d.n}${d.lux ? ' <span class="muted">\uadc0\ud55c \ubb3c\uac74</span>' : ''}</div><div class="t2">\uc7ac\uace0 ${st} / ${d.stock}${best ? ` \u00b7 ${MAPS[best[0]].n} ${fmt(best[1])}\ubb38 ${trPct(best[1], price)}` : ''}</div></div><div class="pr">${fmt(price)}\ubb38</div>`
+        + `<button class="btn" data-a="trBuy" data-g="${g}" data-n="1" ${can < 1 ? 'disabled' : ''}>1</button><button class="btn teal" data-a="trBuy" data-g="${g}" data-n="999" ${can < 1 ? 'disabled' : ''}>\uac00\ub4dd</button></div>`;
+    }
+    if (load >= cap) h += `<div class="muted">\uc9d0\uce78\uc774 \uac00\ub4dd \ucc3c\uc2b5\ub2c8\ub2e4. '\uc9d0\uce78' \ud0ed\uc5d0\uc11c \ub298\ub9b4 \uc218 \uc788\uc5b4\uc694.</div>`;
+  } else if (tab === 'sell') {
+    const gs = Object.keys(T.cargo);
+    if (!gs.length) h += `<div class="muted">\uc2e4\uc740 \uc9d0\uc774 \uc5c6\uc2b5\ub2c8\ub2e4. '\uc0ac\uae30' \ud0ed\uc5d0\uc11c \uc774 \uace0\uc7a5 \ubb3c\uac74\uc744 \uc2e4\uc5b4 \ubcf4\uc138\uc694.</div>`;
+    for (const g of gs) {
+      const d = TR_GOODS[g], c = T.cargo[g], avg = c.cost / c.q, price = tradeSellPrice(g, town), home = d.town === town, hot = tradeHot(town, g), sat = home ? 1 : tradeSat(town, g);
+      h += `<div class="row" style="${hot ? 'border-color:var(--gold)' : ''}"><div class="ic" style="font-size:22px">${d.icon}</div><div class="tx"><div class="t1">${d.n} \u00d7 ${c.q}</div><div class="t2">${MAPS[d.town].n}\uc0b0 \u00b7 \uc0b0 \uac12 ${fmt(Math.round(avg))}\ubb38${home ? ' \u00b7 <span style="color:#ff9a8a">\uc0b0\uc9c0\uc5d0\uc11c\ub294 \ud5d0\uac12</span>' : ` \u00b7 ${trWay(d.town, town)}`}${hot ? ' \u00b7 <b style="color:#ffd24a">\ud2b9\uc218!</b>' : ''}${sat < .97 ? ` \u00b7 <span class="muted">\ubb3c\ub9bc ${Math.round((1 - sat) * 100)}%</span>` : ''}</div></div><div class="pr">${fmt(price)}\ubb38<br>${trPct(price, avg)}</div>`
+        + `<button class="btn" data-a="trSell" data-g="${g}" data-n="1">1</button><button class="btn teal" data-a="trSell" data-g="${g}" data-n="999">\uc804\ubd80</button></div>`;
+    }
+    if (gs.length > 1) h += `<button class="btn teal" data-a="trSellAll" style="width:100%">\uc9d0 \uc804\ubd80 \ud314\uae30</button>`;
+    if (gs.length) h += `<div class="muted" style="margin-top:6px">\uac19\uc740 \ubb3c\uac74\uc744 \ud55c \ub9c8\uc744\uc5d0 \ub9ce\uc774 \ud480\uba74 \uac12\uc774 \uc870\uae08\uc529 \ub0b4\ub824\uac11\ub2c8\ub2e4. \uc2dc\uac04\uc774 \uc9c0\ub098\uba74 \ub3cc\uc544\uc640\uc694.</div>`;
+  } else if (tab === 'info') {
+    const hots = T.hot.filter(x => M && x.until >= M.nUpd);
+    if (hots.length) h += `<div class="say" style="border-left-color:#ffd24a">${hots.map(x => `\ud83d\udcc8 <b>${MAPS[x.town].n}</b>\uc5d0\uc11c ${TR_GOODS[x.g].icon} ${TR_GOODS[x.g].n} \uac12\uc774 \ub6f0\uc5c8\uc2b5\ub2c8\ub2e4 (${MAPS[TR_GOODS[x.g].town].n}\uc0b0)`).join('<br>')}</div>`;
+    h += `<div class="muted" style="margin-bottom:6px">\uac00 \ubcf8 \ub9c8\uc744\uc758 \uc9c0\uae08 \uc2dc\uc138\uc785\ub2c8\ub2e4. \uc2dc\uc138\ub294 3~5\ubd84\ub9c8\ub2e4 \uc870\uae08\uc529 \ubc14\ub01d\ub2c8\ub2e4.</div>`;
+    const mine = Object.keys(T.cargo).filter(g => !local.includes(g));
+    for (const g of [...mine, ...local]) {
+      const d = TR_GOODS[g], ref = T.cargo[g] ? T.cargo[g].cost / T.cargo[g].q : tradeBuyPrice(g);
+      const rows = Object.keys(TR_TOWNS).filter(t => t !== d.town && trD(town, t) < 9999).map(t => [t, p.visited[t] ? tradeSellPrice(g, t) : 0]).sort((a, b) => b[1] - a[1]).slice(0, 4);
+      h += `<div class="row" style="align-items:flex-start"><div class="ic" style="font-size:22px">${d.icon}</div><div class="tx"><div class="t1">${d.n} <span class="muted">${T.cargo[g] ? `\uc9d0 ${T.cargo[g].q}\uac1c \u00b7 \uc0b0 \uac12` : '\uc5ec\uae30 \uac12'} ${fmt(Math.round(ref))}\ubb38</span></div>`
+        + rows.map(([t, pr]) => `<div class="stat"><span>${MAPS[t].n} <span class="muted">${trWay(town, t)}</span>${tradeHot(t, g) ? ' \ud83d\udcc8' : ''}</span><b>${pr ? `${fmt(pr)}\ubb38 ${trPct(pr, ref)}` : '<span class="muted">\uac00 \ubcf8 \uc801 \uc5c6\uc74c</span>'}</b></div>`).join('') + `</div></div>`;
+    }
+  } else {
+    h += `<div class="muted" style="margin-bottom:6px">\uc9d0\uce78\uc774 \ud074\uc218\ub85d \ud55c \ubc88\uc5d0 \ub9ce\uc774 \uc2e4\uc5b4 \ub098\ub985\ub2c8\ub2e4. \ud55c \ubc88 \ub298\ub9ac\uba74 \uacc4\uc18d \uac11\ub2c8\ub2e4.</div>`;
+    TR_TIERS.forEach(([c, nm, cost], i) => {
+      const own = i <= T.tier, next = i === T.tier + 1;
+      h += `<div class="row" style="${i === T.tier ? 'border-color:var(--gold)' : own ? 'opacity:.6' : ''}"><div class="ic" style="font-size:22px">${['\ud83c\udf92', '\ud83d\uded2', '\ud83d\udede', '\ud83d\udc02', '\ud83d\udc0e'][i]}</div><div class="tx"><div class="t1">${nm}</div><div class="t2">\uc9d0 ${c}\uce78</div></div>`
+        + (own ? `<div class="pr">${i === T.tier ? '\uc9c0\uae08' : '\uac70\uccd0 \uc634'}</div>` : `<div class="pr">${fmt(cost)}\ubb38</div><button class="btn" data-a="trUp" ${next && p.gold >= cost ? '' : 'disabled'}>${next ? '\ub298\ub9ac\uae30' : '\uc55e \ub2e8\uacc4\ubd80\ud130'}</button>`) + `</div>`;
+    });
+    h += `<div class="muted" style="margin-top:6px">\uadc0\ud658 \ubd80\uc801\uc740 \ubab8\ub9cc \uc62e\uae41\ub2c8\ub2e4 \u2014 \uc4f0\ub824\uba74 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud574\uc694. \uc5ed\ucc38 \ub9d0\uc740 \uc9d0 \uac12\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ubc1b\uc2b5\ub2c8\ub2e4. \ubc30\uc5d0\ub294 \uadf8\ub0e5 \uc2e4\uc744 \uc218 \uc788\uc5b4\uc694.</div>`;
+  }
+  return ['\ud83e\uddf3 ' + n.def.role, h];
+};
+const _onModalClick356 = onModalClick;
+onModalClick = function (e) {
+  const b = e.target.closest && e.target.closest('[data-a]'); const a = b && !b.disabled ? b.dataset.a : '';
+  if (!a || !/^(trTab|trBuy|trSell|trSellAll|trUp|cargoDropGo|cargoDropNo)$/.test(a) || !modalCtx) return _onModalClick356(e);
+  const ctx = modalCtx, p = G.player, T = tradeState(); ctx.msg = null;
+  if (a === 'trTab') { ctx.ttab = b.dataset.v; Sfx.click(); }
+  else if (a === 'trBuy') { const g = b.dataset.g, n = tradeBuy(g, +b.dataset.n || 1); if (n) { Sfx.coin(); ctx.msg = `${TR_GOODS[g].icon} ${TR_GOODS[g].n} ${n}\uac1c\ub97c \uc2e4\uc5c8\uc2b5\ub2c8\ub2e4.`; } else toast('\ub354 \uc2e4\uc744 \uc218 \uc5c6\uc5b4\uc694', 'red'); }
+  else if (a === 'trSell' || a === 'trSellAll') {
+    let got = 0, gain = 0, cnt = 0; for (const g of a === 'trSellAll' ? Object.keys(T.cargo) : [b.dataset.g]) { const r = tradeSell(g, a === 'trSellAll' ? 999 : +b.dataset.n || 1); if (r) { cnt += r[0]; got += r[1]; gain += r[2]; } }
+    if (cnt) { Sfx.coin(); ctx.msg = `${cnt}\uac1c\ub97c ${fmt(got)}\ubb38\uc5d0 \ud314\uc558\uc2b5\ub2c8\ub2e4 (${gain >= 0 ? '\uc774\ubb38 +' : '\uc190\ud574 '}${fmt(gain)}\ubb38).`; if (gain > 0) floatText(p.x, p.y - 70, `+${fmt(gain)}\ubb38`, '#ffd84a', true); }
+  }
+  else if (a === 'trUp') { const nx = TR_TIERS[T.tier + 1]; if (nx && p.gold >= nx[2]) { p.gold -= nx[2]; T.tier++; Sfx.level?.(); toast(`\ud83e\uddf3 \uc9d0\uce78\uc744 \ub298\ub838\uc2b5\ub2c8\ub2e4 \u2014 ${nx[1]} (${nx[0]}\uce78)`, 'gold'); } }
+  else if (a === 'cargoDropNo') { closeModal(); return; }
+  else if (a === 'cargoDropGo') {
+    const [n, v] = tradeDropAll(); closeModal(); toast(`\ud83e\uddf3 \uc9d0 ${n}\uac1c(\uc0b0 \uac12 ${fmt(v)}\ubb38)\ub97c \ub450\uace0 \ub5a0\ub0a9\ub2c8\ub2e4`, 'red');
+    const it = p.inv.find(i => ITEMS[i.id] && ITEMS[i.id].ret); if (it) useItem(p, it);
+    return;
+  }
+  rerender();
+};
+/* ---------------- \uc9d0\uc744 \uc2e4\uc73c\uba74: \uadc0\ud658 \ubd80\uc801\uc740 \ubab8\ub9cc \uc62e\uae34\ub2e4 ---------------- */
+MENU.cargoDrop = function () {
+  const n = tradeLoad(), v = tradeCargoCost();
+  return ['\ud83e\uddf3 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud569\ub2c8\ub2e4', `<div class="say">\uadc0\ud658 \ubd80\uc801\uc740 \ubab8\ub9cc \uc62e\uaca8 \uc90d\ub2c8\ub2e4. \uc9c0\uae08 \uc2e4\uc740 \uc9d0 <b>${n}\uac1c</b>(\uc0b0 \uac12 ${fmt(v)}\ubb38)\ub294 \uac00\uc838\uac08 \uc218 \uc5c6\uc5b4\uc694.<br>\uc9d0\uc744 \uc5ec\uae30 \ub450\uace0 \ub3cc\uc544\uac08\uae4c\uc694? \ub450\uace0 \uac04 \uc9d0\uc740 \ub418\ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.</div>`
+    + `<div style="display:flex;gap:8px"><button class="btn" data-a="cargoDropNo" style="flex:1">\uadf8\ub9cc\ub450\uae30</button><button class="btn" data-a="cargoDropGo" style="flex:1;border-color:#c8352f;color:#ffb0a0">\uc9d0\uc744 \ub450\uace0 \uadc0\ud658</button></div>`];
+};
+const _useItem356 = useItem;
+useItem = function (p, it) {
+  const d = it && ITEMS[it.id];
+  if (d && d.ret && p === G.player && G.map && !G.map.def.safe && tradeLoad() > 0) { if (modalOpen()) closeModal(); openMenu('cargoDrop'); return; }
+  return _useItem356(p, it);
+};
+/* \uc5ed\ucc38: \uc9d0\uc744 \uc2e4\uc5b4\ub3c4 \ud0c8 \uc218 \uc788\ub2e4 \u2014 \ub300\uc2e0 \uc9d0 \uac12(\uc0b0 \uac12)\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ub0b8\ub2e4. \ud30c\ub294 \uac12\uc740 \uc0b0 \uac12\uc758 2\ubc30\ub97c \ub118\uc9c0 \uc54a\uc73c\ubbc0\ub85c \ub298 \uc190\ud574\ub97c \ubcf4\uc9c0\ub9cc \uc9d0\uc740 \uac74\uc9c4\ub2e4 */
+const _npcStation356 = NPCV.station;
+NPCV.station = function (n, ctx) {
+  const load = tradeLoad(); if (!load) return _npcStation356(n, ctx);
+  const p = G.player, fare = 30 + p.lv * 8, freight = tradeCargoCost(), cost = fare + freight;
+  let h = sayBox(n, n.def.line)
+    + `<div class="say" style="border-left-color:#c8352f">\ud83e\uddf3 \uc9d0\uc744 \uc2e4\uc73c\uba74 \uc9d0\ub9d0\uc744 \ub530\ub85c \ubd99\uc5ec\uc57c \ud569\ub2c8\ub2e4. \uc6b4\uc784\uc740 <b>\uc9d0 \uac12\ub9cc\ud07c</b> \u2014 \uc9d0 ${load}\uac1c\uc5d0 <b>${fmt(freight)}\ubb38</b>\uc744 \ub354 \ubc1b\uc2b5\ub2c8\ub2e4.<br><span class="muted">\uc6b4\uc784\uc774 \uc774\ubb38\ubcf4\ub2e4 \ucee4\uc11c \uc190\ud574\ub97c \ubd05\ub2c8\ub2e4. \uac78\uc5b4\uc11c \ub098\ub974\uba74 \uc6b4\uc784\uc774 \uc5c6\uc5b4\uc694.</span></div>`;
+  for (const id of STATIONS) { if (id === G.mapId) continue; const v = p.visited[id];
+    h += `<div class="row" style="${v ? '' : 'opacity:.5'}"><div class="ic">\ud83d\udc0e</div><div class="tx"><div class="t1">${MAPS[id].n}</div><div class="t2">${v ? `\uc0af ${fmt(fare)} + \uc9d0 \uc6b4\uc784 ${fmt(freight)}` : '\uc544\uc9c1 \uac00\ubcf4\uc9c0 \uc54a\uc740 \uacf3'}</div></div><div class="pr">${fmt(cost)}\ubb38</div><button class="btn" data-a="travel" data-v="${id}" data-p="${cost}" ${!v || p.gold < cost ? 'disabled' : ''}>\uc774\ub3d9</button></div>`; }
+  return ['\ud83d\udc0e \uc5ed\ucc38', h];
+};
+/* \uac00\ubc29 \ucc3d\uc5d0 \uc9d0 \uc218\ub97c \ubcf4\uc5ec \uc900\ub2e4 / \uc9d0\uc744 \uc2e3\uace0 \ub9c8\uc744\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ud55c \uc904 \uc54c\ub9bc */
+const _menuBag356 = MENU.bag;
+MENU.bag = function (ctx) {
+  const r = _menuBag356(ctx), load = tradeLoad();
+  if (Array.isArray(r) && load) { const T = tradeState(); r[1] += `<div class="muted" style="margin-top:6px">\ud83e\uddf3 \uad50\uc5ed \uc9d0 ${load} / ${tradeCap()} \u2014 ${Object.keys(T.cargo).map(g => `${TR_GOODS[g].icon}${T.cargo[g].q}`).join(' ')} (\ub9c8\uc744 \uac1d\uc8fc\uc5d0\uc11c \ud31d\ub2c8\ub2e4)</div>`; }
+  return r;
+};
+const _enterMap356 = enterMap;
+enterMap = function (id) {
+  const r = _enterMap356.apply(this, arguments);
+  try { if (TR_TOWNS[id] && G.player && tradeLoad() > 0 && Object.keys(tradeState().cargo).some(g => TR_GOODS[g].town !== id)) toast(`\ud83e\uddf3 \uc9d0 ${tradeLoad()}\uac1c \u2014 \uc774 \ub9c8\uc744 \uac1d\uc8fc\uc5d0\uc11c \ud314 \uc218 \uc788\uc5b4\uc694`, 'blue'); } catch (e) { }
   return r;
 };
 
