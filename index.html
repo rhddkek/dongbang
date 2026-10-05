@@ -469,6 +469,13 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .glegend .g-up{color:#b8f25a}.glegend .g-down{color:#ff6f5c}.glegend .g-later{color:#c3ccd6}
 /* v370: \b3d9 \b8cc  \ccb4 \b825 \bc14  \2014  \c791 \c740  \d654 \ba74 \c744  \b35c  \ac00 \b9ac \ac8c  \bc30 \acbd \c744  \c605 \ac8c  */
 .pm{background:rgba(22,16,12,.45);border-color:rgba(120,95,60,.45);text-shadow:0 1px 2px #000,0 0 3px #000}
+/* v371: \ac00 \bc29  \ad50 \c5ed \d488  \d0ed  \b7  \c0c1 \c810  \ace0 \bb3c  \d314 \ae30  */
+.slot.cg .cgi{font-size:24px;line-height:1}
+.slot.cg .n{font-size:11px;right:4px;bottom:2px;text-shadow:0 0 2px #000,0 1px 1px #000,0 0 3px #000}
+.cgbar{height:5px;border-radius:3px;background:#140e0a;border:1px solid var(--line);margin-top:8px;overflow:hidden}
+.cgbar i{display:block;height:100%;background:linear-gradient(90deg,#8a6a2a,#d9b25f)}
+.btn.junk{border-color:#c8574a;color:#ffb8a8}
+.bulk1.junkbox{margin:0 0 10px}.bulk1.junkbox .btn.big{margin-top:0}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -522,7 +529,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v370</div>
+    <div class="sub">v371</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -5899,17 +5906,26 @@ function autoWander(p, dt) {
    enhancement, crafting.
    ============================================================ */
 function invCount(p, id) { return p.inv.reduce((a, it) => a + (it.id === id ? it.n : 0), 0); }
-function invFull(p) { return p.inv.length >= p.invCap; }
+/* v371: \uac00\ubc29 \uce78\uc744 \uc885\ub958\ubcc4\ub85c \ub530\ub85c \uc13c\ub2e4 \u2014 \ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c 50\uce78\uc529, \uc18c\ubaa8\ud488 30\uce78, \uc7ac\ub8cc 60\uce78 (\uc7ac\ub8cc\ub294 \uc885\ub958\uac00 58\uac00\uc9c0\ub77c 30\uce78\uc774\uba74 \ub118\uce5c\ub2e4)
+   \u00b7 invFull(p, \ubb3c\uac74 id): \uadf8 \ubb3c\uac74\uc774 \ub4e4\uc5b4\uac08 \uc885\ub958\uac00 \uac00\ub4dd \ucc3c\ub294\uac00
+   \u00b7 invFull(p): \ubb34\uc5c7\uc774 \ub098\uc62c\uc9c0 \ubaa8\ub97c \ub54c(\uc0c1\uc790) \u2014 \uc7a5\ube44 \uc138 \uc885\ub958 \uac00\uc6b4\ub370 \ud558\ub098\ub77c\ub3c4 \uac00\ub4dd \ucc3c\ub294\uac00
+   \u00b7 \uc608\uc804 \uc800\uc7a5\uc5d0 \ud55c \uc885\ub958\uac00 50\uac1c\ub97c \ub118\uac8c \ub4e4\uc5b4 \uc788\uc5b4\ub3c4 \uc783\uc9c0 \uc54a\ub294\ub2e4 (\uc904\uc5b4\ub4e4 \ub54c\uae4c\uc9c0 \uadf8 \uc885\ub958\ub9cc \ub354 \ubabb \uc90d\ub294\ub2e4) */
+const BAG_CAPS = { weapon: 50, armor: 50, acc: 50, use: 30, material: 60 };
+const BAG_CAT_OF = { weapon: 'weapon', armor: 'armor', helmet: 'armor', gloves: 'armor', shoes: 'armor', necklace: 'acc', ring: 'acc', charm: 'acc', material: 'material' };
+function bagCat(id) { const d = typeof id === 'string' ? ITEMS[id] : id; return (d && BAG_CAT_OF[d.slot]) || 'use'; }
+function bagCounts(p) { const c = { weapon: 0, armor: 0, acc: 0, use: 0, material: 0 }; for (const it of p.inv) c[bagCat(it.id)]++; return c; }
+function bagNearFull(p) { const c = bagCounts(p); return Object.keys(BAG_CAPS).some(k => c[k] >= BAG_CAPS[k] - 2); }
+function invFull(p, id) { const c = bagCounts(p); if (id) { const k = bagCat(id); return c[k] >= BAG_CAPS[k]; } return ['weapon', 'armor', 'acc'].some(k => c[k] >= BAG_CAPS[k]); }
 function addItem(p, id, n = 1, opt = {}) {
   const d = ITEMS[id]; if (!d) return false;
   if (stackable(d)) {
     const s = p.inv.find(it => it.id === id);
     if (s) { s.n += n; return true; }
-    if (invFull(p)) return false;
+    if (invFull(p, id)) return false;
     p.inv.push({ id, uid: uid(), n, plus: 0 }); return true;
   }
   for (let i = 0; i < n; i++) {
-    if (invFull(p)) return false;
+    if (invFull(p, id)) return false;
     const it = opt.item || makeItem(id, opt); if (opt.plus) it.plus = opt.plus;
     p.inv.push(it);
     if (p === G.player) onObtainGear(p, it);
@@ -5942,7 +5958,7 @@ function equipItem(p, it) {
 }
 function unequip(p, slot) {
   const it = p.eq[slot]; if (!it) return;
-  if (invFull(p)) { toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694', 'red'); return; }
+  if (invFull(p, it.id)) { toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694', 'red'); return; }
   p.eq[slot] = null; p.inv.push(it); calcStats(p);
 }
 function itemPower(it) { const d = ITEMS[it.id]; if (!d) return 0; const m = enhMul(it); return ((d.atk || 0) * 1.4 + (d.mag || 0) * 1.4 + (d.hp || 0) * .35 + (d.def || 0) * 2 + (d.mp || 0) * .2 + (d.crit || 0) * 400) * m + (it.opts?.length || 0) * 6; }
@@ -5953,7 +5969,7 @@ function useItem(p, it) {
   if (isGear(d)) { equipItem(p, it); return; }
   if (d.slot === 'material') { toast('\uc81c\uc791\u00b7\uac15\ud654 \uc7ac\ub8cc\uc785\ub2c8\ub2e4', 'blue'); return; }
   if (d.box) { openBox(p, it); return; }
-  if (d.ret) { if (G.map.def.safe) { toast('\uc774\ubbf8 \ub9c8\uc744 \uc548\uc774\uc5d0\uc694'); return; } takeItem(p, it.id, 1); toast('\ud83e\uddff \uadc0\ud658 \ubd80\uc801\uc744 \uc0ac\uc6a9\ud588\uc2b5\ub2c8\ub2e4'); warpTo(p.lastTown); return; }
+  if (d.ret) { if (G.map.def.safe) { toast('\uc774\ubbf8 \ub9c8\uc744 \uc548\uc774\uc5d0\uc694'); return; } if (G.retCast) return; takeItem(p, it.id, 1); returnCast(p, it.id); return; }   /* v371: \ucc3d\uc744 \ub2eb\uace0 \uadc0\ud658 \uc5f0\ucd9c \ub4a4\uc5d0 \uc62e\uae34\ub2e4 (98m_bag371) */
   if (d.buff === 'exp2') { takeItem(p, it.id, 1); p.buffs.exp2 = 600; toast('\ud83d\udcdc 10\ubd84\uac04 \uacbd\ud5d8\uce58 2\ubc30!', 'gold'); return; }
   if (d.heal || d.mana) {
     if (p.hp <= 0) return;
@@ -6068,7 +6084,7 @@ function updateDrops(dt) {
     if (p.hp > 0 && dist2(d.x, d.y, p.x, p.y) < r * r && d.t > .35) {
       const def = ITEMS[d.id];
       let ok;
-      if (isGear(def)) { ok = !invFull(p); if (ok) { const it = Object.assign(makeItem(d.id), { plus: d.plus }); p.inv.push(it); onObtainGear(p, it); } }
+      if (isGear(def)) { ok = !invFull(p, d.id); if (ok) { const it = Object.assign(makeItem(d.id), { plus: d.plus }); p.inv.push(it); onObtainGear(p, it); } }
       else ok = addItem(p, d.id, d.n);
       if (ok) { d.taken = true; floatText(p.x, p.y - 60, (def.icon || '') + ' ' + def.name + (d.plus ? ' +' + d.plus : ''), RARITY[def.rarity].c); if (def.rarity >= 3) toast(`${def.icon || '\u2728'} ${def.name} \ud68d\ub4dd!`, rarityToast(def.rarity)); Sfx.pickup(); }
       else if (!d.warned) { d.warned = true; toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694! \uc7a1\ud654\uc0c1\uc5d0\uc11c \ud314\uac70\ub098 \uc815\ub9ac\ud558\uc138\uc694.', 'red'); }
@@ -6113,7 +6129,7 @@ function tryEnhance(p, it, bonus = 0, aid = {}) {
 function craft(p, r) {
   if (p.gold < r.gold) return '\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4';
   for (const [k, v] of Object.entries(r.need)) if (invCount(p, k) < v) return `${ITEMS[k].name} ${v - invCount(p, k)}\uac1c\uac00 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4`;
-  if (invFull(p)) return '\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694';
+  if (invFull(p, r.id)) return '\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694';
   p.gold -= r.gold; for (const [k, v] of Object.entries(r.need)) takeItem(p, k, v);
   addItem(p, r.id, 1); Sfx.level();
   if (ITEMS[r.id].rarity >= 4) announceDrop(ITEMS[r.id]);
@@ -6187,7 +6203,7 @@ const MENU = {
     h += `<div class="tabs">${BAG_TABS.map(([k, n]) => `<button class="tab ${ctx.tab === k ? 'on' : ''}" data-a="tab" data-v="${k}">${n}</button>`).join('')}</div>`;
     const list = p.inv.filter(it => bagFilter(it, ctx.tab));
     h += `<div class="grid">${list.map(it => slotHtml(it, ctx.sel === it.uid, `data-a="sel" data-u="${it.uid}"`)).join('') || '<div class="muted">\ube44\uc5b4 \uc788\uc74c</div>'}</div>`;
-    h += `<div class="muted" style="margin-top:6px">\uac00\ubc29 ${p.inv.length} / ${p.invCap} \u00b7 \uc7a5\ube44\ub294 \ub20c\ub7ec\uc11c \ucc29\uc6a9, \ubb3c\uc57d\uc740 \ub20c\ub7ec\uc11c \uc0ac\uc6a9</div>`;
+    h += `<div class="muted" style="margin-top:6px">\uac00\ubc29 ${(BAG_TABS.find(t => t[0] === ctx.tab) || ['', '\uc804\uccb4'])[1]} ${BAG_CAPS[ctx.tab] ? bagCounts(p)[ctx.tab] : p.inv.length} / ${BAG_CAPS[ctx.tab] || Object.values(BAG_CAPS).reduce((x, y) => x + y, 0)} \u00b7 \uc7a5\ube44\ub294 \ub20c\ub7ec\uc11c \ucc29\uc6a9, \ubb3c\uc57d\uc740 \ub20c\ub7ec\uc11c \uc0ac\uc6a9</div>`;
     const sel = ctx.sel && (p.inv.find(i => i.uid === ctx.sel) || (ctx.selEq && p.eq[ctx.selEq]?.uid === ctx.sel && p.eq[ctx.selEq]));
     if (sel) {
       const d = ITEMS[sel.id], equipped = ctx.selEq && p.eq[ctx.selEq] === sel;
@@ -6310,6 +6326,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v371 \uac00\ubc29 \uce78 \ub298\ub9bc \u00b7 \uad50\uc5ed\ud488 \ud0ed \u00b7 \ud070 \uc9d0\uce78</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \uce78\uc744 \uc885\ub958\ubcc4\ub85c \ub530\ub85c \uc149\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c 50\uce78\uc529, \uc18c\ubaa8\ud488 30\uce78, \uc7ac\ub8cc 60\uce78<br>\ud83e\uddf3 \uac00\ubc29\uc5d0 '\uad50\uc5ed\ud488' \ud0ed\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uc2e4\uc740 \uc9d0\uc744 \uc5ec\uae30\uc11c \ubd05\ub2c8\ub2e4. \uce78 \uc218\ub294 \uac1d\uc8fc\uc758 '\uc9d0\uce78'\uc744 \ub298\ub9ac\uba74 \ucee4\uc838\uc694<br>\ud83d\uded2 \uc9d0\uce78\uc774 \ucee4\uc84c\uc2b5\ub2c8\ub2e4: \uc9c0\uac8c 10 \u00b7 \uc190\uc218\ub808 20 \u00b7 \ub2ec\uad6c\uc9c0 30 \u00b7 \uc6b0\ub9c8\ucc28 40 \u00b7 \uc0c1\ub2e8 \ud589\ub82c 100\uce78. \uc2fc \ubb3c\uac74\uc774 \ub9ce\uc774 \uc313\uc774\uace0 \uac1c\ub2f9 \uac12\uc740 \ub0b4\ub838\uc2b5\ub2c8\ub2e4 (\uc2e4\uc5b4 \ub454 \uc9d0\uc740 \uac19\uc740 \uac12\uc5b4\uce58\ub85c \uac1c\uc218\uac00 \ub298\uc5b4\ub0a9\ub2c8\ub2e4)<br>\u25bc \uc0c1\uc810 \ud314\uae30\uc5d0 '\uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30'\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \ube68\uac15 \ud45c\uc2dc \uc7a5\ube44\ub9cc \ud55c \ubc88\uc5d0 (\ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \uc81c\uc678)<br>\ud83e\uddff \uadc0\ud658 \ubd80\uc801\uc744 \uc4f0\uba74 \ucc3d\uc774 \ub2eb\ud788\uace0 \ube5b\uae30\ub465\uacfc \ud568\uaed8 \ub3cc\uc544\uac11\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v370 \uac00\ubc29 \uc815\ub9ac \u00b7 \uc7a5\ube44 \ub4dc\ub78d \ud558\ud5a5</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29\uc758 '\uc804\uccb4' \ud0ed\uc744 \uc5c6\uc574\uc2b5\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c \u00b7 \uc18c\ubaa8\ud488 \u00b7 \uc7ac\ub8cc\ub85c \ubd05\ub2c8\ub2e4<br>\u25b2\u25bc \uc7a5\ube44 \uce78 \uc624\ub978\ucabd \uc704\uc5d0 \ud45c\uc2dc\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4: \uc5f0\ub450 \u25b2 \ub294 \uc9c0\uae08 \uac83\ubcf4\ub2e4 \uc88b\uc740 '\ubcf4\ubb3c', \ube68\uac15 \u25bc\u00b7\u2715 \ub294 \ud314\uc544\ub3c4 \ub418\ub294 '\uace0\ubb3c', Lv \ub294 \uc544\uc9c1 \ubabb \ucc28\ub294 \uac83<br>\ud83d\udcc9 \uc0ac\ub0e5\ud130 \uc7a5\ube44 \ub4dc\ub78d\uc744 \uc904\uc600\uc2b5\ub2c8\ub2e4 \u2014 \ubcf4\ud1b5 \ubaac\uc2a4\ud130 2% \u2192 0.7% (\uc815\uc608\u00b7\uc774\ub984 \ubd99\uc740 \ub188\u00b7\ubcc0\uc885\u00b7\ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c). \uc7a5\ube44\ub294 \uc0c1\uc810\ub3c4 \ud568\uaed8 \uc4f0\uc138\uc694<br>\ud83c\udf0b \uc81c\uc8fc \uacf6\uc790\uc648 \ub4f1\uc5d0\uc11c \uc804\uc124 \uc7a5\ube44\uac00 \ub108\ubb34 \uc790\uc8fc \ub098\uc624\ub358 \uac83\uc744 \ud06c\uac8c \uc904\uc600\uc2b5\ub2c8\ub2e4<br>\ud83d\udd73\ufe0f \uc0c8 \ub3d9\uad74 \uc74c\uc545\uc774 \ub3fc\uc9c0\uad74\uc5d0\uc11c\ub3c4 \ub098\uc635\ub2c8\ub2e4 \u00b7 \ud83d\udc65 \ub3d9\ub8cc \uccb4\ub825\ubc14 \ubc30\uacbd\uc744 \uc605\uac8c \ud588\uc2b5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v369 \ubcf4\uc2a4\ub294 5\ubd84 \ub4a4\uc5d0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc51 \ubcf4\uc2a4\ub294 \uc7a1\uc740 \ub4a4 5\ubd84 \uc788\ub2e4\uac00 \ub2e4\uc2dc \ub098\uc635\ub2c8\ub2e4 (\uc804\uc5d0\ub294 2\ubd84 30\ucd08) \u2014 \uac8c\uc784\uc744 \uaebc \ub454 \uc2dc\uac04\ub3c4 \ud3ec\ud568\ud574\uc694<br>\ud83d\udd04 \uc0c8\ub85c\uace0\uce68\ud558\uba74 \ubcf4\uc2a4\uac00 \ubc14\ub85c \ub2e4\uc2dc \ub098\uc624\ub358 \uac83\uc744 \ub9c9\uc558\uc2b5\ub2c8\ub2e4<br>\u23f3 \ubcf4\uc2a4\uac00 \uc544\uc9c1 \uc548 \ub3cc\uc544\uc628 \uacf3\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ub0a8\uc740 \uc2dc\uac04\uc744 \uc54c\ub824 \uc90d\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v368 \ud018\uc2a4\ud2b8 \ucc3d \ubc30\uacbd</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcdc \ud654\uba74 \uc67c\ucabd \ud018\uc2a4\ud2b8 \ucc3d\uc758 \uc5b4\ub450\uc6b4 \ubc30\uacbd\uc744 \ub354 \ud22c\uba85\ud558\uac8c \ud588\uc2b5\ub2c8\ub2e4 (\uae00\uc790\ub294 \uadf8\ub9bc\uc790\ub97c \ub123\uc5b4 \uadf8\ub300\ub85c \uc77d\ud600\uc694)</div>`;
@@ -6937,7 +6954,7 @@ function updateHUD() {
     bb.querySelector('i').style.width = clamp(boss.hp / boss.maxHp * 100, 0, 100) + '%'; bb.classList.toggle('rage', !!boss.rage2);
   }
   else bb.style.display = 'none';
-  document.querySelector('.mb[data-m=bag]').classList.toggle('alert', p.inv.length >= p.invCap - 2);
+  document.querySelector('.mb[data-m=bag]').classList.toggle('alert', bagNearFull(p));
 }
 function jobIcon(j) { return { warrior: '\u2694\ufe0f', thief: '\ud83d\udde1\ufe0f', shaman: '\ud83d\udd25', taoist: '\u262f\ufe0f', none: '\ud83e\uddd1' }[j] || '\ud83e\uddd1'; }
 
@@ -14576,7 +14593,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v370';
+const GAME_VER = 'v371';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -15578,7 +15595,7 @@ const _menuBag309 = MENU.bag;
 MENU.bag = function (ctx) {
   const r = _menuBag309(ctx); if (!Array.isArray(r)) return r;
   const p = G.player; let h = r[1];
-  h = h.replace(/(<div class="muted" style="margin-top:6px">\uac00\ubc29 \d+ \/ \d+[^<]*)<\/div>/, `$1</div><div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><button class="btn" data-a="bagSort">\u2195 \uc885\ub958\ubcc4 \uc815\ub82c</button><span class="muted" style="align-self:center">\ud83d\udd12 \uc7a0\uadfc \ubb3c\uac74\uc740 \ud314\uae30\u00b7\ubc84\ub9ac\uae30\uc5d0\uc11c \ube60\uc838\uc694</span></div>`);
+  h = h.replace(/(<div class="muted" style="margin-top:6px">\uac00\ubc29 [^<]*)<\/div>/, `$1</div><div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><button class="btn" data-a="bagSort">\u2195 \uc885\ub958\ubcc4 \uc815\ub82c</button><span class="muted" style="align-self:center">\ud83d\udd12 \uc7a0\uadfc \ubb3c\uac74\uc740 \ud314\uae30\u00b7\ubc84\ub9ac\uae30\uc5d0\uc11c \ube60\uc838\uc694</span></div>`);
   const sel = ctx.sel && p.inv.find(i => i.uid === ctx.sel);
   if (sel) {
     const d = ITEMS[sel.id];
@@ -18532,14 +18549,19 @@ doPromote = function (p) {
    \u00b7 \uc218\uc785 \ubaa9\ud45c (\uc774\uc6c3 \ub9c8\uc744\uc744 \uc624\uac00\uba70 30\ubd84 \ud3c9\uade0, \uac19\uc740 \ub808\ubca8\ub300 \uc0ac\ub0e5 \uc218\uc785 \ub300\ube44): \uc9c0\uac8c 1.2\ubc30 \u2192 \uc190\uc218\ub808 1.4 \u2192 \ub2ec\uad6c\uc9c0 1.6 \u2192 \uc6b0\ub9c8\ucc28 1.8 \u2192 \uc0c1\ub2e8 \ud589\ub82c 2.0\ubc30
        - \uadc0\ud55c \ubb3c\uac74\uc740 \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 8\uac1c\ucbe4\ub9cc \ub2e4\uc2dc \ucc28\uc11c, \ud070 \uc9d0\uce78\uc758 \ub098\uba38\uc9c0\ub294 \uc2fc \ubb3c\uac74\uc73c\ub85c \ucc44\uc6b4\ub2e4 \u2192 \uc9d0\uce78\uc774 3\ubc30\uc5ec\ub3c4 \uc774\ubb38\uc740 1.7\ubc30
        - \uae38\uc744 2\ubc30\ub85c \ub298\ub9b0 \uac00\uc815\uc5d0\uc11c\ub3c4 \uac19\uc740 \ubc30\uc728\uc774 \ub098\uc628\ub2e4 (sim356b, ROADX=2)
-   \u00b7 \ud55c\ub3c4 (\ubb34\ud55c \ub3c8\uc904\uc744 \ub9c9\ub294 \uac83): \uc9d0\uce78(8\uce78\ubd80\ud130, \ub3c8\uc73c\ub85c 24\uce78\uae4c\uc9c0) \u00b7 \ub9c8\uc744 \uc7ac\uace0(\uc2dc\uac04\uc774 \uc9c0\ub098\uc57c \ub2e4\uc2dc \ucc2c\ub2e4) \u00b7 \uc0b0\uc9c0\uc5d0 \ub418\ud314\uba74 \uc190\ud574(80%)
+   \u00b7 \ud55c\ub3c4 (\ubb34\ud55c \ub3c8\uc904\uc744 \ub9c9\ub294 \uac83): \uc9d0\uce78(10\uce78\ubd80\ud130, \ub3c8\uc73c\ub85c 100\uce78\uae4c\uc9c0 \u00b7 v371) \u00b7 \ub9c8\uc744 \uc7ac\uace0(\uc2dc\uac04\uc774 \uc9c0\ub098\uc57c \ub2e4\uc2dc \ucc2c\ub2e4) \u00b7 \uc0b0\uc9c0\uc5d0 \ub418\ud314\uba74 \uc190\ud574(80%)
    \u00b7 \uc9d0\uc744 \uc2e4\uc73c\uba74: \uadc0\ud658 \ubd80\uc801\uc740 \ubab8\ub9cc \uc62e\uae34\ub2e4 \u2192 \uc4f0\ub824\uba74 \uc9d0\uc744 \ub450\uace0 \uac00\uc57c \ud55c\ub2e4 (\ud655\uc778\ucc3d).
      \uc5ed\ucc38 \ub9d0\uc740 \ud0c8 \uc218 \uc788\uc9c0\ub9cc \uc9d0 \uac12(\uc0b0 \uac12)\ub9cc\ud07c \uc6b4\uc784\uc744 \ub354 \ub0b8\ub2e4 \u2192 \uc190\ud574\ub97c \ubcf4\ub418 \uc9d0\uc740 \uac74\uc9c4\ub2e4. \ubc30\ub294 \uadf8\ub0e5 \uc2e3\ub294\ub2e4
    \u00b7 \uc800\uc7a5: p.trade { tier, cargo:{\ubb3c\uac74:{q,cost}}, st:{\ub9c8\uc744:{\ubb3c\uac74:{s \uc7ac\uace0, t \uc7ac\uace0 \uc2dc\uac01, sat \ubb3c\ub9bc, st \ubb3c\ub9bc \uc2dc\uac01}}}, hot:[...], profit, sold }
    \u00b7 \uc2dc\uac04\uc740 \ud50c\ub808\uc774 \uc2dc\uac04(p.playTime)\uc73c\ub85c \uc7b0\ub2e4 \u2014 \uae30\uae30 \uc2dc\uacc4\ub97c \ub3cc\ub824\ub3c4 \uc7ac\uace0\uac00 \ucc28\uc9c0 \uc54a\ub294\ub2e4
    ============================================================ */
-const TRADE = { RATE: .00175, D0: 30, CAP: 2, HOME_SELL: .8, SAT_STEP: .004, SAT_MIN: .6, SAT_TRIP: .08, LUX_TRIP: 8, CHEAP_TRIP: 20, HOT_P: .35, HOT_ADD: .12, HOT_LEN: 2, HOT_K: 4.6, TILE_SEC: .254, SHOP_SEC: 8, SEA_SEC: 28 };
-const TR_TIERS = [[8, '\uc9c0\uac8c', 0], [12, '\uc190\uc218\ub808', 5000], [16, '\ub2ec\uad6c\uc9c0', 18000], [20, '\uc6b0\ub9c8\ucc28', 45000], [24, '\uc0c1\ub2e8 \ud589\ub82c', 100000]];
+/* v371: \uc9d0\uce78\uc744 \ud06c\uac8c (8~24\uce78 \u2192 10~100\uce78). \uac00\ubc29 '\uad50\uc5ed\ud488' \ud0ed\uc5d0 \uc2e4\uc740 \uc9d0\uc774 \ubcf4\uc778\ub2e4 (98m_bag371)
+   \u00b7 \ud070 \uc9d0\uce78\uc774 \uc2e4\uc81c\ub85c \ucc28\ub3c4\ub85d \uc2fc \ubb3c\uac74\uc744 \ud6e8\uc52c \ub9ce\uc774 \uc313\uace0(\uc7ac\uace0 30 \u2192 100, \ud55c \ubc88 \ub2e4\ub140\uc62c \ub3d9\uc548 20 \u2192 70\uac1c), \ub300\uc2e0 \uac1c\ub2f9 \uac12\uc744 \ub0ae\ucdc4\ub2e4 (K .5 \u2192 .2)
+   \u00b7 \uadc0\ud55c \ubb3c\uac74\uc740 \uc5ec\uc804\ud788 \ub4dc\ubb3c\ub2e4 (\uc7ac\uace0 12 \u2192 15, \ud55c \ubc88\uc5d0 8 \u2192 10\uac1c \u00b7 \uac1c\ub2f9 \uac12 K 1.5 \u2192 1.2) \u2192 \uc9c0\uac8c 10\uce78 = \uc608\uc804 \uc9c0\uac8c 8\uce78\uacfc \uac19\uc740 \ubc8c\uc774
+   \u00b7 \ubc8c\uc774 (\uc0ac\ub0e5 \ub300\ube44, sim371): \uc9c0\uac8c~\uc6b0\ub9c8\ucc28\ub294 \uc608\uc804\uacfc \uac19\uace0(1.2 \u2192 1.8\ubc30), \uc0c1\ub2e8 \ud589\ub82c\ub9cc 2.0 \u2192 2.6\ubc30\ucbe4\uc73c\ub85c \uc624\ub978\ub2e4
+   \u00b7 \ubb3c\ub9bc\uc740 \ubb3c\uac74\ub9c8\ub2e4: \uadc0\ud55c \uac83 \uac1c\ub2f9 0.4%, \uc2fc \uac83 \uac1c\ub2f9 0.09% (\ud55c \ubc88 \ub2e4\ub140\uc62c \uc591\uc744 \ud314\uba74 \ub458 \ub2e4 4~6% \ub0b4\ub824\uac00\uace0, \ub2e4\ub140\uc624\ub294 \ub3d9\uc548 8% \ub3cc\uc544\uc628\ub2e4) */
+const TRADE = { RATE: .00175, D0: 30, CAP: 2, HOME_SELL: .8, SAT_STEP: .004, SAT_STEP_CHEAP: .0009, SAT_MIN: .6, SAT_TRIP: .08, LUX_TRIP: 10, CHEAP_TRIP: 70, LUX_K: 1.2, CHEAP_K: .2, LUX_STOCK: 15, CHEAP_STOCK: 100, HOT_P: .35, HOT_ADD: .12, HOT_LEN: 2, HOT_K: 4.6, TILE_SEC: .254, SHOP_SEC: 8, SEA_SEC: 28 };
+const TR_TIERS = [[10, '\uc9c0\uac8c', 0], [20, '\uc190\uc218\ub808', 5000], [30, '\ub2ec\uad6c\uc9c0', 18000], [40, '\uc6b0\ub9c8\ucc28', 45000], [100, '\uc0c1\ub2e8 \ud589\ub82c', 100000]];
 /* \ub9c8\uc744: [\uad50\uc5ed \ub808\ubca8(\uadf8 \uace0\uc7a5\uc73c\ub85c \uac00\ub294 \uae38\uc758 \ub808\ubca8\ub300), \uc77c\ubcf8 \uc5ec\ubd80] \u2014 \ubb3c\uac74 \uac12\uc758 \ubc14\ud0d5\uc774 \ub41c\ub2e4 */
 const TR_TOWNS = {
   buyeo: [20], city_daejeon: [30], city_gwangju: [40], city_daegu: [50], city_ulsan: [58], city_busan: [65], city_suwon: [70], city_seoul: [78], city_incheon: [80], jeju: [90],
@@ -18593,8 +18615,8 @@ const TR_GOODS = {};
     japan_sendai: [['\uc13c\ub2e4\uc774 \ub41c\uc7a5', '\ud83e\udd6b'], ['\ubb34\uc1e0 \uc8fc\uc804\uc790', '\ud83e\uded6']], japan_sapporo: [['\ubd81\ud574 \uc5f0\uc5b4', '\ud83c\udf63'], ['\uc720\ube59 \uc218\uc815', '\ud83e\uddca']]
   };
   for (const [town, list] of Object.entries(G2)) list.forEach(([n, icon], i) => {
-    const base = Math.round(.25 * (1000 + 50 * TR_TOWNS[town][0]) * (i ? 1.5 : .5) / 10) * 10;
-    TR_GOODS[town + '_' + i] = { n, icon, town, base, stock: i ? 12 : 30, lux: i };
+    const base = Math.round(.25 * (1000 + 50 * TR_TOWNS[town][0]) * (i ? TRADE.LUX_K : TRADE.CHEAP_K) / 10) * 10;
+    TR_GOODS[town + '_' + i] = { n, icon, town, base, stock: i ? TRADE.LUX_STOCK : TRADE.CHEAP_STOCK, lux: i };
   });
 }
 SAVE_FIELDS.push('trade');
@@ -18604,8 +18626,15 @@ function tradeState() {
   const T = p.trade && typeof p.trade === 'object' ? p.trade : (p.trade = {});
   T.tier = clamp(T.tier | 0, 0, TR_TIERS.length - 1); T.cargo = T.cargo || {}; T.st = T.st || {}; T.hot = Array.isArray(T.hot) ? T.hot : []; T.profit = T.profit || 0; T.sold = T.sold || 0;
   for (const g of Object.keys(T.cargo)) if (!TR_GOODS[g] || !(T.cargo[g].q > 0)) delete T.cargo[g];
+  /* v371: \ubb3c\uac74 \ub2e8\uc704\uac00 \uc791\uc544\uc84c\ub2e4 \u2192 \uc608\uc804\uc5d0 \uc2e4\uc5b4 \ub454 \uc9d0\uc740 \uac19\uc740 \uac12\uc5b4\uce58\uac00 \ub418\uac8c \uac1c\uc218\ub97c \ub298\ub9ac\uace0(\uadc0\ud55c \uac83 1.25\ubc30 \u00b7 \uc2fc \uac83 2.5\ubc30), \ub9c8\uc744 \uc7ac\uace0\ub294 \uc0c8 \uae30\uc900\uc73c\ub85c \uac00\ub4dd \ucc44\uc6b4\ub2e4 */
+  if (T.v !== 371) {
+    for (const g of Object.keys(T.cargo)) T.cargo[g].q = Math.max(1, Math.round(T.cargo[g].q * (TR_GOODS[g].lux ? 1.25 : 2.5)));
+    for (const town of Object.keys(T.st)) for (const g of Object.keys(T.st[town] || {})) { const o = T.st[town][g]; if (TR_GOODS[g] && o && TR_GOODS[g].town === town) { o.s = TR_GOODS[g].stock; o.t = p.playTime || 0; } }
+    T.v = 371;
+  }
   return T;
 }
+const trSatStep = g => TR_GOODS[g].lux ? TRADE.SAT_STEP : TRADE.SAT_STEP_CHEAP;
 const tradeCap = () => TR_TIERS[tradeState().tier][0];
 const tradeLoad = () => { const T = tradeState(); return T ? Object.values(T.cargo).reduce((a, c) => a + c.q, 0) : 0; };
 const tradeCargoCost = () => Math.round(Object.values(tradeState().cargo).reduce((a, c) => a + c.cost, 0));
@@ -18649,7 +18678,7 @@ function tradeSell(g, n) {
   n = Math.min(n, c.q); if (n <= 0) return 0;
   const d = TR_GOODS[g], home = town === d.town, o = trSlot(town, g), avg = c.cost / c.q; let got = 0;
   tradeSat(town, g);
-  for (let i = 0; i < n; i++) { got += tradeSellPrice(g, town, o.sat); if (!home) o.sat = Math.max(TRADE.SAT_MIN, o.sat - TRADE.SAT_STEP); }
+  for (let i = 0; i < n; i++) { got += tradeSellPrice(g, town, o.sat); if (!home) o.sat = Math.max(TRADE.SAT_MIN, o.sat - trSatStep(g)); }
   o.st = trNow();
   if (home) trSlot(town, g).s = Math.min(d.stock, tradeStock(g) + n);   /* \uc0b0\uc9c0\uc5d0 \ub418\ud314\uba74 \uc7ac\uace0\ub85c \ub3cc\uc544\uac04\ub2e4 */
   p.gold += got; c.q -= n; c.cost -= avg * n; if (c.q <= 0) delete T.cargo[g];
@@ -18691,7 +18720,7 @@ NPCV.trade = function (n, ctx) {
       /* \uac00 \ubcf8 \ub9c8\uc744 \uac00\uc6b4\ub370 \uc9c0\uae08 \uac00\uc7a5 \ube44\uc2f8\uac8c \uccd0\uc8fc\ub294 \uacf3 */
       const best = Object.keys(TR_TOWNS).filter(t => t !== town && p.visited[t] && trD(town, t) < 9999).map(t => [t, tradeSellPrice(g, t)]).sort((a, b) => b[1] - a[1])[0];
       h += `<div class="row"><div class="ic" style="font-size:22px">${d.icon}</div><div class="tx"><div class="t1">${d.n}${d.lux ? ' <span class="muted">\uadc0\ud55c \ubb3c\uac74</span>' : ''}</div><div class="t2">\uc7ac\uace0 ${st} / ${d.stock}${best ? ` \u00b7 ${MAPS[best[0]].n} ${fmt(best[1])}\ubb38 ${trPct(best[1], price)}` : ''}</div></div><div class="pr">${fmt(price)}\ubb38</div>`
-        + `<button class="btn" data-a="trBuy" data-g="${g}" data-n="1" ${can < 1 ? 'disabled' : ''}>1</button><button class="btn teal" data-a="trBuy" data-g="${g}" data-n="999" ${can < 1 ? 'disabled' : ''}>\uac00\ub4dd</button></div>`;
+        + `<button class="btn" data-a="trBuy" data-g="${g}" data-n="1" ${can < 1 ? 'disabled' : ''}>1</button><button class="btn" data-a="trBuy" data-g="${g}" data-n="10" ${can < 1 ? 'disabled' : ''}>10</button><button class="btn teal" data-a="trBuy" data-g="${g}" data-n="999" ${can < 1 ? 'disabled' : ''}>\uac00\ub4dd</button></div>`;
     }
     if (load >= cap) h += `<div class="muted">\uc9d0\uce78\uc774 \uac00\ub4dd \ucc3c\uc2b5\ub2c8\ub2e4. '\uc9d0\uce78' \ud0ed\uc5d0\uc11c \ub298\ub9b4 \uc218 \uc788\uc5b4\uc694.</div>`;
   } else if (tab === 'sell') {
@@ -18700,7 +18729,7 @@ NPCV.trade = function (n, ctx) {
     for (const g of gs) {
       const d = TR_GOODS[g], c = T.cargo[g], avg = c.cost / c.q, price = tradeSellPrice(g, town), home = d.town === town, hot = tradeHot(town, g), sat = home ? 1 : tradeSat(town, g);
       h += `<div class="row" style="${hot ? 'border-color:var(--gold)' : ''}"><div class="ic" style="font-size:22px">${d.icon}</div><div class="tx"><div class="t1">${d.n} \u00d7 ${c.q}</div><div class="t2">${MAPS[d.town].n}\uc0b0 \u00b7 \uc0b0 \uac12 ${fmt(Math.round(avg))}\ubb38${home ? ' \u00b7 <span style="color:#ff9a8a">\uc0b0\uc9c0\uc5d0\uc11c\ub294 \ud5d0\uac12</span>' : ` \u00b7 ${trWay(d.town, town)}`}${hot ? ' \u00b7 <b style="color:#ffd24a">\ud2b9\uc218!</b>' : ''}${sat < .97 ? ` \u00b7 <span class="muted">\ubb3c\ub9bc ${Math.round((1 - sat) * 100)}%</span>` : ''}</div></div><div class="pr">${fmt(price)}\ubb38<br>${trPct(price, avg)}</div>`
-        + `<button class="btn" data-a="trSell" data-g="${g}" data-n="1">1</button><button class="btn teal" data-a="trSell" data-g="${g}" data-n="999">\uc804\ubd80</button></div>`;
+        + `<button class="btn" data-a="trSell" data-g="${g}" data-n="1">1</button><button class="btn" data-a="trSell" data-g="${g}" data-n="10">10</button><button class="btn teal" data-a="trSell" data-g="${g}" data-n="999">\uc804\ubd80</button></div>`;
     }
     if (gs.length > 1) h += `<button class="btn teal" data-a="trSellAll" style="width:100%">\uc9d0 \uc804\ubd80 \ud314\uae30</button>`;
     if (gs.length) h += `<div class="muted" style="margin-top:6px">\uac19\uc740 \ubb3c\uac74\uc744 \ud55c \ub9c8\uc744\uc5d0 \ub9ce\uc774 \ud480\uba74 \uac12\uc774 \uc870\uae08\uc529 \ub0b4\ub824\uac11\ub2c8\ub2e4. \uc2dc\uac04\uc774 \uc9c0\ub098\uba74 \ub3cc\uc544\uc640\uc694.</div>`;
@@ -18769,13 +18798,7 @@ NPCV.station = function (n, ctx) {
     h += `<div class="row" style="${v ? '' : 'opacity:.5'}"><div class="ic">\ud83d\udc0e</div><div class="tx"><div class="t1">${MAPS[id].n}</div><div class="t2">${v ? `\uc0af ${fmt(fare)} + \uc9d0 \uc6b4\uc784 ${fmt(freight)}` : '\uc544\uc9c1 \uac00\ubcf4\uc9c0 \uc54a\uc740 \uacf3'}</div></div><div class="pr">${fmt(cost)}\ubb38</div><button class="btn" data-a="travel" data-v="${id}" data-p="${cost}" ${!v || p.gold < cost ? 'disabled' : ''}>\uc774\ub3d9</button></div>`; }
   return ['\ud83d\udc0e \uc5ed\ucc38', h];
 };
-/* \uac00\ubc29 \ucc3d\uc5d0 \uc9d0 \uc218\ub97c \ubcf4\uc5ec \uc900\ub2e4 / \uc9d0\uc744 \uc2e3\uace0 \ub9c8\uc744\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ud55c \uc904 \uc54c\ub9bc */
-const _menuBag356 = MENU.bag;
-MENU.bag = function (ctx) {
-  const r = _menuBag356(ctx), load = tradeLoad();
-  if (Array.isArray(r) && load) { const T = tradeState(); r[1] += `<div class="muted" style="margin-top:6px">\ud83e\uddf3 \uad50\uc5ed \uc9d0 ${load} / ${tradeCap()} \u2014 ${Object.keys(T.cargo).map(g => `${TR_GOODS[g].icon}${T.cargo[g].q}`).join(' ')} (\ub9c8\uc744 \uac1d\uc8fc\uc5d0\uc11c \ud31d\ub2c8\ub2e4)</div>`; }
-  return r;
-};
+/* \uc9d0\uc744 \uc2e3\uace0 \ub9c8\uc744\uc5d0 \ub4e4\uc5b4\uc11c\uba74 \ud55c \uc904 \uc54c\ub9bc (\uac00\ubc29\uc5d0\uc11c\ub294 '\uad50\uc5ed\ud488' \ud0ed\uc73c\ub85c \ubcf8\ub2e4 \u2014 98m_bag371) */
 const _enterMap356 = enterMap;
 enterMap = function (id) {
   const r = _enterMap356.apply(this, arguments);
@@ -18822,7 +18845,7 @@ function raidSpawn(from) {
   for (let i = 0; i < dP.length; i++) if (dP[i] >= 8 && dP[i] <= 11 && dO[i] >= 0 && dO[i] + Math.random() * 2 < bd) { bd = dO[i] + Math.random() * 2; best = i; }
   if (best < 0) return false;
   const cx = best % m.w, cy = Math.floor(best / m.w), jp = ROAD_ENDS[ROAD_OF[G.mapId]][0].startsWith('japan');
-  const grunt = jp ? 'naniwaBandit' : 'roadBandit', n = load <= 12 ? 4 : load <= 20 ? 5 : 6, lv = def.lv[1];
+  const grunt = jp ? 'naniwaBandit' : 'roadBandit', n = load <= 20 ? 4 : load <= 40 ? 5 : 6, lv = def.lv[1];
   const types = [grunt, grunt, grunt, !jp && MOBS.banditArcher ? 'banditArcher' : grunt, !jp && MOBS.banditShaman ? 'banditShaman' : grunt, grunt].slice(0, n);
   const offs = [[0, 0], [-3, -3], [3, 3], [-4, 2], [4, -2], [0, -5]];   /* \ud55c \ubc88\uc5d0 \uc4f8\ub9ac\uc9c0 \uc54a\uac8c \ubc8c\ub824 \uc138\uc6b4\ub2e4 */ const made = [];
   types.forEach((type, k) => {
@@ -18833,7 +18856,7 @@ function raidSpawn(from) {
     G.mobs.push(mob); made.push(mob); addFx('puff', mob.x, mob.y - 14, { col: '#d8c8a8', dur: .4, r: 24 });
   });
   if (!made.length) return false;
-  G.raid = { n: made.length, lv, max: Math.ceil(load / 3), stolen: 0, back: 0 };
+  G.raid = { n: made.length, lv, max: Math.ceil(load / 3), unit: Math.max(1, Math.round(load / 12)), stolen: 0, back: 0 };   /* v371: \uc9d0\uce78\uc774 \ucee4\uc838\uc11c \ud55c \ubc88\uc5d0 \ud55c \ubb36\uc74c(\uc9d0\uc758 1/12\ucbe4)\uc744 \ube7c\uc557\ub294\ub2e4 */
   centerMsg('\ud83c\udff4 \ub3c4\uc801\ub5bc\ub2e4!', '\ub9de\uc73c\uba74 \uc9d0\uc744 \ube7c\uc557\uae41\ub2c8\ub2e4', 'boss', 2.6); sfxOr('raid_appear', () => Sfx.boss()); G.shake = Math.max(G.shake || 0, 6);
   chat('', `[\uae38 \uc18c\uc2dd] ${def.n}\uc5d0 \ub3c4\uc801\ub5bc\uac00 \ub098\ud0c0\ub098 \uc9d0\uc744 \ub178\ub9bd\ub2c8\ub2e4`, true);
   return true;
@@ -18843,9 +18866,9 @@ function raidSteal(m) {
   const R = G.raid, p = G.player; if (!R || R.stolen >= R.max || Math.random() > RAID.STEAL_P) return;
   const T = tradeState(), gs = Object.keys(T.cargo); if (!gs.length) return;
   let k = Math.random() * tradeLoad(), g = gs[0]; for (const x of gs) { k -= T.cargo[x].q; if (k < 0) { g = x; break; } }
-  const c = T.cargo[g], avg = c.cost / c.q; c.q--; c.cost -= avg; if (c.q <= 0) delete T.cargo[g];
-  (m.loot = m.loot || []).push({ g, cost: avg }); R.stolen++;
-  floatText(p.x, p.y - 70, `${TR_GOODS[g].icon} ${TR_GOODS[g].n} \ube7c\uc557\uae40!`, '#ff9a8a', true); m.bubble = '\ucc59\uacbc\ub2e4!'; m.bubbleT = 1.6; sfxOr('raid_steal', null, { gap: .12 });
+  const c = T.cargo[g], avg = c.cost / c.q, n = Math.max(1, Math.min(R.unit || 1, c.q, R.max - R.stolen)); c.q -= n; c.cost -= avg * n; if (c.q <= 0) delete T.cargo[g];
+  m.loot = m.loot || []; for (let i = 0; i < n; i++) m.loot.push({ g, cost: avg }); R.stolen += n;
+  floatText(p.x, p.y - 70, `${TR_GOODS[g].icon} ${TR_GOODS[g].n}${n > 1 ? ' ' + n + '\uac1c' : ''} \ube7c\uc557\uae40!`, '#ff9a8a', true); m.bubble = '\ucc59\uacbc\ub2e4!'; m.bubbleT = 1.6; sfxOr('raid_steal', null, { gap: .12 });
 }
 const _damageAlly358 = damageAlly;
 damageAlly = function (t, raw, src) {
@@ -19069,6 +19092,132 @@ MENU.bag = function (ctx) {
   }
   return [r[0], h];
 };
+
+/* ============================================================
+   98m_bag371 (v371): \uac00\ubc29 '\uad50\uc5ed\ud488' \ud0ed \u00b7 \uc0c1\uc810 '\uace0\ubb3c \ubaa8\ub450 \ud314\uae30' \u00b7 \uadc0\ud658 \ubd80\uc801 \uc5f0\ucd9c
+   \u00b7 \uac00\ubc29 \uce78\uc740 \uc885\ub958\ubcc4\ub85c \ub530\ub85c \uc13c\ub2e4 (16_items BAG_CAPS: \ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c 50, \uc18c\ubaa8\ud488 30, \uc7ac\ub8cc 60)
+   \u00b7 \uad50\uc5ed\ud488 \ud0ed: \uc2e4\uc740 \uc9d0(p.trade.cargo)\uc744 \uac00\ubc29 \uce78\ucc98\ub7fc \ubcf4\uc5ec \uc900\ub2e4. \uce78 \uc218 = \uc9d0\uce78(\uac1d\uc8fc '\uc9d0\uce78' \ud0ed\uc5d0\uc11c \ub298\ub9b0\ub2e4, 10~100\uce78)
+       - \uc9d0\uc740 \uac00\ubc29(p.inv)\uc5d0 \ub123\uc9c0 \uc54a\ub294\ub2e4 \u2192 \uad50\uc5ed\u00b7\ub3c4\uc801\ub5bc\u00b7\uc5ed\ucc38 \uc6b4\uc784\u00b7\uc800\uc7a5\uc740 \uc608\uc804 \uadf8\ub300\ub85c
+       - \uce78\uc744 \ub204\ub974\uba74 \uc0b0\uc9c0 \u00b7 \uc0b0 \uac12 \u00b7 \uc9c0\uae08 \uc774 \ub9c8\uc744 \uac12(\ub610\ub294 \uac00 \ubcf8 \ub9c8\uc744 \uac00\uc6b4\ub370 \uac00\uc7a5 \ube44\uc2fc \uacf3)\uc744 \ubcf4\uc5ec \uc900\ub2e4
+   \u00b7 \uc0c1\uc810 \ud314\uae30: '\u25bc \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30' \ud55c \ubc88 (\ub450 \ubc88 \ub20c\ub7ec \ud655\uc815)
+       - \uace0\ubb3c = \uac00\ubc29\uc5d0\uc11c \ube68\uac15\uc73c\ub85c \ud45c\uc2dc\ub418\ub294 \uac83: \uc9c0\uae08 \ub080 \uac83\ubcf4\ub2e4 \ubabb\ud55c \uc7a5\ube44(\u25bc)\uc640 \ub0b4 \uc9c1\uc5c5\uc774 \ubabb \uc4f0\ub294 \ubb34\uae30(\u2715)
+       - \ube60\uc9c0\ub294 \uac83: \ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \u00b7 (\ud3c9\ubbfc\uc77c \ub54c) \ubabb \uc4f0\ub294 \ubb34\uae30 \u2014 \uc804\uc9c1\ud558\uba74 \uc4f8 \uc218 \uc788\uc73c\ubbc0\ub85c
+   \u00b7 \uadc0\ud658 \ubd80\uc801: \uc4f0\uba74 \uc5f4\ub824 \uc788\ub358 \ucc3d\uc774 \ub2eb\ud788\uace0, \ubc1c\ubc11\uc5d0\uc11c \ube5b\uae30\ub465\uc774 \uc62c\ub77c\uc628 \ub4a4(0.7\ucd08) \ub9c8\uc744\ub85c \uc62e\uaca8\uc9c4\ub2e4. \ub9c8\uc744\uc5d0 \ub0b4\ub824\uc124 \ub54c\ub3c4 \ube5b\uc774 \ud37c\uc9c4\ub2e4
+       - \uc2dc\uc804 \uc911\uc5d0 \uc4f0\ub7ec\uc9c0\uac70\ub098 \ub2e4\ub978 \uc9c0\ub3c4\ub85c \ub118\uc5b4\uac00\uba74 \uadc0\ud658\uc740 \ucde8\uc18c\ub418\uace0 \ubd80\uc801\uc740 \ub3cc\ub824\ubc1b\ub294\ub2e4
+   ============================================================ */
+
+/* ---------------- \uac00\ubc29: \uad50\uc5ed\ud488 \ud0ed ---------------- */
+const _menuBag371 = MENU.bag;
+MENU.bag = function (ctx) {
+  const r = _menuBag371(ctx); if (!Array.isArray(r)) return r;
+  const p = G.player, T = tradeState(), load = tradeLoad(), cap = tradeCap(), on = ctx.tab === 'cargo';
+  let h = r[1].replace(/(<button class="tab [^"]*" data-a="tab" data-v="material">[^<]*<\/button>)/, `$1<button class="tab ${on ? 'on' : ''}" data-a="tab" data-v="cargo">\uad50\uc5ed\ud488</button>`);
+  if (!on) return [r[0], h];
+  const gs = Object.keys(T.cargo).sort((x, y) => TR_GOODS[y].lux - TR_GOODS[x].lux || T.cargo[y].q - T.cargo[x].q), town = G.mapId, here = !!TR_TOWNS[town];
+  let g1 = gs.map(g => { const d = TR_GOODS[g]; return `<button class="slot cg ${ctx.cg === g ? 'sel' : ''}" data-a="cgSel" data-g="${g}" style="border-color:${d.lux ? '#d9b25f' : ''}"><span class="cgi">${d.icon}</span><span class="n">${T.cargo[g].q}</span></button>`; }).join('');
+  if (!g1) g1 = '<div class="muted">\uc2e4\uc740 \uc9d0\uc774 \uc5c6\uc2b5\ub2c8\ub2e4</div>';
+  const bar = `<div class="cgbar"><i style="width:${clamp(load / cap * 100, 0, 100)}%"></i></div>`;
+  let body = `<div class="grid">${g1}</div>${bar}<div class="muted" style="margin-top:6px">\ud83e\uddf3 \uc9d0 <b>${load} / ${cap}\uce78</b> \u00b7 ${TR_TIERS[T.tier][1]}${load ? ` \u00b7 \uc0b0 \uac12 ${fmt(tradeCargoCost())}\ubb38` : ''}<br>\ub9c8\uc744 \uac1d\uc8fc\uc5d0\uc11c \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub2e4\ub978 \ub9c8\uc744 \uac1d\uc8fc\uc5d0 \ud31d\ub2c8\ub2e4. \uc9d0\uce78\uc740 \uac1d\uc8fc\uc758 '\uc9d0\uce78' \ud0ed\uc5d0\uc11c \ub298\ub824\uc694.</div>`;
+  const g = ctx.cg && T.cargo[ctx.cg] ? ctx.cg : null;
+  if (g) {
+    const d = TR_GOODS[g], c = T.cargo[g], avg = c.cost / c.q;
+    let line;
+    if (here && d.town !== town) { const pr = tradeSellPrice(g, town); line = `<div class="stat"><span>\uc774 \ub9c8\uc744 \uac1d\uc8fc \uac12</span><b>${fmt(pr)}\ubb38 ${trPct(pr, avg)}</b></div>`; }
+    else { const best = Object.keys(TR_TOWNS).filter(t => t !== d.town && p.visited[t] && trD(d.town, t) < 9999).map(t => [t, tradeSellPrice(g, t)]).sort((a, b) => b[1] - a[1])[0]; line = best ? `<div class="stat"><span>\uac00\uc7a5 \ube44\uc2fc \uacf3 (\uac00 \ubcf8 \ub9c8\uc744)</span><b>${MAPS[best[0]].n} ${fmt(best[1])}\ubb38 ${trPct(best[1], avg)}</b></div>` : ''; }
+    body += `<div class="detail"><div class="nm3">${d.icon} ${d.n} \u00d7 ${c.q}${d.lux ? ' <span class="muted">\uadc0\ud55c \ubb3c\uac74</span>' : ''}</div><div class="sep"></div><div class="stat"><span>\uc0b0\uc9c0</span><b>${MAPS[d.town].n}</b></div><div class="stat"><span>\uc0b0 \uac12</span><b>\uac1c\ub2f9 ${fmt(Math.round(avg))}\ubb38 \u00b7 \ubaa8\ub450 ${fmt(Math.round(c.cost))}\ubb38</b></div>${line}${d.town === town ? '<div class="muted" style="margin-top:4px">\uc0b0\uc9c0\uc5d0\uc11c \ub418\ud314\uba74 \ud5d0\uac12\uc785\ub2c8\ub2e4. \uba40\ub9ac \uac00\uc838\uac08\uc218\ub85d \ube44\uc2f8\uac8c \ud314\ub824\uc694.</div>' : ''}</div>`;
+  }
+  h = h.replace('<div class="grid"><div class="muted">\ube44\uc5b4 \uc788\uc74c</div></div>', '\u0001')
+    .replace(/<div class="muted" style="margin-top:6px">\uac00\ubc29 [^<]*<\/div>/, '')
+    .replace(/<div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap"><button class="btn" data-a="bagSort">[\s\S]*?<\/div>/, '')
+    .replace('\u0001', () => body);
+  return [r[0], h];
+};
+
+/* ---------------- \uc0c1\uc810: \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30 ---------------- */
+function junkList(p) {
+  return p.inv.filter(it => {
+    const d = ITEMS[it.id]; if (it.lock || !d || !isGear(d) || d.rarity >= 4) return false;
+    const k = (gearGrade(p, it) || {}).k; return k === 'down' || (k === 'no' && p.job !== 'none');
+  });
+}
+const _shopHtml371 = shopHtml;
+shopHtml = function (n, ctx, stock, priceMul = 1) {
+  let h = _shopHtml371(n, ctx, stock, priceMul);
+  try {
+    if (ctx.tab !== 'sell') return h;
+    const p = G.player, list = junkList(p); if (!list.length) return h;
+    const sum = sellSum(list), sure = ctx.confirm === 'bulk_junk';
+    const btn = `<div class="bulk1 junkbox"><button class="btn big junk ${sure ? 'red' : ''}" data-a="junkSell">${sure ? `\uc815\ub9d0 \uace0\ubb3c \uc7a5\ube44 ${list.length}\uac1c\ub97c ${fmt(sum)}\ubb38\uc5d0 \ud314\uae4c\uc694?` : `\u25bc \uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30 \u00b7 ${list.length}\uac1c \u00b7 ${fmt(sum)}\ubb38`}</button><div class="muted" style="margin-top:4px">\uc9c0\uae08 \ub080 \uac83\ubcf4\ub2e4 \ubabb\ud55c \uc7a5\ube44(\u25bc)\uc640 \ubabb \uc4f0\ub294 \ubb34\uae30(\u2715)\ub9cc \ud31d\ub2c8\ub2e4. \ud83d\udd12 \uc7a0\uadfc \uac83\uacfc \uc804\uc124 \uc774\uc0c1\uc740 \ube60\uc838\uc694.</div></div>`;
+    /* \ubb3c\uac74\uc774 \ub9ce\uc73c\uba74 \ub9e8 \uc544\ub798\uae4c\uc9c0 \ub0b4\ub824\uc57c \ud574\uc11c, \ud0ed \ubc14\ub85c \uc544\ub798(\ubaa9\ub85d \uc704)\uc5d0 \ub454\ub2e4 */
+    const mark = '<div class="grid">', i = h.indexOf(mark);
+    h = i >= 0 ? h.slice(0, i) + btn + h.slice(i) : h + btn;
+  } catch (e) { reportError(e); }
+  return h;
+};
+
+/* ---------------- \ub204\ub984 \ucc98\ub9ac ---------------- */
+const _onModalClick371 = onModalClick;
+onModalClick = function (e) {
+  const b = e.target.closest && e.target.closest('[data-a]'), a = b && !b.disabled ? b.dataset.a : '', ctx = modalCtx, p = G.player;
+  if (!ctx || !p || (a !== 'cgSel' && a !== 'junkSell')) return _onModalClick371(e);
+  if (a === 'cgSel') { ctx.cg = ctx.cg === b.dataset.g ? null : b.dataset.g; ctx.sel = null; ctx.selEq = null; Sfx.click(); rerender(); return; }
+  if (ctx.confirm !== 'bulk_junk') { ctx.confirm = 'bulk_junk'; Sfx.click(); rerender(); return; }
+  const list = junkList(p), sum = sellSum(list);
+  if (list.length) { p.inv = p.inv.filter(it => !list.includes(it)); p.gold += sum; Sfx.coin(true); toast(`\ud83d\udcb0 \uace0\ubb3c \uc7a5\ube44 ${list.length}\uac1c\ub97c ${fmt(sum)}\ubb38\uc5d0 \ud314\uc558\uc5b4\uc694`, 'gold'); saveGame?.(true); }
+  ctx.confirm = null; ctx.ssel = null; rerender();
+};
+
+/* ---------------- \uadc0\ud658 \ubd80\uc801: \ucc3d\uc744 \ub2eb\uace0, \ube5b\uae30\ub465\uc774 \uc624\ub978 \ub4a4 \uc62e\uae34\ub2e4 ---------------- */
+const RET_CAST = .7;
+function returnCast(p, id) {
+  if (modalOpen()) closeModal();
+  G.retCast = { t: 0, id, town: p.lastTown, map: G.mapId };
+  toast('\ud83e\uddff \uadc0\ud658 \ubd80\uc801\uc744 \uc0ac\uc6a9\ud588\uc2b5\ub2c8\ub2e4');
+  addFx('retGo', p.x, p.y, { dur: RET_CAST + .12, src: p });
+  sfxOr('map_move', null, { gap: .3 });
+}
+const _update371 = update;
+update = function (dt) {
+  const r = _update371.apply(this, arguments);
+  try {
+    const C = G.retCast;
+    if (C) {
+      const p = G.player; C.t += dt;
+      if (!p || p.hp <= 0 || G.mapId !== C.map) { G.retCast = null; if (p) addItem(p, C.id, 1); }   /* \ucde8\uc18c: \ubd80\uc801\uc740 \ub3cc\ub824\uc900\ub2e4 */
+      else if (C.t >= RET_CAST) {
+        G.retCast = null; G.fade = 1; enterMap(C.town, null, null);
+        const q = G.player; addFx('retArrive', q.x, q.y, { dur: 1, src: q }); screenFlash('#bfe4ff', .3);
+      }
+    }
+  } catch (e) { G.retCast = null; reportError(e); }
+  return r;
+};
+/* \ub5a0\ub0a0 \ub54c: \ubc1c\ubc11 \uace0\ub9ac\uac00 \ubaa8\uc5ec\ub4e4\uace0 \ube5b\uae30\ub465\uc774 \uac00\ub298\uac8c \uc19f\ub294\ub2e4 */
+defFx(AIR_FX, 'retGo', f => {
+  const k = clamp(f.t / f.dur, 0, 1), e = f.src || G.player, x = e ? e.x : f.x, y = e ? e.y : f.y, a = Math.min(1, k * 5), H = 260;
+  HD.add(() => {
+    const w = 34 * (1 - k * .75) + Math.sin(k * 30) * 2, g = ctx.createLinearGradient(0, y - H, 0, y);
+    g.addColorStop(0, 'rgba(150,210,255,0)'); g.addColorStop(.6, `rgba(150,210,255,${.3 * a})`); g.addColorStop(1, `rgba(225,245,255,${(.45 + k * .4) * a})`);
+    ctx.fillStyle = g; ctx.fillRect(x - w / 2, y - H, w, H);
+    ctx.fillStyle = `rgba(255,255,255,${(.35 + k * .6) * a})`; ctx.fillRect(x - 2 - k * 2, y - H, 4 + k * 4, H);
+    for (let i = 0; i < 3; i++) { const kk = clamp(k * 1.5 - i * .22, 0, 1); if (kk > 0 && kk < 1) HD.ellipseRing(x, y, 74 * (1 - easeOut(kk)) + 10, 2 + kk * 3, 'rgba(170,220,255,.9)', kk); }
+    for (let i = 0; i < 14; i++) { const an = i * TAU / 14 + k * 9, rr = 24 * (1 - k * .6) + Math.sin(i * 2.1) * 5, yy = y - ((k * 2.2 + i / 14) % 1) * 200; ctx.fillStyle = hexA(i % 3 ? '#bfe4ff' : '#ffffff', a * (1 - ((k * 2.2 + i / 14) % 1) * .6)); ctx.fillRect(x + Math.cos(an) * rr - 1.5, yy + Math.sin(an) * rr * .3 - 1.5, 3, 3); }
+  });
+  HD.light(x, y - 18, 50 + k * 60, '#8fd0ff', a * (.45 + k * .5));
+});
+/* \ub0b4\ub824\uc124 \ub54c: \ube5b\uae30\ub465\uc774 \uc7a6\uc544\ub4e4\uba70 \uace0\ub9ac\uac00 \ud37c\uc9c4\ub2e4 */
+defFx(AIR_FX, 'retArrive', f => {
+  const k = clamp(f.t / f.dur, 0, 1), e = f.src || G.player, x = e ? e.x : f.x, y = e ? e.y : f.y, a = 1 - k, H = 260;
+  HD.add(() => {
+    const w = 10 + 40 * easeOut(k), g = ctx.createLinearGradient(0, y - H, 0, y);
+    g.addColorStop(0, 'rgba(150,210,255,0)'); g.addColorStop(.6, `rgba(150,210,255,${.3 * a})`); g.addColorStop(1, `rgba(225,245,255,${.7 * a})`);
+    ctx.fillStyle = g; ctx.fillRect(x - w / 2, y - H, w, H);
+    ctx.fillStyle = `rgba(255,255,255,${.7 * a * a})`; ctx.fillRect(x - 3, y - H, 6, H);
+    for (let i = 0; i < 3; i++) { const kk = clamp(k * 1.7 - i * .2, 0, 1); if (kk > 0 && kk < 1) HD.ellipseRing(x, y, 10 + easeOut(kk) * 86, 5 * (1 - kk) + .5, 'rgba(170,220,255,.9)', 1 - kk); }
+    for (let i = 0; i < 12; i++) { const an = i * TAU / 12 + k * 2, rr = 14 + easeOut(k) * 46, yy = y - 20 - Math.sin(k * Math.PI) * 30 - (i % 4) * 8; ctx.fillStyle = hexA(i % 3 ? '#bfe4ff' : '#ffffff', a); ctx.fillRect(x + Math.cos(an) * rr - 1.5, yy + Math.sin(an) * rr * .3 - 1.5, 3, 3); }
+  });
+  HD.light(x, y - 18, 100 * (1 - k * .4), '#8fd0ff', a * .8);
+});
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
