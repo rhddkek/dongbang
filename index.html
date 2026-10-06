@@ -59,7 +59,7 @@ button:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 #bossbar .bn small{color:#ffb38a;font-weight:700;margin-left:6px}
 #bossbar .bb{height:12px;border:1px solid #d9b25f;background:#200c08;border-radius:3px;overflow:hidden;margin-top:3px}
 #bossbar .bb i{display:block;height:100%;background:linear-gradient(180deg,#ff6a4a,#a3201a);transition:width .15s}
-#toasts{position:absolute;left:50%;top:max(150px,26vh);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none;z-index:8;width:min(92vw,520px)}
+#toasts{position:absolute;left:50%;top:max(150px,26vh);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;pointer-events:none;z-index:30;width:min(92vw,520px)}
 .toast{background:rgba(18,13,10,.93);border:1px solid var(--line2);border-radius:18px;padding:6px 14px;font-size:12px;font-weight:700;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.5);animation:tin .25s ease-out}
 .toast.gold{border-color:#e7c46a;color:#ffe7a6}.toast.red{border-color:#d0584a;color:#ffc4b8}.toast.blue{border-color:#5f9fd8;color:#cfe6ff}.toast.purple{border-color:#b27ae8;color:#ecd8ff}
 @keyframes tin{from{transform:translateY(-6px);opacity:0}to{transform:none;opacity:1}}
@@ -478,6 +478,19 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
 .bulk1.junkbox{margin:0 0 10px}.bulk1.junkbox .btn.big{margin-top:0}
 /* v372: \c7a0 \ae08  \d45c \c2dc (\1f512 )\c640  \25b2 \25bc  \d45c \c2dc \ac00  \ac19 \c740  \c790 \b9ac \c5d0  \acb9 \ce58 \c9c0  \c54a \ac8c  */
 .slot.g-up .lk~.gb,.slot.g-down .lk~.gb,.slot.g-no .lk~.gb{right:15px}
+/* v373: \b3d9 \b8cc  \c7a5 \be44  \ce78  \b7  \b3d9 \b8cc \c6a9  \d45c \c2dc  */
+.ceq{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:-2px 0 10px}
+.eqs.ceqs{min-height:52px;cursor:pointer}
+.eqs.ceqs.sel{outline:2px solid var(--gold2)}
+.cpick{border:1px dashed var(--line2);border-radius:8px;padding:8px;margin:-4px 0 12px;background:rgba(20,14,10,.6)}
+.ccur{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ccur .cchips{margin:0;flex:1}
+.slot.g-comp .gb,.slot .gb.cgb{color:#7fc8ff}
+.glegend .g-comp{color:#7fc8ff}
+.slot.g-comp .lk~.gb{right:15px}
+.cchips i.muted{font-style:normal;font-size:11px}
+/* v373: \c54c \b9bc \c740  \c5f4 \b9b0  \cc3d  \c704 \c5d0  \b72c \b2e4  \2014  \cc3d \c774  \c5f4 \b824  \c788 \c744  \b54c \b294  \b9e8  \c704  \b2e8 \cd94 \b97c  \ac00 \b9ac \c9c0  \c54a \ac8c  \d654 \ba74  \c544 \b798 \cabd \c5d0  */
+body:has(#modal:not([hidden])) #toasts{top:auto;bottom:max(18px,env(safe-area-inset-bottom,0px) + 10px);flex-direction:column-reverse}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -531,7 +544,7 @@ img.pxs{width:34px;height:34px;image-rendering:pixelated;display:block;margin:0 
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v372</div>
+    <div class="sub">v373</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -5081,7 +5094,7 @@ function makeCompanion(def, L) {
   const c = {
     kind: 'comp', name: def.name, job: def.job, rank: rankFor(L), lv: L, x: 0, y: 0, r: 11, dir: 0, walkT: 0, moving: false, flashT: 0, atkAnim: 0,
     hp: 1, mp: 1, cds: {}, atkCd: 0, buffs: {}, target: null, downT: 0, look: def.look, hue: def.hue,
-    virtualGear: virtualGearFor(def.job, L), eqList: () => []
+    def0: def, virtualGear: compGear(def, def.job, L), eqList: () => []   /* v373: \ub07c\uc6cc \uc900 \uc7a5\ube44\uc758 \ub364\uc740 \uae30\ubcf8 \uc7a5\ube44\uc5d0 \uc5b9\ub294\ub2e4 (98n_comp373) */
   };
   calcStats(c); c.hp = c.s.maxHp; c.mp = c.s.maxMp;
   return c;
@@ -5745,7 +5758,7 @@ function bossThink(m, t, d, dt) {
 }
 
 /* ---------------- companions ---------------- */
-function syncCompanion(c) { const hpP = c.hp / (c.s?.maxHp || 1); c.lv = G.player.lv; c.rank = rankFor(c.lv); c.virtualGear = virtualGearFor(c.job, c.lv); calcStats(c); if (c.hp > 0) c.hp = Math.max(1, Math.round(c.s.maxHp * hpP)); }
+function syncCompanion(c) { const hpP = c.hp / (c.s?.maxHp || 1); c.lv = G.player.lv; c.rank = rankFor(c.lv); c.virtualGear = compGear(c.def0, c.job, c.lv); calcStats(c); if (c.hp > 0) c.hp = Math.max(1, Math.round(c.s.maxHp * hpP)); }
 function updateCompanion(c, dt) {
   const p = G.player;
   c.flashT = Math.max(0, c.flashT - dt); c.atkCd -= dt; c.atkAnim = Math.max(0, c.atkAnim - dt);
@@ -6002,14 +6015,37 @@ function usePotionAuto(p, kind) {
   for (const id of order) { const it = p.inv.find(x => x.id === id); if (it) { if (useItem(p, it) === false) continue; p.potCd = .8; return true; } }
   return false;
 }
-function openBox(p, it) {
+/* v373: \uc0c1\uc790\ub97c \uc870\uc6a9\ud788 \uc5ec\ub294 \uae38(quiet)\uacfc \uc5ec\ub7ec \uac1c\ub97c \ud55c \ubc88\uc5d0 \uc5ec\ub294 \uae38(openBoxes)\uc744 \ub354\ud588\ub2e4 \u2014 \ub098\uc624\ub294 \uac83\u00b7\ud655\ub960\uc740 \uadf8\ub300\ub85c
+   \ub3cc\ub824\uc8fc\ub294 \uac12: { gold, items:[\ubb3c\uac74 id], gear:[\uc7a5\ube44] } \u00b7 \ubabb \uc5f4\uba74 null */
+function openBox(p, it, quiet) {
   const d = ITEMS[it.id];
-  if (invFull(p) && it.id !== 'luckyPouch') { toast('\uac00\ubc29 \uc7a5\ube44 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c)\uc5d0 \uc790\ub9ac\uac00 \ud544\uc694\ud574\uc694', 'red'); return; }
+  if (invFull(p) && it.id !== 'luckyPouch') { if (!quiet) toast('\uac00\ubc29 \uc7a5\ube44 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c)\uc5d0 \uc790\ub9ac\uac00 \ud544\uc694\ud574\uc694', 'red'); return null; }
   takeItem(p, it.id, 1);
-  if (it.id === 'luckyPouch') { const g = Math.round((40 + p.lv * 12) * rnd(.6, 2.2)); p.gold += g; toast(`\ud83c\udf81 \ubcf5\uc8fc\uba38\ub2c8\uc5d0\uc11c ${fmt(g)}\ubb38!`, 'gold'); if (Math.random() < .3) { addItem(p, pick(['largePotion', 'manaPotion', 'whetstone', 'returnScroll'])); } return; }
+  if (it.id === 'luckyPouch') {
+    const g = Math.round((40 + p.lv * 12) * rnd(.6, 2.2)); p.gold += g; let bonus = null;
+    if (Math.random() < .3) { bonus = pick(['largePotion', 'manaPotion', 'whetstone', 'returnScroll']); addItem(p, bonus); }
+    if (!quiet) toast(`\ud83c\udf81 \ubcf5\uc8fc\uba38\ub2c8\uc5d0\uc11c ${fmt(g)}\ubb38${bonus ? ' + ' + ITEMS[bonus].name : ''}!`, 'gold');
+    return { gold: g, items: bonus ? [bonus] : [], gear: [] };
+  }
   const minR = it.id === 'hunterBox' ? 1 : it.id === 'artisanBox' ? 2 : 3;
   const id = randomGearId(p.lv, { minRarity: minR, maxRarity: it.id === 'mysteryRelic' ? 5 : it.id === 'artisanBox' ? 4 : 3, spread: 6 });
-  if (id) { const g = makeItem(id); if (it.id !== 'hunterBox') g.plus = rint(0, 2); p.inv.push(g); toast(`\ud83c\udf81 ${ITEMS[id].name} \ud68d\ub4dd!`, rarityToast(ITEMS[id].rarity)); if (ITEMS[id].rarity >= 4) announceDrop(ITEMS[id]); onObtainGear(p, g); }
+  if (!id) return { gold: 0, items: [], gear: [] };
+  const g = makeItem(id); if (it.id !== 'hunterBox') g.plus = rint(0, 2); p.inv.push(g);
+  if (!quiet || ITEMS[id].rarity >= 4) toast(`\ud83c\udf81 ${ITEMS[id].name} \ud68d\ub4dd!`, rarityToast(ITEMS[id].rarity));
+  if (ITEMS[id].rarity >= 4) announceDrop(ITEMS[id]); onObtainGear(p, g);
+  return { gold: 0, items: [], gear: [g] };
+}
+function openBoxes(p, it, n) {
+  const id = it.id, nm = ITEMS[id].name, got = {}, gear = []; let k = 0, gold = 0;
+  n = Math.min(n, invCount(p, id));
+  while (k < n) { const cur = p.inv.find(x => x.id === id); if (!cur) break; const r = openBox(p, cur, true); if (!r) break; k++; gold += r.gold; for (const x of r.items) got[x] = (got[x] || 0) + 1; gear.push(...r.gear); }
+  if (!k) { toast('\uac00\ubc29 \uc7a5\ube44 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c)\uc5d0 \uc790\ub9ac\uac00 \ud544\uc694\ud574\uc694', 'red'); return 0; }
+  const parts = []; if (gold) parts.push(`${fmt(gold)}\ubb38`);
+  for (const [x, c] of Object.entries(got)) parts.push(`${ITEMS[x].name}${c > 1 ? ' \u00d7' + c : ''}`);
+  if (gear.length) { const by = {}; for (const g of gear) { const r = ITEMS[g.id].rarity; by[r] = (by[r] || 0) + 1; } parts.push('\uc7a5\ube44 ' + Object.keys(by).sort((a, b) => b - a).map(r => `${RARITY[r].n} ${by[r]}`).join(' \u00b7 ')); }
+  toast(`\ud83c\udf81 ${nm} ${k}\uac1c \u2192 ${parts.join(' \u00b7 ') || '\ube48 \uc0c1\uc790'}`, 'gold'); Sfx.coin?.(true);
+  if (k < n) toast(`\uc7a5\ube44 \uce78\uc774 \uac00\ub4dd \ucc28\uc11c ${k}\uac1c\ub9cc \uc5f4\uc5c8\uc5b4\uc694`, 'red');
+  return k;
 }
 function rarityToast(r) { return r >= 4 ? 'gold' : r >= 3 ? 'purple' : 'blue'; }
 
@@ -6295,7 +6331,7 @@ const MENU = {
   },
   party(ctx) {
     const p = G.player;
-    let h = `<div class="say"><span class="who">\ub3d9\ub8cc</span>\uc8fc\ub9c9(\ud83c\udf72)\uc5d0\uc11c \ucd5c\ub300 2\uba85\uc758 \ub3d9\ub8cc\ub97c \uace0\uc6a9\ud560 \uc218 \uc788\uc5b4\uc694. \ub3d9\ub8cc\ub294 \ub0b4 \ub808\ubca8\uc5d0 \ub9de\ucdb0 \ud568\uaed8 \uc131\uc7a5\ud558\uace0, \uc4f0\ub7ec\uc838\ub3c4 \uc7a0\uc2dc \ud6c4 \uc77c\uc5b4\ub0a9\ub2c8\ub2e4.</div>`;
+    let h = `<div class="say"><span class="who">\ub3d9\ub8cc</span>\uc8fc\ub9c9(\ud83c\udf72)\uc5d0\uc11c \ucd5c\ub300 2\uba85\uc758 \ub3d9\ub8cc\ub97c \uace0\uc6a9\ud560 \uc218 \uc788\uc5b4\uc694. \ub3d9\ub8cc\ub294 \ub0b4 \ub808\ubca8\uc5d0 \ub9de\ucdb0 \ud568\uaed8 \uc131\uc7a5\ud558\uace0, \uc4f0\ub7ec\uc838\ub3c4 \uc7a0\uc2dc \ud6c4 \uc77c\uc5b4\ub0a9\ub2c8\ub2e4. \ubb34\uae30\u00b7\uac11\uc637\u00b7\uc7a5\uc2e0\uad6c\ub97c \ud558\ub098\uc529 \ub07c\uc6cc \uc904 \uc218 \uc788\uc5b4\uc694 \u2014 \uae30\ubcf8 \uc7a5\ube44\ubcf4\ub2e4 \uc88b\uc740 \ub9cc\ud07c \uac15\ud574\uc9d1\ub2c8\ub2e4.</div>`;
     if (!G.party.length) h += `<div class="muted">\uc544\uc9c1 \ub3d9\ub8cc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.</div>`;
     G.party.forEach((c, i) => {
       h += `<div class="row"><div class="ic">${jobIcon(c.job)}</div><div class="tx"><div class="t1">${esc(c.name)} \u00b7 ${JOBS[c.job].ranks[c.rank]} Lv.${c.lv}</div><div class="t2">HP ${fmt(Math.max(0, c.hp))}/${fmt(c.s.maxHp)} \u00b7 \uacf5\uaca9 ${fmt(c.s.power)}</div></div><button class="btn red" data-a="dismiss" data-i="${i}">${ctx.confirm === 'd' + i ? '\uc815\ub9d0 \ubcf4\ub0b4\uae30' : '\ubcf4\ub0b4\uae30'}</button></div>`;
@@ -6332,6 +6368,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v373 \ub3d9\ub8cc \uc7a5\ube44 \u00b7 \uc0c1\uc790 \ud55c\uaebc\ubc88\uc5d0 \uc5f4\uae30</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc65 \ub3d9\ub8cc\uc5d0\uac8c \uc7a5\ube44\ub97c \ub07c\uc6cc \uc904 \uc218 \uc788\uc2b5\ub2c8\ub2e4 \u2014 \ub3d9\ub8cc \ucc3d\uc5d0\uc11c \ubb34\uae30 \u00b7 \uac11\uc637 \u00b7 \uc7a5\uc2e0\uad6c \ud55c \uce78\uc529. \uae30\ubcf8 \uc7a5\ube44\ubcf4\ub2e4 \uc88b\uc740 \ub9cc\ud07c\ub9cc \uac15\ud574\uc9c0\uace0, \ub098\uc05c \uac83\uc744 \ub07c\uc6cc\ub3c4 \uc57d\ud574\uc9c0\uc9c0 \uc54a\uc544\uc694<br>\u25b2 \uac00\ubc29\uc758 \ud558\ub298\uc0c9 \u25b2 \ub294 '\ub3d9\ub8cc\uac00 \ub07c\uba74 \uc88b\uc740 \uc7a5\ube44'\uc785\ub2c8\ub2e4 (\uace0\ubb3c \ubaa8\ub450 \ud314\uae30\uc5d0\uc11c \ube60\uc838\uc694). \ub3d9\ub8cc\ub97c \ubcf4\ub0b4\uba74 \ub07c\uc6cc \uc900 \uc7a5\ube44\ub294 \uac00\ubc29\uc73c\ub85c \ub3cc\uc544\uc635\ub2c8\ub2e4<br>\ud83c\udf81 \ubcf5\uc8fc\uba38\ub2c8\u00b7\uc7a5\ube44\uc0c1\uc790\uc5d0 '10\uac1c \uc0ac\uc6a9' \u00b7 '\ubaa8\ub450 \uc0ac\uc6a9'\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \ub098\uc628 \uac83\uc744 \ud55c \uc904\ub85c \ubaa8\uc544 \uc54c\ub824 \uc90d\ub2c8\ub2e4<br>\ud83d\udcac \uc54c\ub9bc\uc774 \uc5f4\ub824 \uc788\ub294 \ucc3d \uc704\uc5d0 \ub739\ub2c8\ub2e4 (\uac00\ubc29\uc744 \uc5f0 \ucc44 \ubcf5\uc8fc\uba38\ub2c8\ub97c \uc5f4\uc5b4\ub3c4 \ubb34\uc5c7\uc774 \ub098\uc654\ub294\uc9c0 \ubcf4\uc5ec\uc694)</div>`;
     notes += `<div class="sep"></div><b>v372 \uc804\uccb4 \uc810\uac80 \u00b7 \uc794\uc190\uc9c8</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf81 \uc758\ub8b0\u00b7\uc774\uc57c\uae30 \ubcf4\uc0c1\uc740 \uac00\ubc29 \uce78\uc774 \uac00\ub4dd \ucc28 \uc788\uc5b4\ub3c4 \uc783\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4<br>\ud83c\udf92 \uce78\uc774 \uac00\ub4dd \ucc28\uba74 \uc5b4\ub290 \uce78(\ubb34\uae30\u00b7\ubc29\uc5b4\uad6c\u00b7\uc7a5\uc2e0\uad6c\u2026)\uc778\uc9c0 \uc54c\ub824 \uc90d\ub2c8\ub2e4 \u00b7 \uc7ac\ub8cc\ub97c \ub2e4 \ubaa8\uc544\ub3c4 \uac00\ubc29 \ub2e8\ucd94 \uacbd\uace0\uac00 \ucf1c\uc838 \uc788\ub358 \uac83 \uace0\uce68<br>\ud83d\udd12 \uc7a0\uadfc \uc7a5\ube44\uc758 \uc790\ubb3c\uc1e0\uc640 \u25b2\u25bc \ud45c\uc2dc\uac00 \uacb9\uce58\ub358 \uac83 \uace0\uce68<br>\u25bc '\uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30'\uc5d0\uc11c \uc138\ud2b8 \uc7a5\ube44 \u00b7 \uac10\uc815 \uc804 \uc7a5\ube44\ub294 \ube60\uc9d1\ub2c8\ub2e4 (\uc218\uce58\uac00 \ub0ae\uc544 \ubcf4\uc5ec\ub3c4 \ud6a8\uacfc\uac00 \uc788\uc5b4\uc11c)<br>\ud83c\udfef \uc13c\ub2e4\uc774 \uc0c1\uc810\uc5d0 \ube60\uc838 \uc788\ub358 Lv.114 \uc7a5\ube44\uac00 \ub4e4\uc5b4\uc654\uc2b5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v371 \uac00\ubc29 \uce78 \ub298\ub9bc \u00b7 \uad50\uc5ed\ud488 \ud0ed \u00b7 \ud070 \uc9d0\uce78</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \uce78\uc744 \uc885\ub958\ubcc4\ub85c \ub530\ub85c \uc149\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c 50\uce78\uc529, \uc18c\ubaa8\ud488 30\uce78, \uc7ac\ub8cc 60\uce78<br>\ud83e\uddf3 \uac00\ubc29\uc5d0 '\uad50\uc5ed\ud488' \ud0ed\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uc2e4\uc740 \uc9d0\uc744 \uc5ec\uae30\uc11c \ubd05\ub2c8\ub2e4. \uce78 \uc218\ub294 \uac1d\uc8fc\uc758 '\uc9d0\uce78'\uc744 \ub298\ub9ac\uba74 \ucee4\uc838\uc694<br>\ud83d\uded2 \uc9d0\uce78\uc774 \ucee4\uc84c\uc2b5\ub2c8\ub2e4: \uc9c0\uac8c 10 \u00b7 \uc190\uc218\ub808 20 \u00b7 \ub2ec\uad6c\uc9c0 30 \u00b7 \uc6b0\ub9c8\ucc28 40 \u00b7 \uc0c1\ub2e8 \ud589\ub82c 100\uce78. \uc2fc \ubb3c\uac74\uc774 \ub9ce\uc774 \uc313\uc774\uace0 \uac1c\ub2f9 \uac12\uc740 \ub0b4\ub838\uc2b5\ub2c8\ub2e4 (\uc2e4\uc5b4 \ub454 \uc9d0\uc740 \uac19\uc740 \uac12\uc5b4\uce58\ub85c \uac1c\uc218\uac00 \ub298\uc5b4\ub0a9\ub2c8\ub2e4)<br>\u25bc \uc0c1\uc810 \ud314\uae30\uc5d0 '\uace0\ubb3c \uc7a5\ube44 \ubaa8\ub450 \ud314\uae30'\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \ube68\uac15 \ud45c\uc2dc \uc7a5\ube44\ub9cc \ud55c \ubc88\uc5d0 (\ud83d\udd12 \uc7a0\uadfc \uac83 \u00b7 \uc804\uc124 \uc774\uc0c1 \uc81c\uc678)<br>\ud83e\uddff \uadc0\ud658 \ubd80\uc801\uc744 \uc4f0\uba74 \ucc3d\uc774 \ub2eb\ud788\uace0 \ube5b\uae30\ub465\uacfc \ud568\uaed8 \ub3cc\uc544\uac11\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v370 \uac00\ubc29 \uc815\ub9ac \u00b7 \uc7a5\ube44 \ub4dc\ub78d \ud558\ud5a5</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29\uc758 '\uc804\uccb4' \ud0ed\uc744 \uc5c6\uc574\uc2b5\ub2c8\ub2e4 \u2014 \ubb34\uae30 \u00b7 \ubc29\uc5b4\uad6c \u00b7 \uc7a5\uc2e0\uad6c \u00b7 \uc18c\ubaa8\ud488 \u00b7 \uc7ac\ub8cc\ub85c \ubd05\ub2c8\ub2e4<br>\u25b2\u25bc \uc7a5\ube44 \uce78 \uc624\ub978\ucabd \uc704\uc5d0 \ud45c\uc2dc\uac00 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4: \uc5f0\ub450 \u25b2 \ub294 \uc9c0\uae08 \uac83\ubcf4\ub2e4 \uc88b\uc740 '\ubcf4\ubb3c', \ube68\uac15 \u25bc\u00b7\u2715 \ub294 \ud314\uc544\ub3c4 \ub418\ub294 '\uace0\ubb3c', Lv \ub294 \uc544\uc9c1 \ubabb \ucc28\ub294 \uac83<br>\ud83d\udcc9 \uc0ac\ub0e5\ud130 \uc7a5\ube44 \ub4dc\ub78d\uc744 \uc904\uc600\uc2b5\ub2c8\ub2e4 \u2014 \ubcf4\ud1b5 \ubaac\uc2a4\ud130 2% \u2192 0.7% (\uc815\uc608\u00b7\uc774\ub984 \ubd99\uc740 \ub188\u00b7\ubcc0\uc885\u00b7\ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c). \uc7a5\ube44\ub294 \uc0c1\uc810\ub3c4 \ud568\uaed8 \uc4f0\uc138\uc694<br>\ud83c\udf0b \uc81c\uc8fc \uacf6\uc790\uc648 \ub4f1\uc5d0\uc11c \uc804\uc124 \uc7a5\ube44\uac00 \ub108\ubb34 \uc790\uc8fc \ub098\uc624\ub358 \uac83\uc744 \ud06c\uac8c \uc904\uc600\uc2b5\ub2c8\ub2e4<br>\ud83d\udd73\ufe0f \uc0c8 \ub3d9\uad74 \uc74c\uc545\uc774 \ub3fc\uc9c0\uad74\uc5d0\uc11c\ub3c4 \ub098\uc635\ub2c8\ub2e4 \u00b7 \ud83d\udc65 \ub3d9\ub8cc \uccb4\ub825\ubc14 \ubc30\uacbd\uc744 \uc605\uac8c \ud588\uc2b5\ub2c8\ub2e4</div>`;
@@ -6688,7 +6725,7 @@ function onModalClick(e) {
     case 'notes': ctx.notes = !ctx.notes; break;
     case 'mapList': ctx.mapList = !ctx.mapList; break;
     case 'reset': if (ctx.confirm !== 'reset') { ctx.confirm = 'reset'; break; } Store.del(slotKey(SAVE_SLOT)); location.reload(); return;
-    case 'dismiss': { const i = +b.dataset.i; if (ctx.confirm !== 'd' + i) { ctx.confirm = 'd' + i; break; } G.party.splice(i, 1); p.partyDefs.splice(i, 1); ctx.confirm = null; break; }
+    case 'dismiss': { const i = +b.dataset.i; if (ctx.confirm !== 'd' + i) { ctx.confirm = 'd' + i; break; } compReturnGear(p, p.partyDefs[i]); G.party.splice(i, 1); p.partyDefs.splice(i, 1); ctx.confirm = null; break; }   /* v373: \ub07c\uc6cc \uc900 \uc7a5\ube44\ub294 \uac00\ubc29\uc73c\ub85c */
     case 'buy': case 'buy10': {
       const n = a === 'buy10' ? 10 : 1, id = b.dataset.v, cost = price * n;
       if (p.gold < cost) { toast('\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red'); break; }
@@ -14600,7 +14637,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v372';
+const GAME_VER = 'v373';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -19229,6 +19266,172 @@ defFx(AIR_FX, 'retArrive', f => {
   });
   HD.light(x, y - 18, 100 * (1 - k * .4), '#8fd0ff', a * .8);
 });
+
+/* ============================================================
+   98n_comp373 (v373): \ud83d\udc65 \ub3d9\ub8cc \uc7a5\ube44 \u00b7 \uc0c1\uc790 \uc5ec\ub7ec \uac1c \uc5f4\uae30
+   \u00b7 \ub3d9\ub8cc\ub9c8\ub2e4 \uc7a5\ube44 \uce78 \uc14b: \ubb34\uae30 \u00b7 \uac11\uc637 \u00b7 \uc7a5\uc2e0\uad6c(\ubaa9\uac78\uc774\u00b7\ubc18\uc9c0\u00b7\ubd80\uc801 \uac00\uc6b4\ub370 \ud558\ub098)
+       - \ub3d9\ub8cc\ub294 \uc6d0\ub798 \ub808\ubca8\uc5d0 \ub9de\ub294 '\uae30\ubcf8 \uc7a5\ube44'\ub97c \uc785\uace0 \uc788\ub2e4 (13_entities virtualGearFor). \ub07c\uc6cc \uc900 \uc7a5\ube44\ub294 \uadf8 \uce78\uc758 \uae30\ubcf8 \uc7a5\ube44\ubcf4\ub2e4
+         \uc88b\uc740 \ub9cc\ud07c\ub9cc \uc5b9\ud78c\ub2e4 (\ub2a5\ub825\uce58\ub9c8\ub2e4 \ub530\ub85c: \uacf5\uaca9\u00b7\ub9c8\ub825\u00b7\uccb4\ub825\u00b7\ubc29\uc5b4\u00b7MP\u00b7\uce58\uba85) \u2192 \uc548 \ub07c\uc6cc\ub3c4 \uc608\uc804\uacfc \uac19\uace0, \ub098\uc05c \uac83\uc744 \ub07c\uc6cc\ub3c4 \uc57d\ud574\uc9c0\uc9c0 \uc54a\ub294\ub2e4
+       - \uc7a5\ube44\uc758 \ucd94\uac00 \uc635\uc158(\ud798\u00b7\ubbfc\ucca9\u00b7\uc9c0\ub2a5\u00b7\uccb4\ub825\u00b7\uce58\uba85\u00b7\uacf5\uaca9%\u00b7\uccb4\ub825%\u00b7\ud761\ud608)\uc740 \uadf8\ub300\ub85c \ub2e4 \uc5b9\ud78c\ub2e4
+       - \uc5b9\ud788\uc9c0 \uc54a\ub294 \uac83: \uc138\ud2b8 \ud6a8\uacfc \u00b7 \uc804\uc124 \ud2b9\uc218 \ud6a8\uacfc \u00b7 \uc624\ub77c \u00b7 \uaca9 \u00b7 \ubb34\uae30 \uacf5\uaca9 \uc18d\ub3c4 (\ub3d9\ub8cc\uc758 \uacf5\uaca9 \ubc29\uc2dd\u00b7\uae30\uc220\uc740 \uc9c1\uc5c5 \uadf8\ub300\ub85c)
+       - \ubb34\uae30\ub294 \uadf8 \ub3d9\ub8cc \uc9c1\uc5c5\uc774 \uc4f0\ub294 \uc885\ub958\ub9cc, \ub808\ubca8 \uc81c\ud55c\uc740 \ub0b4 \ub808\ubca8(= \ub3d9\ub8cc \ub808\ubca8)
+   \u00b7 \uc800\uc7a5: p.partyDefs[i].eq = { weapon, armor, acc } (\uc7a5\ube44 \uadf8\ub300\ub85c). \ub07c\uc6b0\uba74 \uac00\ubc29\uc5d0\uc11c \ube60\uc9c0\uace0, \ubc97\uae30\uac70\ub098 \ub3d9\ub8cc\ub97c \ubcf4\ub0b4\uba74 \uac00\ubc29\uc73c\ub85c \ub3cc\uc544\uc628\ub2e4
+   \u00b7 \uac00\ubc29 \ud45c\uc2dc: \ub0b4\uac8c\ub294 \uace0\ubb3c(\u25bc\u00b7\u2715)\uc774\uac70\ub098 \ube44\uc2b7\ud55c \uc7a5\ube44\ub77c\ub3c4 \ub3d9\ub8cc\uac00 \ub07c\uba74 \uc9c0\uae08\ubcf4\ub2e4 \uc88b\uc544\uc9c0\ub294 \uac83\uc740 \ud558\ub298\uc0c9 \u25b2 (\ub3d9\ub8cc\uc6a9) \u2192 '\uace0\ubb3c \ubaa8\ub450 \ud314\uae30'\uc5d0\uc11c\ub3c4 \ube60\uc9c4\ub2e4
+   \u00b7 \uc0c1\uc790(\ubcf5\uc8fc\uba38\ub2c8\u00b7\uc7a5\ube44\uc0c1\uc790): \uac00\ubc29\uc5d0\uc11c '10\uac1c \uc0ac\uc6a9' \u00b7 '\ubaa8\ub450 \uc0ac\uc6a9' \u2014 \uacb0\uacfc\ub294 \ud55c \uc904\ub85c \ubaa8\uc544 \uc54c\ub824 \uc900\ub2e4 (16_items openBoxes)
+   \u00b7 \uc54c\ub9bc(\ud1a0\uc2a4\ud2b8)\uc740 \uc5f4\ub824 \uc788\ub294 \ucc3d \uc704\uc5d0 \ub72c\ub2e4 (style.css #toasts z-index) \u2014 \uac00\ubc29\uc744 \uc5f0 \ucc44 \ubcf5\uc8fc\uba38\ub2c8\ub97c \uc5f4\uc5b4\ub3c4 \ubb34\uc5c7\uc774 \ub098\uc654\ub294\uc9c0 \ubcf4\uc778\ub2e4
+   ============================================================ */
+const COMP_SLOTS = [['weapon', '\ubb34\uae30'], ['armor', '\uac11\uc637'], ['acc', '\uc7a5\uc2e0\uad6c']];
+const compSlotOf = d => !d ? null : d.slot === 'weapon' ? 'weapon' : d.slot === 'armor' ? 'armor' : ['necklace', 'ring', 'charm'].includes(d.slot) ? 'acc' : null;
+/* \uadf8 \uc7a5\ube44\uac00 \ub300\uc2e0\ud558\ub294 \uae30\ubcf8 \uc7a5\ube44 \ud55c \uce78\uc758 \ub2a5\ub825\uce58 (virtualGearFor \ub97c \uce78\ubcc4\ub85c \ud47c \uac83) */
+function compBase(job, L, d) {
+  const r = 1.18, magic = JOBS[job].magic, wt = { warrior: 'sword', thief: 'dagger', shaman: 'staff', taoist: 'fan' }[job] || 'sword', tm = { sword: 1, dagger: .84, staff: .42, fan: .4 }[wt];
+  if (d.slot === 'weapon') return { atk: (5 + L * 2.5) * r * tm, mag: magic ? (6 + L * 2.6) * r * (wt === 'staff' ? 1.12 : 1) : 0, crit: wt === 'dagger' ? .06 : 0, mp: magic ? (10 + L * 3) * r : 0 };   /* MP \ub294 \uc9c0\ud321\uc774\u00b7\ubd80\ucc44 \ubaab\uc73c\ub85c \ubcf8\ub2e4 (\uc57d\ud55c \ubd80\ucc44\uc758 MP \ub9cc\uc73c\ub85c '\uc88b\ub2e4'\uace0 \ub728\uc9c0 \uc54a\uac8c \ub109\ub109\ud788 \uc7a1\uc74c) */
+  if (d.slot === 'armor') return { hp: (magic ? 14 + L * 6.5 : 18 + L * 8.5) * r, def: (magic ? 1 + L * .7 : 2 + L * 1.1) * r, mp: magic ? (8 + L * 2.2) * r : 0 };
+  if (d.slot === 'necklace') return { atk: (2 + L * .75) * r, hp: (8 + L * 3.2) * r, mp: magic ? (8 + L * 2.2) * r : 0 };
+  if (d.slot === 'ring') return { atk: (2 + L * .95) * r };
+  if (d.slot === 'charm') return { hp: (12 + L * 4.2) * r };
+  return {};
+}
+function compCanUse(job, L, it) {
+  const d = it && ITEMS[it.id]; if (!d || !compSlotOf(d) || !JOBS[job]) return false;
+  if ((d.lv || 1) > L) return false;
+  return d.slot !== 'weapon' || JOBS[job].weapons.includes(d.wt);
+}
+/* \uadf8 \uc7a5\ube44\ub97c \ub07c\uc6e0\uc744 \ub54c \uae30\ubcf8 \uc7a5\ube44 \uc704\uc5d0 \uc5b9\ud788\ub294 \ub364 */
+function compBonus(job, L, it) {
+  const o = { atk: 0, mag: 0, hp: 0, def: 0, mp: 0, crit: 0, atkPct: 0, hpPct: 0, leech: 0 };
+  if (!compCanUse(job, L, it)) return o;
+  const d = ITEMS[it.id], m = enhMul(it), magic = JOBS[job].magic, raw = { atk: 0, mag: 0, hp: 0, def: 0, mp: (d.mp || 0) * m, crit: d.crit || 0 }, base = compBase(job, L, d);
+  if (d.slot === 'weapon') { raw.atk = (d.atk || 0) * m; raw.mag = (d.mag || 0) * m; }
+  else if (d.slot === 'armor') { raw.def = (d.def || 0) * m; raw.hp = (d.hp || 0) * m; }
+  else { raw.atk = (d.atk || 0) * m; raw.hp = (d.hp || 0) * m; }
+  for (const k of ['atk', 'mag', 'hp', 'def', 'mp', 'crit']) o[k] = Math.max(0, raw[k] - (base[k] || 0));
+  for (const x of it.opts || []) {
+    const v = +x.v || 0;
+    if (x.k === 'str') { if (!magic) o.atk += v * 1.6; }
+    else if (x.k === 'dex') { if (!magic) o.atk += v * .5; o.crit += v * .0012; }
+    else if (x.k === 'int') { if (magic) o.mag += v * 1.9; o.mp += v * 5; }
+    else if (x.k === 'vit') { o.hp += v * 9; o.def += v * .5; }
+    else if (x.k === 'crit') o.crit += v / 100;
+    else if (x.k === 'atkPct') o.atkPct += v / 100;
+    else if (x.k === 'hpPct') o.hpPct += v / 100;
+    else if (x.k === 'leech') o.leech += v / 100;
+  }
+  return o;
+}
+function compScore(job, b) { const magic = JOBS[job] && JOBS[job].magic; return (magic ? b.mag * 1.4 + b.atk * .5 : b.atk * 1.4) + b.hp * .35 + b.def * 2 + (magic ? b.mp * .2 : 0) + b.crit * 400 + b.atkPct * 600 + b.hpPct * 300 + b.leech * 400; }
+/* \ub3d9\ub8cc\uc758 \uc7a5\ube44 = \uae30\ubcf8 \uc7a5\ube44 + \ub07c\uc6cc \uc900 \uc7a5\ube44\uc758 \ub364 */
+function compGear(def, job, L) {
+  const v = virtualGearFor(job, L);
+  try {
+    const eq = def && def.eq; if (!eq) return v;
+    for (const [s] of COMP_SLOTS) { const it = eq[s]; if (!it || !ITEMS[it.id]) continue; const b = compBonus(job, L, it); for (const k in b) v[k] = (v[k] || 0) + b[k]; }
+  } catch (e) { reportError(e); }
+  return v;
+}
+function compReturnGear(p, def) {
+  if (!def || !def.eq) return 0; let n = 0;
+  for (const [s] of COMP_SLOTS) { const it = def.eq[s]; if (it && ITEMS[it.id]) { p.inv.push(it); n++; } def.eq[s] = null; }
+  if (n) toast(`\ud83c\udf92 \ub07c\uc6cc \uc900 \uc7a5\ube44 ${n}\uac1c\uac00 \uac00\ubc29\uc73c\ub85c \ub3cc\uc544\uc654\uc2b5\ub2c8\ub2e4`, 'blue');
+  return n;
+}
+/* \uac00\ubc29 \uc18d \uadf8 \uc7a5\ube44\ub97c \uc9c0\uae08\ubcf4\ub2e4 \uc798 \uc4f8 \ub3d9\ub8cc\uac00 \uc788\ub294\uac00 \u2192 [\ub3d9\ub8cc \ubc88\ud638, \uce78, \uc810\uc218 \ucc28] */
+function compWants(p, it) {
+  const d = it && ITEMS[it.id], s = compSlotOf(d); if (!s || !p || !(p.partyDefs || []).length) return null;
+  let best = null;
+  p.partyDefs.forEach((def, i) => {
+    if (!compCanUse(def.job, p.lv, it)) return;
+    const cur = def.eq && def.eq[s], a = compScore(def.job, compBonus(def.job, p.lv, it)), b = cur ? compScore(def.job, compBonus(def.job, p.lv, cur)) : 0;
+    if (a > b + 1 && (!best || a - b > best[2])) best = [i, s, a - b];
+  });
+  return best;
+}
+const compChips = (job, b) => {
+  const magic = JOBS[job].magic, out = [], add = (l, v, pct) => { if (v > (pct ? .0005 : .5)) out.push(`<span class="cu">${l} +${pct ? (Math.round(v * 1000) / 10) + '%' : fmt(Math.round(v))}</span>`); };
+  if (magic) { add('\ub9c8\ub825', b.mag + b.atk * .35); } else add('\uacf5\uaca9', b.atk);
+  add('\uccb4\ub825', b.hp); add('\ubc29\uc5b4', b.def); if (magic) add('MP', b.mp); add('\uce58\uba85', b.crit, 1); add('\uacf5\uaca9', b.atkPct, 1); add('\uccb4\ub825', b.hpPct, 1); add('\ud761\ud608', b.leech, 1);
+  return out.length ? out.join('') : '<i class="muted">\uae30\ubcf8 \uc7a5\ube44\ubcf4\ub2e4 \uc88b\uc9c0 \uc54a\uc544\uc694 \u2014 \ub07c\uc6cc\ub3c4 \ub2ec\ub77c\uc9c0\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4</i>';
+};
+
+/* ---------------- \ub3d9\ub8cc \ucc3d ---------------- */
+const _menuParty373 = MENU.party;
+MENU.party = function (ctx) {
+  const r = _menuParty373(ctx); if (!Array.isArray(r)) return r;
+  try {
+    const p = G.player, pk = ctx.cpick && p.partyDefs[ctx.cpick.i] ? ctx.cpick : (ctx.cpick = null);
+    r[1] = r[1].replace(/(<button class="btn red" data-a="dismiss" data-i="(\d+)">[^<]*<\/button><\/div>)/g, (m0, row, n) => {
+      const i = +n, def = p.partyDefs[i], c = G.party[i]; if (!def || !c) return row;
+      const eq = def.eq || {};
+      let h = `<div class="ceq">` + COMP_SLOTS.map(([s, label]) => {
+        const it = eq[s] && ITEMS[eq[s].id] ? eq[s] : null, on = pk && pk.i === i && pk.s === s;
+        return `<button class="eqs ceqs ${on ? 'sel' : ''}" data-a="cEq" data-i="${i}" data-s="${s}" style="${it ? 'border-color:' + rcol(ITEMS[it.id].rarity) : ''}">${it ? `<span class="ic">${ic(ITEMS[it.id])}</span>${itemName(it)}` : `<span class="l">${label}</span><span class="muted">\uff0b \ub07c\uc6b0\uae30</span>`}</button>`;
+      }).join('') + `</div>`;
+      if (pk && pk.i === i) {
+        const s = pk.s, label = COMP_SLOTS.find(x => x[0] === s)[1], cur = eq[s] && ITEMS[eq[s].id] ? eq[s] : null, curSc = cur ? compScore(def.job, compBonus(def.job, c.lv, cur)) : 0;
+        const list = p.inv.filter(it => compSlotOf(ITEMS[it.id]) === s && compCanUse(def.job, c.lv, it)).map(it => [it, compScore(def.job, compBonus(def.job, c.lv, it))]).sort((a, b) => b[1] - a[1]);
+        h += `<div class="cpick"><div class="muted" style="margin-bottom:6px"><b>${esc(def.name)}</b>\uc758 ${label} \u2014 \uac00\ubc29\uc5d0\uc11c \uace0\ub974\uc138\uc694. \uae30\ubcf8 \uc7a5\ube44\ubcf4\ub2e4 \uc88b\uc740 \ub9cc\ud07c\ub9cc \uac15\ud574\uc9d1\ub2c8\ub2e4.</div>`;
+        if (cur) h += `<div class="ccur"><div class="cchips"><b>\uc9c0\uae08 ${itemName(cur)}</b>${compChips(def.job, compBonus(def.job, c.lv, cur))}</div><button class="btn" data-a="cOff">\ubc97\uae30</button></div>`;
+        h += `<div class="grid">${list.map(([it, sc]) => slotHtml(it, ctx.csel === it.uid, `data-a="cSel" data-u="${it.uid}"`).replace(/ g-(up|down|no|later|comp)/, '').replace(/<span class="gb">[^<]*<\/span>/, '').replace(/<\/button>$/, (sc > curSc + 1 ? '<span class="gb cgb">\u25b2</span>' : '') + '</button>')).join('') || `<div class="muted">\ub07c\uc6b8 \uc218 \uc788\ub294 ${label}${s === 'weapon' ? `(${JOBS[def.job].weapons.map(w => WEAPON_NAMES[w]).filter(Boolean).join('\u00b7')})` : ''}\uc774(\uac00) \uac00\ubc29\uc5d0 \uc5c6\uc2b5\ub2c8\ub2e4</div>`}</div>`;
+        const sel = ctx.csel && p.inv.find(x => x.uid === ctx.csel);
+        if (sel && compSlotOf(ITEMS[sel.id]) === s) h += `<div class="detail"><button class="dx" data-a="cSel" data-u="${sel.uid}" aria-label="\uc815\ubcf4 \ub2eb\uae30">\u2715</button>${itemHead(sel)}<div class="cchips"><b>${esc(def.name)}\uc5d0\uac8c \ub07c\uc6b0\uba74</b>${compChips(def.job, compBonus(def.job, c.lv, sel))}</div><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><button class="btn teal" data-a="cPut" data-u="${sel.uid}">${cur ? '\ubc14\uafd4 \ub07c\uc6b0\uae30' : '\ub07c\uc6b0\uae30'}</button></div></div>`;
+        h += `</div>`;
+      }
+      return row + h;
+    });
+  } catch (e) { reportError(e); }
+  return r;
+};
+
+/* ---------------- \uac00\ubc29: \ub3d9\ub8cc\uc6a9 \ud45c\uc2dc \u00b7 \uc0c1\uc790 \uc5ec\ub7ec \uac1c \uc5f4\uae30 ---------------- */
+const _gearGrade373 = gearGrade;
+gearGrade = function (p, it) {
+  const g = _gearGrade373(p, it);
+  try { if (g && p === G.player && (g.k === 'down' || g.k === 'no' || g.k === 'same') && compWants(p, it)) return { k: 'comp', t: '\u25b2', o: 1.5 }; } catch (e) { }
+  return g;
+};
+const _menuBag373 = MENU.bag;
+MENU.bag = function (ctx) {
+  const r = _menuBag373(ctx); if (!Array.isArray(r)) return r;
+  try {
+    const p = G.player; let h = r[1];
+    if (BAG_GEAR_TABS.includes(ctx.tab)) { const n = p.inv.filter(it => bagFilter(it, ctx.tab) && (gearGrade(p, it) || {}).k === 'comp').length; if (n) h = h.replace('<span class="g-later">', `<span class="g-comp">\u25b2 \ub3d9\ub8cc\uc6a9 ${n}</span><span class="g-later">`); }
+    const sel = ctx.sel && p.inv.find(x => x.uid === ctx.sel), d = sel && ITEMS[sel.id];
+    if (d && d.box && sel.n > 1) {
+      const more = (sel.n >= 10 ? `<button class="btn teal" data-a="useN" data-u="${sel.uid}" data-n="10">10\uac1c \uc0ac\uc6a9</button>` : '') + `<button class="btn teal" data-a="useN" data-u="${sel.uid}" data-n="all">\ubaa8\ub450 \uc0ac\uc6a9 \u00d7${sel.n}</button>`;
+      h = h.replace(`<button class="btn teal" data-a="use" data-u="${sel.uid}">\uc0ac\uc6a9</button>`, m0 => m0 + more);
+    }
+    if (d && isGear(d)) { const w = compWants(p, sel); if (w) { const def = p.partyDefs[w[0]]; h = h.replace('<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">', m0 => `<div class="cchips"><b>\ud83d\udc65 ${esc(def.name)}\uc5d0\uac8c \ub07c\uc6b0\uba74</b>${compChips(def.job, compBonus(def.job, p.lv, sel))}<i class="muted">\ub3d9\ub8cc \ucc3d\uc5d0\uc11c \ub07c\uc6cc\uc694</i></div>` + m0); } }
+    r[1] = h;
+  } catch (e) { reportError(e); }
+  return r;
+};
+
+/* ---------------- \ub204\ub984 \ucc98\ub9ac ---------------- */
+const _onModalClick373 = onModalClick;
+onModalClick = function (e) {
+  const b = e.target.closest && e.target.closest('[data-a]'), a = b && !b.disabled ? b.dataset.a : '', ctx = modalCtx, p = G.player;
+  /* \ub2e4\ub978 \uc9c0\ub3c4\ub85c \uc62e\uaca8\uc9c4 \ub4a4\uc5d0\ub3c4 \ub0a8\uc544 \uc788\ub358 \ubd80\ub3d9\uc0b0 \ucc3d\uc5d0\uc11c \ub204\ub974\uba74 \ud130\uc9c0\ub358 \uac83 \ub9c9\uae30 (\uc5ed\ucc38 \uc774\ub3d9 \uc9c1\ud6c4 0.1\ucd08 \uc0ac\uc774 \u2014 \uc810\uac80 \uc911 \ubc1c\uacac) */
+  if (ctx && ctx.npc && /^(buyLot|build|collect|upgrade)$/.test(a) && !G.npcs.includes(ctx.npc)) { closeModal(); return; }
+  if (!ctx || !p || !/^(cEq|cSel|cPut|cOff|useN)$/.test(a)) return _onModalClick373(e);
+  try {
+    if (a === 'useN') { const it = p.inv.find(x => x.uid === b.dataset.u); if (it && ITEMS[it.id].box) { openBoxes(p, it, b.dataset.n === 'all' ? it.n : +b.dataset.n || 1); if (!p.inv.includes(it)) ctx.sel = null; } rerender(); return; }
+    if (a === 'cEq') { const i = +b.dataset.i, s = b.dataset.s; ctx.cpick = ctx.cpick && ctx.cpick.i === i && ctx.cpick.s === s ? null : { i, s }; ctx.csel = null; ctx.confirm = null; Sfx.click(); rerender(); return; }
+    if (a === 'cSel') { ctx.csel = ctx.csel === b.dataset.u ? null : b.dataset.u; Sfx.click(); rerender(); return; }
+    const pk = ctx.cpick, def = pk && p.partyDefs[pk.i], c = pk && G.party[pk.i]; if (!def || !c) { ctx.cpick = null; rerender(); return; }
+    const eq = def.eq || (def.eq = {});
+    if (a === 'cPut') {
+      const it = p.inv.find(x => x.uid === b.dataset.u); if (!it || compSlotOf(ITEMS[it.id]) !== pk.s || !compCanUse(def.job, c.lv, it)) { rerender(); return; }
+      const old = eq[pk.s] && ITEMS[eq[pk.s].id] ? eq[pk.s] : null;
+      p.inv = p.inv.filter(x => x !== it); eq[pk.s] = it; if (old) p.inv.push(old);
+      syncCompanion(c); Sfx.equip(); toast(`\ud83d\udc65 ${def.name}\uc5d0\uac8c ${ITEMS[it.id].name}\uc744(\ub97c) \ub07c\uc6e0\uc2b5\ub2c8\ub2e4`, 'blue'); ctx.csel = null;
+    } else if (a === 'cOff') {
+      const old = eq[pk.s]; if (old && ITEMS[old.id]) { if (invFull(p, old.id)) { toast(`\uac00\ubc29 ${BAG_CAT_NAME[bagCat(old.id)]} \uce78\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694`, 'red'); rerender(); return; } p.inv.push(old); }
+      eq[pk.s] = null; syncCompanion(c); Sfx.click();
+    }
+    saveGame?.(true);
+  } catch (err) { reportError(err); }
+  rerender();
+};
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
