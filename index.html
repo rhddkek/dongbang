@@ -814,7 +814,7 @@ body.infield.hp-low .me{opacity:1}
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v380</div>
+    <div class="sub">v381</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -2809,6 +2809,51 @@ const ROAD_THEMES = {
 }
 
 /* ============================================================
+   09j_region381 (v381): \uace0\uc7a5\ub9c8\ub2e4 \ub2e4\ub978 \uc5bc\uad74
+   \ud55c\uad6d/\uc77c\ubcf8 \ub450 \uac00\uc9c0\ubfd0\uc774\ub358 \ub9c8\uc744 \ubaa8\uc2b5\uc744 \uace0\uc7a5\ubcc4\ub85c \ub098\ub208\ub2e4 \u2014 \uadf8\ub9bc\ub9cc \ubc14\ub010\ub2e4 (\uc9d1 \uc790\ub9ac\u00b7\uae38\u00b7NPC\u00b7\ubaac\uc2a4\ud130\ub294 \uadf8\ub300\ub85c)
+   \u00b7 house : \uc9d1 \ube5b\uae54 \u2014 \uc9c0\ubd95(roof)\u00b7\ub098\ubb34(wood)\u00b7\ubcbd(wall)\u00b7\uae30\ub2e8(stone)\u00b7\ub9c9\uc0c8(end), thatch = \ucd08\uac00\uc9c0\ubd95, dan = \ub2e8\uccad, base = \ubcbd \uc544\ub7ab\ub2e8
+   \u00b7 grass : \ud480\ube5b      \u00b7 trees : \ub9c8\uc744 \ub098\ubb34 (\uc790\ub9ac\ub294 \uadf8\ub300\ub85c, \uc885\ub958\ub9cc)
+   \u00b7 amb   : \ub5a0\ub2e4\ub2c8\ub294 \uac83 (\ub2e8\ud48d\u00b7\uc740\ud589\uc78e\u00b7\ub313\uc78e\u00b7\uac08\ub9e4\uae30\u00b7\ubd88\ud2f0\u2026)   \u00b7 sig : \uadf8 \uace0\uc7a5 \uc0ac\ub0e5\ud130\uc5d0\ub3c4 \uc11e\uc5ec \ub0a0\ub9ac\ub294 \uac83
+   \u00b7 grade : \ud654\uba74 \ube5b\uae54  \u00b7 tag : \ub4e4\uc5b4\uc124 \ub54c \uc774\ub984 \uc544\ub798 \ud55c \uc904
+   ============================================================ */
+const REGION = {
+  buyeo:        { tag: '\ucd08\uac00\uc9c0\ubd95 \uc544\ub798 \uc870\uc6a9\ud55c \uc0b0\uace8 \ub9c8\uc744', house: { thatch: '#c2a45e', wall: '#e3d3ac', wood: '#7a5234', stone: '#a39a86' } },
+  city_daejeon: { tag: '\uae38\uc774 \uc0ac\ubc29\uc73c\ub85c \uac08\ub9ac\ub294 \ud55c\ubc2d', grass: '#94a05c', trees: ['tree', 'willow', 'pine'], amb: { n: 10, kinds: ['pollen', 'seed', 'butterfly'] }, house: { roof: '#46525c' } },
+  city_gwangju: { tag: '\ub300\uc232 \ubc14\ub78c\uacfc \ub9db\uc758 \uace0\uc7a5', grass: '#7fa258', trees: ['bamboo', 'bamboo', 'tree'], amb: { n: 14, kinds: ['bambooLeaf', 'bambooLeaf', 'pollen'] }, sig: 'bambooLeaf', grade: 'rgba(80,170,90,.05)',
+                  house: { roof: '#3f5046', wood: '#7b6238', wall: '#f1ead2', end: '#cfd6c4' } },
+  city_daegu:   { tag: '\ud314\uacf5\uc0b0 \uc544\ub798 \ubd89\uc740 \ubd84\uc9c0', grass: '#a59c5a', trees: ['maple', 'tree', 'maple'], amb: { n: 14, kinds: ['maple', 'maple', 'pollen'] }, sig: 'maple', grade: 'rgba(255,150,80,.06)',
+                  house: { roof: '#8a4b38', wood: '#6e3f26', wall: '#f2dfc2', end: '#e0b89a' } },
+  city_ulsan:   { tag: '\uc1e0\ub97c \ubcbc\ub9ac\ub294 \ub300\uc7a5\uc7a5\uc774\uc758 \uace0\uc744', grass: '#84906a', trees: ['pine', 'cedar', 'pine'], amb: { n: 12, kinds: ['ember', 'dust', 'dust'] }, sig: 'dust', grade: 'rgba(120,140,170,.07)',
+                  house: { roof: '#2e3136', wood: '#55412f', wall: '#d9d5cb', stone: '#7c7c7e', end: '#9aa0a8' } },
+  city_busan:   { tag: '\ud478\ub978 \uae30\uc640\uc758 \ub0a8\ucabd \ud56d\uad6c', grass: '#9aa66a', trees: ['pine', 'pine', 'tree'], amb: { n: 10, kinds: ['gull', 'seed', 'pollen'] }, sig: 'gull', grade: 'rgba(90,170,230,.05)',
+                  house: { roof: '#34648c', wood: '#93643c', wall: '#f6f3ea', end: '#dfe9f2' } },
+  city_suwon:   { tag: '\ubcbd\ub3cc \uc131\uacfd\uc774 \ub450\ub978 \uace0\uc744', grass: '#8f9858', trees: ['willow', 'tree', 'pine'], amb: { n: 10, kinds: ['seed', 'butterfly', 'pollen'] },
+                  house: { roof: '#55585e', wood: '#84532f', wall: '#eadfc6', base: '#b08a5c', stone: '#a59a84' } },
+  city_seoul:   { tag: '\ub2e8\uccad \uace0\uc6b4 \uc784\uae08\uc758 \ub3c4\uc131', grass: '#86a060', trees: ['ginkgo', 'pine', 'ginkgo'], amb: { n: 14, kinds: ['ginkgo', 'ginkgo', 'pollen'] }, sig: 'ginkgo', grade: 'rgba(255,220,130,.04)',
+                  house: { roof: '#2d5a63', wood: '#9a3028', wall: '#f4eedd', dan: 1, end: '#e8d9a0' } },
+  city_incheon: { tag: '\uac2f\ubc14\ub78c \ubd80\ub294 \uc11c\ud574 \ub098\ub8e8', grass: '#8c9a74', trees: ['pine', 'willow', 'tree'], amb: { n: 10, kinds: ['gull', 'dust', 'seed'] }, sig: 'gull', grade: 'rgba(150,180,190,.07)',
+                  house: { roof: '#4d6672', wood: '#7a6a5c', wall: '#e8e4d8', end: '#cdd6da' } },
+  jeju:         { tag: '\uac80\uc740 \ub3cc\ub2f4\uacfc \uade4\ube5b \uc12c', amb: { n: 16, kinds: ['canola', 'canola', 'seed'] }, sig: 'canola', grade: 'rgba(255,225,110,.04)' },
+  japan_fukuoka:  { tag: '\ubc14\ub2e4 \uac74\ub108 \uccab \ud56d\uad6c', trees: ['pine', 'sakura'], amb: { n: 18, kinds: ['petal', 'gull', 'petal'] }, sig: 'gull', grade: 'rgba(120,180,230,.05)', house: { roof: '#44586a', wood: '#5a4030', wall: '#eef0ee' } },
+  japan_osaka:    { tag: '\ub4f1\ubd88\uacfc \uc7a5\uc0ac\uafbc\uc758 \uac70\ub9ac', amb: { n: 20, kinds: ['petal', 'pollen'] }, grade: 'rgba(255,170,90,.05)', house: { roof: '#4a4e55', wood: '#3a2619', wall: '#f0e6d2' } },
+  japan_kyoto:    { tag: '\ubd89\uc740 \uaca9\uc790\uc640 \ub2e8\ud48d\uc758 \uc61b \ub3c4\uc74d', trees: ['maple', 'sakura', 'pine'], amb: { n: 22, kinds: ['maple', 'petal', 'maple'] }, sig: 'maple', grade: 'rgba(255,130,90,.05)', house: { roof: '#3f4348', wood: '#8a2f24', wall: '#f3ead6' } },
+  japan_shizuoka: { tag: '\ud6c4\uc9c0 \uc544\ub798 \ucc28\ubc2d\uc758 \uace0\uc744', trees: ['cedar', 'pine', 'sakura'], amb: { n: 16, kinds: ['pollen', 'bambooLeaf', 'butterfly'] }, sig: 'bambooLeaf', grade: 'rgba(110,190,110,.05)', house: { roof: '#4c5a4a', wood: '#5e4a2e', wall: '#eef0e0' } },
+  japan_tokyo:    { tag: '\uac80\uc740 \ud68c\ubcbd\uc758 \uc5d0\ub3c4 \uac70\ub9ac', amb: { n: 20, kinds: ['petal', 'dust'] }, grade: 'rgba(120,120,160,.05)', house: { roof: '#2f3238', wood: '#2a2420', wall: '#3a3c42', wallD: '#2a2c30' } },
+  japan_sendai:   { tag: '\uc0bc\ub098\ubb34 \uc232\uc758 \ubd81\ucabd \uc131\ud558 \ub9c8\uc744', trees: ['cedar', 'cedar', 'pine'], amb: { n: 16, kinds: ['leaf', 'firefly', 'pollen'] }, sig: 'leaf', grade: 'rgba(60,110,80,.06)', house: { roof: '#33363c', wood: '#3c2c20', wall: '#ece6d6' } },
+  japan_sapporo:  { tag: '\ub208\uc5d0 \ub36e\uc778 \ubd81\ub158 \ub05d \ub9c8\uc744', trees: ['snowPine', 'snowPine', 'pine'], house: { roof: '#5a6068', wood: '#4a3626', wall: '#e9edf0' } }
+};
+window.HOUSE_STYLE = {}; for (const [id, R] of Object.entries(REGION)) if (R.house) HOUSE_STYLE[id] = R.house;
+/* \uace0\uc7a5 \uc774\ub984(daegu\u00b7kyoto \u2026) \u2192 \uadf8 \uace0\uc7a5 \ub9c8\uc744 */
+const REGION_KEY = {}; for (const id of Object.keys(REGION)) REGION_KEY[id.replace(/^(city_|japan_)/, '')] = id;
+/* \uc774 \uc9c0\ub3c4\uc5d0 \uc785\ud790 \ucc28\ub9bc: \ub9c8\uc744\uc774\uba74 \uadf8 \ub9c8\uc744 \uac83, \uadf8 \uace0\uc7a5 \uc0ac\ub0e5\ud130(\ub4e4\ud310)\uba74 { field: 1, \u2026 } */
+function regionStyle(m) {
+  if (!m) return null; const id = m.id, def = m.def || MAPS[id]; if (!def) return null;
+  if (REGION[id]) return REGION[id];
+  if (def.kind === 'field' && def.region && REGION_KEY[def.region]) { const R = REGION[REGION_KEY[def.region]]; return m._rf || (m._rf = { field: 1, sig: R.sig, grade: R.grade, tint: R.grass }); }
+  return null;
+}
+
+/* ============================================================
    10_sprites: procedural pixel-art. Every sprite is drawn once
    into a small canvas at "art" resolution, auto-outlined, cached,
    then blitted at 2x in the world (crisp, no image files needed).
@@ -2858,6 +2903,71 @@ function painter(w, h) {
 /* ---------------- humanoid (players, NPCs, humanoid monsters) ----------------
    grid 18 x 26, feet on row 25. dir: 0 down,1 up,2 left (3 right = mirrored) ; frame 0 idle,1,2 walk */
 const HW = 18, HH = 27;
+/* v381 \uc2b9\uae09 \ucc28\ub9bc \u2014 \uac11\uc637 \uc0c9\uacfc \uc0c1\uad00\uc5c6\uc774 \uc2e4\ub8e8\uc5e3\uc774 \ub2ec\ub77c\uc9c4\ub2e4 (\ubab8 \ub4a4\uc5d0 \uadf8\ub9ac\ub294 \uac83 / \ubab8 \uc704\uc5d0 \uc5b9\ub294 \uac83)
+   \ubb34\uc0ac \u2192 \uac80\uac1d: \uae08\ud14c \uacac\uac11 \u00b7 \ubd89\uc740 \uc220     \u2192 \uac80\uc131: \ubd89\uc740 \ub9dd\ud1a0 \u00b7 \ud22c\uad6c \uae43
+   \ube44\uac1d \u2192 \uc790\uac1d: \ubd89\uc740 \ubaa9\ub3c4\ub9ac             \u2192 \uadf8\ub9bc\uc790\uad70\uc8fc: \uae34 \ubcf4\ub77c \ubaa9\ub3c4\ub9ac \ub450 \uac00\ub2e5 \u00b7 \uc9e7\uc740 \uac80\uc740 \ub9dd\ud1a0
+   \ubc29\uc220\uac00 \u2192 \ud604\uc220\uc0ac: \uc5fc\uc8fc \ubaa9\uac78\uc774 \u00b7 \uae08 \uc18c\ub9e4 \u2192 \ucc9c\uc220\uc0ac: \uba38\ub9ac \ub4a4 \uae08\ube5b \ud6c4\uad11 \u00b7 \ud770 \uc5b4\uae68 \ub36e\uac1c
+   \ud48d\ub958\uac1d \u2192 \ud48d\uc6d4\uac1d: \ud478\ub978 \uc220\ub760 \u00b7 \uac13\ub048 \uc625\uad6c\uc2ac \u2192 \uc2e0\uc120: \uc5b4\uae68 \ub4a4\ub85c \ud769\ub0a0\ub9ac\ub294 \ud558\ub298 \ub760 \u00b7 \uae08 \uc220\ub760 */
+function rankBack(P, rk, dir, frame, oy) {
+  const [job, r] = rk, sway = frame === 1 ? -1 : frame === 2 ? 1 : 0;
+  if (job === 'warrior' && r >= 2) {
+    const c = '#a8322a', d = '#7a211c', g = '#e8c35a';
+    if (dir === 0) { P(2, 12 + oy, 14, 11, d); P(2, 22 + oy, 14, 1, g); P(2 + sway, 23 + oy, 3, 1, d); P(13 + sway, 23 + oy, 3, 1, d); }
+    else if (dir === 2) { P(11, 12 + oy, 4, 11, c); P(12 + (sway > 0 ? 1 : 0), 14 + oy, 4, 9, c); P(14, 13 + oy, 1, 10, d); P(11 + (sway > 0 ? 1 : 0), 23 + oy, 5, 1, g); }
+  }
+  if (job === 'thief' && r >= 2) {
+    const c = '#17141f';
+    if (dir === 0) P(3, 12 + oy, 12, 8, c); else if (dir === 2) { P(11, 12 + oy, 3, 8, c); P(12, 19 + oy, 2 + (sway > 0 ? 1 : 0), 1, c); }
+  }
+  if (job === 'shaman' && r >= 2 && dir !== 1) {   /* \ud6c4\uad11: \uba38\ub9ac \ub4a4 \uace0\ub9ac */
+    const g = '#ffe38a', gl = '#fff6c8', cx = dir === 0 ? 8.5 : 9, cy = 6 + oy;
+    for (let i = 0; i < 28; i++) { const a = i / 28 * TAU, x = Math.round(cx + Math.cos(a) * 7.2), y = Math.round(cy + Math.sin(a) * 6.4); if (y < 0) continue; P(x, y, 1, 1, i % 4 ? g : gl); }
+  }
+  if (job === 'taoist' && r >= 2) {   /* \ud558\ub298 \ub760: \uc5b4\uae68 \ub4a4\uc5d0\uc11c \uc704\ub85c \ud718\uc5b4 \uc62c\ub77c \uc591\uc606\uc73c\ub85c \ud758\ub7ec\ub0b4\ub9b0\ub2e4 */
+    const c = '#fff6d8', e = '#9fd8ff';
+    if (dir !== 2) for (const sx of [0, 1]) { const m = x => sx ? 17 - x : x; P(m(3), 10 + oy, 1, 2, c); P(m(2), 8 + oy, 1, 3, c); P(m(1), 6 + oy - (sway && sx ? 1 : 0), 1, 3, c); P(m(0), 8 + oy, 1, 7 + (sway ? 1 : 0), c); P(m(1), 14 + oy + (sway ? 1 : 0), 1, 4, c); P(m(0), 9 + oy, 1, 2, e); P(m(1), 16 + oy + (sway ? 1 : 0), 1, 2, e); }
+    else { P(11, 9 + oy, 2, 1, c); P(13, 7 + oy, 1, 3, c); P(14, 6 + oy, 2, 1, c); P(16, 7 + oy, 1, 6 + (sway ? 1 : 0), c); P(15, 12 + oy + (sway ? 1 : 0), 1, 5, c); P(16, 8 + oy, 1, 2, e); P(15, 15 + oy + (sway ? 1 : 0), 1, 2, e); }
+  }
+}
+function rankFront(P, rk, dir, frame, oy, spec) {
+  const [job, r] = rk, sway = frame === 1 ? -1 : frame === 2 ? 1 : 0, armA = frame === 1 ? 1 : frame === 2 ? -1 : 0;
+  if (job === 'warrior') {
+    const st = '#aab2bd', sd = '#6f7783', g = r >= 2 ? '#ffe38a' : '#e8c35a', red = '#c8352f';
+    if (dir !== 2) { for (const [x, a] of [[2, armA], [13, -armA]]) { P(x, 10 + oy + a, 3, 3, st); P(x, 10 + oy + a, 3, 1, g); P(x, 12 + oy + a, 3, 1, sd); } }
+    else { P(7, 10 + oy, 4, 3, st); P(7, 10 + oy, 4, 1, g); P(7, 12 + oy, 4, 1, sd); }
+    /* \ud5c8\ub9ac\uc758 \ubd89\uc740 \uc220 */
+    if (dir === 0) { P(11, 17 + oy, 2, 4 + (sway ? 1 : 0), red); P(11, 17 + oy, 2, 1, g); } else if (dir === 2) { P(7, 17 + oy, 2, 4 + (sway ? 1 : 0), red); P(7, 17 + oy, 2, 1, g); }
+    if (r >= 2) {
+      if (dir === 1) { const c = '#a8322a', d = '#7a211c'; P(4, 11 + oy, 10, 12, c); P(4, 11 + oy, 1, 12, d); P(13, 11 + oy, 1, 12, d); P(8 + sway, 13 + oy, 1, 9, d); P(4, 22 + oy, 10, 1, '#e8c35a'); P(5, 11 + oy, 8, 1, '#e8c35a'); }
+      /* \ud22c\uad6c \uae43 (\uba38\ub9ac\ub760\ub9cc \ub9e8 \ucc28\ub9bc\uc5d0\ub3c4 \uae43\uc774 \uc120\ub2e4) */
+      if (dir === 2) { P(9, 0, 3, 1, red); P(10, 1, 3, 1, red); P(12, 2, 2, 2, red); } else { P(7, 0, 4, 1, red); P(8, 1, 2, 1, '#ff6b4a'); }
+    }
+  }
+  if (job === 'thief') {
+    const c = r >= 2 ? '#9d5cff' : '#c8352f', d = r >= 2 ? '#6a35c8' : '#8a2420';
+    if (dir === 0) { P(5, 10 + oy, 8, 2, c); P(5, 11 + oy, 8, 1, d); P(12, 12 + oy, 2, 4 + (sway ? 1 : 0), c); if (r >= 2) { P(4, 12 + oy, 1, 6 + (sway ? 0 : 1), c); P(7, 7 + oy, 1, 1, '#d9b8ff'); P(10, 7 + oy, 1, 1, '#d9b8ff'); } }
+    else if (dir === 1) { P(5, 10 + oy, 8, 2, c); P(6 + sway, 12 + oy, 2, r >= 2 ? 9 : 5, c); P(6 + sway, 12 + oy, 1, r >= 2 ? 9 : 5, d); if (r >= 2) { P(10 - sway, 12 + oy, 2, 8, c); P(11 - sway, 12 + oy, 1, 8, d); } }
+    else { P(5, 10 + oy, 7, 2, c); P(5, 11 + oy, 7, 1, d); const L = r >= 2 ? 6 : 4; P(12, 10 + oy + (sway > 0 ? 1 : 0), L, 2, c); P(12 + L - 1, 11 + oy + (sway > 0 ? 1 : 0), 1, 2, d); if (r >= 2) P(12, 13 + oy - (sway > 0 ? 1 : 0), 4, 1, c); }
+  }
+  if (job === 'shaman') {
+    const g = '#e8c35a', red = '#d84a3a';
+    if (dir === 0) { P(6, 12 + oy, 1, 1, g); P(7, 13 + oy, 1, 1, g); P(8, 14 + oy, 2, 1, red); P(10, 13 + oy, 1, 1, g); P(11, 12 + oy, 1, 1, g); P(3, 16 + oy + armA, 2, 1, g); P(13, 16 + oy - armA, 2, 1, g); }
+    else if (dir === 1) { P(7, 11 + oy, 4, 1, g); P(3, 16 + oy + armA, 2, 1, g); P(13, 16 + oy - armA, 2, 1, g); }
+    else { P(6, 12 + oy, 1, 1, g); P(7, 13 + oy, 1, 1, red); P(8 + sway, 16 + oy, 2, 1, g); }
+    if (!spec.helm) { if (dir === 2) P(6, 1 + oy, 4, 1, g); else P(7, 1 + oy, 4, 1, g); P(8, 0 + oy, 2, 1, red); }   /* \uba38\ub9ac \uc7a5\uc2dd */
+    if (r >= 2) {   /* \uc5b4\uae68 \ub36e\uac1c */
+      const w = '#f4efe2', wd = '#d8cfb8';
+      if (dir !== 2) { P(3, 10 + oy, 12, 2, w); P(3, 11 + oy, 12, 1, wd); P(3, 12 + oy, 2, 1, w); P(13, 12 + oy, 2, 1, w); if (dir === 0) { P(8, 10 + oy, 2, 2, g); } else { P(5, 12 + oy, 8, 1, w); } }
+      else { P(5, 10 + oy, 7, 2, w); P(5, 11 + oy, 7, 1, wd); P(6, 12 + oy, 2, 1, w); }
+    }
+  }
+  if (job === 'taoist') {
+    const c = r >= 2 ? '#e8c35a' : '#3f8fd0', d = r >= 2 ? '#b8862a' : '#2a64a0', jade = '#7fe0c0';
+    if (dir === 0) { P(5, 16 + oy, 8, 1, c); P(10, 17 + oy, 1, 6 + (sway ? 1 : 0), c); P(11, 17 + oy, 1, 5, d); P(10, 22 + oy + (sway ? 1 : 0), 2, 1, '#fff6d8'); if (!spec.helm) { P(5, 12 + oy, 1, 1, jade); P(12, 12 + oy, 1, 1, jade); } }
+    else if (dir === 1) { P(5, 16 + oy, 8, 1, c); P(8 + sway, 17 + oy, 1, 6, c); P(9 + sway, 17 + oy, 1, 5, d); }
+    else { P(6, 16 + oy, 6, 1, c); P(8, 17 + oy, 1, 6 + (sway ? 1 : 0), c); P(9, 17 + oy, 1, 5, d); if (!spec.helm) P(5, 12 + oy, 1, 1, jade); }
+  }
+}
 function buildHuman(spec, dir, frame) {
   const { cv, P } = painter(HW, HH);
   const skin = spec.skin || '#f0c9a4', skinD = shade(skin, -.18);
@@ -2874,6 +2984,7 @@ function buildHuman(spec, dir, frame) {
   const legA = frame === 1 ? -1 : 0, legB = frame === 2 ? -1 : 0; /* lifted legs */
   const armA = frame === 1 ? 1 : frame === 2 ? -1 : 0;
 
+  if (spec.rk) rankBack(P, spec.rk, dir, frame, oy);
   /* wings / shell behind */
   if (has('wings')) { const wc = '#2b2b33'; P(1, 11 + oy, 3, 6, wc); P(14, 11 + oy, 3, 6, wc); P(0, 12 + oy, 1, 4, wc); P(17, 12 + oy, 1, 4, wc); }
   if (has('shell') && dir !== 0) { P(4, 11 + oy, 10, 8, '#5b7a3a'); P(5, 12 + oy, 8, 6, '#7a9b4a'); P(8, 12 + oy, 2, 6, '#4b6630'); }
@@ -2984,6 +3095,7 @@ function buildHuman(spec, dir, frame) {
   }
   if (has('horns')) { const hc = '#efe5c8'; P(4, 0 + oy, 1, 3, hc); P(13, 0 + oy, 1, 3, hc); P(5, 2 + oy, 1, 1, hc); P(12, 2 + oy, 1, 1, hc); }
 
+  if (spec.rk) rankFront(P, spec.rk, dir, frame, oy, spec);
   /* held props for monsters (players get dynamic weapons) */
   const handX = dir === 2 ? 8 : 13, handY = 16 + oy;
   if (has('sword') || has('katana')) { const bl = has('katana') ? '#e8eef2' : '#b9c4cf'; P(handX + 1, handY - 7, 1, 8, bl); P(handX, handY, 3, 1, '#6b4a2a'); }
@@ -3255,6 +3367,7 @@ function jobLook(job, rank, extra = {}) {
     case 'taoist': s = { cloth: ['#ece6d2', '#f4f0e2', '#fffbe8'][rank], hs: 'gat', robe: 1, trim: ['#3f6fb0', '#2f8fb0', '#d6a53d'][rank], belt: '#3f6fb0' }; break;
     default: s = { cloth: '#e0d7c2', pants: '#b9ae93', hs: 'topknot', belt: '#8c7b5a' };
   }
+  if (rank >= 1 && s.cloth && job !== 'none' && JOBS[job]) s.rk = [job, rank];   /* v381 \uc2b9\uae09 \ucc28\ub9bc */
   return Object.assign(base, s, extra);
 }
 
@@ -3291,10 +3404,13 @@ window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   const W = d.w * TILE / ART, H = 86;
   const pp = painter(W, H), P = pp.P;
   const kind = d.kind || '', cat = d.cat || '';
-  const roofC = ['#3e4a5c', '#45505f', '#384658'][p.v || 0], rL = shade(roofC, .28), rD = shade(roofC, -.28), rDD = shade(roofC, -.5);
-  const wood = '#8a5634', woodD = '#5e3a22', woodL = '#a86d43';
-  const wall = '#efe5cc', wallD = '#ddd0b0', paper = '#efe3bd', lat = '#6b4a32';
-  const stone = '#9a958a', stoneD = '#77726a', stoneL = '#b4afa2';
+  /* v381: \uace0\uc7a5\ub9c8\ub2e4 \uc9d1 \ube5b\uae54\uc774 \ub2e4\ub974\ub2e4 (09j_region381 HOUSE_STYLE) \u2014 \uac19\uc740 \ub9c8\uc744 \uc548\uc5d0\uc11c\ub294 \uc9c0\ubd95 \ubc1d\uae30\ub9cc \uc138 \uac00\uc9c0\ub85c \uc0b4\uc9dd \ub2e4\ub974\ub2e4 */
+  const ST = (window.HOUSE_STYLE && d.sty && HOUSE_STYLE[d.sty]) || {};
+  const roofC = ST.roof ? shade(ST.roof, [0, .06, -.06][p.v || 0]) : ['#3e4a5c', '#45505f', '#384658'][p.v || 0], rL = shade(roofC, .28), rD = shade(roofC, -.28), rDD = shade(roofC, -.5);
+  const wood = ST.wood || '#8a5634', woodD = shade(wood, -.32), woodL = shade(wood, .22);
+  const wall = ST.wall || '#efe5cc', wallD = ST.base || shade(wall, -.1), paper = '#efe3bd', lat = '#6b4a32';
+  const stone = ST.stone || '#9a958a', stoneD = shade(stone, -.22), stoneL = shade(stone, .16);
+  const tileEnd = ST.end || '#c9cdd2';
   const mid = W / 2;
 
   /* ---- \uae30\ub2e8 (stone base) + steps ---- */
@@ -3308,10 +3424,12 @@ window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   P(4, 36, W - 8, 36, wall);
   P(4, 62, W - 8, 10, wallD);             /* lower \uba38\ub984 panel */
   P(4, 61, W - 8, 1, woodD);
+  if (ST.base) { const bd = shade(ST.base, -.22); for (let y = 64; y < 72; y += 3) P(4, y, W - 8, 1, bd); for (let y = 62, k = 0; y < 72; y += 3, k++) for (let x = 6 + (k % 2) * 4; x < W - 5; x += 8) P(x, y, 1, 2, bd); }   /* \ubcbd\ub3cc \uc544\ub7ab\ub2e8 */
   const cols = [4, Math.round(W * .3) - 1, Math.round(W * .7) - 2, W - 7];
   for (const x of cols) { P(x, 34, 3, 38, wood); P(x, 34, 1, 38, woodL); P(x - 1, 70, 5, 2, stoneD); }
   P(4, 34, W - 8, 3, wood); P(4, 34, W - 8, 1, woodL);   /* \ucc3d\ubc29 beam */
   P(4, 48, W - 8, 1, woodD);                               /* \uc778\ubc29 */
+  if (ST.dan) { const gn = '#2f7a62'; P(4, 34, W - 8, 3, gn); P(4, 34, W - 8, 1, '#4fa888'); for (let x = 6; x < W - 6; x += 6) { P(x, 35, 2, 1, '#e8c35a'); P(x + 3, 35, 1, 1, '#d0453a'); P(x + 4, 36, 1, 1, '#3f6fd0'); } }   /* \ub2e8\uccad */
 
   /* ---- windows (\ucc3d\ud638, lattice) in side bays ---- */
   const win = (x0, x1) => {
@@ -3347,8 +3465,21 @@ window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
 
   let labelDy;   /* v352b: \uac04\ud310\uc740 \uc9c0\ubd95\uc744 \uadf8\ub9b0 \ub4a4 \uadf8 \uc704\uc5d0 \uc138\uc6b4\ub2e4 (\uc544\ub798) \u2014 \uc8fc\uc778 \uc774\ub984\u00b7\ud018\uc2a4\ud2b8 \ud45c\uc2dc\uc640 \uacb9\uce58\uc9c0 \uc54a\uac8c */
 
-  /* ---- roof: tiled body with curved, upturned eaves ---- */
+  /* ---- roof ---- */
   const top = 7, eave = 29;
+  if (ST.thatch) {
+    /* \ucd08\uac00\uc9c0\ubd95: \ub465\uae00\uac8c \ub36e\uc740 \ubccf\uc9da + \uc0c8\ub07c\uc904 + \uc6a9\ub9c8\ub984 */
+    const th = shade(ST.thatch, [0, .05, -.05][p.v || 0]), tL = shade(th, .2), tD = shade(th, -.24), tDD = shade(th, -.45), rope = '#6a5230';
+    const hz = (x, y) => (((x * 73856093) ^ (y * 19349663) ^ ((p.v || 0) * 83492791)) >>> 0);
+    const ins = y => Math.round(12 * Math.pow(1 - (y - top) / (eave - top), 1.7));
+    for (let y = top; y <= eave + 2; y++) { const k = y > eave ? 0 : ins(y); P(k, y, W - k * 2, 1, y > eave ? tD : th); }
+    for (let y = top + 1; y <= eave + 1; y++) { const k = ins(Math.min(y, eave)); for (let x = k + 1; x < W - k - 1; x++) { const h = hz(x, y) % 9; if (h === 0) P(x, y, 1, 2, tD); else if (h === 1) P(x, y, 1, 1, tL); } }
+    for (let x = 0; x < W; x++) { const n = hz(x, 99) % 3; P(x, eave + 3, 1, n, tD); if (n === 2) P(x, eave + 4, 1, 1, tDD); }                  /* \ub4e4\ucb49\ub0a0\ucb49\ud55c \ucc98\ub9c8 \ub05d */
+    for (const y of [top + 8, top + 15]) { const k = ins(y) + 1; for (let x = k; x < W - k; x += 2) P(x, y, 1, 1, rope); }                       /* \uac00\ub85c \uc0c8\ub07c\uc904 */
+    for (let x = 14; x < W - 12; x += 12) for (let y = top + 3; y < eave; y += 2) { const k = ins(y); if (x > k && x < W - k) P(x + ((y >> 1) % 2), y, 1, 1, rope); }   /* \uc138\ub85c \uc0c8\ub07c\uc904 */
+    P(9, top - 2, W - 18, 3, tL); P(9, top, W - 18, 1, tD); for (let x = 10; x < W - 10; x += 3) P(x, top - 2, 1, 2, tD);                     /* \uc6a9\ub9c8\ub984 */
+    P(3, eave + 4, W - 6, 2, woodD); for (let x = 5; x < W - 5; x += 4) P(x, eave + 4, 2, 2, '#d8a868');                                    /* \uc11c\uae4c\ub798 \ub05d */
+  } else {
   for (let y = top; y <= eave; y++) {
     const t = (y - top) / (eave - top), inset = Math.round(13 * (1 - t));
     P(inset, y, W - inset * 2, 1, roofC);
@@ -3364,16 +3495,17 @@ window.NEW_HOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   for (let y = top + 5; y < eave - 1; y += 5) { const t = (y - top) / (eave - top), inset = Math.round(13 * (1 - t)) + 1; P(inset, y, W - inset * 2, 1, rD); }
   /* \ub9c9\uc0c8 row along the eave (round tile ends) */
   P(1, eave + 1, W - 2, 2, rDD);
-  for (let x = 2; x < W - 2; x += 4) { P(x, eave, 2, 2, '#c9cdd2'); P(x, eave, 1, 1, '#eef0f2'); }
+  for (let x = 2; x < W - 2; x += 4) { P(x, eave, 2, 2, tileEnd); P(x, eave, 1, 1, shade(tileEnd, .3)); }
   /* \uc11c\uae4c\ub798 ends under the eave */
   P(3, eave + 3, W - 6, 2, woodD);
   for (let x = 5; x < W - 5; x += 4) { P(x, eave + 3, 2, 2, '#d8a868'); }
   /* ridge (\uc6a9\ub9c8\ub8e8) with lifted ends */
   P(10, 3, W - 20, 4, rDD); P(10, 3, W - 20, 1, shade(roofC, -.15));
-  P(7, 1, 4, 5, rDD); P(W - 11, 1, 4, 5, rDD); P(7, 0, 3, 1, '#c9cdd2'); P(W - 10, 0, 3, 1, '#c9cdd2');
+  P(7, 1, 4, 5, rDD); P(W - 11, 1, 4, 5, rDD); P(7, 0, 3, 1, tileEnd); P(W - 10, 0, 3, 1, tileEnd);
   for (let x = 13; x < W - 13; x += 5) P(x, 5, 3, 1, '#59606b');
   /* \ub0b4\ub9bc\ub9c8\ub8e8 (hip ridges) running down to the corners */
   for (let y = 7; y < eave - 1; y++) { const t = (y - 7) / (eave - 8), x = Math.round(10 - 8 * t); P(x, y, 2, 1, rDD); P(W - x - 2, y, 2, 1, rDD); }
+  }
 
   /* ---- sign board standing on the roof ---- */
   let labelFont;
@@ -3397,8 +3529,9 @@ window.NEW_JHOUSE = function (p, painter, shade, outlineCanvas, TILE, ART) {
   const d = p.data || { w: 5, h: 4, face: 'S' };
   const W = d.w * TILE / ART, H = 86, pp = painter(W, H), P = pp.P, mid = W / 2;
   const kind = d.kind || '', acc = d.accent || '#c94f4f';
-  const roofC = ['#4a4e55', '#53504c', '#414852'][p.v || 0], rL = shade(roofC, .3), rD = shade(roofC, -.3), rDD = shade(roofC, -.5);
-  const wood = '#4e3322', woodD = '#2f1e14', woodL = '#6b4a32', plaster = '#efeadf', plasterD = '#d9d2c2';
+  const ST = (window.HOUSE_STYLE && d.sty && HOUSE_STYLE[d.sty]) || {};   /* v381: \uace0\uc7a5\ub9c8\ub2e4 \uc9c0\ubd95\u00b7\ub098\ubb34\u00b7\ud68c\ubcbd \ube5b\uae54 */
+  const roofC = ST.roof ? shade(ST.roof, [0, .06, -.06][p.v || 0]) : ['#4a4e55', '#53504c', '#414852'][p.v || 0], rL = shade(roofC, .3), rD = shade(roofC, -.3), rDD = shade(roofC, -.5);
+  const wood = ST.wood || '#4e3322', woodD = shade(wood, -.4), woodL = shade(wood, .28), plaster = ST.wall || '#efeadf', plasterD = ST.wallD || shade(plaster, -.1);
   const stone = '#8f8c86', stoneL = '#aaa7a0', stoneD = '#6f6c66';
   /* base */
   P(2, 73, W - 4, 6, stone); P(2, 73, W - 4, 1, stoneL); for (let x = 6; x < W - 4; x += 10) P(x, 74, 1, 5, stoneD);
@@ -4172,7 +4305,7 @@ function addProp(m, type, tx, ty, opt = {}) {
   return p;
 }
 const PROP_SOLID = {
-  tree: [[0, 0]], pine: [[0, 0]], snowPine: [[0, 0]], bamboo: [[0, 0]], willow: [[0, 0]], sakura: [[0, 0]], cedar: [[0, 0]], deadTree: [[0, 0]], tangerine: [[0, 0]],
+  tree: [[0, 0]], pine: [[0, 0]], snowPine: [[0, 0]], bamboo: [[0, 0]], willow: [[0, 0]], sakura: [[0, 0]], cedar: [[0, 0]], deadTree: [[0, 0]], tangerine: [[0, 0]], maple: [[0, 0]], ginkgo: [[0, 0]],
   rock: [[0, 0]], rockRed: [[0, 0]], snowRock: [[0, 0]], basalt: [[0, 0]], rockCave: [[0, 0]], stalag: [[0, 0]], crystal: [[0, 0]], crystalFire: [[0, 0]], ore: [[0, 0]],
   ruinPillar: [[0, 0]], pillar: [[0, 0]], anvil: [[0, 0]], lantern: [[0, 0]], well: [[0, 0]], torch: [[0, 0]], coral: [[0, 0]], cliff: [[0, 0]], ruinWall: [[0, 0]]
 };
@@ -4261,7 +4394,7 @@ function genTown(m) {
   }
   for (const lot of m.lots) if (!lot.taken && rng() < .85) { lot.taken = 'house'; placeBuilding(m, lot, null, null); }
   /* greenery along the walls */
-  const deco = japan ? ['sakura', 'pine'] : snowy ? ['snowPine'] : jeju ? ['tangerine', 'basalt'] : ['tree', 'tree', 'pine'];
+  const deco = (REGION[m.id] && REGION[m.id].trees) || (japan ? ['sakura', 'pine'] : snowy ? ['snowPine'] : jeju ? ['tangerine', 'basalt'] : ['tree', 'tree', 'pine']);   /* v381: \uace0\uc7a5\ub9c8\ub2e4 \ub098\ubb34\uac00 \ub2e4\ub974\ub2e4 (\uc790\ub9ac\u00b7\uac1c\uc218\ub294 \uadf8\ub300\ub85c) */
   for (let i = 0; i < w * h * .035; i++) {
     const x = 2 + Math.floor(rng() * (w - 4)), y = 2 + Math.floor(rng() * (h - 4)), k = m.idx(x, y);
     const g = m.ground[k];
@@ -4300,7 +4433,7 @@ function placeLandmark(m, LM, cx, cy, portals) {
 function placeBuilding(m, lot, label, npcId) {
   blockRect(m, lot.x, lot.y, lot.w, lot.h);
   const style = m.def.region === 'japan' ? 'jhouse' : m.def.theme === 'jeju' ? 'jejuHouse' : 'hanok';
-  addProp(m, style, lot.x + (lot.w >> 1), lot.y + lot.h - 1, { v: Math.floor(m.rng() * 3), label, data: { w: lot.w, h: lot.h, face: lot.face, accent: m.def.accent, npc: npcId } });
+  addProp(m, style, lot.x + (lot.w >> 1), lot.y + lot.h - 1, { v: Math.floor(m.rng() * 3), label, data: { w: lot.w, h: lot.h, face: lot.face, accent: m.def.accent, npc: npcId, sty: HOUSE_STYLE[m.id] ? m.id : undefined } });
 }
 function makeExit(m, e, gx, gy) {
   const ex = { side: e.side, to: e.to, toSide: e.toSide };
@@ -4551,7 +4684,8 @@ function prerenderMap(m) {
   g.imageSmoothingEnabled = false;
   const th = m.theme, r = mulberry32(hashStr(m.id + ':paint'));
   const town = m.def.kind === 'town';
-  const g1 = town && m.def.region !== 'japan' && m.def.theme === 'town' ? '#8d9a5b' : th.g, g2 = th.g2 || shade(g1, -.06);
+  const RS381 = regionStyle(m) || {};   /* v381: \uace0\uc7a5\ub9c8\ub2e4 \ud480\ube5b\uc774 \ub2e4\ub974\ub2e4 */
+  const g1 = town && RS381.grass ? RS381.grass : RS381.field && RS381.tint && th.g ? mix(th.g, RS381.tint, .3) : town && m.def.region !== 'japan' && m.def.theme === 'town' ? '#8d9a5b' : th.g, g2 = town && RS381.grass ? shade(RS381.grass, -.08) : RS381.field && RS381.tint && th.g2 ? mix(th.g2, shade(RS381.tint, -.08), .3) : (th.g2 || shade(g1, -.06));
   const road = town ? (m.def.tint || th.road || '#c9b489') : (th.road || '#b39a6b');
   for (let y = 0; y < m.h; y++) for (let x = 0; x < m.w; x++) {
     const t = m.ground[m.idx(x, y)], X = x * TILE, Y = y * TILE;
@@ -4675,9 +4809,9 @@ function buildProp(p) {
   const A = (w, h) => painter(w, h);
   const out = (pp, w, h, baseY) => { outlineCanvas(pp.cv); return { img: pp.cv, ox: -(w + 2) * ART / 2, oy: -(baseY + 1) * ART }; };
   switch (p.type) {
-    case 'tree': case 'tangerine': case 'sakura': case 'willow': {
+    case 'tree': case 'tangerine': case 'sakura': case 'willow': case 'maple': case 'ginkgo': {
       const pp = A(26, 32), P = pp.P;
-      const leaf = p.type === 'sakura' ? '#f2b8c8' : p.type === 'willow' ? '#7faa5a' : p.type === 'tangerine' ? '#3f7a3a' : ['#3f7a36', '#4a8a3c', '#37702f'][p.v], lD = shade(leaf, -.25), lL = shade(leaf, .2);
+      const leaf = p.type === 'maple' ? ['#c8502a', '#d9742c', '#b8402c'][p.v] : p.type === 'ginkgo' ? ['#e2b83a', '#d8a82c', '#ecc850'][p.v] : p.type === 'sakura' ? '#f2b8c8' : p.type === 'willow' ? '#7faa5a' : p.type === 'tangerine' ? '#3f7a3a' : ['#3f7a36', '#4a8a3c', '#37702f'][p.v], lD = shade(leaf, -.25), lL = shade(leaf, .2);
       P(11, 20, 4, 11, '#6b4a32'); P(12, 20, 1, 11, '#8a6444'); P(9, 30, 8, 2, '#5a3b25');
       P(4, 6, 18, 14, leaf); P(7, 2, 12, 4, leaf); P(2, 10, 3, 8, leaf); P(21, 9, 3, 8, leaf); P(6, 19, 14, 3, lD);
       P(8, 4, 5, 3, lL); P(5, 9, 4, 3, lL); P(15, 7, 4, 2, lL);
@@ -6644,6 +6778,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v381 \uace0\uc7a5\uc758 \uc5bc\uad74 \u00b7 \ubb34\uae30\ubcc4 \ubaa8\uc158 \u00b7 \uc2b9\uae09 \ucc28\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfe0 \uace0\uc7a5\ub9c8\ub2e4 \ub9c8\uc744\uc774 \ub2e4\ub974\uac8c \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uccad\uc6d4\ucd0c \ucd08\uac00\uc9c0\ubd95, \ub300\uad6c \ubd89\uc740 \uae30\uc640\uc640 \ub2e8\ud48d, \uc6b8\uc0b0 \uac80\uc740 \uae30\uc640, \ubd80\uc0b0 \ud478\ub978 \uae30\uc640\uc640 \uac08\ub9e4\uae30, \uc11c\uc6b8 \ub2e8\uccad\uacfc \uc740\ud589\ub098\ubb34, \uad50\ud1a0 \ubd89\uc740 \uaca9\uc790, \ub3c4\ucfc4 \uac80\uc740 \ud68c\ubcbd\u2026 \ud480\ube5b\u00b7\ub098\ubb34\u00b7\ub5a0\ub2e4\ub2c8\ub294 \uac83\ub3c4 \uace0\uc7a5\ub9c8\ub2e4 \ub2ec\ub77c\uc694.<br>\u2694 \ubb34\uae30\ub9c8\ub2e4 \ud718\ub450\ub974\ub294 \ubaa8\uc2b5\uc774 \ub2e4\ub985\ub2c8\ub2e4 \u2014 \ub300\uac80\uc740 \ud06c\uac8c \ucc0d\uace0 \ud55c \ubc14\ud034 \ub3cc\uace0, \ub3c4\ub07c\ub294 \ub0b4\ub824\ucc0d\uc5b4 \ub545\uc744 \uc6b8\ub9ac\uace0, \ucc3d\uc740 \uace7\uac8c \ucc0c\ub974\uace0, \uc9c0\ud321\uc774\ub294 \ub05d\uc5d0\uc11c \uae30\uc6b4\uc774 \ub098\uac11\ub2c8\ub2e4. \ucc3d \ucc0c\ub974\uae30\uac00 \ub545\uc744 \ud5a5\ud558\ub358 \uac83\ub3c4 \ubc14\ub85c\uc7a1\uc558\uc5b4\uc694. (\ud53c\ud574\u00b7\uc18d\ub3c4\ub294 \uadf8\ub300\ub85c)<br>\u2b50 \uc2b9\uae09\ud558\uba74 \ucc28\ub9bc\uc774 \ub2ec\ub77c\uc9d1\ub2c8\ub2e4 \u2014 \uacac\uac11\uacfc \ub9dd\ud1a0, \ubaa9\ub3c4\ub9ac, \ud6c4\uad11, \ud558\ub298 \ub760.<br>\ud83d\udeaa \uc124\uc815 \ub9e8 \uc704\uc758 \uce90\ub9ad\ud130 \ubc14\uafb8\uae30\ub85c \uccab \ud654\uba74\uc5d0 \ub098\uac08 \uc218 \uc788\uc5b4\uc694.<br>\ud83e\udd16 \uc790\ub3d9\uc0ac\ub0e5\uc774 \ub5a8\uc5b4\uc9c4 \ubb3c\uac74\uc744 \uc8fc\uc6b0\ub7ec \uac00\uace0, \uad74 \uc785\uad6c\ub098 \uc9c0\ub3c4 \ub05d\uc744 \ubc1f\uc544\ub3c4 \ub2e4\ub978 \uacf3\uc73c\ub85c \ub118\uc5b4\uac00\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.<br>\ud83e\udd87 \ubc15\uc950 \uac19\uc740 \ub0a0\uc9d0\uc2b9\uc774 \ubcbd \uc18d\uc5d0 \ub4e4\uc5b4\uac00 \uacf5\uaca9\uc774 \ub2ff\uc9c0 \uc54a\ub358 \uac83\uc744 \uace0\ucce4\uc2b5\ub2c8\ub2e4.</div>`;
     notes += `<div class="sep"></div><b>v380 \uad50\uc5ed\ud488 \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 \ud314\ub3c4\uc640 \uc77c\ubcf8\uc758 \ud2b9\uc0b0\ud488 34\uc885\uc5d0 \uadf8\ub9bc\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uac1d\uc8fc\uc758 \uc0ac\uae30\u00b7\ud314\uae30\u00b7\uc2dc\uc138, \uac00\ubc29\uc758 \uad50\uc5ed\ud488 \ud0ed\uc5d0\uc11c \ubcf4\uc5ec\uc694.</div>`;
     notes += `<div class="sep"></div><b>v379 \ud654\uba74 \ub2e4\ub4ec\uae30</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \u2014 \uc7a5\ube44 \uce78\uc744 \uc791\uac8c \uc904\uc774\uace0, \ud3f0\uc744 \uac00\ub85c\ub85c \ub215\ud788\uac70\ub098 PC\uc5d0\uc11c\ub294 \uc67c\ucabd \uc7a5\ube44 \u00b7 \uc624\ub978\ucabd \uac00\ubc29\uc73c\ub85c \ud55c\ub208\uc5d0 \ubd05\ub2c8\ub2e4. \ubb3c\uac74\uc744 \ub204\ub974\uba74 \uc815\ubcf4\uac00 \uc7a5\ube44 \uc544\ub798\uc5d0 \ub5a0\uc694.<br>\ud83d\udcf1 \ud3f0 \uac00\ub85c \u2014 \uba54\ub274 \ub2e8\ucd94\uac00 \ubb3c\uc57d\u00b7\uae30\uc220\uacfc \uacb9\uce58\ub358 \uac83\uc744 \u2630 \uc548\uc73c\ub85c \uc811\uc5c8\uace0, \uccab \ud654\uba74 \uc81c\ubaa9\uc774 \uc798\ub9ac\ub358 \uac83, \ubcf4\uc2a4 \uccb4\ub825\ubc14\uac00 \ub3d9\ub8cc \uce78\uc744 \ub36e\ub358 \uac83\uc744 \uace0\ucce4\uc2b5\ub2c8\ub2e4. \ud560 \uc77c \ud55c \uc904\ub3c4 \ubcf4\uc785\ub2c8\ub2e4.<br>\ud83d\udda5 PC \ud070 \ud654\uba74 \u2014 \uccb4\ub825\u00b7\uae30\uc220 \ub2e8\ucd94\u00b7\ubbf8\ub2c8\ub9f5\uc744 \uc870\uae08 \ud0a4\uc6e0\uc5b4\uc694.<br>\u2728 \ucc3d \uc81c\ubaa9\uacfc \uc124\uc815\u00b7\uc9c0\ub3c4\uc758 \uadf8\ub9bc\uc744 \uae30\uae30\ub9c8\ub2e4 \ub2ec\ub77c \ubcf4\uc774\ub358 \uc774\ubaa8\uc9c0 \ub300\uc2e0 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ud1b5\uc77c\ud588\uace0, \uc774\ub984 \ub4a4\uc5d0 '\uc740(\ub294)', '\uc744(\ub97c)' \ub85c \ub098\uc624\ub358 \uc5b4\uc0c9\ud55c \uc870\uc0ac\ub97c \ubc14\ub85c\uc7a1\uc558\uc2b5\ub2c8\ub2e4 (\uc608: \ubb34\uc0ac\ub294 \uc545\uae30\ub97c \uc4f8 \uc218 \uc5c6\uc5b4\uc694).</div>`;
     notes += `<div class="sep"></div><b>v378 \ud50c\ub808\uc774 \uae30\ub85d</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcca \uc5b4\ub514\uc11c \ub9ce\uc774 \uc4f0\ub7ec\uc9c0\uace0 \uc5b4\ub514\uae4c\uc9c0 \uac14\ub294\uc9c0\ub97c \ub9cc\ub4e0 \uc0ac\ub78c\uc5d0\uac8c \ubcf4\ub0c5\ub2c8\ub2e4 \u2014 \uac8c\uc784\uc744 \uace0\uce58\ub294 \ub370\ub9cc \uc501\ub2c8\ub2e4. \uce90\ub9ad\ud130 \uc774\ub984\u00b7\ub808\ubca8\u00b7\uc9c4\ud589 \uc0c1\ud669\u00b7\uc4f0\ub7ec\uc9c4 \uacf3\ub9cc \ubcf4\ub0b4\uace0, \uacc4\uc815\uc774\ub098 \ube44\ubc00\ubc88\ud638\ub294 \ubcf4\ub0b4\uc9c0 \uc54a\uc544\uc694. \uc124\uc815 \u2192 '\ud50c\ub808\uc774 \uae30\ub85d \ubcf4\ub0b4\uae30'\uc5d0\uc11c \ub04c \uc218 \uc788\uc2b5\ub2c8\ub2e4</div>`;
@@ -11527,7 +11662,7 @@ drawHumanoid = function (e, t) {
      \ud654\uba74 \ubc30\uc728(DPR)\uc5d0 \ub9de\ucd98 \ud574\uc0c1\ub3c4\ub85c \uadf8\ub824\uc11c \uae00\uc790\uc640 \uc810\uc774 \ubc88\uc9c0\uc9c0 \uc54a\uac8c.
    \u00b7 \uc138\uacc4\uc804\ub3c4: \ud45c\uc2dc \ud06c\uae30 \u00d7 DPR \ud574\uc0c1\ub3c4\ub85c \ub80c\ub354.
    ============================================================ */
-const TREE_PROPS = new Set(['tree', 'pine', 'bamboo', 'cedar', 'sakura', 'snowPine', 'willow', 'tangerine', 'deadTree']);
+const TREE_PROPS = new Set(['tree', 'pine', 'bamboo', 'cedar', 'sakura', 'snowPine', 'willow', 'tangerine', 'deadTree', 'maple', 'ginkgo']);
 const ROCK_PROPS = new Set(['rock', 'rockCave', 'rockRed', 'snowRock', 'basalt', 'stalag', 'crystal', 'crystalFire', 'ruinPillar', 'pillar', 'rubble']);
 buildMinimap = function (m) {
   const S = 4, c = makeCanvas(m.w * S, m.h * S), g = c.getContext('2d');
@@ -11550,7 +11685,7 @@ buildMinimap = function (m) {
       const roof = p.type === 'landmark' ? '#e8b83a' : p.type === 'jhouse' ? '#4a4038' : p.type === 'jejuHouse' ? '#b8a070' : (p.data.accent ? shade(p.data.accent, -.35) : '#3c4450');
       g.fillStyle = '#120c08'; g.fillRect(x0 - 1, y0 - 1, w * S + 2, h * S + 2); g.fillStyle = roof; g.fillRect(x0, y0, w * S, h * S);
       g.fillStyle = shade(roof, .25); g.fillRect(x0, y0, w * S, 1);
-    } else if (TREE_PROPS.has(p.type)) { g.fillStyle = p.type === 'sakura' ? '#e8a0b8' : p.type === 'snowPine' ? '#dfe8e8' : '#2f5a2a'; g.fillRect(tx * S + 1, ty * S, 3, 3); }
+    } else if (TREE_PROPS.has(p.type)) { g.fillStyle = p.type === 'maple' ? '#c8602c' : p.type === 'ginkgo' ? '#d8b03a' : p.type === 'sakura' ? '#e8a0b8' : p.type === 'snowPine' ? '#dfe8e8' : '#2f5a2a'; g.fillRect(tx * S + 1, ty * S, 3, 3); }
     else if (ROCK_PROPS.has(p.type)) { g.fillStyle = '#8a8478'; g.fillRect(tx * S + 1, ty * S + 1, 2, 2); }
   }
   if (m.landmark) { g.fillStyle = '#ffcf5a'; g.fillRect(m.landmark.x / TILE * S - 3, m.landmark.y / TILE * S - 12, 6, 6); }
@@ -12295,7 +12430,8 @@ function enhanceGround(m) {
   const cv = m.canvas, g = cv.getContext('2d'), W = m.pw >> 1, H = m.ph >> 1;
   const img = g.getImageData(0, 0, m.pw, m.ph), D = img.data, PW = m.pw;
   const th = m.theme, town = m.def.kind === 'town', thName = m.def.theme;
-  const g1h = town && m.def.region !== 'japan' && thName === 'town' ? '#8d9a5b' : th.g, g2h = th.g2 || shade(g1h, -.06);
+  const RS381 = regionStyle(m) || {};
+  const g1h = town && RS381.grass ? RS381.grass : RS381.field && RS381.tint && th.g ? mix(th.g, RS381.tint, .3) : town && m.def.region !== 'japan' && thName === 'town' ? '#8d9a5b' : th.g, g2h = town && RS381.grass ? shade(RS381.grass, -.08) : RS381.field && RS381.tint && th.g2 ? mix(th.g2, shade(RS381.tint, -.08), .3) : (th.g2 || shade(g1h, -.06));
   const pal = [shade(g2h, -.07), g2h, mix(g2h, g1h, .5), g1h, shade(g1h, .06)].map(hexToRgb);
   const bladeD = hexToRgb(shade(g2h, -.2)), bladeL = hexToRgb(shade(g1h, .16));
   const flowerCols = thName === 'snow' ? [] : thName === 'japan' ? ['#f4b8c8', '#ffffff'] : thName === 'canyon' || thName === 'ruin' ? [] : ['#f3e27a', '#ffffff', '#e89ab8', '#a8c8ff'];
@@ -12895,7 +13031,7 @@ startGame = function (p, mapId, isNew) { G.summons = []; return _startGame220(p,
    \u00b7 \ub5a0\ub2e4\ub2c8\ub294 \ud658\uacbd \uc785\uc790: \uaf43\uac00\ub8e8\u00b7\ub098\ube44\u00b7\ub313\uc78e\u00b7\ub208\u00b7\ubc9a\uaf43\uc78e\u00b7\ubc18\ub527\ubd88\u00b7\uba3c\uc9c0\u00b7\ubd88\uc528\u00b7\ud63c\ubd88
    \u00b7 \ud14c\ub9c8\ubcc4 \uc0c9\uac10(\ube44\ub124\ud2b8)
    ============================================================ */
-const SHADOW_R = { tree: 24, tangerine: 20, sakura: 24, willow: 26, pine: 18, snowPine: 18, cedar: 20, bamboo: 14, deadTree: 14, rock: 15, rockRed: 15, snowRock: 15, basalt: 15, rockCave: 15, stalag: 12, ore: 15, crystal: 10, crystalFire: 10, ruinPillar: 10, pillar: 10, well: 18, lantern: 9, torch: 6, bush: 14, torii: 10, toriiSmall: 8, anvil: 10 };
+const SHADOW_R = { maple: 24, ginkgo: 24, tree: 24, tangerine: 20, sakura: 24, willow: 26, pine: 18, snowPine: 18, cedar: 20, bamboo: 14, deadTree: 14, rock: 15, rockRed: 15, snowRock: 15, basalt: 15, rockCave: 15, stalag: 12, ore: 15, crystal: 10, crystalFire: 10, ruinPillar: 10, pillar: 10, well: 18, lantern: 9, torch: 6, bush: 14, torii: 10, toriiSmall: 8, anvil: 10 };
 const _prerender230 = prerenderMap;
 prerenderMap = function (m) {
   _prerender230(m);
@@ -13003,11 +13139,12 @@ const AMB = {
 };
 G.amb = [];
 function ambSpawn(k, vx0, vy0, vw, vh, anywhere) {
-  const x = vx0 + Math.random() * vw, y = anywhere ? vy0 + Math.random() * vh : (k === 'snow' || k === 'petal' || k === 'bambooLeaf' || k === 'leaf' ? vy0 - 10 : k === 'ember' || k === 'wisp' ? vy0 + vh + 10 : vy0 + Math.random() * vh);
+  const x = vx0 + Math.random() * vw, y = anywhere ? vy0 + Math.random() * vh : (k === 'snow' || k === 'petal' || k === 'bambooLeaf' || k === 'leaf' || k === 'maple' || k === 'ginkgo' || k === 'canola' ? vy0 - 10 : k === 'ember' || k === 'wisp' ? vy0 + vh + 10 : vy0 + Math.random() * vh);
   const base = { k, x, y, t: 0, life: rnd(4, 9), ph: rnd(TAU), s: rnd(.7, 1.3) };
   switch (k) {
     case 'snow': return Object.assign(base, { vx: rnd(-12, 6), vy: rnd(22, 40) });
-    case 'petal': case 'bambooLeaf': case 'leaf': return Object.assign(base, { vx: rnd(10, 30), vy: rnd(18, 32) });
+    case 'petal': case 'bambooLeaf': case 'leaf': case 'maple': case 'ginkgo': case 'canola': return Object.assign(base, { vx: rnd(10, 30), vy: rnd(18, 32) });
+    case 'gull': { const dir = Math.random() < .5 ? 1 : -1; return Object.assign(base, { x: anywhere ? x : (dir > 0 ? vx0 - 30 : vx0 + vw + 30), y: vy0 + Math.random() * vh * .7, vx: dir * rnd(46, 70), vy: rnd(-5, 5), life: rnd(9, 15), s: rnd(.8, 1.25) }); }
     case 'ember': return Object.assign(base, { vx: rnd(-8, 8), vy: -rnd(20, 45), life: rnd(2, 4.5) });
     case 'wisp': return Object.assign(base, { vx: rnd(-6, 6), vy: -rnd(8, 16) });
     case 'drip': return Object.assign(base, { vx: 0, vy: 0, life: rnd(1.5, 3) });
@@ -13017,7 +13154,10 @@ function ambSpawn(k, vx0, vy0, vw, vh, anywhere) {
 }
 function updateAmbient(dt) {
   const m = G.map; if (!m) return;
-  const cfg = AMB[m.def.theme] || (m.def.kind === 'town' ? AMB.town : null);
+  let cfg = AMB[m.def.theme] || (m.def.kind === 'town' ? AMB.town : null);
+  { const RS = regionStyle(m);   /* v381: \uace0\uc7a5\ub9c8\ub2e4 \ub5a0\ub2e4\ub2c8\ub294 \uac83\uc774 \ub2e4\ub974\ub2e4 \u2014 \ub9c8\uc744\uc740 \ud1b5\uc9f8\ub85c, \uadf8 \uace0\uc7a5 \ub4e4\ud310\uc5d0\ub294 \ud55c \uac00\uc9c0\ub97c \uc11e\ub294\ub2e4 */
+    if (RS && RS.amb && m.def.theme !== 'snow') cfg = RS.amb;
+    else if (RS && RS.field && RS.sig && cfg && !['snow', 'canyon'].includes(m.def.theme)) cfg = m._ambCfg || (m._ambCfg = { n: cfg.n + 3, kinds: cfg.kinds.concat([RS.sig]) }); }
   if (!cfg) { G.amb.length = 0; return; }
   if (G.ambMap !== G.mapId) { G.ambMap = G.mapId; G.amb = []; }
   const z = G.cam.zoom || 1, vw = VW / z, vh = VH / z, vx0 = G.cam.x, vy0 = G.cam.y;
@@ -13026,7 +13166,7 @@ function updateAmbient(dt) {
   G.ambFresh = false;
   for (const a of G.amb) {
     a.t += dt;
-    a.x += (a.vx + Math.sin(a.t * 1.7 + a.ph) * (a.k === 'butterfly' ? 30 : a.k === 'firefly' ? 14 : 8)) * dt;
+    a.x += (a.vx + Math.sin(a.t * 1.7 + a.ph) * (a.k === 'butterfly' ? 30 : a.k === 'firefly' ? 14 : a.k === 'gull' ? 0 : 8)) * dt;
     a.y += (a.vy + (a.k === 'butterfly' ? Math.cos(a.t * 2.3 + a.ph) * 20 : 0)) * dt;
   }
   G.amb = G.amb.filter(a => a.t < a.life && a.x > vx0 - 60 && a.x < vx0 + vw + 60 && a.y > vy0 - 60 && a.y < vy0 + vh + 60);
@@ -13042,6 +13182,8 @@ function drawAmbient() {
       case 'snow': ctx.fillStyle = '#ffffff'; ctx.fillRect(a.x, a.y, 2.4 * a.s, 2.4 * a.s); break;
       case 'petal': ctx.save(); ctx.translate(a.x, a.y); ctx.rotate(a.t * 3 + a.ph); ctx.scale(1, Math.cos(a.t * 4 + a.ph)); ctx.fillStyle = '#f8c8d6'; ctx.fillRect(-2.5, -1.5, 5, 3); ctx.restore(); break;
       case 'bambooLeaf': case 'leaf': ctx.save(); ctx.translate(a.x, a.y); ctx.rotate(a.t * 2 + a.ph); ctx.scale(1, Math.cos(a.t * 3 + a.ph)); ctx.fillStyle = a.k === 'leaf' ? '#c8943a' : '#9ab860'; ctx.fillRect(-4, -1, 8, 2.4); ctx.restore(); break;
+      case 'maple': case 'ginkgo': case 'canola': ctx.save(); ctx.translate(a.x, a.y); ctx.rotate(a.t * 2.4 + a.ph); ctx.scale(1, Math.cos(a.t * 3.2 + a.ph)); ctx.fillStyle = a.k === 'maple' ? (a.ph > 3 ? '#d8542a' : '#e88a2c') : a.k === 'ginkgo' ? '#ecc23a' : '#f6dc4a'; if (a.k === 'canola') ctx.fillRect(-2, -1.5, 4, 3); else { ctx.fillRect(-3.5, -2, 7, 4); ctx.fillRect(-1, 2, 2, 2); } ctx.restore(); break;
+      case 'gull': { const f = Math.sin(a.t * 7 + a.ph), s = 5 * a.s, d = a.vx < 0 ? -1 : 1; ctx.fillStyle = 'rgba(20,24,30,.16)'; ctx.fillRect(a.x - s, a.y + 46, s * 2, 2); ctx.strokeStyle = '#f4f6f8'; ctx.lineWidth = 1.8; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(a.x - s, a.y - f * s * .7); ctx.lineTo(a.x, a.y); ctx.lineTo(a.x + s, a.y - f * s * .7); ctx.stroke(); ctx.fillStyle = '#e8b83a'; ctx.fillRect(a.x + d * 1.5, a.y - .5, 2, 1.2); break; }
       case 'butterfly': { const f = Math.abs(Math.sin(a.t * 14)); ctx.fillStyle = a.ph > 3 ? '#fff2a8' : '#ffffff'; ctx.fillRect(a.x - 3 * f, a.y - 1, 2.4 * f + .5, 2.4); ctx.fillRect(a.x + .6, a.y - 1, 2.4 * f + .5, 2.4); ctx.fillStyle = '#3a2a1a'; ctx.fillRect(a.x - .4, a.y - 1, 1, 3); break; }
       case 'firefly': HD.light(a.x, a.y, 7 + Math.sin(a.t * 5 + a.ph) * 2, '#d8ff7a', fade * (.5 + Math.sin(a.t * 4 + a.ph) * .4)); break;
       case 'ember': HD.light(a.x, a.y, 5 * a.s, '#ff9a3a', fade * .9); break;
@@ -13064,7 +13206,7 @@ draw = function () {
   _draw230();
   if (!G.map || !G.player || G.voyage) return;
   drawAmbient();
-  const tint = THEME_GRADE[G.map.def.theme];
+  const RS381 = regionStyle(G.map), tint = (RS381 && RS381.grade) || THEME_GRADE[G.map.def.theme];
   ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
   if (tint) { ctx.fillStyle = tint; ctx.fillRect(0, 0, cv.width, cv.height); }
   if (!(G.map.def.kind === 'cave' || G.map.def.kind === 'dungeon')) { const w = cv.width, h = cv.height, gr = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * .45, w / 2, h / 2, Math.max(w, h) * .75); gr.addColorStop(0, 'rgba(0,0,0,0)'); gr.addColorStop(1, 'rgba(10,6,2,.22)'); ctx.fillStyle = gr; ctx.fillRect(0, 0, w, h); }
@@ -14549,38 +14691,96 @@ musicKeyFor = function () {
    ============================================================ */
 const easeOutC = k => 1 - Math.pow(1 - k, 3), easeInOut = k => k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
 const DIRV = [[0, 1], [0, -1], [-1, 0], [1, 0]];
-const REST_BASE = [.5, -2.6, -1.2, 1.2];   /* drawWeapon angle at rest per facing (tip = ang - \u03c0/2) */
+const REST_BASE = [.5, -2.6, -1.2, 1.2];   /* \uc26c\ub294 \uc790\uc138\uc758 \ub0a0 \ub05d \ubc29\ud5a5 (\ubcf4\ub294 \ucabd\ub9c8\ub2e4) \u2014 v381: \uadf8\ub9bc \ubb34\uae30 \uae30\uc900 */
 /* keyframes: [k, angle offset from rest (right-facing, + = clockwise), forward px, flags] \u2014 t: trail from previous key */
 const MOTIONS = {
   w1: { keys: [[0, 0, 0], [.3, -1.9, -2], [.48, 1.45, 6, 't'], [.64, 1.6, 5], [1, 0, 0]], trail: 'wide' },
   w2: { keys: [[0, 0, 0], [.28, 1.55, -1], [.46, -2.1, 5, 't'], [.62, -2.3, 4], [1, 0, 0]], trail: 'wide' },
   w3: { keys: [[0, 0, 0], [.36, 2.97, -3], [.56, -.45, 9, 't'], [.72, -.6, 7], [1, 0, 0]], trail: 'heavy', twist: 1 },
-  s1: { keys: [[0, 0, 0], [.3, .1, -9], [.45, 0, 18, 'p'], [.62, 0, 16], [1, 0, 0]] },
   t1: { keys: [[0, 0, 0], [.22, -.7, -1], [.4, 1.1, 3, 't'], [.55, 1.15, 2], [1, 0, 0]], trail: 'thin' },
   t2: { keys: [[0, 0, 0], [.22, 1.2, -1], [.4, -.8, 3, 't'], [.55, -.85, 2], [1, 0, 0]], trail: 'thin' },
   t3: { keys: [[0, 0, 0], [.15, -1.3, 0], [.32, 1.2, 3, 't'], [.42, 1.25, 2], [.5, -.3, 1], [.66, 1.9, 4, 't'], [.76, 1.95, 3], [1, 0, 0]], trail: 'thin' },
-  cast: { keys: [[0, 0, 0], [.2, -.55, -1], [.34, -.1, 5], [.6, -.05, 4], [1, 0, 0]], cast: .26 },
-  fan: { keys: [[0, 0, 0], [.18, -1.2, -1], [.36, .6, 4, 't'], [.55, .65, 3], [1, 0, 0]], trail: 'gold', cast: .3, fan: 1 },
-  geum: { keys: [[0, 0, 0], [.14, .95, 2], [.8, .95, 2], [1, 0, 0]], cast: .26, geum: 1 },
+  cast: { keep: 1, keys: [[0, 0, 0], [.2, -.55, -1], [.34, -.1, 5], [.6, -.05, 4], [1, 0, 0]], cast: .26 },
+  fan: { keep: 1, keys: [[0, 0, 0], [.18, -1.2, -1], [.36, .6, 4, 't'], [.55, .65, 3], [1, 0, 0]], trail: 'gold', cast: .3, fan: 1 },
+  geum: { keep: 1, keys: [[0, 0, 0], [.14, .95, 2], [.8, .95, 2], [1, 0, 0]], cast: .26, geum: 1 },
+  /* v381 \ubb34\uae30\ubcc4 \ubaa8\uc158 \u2014 \uadf8\ub9bc\ub9cc \ub2e4\ub974\ub2e4 (\ud310\uc815\u00b7\ud53c\ud574\u00b7\uacf5\uaca9 \uc18d\ub3c4\ub294 \uadf8\ub300\ub85c)
+     abs: \uac01\ub3c4\ub97c '\uc624\ub978\ucabd\uc744 \ubcfc \ub54c \ub0a0 \ub05d\uc774 \uac00\ub9ac\ud0a4\ub294 \ubc29\ud5a5'\uc73c\ub85c \uc801\ub294\ub2e4 (0 \uc55e \u00b7 -1.57 \uc704 \u00b7 1.57 \uc544\ub798 \u00b7 \u00b13.14 \ub4a4), 'R' = \uadf8 \ubb34\uae30\uc758 \uc26c\ub294 \uc790\uc138 */
+  /* \ub300\uac80: \ud06c\uac8c \ub0b4\ub824\ucc0d\uae30 \u2192 \ud06c\uac8c \uc62c\ub824\ubca0\uae30 \u2192 \ud55c \ubc14\ud034 \ud68c\uc804\ubca0\uae30 */
+  g1: { abs: 1, keys: [[0, 'R', 0], [.42, -2.0, -4], [.6, 1.15, 10, 't'], [.78, 1.3, 8], [1, 'R', 0]], trail: 'great', twist: 1, slow: 1.18, hit: 'dust' },
+  g2: { abs: 1, keys: [[0, 'R', 0], [.38, 2.3, -3], [.58, -2.3, 8, 't'], [.74, -2.5, 6], [1, 'R', 0]], trail: 'great', twist: 1, slow: 1.18 },
+  g3: { abs: 1, keys: [[0, 'R', 0], [.28, 2.8, -3], [.66, -3.8, 7, 't'], [.8, -4.1, 6], [1, 'R-', 0]], trail: 'great', twist: 1, slow: 1.25, hit: 'ring' },
+  /* \ub3c4\ub07c: \uc218\uc9c1 \ucc0d\uae30 \u2192 \ub0ae\uac8c \ud6c4\ub824\uce58\uae30 \u2192 \ub450 \uc190\uc73c\ub85c \ub0b4\ub824\ucc0d\uae30(\ub545\uc774 \uc6b8\ub9b0\ub2e4) */
+  a1: { abs: 1, keys: [[0, 'R', 0], [.36, -1.9, -3], [.5, 1.0, 7, 't'], [.6, 1.2, 6], [.74, .95, 5], [1, 'R', 0]], trail: 'chop', hit: 'dust' },
+  a2: { abs: 1, keys: [[0, 'R', 0], [.3, 2.7, -2], [.47, -.3, 6, 't'], [.6, -.5, 5], [1, 'R', 0]], trail: 'chop' },
+  a3: { abs: 1, keys: [[0, 'R', 0], [.2, 1.5, -1], [.44, -2.3, -5], [.58, 1.2, 10, 't'], [.76, 1.3, 8], [1, 'R', 0]], trail: 'heavy', twist: 1, slow: 1.18, hit: 'quake' },
+  /* \ucc3d: \ucc0c\ub974\uae30 \u2192 \uc774\ub2e8 \ucc0c\ub974\uae30 \u2192 \uae38\uac8c \ud729\uc4f8\uae30 */
+  s1: { abs: 1, keys: [[0, 'R', 0], [.3, .12, -9], [.45, 0, 18, 'p'], [.62, 0, 16], [1, 'R', 0]] },
+  s2: { abs: 1, keys: [[0, 'R', 0], [.18, .08, -7], [.3, 0, 15, 'p'], [.42, .06, 3], [.56, -.05, 20, 'p'], [.72, 0, 16], [1, 'R', 0]] },
+  ss: { abs: 1, keys: [[0, 'R', 0], [.36, 2.5, -3], [.56, -.7, 8, 't'], [.72, -.85, 6], [1, 'R', 0]], trail: 'long', twist: 1, slow: 1.15 },
+  /* \ube44\uac1d\uc774 \uac80\uc744 \ub4e4\uba74: \ub2e8\uac80\ubcf4\ub2e4 \ud06c\uac8c, \ubb34\uc0ac\ubcf4\ub2e4 \ube60\ub974\uac8c \u2014 \uc0ac\uc120 \u2192 \uc5ed\uc0ac\uc120 \u2192 \ucc0c\ub974\uace0 \ubca0\uae30 */
+  q1: { abs: 1, keys: [[0, 'R', 0], [.24, -1.6, -1], [.42, .9, 5, 't'], [.56, 1.05, 4], [1, 'R', 0]], trail: 'mid' },
+  q2: { abs: 1, keys: [[0, 'R', 0], [.24, 1.4, -1], [.42, -1.3, 5, 't'], [.56, -1.45, 4], [1, 'R', 0]], trail: 'mid' },
+  q3: { abs: 1, keys: [[0, 'R', 0], [.16, .15, -5], [.3, 0, 13, 'p'], [.44, -1.5, 2], [.62, 1.0, 6, 't'], [.76, 1.15, 5], [1, 'R', 0]], trail: 'mid' },
+  /* \uc9c0\ud321\uc774: \ub4a4\ub85c \uc816\ud614\ub2e4 \uc55e\uc73c\ub85c \uaca8\ub214 \u2192 \uc544\ub798\uc5d0\uc11c \uccd0\uc62c\ub9bc (\uae30\uc6b4\uc740 \uc9c0\ud321\uc774 \ub05d\uc5d0\uc11c) */
+  staff: { abs: 1, keys: [[0, 'R', 0], [.24, -2.05, -2], [.4, -.3, 7], [.62, -.36, 6], [1, 'R', 0]], cast: .3, staff: 1 },
+  staff2: { abs: 1, keys: [[0, 'R', 0], [.22, .55, -1], [.4, -.7, 6], [.62, -.64, 5], [1, 'R', 0]], cast: .3, staff: 1 },
+  /* \ubd80\ucc44: \ubc18\ub300\ub85c \ubd80\uce58\uae30 / \ubc29\uc220\uac00\uac00 \ubd80\ucc44\ub97c \ub4e4\uba74 \ubcf4\ub78f\ube5b */
+  fan2: { keep: 1, keys: [[0, 0, 0], [.18, .9, -1], [.36, -.9, 4, 't'], [.55, -.95, 3], [1, 0, 0]], trail: 'gold', cast: .3, fan: 1 },
+  fanS: { keep: 1, keys: [[0, 0, 0], [.18, -1.2, -1], [.36, .6, 4, 't'], [.55, .65, 3], [1, 0, 0]], trail: 'violet', cast: .3, fan: 1 },
+  fanS2: { keep: 1, keys: [[0, 0, 0], [.18, .9, -1], [.36, -.9, 4, 't'], [.55, -.95, 3], [1, 0, 0]], trail: 'violet', cast: .3, fan: 1 },
   skill: { keys: [[0, 0, 0], [.35, -1.7, -2], [.55, .9, 5, 't'], [.7, 1, 4], [1, 0, 0]], trail: 'wide', big: 1 },
-  skillCast: { keys: [[0, 0, 0], [.4, -1.5, -2], [.6, -.2, 5], [1, 0, 0]], big: 1, cast: .5 }
+  skillCast: { keep: 1, keys: [[0, 0, 0], [.4, -1.5, -2], [.6, -.2, 5], [1, 0, 0]], big: 1, cast: .5 }
+};
+/* v381 \uac01\ub3c4\ub97c \ud55c \uac00\uc9c0 \ub73b\uc73c\ub85c \ub9de\ucd98\ub2e4: \ub0a0 \ub05d\uc774 \uc2e4\uc81c\ub85c \uac00\ub9ac\ud0a4\ub294 \ubc29\ud5a5.
+   \uc804\uc5d0\ub294 \uadf8\ub9bc \ubb34\uae30(\uac00\ubc29 \uadf8\ub9bc\uc744 \uc190\uc5d0 \uc954 \uac83)\uac00 \ubaa8\uc158\uc774 \uc0dd\uac01\ud55c \ubc29\ud5a5\ubcf4\ub2e4 90\u00b0 \ub3cc\uc544\uac00 \uc788\uc5b4\uc11c, \ucc3d \ucc0c\ub974\uae30\uac00 \ub545\uc744 \ucc0c\ub974\uace0 \ubca0\uae30 \uada4\uc801\uc774 \uce7c\uacfc \ub530\ub85c \ub180\uc558\ub2e4.
+   \u00b7 \ubaa8\uc158\uc740 '\uc624\ub978\ucabd\uc744 \ubcfc \ub54c'\ub85c \uc801\uace0, \uc544\ub798\u00b7\uc704\ub97c \ubcfc \ub54c\ub294 \ud1b5\uc9f8\ub85c 90\u00b0 \ub3cc\ub9b0\ub2e4 (\ucc0c\ub974\uae30\uac00 \ubcf4\ub294 \ucabd\uc73c\ub85c \ub098\uac04\ub2e4)
+   \u00b7 \uc61b \ubaa8\uc158(w\u00b7t\u00b7skill)\uc740 \uc6d0\ub798 \uc758\ub3c4\ud55c \ubc29\ud5a5\uc73c\ub85c \ub3cc\ub824 \ub193\uace0, \ubd80\ucc44\u00b7\uc545\uae30\u00b7\ub9e8\uc190 \uc220\ubc95(rel)\uc740 \uc608\uc804 \uc2dd \uadf8\ub300\ub85c \ub454\ub2e4
+   \u00b7 \uc26c\ub294 \uc790\uc138: \uac80\u00b7\ub300\uac80\u00b7\ub3c4\ub07c\u00b7\ub2e8\uac80\uc740 \uc608\uc804\ucc98\ub7fc \ub298\uc5b4\ub728\ub9ac\uace0, \ucc3d\uacfc \uc9c0\ud321\uc774\ub294 \uc138\uc6cc \ub4e0\ub2e4 */
+const FACE_ROT = [Math.PI / 2, -Math.PI / 2, 0, 0];
+const REST_UP = { staff: [-1.4, -1.75, 0, -1.4], spear: [-1.3, -1.85, 0, -1.15] };
+const restTip = (wt, d) => REST_UP[wt] ? REST_UP[wt][d] : REST_BASE[d];
+for (const M of Object.values(MOTIONS)) {
+  if (M.abs) continue;
+  if (M.keep) { M.rel = 1; continue; }
+  const n = M.keys.length, off = REST_BASE[3] - Math.PI / 2;
+  M.keys = M.keys.map((k, i) => { const c = k.slice(); c[1] = (i === 0 || i === n - 1) && k[1] === 0 ? 'R' : off + k[1]; return c; });
+  M.abs = 1;
+}
+/* \uc774 \ubb34\uae30\u00b7\uc774 \ubc29\ud5a5\uc5d0\uc11c \uc4f8 \ud0a4: 'R' = \uc26c\ub294 \uc790\uc138, 'R-' = \ud55c \ubc14\ud034 \ub3cc\uc544 \uc26c\ub294 \uc790\uc138 */
+function motionKeys(M, wt, d) {
+  if (M.rel) return M.keys;
+  const c = M._k || (M._k = {}), key = (wt || '-') + d, r = restTip(wt, d) - FACE_ROT[d];
+  return c[key] || (c[key] = M.keys.map(k => k[1] === 'R' ? [k[0], r, k[2], k[3]] : k[1] === 'R-' ? [k[0], r - TAU, k[2], k[3]] : k));
+}
+/* \uada4\uc801 \ud55c \uc904\uc758 \uad75\uae30\u00b7\ubc18\uc9c0\ub984 (\ubb34\uae30 \uae38\uc774\uc5d0 \ub9de\ucd98\ub2e4) */
+const TRAILS = {
+  wide: { R: 27, W: 5.5 }, heavy: { R: 34, W: 8 }, gold: { R: 24, W: 3.5, col: '#ffe38a' }, violet: { R: 24, W: 3.5, col: '#c9a2ff' }, thin: { R: 18, W: 2.4, from: .45 },
+  great: { R: 39, W: 9.5 }, chop: { R: 25, W: 7.5, from: .3 }, long: { R: 46, W: 4.2 }, mid: { R: 24, W: 3.6, from: .3 }
 };
 function motionKind(e, skill) {
-  const wt = e.s?.wt, j = e.job;
+  const wt = e.s?.wt, j = e.job, c = e._combo || 0;
   if (skill) return JOBS[j]?.magic ? 'skillCast' : 'skill';
-  if (j === 'shaman') return 'cast';
-  if (j === 'taoist') return wt === 'geum' ? 'geum' : wt === 'fan' ? 'fan' : 'cast';
-  if (j === 'thief') return ['t1', 't2', 't3'][e._combo];
-  if (wt === 'spear') return e._combo === 2 ? 'w3' : 's1';
-  if (wt === 'staff' || wt === 'fan') return 'cast';
-  return ['w1', 'w2', 'w3'][e._combo];
+  switch (wt) {
+    case 'geum': return 'geum';
+    case 'fan': return (j === 'shaman' ? ['fanS', 'fanS2', 'fanS'] : ['fan', 'fan2', 'fan'])[c];
+    case 'staff': return ['staff', 'staff2', 'staff'][c];
+    case 'spear': return ['s1', 's2', 'ss'][c];
+    case 'greatsword': return ['g1', 'g2', 'g3'][c];
+    case 'axe': return ['a1', 'a2', 'a3'][c];
+    case 'dagger': return ['t1', 't2', 't3'][c];
+    case 'sword': return (j === 'thief' ? ['q1', 'q2', 'q3'] : ['w1', 'w2', 'w3'])[c];
+  }
+  if (j === 'shaman' || j === 'taoist') return 'cast';
+  if (j === 'thief') return ['t1', 't2', 't3'][c];
+  return ['w1', 'w2', 'w3'][c];
 }
 function startMotion(e, skill) {
   if (!skill) { e._combo = G.time - (e._lastSwing || -9) > 1.6 ? 0 : ((e._combo ?? -1) + 1) % 3; e._lastSwing = G.time; }
   const kind = motionKind(e, skill), M = MOTIONS[kind], aspd = e.s?.aspd || .6;
   let dur = skill ? .42 : clamp(aspd * .8, .22, .4);
   if (kind === 'w3') dur = Math.min(dur * 1.18, Math.max(.26, aspd * .95));
-  if (kind === 't3') dur = Math.min(dur * 1.1, aspd * .95);
+  if (kind === 't3' || kind === 'q3' || kind === 's2') dur = Math.min(dur * 1.1, aspd * .95);
+  if (M.slow) dur = Math.min(dur * M.slow, Math.max(.26, aspd * .95));   /* \ud070 \ubb34\uae30\ub294 \uc870\uae08 \ub354 \uae38\uac8c \u2014 \ub2e4\uc74c \uacf5\uaca9\ubcf4\ub2e4 \uae38\uc5b4\uc9c0\uc9c0\ub294 \uc54a\ub294\ub2e4 */
   e._m = { t0: G.time, dur, kind, M };
   return e._m;
 }
@@ -14657,25 +14857,25 @@ drawHeldWeapon = function (e, wt) {
 function drawHeldWeapon300(e, wt, mir) {
   const mo = e._mo;
   const d = mir ? 3 : e.dir, base = REST_BASE[d], [vx, vy] = DIRV[d] || [0, 0];
-  const s = mo ? sampleKeys(mo.M.keys, mo.k) : { a: 0, f: 0 }, geum = mo?.M.geum;
+  const KEYS = mo ? motionKeys(mo.M, wt, d) : null, rel = !!(mo && mo.M.rel);
+  const s = mo ? sampleKeys(KEYS, mo.k) : { a: 0, f: 0 }, geum = mo?.M.geum;
   const hx = e.x + [8, -8, -6, 6][d] + vx * s.f, hy = e.y - 14 + vy * s.f * .6 - (geum ? 4 * Math.min(1, s.a) : 0);
-  const ang = base + s.a;
+  const face = rel ? base : FACE_ROT[d], ang = mo ? face + s.a : restTip(wt, d);   /* ang = \ub0a0 \ub05d\uc774 \uac00\ub9ac\ud0a4\ub294 \ubc29\ud5a5 */
   const plus = e.kind === 'player' ? e.s?.wPlus || 0 : 0, awk = e.kind === 'player' && e.s?.wAwk, rar = e.s?.wRarity || 0, wid = e.kind === 'player' ? e.s?.wId : null;
   /* trail: one clean arc while the blade is in a marked strike segment */
   const tr = mo?.M.trail;
   if (mo && tr) {
-    const keys = mo.M.keys, cur = s.seg, seg = keys[cur];
+    const keys = KEYS, cur = s.seg, seg = keys[cur];
     let from = null;
     if (seg && seg[3] === 't') from = keys[cur - 1][1];
     else if (seg && keys[cur - 1]?.[3] === 't' && s.q < .6) from = keys[cur - 2][1];
     if (from !== null) {
       const fade = seg[3] === 't' ? 1 : 1 - s.q / .6;
-      const R = tr === 'heavy' ? 34 : tr === 'wide' ? (wt === 'greatsword' ? 32 : 27) : tr === 'gold' ? 24 : 18;
-      const W = tr === 'heavy' ? 8 : tr === 'wide' ? 5.5 : tr === 'gold' ? 3.5 : 2.4;
-      const col = tr === 'gold' ? '#ffe38a' : awk ? '#ff9a5a' : rar >= 4 ? RARITY[rar].c : '#fff6d8';
-      const a0 = base + from - Math.PI / 2, a1 = ang - Math.PI / 2, span = a1 - a0, from2 = a0 + span * (tr === 'thin' ? .45 : .15);
+      const TR = TRAILS[tr] || TRAILS.thin, R = TR.R, W = TR.W;
+      const col = TR.col || (awk ? '#ff9a5a' : rar >= 4 ? RARITY[rar].c : '#fff6d8');
+      const a0 = face + from, a1 = ang, span = a1 - a0, from2 = a0 + span * (TR.from || .15);
       HD.add(() => {
-        ctx.lineCap = 'round'; const n = 12;
+        ctx.lineCap = 'round'; const n = clamp(Math.ceil(Math.abs(a1 - from2) / .2), 12, 40);
         for (let i = 0; i < n; i++) {
           const b0 = from2 + (a1 - from2) * i / n, b1 = from2 + (a1 - from2) * (i + 1) / n, w = (i + 1) / n;
           ctx.strokeStyle = hexA(col, .62 * w * fade); ctx.lineWidth = W * w * fade + .4;
@@ -14684,21 +14884,38 @@ function drawHeldWeapon300(e, wt, mir) {
       });
     }
   }
+  const angD = wid && ITEMS[wid] ? ang : ang + Math.PI / 2;   /* \uadf8\ub9bc \uc5c6\ub294 \ubb34\uae30(\ub3d9\ub8cc)\ub294 \uc704\ucabd\uc774 \ub0a0 \ub05d\uc774\ub77c 90\u00b0 \ub3cc\ub824 \uadf8\ub9b0\ub2e4 */
   /* fan opens at the start of the gesture */
   if (mo?.M.fan && wt === 'fan') {
     const open = mo.k < .16 ? .3 + .7 * easeOutC(mo.k / .16) : 1;
-    ctx.save(); ctx.translate(hx, hy); ctx.rotate(ang); ctx.scale(open, 1); ctx.rotate(-ang); ctx.translate(-hx, -hy);
-    drawWeapon(ctx, wt, hx, hy, ang, 0, rar, awk, wid); ctx.restore();
-  } else drawWeapon(ctx, wt, hx, hy, ang, 0, rar, awk, wid);
+    ctx.save(); ctx.translate(hx, hy); ctx.rotate(angD); ctx.scale(open, 1); ctx.rotate(-angD); ctx.translate(-hx, -hy);
+    drawWeapon(ctx, wt, hx, hy, angD, 0, rar, awk, wid); ctx.restore();
+  } else drawWeapon(ctx, wt, hx, hy, angD, 0, rar, awk, wid);
   /* spear thrust streak */
-  if (mo && mo.M.keys.some(k => k[3] === 'p') && s.seg === 2) { const tip = ang - Math.PI / 2; HD.add(() => { ctx.strokeStyle = `rgba(255,246,216,${.6 * (1 - s.q * .5)})`; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(hx + Math.cos(tip) * 26, hy + Math.sin(tip) * 26); ctx.lineTo(hx + Math.cos(tip) * 54, hy + Math.sin(tip) * 54); ctx.stroke(); }); }
+  if (mo && KEYS[s.seg] && KEYS[s.seg][3] === 'p') { const tip = ang; HD.add(() => { ctx.strokeStyle = `rgba(255,246,216,${.6 * (1 - s.q * .5)})`; ctx.lineWidth = 2.5; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(hx + Math.cos(tip) * 26, hy + Math.sin(tip) * 26); ctx.lineTo(hx + Math.cos(tip) * 54, hy + Math.sin(tip) * 54); ctx.stroke(); }); }
+  /* v381 \ub0b4\ub824\ucc0d\ub294 \uc21c\uac04\uc758 \ud759\uba3c\uc9c0\u00b7\ub545\uc6b8\ub9bc (\uadf8\ub9bc\ubfd0) */
+  if (mo && mo.M.hit && e._m && !e._m.fxDone) {
+    const hk = mo.M.keys.find(x => x[3] === 't'); if (hk && mo.k >= hk[0]) {
+      e._m.fxDone = 1; const wd = e.dir, [wx, wy] = DIRV[wd] || [0, 1], fx = e.x + wx * 30, fy = e.y + wy * 20 - (wd === 1 ? 8 : 0);
+      if (mo.M.hit === 'dust') burst(fx, fy, '#cdbb98', 5, 70);
+      else if (mo.M.hit === 'quake') { burst(fx, fy, '#cdbb98', 9, 110); addFx('ring', fx, fy, { col: '#e8d8b0', r: 30, dur: .28 }); if (e === G.player) G.shake = Math.max(G.shake || 0, 2.2); }
+      else if (mo.M.hit === 'ring') addFx('ring', e.x, e.y - 8, { col: awk ? '#ff9a5a' : rar >= 4 ? RARITY[rar].c : '#fff6d8', r: 44, dur: .3 });
+    }
+  }
+  /* v381 \uc9c0\ud321\uc774: \uae30\uc6b4\uc774 \uc190\uc774 \uc544\ub2c8\ub77c \uc9c0\ud321\uc774 \ub05d\uc5d0 \ubaa8\uc600\ub2e4\uac00 \ub098\uac04\ub2e4 */
+  if (mo && mo.M.staff && wt === 'staff') {
+    const rel = mo.M.cast, tipA = ang, tx = hx + Math.cos(tipA) * 37, ty = hy + Math.sin(tipA) * 37, colS = e.job === 'taoist' ? '#ffe38a' : '#c9a2ff';
+    const wxm = tx;   /* \uc67c\ucabd\uc744 \ubcfc \ub54c\ub294 \uadf8\ub9ac\ub294 \ud310 \uc790\uccb4\uac00 \ub4a4\uc9d1\ud600 \uc788\ub2e4 */
+    if (mo.k < rel) { const q = mo.k / rel; HD.light(wxm, ty, 5 + 11 * q, colS, .5 + .45 * q); }
+    else if (mo.k < rel + .18) HD.light(wxm, ty, 18 * (1 - (mo.k - rel) / .18), colS, .85);
+  }
   /* string pluck on the instrument */
   if (geum && mo.k > .24 && mo.k < .62) {
     const q = (mo.k - .24) / .38, amp = 2.2 * (1 - q), cx = hx + Math.cos(ang - Math.PI / 2) * 12, cy = hy + Math.sin(ang - Math.PI / 2) * 12;
     HD.add(() => { ctx.strokeStyle = `rgba(200,236,255,${.8 * (1 - q)})`; ctx.lineWidth = 1; for (let s2 = -1; s2 <= 1; s2++) { ctx.beginPath(); for (let i = 0; i <= 10; i++) { const u = i / 10 - .5, x = cx + Math.cos(ang - Math.PI / 2) * u * 22, y = cy + s2 * 2.5 + Math.sin(ang - Math.PI / 2) * u * 22 + Math.sin(i * 1.9 + G.time * 60) * amp; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke(); } });
     HD.light(cx, cy, 10 * (1 - q), '#bfe8ff', .8 * (1 - q));
   }
-  if (plus >= 10 && Math.random() < .35) weaponParticle(e, (mir ? 2 * e.x - hx : hx) + Math.cos(ang - Math.PI / 2) * 22 * (mir ? -1 : 1), hy + Math.sin(ang - Math.PI / 2) * 22);
+  if (plus >= 10 && Math.random() < .35) weaponParticle(e, (mir ? 2 * e.x - hx : hx) + Math.cos(ang) * 22 * (mir ? -1 : 1), hy + Math.sin(ang) * 22);
 }
 
 /* ---------- body ---------- */
@@ -14723,7 +14940,7 @@ drawHumanoid = function (e, t) {
   try { ctx.translate(e.x + vx * step, e.y + vy * step * .6); ctx.rotate(lean * side); ctx.scale(sx, sy); ctx.translate(-e.x, -e.y); _drawHumanoid300(e, t); }
   finally { ctx.restore(); e.atkAnim = a0; }
   /* spell gathering in front of the chest, released from the hand */
-  if (M.cast && !M.fan) {
+  if (M.cast && !M.fan && !(M.staff && e.s?.wt === 'staff')) {
     const rel = M.cast, col = job === 'taoist' ? '#ffe38a' : '#c9a2ff', h = handPos(e, 6 + (k < rel ? 0 : 10));
     if (k < rel) { const q = k / rel; HD.light(h.x, h.y, (4 + 10 * q) * (M.big ? 1.6 : 1), col, .45 + .45 * q); if (Math.random() < .35) addFx('castMote', h.x + rnd(-14, 14), h.y + rnd(-10, 10), { dur: .18, tx: h.x, ty: h.y, col }); }
     else if (k < rel + .15) HD.light(h.x, h.y, 16 * (1 - (k - rel) / .15), col, .8);
@@ -14934,7 +15151,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v380';
+const GAME_VER = 'v381';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -18779,7 +18996,7 @@ enhanceCost = function (it) {
    \u00b7 \uc704\uce58\ub9cc \ubc14\ub010\ub2e4 \u2014 \ub9d0 \uac78\uae30 \uac70\ub9ac(70)\u00b7\uc0c1\uc810 \ub0b4\uc6a9\uc740 \uadf8\ub300\ub85c
    ============================================================ */
 const SHOP_KINDS352 = ['shop', 'smith', 'tavern', 'premium', 'gamble', 'healer', 'trade'];
-const FRONT_GREEN352 = ['tree', 'pine', 'sakura', 'snowPine', 'tangerine'];
+const FRONT_GREEN352 = ['tree', 'pine', 'sakura', 'snowPine', 'tangerine', 'maple', 'ginkgo', 'willow', 'bamboo', 'cedar'];
 const isHouse352 = pr => pr.type === 'hanok' || pr.type === 'jhouse' || pr.type === 'jejuHouse';
 /* \ub9c8\uc744\uc744 \ub9cc\ub4e0 \uc9c1\ud6c4 (getMap): \uc8fc\uc778 \uc788\ub294 \uc9d1\uc758 \ub0a8\ucabd \ubb38 \uc55e\uc744 \uc815\ub9ac\ud558\uace0, \uc8fc\uc778\uc774 \uc124 \uc790\ub9ac\ub97c \uadf8 \uc55e \uce78\uc73c\ub85c \uc62e\uae34\ub2e4
    \u00b7 \ubb38 \uc55e 3\uce78 \u00d7 2\uc904\uc5d0 \uc2ec\uae34 \ub098\ubb34\ub294 \uce58\uc6b4\ub2e4 (\ubb38\uacfc \uc8fc\uc778\uc744 \uac00\ub9b0\ub2e4) \u2014 \ub09c\uc218\ub97c \uc4f0\uc9c0 \uc54a\uc73c\ubbc0\ub85c \ub9c8\uc744\uc758 \ub2e4\ub978 \ubc30\uce58\ub294 \uadf8\ub300\ub85c
@@ -20971,6 +21188,158 @@ const trBundleHTML = h => typeof h === 'string' && h.indexOf('\ud83e\uddf3') >= 
   };
   const _openModal380 = openModal; openModal = function () { const r = _openModal380.apply(this, arguments); dress(); return r; };
   const _refreshModal380 = refreshModal; refreshModal = function () { const r = _refreshModal380.apply(this, arguments); dress(); return r; };
+}
+
+/* ============================================================
+   98y_v381 (v381): \uce90\ub9ad\ud130 \ubc14\uafb8\uae30 \u00b7 \uc790\ub3d9\uc0ac\ub0e5 \uc90d\uae30/\uad74 \uc548 \ub4e4\uc5b4\uac00\uae30 \u00b7 \ubcbd \uc18d \ubaac\uc2a4\ud130
+   ============================================================ */
+
+/* ---------------- 1. \uce90\ub9ad\ud130 \ubc14\uafb8\uae30 ----------------
+   \ub85c\uadf8\uc544\uc6c3 \ub9d0\uace0\ub294 \uccab \ud654\uba74(\uce90\ub9ad\ud130 \uc120\ud0dd)\uc73c\ub85c \ub098\uac08 \uae38\uc774 \uc5c6\uc5c8\ub2e4 \u2192 \uc124\uc815 \ub9e8 \uc704\uc5d0 '\uce90\ub9ad\ud130 \ubc14\uafb8\uae30'
+   \uc800\uc7a5(\ub85c\uadf8\uc778 \uc911\uc774\uba74 \uc11c\ubc84\uc5d0\ub3c4) \u2192 \uccab \ud654\uba74. \ub85c\uadf8\uc778\uc740 \uadf8\ub300\ub85c \ub0a8\ub294\ub2e4 */
+GLYPH_ART.door = function (P) { P(2, 1, 8, 10, '#6b4526'); P(3, 2, 6, 9, '#a86d43'); P(3, 2, 6, 1, '#c88a58'); P(5, 2, 1, 9, '#8a5634'); P(7, 6, 1, 2, '#f3d68a'); P(1, 11, 10, 1, '#4a2e18'); };
+EMOJI_GLYPH['\ud83d\udeaa'] = 'door';
+function toTitleScreen() {
+  if (G._leaving) return; G._leaving = 1;
+  try { saveGame(true); } catch (e) { reportError(e); }
+  const go = () => { try { location.reload(); } catch (e) { } };
+  let done = false; const fin = () => { if (done) return; done = true; go(); };
+  try {
+    if (Cloud.on() && Cloud.user && !Cloud.st.conflict && !SV2.block) { toast('\uc800\uc7a5\ud558\uace0 \uccab \ud654\uba74\uc73c\ub85c \ub098\uac11\ub2c8\ub2e4\u2026', 'blue'); Cloud.push(SAVE_SLOT).then(fin, fin); setTimeout(fin, 2500); }
+    else setTimeout(fin, 150);
+  } catch (e) { setTimeout(fin, 150); }
+}
+{
+  const _set381 = MENU.set;
+  MENU.set = function (ctx) {
+    const r = _set381.apply(this, arguments); if (!Array.isArray(r) || typeof r[1] !== 'string') return r;
+    if (ctx && ctx.cl) {   /* \uacc4\uc815 \ucc3d: \ub85c\uadf8\uc544\uc6c3 \uc606\uc5d0\ub3c4 */
+      r[1] = r[1].replace('<button class="btn" data-cl="pw">', '<button class="btn" data-a="toTitle">\uce90\ub9ad\ud130 \ubc14\uafb8\uae30</button><button class="btn" data-cl="pw">');
+      return r;
+    }
+    if (ctx && ctx.sv) return r;
+    const p = G.player, who = p ? `${esc(p.name)} \u00b7 Lv.${p.lv} ${esc(JOBS[p.job].ranks[p.rank || 0])}` : '';
+    const row = `<div class="row" style="border-color:var(--line2)"><div class="ic">\ud83d\udeaa</div><div class="tx"><div class="t1">\uce90\ub9ad\ud130 \ubc14\uafb8\uae30</div><div class="t2">${who} \u2014 \uc800\uc7a5\ud558\uace0 \uccab \ud654\uba74(\uce90\ub9ad\ud130 \uc120\ud0dd)\uc73c\ub85c \ub098\uac11\ub2c8\ub2e4</div></div><button class="btn teal" data-a="toTitle">\ub098\uac00\uae30</button></div>`;
+    r[1] = row + r[1];
+    return r;
+  };
+  const _click381 = onModalClick;
+  onModalClick = function (e) {
+    const b = e.target.closest && e.target.closest('[data-a="toTitle"]');
+    if (b) { Sfx.click(); if (G.downT > 0) { toast('\uc4f0\ub7ec\uc9c4 \ub3d9\uc548\uc5d0\ub294 \ub098\uac08 \uc218 \uc5c6\uc5b4\uc694', 'red'); return; } b.disabled = true; toTitleScreen(); return; }
+    return _click381.apply(this, arguments);
+  };
+}
+
+/* ---------------- 2. \uc790\ub3d9\uc0ac\ub0e5 ----------------
+   \u2460 \ub5a8\uc5b4\uc9c4 \ubb3c\uac74: \uc90d\ub294 \ubc94\uc704(110, \uc790\ub3d9 \uc90d\uae30\ub97c \ub044\uba74 34) \ubc16\uc5d0 \ub5a8\uc5b4\uc9c0\uba74 \uadf8\ub0e5 \uc9c0\ub098\ucce4\ub2e4 \u2014 \uba40\ub9ac\uc11c \uc3d8\ub294 \uc9c1\uc5c5\uc740 \uac70\uc758 \ubabb \uc8fc\uc6e0\ub2e4
+      \u2192 \uc2f8\uc6c0\uc774 \uae09\ud558\uc9c0 \uc54a\uc73c\uba74 \ubb3c\uac74\ubd80\ud130 \uc8fc\uc6b0\ub7ec \uac04\ub2e4 (\uac00\ubc29\uc774 \ucc2c \uc885\ub958\ub294 \uac74\ub108\ub6f4\ub2e4)
+   \u2461 \ubaac\uc2a4\ud130\ub97c \ucad3\ub2e4 \uad74 \uc785\uad6c\u00b7\uc9c0\ub3c4 \ub05d\uc744 \ubc1f\uc544 \ub2e4\ub978 \uacf3\uc73c\ub85c \ub118\uc5b4\uac00 \ubc84\ub838\ub2e4 \u2192 \uc790\ub3d9\uc0ac\ub0e5\uc73c\ub85c \uac77\ub294 \ub3d9\uc548\uc5d0\ub294 \ub118\uc5b4\uac00\uc9c0 \uc54a\ub294\ub2e4
+      (\uc870\uc774\uc2a4\ud2f1\u00b7\ud654\uba74 \ud130\uce58\ub85c \uc9c1\uc811 \uac00\uba74 \ud3c9\uc18c\ucc98\ub7fc \ub118\uc5b4\uac04\ub2e4) */
+const AUTO_LOOT = { NEAR: 170, FAR: 460, GIVE_UP: 5 };
+function autoLootPick(p) {
+  const ign = p._lootIgn || (p._lootIgn = new Map());
+  let best = null, bd = AUTO_LOOT.FAR * AUTO_LOOT.FAR;
+  for (const d of G.drops) {
+    if (d.taken || d.z > 0 || d.warned || d.t > 112) continue;
+    const until = ign.get(d); if (until) { if (until > G.time) continue; ign.delete(d); }
+    const q = dist2(d.x, d.y, p.x, p.y); if (q < bd) { bd = q; best = d; }
+  }
+  return best ? { d: best, dist: Math.sqrt(bd) } : null;
+}
+function autoThreat(p) {   /* \uc9c0\uae08 \ub098(\ub610\ub294 \ub3d9\ub8cc)\ub97c \uce58\ub7ec \uc624\ub294 \ubaac\uc2a4\ud130\uac00 \uac00\uae4c\uc774 \uc788\ub098 */
+  for (const m of G.mobs) { if (m.hp <= 0 || m.dead || m.state !== 'chase' || !m.target || m.target.kind === 'mob') continue; if (dist2(m.x, m.y, p.x, p.y) < 210 * 210) return true; }
+  return false;
+}
+{
+  const _autoHunt381 = autoHunt;
+  autoHunt = function (p, dt) {
+    p._autoAt = G.time;
+    if (p !== G.player || G.map.def.safe || p.hp <= 0) return _autoHunt381.apply(this, arguments);
+    const L = p._loot;
+    const boss = G.mobs.some(m => m.boss && m.hp > 0 && (m.state === 'chase' || dist2(m.x, m.y, p.x, p.y) < 420 * 420));
+    const c = boss ? null : autoLootPick(p);
+    if (c && (c.dist < AUTO_LOOT.NEAR || !autoThreat(p))) {
+      if (!L || L.d !== c.d) p._loot = { d: c.d, t: 0, best: c.dist };
+      const S = p._loot; S.t += dt; if (c.dist < S.best - 4) { S.best = c.dist; S.t = Math.max(0, S.t - dt * 2); }
+      if (S.t > AUTO_LOOT.GIVE_UP) { (p._lootIgn || (p._lootIgn = new Map())).set(c.d, G.time + 30); p._loot = null; }   /* \ub2ff\uc744 \uc218 \uc5c6\ub294 \uc790\ub9ac */
+      else {
+        const bx = p.x, by = p.y;
+        moveToward(p, c.d.x, c.d.y + 4, p.s.move * (p.slowT > 0 ? .6 : 1), dt, 'path');
+        if (Math.abs(p.x - bx) + Math.abs(p.y - by) < .05) S.t += dt * 2;
+        return true;
+      }
+    } else p._loot = null;
+    return _autoHunt381.apply(this, arguments);
+  };
+  const autoWalking = () => { const p = G.player; return !!(p && p.auto && !Input.moveTo && G.time - (p._autoAt ?? -9) < .3); };
+  const _travelExit381 = travelExit;
+  travelExit = function (e) { if (autoWalking()) return; return _travelExit381.apply(this, arguments); };
+  const _travelPortal381 = travelPortal;
+  travelPortal = function (pt) { if (autoWalking()) return; return _travelPortal381.apply(this, arguments); };
+}
+
+/* ---------------- 3. \ubcbd \uc18d \ubaac\uc2a4\ud130 ----------------
+   \u00b7 \ub0a0\uc544\ub2e4\ub2c8\ub294 \ubaac\uc2a4\ud130\ub294 \uc5b4\ub514\ub4e0 \uc124 \uc218 \uc788\uc5b4\uc11c \ub3d9\uad74 \ubcbd\u00b7\ubc14\uc704 \uc18d\uc73c\ub85c \ub4e4\uc5b4\uac14\ub2e4 (\uce7c\ub3c4 \ud0c4\ub3c4 \ub2ff\uc9c0 \uc54a\ub294\ub2e4)
+     \u2192 \ubcbd\u00b7\ubc14\uc704 \ud0c0\uc77c\uc5d0\ub294 \ubabb \ub4e4\uc5b4\uac04\ub2e4. \ub098\ubb34\u00b7\ub3cc\u00b7\ubb3c \uc704\ub294 \ucad3\uc544\uc62c \ub54c\ub9cc \ub118\uace0, \ud3c9\uc18c\uc5d0\ub294 \ub2e4\ub978 \ubaac\uc2a4\ud130\ucc98\ub7fc \ub545\uc5d0 \uba38\ubb38\ub2e4
+   \u00b7 \uc81c\uba4b\ub300\ub85c \ub5a0\ub3c4\ub294(erratic) \ubaac\uc2a4\ud130\ub294 \ucda9\ub3cc \uac80\uc0ac \uc5c6\uc774 \uc870\uae08\uc529 \ubc00\ub824 \ubcbd\uc5d0 \ubc15\ud614\ub2e4 \u2192 \uc124 \uc218 \uc5c6\ub294 \uc790\ub9ac\ub85c\ub294 \ubabb \uac04\ub2e4
+   \u00b7 \uadf8\ub798\ub3c4 \ubc15\ud78c \ubaac\uc2a4\ud130(\ubd84\uc2e0 \uc790\ub9ac \ubc14\uafb8\uae30, \uc608\uc804\ubd80\ud130 \ubc15\ud600 \uc788\ub358 \uac83)\ub294 \uac00\uc7a5 \uac00\uae4c\uc6b4 \ube48 \ub545\uc73c\ub85c \uaebc\ub0b8\ub2e4 */
+const HARD_T = new Set([T.WALL, T.ROCK]);
+function hardAt(m, px, py) { const tx = Math.floor(px / TILE), ty = Math.floor(py / TILE); if (!m.inb(tx, ty)) return true; const i = m.idx(tx, ty); if (m.opened && m.opened.has(i)) return false; return HARD_T.has(m.ground[i]); }
+function groundOk(e, x, y) {   /* \ub0a0\uac1c\uac00 \uc5c6\ub2e4\uace0 \uce58\uace0 \uc124 \uc218 \uc788\ub294 \uc790\ub9ac\uc778\uac00 */
+  const m = G.map, r = Math.min(e.r, 12);
+  if (x < r || y < 8 || x > m.pw - r || y > m.ph - 2) return false;
+  return !m.solidAt(x - r, y - 6) && !m.solidAt(x + r, y - 6) && !m.solidAt(x - r, y) && !m.solidAt(x + r, y);
+}
+{
+  const _canStand381 = canStand;
+  canStand = function (e, x, y) {
+    if (!e || e.kind !== 'mob' || !e.fly) return _canStand381(e, x, y);
+    const m = G.map, r = Math.min(e.r, 12);
+    if (x < r || y < 8 || x > m.pw - r || y > m.ph - 2) return false;
+    if (hardAt(m, x - r, y - 6) || hardAt(m, x + r, y - 6) || hardAt(m, x - r, y) || hardAt(m, x + r, y)) return false;
+    if (e.state === 'chase' || e.fleeT > 0 || e.kbx || e.kby || e._free) return true;   /* \ucad3\ub294 \uc911\uc5d0\ub294 \ub098\ubb34\u00b7\ubb3c \uc704\ub97c \ub118\ub294\ub2e4 */
+    return groundOk(e, x, y) || !groundOk(e, e.x, e.y);                                  /* \ud3c9\uc18c\uc5d0\ub294 \ub545\uc5d0\ub9cc (\uc774\ubbf8 \uac78\uccd0 \uc788\uc73c\uba74 \ube60\uc838\ub098\uc62c \uc218 \uc788\uac8c \ub454\ub2e4) */
+  };
+  function mobFreeSpot(mob) {   /* \uac00\uc7a5 \uac00\uae4c\uc6b4 \uc124 \uc218 \uc788\ub294 \uc790\ub9ac (\ud0c0\uc77c \uace0\ub9ac\ub97c \ub113\ud600 \uac00\uba70) */
+    const m = G.map, tx = Math.floor(mob.x / TILE), ty = Math.floor(mob.y / TILE);
+    let best = null, bd = 1e9;
+    for (let r = 0; r <= 10 && !best; r++) for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) {
+      if (Math.max(Math.abs(dx), Math.abs(dy)) !== r) continue;
+      const x = (tx + dx) * TILE + 16, y = (ty + dy) * TILE + 22; if (!groundOk(mob, x, y)) continue;
+      const q = dist2(x, y, mob.x, mob.y); if (q < bd) { bd = q; best = [x, y]; }
+    }
+    return best;
+  }
+  const _updateMob381 = updateMob;
+  updateMob = function (m, dt) {
+    if (m.dead || m.hp <= 0) return _updateMob381.apply(this, arguments);
+    const ox = m.x, oy = m.y, wasOk = m.fly ? canStand(m, ox, oy) : groundOk(m, ox, oy);
+    const r = _updateMob381.apply(this, arguments);
+    if (m.dead || m.hp <= 0 || m.action || (m.hop || 0) > 0) return r;
+    const ok = m.fly ? canStand(m, m.x, m.y) : groundOk(m, m.x, m.y);
+    if (!ok && wasOk) { m.x = ox; m.y = oy; return r; }           /* \uc124 \uc218 \uc5c6\ub294 \uc790\ub9ac\ub85c \ubc00\ub824 \ub4e4\uc5b4\uac14\ub2e4 \u2192 \ub418\ub3cc\ub9b0\ub2e4 */
+    /* \uc774\ubbf8 \ubc15\ud600 \uc788\ub2e4: \ub0a0\uc9d0\uc2b9\uc774 \uc26c\ub294 \uc911\uc778\ub370 \ub098\ubb34\u00b7\ubb3c \uc704\uc5d0 \ub5a0 \uc788\ub294 \uac83\ub3c4 \ud3ec\ud568 */
+    const idle = m.state !== 'chase' && !(m.fleeT > 0);
+    const stuck = !ok || (m.fly && idle && !groundOk(m, m.x, m.y));
+    if (!stuck) { m._stuckT = 0; m._out = null; return r; }
+    m._stuckT = (m._stuckT || 0) + dt;
+    if (m._stuckT < (ok ? .9 : .35)) return r;
+    const g = m._out || (m._out = mobFreeSpot(m)); if (!g) return r;
+    const d = Math.hypot(g[0] - m.x, g[1] - m.y);
+    if (m.fly && d > 6) { const st = Math.min(d, Math.max(70, m.spd || 70) * dt); m.x += (g[0] - m.x) / d * st; m.y += (g[1] - m.y) / d * st; m.moving = true; }   /* \ub0a0\uc9d0\uc2b9\uc740 \uc2a4\ub974\ub975 \ub0a0\uc544 \ub098\uc628\ub2e4 */
+    else { if (!m.fly && d > 6) { addFx('puff', m.x, m.y - 12, { col: '#d8d0c0', dur: .3, r: 18 }); addFx('puff', g[0], g[1] - 12, { col: '#d8d0c0', dur: .3, r: 18 }); } m.x = g[0]; m.y = g[1]; m._out = null; m._stuckT = 0; if (!groundOk(m, m.homeX, m.homeY)) { m.homeX = m.x; m.homeY = m.y; } }
+    return r;
+  };
+}
+
+/* ---------------- 4. \uace0\uc7a5\uc5d0 \ub4e4\uc5b4\uc124 \ub54c: \uc774\ub984 \uc544\ub798 \uadf8 \uace0\uc7a5 \ud55c \uc904 ---------------- */
+{
+  const _showBanner381 = showBanner;
+  showBanner = function (t, sub) {
+    try { const R = G.map && REGION[G.mapId]; if (R && R.tag && t === G.map.def.n) arguments[1] = R.tag + (/\ucc98\uc74c \ubc29\ubb38/.test(sub || '') ? ' \u00b7 \ucc98\uc74c \ubc29\ubb38' : ''); } catch (e) { }
+    return _showBanner381.apply(this, arguments);
+  };
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
