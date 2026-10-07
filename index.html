@@ -649,6 +649,113 @@ body.infield.hp-low .me{opacity:1}
 .plbar{height:5px;background:rgba(0,0,0,.45);margin-top:5px}
 .plbar i{display:block;height:100%;background:linear-gradient(90deg,#b3261e,#e8695a)}
 .plrules{width:100%;margin:8px 0;background:#120d09;color:#e8dcc0;border:1px solid var(--line2);border-radius:5px;padding:8px;font:11px/1.5 ui-monospace,Menlo,Consolas,monospace;resize:none;user-select:text;-webkit-user-select:text}
+
+/* ============================================================
+   v379 \d654 \ba74  \b9c8 \ac10 
+   ============================================================ */
+/* \d3f0 \c744  \ac00 \b85c \b85c  \b215 \d78c  \d654 \ba74 (\b192 \c774 \ac00  \b0ae \b2e4 ): \ba54 \b274  9\ac1c \ac00  \bb3c \c57d \b7 \ae30 \c220  \b2e8 \cd94 \c640  \acb9 \cce4 \b2e4  \2192  \c138 \b85c  \d654 \ba74 \cc98 \b7fc  \2630  \c548 \c73c \b85c  \c811 \b294 \b2e4  */
+@media (max-height:520px) and (min-width:701px){
+  #menuToggle{display:block;order:1;width:34px;height:34px;font-size:18px}
+  #topr{flex-direction:row;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start;width:176px}
+  #topr .gold{order:0;align-self:center}
+  #mini{order:2}
+  #menuBtns{display:none;position:absolute;right:calc(100% + 6px);top:0;background:rgba(22,16,12,.96);border:1px solid var(--line2);border-radius:10px;padding:6px;grid-template-columns:repeat(5,40px)!important;gap:6px;box-shadow:0 6px 18px rgba(0,0,0,.55)}
+  #menuBtns.open{display:grid}
+  #menuBtns .mb{width:40px;height:40px}
+  /* \d560  \c77c  \d55c  \c904 \c740  \ac00 \b85c  \d654 \ba74 \c5d0 \c11c \b3c4  \bcf4 \c778 \b2e4  (\c758 \b8b0 \b294  \c811 \b294 \b2e4 ) */
+  #tracker{display:block;padding:5px 12px 6px 8px}
+  #tracker .qt+.qt{display:none}
+  .bossfight #tracker{display:none}
+}
+/* \ccab  \d654 \ba74 : \ac00 \b85c \b85c  \b215 \d788 \ba74  \c81c \baa9 \c774  \c704 \b85c  \c798 \b838 \b2e4  \2192  \c67c \cabd  \c81c \baa9  \b7  \c624 \b978 \cabd  \c2dc \c791  \ce78  */
+@media (max-height:520px) and (min-width:560px){
+  #title{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,330px);grid-template-rows:1fr auto auto auto 1fr;column-gap:26px;row-gap:8px;align-items:center;justify-items:center;padding:10px max(22px,env(safe-area-inset-right)) 10px max(22px,env(safe-area-inset-left))}
+  #title h1{grid-column:1;grid-row:2;font-size:clamp(30px,7.2vw,60px);letter-spacing:6px;white-space:nowrap}
+  #tMusic{right:auto!important;left:max(12px,env(safe-area-inset-left))!important}
+  #title .sub{grid-column:1;grid-row:3;margin-top:0}
+  #title .hint{grid-column:1;grid-row:4}
+  #title .box{grid-column:2;grid-row:1 / -1;width:100%;max-height:100%;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;gap:6px}
+  #titleBox .slot{padding:6px 6px}
+}
+/* \ac00 \bc29 : \c7a5 \be44  \ce78 \c740  \b0ae \ace0  \b113 \ac8c (\adf8 \b9bc  \c606 \c5d0  \c774 \b984 ), \be48  \ce78 \c740  \c790 \b9ac  \c774 \b984 \b9cc  */
+.bag2 .eqgrid{gap:5px;margin-bottom:10px}
+.bag2 .eqs{flex-direction:row;justify-content:flex-start;gap:6px;min-height:42px;padding:4px 6px;text-align:left;font-family:inherit;font-size:10.5px;font-weight:700;line-height:1.25;color:inherit;overflow:hidden}
+.bag2 .eqs .ic{flex:none;line-height:1}
+.bag2 .eqs>span:not(.ic){min-width:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all}
+.bag2 div.eqs{justify-content:center;border-style:dashed;border-color:rgba(106,82,54,.75);background:rgba(20,14,10,.4)}
+.bag2 div.eqs .muted{display:none}
+.bag2 div.eqs>.l{display:block;font-size:11px;color:var(--dim);font-weight:700}
+/* \b113 \c740  \d654 \ba74 (\d3f0  \ac00 \b85c \b7 PC): \c67c \cabd  \c7a5 \be44  + \ace0 \b978  \bb3c \ac74  \c815 \bcf4 , \c624 \b978 \cabd  \ac00 \bc29  \2014  \c2a4 \d06c \b864  \c5c6 \c774  \d55c \b208 \c5d0  */
+@media (min-width:700px){
+  .win:has(.bag2){width:min(800px,100%);height:min(100%,580px)}
+  #mBody:has(>.bag2){flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-rows:auto minmax(0,1fr);column-gap:14px;overflow:hidden}
+  #mBody>.bag2{display:contents}
+  #mBody>.bag2>.bagL{grid-column:1;grid-row:1;min-width:0}
+  #mBody>.bag2>.bagR{grid-column:2;grid-row:1 / span 2;min-width:0;min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;padding-right:2px}
+  #mBody:has(>.bag2)>.itop{grid-column:1;grid-row:2;position:static;margin:0;padding:0;max-height:none;min-height:0;overflow-y:auto;background:none;border:0;box-shadow:none;overscroll-behavior:contain;touch-action:pan-y}
+  .bag2 .eqgrid{margin-bottom:8px}
+}
+/* \cc3d  \c81c \baa9  \adf8 \b9bc  */
+.wh b{display:flex;align-items:center;gap:8px;min-width:0}
+.wh b .wh-ic{flex:none;margin:0}
+.wh b img.pxg{width:20px;height:20px;margin:0 2px 0 0;vertical-align:0}
+/* \d3f0  \ac00 \b85c : \c7a5 \be44 \b294  \adf8 \b9bc \b9cc  \d55c  \c904 \b85c  \2014  \c544 \b798 \c5d0  \ace0 \b978  \bb3c \ac74  \c815 \bcf4 \ac00  \b4e4 \c5b4 \ac08  \c790 \b9ac \b97c  \b0a8 \ae34 \b2e4  */
+@media (max-height:520px) and (min-width:700px){
+  .bag2 .eqgrid{grid-template-columns:repeat(9,minmax(0,1fr));gap:4px}
+  .bag2 .eqs{min-height:36px;padding:2px;justify-content:center}
+  .bag2 button.eqs>span:not(.ic){display:none}
+  .bag2 div.eqs>.l{font-size:9px;letter-spacing:-.5px;white-space:nowrap}
+}
+
+/* \c120 \d0dd  \c0c1 \c790 : \d734 \b300 \d3f0  \ae30 \bcf8  \baa8 \c591 (\d770  \c0c1 \c790 ) \b300 \c2e0  \cc3d \acfc  \ac19 \c740  \c63b \ce60  \bc14 \d0d5  */
+.wb select{-webkit-appearance:none;appearance:none;background:#140e0a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23d9b25f'/%3E%3C/svg%3E") no-repeat right 10px center;color:var(--ink);border:1px solid var(--line2);border-radius:7px;padding:7px 28px 7px 10px;font-family:var(--ff);font-weight:700;line-height:1.3;max-width:100%;text-overflow:ellipsis}
+.wb select:focus-visible{outline:2px solid var(--gold2);outline-offset:1px}
+.wb select option{background:#1d150f;color:var(--ink)}
+/* \d3f0  \ac00 \b85c : \cc3d \c774  \d654 \ba74  \b192 \c774 \b97c  \af49  \c4f0 \b3c4 \b85d  \c5ec \bc31 \b7 \ba38 \b9ac \c904 \c744  \c904 \c778 \b2e4  */
+@media (max-height:520px){
+  #modal{padding:6px max(10px,env(safe-area-inset-right)) 6px max(10px,env(safe-area-inset-left))}
+  .wh{padding:6px 10px 6px 12px}
+  .wh b{font-size:16px}
+}
+/* \d3f0  \ac00 \b85c : \c2dc \c138  \b2e8 \cd94 \b294  \c0c1 \d0dc  \ce78  \c624 \b978 \cabd  \c704 \b85c  (\c67c \cabd  \c544 \b798  \c790 \b9ac \b294  \d560  \c77c  \c904 \c774  \c4f4 \b2e4 ) */
+@media (max-height:520px){
+  #tickerBtn{left:calc(max(8px,env(safe-area-inset-left)) + min(268px,58vw) + 8px);top:max(8px,env(safe-area-inset-top));bottom:auto}
+  #ticker{left:calc(max(8px,env(safe-area-inset-left)) + min(268px,58vw) + 8px);top:calc(max(8px,env(safe-area-inset-top)) + 26px);bottom:auto;width:min(300px,calc(100vw - 500px))}
+}
+/* PC \d070  \d654 \ba74 : \c0c1 \d0dc  \ce78 \b7 \b2e8 \cd94 \b7 \bbf8 \b2c8 \b9f5 \c774  \ae68 \c54c  \ac19 \c558 \b2e4  \2192  \d654 \ba74 \c774  \b109 \b109 \d558 \ba74  1.25\bc30  */
+@media (min-width:1200px) and (min-height:700px){
+  .pc #hud,.pc #topr,.pc #actions,.pc #chat,.pc #tickerBtn,.pc #ticker{zoom:1.25}
+}
+
+/* \d070  \c548 \b0b4  \ae00 : \b0b1 \b9d0  \ac00 \c6b4 \b370 \c11c  \c904 \c774  \b04a \aca8  \d55c  \ae00 \c790 \b9cc  \b2e4 \c74c  \c904 \b85c  \b5a8 \c5b4 \c9c0 \b358  \ac83  */
+#center .t,#center .s,.toast,#banner .s{word-break:keep-all;text-wrap:balance}
+/* \d3f0  \ac00 \b85c : \bcf4 \c2a4  \ccb4 \b825 \bc14 \ac00  \c67c \cabd  \c0c1 \d0dc  \ce78 \b7 \b3d9 \b8cc  \ce78  \c704 \b97c  \b36e \c5c8 \b2e4  \2192  \c0c1 \d0dc  \ce78 \acfc  \bbf8 \b2c8 \b9f5  \c0ac \c774 \b85c  */
+@media (max-height:520px) and (min-width:701px){
+  #bossbar{left:calc(max(8px,env(safe-area-inset-left)) + min(268px,58vw) + 14px);right:calc(max(8px,env(safe-area-inset-right)) + 190px);width:auto;transform:none;top:calc(max(8px,env(safe-area-inset-top)) + 28px)}
+  #bossbar .bn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #bossbar .bn small{display:none}
+  .bossfight #banner,.bossfight #zoneTag{display:none}
+}
+/* \d3f0  \ac00 \b85c : \c54c \b9bc \c740  \c704 \cabd \c73c \b85c  (\ac00 \c6b4 \b370  \d070  \ae00 \c528 \c640  \acb9 \ce58 \c9c0  \c54a \ac8c ), \c0c1 \d0dc  \ce78 \c740  \c870 \c774 \c2a4 \d2f1 \c744  \b36e \c9c0  \c54a \ac8c  */
+@media (max-height:520px){
+  #hud{max-height:calc(100% - 160px - env(safe-area-inset-bottom));overflow:hidden}
+  #center{top:66%}
+  #center .t{font-size:clamp(18px,3.1vw,25px)}
+  #center .s{font-size:clamp(12px,2vw,15px);margin-top:3px}
+  #center.boss .s{font-size:clamp(16px,2.6vw,21px);letter-spacing:3px}
+}
+@media (max-height:520px) and (min-width:701px){
+  #toasts{top:max(74px,21vh)}
+  .bossfight #toasts{top:max(96px,27vh)}
+}
+/* \c138 \b85c  \d654 \ba74 : \bcf4 \c2a4  \c774 \b984  \c904 \c774  \b450  \c904 \b85c  \b118 \ce58 \b358  \ac83  \2014  \ce6d \d638 \b294  \c811 \ace0  \d55c  \c904 \b85c  */
+#hud #bossbar .bn{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#hud #bossbar .bn small{display:none}
+/* \d3f0  \ac00 \b85c : \c774 \c57c \ae30 \b7 \c758 \b8b0  \c885 \c774 \ac00  \ae38 \c5b4 \b3c4  \c218 \b77d /\b2eb \ae30  \b2e8 \cd94 \b294  \b298  \bcf4 \c774 \ac8c  (\c2a4 \d06c \b864 \d574 \c57c  \b204 \b97c  \c218  \c788 \c5c8 \b2e4 ) */
+@media (max-height:520px){
+  #mBody>.bang~.btn.big:last-child,#mBody>.bang~.btn2:last-child{position:sticky;bottom:0;z-index:2;box-shadow:0 0 0 7px #1c140f,0 -10px 14px 6px rgba(28,20,15,.85)}
+  #mBody>.bang~.btn2:last-child{background:#1c140f}
+}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -702,7 +809,7 @@ body.infield.hp-low .me{opacity:1}
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v378</div>
+    <div class="sub">v379</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6440,7 +6547,7 @@ const MENU = {
   skill(ctx) {
     const p = G.player, sk = skillList(p);
     if (!sk.length) return ['\ud83d\udcd6 \uae30\uc220', `<div class="say">\uc9c1\uc5c5\uc744 \uc120\ud0dd\ud558\uba74 \uae30\uc220\uc744 \ubc30\uc6b8 \uc218 \uc788\uc5b4\uc694. Lv.5\uc5d0 \uccad\uc6d4\ucd0c \ucd0c\uc7a5 \ud55c\ubc31\uc218\ub97c \ucc3e\uc544\uac00\uc138\uc694.</div>`];
-    let h = `<div class="muted" style="margin-bottom:8px">\uae30\uc220\uc740 \ub808\ubca8\uacfc \uc2b9\uae09\uc5d0 \ub530\ub77c \uc5f4\ub9ac\uace0, \uc2b9\uae09\ud560 \ub54c\ub9c8\ub2e4 \uc774\ub984\uacfc \uc704\ub825\uc774 \uac15\ud574\uc9d1\ub2c8\ub2e4. (PC: \uc22b\uc790\ud0a4 1~4)</div>`;
+    let h = `<div class="muted" style="margin-bottom:8px">\uae30\uc220\uc740 \ub808\ubca8\uacfc \uc2b9\uae09\uc5d0 \ub530\ub77c \uc5f4\ub9ac\uace0, \uc2b9\uae09\ud560 \ub54c\ub9c8\ub2e4 \uc774\ub984\uacfc \uc704\ub825\uc774 \uac15\ud574\uc9d1\ub2c8\ub2e4.${IS_TOUCH ? '' : ' (PC: \uc22b\uc790\ud0a4 1~4)'}</div>`;
     sk.forEach((k, i) => {
       const un = skillUnlocked(p, i), req = i === 2 ? `1\ucc28 \uc2b9\uae09 (Lv.${PROMOTE_LV[0]})` : i === 3 ? `2\ucc28 \uc2b9\uae09 (Lv.${PROMOTE_LV[1]})` : `Lv.${k.lv}`;
       h += `<div class="row" style="${un ? '' : 'opacity:.55'}"><div class="ic">${skillIconHTML(k)}</div><div class="tx"><div class="t1">${k.names[p.rank]} <span class="muted">${k.names.filter((n, j) => j !== p.rank && n !== k.names[p.rank]).join(' \u2192 ')}</span></div><div class="t2">${esc(k.desc)}</div><div class="t3">MP ${skillMp(p, k)} \u00b7 \uc7ac\uc0ac\uc6a9 ${k.cd}\ucd08 \u00b7 ${un ? '\uc0ac\uc6a9 \uac00\ub2a5' : req + ' \ud544\uc694'}</div></div></div>`;
@@ -6532,6 +6639,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v379 \ud654\uba74 \ub2e4\ub4ec\uae30</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \u2014 \uc7a5\ube44 \uce78\uc744 \uc791\uac8c \uc904\uc774\uace0, \ud3f0\uc744 \uac00\ub85c\ub85c \ub215\ud788\uac70\ub098 PC\uc5d0\uc11c\ub294 \uc67c\ucabd \uc7a5\ube44 \u00b7 \uc624\ub978\ucabd \uac00\ubc29\uc73c\ub85c \ud55c\ub208\uc5d0 \ubd05\ub2c8\ub2e4. \ubb3c\uac74\uc744 \ub204\ub974\uba74 \uc815\ubcf4\uac00 \uc7a5\ube44 \uc544\ub798\uc5d0 \ub5a0\uc694.<br>\ud83d\udcf1 \ud3f0 \uac00\ub85c \u2014 \uba54\ub274 \ub2e8\ucd94\uac00 \ubb3c\uc57d\u00b7\uae30\uc220\uacfc \uacb9\uce58\ub358 \uac83\uc744 \u2630 \uc548\uc73c\ub85c \uc811\uc5c8\uace0, \uccab \ud654\uba74 \uc81c\ubaa9\uc774 \uc798\ub9ac\ub358 \uac83, \ubcf4\uc2a4 \uccb4\ub825\ubc14\uac00 \ub3d9\ub8cc \uce78\uc744 \ub36e\ub358 \uac83\uc744 \uace0\ucce4\uc2b5\ub2c8\ub2e4. \ud560 \uc77c \ud55c \uc904\ub3c4 \ubcf4\uc785\ub2c8\ub2e4.<br>\ud83d\udda5 PC \ud070 \ud654\uba74 \u2014 \uccb4\ub825\u00b7\uae30\uc220 \ub2e8\ucd94\u00b7\ubbf8\ub2c8\ub9f5\uc744 \uc870\uae08 \ud0a4\uc6e0\uc5b4\uc694.<br>\u2728 \ucc3d \uc81c\ubaa9\uacfc \uc124\uc815\u00b7\uc9c0\ub3c4\uc758 \uadf8\ub9bc\uc744 \uae30\uae30\ub9c8\ub2e4 \ub2ec\ub77c \ubcf4\uc774\ub358 \uc774\ubaa8\uc9c0 \ub300\uc2e0 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ud1b5\uc77c\ud588\uace0, \uc774\ub984 \ub4a4\uc5d0 '\uc740(\ub294)', '\uc744(\ub97c)' \ub85c \ub098\uc624\ub358 \uc5b4\uc0c9\ud55c \uc870\uc0ac\ub97c \ubc14\ub85c\uc7a1\uc558\uc2b5\ub2c8\ub2e4 (\uc608: \ubb34\uc0ac\ub294 \uc545\uae30\ub97c \uc4f8 \uc218 \uc5c6\uc5b4\uc694).</div>`;
     notes += `<div class="sep"></div><b>v378 \ud50c\ub808\uc774 \uae30\ub85d</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcca \uc5b4\ub514\uc11c \ub9ce\uc774 \uc4f0\ub7ec\uc9c0\uace0 \uc5b4\ub514\uae4c\uc9c0 \uac14\ub294\uc9c0\ub97c \ub9cc\ub4e0 \uc0ac\ub78c\uc5d0\uac8c \ubcf4\ub0c5\ub2c8\ub2e4 \u2014 \uac8c\uc784\uc744 \uace0\uce58\ub294 \ub370\ub9cc \uc501\ub2c8\ub2e4. \uce90\ub9ad\ud130 \uc774\ub984\u00b7\ub808\ubca8\u00b7\uc9c4\ud589 \uc0c1\ud669\u00b7\uc4f0\ub7ec\uc9c4 \uacf3\ub9cc \ubcf4\ub0b4\uace0, \uacc4\uc815\uc774\ub098 \ube44\ubc00\ubc88\ud638\ub294 \ubcf4\ub0b4\uc9c0 \uc54a\uc544\uc694. \uc124\uc815 \u2192 '\ud50c\ub808\uc774 \uae30\ub85d \ubcf4\ub0b4\uae30'\uc5d0\uc11c \ub04c \uc218 \uc788\uc2b5\ub2c8\ub2e4</div>`;
     notes += `<div class="sep"></div><b>v377 \ube44\uac1d\uc758 \ube44\ucf1c\uc11c\uae30</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf2c\ufe0f \ube44\uac1d\uc774 \ubaac\uc2a4\ud130\uc758 \uadfc\uc811 \ud3c9\ud0c0\ub97c 25% \ud655\ub960\ub85c \uc644\uc804\ud788 \ud53c\ud569\ub2c8\ub2e4 (\uc9c1\uc5c5\uc744 \uace0\ub978 \uc21c\uac04\ubd80\ud130). 1\ucc28 \uc2b9\uae09\ubd80\ud130\ub294 38%. \uc7a5\ud310\u00b7\ub3cc\uaca9\u00b7\ud0c4\ub9c9 \uac19\uc740 \ud328\ud134\uc740 \ud53c\ud574 \uc8fc\uc9c0 \uc54a\uc73c\ub2c8 \ubc1c\ub85c \ud53c\ud574\uc57c \ud574\uc694 \u2014 \ubb34\uc0ac\uac00 '\ub35c \uc544\ud504\uac8c \ub9de\ub294' \uc9c1\uc5c5\uc774\ub77c\uba74 \ube44\uac1d\uc740 '\uc548 \ub9de\ub294' \uc9c1\uc5c5\uc785\ub2c8\ub2e4<br>\u2764\ufe0f \uc0ac\ub0e5\ud130\uc5d0\uc11c\ub294 \uc67c\ucabd \uc704 \ub0b4 \uc0c1\ud0dc \uce78(\uccb4\ub825\u00b7\ub9c8\ub825\u00b7\uacbd\ud5d8\uce58)\ub3c4 \uc870\uae08 \uc605\uc5b4\uc9d1\ub2c8\ub2e4. \uccb4\ub825 \uacbd\uace0\uac00 \ub728\uba74 \ub2e4\uc2dc \ub610\ub837\ud574\uc838\uc694</div>`;
     notes += `<div class="sep"></div><b>v376 \uc605\uc5b4\uc9c4 \ucd94\uc801\uae30 \u00b7 \uccb4\ub825 \uacbd\uace0</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcdc \uc0ac\ub0e5\ud130\uc5d0\uc11c\ub294 \uc67c\ucabd \uc774\uc57c\uae30\u00b7\uc758\ub8b0 \ucd94\uc801\uae30\uac00 \uc605\uc5b4\uc9d1\ub2c8\ub2e4 (\uc2f8\uc6b0\ub294 \ub3d9\uc548\uc740 \ub354 \uc605\uac8c) \u2014 \ud654\uba74\uc744 \ub35c \uac00\ub824\uc694. \ub9c8\uc744\uc5d0\uc11c\ub294 \uadf8\ub300\ub85c \ub610\ub837\ud569\ub2c8\ub2e4<br>\u2764\ufe0f \uccb4\ub825\uc774 30% \uc544\ub798\ub85c \ub0b4\ub824\uac00\uba74 \ud654\uba74 \ud14c\ub450\ub9ac\uac00 \ubd89\uac8c \ub9e5\ubc15\uce69\ub2c8\ub2e4. 15% \uc544\ub798\uba74 \ub354 \ube60\ub974\uace0 \uc9d9\uac8c</div>`;
@@ -11224,7 +11332,7 @@ onObtainGear = function (p, it) {
   it._cmp = 1;
   if (canEquip(p, it)) return;
   const dlt = gearDelta(p, it); if (!dlt) return;
-  toast(`\u25b2 \uc9c0\uae08\ubcf4\ub2e4 \uc88b\uc740 ${ITEMS[it.id].name} \u2014 ${dlt} \u00b7 \uac00\ubc29(I)\uc5d0\uc11c \uc7a5\ucc29`, 'gold');
+  toast(`\u25b2 \uc9c0\uae08\ubcf4\ub2e4 \uc88b\uc740 ${ITEMS[it.id].name} \u2014 ${dlt} \u00b7 \uac00\ubc29${IS_TOUCH ? '' : '(I)'}\uc5d0\uc11c \uc7a5\ucc29`, 'gold');
   document.querySelector('.mb[data-m=bag]')?.classList.add('alert');
 };
 /* landing flourish */
@@ -14820,7 +14928,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v378';
+const GAME_VER = 'v379';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -20684,6 +20792,143 @@ onModalClick = function (e) {
   }
   return _onModalClick378(e);
 };
+
+/* ============================================================
+   98w_ui379 (v379): \ud654\uba74 \ub9c8\uac10
+   \u00b7 \uac00\ubc29: \uc7a5\ube44 \uce78\uacfc \uac00\ubc29 \uce78\uc744 \ub450 \ub369\uc5b4\ub9ac\ub85c \ub098\ub208\ub2e4 (\ub113\uc740 \ud654\uba74\uc5d0\uc11c\ub294 \uc88c\uc6b0\ub85c \u2014 style.css)
+   \u00b7 \ud130\uce58 \uae30\uae30\uc5d0\uc11c\ub294 \uc790\ud310 \uc548\ub0b4 "(K)" \ub530\uc704\ub97c \ube7c\uace0 \ubcf4\uc5ec \uc900\ub2e4
+   ============================================================ */
+const _menuBag379 = MENU.bag;
+MENU.bag = function (ctx) {
+  const r = _menuBag379(ctx); if (!Array.isArray(r) || typeof r[1] !== 'string') return r;
+  try {
+    let h = r[1], top = '';
+    if (h.indexOf('class="itop"') < 0) {
+      const di = h.indexOf('<div class="detail');
+      if (di >= 0) { const de = divEnd(h, di); top = `<div class="itop">${h.slice(di, de)}</div>`; h = h.slice(0, di) + h.slice(de); }
+    }
+    const ei = h.indexOf('<div class="eqgrid">'); if (ei < 0) return r;
+    const ee = divEnd(h, ei);
+    return [r[0], `${top}<div class="bag2"><div class="bagL">${h.slice(0, ee)}</div><div class="bagR">${h.slice(ee)}</div></div>`];
+  } catch (e) { reportError(e); return r; }
+};
+/* \uac00\ubc29 \uce78\uc744 \ub530\ub85c \uc2a4\ud06c\ub864\ud558\ub294 \ud654\uba74\uc5d0\uc11c: \ubb3c\uac74\uc744 \ub20c\ub7ec \ucc3d\uc744 \ub2e4\uc2dc \uadf8\ub824\ub3c4 \ubcf4\ub358 \uc790\ub9ac \uadf8\ub300\ub85c (\ud0ed\uc744 \ubc14\uafb8\uba74 \ub9e8 \uc704\ub85c) */
+const _refreshModal379 = refreshModal;
+refreshModal = function (title, html) {
+  const mb = $('mBody'), q = c => mb.querySelector(c), tabOf = () => q('.bagR .tab.on')?.dataset.v || '';
+  const R = q('.bagR'), L = q('.itop'), keep = R ? { r: R.scrollTop, l: L ? L.scrollTop : 0, tab: tabOf() } : null;
+  const out = _refreshModal379.apply(this, arguments);
+  try { if (keep) { const R2 = q('.bagR'), L2 = q('.itop'); if (R2 && tabOf() === keep.tab) R2.scrollTop = keep.r; if (L2 && getComputedStyle(L2).position === 'static') L2.scrollTop = 0; } } catch (e) { reportError(e); }
+  return out;
+};
+/* \ud130\uce58 \uae30\uae30: \uc0c8 \uae30\ub2a5 \uc548\ub0b4\uc5d0\uc11c \uc790\ud310 \uae00\uc790\ub97c \ube80\ub2e4 */
+if (IS_TOUCH) {
+  for (const r of MENU_REVEAL) r.d = r.d.replace(/\s*\([A-Z]\)\s*$/, '');
+  for (const u of UNLOCKS) u.d = u.d.replace(/[A-Z]\ud0a4\(\ub610\ub294 (.+?) \ubc84\ud2bc\)\ub85c/, '$1 \ubc84\ud2bc\uc73c\ub85c');
+  for (const row of POT_ROWS) row[1] = row[1].replace(/\s*\([A-Z]\)\s*$/, '');
+}
+/* ---------------- \ucc3d \uc548\uc758 \ud734\ub300\ud3f0 \uc774\ubaa8\uc9c0 \u2192 \ub3c4\ud2b8 \uadf8\ub9bc ----------------
+   \uc774\ubaa8\uc9c0\ub294 \uc544\uc774\ud3f0\u00b7\uac24\ub7ed\uc2dc\u00b7PC \ub9c8\ub2e4 \ubaa8\uc591\uc774 \ub2ec\ub77c\uc11c \ucc3d \uc81c\ubaa9\uacfc \ubaa9\ub85d\uc774 \uae30\uae30\ub9c8\ub2e4 \ub2e4\ub974\uac8c \ubcf4\uc600\ub2e4.
+   \u00b7 \uba54\ub274 \ucc3d \uc81c\ubaa9: \ud654\uba74\uc758 \uba54\ub274 \ub2e8\ucd94\uc640 \uac19\uc740 \uadf8\ub9bc\uc744 \uc4f4\ub2e4
+   \u00b7 \ucc3d \uc548: \ub3c4\ud2b8 \uadf8\ub9bc\uc774 \uc900\ube44\ub41c \uc774\ubaa8\uc9c0\ub9cc \ubc14\uafbc\ub2e4 (\uc5c6\ub294 \uac83\uc740 \uadf8\ub300\ub85c \ub454\ub2e4 \u2014 \uc9c0\uc6b0\uc9c0 \uc54a\ub294\ub2e4) */
+/* \ub3c4\ud2b8 \uadf8\ub9bc \ucd94\uac00: \uc124\uc815\u00b7\uc9c0\ub3c4\u00b7\ud22c\uc790 \ucc3d\uc5d0 \ub0a8\uc544 \uc788\ub358 \uac83\ub4e4 */
+Object.assign(GLYPH_ART, {
+  sound(P) { P(1, 4, 3, 4, '#dfe6ec'); P(4, 3, 1, 6, '#dfe6ec'); P(5, 2, 1, 8, '#dfe6ec'); P(6, 1, 1, 10, '#c8d0d8'); P(8, 4, 1, 4, '#f3d68a'); P(10, 2, 1, 8, '#f3d68a'); },
+  note(P) { P(4, 1, 6, 2, '#f3d68a'); P(4, 3, 1, 6, '#f3d68a'); P(9, 3, 1, 5, '#f3d68a'); P(2, 8, 3, 3, '#f3d68a'); P(7, 7, 3, 3, '#f3d68a'); P(2, 8, 1, 1, '#fff2a8'); P(7, 7, 1, 1, '#fff2a8'); },
+  cloud(P) { P(4, 3, 4, 2, '#f4f8fc'); P(3, 5, 7, 4, '#e8f0f8'); P(1, 6, 2, 3, '#e8f0f8'); P(10, 6, 1, 3, '#e8f0f8'); P(2, 9, 8, 1, '#b8c8d8'); },
+  mail(P) { P(1, 3, 10, 7, '#efe4c8'); P(1, 3, 10, 1, '#b8a888'); P(1, 9, 10, 1, '#b8a888'); for (let i = 0; i < 4; i++) { P(2 + i, 4 + i, 1, 1, '#8a7450'); P(9 - i, 4 + i, 1, 1, '#8a7450'); } },
+  phone(P) { P(3, 0, 6, 12, '#3a3a3a'); P(4, 2, 4, 7, '#8fc4ec'); P(5, 10, 2, 1, '#b8b0a0'); P(5, 3, 1, 1, '#e8f6ff'); },
+  globe(P) { P(3, 1, 6, 1, '#3f8fd0'); P(2, 2, 8, 1, '#3f8fd0'); P(1, 3, 10, 6, '#3f8fd0'); P(2, 9, 8, 1, '#3f8fd0'); P(3, 10, 6, 1, '#2a6fa8'); P(3, 3, 3, 2, '#5fb04a'); P(6, 5, 3, 3, '#5fb04a'); P(2, 6, 2, 2, '#5fb04a'); P(8, 2, 1, 1, '#e8f6ff'); },
+  flagkr(P) { P(0, 2, 12, 8, '#f4f4f0'); P(4, 4, 4, 2, '#d8352f'); P(4, 6, 4, 2, '#2f5fb0'); P(1, 3, 2, 1, '#222'); P(9, 3, 2, 1, '#222'); P(1, 8, 2, 1, '#222'); P(9, 8, 2, 1, '#222'); },
+  flagjp(P) { P(0, 2, 12, 8, '#f4f4f0'); P(5, 3, 2, 6, '#d8352f'); P(4, 4, 4, 4, '#d8352f'); },
+  banner(P) { P(2, 1, 1, 11, '#8a6a45'); P(3, 1, 7, 5, '#2a2a2a'); P(3, 1, 7, 1, '#4a4a4a'); P(5, 3, 2, 1, '#efe6d0'); },
+  talk(P) { P(2, 2, 8, 6, '#fff6dc'); P(1, 3, 10, 4, '#fff6dc'); P(3, 8, 2, 2, '#fff6dc'); P(3, 4, 1, 1, '#6a5a3a'); P(6, 4, 1, 1, '#6a5a3a'); P(8, 4, 1, 1, '#6a5a3a'); },
+  trash(P) { P(4, 1, 4, 1, '#8a929a'); P(2, 2, 8, 1, '#b8c0c8'); P(3, 3, 6, 8, '#8a929a'); P(4, 4, 1, 6, '#5a626a'); P(7, 4, 1, 6, '#5a626a'); },
+  bulb(P) { P(4, 1, 4, 1, '#ffe14a'); P(3, 2, 6, 5, '#ffe14a'); P(4, 7, 4, 1, '#e8b83a'); P(4, 8, 4, 2, '#8a929a'); P(5, 10, 2, 1, '#5a626a'); P(4, 3, 1, 2, '#fff2a8'); }
+});
+Object.assign(EMOJI_GLYPH, {
+  '\ud83d\udd0a': 'sound', '\ud83d\udd09': 'sound', '\ud83d\udd08': 'sound', '\ud83c\udfb5': 'note', '\ud83c\udfb6': 'note', '\u2601': 'cloud', '\ud83d\udce8': 'mail', '\ud83d\udce5': 'mail', '\u2709': 'mail', '\ud83d\udcf1': 'phone', '\ud83d\udcf2': 'phone',
+  '\ud83c\udf0f': 'globe', '\ud83c\udf0d': 'globe', '\ud83c\udf0e': 'globe', '\ud83d\uddfe': 'flagjp', '\ud83c\udf8c': 'flagjp', '\ud83c\udff4': 'banner', '\ud83d\udea9': 'banner', '\ud83d\udcac': 'talk', '\ud83d\udde3': 'talk', '\ud83d\uddd1': 'trash', '\ud83d\udca1': 'bulb',
+  '\ud83c\udfea': 'house', '\ud83c\udfd8': 'house', '\ud83c\udfb0': 'dice', '\ud83c\udf76': 'food', '\ud83c\udff7': 'coin', '\ud83e\udded': 'map', '\ud83d\udee4': 'map', '\ud83c\udfc3': 'wind',
+  '\ud83d\udd58': 'clock', '\ud83d\udd52': 'clock', '\u23f0': 'clock', '\u23f1': 'clock', '\ud83d\udcca': 'up', '\ud83e\udd47': 'star', '\ud83e\udd48': 'star', '\ud83e\udd49': 'star'
+});
+const FLAG_RE = /[\u{1F1E6}-\u{1F1FF}]{2}/gu, FLAG_GLYPH = { '\ud83c\uddf0\ud83c\uddf7': 'flagkr', '\ud83c\uddef\ud83c\uddf5': 'flagjp' };
+/* \ubaa9\ub85d\uc758 \uadf8\ub9bc \uc790\ub9ac(.ic\u00b7.cgi): \ud55c \ubaa9\ub85d \uc548\uc5d0 \ub3c4\ud2b8 \uadf8\ub9bc\uc774 \uc5c6\ub294 \uc774\ubaa8\uc9c0\uac00 \ud558\ub098\ub77c\ub3c4 \uc788\uc73c\uba74 \uadf8 \ubaa9\ub85d\uc740 \ud1b5\uc9f8\ub85c \uadf8\ub300\ub85c \ub454\ub2e4
+   (\uad50\uc5ed\ud488\ucc98\ub7fc \uc885\ub958\uac00 \ub9ce\uc740 \ubaa9\ub85d\uc5d0\uc11c \uc77c\ubd80\ub9cc \ub3c4\ud2b8\ub85c \ubc14\ub00c\uc5b4 \ub4a4\uc11e\uc5ec \ubcf4\uc774\uc9c0 \uc54a\uac8c) */
+function pxGroupGuard(root) {
+  const groups = new Map();
+  for (const el of root.querySelectorAll('.ic, .cgi')) {
+    if (el.querySelector('img')) continue;
+    const box = (el.closest('.row, .slot, .eqs, .cell, .tab, button') || el).parentElement || root;
+    if (!groups.has(box)) groups.set(box, []); groups.get(box).push(el);
+  }
+  for (const els of groups.values()) {
+    let raw = false;
+    for (const el of els) { const m = el.textContent.match(EMOJI_RE); if (m && m.some(e => e !== '\ufe0f' && !glyphKey(e))) { raw = true; break; } }
+    if (raw) for (const el of els) el.classList.add('rawemoji');
+  }
+}
+function pxKnown(root) {
+  if (!root) return;
+  if (root.querySelectorAll) pxGroupGuard(root);
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), nodes = [];
+  while (walk.nextNode()) { const n = walk.currentNode; EMOJI_RE.lastIndex = 0; FLAG_RE.lastIndex = 0; if ((EMOJI_RE.test(n.textContent) || FLAG_RE.test(n.textContent)) && !n.parentElement?.closest('textarea,select,option,script,style,.rawemoji')) nodes.push(n); }
+  FLAG_RE.lastIndex = 0;
+  EMOJI_RE.lastIndex = 0;
+  for (const n of nodes) {
+    let hit = false;
+    const img = k => { hit = true; return `<img class="pxg" src="${glyphURL(k)}" alt="">`; };
+    const html = esc(n.textContent).replace(FLAG_RE, f => FLAG_GLYPH[f] ? img(FLAG_GLYPH[f]) : f).replace(EMOJI_RE, e => { const k = glyphKey(e); return k ? img(k) : e; });
+    if (!hit) continue;
+    const span = document.createElement('span'); span.innerHTML = html; n.replaceWith(...span.childNodes);
+  }
+}
+function modalDress() {
+  try {
+    const t = $('mTitle'), k = modalCtx && modalCtx.menu;
+    if (t && !t.querySelector('img')) {
+      if (k && UI_ICON_ART[k]) {
+        EMOJI_RE.lastIndex = 0; const txt = t.textContent.replace(EMOJI_RE, '').trim();
+        t.innerHTML = `<img class="uiic wh-ic" src="${uiIconURL(k)}" width="22" height="22" alt="">${esc(txt)}`;
+      } else pxKnown(t);
+    }
+    pxKnown($('mBody'));
+  } catch (e) { reportError(e); }
+}
+const _openModal379 = openModal;
+openModal = function () { const r = _openModal379.apply(this, arguments); modalDress(); return r; };
+const _refreshModal379b = refreshModal;
+refreshModal = function () { const r = _refreshModal379b.apply(this, arguments); modalDress(); return r; };
+/* ---------------- \uc870\uc0ac: "\ubb34\uc0ac\uc740(\ub294) \uc545\uae30\uc744(\ub97c)" \u2192 "\ubb34\uc0ac\ub294 \uc545\uae30\ub97c" ----------------
+   \uc774\ub984 \ub4a4\uc5d0 \ubd99\ub294 \uc740(\ub294)\u00b7\uc744(\ub97c)\u00b7\uc774(\uac00)\u00b7\uc640(\uacfc)\u00b7(\uc73c)\ub85c \ub97c \uc55e \uae00\uc790\uc758 \ubc1b\uce68\uc744 \ubcf4\uace0 \uace8\ub77c \uc4f4\ub2e4.
+   \uae00\uc774 \ud654\uba74\uc5d0 \ub098\uac00\ub294 \uae38\ubaa9(\uc54c\ub9bc\u00b7\ub300\ud654\ucc3d\u00b7\uac00\uc6b4\ub370 \ud070 \uae00\uc528\u00b7\ucc3d)\uc5d0\uc11c \ud55c \ubc88\uc5d0 \uace0\uce5c\ub2e4. */
+const JOSA_RE = /([\uac00-\ud7a30-9A-Za-z])((?:<\/[a-z0-9]+>|[)\]\u300d\u300f'"\u2019\u201d])*)(\uc740\(\ub294\)|\ub294\(\uc740\)|\uc744\(\ub97c\)|\ub97c\(\uc744\)|\uc774\(\uac00\)|\uac00\(\uc774\)|\(\uc774\)\uac00|\uc640\(\uacfc\)|\uacfc\(\uc640\)|\(\uc73c\)\ub85c)/g;
+const JOSA_FORM = { '\uc740(\ub294)': ['\uc740', '\ub294'], '\ub294(\uc740)': ['\uc740', '\ub294'], '\uc744(\ub97c)': ['\uc744', '\ub97c'], '\ub97c(\uc744)': ['\uc744', '\ub97c'], '\uc774(\uac00)': ['\uc774', '\uac00'], '\uac00(\uc774)': ['\uc774', '\uac00'], '(\uc774)\uac00': ['\uc774', '\uac00'], '\uc640(\uacfc)': ['\uacfc', '\uc640'], '\uacfc(\uc640)': ['\uacfc', '\uc640'], '(\uc73c)\ub85c': ['\uc73c\ub85c', '\ub85c'] };
+function josaFix(s) {
+  if (typeof s !== 'string' || s.indexOf('(') < 0) return s;
+  return s.replace(JOSA_RE, (m, ch, mid, pt) => {
+    const f = JOSA_FORM[pt], c = ch.charCodeAt(0);
+    const jong = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 : ch >= '0' && ch <= '9' ? [21, 8, 0, 16, 0, 0, 1, 8, 8, 0][+ch] : 0;   /* \uc22b\uc790\ub294 \uc77d\ub294 \uc18c\ub9ac\ub85c(\uc77c\u00b7\uc0bc\u00b7\uc721\u00b7\uce60\u00b7\ud314\u00b7\uc601\uc740 \ubc1b\uce68), \uc601\ubb38\uc740 \ubc1b\uce68 \uc5c6\ub294 \ucabd */
+    const closed = pt === '(\uc73c)\ub85c' ? jong !== 0 && jong !== 8 : jong !== 0;   /* \u3139 \ubc1b\uce68 \ub4a4\ub294 '\ub85c' */
+    return ch + mid + (closed ? f[0] : f[1]);
+  });
+}
+{
+  const _toast379 = toast; toast = function (msg) { arguments[0] = josaFix(msg); return _toast379.apply(this, arguments); };
+  const _chat379 = chat; chat = function (who, msg) { arguments[1] = josaFix(msg); return _chat379.apply(this, arguments); };
+  const _center379 = centerMsg; centerMsg = function (t, s) { arguments[0] = josaFix(t); if (arguments.length > 1) arguments[1] = josaFix(s); return _center379.apply(this, arguments); };
+  const _openModalJ = openModal; openModal = function (t, h) { arguments[0] = josaFix(t); arguments[1] = josaFix(h); return _openModalJ.apply(this, arguments); };
+  const _refreshModalJ = refreshModal; refreshModal = function (t, h) { arguments[0] = josaFix(t); arguments[1] = josaFix(h); return _refreshModalJ.apply(this, arguments); };
+}
+/* \uccab \ud654\uba74(\uc2ac\ub86f\u00b7\ub85c\uadf8\uc778 \uce78)\uc758 \uc774\ubaa8\uc9c0\ub3c4 \uac19\uc740 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c */
+{
+  const tb = $('titleBox');
+  if (tb) {
+    let busy = false;
+    const run = () => { if (busy) return; busy = true; try { pxKnown(tb); pxKnown($('tMusic')); } catch (e) { } busy = false; };
+    new MutationObserver(run).observe(tb, { childList: true, subtree: true }); run();
+  }
+}
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
