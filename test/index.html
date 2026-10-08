@@ -21368,75 +21368,7 @@ function groundOk(e, x, y) {   /* \ub0a0\uac1c\uac00 \uc5c6\ub2e4\uace0 \uce58\u
   };
 }
 
-/* ============================================================
-   98z1_mobfeel382 (\uc2dc\ud5d8\ud310): \ubaac\uc2a4\ud130\uac00 \ub9de\uace0 \uc4f0\ub7ec\uc9c0\ub294 \ub3d9\uc791 \u2014 \uadf8\ub9bc\ub9cc (\ud310\uc815\u00b7\ud53c\ud574\u00b7\ub109\ubc31 \uac70\ub9ac\ub294 \uadf8\ub300\ub85c)
-   \u00b7 \ub9de\uc73c\uba74: \ub54c\ub9b0 \ubc18\ub300\ucabd\uc73c\ub85c \ubab8\uc774 \uc816\ud600\uc9c0\uace0 \ub20c\ub838\ub2e4\uac00 \ub3cc\uc544\uc628\ub2e4 (\uc13c \ud0c0\uaca9\uc77c\uc218\ub85d \ud06c\uac8c, \ubcf4\uc2a4\ub294 \uc544\uc8fc \uc870\uae08)
-   \u00b7 \uc8fd\uc73c\uba74: \ud558\uc597\uac8c \ub5a0\uc624\ub974\uba70 \uc0ac\ub77c\uc9c0\ub358 \uac83 \u2192 \uadf8 \uc790\ub9ac\uc5d0 \uc606\uc73c\ub85c \uc4f0\ub7ec\uc838 \uba3c\uc9c0\ub97c \ub0b4\uace0 \ud750\ub824\uc9c4\ub2e4
-             (\ud63c\ub839\u00b7\ub3c4\uae68\ube44\ubd88 \uac19\uc740 \uac83\uc740 \uc608\uc804\ucc98\ub7fc \ud769\uc5b4\uc9c4\ub2e4)
-   ============================================================ */
-const MobFeel = { on: true, HURT: .3 };
-{
-  const _damageMob382 = damageMob;
-  damageMob = function (src, m, base, opt) {
-    const hp0 = m ? m.hp : 0, r = _damageMob382.apply(this, arguments);
-    try {
-      if (MobFeel.on && m && m.hp < hp0 && !(opt && opt.dot)) {
-        const lost = hp0 - Math.max(0, m.hp), pow = clamp(.75 + lost / Math.max(1, m.maxHp) * 5, .75, 1.9) * (m.boss ? .3 : m.sig || m.elite ? .7 : 1);
-        const sx = src && src.x !== undefined ? src.x : G.player.x, sy = src && src.y !== undefined ? src.y : G.player.y;
-        m._hurt = { t: 0, pow, a: Math.atan2(m.y - sy, m.x - sx) };
-        m._lastHitA = m._hurt.a;
-      }
-    } catch (e) { }
-    return r;
-  };
-  const _drawMob382 = drawMob;
-  drawMob = function (m, t) {
-    const h = MobFeel.on && m._hurt;
-    if (!h) return _drawMob382.apply(this, arguments);
-    h.t += 1 / 60; const k = h.t / MobFeel.HURT; if (k >= 1) { m._hurt = null; return _drawMob382.apply(this, arguments); }
-    const e = k < .22 ? k / .22 : 1 - (k - .22) / .78, ee = e * e * (3 - 2 * e);   /* \ud655 \uc816\ud600\uc84c\ub2e4\uac00 \ucc9c\ucc9c\ud788 \ub3cc\uc544\uc628\ub2e4 */
-    const cx = Math.cos(h.a), cy = Math.sin(h.a), side = Math.abs(cx) > .35 ? Math.sign(cx) : 0;
-    ctx.save();
-    try {
-      ctx.translate(m.x + cx * 5 * h.pow * ee, m.y + cy * 3 * h.pow * ee);
-      ctx.rotate(side * .28 * h.pow * ee);
-      ctx.scale(1 + .13 * h.pow * ee, 1 - .17 * h.pow * ee);
-      ctx.translate(-m.x, -m.y);
-      return _drawMob382.apply(this, arguments);
-    } finally { ctx.restore(); }
-  };
-  /* \uc4f0\ub7ec\uc9d0 */
-  const isSpirit = m => !!(m.spr && ((m.spr.f && m.spr.f.includes('ghostly')) || m.spr.b === 'ghost' || m.spr.b === 'wisp')) || m.def?.ai === 'phase' || m.fake;
-  const _addFx382 = addFx;
-  addFx = function (type, x, y, opt) {
-    if (type === 'death' && MobFeel.on && opt && opt.m && !isSpirit(opt.m)) {
-      const m = opt.m, a = m._lastHitA ?? Math.atan2(m.y - G.player.y, m.x - G.player.x);
-      opt = Object.assign({}, opt, { fall: 1, dur: m.boss ? 1.5 : .95, side: Math.cos(a) >= 0 ? 1 : -1, fly: m.def && m.def.fly ? 1 : 0 });
-    }
-    return _addFx382.call(this, type, x, y, opt);
-  };
-  const _death382 = AIR_FX.death;
-  AIR_FX.death = function (f) {
-    if (!f.fall) return _death382.apply(this, arguments);
-    const m = f.m, k = clamp(f.t / f.dur, 0, 1), [spr, scm] = mobSpr(m, 0, m.face > 0), sc = ART * scm, w = spr.img.width * sc, h = spr.img.height * sc;
-    const FALL = m.boss ? .5 : .42;                                   /* \uc4f0\ub7ec\uc9c0\ub294 \ub370 \uc4f0\ub294 \ubaab */
-    const q = Math.min(1, k / FALL), g = q * q;                        /* \uc810\uc810 \ube68\ub9ac \ub118\uc5b4\uac04\ub2e4 */
-    const land = k > FALL ? Math.min(1, (k - FALL) / .12) : 0, bounce = k > FALL ? Math.sin(land * Math.PI) * .09 : 0;
-    const wide = w > h * 1.15;                                         /* \ub124\ubc1c\uc9d0\uc2b9: \uc606\uc73c\ub85c \ub215\ud788\uba74 \uace4\ub450\uc120 \uac83\ucc98\ub7fc \ubcf4\uc778\ub2e4 \u2192 \ube44\ud2c0\uac70\ub9ac\ub2e4 \ud480\uc369 \uc8fc\uc800\uc549\ub294\ub2e4 */
-    const ang = wide ? f.side * (g * .42 - bounce * .6) : f.side * (g * (Math.PI / 2) - bounce), drop = f.fly ? (1 - g) * -10 : 0;
-    const sqY = wide ? 1 - g * .46 + bounce * .5 : 1, sqX = wide ? 1 + g * .1 : 1;
-    const alpha = k < .62 ? 1 : 1 - (k - .62) / .38;
-    if (!f.dusted && k >= FALL) { f.dusted = 1; const bx = m.x + f.side * (w > h * 1.15 ? w * .3 : h * .45); burst(bx, m.y - 2, '#cdbb98', m.boss ? 14 : 6, m.boss ? 130 : 70); if (m.boss) G.shake = Math.max(G.shake || 0, 4); }
-    ctx.save();
-    ctx.globalAlpha = alpha * .28; ctx.fillStyle = '#000'; ctx.beginPath(); ctx.ellipse(m.x + (wide ? 0 : f.side * h * .3 * g), m.y, Math.max(10, w * .32) * (1 + g * .5), Math.max(4, w * .11), 0, 0, TAU); ctx.fill();
-    ctx.globalAlpha = alpha; ctx.translate(m.x, m.y + drop); ctx.rotate(ang); ctx.scale(sqX, sqY); ctx.translate(-m.x, -m.y);
-    ctx.drawImage(spr.img, Math.round(m.x - w / 2), Math.round(m.y - h + 4), w, h);
-    if (k < .2) { ctx.globalAlpha = alpha * (1 - k / .2) * .75; ctx.drawImage(spr.flash, Math.round(m.x - w / 2), Math.round(m.y - h + 4), w, h); }
-    ctx.restore();
-  };
-}
-
-/* 98z3_panel382 (\uc2dc\ud5d8\ud310 \uc804\uc6a9): \uc2dc\uac04\u00b7\ub0a0\uc528\u00b7\ubaac\uc2a4\ud130 \ub3d9\uc791\uc744 \ubc14\ub85c \ubc14\uafd4 \ubcf4\ub294 \uc791\uc740 \ub2e8\ucd94 \u2014 \ubcf8\ud310\uc5d0\ub294 \ub123\uc9c0 \uc54a\ub294\ub2e4 */
+/* 98z3_panel (\uc2dc\ud5d8\ud310 \uc804\uc6a9): \uc2dc\uac04\u00b7\ub0a0\uc528 + \uc0c8 \uae30\uc220 \uc2dc\ud5d8(\ub808\ubca8\u00b7\uc9c1\uc5c5 \ubc14\uafb8\uae30) \ub2e8\ucd94 \u2014 \ubcf8\ud310\uc5d0\ub294 \ub123\uc9c0 \uc54a\ub294\ub2e4 */
 (function () {
   const st = document.createElement('style');
   st.textContent = `#smp{position:absolute;right:max(8px,env(safe-area-inset-right));top:132px;z-index:19;font-size:11px}
@@ -21454,25 +21386,279 @@ const MobFeel = { on: true, HURT: .3 };
   const el = document.createElement('div'); el.id = 'smp';
   el.innerHTML = `<button id="smpB">\uc0d8\ud50c \u25be</button><div id="smpP" hidden></div>`;
   $('game').appendChild(el);
-  const T = [['\uc790\ub3d9', null], ['\ub0ae', .2], ['\ub178\uc744', .59], ['\ubc24', .75], ['\uc0c8\ubcbd', .95]], W = [['\uc790\ub3d9', null], ['\ub9d1\uc74c', 'clear'], ['\ube44', 'rain'], ['\uc18c\ub098\uae30', 'storm'], ['\ub208', 'snow'], ['\uc548\uac1c', 'fog']];
+  const T = [['\uc790\ub3d9', null], ['\ub0ae', .2], ['\ub178\uc744', .59], ['\ubc24', .75], ['\uc0c8\ubcbd', .95]], W = [['\uc790\ub3d9', null], ['\ub9d1\uc74c', 'clear'], ['\ube44', 'rain'], ['\uc18c\ub098\uae30', 'storm'], ['\ub208', 'snow']];
   function render() {
     const P = $('smpP');
     P.innerHTML = `<div><b>\uc2dc\uac04</b> <i>\uc9c0\uae08 ${Sky.now.phase}${Sky.now.in ? ' \u00b7 \uad74 \uc548\uc5d0\uc11c\ub294 \uc548 \ubcf4\uc5ec\uc694' : ''}</i></div><div class="r">${T.map(([n, v], i) => `<button data-t="${i}" class="${Sky.force.t === v ? 'on' : ''}">${n}</button>`).join('')}</div>
 <div><b>\ub0a0\uc528</b> <i>\uc9c0\uae08 ${Sky.now.wx}</i></div><div class="r">${W.map(([n, v], i) => `<button data-w="${i}" class="${Sky.force.wx === v ? 'on' : ''}">${n}</button>`).join('')}</div>
-<div><b>\ubaac\uc2a4\ud130\uac00 \ub9de\uace0 \uc4f0\ub7ec\uc9c0\ub294 \ub3d9\uc791</b></div><div class="r"><button data-m="1" class="${MobFeel.on ? 'on' : ''}">\uc0c8 \ub3d9\uc791</button><button data-m="0" class="${MobFeel.on ? '' : 'on'}">\uc608\uc804</button></div>
-<div><b>\ubc24\ub0ae\u00b7\ub0a0\uc528</b></div><div class="r" style="margin-bottom:0"><button data-s="1" class="${Sky.on ? 'on' : ''}">\ucf2c</button><button data-s="0" class="${Sky.on ? '' : 'on'}">\ub054</button></div>`;
+<div><b>\ubc24\ub0ae\u00b7\ub0a0\uc528</b></div><div class="r"><button data-s="1" class="${Sky.on ? 'on' : ''}">\ucf2c</button><button data-s="0" class="${Sky.on ? '' : 'on'}">\ub054</button></div>
+<div><b>\uc0c8 \uae30\uc220 \uc2dc\ud5d8</b> <i>Lv.90 \u00b7 2\ucc28 \uc2b9\uae09\uc73c\ub85c \uc62c\ub824 8\uac1c\ub97c \ub2e4 \uc5f4\uc5b4 \ubd05\ub2c8\ub2e4</i></div><div class="r" style="margin-bottom:0">${[['warrior', '\ubb34\uc0ac'], ['thief', '\ube44\uac1d'], ['shaman', '\ubc29\uc220\uac00'], ['taoist', '\ud48d\ub958\uac1d']].map(([j, n]) => `<button data-j="${j}" class="${G.player && G.player.job === j && G.player.lv >= 90 ? 'on' : ''}">${n}</button>`).join('')}</div>`;
   }
   $('smpB').addEventListener('click', () => { const P = $('smpP'); P.hidden = !P.hidden; if (!P.hidden) render(); });
   $('smpP').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     if (b.dataset.t !== undefined) Sky.force.t = T[+b.dataset.t][1];
     if (b.dataset.w !== undefined) Sky.force.wx = W[+b.dataset.w][1];
-    if (b.dataset.m !== undefined) MobFeel.on = b.dataset.m === '1';
+    if (b.dataset.j) { const P = G.player; if (P.job !== b.dataset.j) { P.rank = 0; chooseJob(P, b.dataset.j); } P.lv = Math.max(P.lv, 90); while ((P.rank || 0) < 2) doPromote(P); P.skSlotsJob = null; calcStats(P); P.hp = P.s.maxHp; P.mp = P.s.maxMp; for (let i = 0; i < 4; i++) { const x = $('s' + i); if (x) x.dataset.k = ''; } faceKey = ''; toast('\ud83e\uddea \uc2dc\ud5d8: Lv.90 \u00b7 2\ucc28 \uc2b9\uae09 \u2014 \uae30\uc220 \ucc3d(K)\uc5d0\uc11c \uce78\uc744 \uace8\ub77c \ubcf4\uc138\uc694', 'blue'); }
     if (b.dataset.s !== undefined) Sky.on = b.dataset.s === '1';
     setTimeout(render, 60);
   });
   setInterval(() => { if (!$('smpP').hidden) render(); }, 1500);
   const sub = document.querySelector('#title .sub'); if (sub) sub.textContent += ' \uc2dc\ud5d8\ud310';
+})();
+
+/* ============================================================
+   98z4_skill385 (\uc2dc\ud5d8\ud310): \uc9c1\uc5c5\ub9c8\ub2e4 \uae30\uc220 4\uac1c \ub354 + \uae30\uc220 \uace0\ub974\uae30
+   \u00b7 \uc0c8 \uae30\uc220\uc740 \uc9c0\uae08 \uae30\uc220\uc774 \uc5f4\ub9ac\ub294 \ub808\ubca8(5\u00b712\u00b725\u00b750)\uacfc \uacb9\uce58\uc9c0 \uc54a\uac8c Lv.18 \u00b7 35 \u00b7 65 \u00b7 85 \uc5d0 \uc5f4\ub9b0\ub2e4
+   \u00b7 \uae30\uc220 \uce78\uc740 \uadf8\ub300\ub85c 4\uce78 \u2014 \ubc30\uc6b4 \uae30\uc220 8\uac1c \uac00\uc6b4\ub370 4\uac1c\ub97c \uace8\ub77c \ub07c\uc6b4\ub2e4 (\uae30\uc220 \ucc3d K)
+   \u00b7 \uc0c8 \uae30\uc220\uc740 \ucfe8\ud0c0\uc784\uc774 \uc9e7\uace0 \uc791\uac8c \uc790\uc8fc \uc4f0\ub294 \uac83 \uc704\uc8fc (\uce5c\uad6c \ud53c\ub4dc\ubc31: \uc9dc\uc798\ud55c \uae30\uc220\uc774 \uc788\uc73c\uba74 \ud0a4\uc6b8 \ub9db\uc774 \ub09c\ub2e4)
+   \u00b7 \uc800\uc7a5: p.skSlots = [\uae30\uc220 id \u00d7 4]
+   ============================================================ */
+const SKILLS_EX = {
+  warrior: [
+    { id: 'w5', ex: 1, names: ['\ub3cc\uc9c4\ubca0\uae30', '\uc9c8\ud48d\ub3cc\uaca9', '\ucc9c\ub9c8\ub3cc\uaca9'], lv: 18, mp: 10, mpPct: .02, cd: 5, kind: 'rush', mult: 2, range: 230, glyph: 'dash', col: '#ffb45e', desc: '\uc55e\uc758 \uc801\uc5d0\uac8c \ub2e8\uc228\uc5d0 \ub2ec\ub824\ub4e4\uba70 \uc9c0\ub098\ub294 \uae38\uc758 \uc801\uc744 \ubaa8\ub450 \ubca4\ub2e4. \ub9de\uc740 \uc801\uc740 \uc7a0\uae50 \ube44\ud2c0\uac70\ub9b0\ub2e4.' },
+    { id: 'w6', ex: 1, names: ['\ucca0\ubcbd', '\uae08\uac15\ubd88\uad34', '\ucc9c\uac15\ubd88\uad34'], lv: 35, mp: 14, mpPct: .02, cd: 22, kind: 'guard', dur: 12, heal: .12, glyph: 'bless', col: '#9fd0ff', desc: '12\ucd08 \ub3d9\uc548 \ubc29\uc5b4 +30%, \uadf8 \uc790\ub9ac\uc5d0\uc11c \uccb4\ub825 12% \ud68c\ubcf5.' },
+    { id: 'w7', ex: 1, names: ['\uc0bc\uc5f0\ucc38', '\uc0bc\uc5f0\uc12c', '\uc0bc\uc7ac\uc5f0\ucc38'], lv: 65, mp: 12, mpPct: .025, cd: 4, kind: 'combo', mult: .95, hits: 3, range: 90, glyph: 'strike', col: '#fff0a8', desc: '\ub208\uc55e\uc758 \uc801\uc744 \uc138 \ubc88 \uc5f0\ub2ec\uc544 \ubca4\ub2e4. \ucfe8\ud0c0\uc784\uc774 \uc9e7\ub2e4.' },
+    { id: 'w8', ex: 1, names: ['\uac80\ud48d', '\uc5f4\ud48d\uac80\uae30', '\ub9cc\uac80\ud48d'], lv: 85, mp: 30, mpPct: .05, cd: 12, kind: 'fanwave', mult: 1.6, range: 260, count: 5, glyph: 'wave', col: '#ffe08a', desc: '\uac80\uae30 \ub2e4\uc12f \uc904\uae30\ub97c \ubd80\ucc44\uaf34\ub85c \ub0a0\ub9b0\ub2e4. \uac80\uae30\ub294 \uc801\uc744 \uaff0\ub6ab\ub294\ub2e4.' }
+  ],
+  thief: [
+    { id: 't5', ex: 1, names: ['\ud45c\ucc3d', '\uc5f0\ud658\ud45c', '\ub9cc\ucc9c\ud654\uc6b0'], lv: 18, mp: 8, mpPct: .02, cd: 3, kind: 'knives', mult: 1.2, range: 280, count: 3, glyph: 'spread', col: '#d9e2ff', desc: '\ud45c\ucc3d \uc138 \uac1c\ub97c \ubd80\ucc44\uaf34\ub85c \ub358\uc9c4\ub2e4. \ud45c\ucc3d\uc740 \uc801 \ud558\ub098\ub97c \uaff0\ub6ab\ub294\ub2e4.' },
+    { id: 't6', ex: 1, names: ['\uadf8\ub9bc\uc790\uac78\uc74c', '\uc554\uc601\ubcf4', '\ubb34\uc601\uc12c'], lv: 35, mp: 12, mpPct: .025, cd: 8, kind: 'blink', mult: 2.8, range: 280, glyph: 'dash', col: '#b98cff', desc: '\ubaa9\ud45c\uc758 \ub4f1 \ub4a4\ub85c \uc21c\uc2dd\uac04\uc5d0 \uc62e\uaca8 \uac00 \ubc18\ub4dc\uc2dc \uce58\uba85\ud0c0\ub85c \ubca4\ub2e4.' },
+    { id: 't7', ex: 1, names: ['\uc5f0\ub9c9', '\ud751\ubb34\uc5f0\ub9c9', '\ucc9c\ub77c\uc5f0\ub9c9'], lv: 65, mp: 14, mpPct: .025, cd: 16, kind: 'smoke', radius: 170, dur: 6, glyph: 'cloud', col: '#9a9aa6', desc: '\uc5f0\ub9c9\uc744 \ud130\ub728\ub824 \uc8fc\ubcc0 \uc801\uc744 3\ucd08 \ub290\ub9ac\uac8c \ud558\uace0, 6\ucd08 \ub3d9\uc548 \ud68c\ud53c\uac00 \ud06c\uac8c \uc624\ub978\ub2e4.' },
+    { id: 't8', ex: 1, names: ['\ucc9c\uc0b4', '\uba78\ud63c\uc0b4', '\ucc9c\uc0b4\ubb34\uc601'], lv: 85, mp: 24, mpPct: .045, cd: 10, kind: 'execute', mult: 3.2, range: 90, glyph: 'strike', col: '#ff5a6a', desc: '\ud55c \ub188\uc744 \ub178\ub9ac\ub294 \ud544\uc0b4\uc758 \uc77c\uaca9. \uccb4\ub825\uc774 30% \uc544\ub798\uc778 \uc801\uc5d0\uac8c\ub294 \ub450 \ubc30 (\ubcf4\uc2a4 1.5\ubc30).' }
+  ],
+  shaman: [
+    { id: 's5', ex: 1, names: ['\ube59\ucc3d', '\ube59\ub8e1\ucc3d', '\ub9cc\ub144\ube59\ucc3d'], lv: 18, mp: 9, mpPct: .02, cd: 3, kind: 'icelance', mult: 1.9, range: 320, glyph: 'proj', col: '#8fe3ff', desc: '\uc5bc\uc74c\ucc3d\uc744 \uc3dc\ub2e4. \uc801 \uc14b\uae4c\uc9c0 \uaff0\ub6ab\uace0 2\ucd08 \ub290\ub9ac\uac8c \ud55c\ub2e4.' },
+    { id: 's6', ex: 1, names: ['\ud654\ub95c', '\uc5fc\ud654\ub95c', '\ucc9c\ud654\ub95c'], lv: 35, mp: 16, mpPct: .03, cd: 9, kind: 'firering', mult: 1.4, radius: 140, glyph: 'nova', col: '#ff7a3a', desc: '\ubab8 \ub458\ub808\uc5d0 \ubd88\ubc14\ud034\ub97c \uc77c\uc73c\ucf1c \uac00\uae4c\uc774 \ubd99\uc740 \uc801\uc744 \ud0dc\uc6b4\ub2e4.' },
+    { id: 's7', ex: 1, names: ['\ub1cc\uc6b0', '\ucc9c\ub8b0\uc6b0', '\uad6c\ucc9c\ub1cc\uc6b0'], lv: 65, mp: 22, mpPct: .04, cd: 10, kind: 'storm', mult: 1.5, radius: 270, count: 6, glyph: 'chain', col: '#fff27a', desc: '\uc8fc\ubcc0 \uc801 \uc5ec\uc12f\uc5d0\uac8c \ucc28\ub840\ub85c \ubcbc\ub77d\uc744 \ub0b4\ub9b0\ub2e4. \ub9de\uc740 \uc801\uc740 \uc7a0\uae50 \uad73\ub294\ub2e4.' },
+    { id: 's8', ex: 1, names: ['\uc6a9\uad8c', '\ud751\ub8e1\uad8c', '\ucc9c\ub8e1\uad8c'], lv: 85, mp: 34, mpPct: .055, cd: 14, kind: 'vortex', mult: 1.1, range: 290, radius: 160, glyph: 'spin', col: '#7fd2df', desc: '\uc801 \uc790\ub9ac\uc5d0 \ud68c\uc624\ub9ac\ub97c \uc77c\uc73c\ucf1c \ub458\ub808\uc758 \uc801\uc744 \ud55c\uac00\uc6b4\ub370\ub85c \ub04c\uc5b4\ubaa8\uc73c\uba70 \uc138 \ubc88 \ud718\uac10\ub294\ub2e4.' }
+  ],
+  taoist: [
+    { id: 'd5', ex: 1, names: ['\uc18d\ubc15\ubd80', '\uae08\ubc15\ubd80', '\ucc9c\ub77c\uc18d\ubc15\ubd80'], lv: 18, mp: 9, mpPct: .02, cd: 6, kind: 'bind', mult: 1.3, range: 280, glyph: 'spread', col: '#ffd24a', desc: '\ucad3\uc544\uac00\ub294 \ubd80\uc801 \ud55c \uc7a5. \ub9de\uc740 \uc801\uc744 1.6\ucd08 \ubb36\ub294\ub2e4.' },
+    { id: 'd6', ex: 1, names: ['\uc9c4\ud63c\uace1', '\uccad\ud48d\uace1', '\ucc9c\uc0c1\uace1'], lv: 35, mp: 16, mpPct: .03, cd: 18, kind: 'song', heal: .1, dur: 20, radius: 360, glyph: 'heal', col: '#9fe8c0', desc: '\uac00\uc57c\uae08 \ud55c \uac00\ub77d\uc73c\ub85c \ub098\uc640 \ub3d9\ub8cc\uc758 \uccb4\ub825\uc744 10% \ucc44\uc6b0\uace0, 20\ucd08 \ub3d9\uc548 \uccb4\ub825\uc774 \uacc4\uc18d \ucc2c\ub2e4.' },
+    { id: 'd7', ex: 1, names: ['\ub1cc\uc815\ubd80', '\ubcbd\ub825\ubd80', '\uad6c\ucc9c\ubcbd\ub825\ubd80'], lv: 65, mp: 18, mpPct: .035, cd: 6, kind: 'thunder', mult: 2.2, range: 280, radius: 100, glyph: 'chain', col: '#fff27a', desc: '\ubd80\uc801\uc744 \ub358\uc838 \uadf8 \uc790\ub9ac\uc5d0 \ubcbc\ub77d\uc744 \ub5a8\uc5b4\ub728\ub9b0\ub2e4.' },
+    { id: 'd8', ex: 1, names: ['\uc2e0\ud48d', '\ud0dc\uadf9\uc2e0\ud48d', '\ucc9c\uc9c0\uc2e0\ud48d'], lv: 85, mp: 28, mpPct: .05, cd: 12, kind: 'gust', mult: 1.6, radius: 210, glyph: 'spin', col: '#c8f0ff', desc: '\ubd80\ucc44\ub97c \ud06c\uac8c \ud718\ub458\ub7ec \ub458\ub808\uc758 \uc801\uc744 \uba40\ub9ac \ub0a0\ub824 \ubcf4\ub0b8\ub2e4.' }
+  ]
+};
+/* \uc6d0\ub798 \uae30\uc220 3\u00b74\ubc88\uc9f8\ub294 \uc2b9\uae09\uc774 \ud544\uc694\ud558\ub2e4 \u2014 \uce78 \uc21c\uc11c\uac00 \uc544\ub2c8\ub77c \uae30\uc220 \uc790\uccb4\uc5d0 \ub2e8\ub2e4 */
+for (const j of ['warrior', 'thief', 'shaman', 'taoist']) { SKILLS[j][2].rk = 1; SKILLS[j][3].rk = 2; SKILLS[j].forEach((s, i) => { if (s.mpPct == null) s.mpPct = MP_PCT[i]; }); }
+const EX_KINDS = new Set(Object.values(SKILLS_EX).flat().map(s => s.kind));
+for (const s of Object.values(SKILLS_EX).flat()) if (!SKILL_GLYPH[s.kind]) SKILL_GLYPH[s.kind] = SKILL_GLYPH[s.glyph] || SKILL_GLYPH.nova;
+const skillAll = job => [...(SKILLS[job] || []), ...(SKILLS_EX[job] || [])];
+const skById = (job, id) => skillAll(job).find(s => s.id === id);
+function skLearned(e, sk) { return !!sk && e.lv >= sk.lv && (e.rank || 0) >= (sk.rk || 0); }
+function skSlots(p) {
+  const all = skillAll(p.job), base = (SKILLS[p.job] || []).map(s => s.id);
+  if (!Array.isArray(p.skSlots) || p.skSlots.length !== 4 || p.skSlotsJob !== p.job) { p.skSlots = base.slice(0, 4); p.skSlotsJob = p.job; }
+  for (let i = 0; i < 4; i++) if (!all.some(s => s.id === p.skSlots[i])) p.skSlots[i] = base[i];
+  return p.skSlots;
+}
+if (typeof SAVE_FIELDS !== 'undefined') SAVE_FIELDS.push('skSlots', 'skSlotsJob');
+{
+  const _skillList385 = skillList;
+  skillList = function (e) {
+    if (e && e === G.player && SKILLS_EX[e.job]) return skSlots(e).map(id => skById(e.job, id)).filter(Boolean);
+    return _skillList385.apply(this, arguments);
+  };
+  const _skillUnlocked385 = skillUnlocked;
+  skillUnlocked = function (e, i) {
+    if (e && e === G.player && SKILLS_EX[e.job]) return skLearned(e, skillList(e)[i]);
+    return _skillUnlocked385.apply(this, arguments);
+  };
+  const _skillMp385 = skillMp;
+  skillMp = function (e, sk) {
+    if (e === G.player && e.s && sk && sk.mpPct != null) return Math.round(sk.mp + e.s.maxMp * sk.mpPct * (JOBS[e.job]?.magic ? 1 : .4));
+    return _skillMp385.apply(this, arguments);
+  };
+}
+
+/* ---------------- \uc0c8 \uae30\uc220 \ud6a8\uacfc ---------------- */
+const EX_NEED_T = { rush: 1, combo: 1, blink: 1, execute: 1, icelance: 0, knives: 0, storm: 0, vortex: 1, bind: 0, thunder: 1, fanwave: 0 };
+const EX_SELF_R = { firering: 1, smoke: 1, gust: 1, storm: 1 };
+{
+  const _useSkill385 = useSkill;
+  useSkill = function (e, i) {
+    const sk = e && skillList(e)[i];
+    if (!sk || !sk.ex) return _useSkill385.apply(this, arguments);
+    if (e === G.player && !skLearned(e, sk)) { toast(e.lv < sk.lv ? `Lv.${sk.lv}\ubd80\ud130 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc5b4\uc694` : '\uc2b9\uae09 \ud6c4 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc5b4\uc694'); return false; }
+    if ((e.cds[sk.id] || 0) > 0 || e.hp <= 0) return false;
+    let t = e.target && e.target.hp > 0 ? e.target : nearestMob(e.x, e.y, (sk.range || sk.radius || 120) + 60);
+    const auto = e === G.player && e.auto;
+    if (EX_NEED_T[sk.kind] && (!t || dist(e, t) > (sk.range || 100) + (t.r || 0) + 30)) { if (e === G.player && !auto) toast('\ub300\uc0c1\uc774 \uc5c6\uac70\ub098 \ub108\ubb34 \uba49\ub2c8\ub2e4'); return false; }
+    if (EX_SELF_R[sk.kind] && auto && mobsInRadius(e.x, e.y, sk.radius || 160).length < 1) return false;
+    if (auto && (sk.kind === 'guard' || sk.kind === 'song') && !(e.hp < e.s.maxHp * .7 || allies().some(a => a.hp > 0 && a.hp < a.s.maxHp * .6))) return false;
+    if (auto && sk.range && !EX_NEED_T[sk.kind] && (!t || dist(e, t) > sk.range)) return false;
+    const r = _useSkill385.apply(this, arguments);       /* MP\u00b7\ucfe8\ud0c0\uc784\u00b7\ubc14\ub77c\ubcf4\uae30\u00b7\uc18c\ub9ac */
+    if (!r) return r;
+    try { exSkill(e, sk, t); } catch (err) { reportError(err); }
+    return r;
+  };
+}
+function exSkill(e, sk, t) {
+  const pw = e.s.power, rk = 1 + (e.rank || 0) * .25, col = sk.col, D = pw * (sk.mult || 1) * rk;
+  const angTo = o => o ? Math.atan2(o.y - 16 - (e.y - 22), o.x - e.x) : dirAngle(e.dir);
+  switch (sk.kind) {
+    case 'rush': {
+      const a = Math.atan2(t.y - e.y, t.x - e.x), len = Math.max(0, dist(e, t) - (t.r || 12) - 18), x0 = e.x, y0 = e.y;
+      addFx('ghost', e.x, e.y, { dur: .35, src: e });
+      for (let s = 0; s < len; s += 12) tryMove(e, Math.cos(a) * Math.min(12, len - s), Math.sin(a) * Math.min(12, len - s));
+      const hit = G.mobs.filter(m => m.hp > 0 && segDist(m.x, m.y, x0, y0, e.x + Math.cos(a) * 40, e.y + Math.sin(a) * 40) < 46 + (m.r || 10));
+      for (const m of hit) { damageMob(e, m, D, { stun: .4, big: true, threatMul: 1.5 }); addFx('bigSlash', m.x, m.y - 18, { col, dur: .3, ang: a }); }
+      addFx('line', x0, y0 - 14, { x2: e.x, y2: e.y - 14, col: 'rgba(255,200,120,.45)', w: 18, dur: .25 }); G.shake = Math.max(G.shake || 0, 4);
+      break;
+    }
+    case 'guard': {
+      e.buffs.roar = sk.dur; healAlly(e, e.s.maxHp * sk.heal, e); calcStats(e);
+      addFx('ring', e.x, e.y, { col, r: 70, dur: .5 }); addFx('pillar', e.x, e.y, { col, dur: .8 }); floatText(e.x, e.y - 60, sk.names[e.rank || 0] + '!', col, true);
+      break;
+    }
+    case 'combo': {
+      const a = Math.atan2(t.y - e.y, t.x - e.x);
+      for (let k = 0; k < sk.hits; k++) exLater(k * .12, () => { if (t.hp > 0 && G.mobs.includes(t)) { damageMob(e, t, D, { big: k === sk.hits - 1, threatMul: 1.4 }); addFx('bigSlash', t.x, t.y - 18, { col, dur: .2, ang: a + (k - 1) * .7 }); e.atkAnim = .2; } });
+      break;
+    }
+    case 'fanwave': {
+      const a = angTo(t);
+      for (let k = 0; k < sk.count; k++) fireWave(e, a + (k - (sk.count - 1) / 2) * .26, { dmg: D, range: sk.range, max: 3, col, rank: e.rank || 0 });
+      G.shake = Math.max(G.shake || 0, 4);
+      break;
+    }
+    case 'knives': {
+      const a = angTo(t);
+      for (let k = 0; k < sk.count; k++) fireProj(e, a + (k - 1) * .18, { dmg: D, kind: 'arrow', col, range: sk.range, speed: 620, pierce: 1, hitOpt: { col, critBonus: .15 } });
+      break;
+    }
+    case 'blink': {
+      const a = Math.atan2(t.y - e.y, t.x - e.x), bx = t.x + Math.cos(a) * ((t.r || 12) + 26), by = t.y + Math.sin(a) * ((t.r || 12) + 26);
+      addFx('ghost', e.x, e.y, { dur: .45, src: e }); addFx('puff', e.x, e.y - 10, { col, dur: .3, r: 24 });
+      if (canStand(e, bx, by)) { e.x = bx; e.y = by; } else stepToward(e, t, Math.max(0, dist(e, t) - 30));
+      faceTo(e, t.x, t.y);
+      damageMob(e, t, D, { critBonus: 1, big: true, threatMul: 1.6 }); addFx('bigSlash', t.x, t.y - 18, { col, dur: .32, ang: a + Math.PI });
+      break;
+    }
+    case 'smoke': {
+      e.buffs.hasteBurst = Math.max(e.buffs.hasteBurst || 0, sk.dur); calcStats(e);
+      for (const m of mobsInRadius(e.x, e.y, sk.radius)) { m.status = m.status || {}; m.status.slow = { t: 3 }; addFx('puff', m.x, m.y - 10, { col: '#8a8a96', dur: .5, r: 18 }); }
+      addFx('cloud', e.x, e.y, { col: '#8a8a96', r: sk.radius, dur: 1.4, tick: 99, src: e, dps: 0 }); addFx('ghost', e.x, e.y, { dur: .5, src: e });
+      break;
+    }
+    case 'execute': {
+      const low = t.hp < t.maxHp * .3, mul = low ? (t.boss ? 1.5 : 2) : 1;
+      damageMob(e, t, D * mul, { critBonus: .3, big: true, threatMul: 1.6 });
+      addFx('bigSlash', t.x, t.y - 18, { col, dur: .38, ang: Math.atan2(t.y - e.y, t.x - e.x) }); addFx('ring', t.x, t.y, { col, r: 50, dur: .3 });
+      if (low) { floatText(t.x, t.y - 70, '\ucc9c\uc0b4!', col, true); G.shake = Math.max(G.shake || 0, 6); }
+      break;
+    }
+    case 'icelance': {
+      fireProj(e, angTo(t), { dmg: D, kind: 'orb', col, range: sk.range, speed: 600, pierce: 3, hitOpt: { slow: 2, col } });
+      break;
+    }
+    case 'firering': {
+      for (const m of mobsInRadius(e.x, e.y, sk.radius)) damageMob(e, m, D, { burn: 3, big: true });
+      addFx('ring', e.x, e.y, { col, r: sk.radius, dur: .45 });
+      for (let k = 0; k < 8; k++) { const a = k / 8 * TAU; addFx('firePillar', e.x + Math.cos(a) * sk.radius * .7, e.y + Math.sin(a) * sk.radius * .4, { col, dur: .55, r: 26 }); }
+      break;
+    }
+    case 'storm': {
+      const list = mobsInRadius(e.x, e.y, sk.radius).sort(() => Math.random() - .5).slice(0, sk.count);
+      list.forEach((m, k) => addFx('telegraph', m.x, m.y, { r: 30, dur: .25 + k * .12, col: 'rgba(255,240,120,.3)', onDone: () => { if (m.hp <= 0) return; addFx('skyBolt', m.x, m.y, { col, dur: .3 }); damageMob(e, m, D, { stun: .3, big: true }); } }));
+      if (!list.length) addFx('skyBolt', e.x + rnd(-60, 60), e.y + rnd(-40, 40), { col, dur: .3 });
+      break;
+    }
+    case 'vortex': {
+      const cx = t.x, cy = t.y;
+      addFx('ring', cx, cy, { col, r: sk.radius, dur: 1 }); addFx('spin', cx, cy - 10, { col, r: sk.radius * .8, dur: 1 });
+      for (let k = 0; k < 3; k++) exLater(k * .3, () => {
+        for (const m of mobsInRadius(cx, cy, sk.radius)) {
+          if (!m.boss) { const d = Math.hypot(m.x - cx, m.y - cy); if (d > 20) tryMove(m, (cx - m.x) / d * Math.min(40, d - 16), (cy - m.y) / d * Math.min(40, d - 16)); }
+          damageMob(e, m, D, { noKb: true, big: k === 2 });
+        }
+        addFx('spin', cx, cy - 10, { col, r: sk.radius * (.8 - k * .15), dur: .4 });
+      });
+      break;
+    }
+    case 'bind': {
+      fireProj(e, angTo(t), { dmg: D, kind: 'talisman', col, range: sk.range, speed: 480, homing: t, hitOpt: { stun: 1.6, col }, onHit: m => addFx('talisBurn', m.x, m.y - 20, { col, dur: .6 }) });
+      break;
+    }
+    case 'song': {
+      for (const a of allies()) if (a.hp > 0 && dist(a, e) <= sk.radius) { healAlly(a, a.s.maxHp * sk.heal, e); a.buffs.food = Math.max(a.buffs.food || 0, sk.dur); calcStats(a); addFx('heal', a.x, a.y, { col, r: 34, dur: .5 }); }
+      addFx('petals', e.x, e.y, { col, dur: 1.2, r: 160 }); addFx('heal', e.x, e.y, { col, r: 130, dur: .8 }); addFx('ring', e.x, e.y, { col, r: sk.radius * .5, dur: .6 }); floatText(e.x, e.y - 60, '\u266a ' + sk.names[e.rank || 0], col, true);
+      break;
+    }
+    case 'thunder': {
+      const x = t.x, y = t.y;
+      addFx('talisBurn', x, y - 30, { col, dur: .5 });
+      addFx('telegraph', x, y, { r: sk.radius * .7, dur: .35, col: 'rgba(255,240,120,.3)', onDone: () => { addFx('skyBolt', x, y, { col, dur: .32 }); addFx('talisBoom', x, y - 10, { dur: .38, col }); for (const m of mobsInRadius(x, y, sk.radius)) damageMob(e, m, D, { stun: .25, big: true }); G.shake = Math.max(G.shake || 0, 4); } });
+      break;
+    }
+    case 'gust': {
+      for (const m of mobsInRadius(e.x, e.y, sk.radius)) {
+        damageMob(e, m, D, { big: true, noKb: true });
+        if (!m.boss) { const d = Math.max(1, Math.hypot(m.x - e.x, m.y - e.y)); for (let s = 0; s < 6; s++) tryMove(m, (m.x - e.x) / d * 22, (m.y - e.y) / d * 22); }
+      }
+      addFx('ring', e.x, e.y, { col, r: sk.radius, dur: .5 }); addFx('petals', e.x, e.y, { col: '#e8f6ff', dur: .8, r: sk.radius }); addFx('spin', e.x, e.y - 14, { col, r: sk.radius * .7, dur: .4 });
+      break;
+    }
+  }
+}
+/* \uac8c\uc784 \uc2dc\uac04\uc73c\ub85c \uc7a0\uae50 \ub4a4\uc5d0 (\uba48\ucd94\uba74 \uac19\uc774 \uba48\ucd98\ub2e4) */
+const EX_Q = [];
+function exLater(sec, fn) { EX_Q.push({ at: G.time + sec, map: G.mapId, fn }); }
+{
+  const _update385 = update;
+  update = function (dt) {
+    const r = _update385.apply(this, arguments);
+    for (let i = EX_Q.length - 1; i >= 0; i--) { const q = EX_Q[i]; if (q.map !== G.mapId) { EX_Q.splice(i, 1); continue; } if (G.time >= q.at) { EX_Q.splice(i, 1); try { q.fn(); } catch (e) { reportError(e); } } }
+    return r;
+  };
+}
+function segDist(px, py, ax, ay, bx, by) { const vx = bx - ax, vy = by - ay, l2 = vx * vx + vy * vy || 1, u = clamp(((px - ax) * vx + (py - ay) * vy) / l2, 0, 1); return Math.hypot(px - ax - vx * u, py - ay - vy * u); }
+
+/* ---------------- \uae30\uc220 \ucc3d: \uce78 \uace0\ub974\uae30 ---------------- */
+{
+  const _menuSkill385 = MENU.skill;
+  MENU.skill = function (ctx) {
+    const r = _menuSkill385.apply(this, arguments), p = G.player;
+    if (!SKILLS_EX[p.job]) return r;
+    const slots = skSlots(p);
+    let h = `<div class="sk-pick"><div class="sk-ph"><b>\uae30\uc220 \uce78</b> <span class="muted">\ubc30\uc6b4 \uae30\uc220 ${skillAll(p.job).filter(s => skLearned(p, s)).length}/8 \u00b7 \uc544\ub798\uc5d0\uc11c \uae30\uc220 \uc606 \ubc88\ud638\ub97c \ub204\ub974\uba74 \uadf8 \uce78\uc5d0 \ub4e4\uc5b4\uac11\ub2c8\ub2e4</span></div><div class="sk-slots">`;
+    slots.forEach((id, i) => { const s = skById(p.job, id); h += `<div class="sk-slot ${skLearned(p, s) ? '' : 'off'}"><i>${i + 1}</i>${skillIconHTML(s)}<span>${esc(s.names[p.rank || 0])}</span></div>`; });
+    h += `</div>`;
+    for (const s of skillAll(p.job)) {
+      const on = skLearned(p, s), at = slots.indexOf(s.id);
+      const req = !on ? (p.lv < s.lv ? `Lv.${s.lv}` : s.rk === 1 ? '1\ucc28 \uc2b9\uae09' : '2\ucc28 \uc2b9\uae09') : '';
+      h += `<div class="row sk-row ${on ? '' : 'off'}"><div class="ic">${skillIconHTML(s)}</div><div class="tx"><div class="t1">${esc(s.names[p.rank || 0])}${s.ex ? ' <span class="sk-new">\uc0c8 \uae30\uc220</span>' : ''} <span class="muted">Lv.${s.lv} \u00b7 \ucfe8 ${s.cd}\ucd08</span></div><div class="t2">${esc(s.desc)}</div></div>`;
+      h += on ? `<div class="sk-btns">${[0, 1, 2, 3].map(k => `<button class="btn ${at === k ? 'teal' : ''}" data-a="skPut" data-v="${s.id}" data-n="${k}">${k + 1}</button>`).join('')}</div>` : `<div class="muted sk-req">${req}</div>`;
+      h += `</div>`;
+    }
+    h += `</div><div class="sep"></div>`;
+    /* \uc6d0\ub798 \ubaa9\ub85d(\uc9c0\uae08 \ub080 4\uac1c \uc124\uba85)\uc740 \uc544\ub798\uc5d0 \ub0a8\uae34\ub2e4 */
+    return [r[0], h + r[1]];
+  };
+  const _onModalClick385 = onModalClick;
+  onModalClick = function (e) {
+    const b = e.target.closest('[data-a]');
+    if (!b || b.dataset.a !== 'skPut') return _onModalClick385(e);
+    const p = G.player, slots = skSlots(p), id = b.dataset.v, k = +b.dataset.n, s = skById(p.job, id);
+    if (!skLearned(p, s)) return;
+    const was = slots.indexOf(id); if (was >= 0) slots[was] = slots[k];
+    slots[k] = id; Sfx.click(); calcStats(p);
+    const hb = $('s' + k); if (hb) hb.dataset.k = '';
+    for (let i = 0; i < 4; i++) { const x = $('s' + i); if (x) x.dataset.k = ''; }
+    toast(`${k + 1}\ubc88 \uce78: ${s.names[p.rank || 0]}`, 'blue'); rerender();
+  };
+}
+(function () {
+  const st = document.createElement('style');
+  st.textContent = `.sk-pick{margin-bottom:6px}.sk-ph{margin-bottom:6px;font-size:12px}
+.sk-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+.sk-slot{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 2px 5px;border:1px solid var(--gold);border-radius:8px;background:rgba(0,0,0,.3);font-size:11px;text-align:center}
+.sk-slot i{position:absolute;left:4px;top:2px;font-style:normal;font-size:10px;color:var(--gold2)}.sk-slot.off{opacity:.5}
+.sk-slot img.pxs{width:30px;height:30px}
+.sk-row.off{opacity:.5}.sk-row .t2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.sk-btns{display:flex;gap:3px;flex:none}.sk-btns .btn{min-width:30px;padding:6px 0}
+.sk-new{font-size:10px;padding:0 5px;border-radius:6px;background:rgba(47,122,114,.5);color:var(--ink)}.sk-req{flex:none;font-size:11px}`;
+  document.head.appendChild(st);
 })();
 
 /* ============================================================
