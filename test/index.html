@@ -763,6 +763,25 @@ body.infield.hp-low .me{opacity:1}
 .slot.cg .cgi:not(:has(img)){font-size:24px;line-height:1}
 /* v382: PC \cc3d  \b192 \c774 \ac00  \c544 \c8fc  \b0ae \c744  \b54c  \c2dc \c138  \b2e8 \cd94 \ac00  \c704 \c544 \b798 \b85c  \ae38 \ac8c  \b298 \c5b4 \b098 \b358  \ac83  (\c704 \b7 \c544 \b798  \c704 \ce58 \ac00  \b458  \b2e4  \ac78 \b824  \c788 \c5c8 \b2e4 ) */
 @media (max-height:520px){ .pc #tickerBtn,.pc #ticker{bottom:auto} }
+/* v383: \c0c1 \b2e8  \ce74 \b4dc  \b7  \acfc \ac70  \c2dc \d5d8  */
+.sd-card{margin:6px 0 10px;padding:8px 10px;border:1px solid rgba(217,178,95,.45);border-radius:8px;background:rgba(0,0,0,.28)}
+.sd-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.sd-h b{font-size:15px;color:var(--gold2)}
+.sd-ic{font-size:18px}
+.sd-lv{margin-left:auto;font-size:12px;padding:1px 8px;border-radius:10px;background:rgba(217,178,95,.2);color:var(--gold2)}
+.sd-row{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin-top:4px}
+.sd-row small{font-size:10.5px}
+.sd-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;margin:3px 0 2px}
+.sd-bar i{display:block;height:100%;background:linear-gradient(90deg,#b8862f,#f3d68a)}
+.sd-next{font-size:12px;margin:6px 0;color:var(--ink)}
+.sd-perks{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.sd-perks span{font-size:10.5px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--dim)}
+.sd-perks span.on{background:rgba(47,122,114,.35);color:var(--ink)}
+.sd-exam{margin:6px 0;padding:8px;border-radius:8px;background:rgba(0,0,0,.3);display:grid;gap:6px}
+.sd-q{font-weight:700;line-height:1.5}
+.sd-exp{font-size:12px;line-height:1.6;margin:4px 0;color:var(--gold2)}
+.mk-tabs .tab{white-space:nowrap}
+.sd-exam .btn.teal:disabled,.sd-exam .btn.red:disabled{opacity:1}
 </style></head><body><div id="game">
   <canvas id="cv"></canvas>
   <div id="hud">
@@ -787,7 +806,7 @@ body.infield.hp-low .me{opacity:1}
       <button class="mb" data-m="map" aria-label="&#xc9c0;&#xb3c4;">&#x1f5fa;&#xfe0f;<span class="key">M</span></button>
       <button class="mb" data-m="party" aria-label="&#xb3d9;&#xb8cc;">&#x1f465;<span class="key">P</span></button>
       <button class="mb" data-m="codex" aria-label="&#xb3c4;&#xac10;">&#x1f3c6;<span class="key">B</span></button>
-      <button class="mb" data-m="market" aria-label="&#xd22c;&#xc790;">&#x1f4b9;<span class="key">O</span><span class="dot"></span></button>
+      <button class="mb" data-m="market" aria-label="&#xc0c1;&#xb2e8; &#xc7a5;&#xbd80;">&#x1f4b9;<span class="key">O</span><span class="dot"></span></button>
       <button class="mb" data-m="set" aria-label="&#xc124;&#xc815;">&#x2699;&#xfe0f;</button>
     </div>
   </div>
@@ -816,7 +835,7 @@ body.infield.hp-low .me{opacity:1}
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v381</div>
+    <div class="sub">v384</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -1412,11 +1431,12 @@ const STORY = [
   { id: 'tiger', act: 1, t: '\ud751\ud638\uc655\uc758 \uad74', sum: '\ud751\ud638\uc655\uc758 \uad74\uc5d0\uc11c \ucc22\uc5b4\uc9c4 \ubd09\uc778 \ubd80\uc801 \uc870\uac01\uc744 \uc8fc\uc6e0\ub2e4.', steps: [
       { t: 'reach', map: 'snow', hint: '\ub291\ub300\uace0\uc6d0 \ubd81\ucabd \uc124\ud654 \uace0\uc6d0' },
       { t: 'boss', id: 'tigerLord', hint: '\ud638\ub791\uc774\uad74 3\uce35\uc758 \ud751\ud638\uc655 \ucc98\uce58' },
-      { t: 'talk', npc: 'chief', say: '\ud751\ud638\uc655 \uad74\uc5d0\uc11c \uc774\ub7f0 \uac78 \uc8fc\uc6e0\ub2e4\uace0? \ucc22\uc5b4\uc9c4 \ubd09\uc778 \ubd80\uc801\uc774\uad70. \uae00\uc790\uac00 \ub0af\uc124\uc5b4 \ub098\ub3c4 \ubabb \uc77d\uaca0\ub124\u2026 \ub3d9\ucabd \uc5ed\ucc38\uae38\uc744 \uc9c0\ub098 \ub300\uc804\uc73c\ub85c \uac00 \ubcf4\uac8c. \ud314\ub3c4 \uc18c\uc2dd\uc774 \ubaa8\uc774\ub294 \uacf3\uc774\ub2c8 \uc544\ub294 \uc774\uac00 \uc788\uc744 \uac78\uc138.' }
+      { t: 'talk', npc: 'chief', say: '\ud751\ud638\uc655 \uad74\uc5d0\uc11c \uc774\ub7f0 \uac78 \uc8fc\uc6e0\ub2e4\uace0? \ucc22\uc5b4\uc9c4 \ubd09\uc778 \ubd80\uc801\uc774\uad70. \uae00\uc790\uac00 \ub0af\uc124\uc5b4 \ub098\ub3c4 \ubabb \uc77d\uaca0\ub124\u2026 \ub3d9\ucabd \uc5ed\ucc38\uae38\uc744 \uc9c0\ub098 \ub300\uc804\uc73c\ub85c \uac00 \ubcf4\uac8c. \ud314\ub3c4 \uc18c\uc2dd\uc774 \ubaa8\uc774\ub294 \uacf3\uc774\ub2c8 \uc544\ub294 \uc774\uac00 \uc788\uc744 \uac78\uc138. \uc544, \uac00\ub294 \uae38\uc5d0 \uc6b0\ub9ac \uccad\uc6d4 \ud2b9\uc0b0\ud488\uc744 \uc880 \uc2e4\uc5b4 \uac00 \uc8fc\uac8c. \uc0b0\ucc44\uc655\uc774 \uae38\ubaa9\uc744 \ub9c9\uc544 \ub300\uc804\uc5d4 \ubb3c\uac74\uc774 \uadc0\ud558\ub2e4\ub124. \uac1d\uc8fc \ub9cc\uc11d\uc5d0\uac8c\uc11c \uc0ac\ub2e4\uac00 \ub300\uc804 \uac1d\uc8fc\uc5d0 \ud314\uba74 \ub178\uc7a3\ub3c8\uc774 \ub450\ub451\ud574\uc9c8 \uac78\uc138.' }
     ], reward: { gold: 4200, xpPct: .7 } },
 
   /* ---------------- 2\ub9c9 ---------------- */
-  { id: 'daejeon', act: 2, t: '\ud314\ub3c4\ub85c \uac00\ub294 \uae38', sum: '\ub300\uc804\uc5d0 \ub2ff\uc558\ub2e4. \ud314\ub3c4 \uae38\ubaa9\uc744 \ub9c9\ub358 \uc0b0\ucc44\uc655\ub3c4 \uadc0\uae30\uc5d0 \ud640\ub824 \uc788\uc5c8\ub2e4.', steps: [
+  { id: 'daejeon', act: 2, t: '\ud314\ub3c4\ub85c \uac00\ub294 \uae38', sum: '\uccad\uc6d4 \ud2b9\uc0b0\ud488\uc744 \uc2e3\uace0 \ub300\uc804\uc5d0 \ub2ff\uc558\ub2e4. \ud314\ub3c4 \uae38\ubaa9\uc744 \ub9c9\ub358 \uc0b0\ucc44\uc655\ub3c4 \uadc0\uae30\uc5d0 \ud640\ub824 \uc788\uc5c8\ub2e4.', steps: [
+      { t: 'trade', n: 5, at: 'city_daejeon', hint: '\uccad\uc6d4\ucd0c \uac1d\uc8fc\uc5d0\uc11c \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub300\uc804 \uac1d\uc8fc\uc5d0 \ud314\uae30' },   /* v382 \uad50\uc5ed \uc775\ud788\uae30 */
       { t: 'reach', map: 'city_daejeon', hint: '\uccad\uc6d4\ucd0c \ub3d9\ubb38 \u2192 \uccad\uc6d4-\ub300\uc804 \uac00\ub294 \uae38 \u2192 \ub300\uc804' },
       { t: 'talk', npc: 'daejeon_g', say: '\uccad\uc6d4\ucd0c\uc5d0\uc11c \uc624\uc168\uc18c? \ubd80\uc801 \uc870\uac01\uc774\ub77c\u2026 \uadf8\ub7f0 \uac74 \uad11\uc8fc \uc8fd\ub9bc \ub3c4\uc0ac\uac00 \uc798 \uc544\ub294\ub370, \uc9c0\uae08\uc740 \uae38\uc774 \ub9c9\ud614\uc18c. \uacc4\ub8e1 \uc0b0\ucc44\uc758 \uc0b0\ucc44\uc655\uc774 \ud314\ub3c4 \uae38\ubaa9\uc744 \uc8c4\ub2e4 \ud2c0\uc5b4\uc950\uc5c8\uac70\ub4e0. \uadf8\ub188\ubd80\ud130 \uc5b4\ub5bb\uac8c \ud574 \uc8fc\uc2dc\uc624.' },
       { t: 'boss', id: 'roadKing', hint: '\ub300\uc804 \u2192 \uacc4\ub8e1 \uc0b0\ucc44\uae38 \u2192 \uacc4\ub8e1 \uc0b0\ucc44\uc758 \ud314\ub3c4 \uc0b0\ucc44\uc655 \ucc98\uce58' },
@@ -1467,9 +1487,10 @@ const STORY = [
       { t: 'reach', map: 'city_incheon', hint: '\uc218\uc6d0 \u2192 \uc11c\uc6b8 \u2192 \uc11c\uc6b8-\uc778\ucc9c \uac00\ub294 \uae38 \u2192 \uc778\ucc9c' },
       { t: 'talk', npc: 'incheon_g', say: '\uac80\uc740 \ubc30 \ub9d0\uc774\uc624? \ub611\ub611\ud788 \ubd24\uc18c. \uc218\uad70 \ud568\ub300\uac00 \ub9c9\uc544\uc130\ub2e4\uac00 \ud558\ub8fb\ubc24 \uc0c8 \ud1b5\uc9f8\ub85c \uac00\ub77c\uc549\uc558\uc9c0. \uadf8 \uc81c\ub3c5\uc774 \uc9c0\uae08 \ud574\uc2dd\uad74 \ubc14\ub2e5\uc5d0\uc11c \uc8fd\uc740 \ubc30\ub4e4\uc744 \ubb36\uc5b4 \ub193\uace0 \uc788\uc18c. \ud3b8\ud788 \uc26c\uac8c \ud574 \uc8fc\uc2dc\uc624.' },
       { t: 'boss', id: 'seaAdmiral', hint: '\uc778\ucc9c \u2192 \uc81c\ubb3c\ud3ec \uac2f\ubc8c\uae38 \u2192 \uc6d4\ubbf8 \uac08\ub9bc\uae38 \u2192 \uc81c\ubb3c\ud3ec \ud574\uc2dd\uad74 \u2192 \ud574\uc2dd\uad74 \uc2ec\uce35\uc758 \uc2ec\ud574 \uc218\uad70\uc81c\ub3c5 \ucc98\uce58' },
-      { t: 'talk', npc: 'incheon_g', say: '\uc81c\ub3c5\uc774 \uadf8\ub7f0 \ub9d0\uc744 \ub0a8\uacbc\ub2e4\uace0? "\uadf8\uc790\ub294 \ubd81\ucabd \uc5ec\uc655\uc758 \uce7c\uc77c \ubfd0"\u2026 \uc5ec\uc655\uc774\ub77c\ub2c8, \ubb34\uc0ac \uc704\uc5d0 \ub204\uac00 \ub610 \uc788\ub2e8 \ub9d0\uc774\uc624. \uac80\uc740 \ubc30\ub294 \ub0a8\ucabd \ud0d0\ub77c\ub85c \ub0b4\ub824\uac14\uc18c. \ud0d0\ub77c \uc77c\uc740 \ud55c\uc591 \uae08\uc704\ub300\uc7a5 \ubb34\uc9c4\uc774 \uc798 \uc544\ub2c8 \ucc3e\uc544\uac00 \ubcf4\uc2dc\uc624.' }
+      { t: 'talk', npc: 'incheon_g', say: '\uc81c\ub3c5\uc774 \uadf8\ub7f0 \ub9d0\uc744 \ub0a8\uacbc\ub2e4\uace0? "\uadf8\uc790\ub294 \ubd81\ucabd \uc5ec\uc655\uc758 \uce7c\uc77c \ubfd0"\u2026 \uc5ec\uc655\uc774\ub77c\ub2c8, \ubb34\uc0ac \uc704\uc5d0 \ub204\uac00 \ub610 \uc788\ub2e8 \ub9d0\uc774\uc624. \uac80\uc740 \ubc30\ub294 \ub0a8\ucabd \ud0d0\ub77c\ub85c \ub0b4\ub824\uac14\uc18c. \ud0d0\ub77c \uc77c\uc740 \ud55c\uc591 \uae08\uc704\ub300\uc7a5 \ubb34\uc9c4\uc774 \uc798 \uc544\ub2c8 \ucc3e\uc544\uac00 \ubcf4\uc2dc\uc624. \ud55c\uc591\uc5d0 \uac00\uac70\ub4e0 \uc2dc\uc804 \uc7a5\ubd80\uc5d0\ub3c4 \uc774\ub984\uc744 \uc62c\ub824 \ub450\uc2dc\uc624. \ud314\ub3c4 \ub3c8\uc904\uc774 \ub2e4 \uac70\uae30 \ubaa8\uc774\ub2c8, \uc8fc\uc2dd\uc774\ub4e0 \ub545\uc774\ub4e0 \uc0ac \ub450\uba74 \ub178\uc7a3\ub3c8\uc774 \uc808\ub85c \ubd88\uc5b4\ub0a0 \uac70\uc694.' }
     ], reward: { gold: 20000, xpPct: .25, items: [['bossEssence', 1]] } },
-  { id: 'seoul', act: 2, t: '\ud55c\uc591\uc758 \uc6d0\uadc0', sum: '\uc655\ub989\uc758 \uae30\ub85d. "\ubabb \uc5ec\ub35f\uc740 \ud314\ub3c4\uc5d0, \uc790\ubb3c\uc1e0\ub294 \ud0d0\ub77c\uc758 \uc5b4\uba38\ub2c8\uc5d0\uac8c."', steps: [
+  { id: 'seoul', act: 2, t: '\ud55c\uc591\uc758 \uc6d0\uadc0', sum: '\ud55c\uc591 \uc2dc\uc804\uc5d0 \ud22c\uc790\ud558\uace0, \uc655\ub989\uc5d0\uc11c \ubd09\uc778\uc758 \uae30\ub85d\uc744 \ucc3e\uc558\ub2e4. "\ubabb \uc5ec\ub35f\uc740 \ud314\ub3c4\uc5d0, \uc790\ubb3c\uc1e0\ub294 \ud0d0\ub77c\uc758 \uc5b4\uba38\ub2c8\uc5d0\uac8c."', steps: [
+      { t: 'invest', hint: '\uc0c1\ub2e8 \uc7a5\ubd80(O)\uc5d0\uc11c \uc8fc\uad8c\uc744 \uc0ac\uac70\ub098, \uace0\uc7a5 \uc0c1\ub2e8 \ud589\uc218\uc5d0\uac8c \ucd9c\uc790\ud558\uae30' },   /* v382 \ud22c\uc790 \uc775\ud788\uae30 */
       { t: 'level', lv: 80, hint: '\ub808\ubca8 80 \ub2ec\uc131 (\uc778\ucc9c\u00b7\uc11c\uc6b8 \uc0ac\ub0e5\ud130 \uad8c\uc7a5)' },
       { t: 'talk', npc: 'seoul_g', say: '\uae30\ub2e4\ub9ac\uace0 \uc788\uc5c8\uc18c. \ubb34\uc0ac\uac00 \ud55c\uc591\uc758 \ubabb\uc744 \ubf51\uc740 \ub4a4\ub85c \uc655\ub989\uc758 \uadc0\uc655\uc774 \uae68\uc5b4\ub098 \ud3d0\uad81\uc744 \ucc28\uc9c0\ud588\uc18c. \uc655\ub989 \uae4a\uc740 \uacf3\uc5d0 \ubd09\uc778\uc758 \uae30\ub85d\uc774 \ub0a8\uc544 \uc788\uc744 \ud130, \uadc0\uc655\uc744 \ubb3c\ub9ac\uce58\uace0 \ud655\uc778\ud574 \uc8fc\uc2dc\uc624.' },
       { t: 'boss', id: 'royalTombKing', hint: '\uc11c\uc6b8 \u2192 \ud55c\uc591 \uc678\uacfd\uae38 \u2192 \uc22d\ub840\ubb38 \uac08\ub9bc\uae38 \u2192 \ud55c\uc591 \uae08\uc704\ud3d0\ud5c8 \u2192 \ud3d0\uad81 \uae4a\uc740 \ud68c\ub791 \ub05d\uc758 \uc655\ub989 \uadc0\uc655 \ucc98\uce58' },
@@ -6773,13 +6794,16 @@ const MENU = {
     let h = `<div class="row"><div class="tx"><div class="t1">\ud6a8\uacfc\uc74c</div></div><button class="btn ${p.settings.sound ? 'teal' : ''}" data-a="toggle" data-v="sound">${p.settings.sound ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\ubc30\uacbd\uc74c\uc545</div><div class="t2">\uad6d\uc545\ud48d \ud569\uc131 \uc74c\uc545 (\ub9c8\uc744\u00b7\uc0ac\ub0e5\ud130\u00b7\ub3d9\uad74\u00b7\ubcf4\uc2a4\uc804\ub9c8\ub2e4 \ub2e4\ub984)</div></div><button class="btn ${p.settings.bgm !== false ? 'teal' : ''}" data-a="toggle" data-v="bgm">${p.settings.bgm !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uc790\ub3d9 \uc90d\uae30</div><div class="t2">\uac00\uae4c\uc6b4 \uc804\ub9ac\ud488\uc744 \uc790\ub3d9\uc73c\ub85c \uc90d\uc2b5\ub2c8\ub2e4</div></div><button class="btn ${p.settings.autoLoot ? 'teal' : ''}" data-a="toggle" data-v="autoLoot">${p.settings.autoLoot ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
-    h += `<div class="row"><div class="tx"><div class="t1">\uc2dc\uc138 \uc804\uad11\ud310</div><div class="t2">\ud83d\udcc8 \uc2dc\uc138 \ubc84\ud2bc(Tab)\uc744 \ub204\ub974\uba74 \ud654\uba74 \uc544\ub798\uc5d0 \uc8fc\uc2dd\u00b7\ucf54\uc778 \uc2dc\uc138\uac00 \ud3bc\uccd0\uc9d1\ub2c8\ub2e4. \ub044\uba74 \ubc84\ud2bc\ub3c4 \uc228\uaca8\uc694</div></div><button class="btn ${p.settings.ticker !== false ? 'teal' : ''}" data-a="toggle" data-v="ticker">${p.settings.ticker !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
+    h += `<div class="row"><div class="tx"><div class="t1">\uc2dc\uc138 \uc804\uad11\ud310</div><div class="t2">\ud83d\udcc8 \uc2dc\uc138 \ubc84\ud2bc(Tab)\uc744 \ub204\ub974\uba74 \ud654\uba74 \uc544\ub798\uc5d0 \uc0c1\ub2e8 \uc8fc\uad8c \uc2dc\uc138\uac00 \ud3bc\uccd0\uc9d1\ub2c8\ub2e4. \ub044\uba74 \ubc84\ud2bc\ub3c4 \uc228\uaca8\uc694</div></div><button class="btn ${p.settings.ticker !== false ? 'teal' : ''}" data-a="toggle" data-v="ticker">${p.settings.ticker !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uae38 \uc548\ub0b4 \ud654\uc0b4\ud45c</div><div class="t2">\uc9c0\uae08 \uc774\uc57c\uae30 \ubaa9\ud45c\uac00 \uc788\ub294 \ucabd\uc744 \uae08\uc0c9 \ud654\uc0b4\ud45c\ub85c \uac00\ub9ac\ud0b5\ub2c8\ub2e4</div></div><button class="btn ${p.settings.guide !== false ? 'teal' : ''}" data-a="toggle" data-v="guide">${p.settings.guide !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uac70\ub798 \uc694\uccad \ubc1b\uae30</div><div class="t2">\uc0ac\ub0e5\ud130\uc5d0\uc11c \ub9cc\ub09c \ub2e4\ub978 \ubaa8\ud5d8\uac00\uac00 \uac00\ub054 \uac70\ub798\ub97c \uccad\ud569\ub2c8\ub2e4</div></div><button class="btn ${p.settings.tradeReq !== false ? 'teal' : ''}" data-a="toggle" data-v="tradeReq">${p.settings.tradeReq !== false ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
     h += `<div class="row"><div class="tx"><div class="t1">\uc9c0\uae08 \uc800\uc7a5</div><div class="t2">\uc790\ub3d9 \uc800\uc7a5\uc740 20\ucd08\ub9c8\ub2e4, \ub9f5 \uc774\ub3d9\ud560 \ub54c \ub429\ub2c8\ub2e4</div></div><button class="btn" data-a="save">\uc800\uc7a5</button></div>`;
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v384 \ubc24\ub0ae\uacfc \ub0a0\uc528</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf19 20\ubd84\ub9c8\ub2e4 \ud558\ub8e8\uac00 \ub3d5\ub2c8\ub2e4 \u2014 \ub0ae 11\ubd84 \u00b7 \ub178\uc744 \u00b7 \ubc24 5\ubd84 \ubc18 \u00b7 \uc0c8\ubcbd. \ubc24\uc5d0\ub294 \ud654\uba74\uc774 \ud478\ub974\uac8c \uac00\ub77c\uc549\uace0 \ub0b4 \ub458\ub808\u00b7\ub3d9\ub8cc\u00b7\ub4f1\ubd88\u00b7\uc9d1 \ucc3d\ubb38\uc774 \ubc1d\uc2b5\ub2c8\ub2e4 (\uc798 \ubcf4\uc774\ub3c4\ub85d \ub108\ubb34 \uc5b4\ub461\uc9c0 \uc54a\uac8c).<br>\ud83c\udf27\ufe0f 5\ubd84\ub9c8\ub2e4 \ub0a0\uc528\uac00 \ubc14\ub01d\ub2c8\ub2e4 \u2014 \ub9d1\uc74c \u00b7 \ube44 \u00b7 \uc18c\ub098\uae30(\ubc88\uac1c) \u00b7 \ub208. \ubd80\uc0b0\u00b7\uc81c\uc8fc\u00b7\uc778\ucc9c\uc740 \ube44\uac00 \uc7a6\uace0, \ub300\uad6c\ub294 \ub9d1\uc740 \ub0a0\uc774 \ub9ce\uace0, \ub208\ubc2d\uc5d4 \ub208\uc774 \uc635\ub2c8\ub2e4.<br>\u2699\ufe0f \uadf8\ub9bc\ub9cc \ubc14\ub01d\ub2c8\ub2e4 (\uc2f8\uc6c0\u00b7\uc2dc\uc57c\uc5d0\ub294 \uc601\ud5a5 \uc5c6\uc74c). \uad74\u00b7\uc131 \uc548\uc5d0\uc11c\ub294 \ubcf4\uc774\uc9c0 \uc54a\uace0, \uc124\uc815\uc5d0\uc11c \ub04c \uc218 \uc788\uc5b4\uc694.</div>`;
+    notes += `<div class="sep"></div><b>v383 \uc0c1\ub2e8(\u5546\u5718) \u2014 \uacbd\uc81c\ub97c \ud558\ub098\ub85c</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfee \ud22c\uc790\uc13c\ud130\uac00 <b>\uc0c1\ub2e8 \uc7a5\ubd80</b>(O)\ub85c \ubc14\ub00c\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 \uc790\uc0b0 \u00b7 \uc8fc\uad8c \u00b7 \ucd9c\uc790 \u00b7 \ub3d9\ubc29\uc77c\ubcf4.<br>\ud83d\udcdc \uc8fc\uc2dd\uc740 \uace0\uc7a5 \uc0c1\ub2e8\uc758 <b>\uc8fc\uad8c</b>\uc774 \ub418\uc5c8\uc2b5\ub2c8\ub2e4 (\uac00\uc9c4 \uc8fc\uc2dd \uadf8\ub300\ub85c). \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ud314\uba74 \uadf8 \uc0c1\ub2e8 \uc8fc\uad8c\uc774 \uc624\ub985\ub2c8\ub2e4.<br>\ud83e\ude99 \ucf54\uc778\uc740 \uc5c6\uc574\uc2b5\ub2c8\ub2e4 \u2014 \uac00\uc9c4 \ucf54\uc778\uc740 \ud604\uc7ac\uac00\ub85c \ub3cc\ub824\ub4dc\ub838\uc5b4\uc694.<br>\ud83c\udfe0 \ubd80\ub3d9\uc0b0\uc740 \uadf8 \uace0\uc7a5 \uc0c1\ub2e8 <b>\ucd9c\uc790</b>\ub85c \uc62e\uaca8 \ub4dc\ub838\uc2b5\ub2c8\ub2e4 (\uc0c1\ub2e8\uc774 \uc544\uc9c1 \uc5c6\ub294 \uace0\uc7a5\uc740 \ub3c8\uc73c\ub85c).<br>\ud83e\udd1d \ubcf5\ub355\ubc29 \uc790\ub9ac\uc5d0 <b>\uc0c1\ub2e8 \ud589\uc218</b>\uac00 \uc12d\ub2c8\ub2e4. \ucd9c\uc790\uae08 + \ud310\ub9e4 \uc2e4\uc801(+5\ub2e8\uc740 \uadf8 \uc9c0\uc5ed \ubcf4\uc2a4)\uc73c\ub85c 1~5\ub2e8, \ub2e8\uacc4\ub9c8\ub2e4 \uace0\uc7a5 \ud61c\ud0dd\uc774 \uc5f4\ub9bd\ub2c8\ub2e4.<br>\ud83c\udf3f \ub300\uad6c \uc57d\ub839\uc0c1\ub2e8 \u2014 \ub2e8\uc57d(\uae30\ub825\ub2e8\u00b7\uae08\uac15\ub2e8\u00b7\uccad\uc2ec\ub2e8) \uc870\uc81c \u00b7 \ud83d\udd28 \uc6b8\uc0b0 \ucca0\ubb3c\uc0c1\ub2e8 \u2014 \ubb34\uae30 \ud2b9\uc218 \ub2e8\ub828(\uacf5\uaca9 +3%\uc529) \u00b7 \ud83c\udfef \uc11c\uc6b8 \uc2dc\uc804\uc0c1\ub2e8 \u2014 \uacfc\uac70 \uc2dc\ud5d8\uc73c\ub85c \ud488\uacc4(\uacf5\uaca9\u00b7HP)<br>\ud83d\udcb0 \uc7a5\ub0a0\ub9c8\ub2e4 \ucd9c\uc790 \ubc30\ub2f9. 2\ub2e8\ubd80\ud130 \uadf8 \uace0\uc7a5 \uc0c1\uc810 10% \ud560\uc778. 5\ub2e8\uc740 \uce6d\ud638\uc640 \uc601\uad6c \ub2a5\ub825\uce58.</div>`;
+    notes += `<div class="sep"></div><b>v382 \uc774\uc57c\uae30 \uc18d \uad50\uc5ed\u00b7\ud22c\uc790</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 2\ub9c9 \u300c\ud314\ub3c4\ub85c \uac00\ub294 \uae38\u300d\uc774 \uccad\uc6d4 \ud2b9\uc0b0\ud488\uc744 \ub300\uc804 \uac1d\uc8fc\uc5d0 \ud30c\ub294 \uac83\uc73c\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4 \u2014 \uad50\uc5ed\uc744 \ud55c \ubc88\uc740 \ud574 \ubcf4\uac8c \ub3fc\uc694.<br>\ud83d\udcb9 \u300c\ud55c\uc591\uc758 \uc6d0\uadc0\u300d\ub294 \ud22c\uc790\uc13c\ud130\uc5d0\uc11c \uc8fc\uc2dd\u00b7\ucf54\uc778\uc744 \uc0ac\uac70\ub098 \ubcf5\ub355\ubc29\uc5d0\uc11c \ub545\uc744 \uc0ac\ub294 \uac83\uc73c\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4. \uc774\ubbf8 \uac00\uc9c4 \uac8c \uc788\uc73c\uba74 \ubc14\ub85c \ub118\uc5b4\uac00\uc694.<br>\uc774 \ub450 \uc7a5\uc744 \uc774\ubbf8 \ud558\uace0 \uc788\ub358 \ubd84\uc740 \ud558\ub358 \ub2e8\uacc4 \uadf8\ub300\ub85c \uc774\uc5b4\uc9d1\ub2c8\ub2e4.</div>`;
     notes += `<div class="sep"></div><b>v381 \uace0\uc7a5\uc758 \uc5bc\uad74 \u00b7 \ubb34\uae30\ubcc4 \ubaa8\uc158 \u00b7 \uc2b9\uae09 \ucc28\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfe0 \uace0\uc7a5\ub9c8\ub2e4 \ub9c8\uc744\uc774 \ub2e4\ub974\uac8c \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uccad\uc6d4\ucd0c \ucd08\uac00\uc9c0\ubd95, \ub300\uad6c \ubd89\uc740 \uae30\uc640\uc640 \ub2e8\ud48d, \uc6b8\uc0b0 \uac80\uc740 \uae30\uc640, \ubd80\uc0b0 \ud478\ub978 \uae30\uc640\uc640 \uac08\ub9e4\uae30, \uc11c\uc6b8 \ub2e8\uccad\uacfc \uc740\ud589\ub098\ubb34, \uad50\ud1a0 \ubd89\uc740 \uaca9\uc790, \ub3c4\ucfc4 \uac80\uc740 \ud68c\ubcbd\u2026 \ud480\ube5b\u00b7\ub098\ubb34\u00b7\ub5a0\ub2e4\ub2c8\ub294 \uac83\ub3c4 \uace0\uc7a5\ub9c8\ub2e4 \ub2ec\ub77c\uc694.<br>\u2694 \ubb34\uae30\ub9c8\ub2e4 \ud718\ub450\ub974\ub294 \ubaa8\uc2b5\uc774 \ub2e4\ub985\ub2c8\ub2e4 \u2014 \ub300\uac80\uc740 \ud06c\uac8c \ucc0d\uace0 \ud55c \ubc14\ud034 \ub3cc\uace0, \ub3c4\ub07c\ub294 \ub0b4\ub824\ucc0d\uc5b4 \ub545\uc744 \uc6b8\ub9ac\uace0, \ucc3d\uc740 \uace7\uac8c \ucc0c\ub974\uace0, \uc9c0\ud321\uc774\ub294 \ub05d\uc5d0\uc11c \uae30\uc6b4\uc774 \ub098\uac11\ub2c8\ub2e4. \ucc3d \ucc0c\ub974\uae30\uac00 \ub545\uc744 \ud5a5\ud558\ub358 \uac83\ub3c4 \ubc14\ub85c\uc7a1\uc558\uc5b4\uc694. (\ud53c\ud574\u00b7\uc18d\ub3c4\ub294 \uadf8\ub300\ub85c)<br>\u2b50 \uc2b9\uae09\ud558\uba74 \ucc28\ub9bc\uc774 \ub2ec\ub77c\uc9d1\ub2c8\ub2e4 \u2014 \uacac\uac11\uacfc \ub9dd\ud1a0, \ubaa9\ub3c4\ub9ac, \ud6c4\uad11, \ud558\ub298 \ub760.<br>\ud83d\udeaa \uc124\uc815 \ub9e8 \uc704\uc758 \uce90\ub9ad\ud130 \ubc14\uafb8\uae30\ub85c \uccab \ud654\uba74\uc5d0 \ub098\uac08 \uc218 \uc788\uc5b4\uc694.<br>\ud83e\udd16 \uc790\ub3d9\uc0ac\ub0e5\uc774 \ub5a8\uc5b4\uc9c4 \ubb3c\uac74\uc744 \uc8fc\uc6b0\ub7ec \uac00\uace0, \uad74 \uc785\uad6c\ub098 \uc9c0\ub3c4 \ub05d\uc744 \ubc1f\uc544\ub3c4 \ub2e4\ub978 \uacf3\uc73c\ub85c \ub118\uc5b4\uac00\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.<br>\ud83e\udd87 \ubc15\uc950 \uac19\uc740 \ub0a0\uc9d0\uc2b9\uc774 \ubcbd \uc18d\uc5d0 \ub4e4\uc5b4\uac00 \uacf5\uaca9\uc774 \ub2ff\uc9c0 \uc54a\ub358 \uac83\uc744 \uace0\ucce4\uc2b5\ub2c8\ub2e4.</div>`;
     notes += `<div class="sep"></div><b>v380 \uad50\uc5ed\ud488 \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83e\uddf3 \ud314\ub3c4\uc640 \uc77c\ubcf8\uc758 \ud2b9\uc0b0\ud488 34\uc885\uc5d0 \uadf8\ub9bc\uc774 \uc0dd\uacbc\uc2b5\ub2c8\ub2e4 \u2014 \uac1d\uc8fc\uc758 \uc0ac\uae30\u00b7\ud314\uae30\u00b7\uc2dc\uc138, \uac00\ubc29\uc758 \uad50\uc5ed\ud488 \ud0ed\uc5d0\uc11c \ubcf4\uc5ec\uc694.</div>`;
     notes += `<div class="sep"></div><b>v379 \ud654\uba74 \ub2e4\ub4ec\uae30</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udf92 \uac00\ubc29 \u2014 \uc7a5\ube44 \uce78\uc744 \uc791\uac8c \uc904\uc774\uace0, \ud3f0\uc744 \uac00\ub85c\ub85c \ub215\ud788\uac70\ub098 PC\uc5d0\uc11c\ub294 \uc67c\ucabd \uc7a5\ube44 \u00b7 \uc624\ub978\ucabd \uac00\ubc29\uc73c\ub85c \ud55c\ub208\uc5d0 \ubd05\ub2c8\ub2e4. \ubb3c\uac74\uc744 \ub204\ub974\uba74 \uc815\ubcf4\uac00 \uc7a5\ube44 \uc544\ub798\uc5d0 \ub5a0\uc694.<br>\ud83d\udcf1 \ud3f0 \uac00\ub85c \u2014 \uba54\ub274 \ub2e8\ucd94\uac00 \ubb3c\uc57d\u00b7\uae30\uc220\uacfc \uacb9\uce58\ub358 \uac83\uc744 \u2630 \uc548\uc73c\ub85c \uc811\uc5c8\uace0, \uccab \ud654\uba74 \uc81c\ubaa9\uc774 \uc798\ub9ac\ub358 \uac83, \ubcf4\uc2a4 \uccb4\ub825\ubc14\uac00 \ub3d9\ub8cc \uce78\uc744 \ub36e\ub358 \uac83\uc744 \uace0\ucce4\uc2b5\ub2c8\ub2e4. \ud560 \uc77c \ud55c \uc904\ub3c4 \ubcf4\uc785\ub2c8\ub2e4.<br>\ud83d\udda5 PC \ud070 \ud654\uba74 \u2014 \uccb4\ub825\u00b7\uae30\uc220 \ub2e8\ucd94\u00b7\ubbf8\ub2c8\ub9f5\uc744 \uc870\uae08 \ud0a4\uc6e0\uc5b4\uc694.<br>\u2728 \ucc3d \uc81c\ubaa9\uacfc \uc124\uc815\u00b7\uc9c0\ub3c4\uc758 \uadf8\ub9bc\uc744 \uae30\uae30\ub9c8\ub2e4 \ub2ec\ub77c \ubcf4\uc774\ub358 \uc774\ubaa8\uc9c0 \ub300\uc2e0 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ud1b5\uc77c\ud588\uace0, \uc774\ub984 \ub4a4\uc5d0 '\uc740(\ub294)', '\uc744(\ub97c)' \ub85c \ub098\uc624\ub358 \uc5b4\uc0c9\ud55c \uc870\uc0ac\ub97c \ubc14\ub85c\uc7a1\uc558\uc2b5\ub2c8\ub2e4 (\uc608: \ubb34\uc0ac\ub294 \uc545\uae30\ub97c \uc4f8 \uc218 \uc5c6\uc5b4\uc694).</div>`;
@@ -11111,7 +11135,7 @@ draw = function () {
 const UNLOCKS = [
   { lv: 10, kinds: ['gamble'], n: '\ud83c\udfb2 \uc8fc\ub9c9 \ub3c4\ubc15', d: '\uc8fc\ub9c9\uc5d0\uc11c \ud640\uc9dd \ub3c4\ubc15\uc744 \ud560 \uc218 \uc788\uc5b4\uc694.' },
   { lv: 15, kinds: ['bounty'], n: '\ud83c\udfaf \ud604\uc0c1\uc218\ubc30', d: '\ud3ec\ub3c4\uccad \uac8c\uc2dc\ud310\uc5d0\uc11c \ud604\uc0c1\uc218\ubc30\ub97c \ubc1b\uc544 \ud3ec\uc778\ud2b8\ub97c \ubaa8\uc544 \ubcf4\uc138\uc694.' },
-  { lv: 20, kinds: ['invest', 'property'], menu: 'market', n: '\ud83d\udcb9 \ud22c\uc790\uc13c\ud130 \u00b7 \ubd80\ub3d9\uc0b0', d: 'O\ud0a4(\ub610\ub294 \ud83d\udcb9 \ubc84\ud2bc)\ub85c \uc8fc\uc2dd\u00b7\ucf54\uc778, \uac01 \ub3c4\uc2dc \ubcf5\ub355\ubc29\uc5d0\uc11c \ub545\uc744 \uc0b4 \uc218 \uc788\uc5b4\uc694.' }
+  { lv: 20, kinds: ['invest', 'property'], menu: 'market', n: '\ud83c\udfee \uc0c1\ub2e8 \uc7a5\ubd80 \u00b7 \uc0c1\ub2e8 \ud589\uc218', d: 'O\ud0a4(\ub610\ub294 \ud83d\udcb9 \ubc84\ud2bc)\ub85c \uc0c1\ub2e8 \uc8fc\uad8c\uc744 \uc0ac\uace0\ud314\uace0, \uac01 \ub3c4\uc2dc \uc0c1\ub2e8 \ud589\uc218\uc5d0\uac8c \ucd9c\uc790\ud574 \uace0\uc7a5 \ud61c\ud0dd\uc744 \uc5f4 \uc218 \uc788\uc5b4\uc694.' }
 ];
 function unlockLv(kind) { if (!kind) return 0; const u = UNLOCKS.find(u => u.kinds.includes(kind) || (u.menu && u.menu === kind)); return u ? u.lv : 0; }
 let isUnlocked = function (kind) { const p = G.player; return !p || p.test || p.lv >= unlockLv(kind); };
@@ -11169,7 +11193,7 @@ const MENU_REVEAL = [
   { m: 'map', n: '\uc9c0\ub3c4', d: '\uc9c0\uae08 \ub9f5\uacfc \ud314\ub3c4 \uc804\ub3c4\ub97c \ubcfc \uc218 \uc788\uc5b4\uc694 (M)', lock: 'Lv.3\uc5d0 \uc5f4\ub824\uc694', ok: p => p.lv >= 3 || Object.keys(p.visited || {}).length >= 4 },
   { m: 'party', n: '\ub3d9\ub8cc', d: '\uc8fc\ub9c9\uc5d0\uc11c \ub3d9\ub8cc\ub97c \uad6c\ud560 \uc218 \uc788\uc5b4\uc694 (P)', lock: 'Lv.10\uc5d0 \uc5f4\ub824\uc694', ok: p => p.lv >= 10 || (p.partyDefs || []).length > 0 },
   { m: 'codex', n: '\ub3c4\uac10', d: '\ucc98\uce58\ud55c \ubaac\uc2a4\ud130\u00b7\uc804\uc124 \uc7a5\ube44\u00b7\uc5c5\uc801\uc744 \ubaa8\uc544 \ubd10\uc694 (B)', lock: '\uccab \ubcf4\uc2a4\ub97c \uc4f0\ub7ec\ub728\ub9ac\uac70\ub098 Lv.15\uc5d0 \uc5f4\ub824\uc694', ok: p => Object.keys(p.bossKills || {}).length > 0 || p.lv >= 15 },
-  { m: 'market', n: '\ud22c\uc790\uc13c\ud130', d: '\uc8fc\uc2dd\u00b7\ucf54\uc778\u00b7\ubd80\ub3d9\uc0b0 (O)', lock: 'Lv.20\uc5d0 \uc5f4\ub824\uc694', ok: p => p.lv >= 20 }
+  { m: 'market', n: '\uc0c1\ub2e8 \uc7a5\ubd80', d: '\uc0c1\ub2e8 \uc8fc\uad8c\u00b7\ucd9c\uc790\u00b7\ub3d9\ubc29\uc77c\ubcf4 (O)', lock: 'Lv.20\uc5d0 \uc5f4\ub824\uc694', ok: p => p.lv >= 20 }
 ];
 function menuShown(m) { const p = G.player; if (!p || p.test) return true; const r = MENU_REVEAL.find(r => r.m === m); return !r || r.ok(p); }
 refreshLocks = function () {
@@ -15153,7 +15177,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v381';
+const GAME_VER = 'v384';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -21412,123 +21436,6 @@ const MobFeel = { on: true, HURT: .3 };
   };
 }
 
-/* ============================================================
-   98z2_sky382 (\uc2dc\ud5d8\ud310): \ubc24\ub0ae\uacfc \ub0a0\uc528 \u2014 \uadf8\ub9bc\ub9cc (\uc2dc\uc57c\u00b7\ud310\uc815\u00b7\ubaac\uc2a4\ud130\uc5d0\ub294 \uc601\ud5a5 \uc5c6\uc74c, \uad74\u00b7\uc131 \uc548\uc5d0\uc11c\ub294 \uc548 \ubcf4\uc778\ub2e4)
-   \u00b7 \ud558\ub8e8 = 20\ubd84: \ub0ae 11\ubd84 \u2192 \ub178\uc744 1\ubd84 \ubc18 \u2192 \ubc24 5\ubd84 \ubc18 \u2192 \uc0c8\ubcbd 2\ubd84. \uc2e4\uc81c \uc2dc\uacc4\ub85c \ub3cc\uc544\uc11c \ub204\uad6c\uc5d0\uac8c\ub098 \uac19\uc740 \uc2dc\uac01\uc774\ub2e4
-   \u00b7 \ubc24: \ud654\uba74\uc774 \ud478\ub974\uac8c \uac00\ub77c\uc549\uace0, \ub0b4 \ub458\ub808\u00b7\ub3d9\ub8cc\u00b7\ub4f1\ubd88\u00b7\uc9d1 \ucc3d\ubb38\uc740 \ubc1d\ub2e4
-   \u00b7 \ub0a0\uc528: 5\ubd84\ub9c8\ub2e4 \ubc14\ub010\ub2e4 \u2014 \ub9d1\uc74c / \ube44 / \uc18c\ub098\uae30(\ubc88\uac1c) / \ub208 / \uc548\uac1c. \uace0\uc7a5\ub9c8\ub2e4 \uc798 \uc624\ub294 \ub0a0\uc528\uac00 \ub2e4\ub974\ub2e4 (\ubd80\uc0b0\u00b7\uc81c\uc8fc \ube44, \uc778\ucc9c \uc548\uac1c, \ub300\uad6c \ub9d1\uc74c, \ub208\ubc2d \ub208)
-   ============================================================ */
-const Sky = { on: true, DAY: 1200, SLOT: 300, force: { t: null, wx: null }, drops: [], splash: [], flakes: [], fogs: [], bolt: 0, boltAt: 0, last: 0, cv: null, fogImg: null, now: { phase: '\ub0ae', wx: '\ub9d1\uc74c' } };
-const SKY_WX = {
-  def: { clear: 70, rain: 15, fog: 8, storm: 3, snow: 0 }, coast: { clear: 56, rain: 24, storm: 9, fog: 8, snow: 0 }, mist: { clear: 50, fog: 30, rain: 16, storm: 2, snow: 0 },
-  dry: { clear: 86, rain: 8, fog: 4, storm: 2, snow: 0 }, cold: { clear: 46, snow: 46, fog: 8, rain: 0, storm: 0 }
-};
-const SKY_CLIMATE = { busan: 'coast', jeju: 'coast', fukuoka: 'coast', ulsan: 'coast', incheon: 'mist', shizuoka: 'mist', daegu: 'dry', sapporo: 'cold' };
-const SKY_NAME = { clear: '\ub9d1\uc74c', rain: '\ube44', storm: '\uc18c\ub098\uae30', snow: '\ub208', fog: '\uc548\uac1c' };
-const SKY_LIGHTS = { lanternPost: [-44, 72, .95], stoneLantern: [-20, 52, .75], chochin: [-30, 66, .95], toro: [-22, 52, .75], lantern: [-24, 62, .85], torch: [-26, 80, 1], campfire: [-10, 115, 1] };
-function skyIndoor(m) { const k = m && m.def && m.def.kind; return k === 'cave' || k === 'dungeon'; }
-function skyClimate(m) {
-  const d = m.def; if (d.theme === 'snow') return 'cold';
-  const key = d.city || (d.region && d.region !== 'korea' && d.region !== 'japan' ? d.region : m.id.replace(/^(city_|japan_)/, ''));
-  return SKY_CLIMATE[key] || 'def';
-}
-function skyTime() { return Sky.force.t != null ? Sky.force.t : ((Date.now() / 1000) % Sky.DAY) / Sky.DAY; }
-function skyPhase(t) {
-  if (t < .55) return { n: '\ub0ae', dark: 0, warm: 0, rose: 0 };
-  if (t < .63) { const p = (t - .55) / .08; return { n: '\ub178\uc744', dark: p * p, warm: Math.sin(p * Math.PI), rose: 0 }; }
-  if (t < .90) return { n: '\ubc24', dark: 1, warm: 0, rose: 0 };
-  const p = (t - .90) / .10; return { n: '\uc0c8\ubcbd', dark: (1 - p) * (1 - p), warm: 0, rose: Math.sin(p * Math.PI) };
-}
-function skyWeather(m) {
-  const cold = skyClimate(m) === 'cold';
-  if (Sky.force.wx) { let k = Sky.force.wx; if (cold && (k === 'rain' || k === 'storm')) k = 'snow'; return { kind: k, k: k === 'clear' ? 0 : 1 }; }
-  const now = Date.now() / 1000, slot = Math.floor(now / Sky.SLOT), tin = now - slot * Sky.SLOT, tab = SKY_WX[skyClimate(m)];
-  let h = Math.imul(slot ^ 0x9e3779b9, 2654435761) ^ hashStr(skyClimate(m)); h = Math.imul(h ^ (h >>> 15), 2246822519); const u = ((h ^ (h >>> 13)) >>> 0) / 4294967296;
-  const tot = Object.values(tab).reduce((a, b) => a + b, 0); let acc = 0, kind = 'clear';
-  for (const [k, w] of Object.entries(tab)) { acc += w / tot; if (u < acc) { kind = k; break; } }
-  return { kind, k: kind === 'clear' ? 0 : clamp(Math.min(tin, Sky.SLOT - tin) / 14, 0, 1) };
-}
-function skyLights(m) {
-  if (m._skyL) return m._skyL;
-  const L = [];
-  for (const p of m.props) {
-    const s = SKY_LIGHTS[p.type]; if (s) { L.push({ x: p.x, y: p.y + s[0], r: s[1], a: s[2], glow: 1 }); continue; }
-    if ((p.type === 'hanok' || p.type === 'jhouse' || p.type === 'jejuHouse') && p.data) { const dx = p.data.w * TILE * .33; for (const sx of [-1, 1]) L.push({ x: p.x + sx * dx, y: p.y - 70, r: 46, a: .5, glow: 2 }); }
-    if (p.type === 'landmark') L.push({ x: p.x, y: p.y - 30, r: 120, a: .35 });
-  }
-  if (m.camp) L.push({ x: m.camp.x, y: m.camp.y, r: 150, a: 1, glow: 1 });
-  return (m._skyL = L);
-}
-function skyDraw() {
-  const m = G.map, p = G.player; if (!Sky.on || !m || !p || G.voyage || G.fade > .6) return;
-  const nowMs = performance.now(), dt = Math.min(.05, Math.max(0, (nowMs - (Sky.last || nowMs)) / 1000)); Sky.last = nowMs;
-  const ph = skyPhase(skyTime()), wx = skyWeather(m); Sky.now.phase = ph.n; Sky.now.wx = SKY_NAME[wx.kind]; Sky.now.in = skyIndoor(m);
-  if (skyIndoor(m)) return;
-  const z = G.cam.zoom, S = z * DPR, W = cv.width, H = cv.height, cx = G.cam.x, cy = G.cam.y, vw = W / S, vh = H / S;
-  const wet = wx.kind === 'rain' ? wx.k : wx.kind === 'storm' ? wx.k * 1.5 : 0;
-  ctx.save();
-  /* ---- \uc5b4\ub460 (\ubc24 + \uad82\uc740 \ub0a0\uc528) : \ub0ae\uc740 \ud574\uc0c1\ub3c4 \ud310\uc5d0 \uce60\ud558\uace0 \ube5b \uc790\ub9ac\ub97c \ub3c4\ub824\ub0b8\ub2e4 ---- */
-  const dark = Math.min(.68, ph.dark * .58 + (wx.kind === 'storm' ? .2 : wx.kind === 'rain' ? .11 : wx.kind === 'fog' ? .03 : 0) * wx.k);
-  if (dark > .015) {
-    const Q = 4, ow = Math.ceil(W / Q), oh = Math.ceil(H / Q); let o = Sky.cv; if (!o || o.width !== ow || o.height !== oh) o = Sky.cv = makeCanvas(ow, oh);
-    const g = o.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, ow, oh);
-    const nightK = ph.dark; g.fillStyle = `rgba(${Math.round(lerp(38, 6, nightK))},${Math.round(lerp(48, 14, nightK))},${Math.round(lerp(70, 58, nightK))},${dark})`; g.fillRect(0, 0, ow, oh);
-    if (ph.dark > .04) {
-      g.globalCompositeOperation = 'destination-out'; const sc = S / Q;
-      const hole = (x, y, r, a) => { const X = (x - cx) * sc, Y = (y - cy) * sc, R = r * sc; if (X < -R || Y < -R || X > ow + R || Y > oh + R) return; const gr = g.createRadialGradient(X, Y, R * .12, X, Y, R); gr.addColorStop(0, `rgba(0,0,0,${a})`); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(X - R, Y - R, R * 2, R * 2); };
-      hole(p.x, p.y - 20, 190, .8 * ph.dark);
-      for (const c of G.party) if (c.hp > 0) hole(c.x, c.y - 18, 110, .55 * ph.dark);
-      const fl = .92 + Math.sin(nowMs / 130) * .04 + Math.sin(nowMs / 57) * .03;
-      for (const l of skyLights(m)) hole(l.x, l.y, l.r * (l.glow === 1 ? fl : 1), l.a * ph.dark);
-    }
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(o, 0, 0, W, H);
-    /* \ubd88\ube5b: \ub4f1\ubd88\uc740 \uc8fc\ud669, \ucc3d\ubb38\uc740 \ub178\ub797\uac8c */
-    if (ph.dark > .15) {
-      ctx.setTransform(S, 0, 0, S, -cx * S, -cy * S);
-      for (const l of skyLights(m)) { if (!l.glow || l.x < cx - 80 || l.x > cx + vw + 80 || l.y < cy - 80 || l.y > cy + vh + 80) continue; HD.light(l.x, l.y, l.glow === 1 ? 30 : 15, l.glow === 1 ? '#ffb24a' : '#ffd88a', (l.glow === 1 ? .5 : .55) * ph.dark); }
-    }
-  }
-  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'source-over';
-  if (ph.warm > .01) { ctx.fillStyle = `rgba(255,128,48,${.17 * ph.warm})`; ctx.fillRect(0, 0, W, H); }
-  if (ph.rose > .01) { ctx.fillStyle = `rgba(255,176,158,${.11 * ph.rose})`; ctx.fillRect(0, 0, W, H); }
-  /* ---- \ub0a0\uc528 (\ud654\uba74 \uae30\uc900, CSS px) ---- */
-  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); const sw = W / DPR, sh = H / DPR, area = sw * sh / (900 * 600);
-  if (wet > 0) {
-    const want = Math.round(150 * wet * area); while (Sky.drops.length < want) Sky.drops.push({ x: Math.random() * (sw + 160), y: Math.random() * sh, l: 14 + Math.random() * 14, v: 640 + Math.random() * 260 }); if (Sky.drops.length > want) Sky.drops.length = want;
-    ctx.strokeStyle = 'rgba(206,222,244,.62)'; ctx.lineWidth = 1.4; ctx.beginPath();
-    for (const d of Sky.drops) { d.x -= d.v * .2 * dt; d.y += d.v * dt; if (d.y > sh + 20) { d.y = -20; d.x = Math.random() * (sw + 160); if (Math.random() < .5) Sky.splash.push({ x: d.x - 20 - Math.random() * 40, y: sh * (.15 + Math.random() * .85), t: 0 }); } ctx.moveTo(d.x, d.y); ctx.lineTo(d.x + d.l * .2, d.y - d.l); }
-    ctx.stroke();
-    ctx.strokeStyle = 'rgba(214,228,246,.5)'; ctx.lineWidth = 1;
-    for (const s of Sky.splash) { s.t += dt; const q = s.t / .32; if (q >= 1) continue; ctx.globalAlpha = 1 - q; ctx.beginPath(); ctx.ellipse(s.x, s.y, 2 + q * 6, 1 + q * 2.4, 0, 0, TAU); ctx.stroke(); }
-    ctx.globalAlpha = 1; Sky.splash = Sky.splash.filter(s => s.t < .32); if (Sky.splash.length > 90) Sky.splash.length = 90;
-    if (wx.kind === 'storm' && wx.k > .6) {   /* \ubc88\uac1c: \uac00\ub054 \ub450 \ubc88 \ubc88\uca4d */
-      if (!Sky.boltAt) Sky.boltAt = nowMs + 5000 + Math.random() * 7000;
-      if (nowMs > Sky.boltAt) { Sky.bolt = .34; Sky.boltAt = nowMs + 7000 + Math.random() * 9000; }
-      if (Sky.bolt > 0) { const b = Sky.bolt; ctx.fillStyle = `rgba(232,240,255,${(b > .22 ? (b - .22) / .12 : b > .14 ? 0 : b / .14 * .7) * .3})`; ctx.fillRect(0, 0, sw, sh); Sky.bolt -= dt; }
-    }
-  } else { Sky.drops.length = 0; Sky.splash.length = 0; Sky.bolt = 0; Sky.boltAt = 0; }
-  if (wx.kind === 'snow' && wx.k > 0) {
-    const want = Math.round(95 * wx.k * area); while (Sky.flakes.length < want) Sky.flakes.push({ x: Math.random() * sw, y: Math.random() * sh, s: 1.4 + Math.random() * 2, v: 26 + Math.random() * 34, ph: Math.random() * TAU }); if (Sky.flakes.length > want) Sky.flakes.length = want;
-    ctx.fillStyle = 'rgba(255,255,255,.9)';
-    for (const f of Sky.flakes) { f.y += f.v * dt; f.x += (Math.sin(nowMs / 900 + f.ph) * 14 - 10) * dt; if (f.y > sh + 6) { f.y = -6; f.x = Math.random() * sw; } if (f.x < -6) f.x = sw + 6; ctx.fillRect(f.x, f.y, f.s, f.s); }
-    ctx.fillStyle = `rgba(206,220,238,${.07 * wx.k})`; ctx.fillRect(0, 0, sw, sh);
-  } else Sky.flakes.length = 0;
-  if (wx.kind === 'fog' && wx.k > 0) {
-    if (!Sky.fogImg) { const c = makeCanvas(256, 256), g = c.getContext('2d'), gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, 'rgba(226,232,236,.9)'); gr.addColorStop(.55, 'rgba(226,232,236,.38)'); gr.addColorStop(1, 'rgba(226,232,236,0)'); g.fillStyle = gr; g.fillRect(0, 0, 256, 256); Sky.fogImg = c; }
-    while (Sky.fogs.length < 7) Sky.fogs.push({ x: Math.random() * sw, y: Math.random() * sh, r: 220 + Math.random() * 220, v: 7 + Math.random() * 10 });
-    ctx.fillStyle = `rgba(210,218,224,${.13 * wx.k})`; ctx.fillRect(0, 0, sw, sh);
-    ctx.globalAlpha = .34 * wx.k; ctx.imageSmoothingEnabled = true;
-    for (const f of Sky.fogs) { f.x += f.v * dt; if (f.x - f.r > sw) { f.x = -f.r; f.y = Math.random() * sh; } ctx.drawImage(Sky.fogImg, f.x - f.r, f.y - f.r * .55, f.r * 2, f.r * 1.1); }
-    ctx.globalAlpha = 1;
-  } else Sky.fogs.length = 0;
-  ctx.restore();
-}
-{
-  /* \uc774\ub984\ud45c\u00b7\ub9d0\ud48d\uc120\ubcf4\ub2e4 \uba3c\uc800 \uadf8\ub9b0\ub2e4 (\uae00\uc790\ub294 \ubc24\uc5d0\ub3c4 \ub610\ub837\ud558\uac8c) */
-  const _flushTags382 = flushTags;
-  flushTags = function () { try { skyDraw(); } catch (e) { reportError(e); } return _flushTags382.apply(this, arguments); };
-}
-
 /* 98z3_panel382 (\uc2dc\ud5d8\ud310 \uc804\uc6a9): \uc2dc\uac04\u00b7\ub0a0\uc528\u00b7\ubaac\uc2a4\ud130 \ub3d9\uc791\uc744 \ubc14\ub85c \ubc14\uafd4 \ubcf4\ub294 \uc791\uc740 \ub2e8\ucd94 \u2014 \ubcf8\ud310\uc5d0\ub294 \ub123\uc9c0 \uc54a\ub294\ub2e4 */
 (function () {
   const st = document.createElement('style');
@@ -21567,6 +21474,768 @@ function skyDraw() {
   setInterval(() => { if (!$('smpP').hidden) render(); }, 1500);
   const sub = document.querySelector('#title .sub'); if (sub) sub.textContent += ' \uc2dc\ud5d8\ud310';
 })();
+
+/* ============================================================
+   98za_econ382 (v382): \uc774\uc57c\uae30 \uc911\uc5d0 \uad50\uc5ed\u00b7\ud22c\uc790\ub97c \uaf2d \ud55c \ubc88 \ud574 \ubcf4\uac8c \ud55c\ub2e4
+   \u00b7 2\ub9c9 \u300c\ud314\ub3c4\ub85c \uac00\ub294 \uae38\u300d \uccab \ub2e8\uacc4: \uccad\uc6d4 \ud2b9\uc0b0\ud488\uc744 \uc0ac\uc11c \ub300\uc804 \uac1d\uc8fc\uc5d0 5\uac1c \ud314\uae30 (\uc0b0\uc9c0\uac00 \uc544\ub2cc \ub9c8\uc744\uc5d0 \ud310 \uac83\ub9cc \uc13c\ub2e4 \u2014 \uc5b4\ub290 \ub9c8\uc744\uc774\ub4e0)
+   \u00b7 2\ub9c9 \u300c\ud55c\uc591\uc758 \uc6d0\uadc0\u300d \uccab \ub2e8\uacc4: \ud22c\uc790\uc13c\ud130\uc5d0\uc11c \uc8fc\uc2dd\u00b7\ucf54\uc778\uc744 \uc0ac\uac70\ub098, \ubcf5\ub355\ubc29\uc5d0\uc11c \ub545\uc744 \uc0ac\uae30 (\uc774\ubbf8 \uac00\uc9c4 \uac8c \uc788\uc73c\uba74 \ubc14\ub85c \ub118\uc5b4\uac04\ub2e4)
+   \u00b7 \uc608\uc804 \uc138\uc774\ube0c: \uc774 \ub450 \uc7a5\uc744 \uc774\ubbf8 \ud558\uace0 \uc788\ub358 \uc0ac\ub78c\uc740 \uc0c8 \ub2e8\uacc4\ub97c \uac74\ub108\ub6f4\ub2e4 (\ud558\ub358 \ub2e8\uacc4 \uadf8\ub300\ub85c) \u2014 \uc544\uc9c1 \uc2dc\uc791 \uc804\uc774\uba74 \uc0c8 \ub2e8\uacc4\ubd80\ud130
+   ============================================================ */
+const STORY_INS382 = { daejeon: 1, seoul: 1 };   /* \ub9e8 \uc55e\uc5d0 \ud55c \ub2e8\uacc4\uc529 \ub07c\uc6e0\ub2e4 */
+{
+  const _startGame382 = startGame;
+  startGame = function () {
+    const r = _startGame382.apply(this, arguments);
+    try {
+      const st = G.player && G.player.story;
+      if (st && (st.sv | 0) < 382) {
+        if (STORY_INS382[st.cid] && st.step >= 1) { const c = STORY[storyIdx(st.cid)]; st.step = Math.min(st.step + 1, c.steps.length - 1); }
+        st.sv = 382;
+      }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+}
+/* ---- \ub2e8\uacc4 \uae00 ---- */
+function econHasInvest(p) {
+  const M = p.market, hold = M && M.hold && Object.values(M.hold).some(h => h && h.q > 0);
+  const land = p.props && Object.values(p.props).some(c => c && Object.keys(c).length);
+  return !!(hold || land);
+}
+{
+  const _stepHint382 = stepHint;
+  stepHint = function (s) {
+    if (s && s.t === 'trade') return `${s.hint} (${G.player.story.prog}/${s.n})`;
+    if (s && s.t === 'invest') return s.hint;
+    return _stepHint382.apply(this, arguments);
+  };
+  const _qObj382 = qObj;
+  qObj = function (s, live) {
+    if (s && s.t === 'trade') return { text: s.hint, cur: live ? Math.min(G.player.story.prog, s.n) : null, max: s.n };
+    if (s && s.t === 'invest') return { text: s.hint };
+    return _qObj382.apply(this, arguments);
+  };
+  /* \uae38 \uc548\ub0b4: \uc9d0\uc774 \uc788\uc73c\uba74 \ud314 \uacf3(\ub300\uc804) \uac1d\uc8fc\ub85c, \uc5c6\uc73c\uba74 \uc0b4 \uacf3(\uc9c0\uae08 \ub9c8\uc744 \uac1d\uc8fc \u00b7 \uc544\ub2c8\uba74 \uccad\uc6d4\ucd0c) \uac1d\uc8fc\ub85c */
+  const _guideGoal382 = guideGoal;
+  guideGoal = function (s) {
+    if (s && s.t === 'trade') {
+      const T = tradeState(), at = s.at, here = G.mapId, carry = Object.keys(T.cargo || {}).some(g => TR_GOODS[g] && TR_GOODS[g].town !== at && T.cargo[g].q > 0);
+      if (carry) return { maps: [at], npc: 'tradeK' };
+      return { maps: [TR_TOWNS[here] && here !== at ? here : 'buyeo'], npc: 'tradeK' };
+    }
+    if (s && s.t === 'invest') return null;
+    return _guideGoal382.apply(this, arguments);
+  };
+  /* \uc774\ubbf8 \ud22c\uc790\ud574 \ub454 \uac8c \uc788\uc73c\uba74 \ubc14\ub85c \ub118\uc5b4\uac04\ub2e4 */
+  const _questCheck382 = questCheck;
+  questCheck = function () {
+    const s = G.player && curStep();
+    if (s && s.t === 'invest' && econHasInvest(G.player)) { stepDone(); return; }
+    return _questCheck382.apply(this, arguments);
+  };
+}
+/* ---- \uc138\uae30 ---- */
+{
+  const _tradeSell382 = tradeSell;
+  tradeSell = function (g) {
+    const d = TR_GOODS[g], town = G.mapId, r = _tradeSell382.apply(this, arguments);
+    try {
+      const s = curStep();
+      if (r && s && s.t === 'trade' && d && d.town !== town) {
+        const p = G.player; p.story.prog = (p.story.prog || 0) + r[0];
+        if (p.story.prog >= s.n) { const left = p.story.prog; stepDone(); toast(`\ud83d\udcdc \uc774\uc57c\uae30 \u2014 \uad50\uc5ed ${left}\uac1c\ub97c \ud314\uc558\uc2b5\ub2c8\ub2e4`, 'gold'); }
+        else updateHUD();
+      }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  const invested = () => { try { const s = G.player && curStep(); if (s && s.t === 'invest') { stepDone(); toast('\ud83d\udcdc \uc774\uc57c\uae30 \u2014 \uccab \ud22c\uc790\ub97c \ud588\uc2b5\ub2c8\ub2e4', 'gold'); } } catch (e) { reportError(e); } };
+  const _buyTicker382 = buyTicker;
+  buyTicker = function () { const M = mk(), n0 = M ? M.trades : 0, r = _buyTicker382.apply(this, arguments); if (M && M.trades > n0) invested(); return r; };
+  const _reAddCost382 = reAddCost;
+  reAddCost = function () { const r = _reAddCost382.apply(this, arguments); invested(); return r; };
+}
+/* ---- \uac1d\uc8fc \ucc3d: \uc774\uc57c\uae30 \ub2e8\uacc4\uba74 \ub9e8 \uc704\uc5d0 \ubb34\uc5c7\uc744 \ud558\uba74 \ub418\ub294\uc9c0 \ud55c \uc904 ---- */
+{
+  const _tradeV382 = NPCV.trade;
+  NPCV.trade = function () {
+    const r = _tradeV382.apply(this, arguments);
+    try {
+      const s = curStep(); if (!Array.isArray(r) || !s || s.t !== 'trade') return r;
+      const at = MAPS[s.at].n, here = G.mapId, p = G.player;
+      const msg = here === s.at ? `\ub2e4\ub978 \uace0\uc744\uc5d0\uc11c \uc2e4\uc5b4 \uc628 \ud2b9\uc0b0\ud488\uc744 \uc5ec\uae30 \u300c\ud314\uae30\u300d\uc5d0\uc11c \ud30c\uc138\uc694 \u2014 ${p.story.prog}/${s.n}` : `\u300c\uc0ac\uae30\u300d\uc5d0\uc11c \uc774 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 ${s.n}\uac1c \uc774\uc0c1 \uc0ac\uc11c ${at} \uac1d\uc8fc\uc5d0 \ud30c\uc138\uc694 \u2014 \uba40\ub9ac \uac08\uc218\ub85d \uac12\uc774 \uc62c\ub77c\uc694`;
+      r[1] = `<div class="sq main"><div class="sq-h"><span class="sq-mark">?</span><b>\uc774\uc57c\uae30 \u00b7 \uad50\uc5ed \uc775\ud788\uae30</b></div><div class="sq-say">${esc(msg)}</div></div>` + r[1];
+    } catch (e) { reportError(e); }
+    return r;
+  };
+}
+
+/* ============================================================
+   98zb_sangdan383 (v383): \ud83c\udfee \uc0c1\ub2e8(\u5546\u5718) \u2014 \uacbd\uc81c \ucee8\ud150\uce20\ub97c \ud558\ub098\ub85c
+   \u00b7 \uc65c (\uce5c\uad6c\ub4e4 \ud53c\ub4dc\ubc31): \uc8fc\uc2dd\u00b7\ucf54\uc778\u00b7\ubd80\ub3d9\uc0b0\u00b7\ud22c\uc790\uc18c\uac00 \ub530\ub85c \ub180\uc544 \ub108\ubb34 \ub9ce\uace0, \ub3c8\uc740 \ub0a8\ub294\ub370 \uc4f8 \uacf3\uc774 \uc5c6\uace0, \uace0\uc7a5\ub9c8\ub2e4 \ud2b9\uc0c9\uc774 \uc5c6\ub2e4
+   \u00b7 \ubb34\uc5c7:
+     - \ud22c\uc790\uc13c\ud130 \u2192 \u300c\uc0c1\ub2e8 \uc7a5\ubd80\u300d(O): \uc790\uc0b0 \u00b7 \uc8fc\uad8c \u00b7 \ucd9c\uc790 \u00b7 \ub3d9\ubc29\uc77c\ubcf4
+     - \uc8fc\uc2dd 6\uc885 \u2192 \uace0\uc7a5 \uc0c1\ub2e8\uc758 \uc8fc\uad8c(\u682a\u5238). \uae30\ud638(CWS\u2026)\ub294 \uadf8\ub300\ub85c\ub77c \uac00\uc9c4 \uc8fc\uc2dd\uc774 \uadf8\ub300\ub85c \uc8fc\uad8c\uc774 \ub41c\ub2e4
+     - \ucf54\uc778 \u2192 \uc5c6\uc564\ub2e4 (\uac00\uc9c4 \uac83\uc740 \ud604\uc7ac\uac00\ub85c \ud658\uae09)
+     - \ubd80\ub3d9\uc0b0 \u2192 \uadf8 \uace0\uc7a5 \uc0c1\ub2e8 \ucd9c\uc790\ub85c \ud658\uc0b0 (\uc0c1\ub2e8\uc774 \uc5c6\ub294 \uace0\uc7a5\uc740 \ub3c8\uc73c\ub85c \ub3cc\ub824\uc900\ub2e4)
+     - \uccad\uc6d4 \ud22c\uc790\uc18c\uc758 \ub9cc\uae30 \ud22c\uc790 \u2192 \uc0c8\ub85c \ub4e4\uc9c0 \uc54a\uace0, \ub4e4\uc5b4 \ub454 \uac83\ub9cc \ucc3e\ub294\ub2e4
+   \u00b7 \ucd9c\uc790: \ub3cc\ub824\ubc1b\uc9c0 \uc54a\ub294 \ub3c8. \ub204\uc801\uc561 + \ud310\ub9e4 \uc2e4\uc801(\uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ud310 \uac1c\uc218) + (5\ub2e8\uc740) \uadf8 \uc9c0\uc5ed \ubcf4\uc2a4 \u2192 \ub2e8\uacc4 1~5
+     1\ub2e8 \ud2b9\uc0c9 \ud65c\ub3d9 \u00b7 \ucd9c\uc790 \ubc30\ub2f9 / 2\ub2e8 \uadf8 \uace0\uc7a5 \uc0c1\uc810 10% \ud560\uc778 / 3\ub2e8 \uace0\uc7a5 \ud61c\ud0dd / 4\ub2e8 \ud65c\ub3d9 \uac15\ud654 / 5\ub2e8 \uce6d\ud638 + \uc601\uad6c \ub2a5\ub825\uce58
+   \u00b7 1\ucc28 \ud2b9\uc0c9 \ud65c\ub3d9: \ub300\uad6c \uc57d\ub839\uc2dc \ub2e8\uc57d \uc870\uc81c \u00b7 \uc6b8\uc0b0 \ucca0\ubb3c \ud2b9\uc218 \ub2e8\ub828 \u00b7 \uc11c\uc6b8 \uc2dc\uc804 \uacfc\uac70\uc2dc\ud5d8(\ud488\uacc4)
+   \u00b7 \uc8fc\uad8c \uc2dc\uc138\ub294 \ub0b4\uac00 \uc6c0\uc9c1\uc778\ub2e4: \uadf8 \uace0\uc7a5 \ubb3c\uac74\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ud314\uba74 \ub2e4\uc74c \uc7a5 \uac31\uc2e0\uc5d0 \uadf8 \uc0c1\ub2e8 \uc8fc\uad8c\uc774 \uc624\ub978\ub2e4
+   \u00b7 \uc800\uc7a5: p.sangdan { v, c:{\ub3c4\uc2dc:{inv, sold}}, pum, conv }
+   ============================================================ */
+const SD_VER = 383;
+const SANGDAN = {
+  buyeo:        { n: '\uccad\uc6d4\uc0c1\ub2e8', sym: 'CWS', icon: '\ud83c\udfee', act: null,  boss: 'tigerLord',        line: '\uccad\uc6d4 \ubb3c\uac74\uc774 \ud314\ub3c4\ub85c \ub098\uac00\uc57c \uc6b0\ub9ac \uc0c1\ub2e8\uc774 \uc0bd\ub2c8\ub2e4. \ud568\uaed8 \ud558\uc2dc\uaca0\uc18c?' },
+  city_gwangju: { n: '\ub0a8\ub3c4\uc0c1\ub2e8', sym: 'PGM', icon: '\ud83c\udf3e', act: null,  boss: 'thousandDokkaebi', line: '\ub0a8\ub3c4 \uace1\uc2dd\uacfc \uba39\uac70\ub9ac\ub294 \ud314\ub3c4 \uc5b4\ub514\uc11c\ub098 \uadc0\ud558\uc9c0\uc694.' },
+  city_daegu:   { n: '\uc57d\ub839\uc0c1\ub2e8', sym: 'BHP', icon: '\ud83c\udf3f', act: 'yak', boss: 'palgongFireKing',  line: '\uc57d\ub839\uc2dc \uc57d\uc7ac\ub294 \uc870\uc120 \uc81c\uc77c\uc774\uc624. \ucd9c\uc790\ud558\uc2dc\uba74 \ub2e8\uc57d\uc744 \uc9c0\uc5b4 \ub4dc\ub9ac\ub9ac\ub2e4.' },
+  city_ulsan:   { n: '\ucca0\ubb3c\uc0c1\ub2e8', sym: 'DBR', icon: '\ud83d\udd28', act: 'dan', boss: 'ironMasterSpirit', line: '\uc6b8\uc0b0 \uc1e0\ub294 \ub450\ub4dc\ub9b4\uc218\ub85d \ub2e8\ub2e8\ud574\uc9c0\uc9c0. \ucd9c\uc790\ud558\uba74 \ubb34\uae30\uc5d0 \ub2e8\ub828\uc744 \uc0c8\uaca8 \uc8fc\uaca0\uc18c.' },
+  city_busan:   { n: '\ud3ec\uad6c\uc0c1\ub2e8', sym: 'HRS', icon: '\u26f5', act: null,  boss: 'seaDragonKing',    line: '\ubc30\uac00 \ub4e4\uc5b4\uc640\uc57c \ud3ec\uad6c\uac00 \uc0bd\ub2c8\ub2e4. \ubc14\ub2f7\uae38\uc740 \uc6b0\ub9ac \uc0c1\ub2e8 \ubaab\uc774\uc624.' },
+  city_seoul:   { n: '\uc2dc\uc804\uc0c1\ub2e8', sym: 'CHC', icon: '\ud83c\udfef', act: 'gwa', boss: 'royalTombKing',    line: '\uc721\uc758\uc804 \uc0c1\uc778\ub4e4\uc774 \ub4a4\ub97c \ubd10 \ub4dc\ub9ac\uc9c0\uc694. \ucd9c\uc790\ud558\uc2dc\uba74 \uacfc\uac70 \uc751\uc2dc\ub97c \uc8fc\uc120\ud574 \ub4dc\ub9bd\ub2c8\ub2e4.' }
+};
+const SD_LV = [
+  { n: '\uc190\ub2d8',   mul: 0,   sold: 0 },
+  { n: '\ucd9c\uc790\uc778', mul: 2,   sold: 0 },
+  { n: '\ub3d9\uc0ac',   mul: 6,   sold: 10 },
+  { n: '\ud589\uc218',   mul: 18,  sold: 30 },
+  { n: '\ub3c4\ud589\uc218', mul: 45,  sold: 60 },
+  { n: '\ub300\ubc29',   mul: 110, sold: 60, boss: 1 }
+];
+const SD_DIV = [0, .002, .003, .004, .005, .006];      /* \uc7a5\ub0a0\ub9c8\ub2e4 \ucd9c\uc790\uae08\uc758 \uba87 % */
+const SD_PERK = {
+  buyeo:        ['', '\ucd9c\uc790 \ubc30\ub2f9', '\uccad\uc6d4 \uc0c1\uc810 10% \ud560\uc778', '\uad50\uc5ed \uc9d0\uce78 \uac12 10% \ud560\uc778', '\ucd9c\uc790 \ubc30\ub2f9 +50%', '\uce6d\ud638 \u300c\uccad\uc6d4 \ub300\ubc29\u300d'],
+  city_gwangju: ['', '\ucd9c\uc790 \ubc30\ub2f9', '\uad11\uc8fc \uc0c1\uc810 10% \ud560\uc778', '\uc74c\uc2dd(\uc8fc\uba39\ubc25\u00b7\ub5a1) \ud68c\ubcf5 +30%', '\ucd9c\uc790 \ubc30\ub2f9 +50%', '\uce6d\ud638 \u300c\ub0a8\ub3c4 \ub300\ubc29\u300d'],
+  city_daegu:   ['', '\uc57d\ub839\uc2dc \ub2e8\uc57d \uc870\uc81c', '\ub300\uad6c \uc0c1\uc810\u00b7\uc870\uc81c 10% \ud560\uc778', '\ubb3c\uc57d \ud68c\ubcf5 +20% \u00b7 \ub2e8\uc57d \uc9c0\uc18d 1.5\ubc30', '\ub2e8\uc57d \ud6a8\uacfc 1.5\ubc30', '\uce6d\ud638 \u300c\uc57d\uc120\u300d \u00b7 \ucd5c\ub300 HP +3%'],
+  city_ulsan:   ['', '\ud2b9\uc218 \ub2e8\ub828 (\ubb34\uae30 \ub2e8\ub828 1\ub2e8\uacc4\uae4c\uc9c0)', '\uc6b8\uc0b0 \uc0c1\uc810\u00b7\ub2e8\ub828 10% \ud560\uc778 \u00b7 \ub2e8\ub828 2\ub2e8\uacc4\uae4c\uc9c0', '\uac15\ud654 \uc131\uacf5\ub960 +5%p \u00b7 \ub2e8\ub828 3\ub2e8\uacc4\uae4c\uc9c0', '\ub2e8\ub828 4\ub2e8\uacc4\uae4c\uc9c0', '\uce6d\ud638 \u300c\uba85\uc7a5\u300d \u00b7 \uacf5\uaca9\ub825 +3% \u00b7 \ub2e8\ub828 5\ub2e8\uacc4'],
+  city_busan:   ['', '\ucd9c\uc790 \ubc30\ub2f9', '\ubd80\uc0b0 \uc0c1\uc810 10% \ud560\uc778', '\ubc43\uc0af \uc808\ubc18', '\ucd9c\uc790 \ubc30\ub2f9 +50%', '\uce6d\ud638 \u300c\ud3ec\uad6c \ub300\ubc29\u300d'],
+  city_seoul:   ['', '\uacfc\uac70 \uc751\uc2dc (\uc8158\ud488\uae4c\uc9c0)', '\uc11c\uc6b8 \uc0c1\uc810\u00b7\uc751\uc2dc\ub8cc 10% \ud560\uc778 \u00b7 \uc8156\ud488\uae4c\uc9c0', '\ud488\uacc4 \ud6a8\uacfc 1.5\ubc30 \u00b7 \uc8154\ud488\uae4c\uc9c0', '\uc8153\ud488\uae4c\uc9c0', '\uce6d\ud638 \u300c\ub2f9\uc0c1\uad00\u300d \u00b7 \uacbd\ud5d8\uce58 +3% \u00b7 \uc8151\ud488\uae4c\uc9c0']
+};
+const SD_TITLE = { buyeo: '\uccad\uc6d4 \ub300\ubc29', city_gwangju: '\ub0a8\ub3c4 \ub300\ubc29', city_daegu: '\uc57d\uc120', city_ulsan: '\uba85\uc7a5', city_busan: '\ud3ec\uad6c \ub300\ubc29', city_seoul: '\ub2f9\uc0c1\uad00' };
+const round100 = v => Math.max(100, Math.round(v / 100) * 100);
+const sdTownLv = c => (TR_TOWNS[c] || [40])[0];
+function sdState(p) {
+  p = p || G.player; if (!p) return null;
+  if (!p.sangdan || typeof p.sangdan !== 'object') p.sangdan = { v: 0, c: {}, pum: 0 };
+  const S = p.sangdan; S.c = S.c || {}; S.pum = S.pum | 0;
+  for (const c of Object.keys(SANGDAN)) if (!S.c[c]) S.c[c] = { inv: 0, sold: 0 };
+  return S;
+}
+function sdNeed(c, k) { return k <= 0 ? 0 : round100(goldRate(sdTownLv(c)) * SD_LV[k].mul); }
+function sdLevel(c, p) {
+  p = p || G.player; const S = sdState(p); if (!S || !SANGDAN[c]) return 0;
+  const C = S.c[c]; let k = 0;
+  for (let i = 1; i < SD_LV.length; i++) {
+    const L = SD_LV[i];
+    if (C.inv < sdNeed(c, i) || C.sold < L.sold) break;
+    if (L.boss && !(p.bossKills && p.bossKills[SANGDAN[c].boss])) break;
+    k = i;
+  }
+  return k;
+}
+/* \ub2e4\uc74c \ub2e8\uacc4\uae4c\uc9c0 \ubaa8\uc790\ub780 \uac83 */
+function sdNext(c) {
+  const p = G.player, k = sdLevel(c); if (k >= 5) return null;
+  const C = sdState().c[c], L = SD_LV[k + 1];
+  return { k: k + 1, gold: Math.max(0, sdNeed(c, k + 1) - C.inv), sold: Math.max(0, L.sold - C.sold), boss: L.boss && !(p.bossKills && p.bossKills[SANGDAN[c].boss]) ? SANGDAN[c].boss : null };
+}
+const sdDisc = c => sdLevel(c) >= 2 ? .9 : 1;
+const sdName = c => SANGDAN[c].n;
+const sdCity = c => MAPS[c]?.n || c;
+
+/* ---------------- \uc8fc\uad8c 6\uc885: \uc774\ub984\uc744 \uace0\uc7a5 \uc0c1\ub2e8\uc73c\ub85c ---------------- */
+Object.assign(TICKERS.CWS, { n: '\uccad\uc6d4\uc0c1\ub2e8', icon: '\ud83c\udfee', kind: '\uc885\ud569 \uac1d\uc8fc \u00b7 \uccad\uc6d4\ucd0c', region: '\uccad\uc6d4\ucd0c' });
+Object.assign(TICKERS.PGM, { n: '\ub0a8\ub3c4\uc0c1\ub2e8', icon: '\ud83c\udf3e', kind: '\uace1\uc2dd\u00b7\uba39\uac70\ub9ac \u00b7 \uad11\uc8fc', region: '\uad11\uc8fc' });
+Object.assign(TICKERS.BHP, { n: '\uc57d\ub839\uc0c1\ub2e8', icon: '\ud83c\udf3f', kind: '\uc57d\uc7ac \u00b7 \ub300\uad6c \uc57d\ub839\uc2dc', region: '\ub300\uad6c' });
+Object.assign(TICKERS.DBR, { n: '\ucca0\ubb3c\uc0c1\ub2e8', icon: '\ud83d\udd28', kind: '\uc1e0\ubd99\uc774 \u00b7 \uc6b8\uc0b0 \ub300\uc7a5\uac04', region: '\uc6b8\uc0b0' });
+Object.assign(TICKERS.HRS, { n: '\ud3ec\uad6c\uc0c1\ub2e8', icon: '\u26f5', kind: '\ubc43\uae38 \u00b7 \ubd80\uc0b0 \ud3ec\uad6c', region: '\ubd80\uc0b0' });
+Object.assign(TICKERS.CHC, { n: '\uc2dc\uc804\uc0c1\ub2e8', icon: '\ud83c\udfef', kind: '\ud55c\uc591 \uc2dc\uc804 \u00b7 \uc721\uc758\uc804', region: '\uc11c\uc6b8' });
+const SD_COIN_SYMS = COINS.slice();
+for (const s of SD_COIN_SYMS) delete TICKERS[s];
+COINS.length = 0;
+const SD_OF_SYM = {}; for (const [c, D] of Object.entries(SANGDAN)) SD_OF_SYM[D.sym] = c;
+
+/* \ub3d9\ubc29\uc77c\ubcf4: \uc8fc\uad8c \uc18c\uc2dd\ub9cc (\ubd80\ub3d9\uc0b0 \uc9c0\uc218\u00b7\ucf54\uc778 \uc18c\uc2dd\uc740 \uc5c6\uc564\ub2e4) */
+NEWS_POOL.length = 0;
+NEWS_POOL.push(
+  ['\ud83c\udf3f', '\uc57d\ub839\uc2dc \uc57d\uc7ac \uac12 \ub4e4\uc369', '\ub300\uad6c \uc57d\ub839\uc2dc\uc5d0 \ud314\ub3c4 \uc57d\uc7ac\uc0c1\uc774 \ubab0\ub824\ub4ed\ub2c8\ub2e4.', { BHP: .2 }],
+  ['\ud83e\udd40', '\uc57d\ucd08\ubc2d \ubcd1\ucda9\ud574', '\uc57d\uc7ac \uc218\ud655\uc774 \uc904\uc5b4\ub4e4 \uc804\ub9dd\uc785\ub2c8\ub2e4.', { BHP: -.18 }],
+  ['\ud83d\udd28', '\ub300\uc7a5\uac04\ub9c8\ub2e4 \uac15\ud654 \uc8fc\ubb38 \ud3ed\uc8fc', '\ubaa8\ud5d8\uac00\ub4e4\uc758 \uc7a5\ube44 \uc5f4\uae30\uac00 \ub728\uac81\uc2b5\ub2c8\ub2e4.', { DBR: .18 }],
+  ['\ud83d\udca8', '\uc6b8\uc0b0 \uc81c\ub828\uc18c \ud480\ubb34 \uace0\uc7a5', '\ucca0\ubb3c\uc0c1\ub2e8 \uc8fc\uc694 \uc81c\ub828\uc18c\uac00 \uba48\ucdc4\uc2b5\ub2c8\ub2e4.', { DBR: -.18 }],
+  ['\ud83c\udfef', '\ud55c\uc591 \ub3c4\uc131 \uc7ac\uac74 \uc2dc\uc791', '\uc2dc\uc804 \uc0c1\uc778\ub4e4\uc774 \ud070 \uacf5\uc0ac\ub97c \ub530\ub0c8\uc2b5\ub2c8\ub2e4.', { CHC: .2 }],
+  ['\ud83e\uddf1', '\uc2dc\uc804 \uae08\ub09c\uc804\uad8c \ub2e4\ud23c', '\ub09c\uc804 \uc0c1\uc778\ub4e4\uacfc \uc2dc\uc804\uc758 \ub2e4\ud23c\uc774 \uae38\uc5b4\uc9d1\ub2c8\ub2e4.', { CHC: -.16 }],
+  ['\u2693', '\ubd80\uc0b0 \ud56d\ub85c \uc815\uc0c1\ud654', '\ubd80\uc0b0 \uc55e\ubc14\ub2e4 \ubc43\uae38\uc774 \ub2e4\uc2dc \ud65c\ubc1c\ud569\ub2c8\ub2e4.', { HRS: .2 }],
+  ['\ud83c\udf0a', '\ub0a8\ud574 \ud48d\ub791 \uacbd\ubcf4', '\uba70\uce60\uc9f8 \ubc30\uac00 \ub728\uc9c0 \ubabb\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.', { HRS: -.2 }],
+  ['\ud83c\udf3e', '\ud638\ub0a8 \ub4e4\ub158 \ub300\ud48d', '\ub0a8\ub3c4 \uace1\uc2dd\uc774 \ud314\ub3c4\ub85c \uc2e4\ub824 \uac11\ub2c8\ub2e4.', { PGM: .2 }],
+  ['\u2614', '\ub0a8\ub3c4 \uc7a5\ub9c8 \ud53c\ud574', '\ub17c\uc774 \uc7a0\uaca8 \uace1\uc2dd \uac12\uc774 \ucd9c\ub801\uc785\ub2c8\ub2e4.', { PGM: -.16 }],
+  ['\ud83c\udfee', '\uccad\uc6d4\uc0c1\ub2e8 \uc0c8 \uad50\uc5ed\ub85c \uac1c\ucc99', '\uccad\uc6d4 \ud638\uc218 \ub108\uba38\uae4c\uc9c0 \uc0c1\ub2e8 \ud589\ub82c\uc774 \uc774\uc5b4\uc9d1\ub2c8\ub2e4.', { CWS: .15 }],
+  ['\ud83d\udde1\ufe0f', '\uccad\uc6d4\uc0c1\ub2e8 \ud589\ub82c \uc0b0\uc801 \uc2b5\uaca9', '\ube44\ub2e8 \uc218\ub808 \uc5ec\ub7ec \ub300\ub97c \uc783\uc5c8\ub2e4\uace0 \ud569\ub2c8\ub2e4.', { CWS: -.15 }],
+  ['\u26f5', '\uc77c\ubcf8 \ud56d\ub85c \uc99d\ud3b8', '\ud604\ud574\ud0c4\uc744 \uc624\uac00\ub294 \ubc43\uae38\uc774 \ub298\uc5b4\ub0a9\ub2c8\ub2e4.', { HRS: .15 }],
+  ['\ud83c\udf4a', '\uc81c\uc8fc \uac10\uade4 \uc9c4\uc0c1 \ud48d\ub144', '\uccad\uc6d4\u00b7\ud3ec\uad6c\uc0c1\ub2e8 \uac1d\uc8fc\uac00 \uac10\uade4\uc744 \uc2e4\uc5b4 \ub098\ub985\ub2c8\ub2e4.', { CWS: .08, HRS: .06 }],
+  ['\ud83d\udc0b', '\uc6b8\uc0b0 \uc55e\ubc14\ub2e4 \uace0\ub798\ub5bc', '\ud3ec\uad6c\ub9c8\ub2e4 \uc0ac\ub78c\uc774 \ubab0\ub9ac\uace0 \uc1e0\ubd99\uc774 \uc8fc\ubb38\ub3c4 \ub2a1\ub2c8\ub2e4.', { DBR: .06, HRS: .06 }],
+  ['\ud83c\udf2b\ufe0f', '\uc11c\ud574 \ud574\ubb34 \uc9c0\uc18d', '\ubb3c\uae38\uc774 \ub9c9\ud600 \ud3ec\uad6c\uac00 \ud55c\uc0b0\ud569\ub2c8\ub2e4.', { HRS: -.1 }]
+);
+COIN_NEWS.length = 0;
+COIN_NEWS.push(
+  ['\ud83c\udf92', '\ubcf4\ub530\ub9ac \ud138\uc774 \uc18c\ubb38', '\uc0ac\ub0e5\ud130 \ubcf4\ub530\ub9ac \uc0c1\uc778 \uc774\uc57c\uae30\uc5d0 \uc7a5\ud130\uac00 \ub4e4\uc369\uc785\ub2c8\ub2e4.', { CWS: .12, PGM: .06 }],
+  ['\ud83d\udcb8', '\ud070\uc190 \uc0c1\uc778 \uc8fc\uad8c \ub300\ub7c9 \ub9e4\ub3c4', '\ud55c \ud070\uc190\uc774 \uc8fc\uad8c\uc744 \ud480\uc5c8\ub2e4\ub294 \uc18c\ubb38\uc785\ub2c8\ub2e4.', { CWS: -.1, CHC: -.1 }],
+  ['\ud83d\udc2f', '\uc0b0\uad70 \ubaa9\uaca9\ub2f4 \ud655\uc0b0', '\uae4a\uc740 \uc0b0\uc5d0\uc11c \uc0b0\uad70\uc744 \ubd24\ub2e4\ub294 \uc774\uc57c\uae30\uc5d0 \uc57d\uc7ac\uc0c1\uc774 \ubc14\ube60\uc9d1\ub2c8\ub2e4.', { BHP: .12 }],
+  ['\ud83d\udcdc', '\uc2dc\uc804, \uc7a5\ubd80 \uacf5\uac1c', '\uc2dc\uc804\uc0c1\ub2e8\uc774 \uc7a5\ubd80\ub97c \uc5f4\uc5b4 \uc2e0\uc6a9\uc774 \uc624\ub985\ub2c8\ub2e4.', { CHC: .12 }],
+  ['\ud83e\udd14', '\uc0c1\ub2e8 \uc5b4\uc74c \uc704\uc870 \uc18c\ubb38', '"\uc5b4\uc74c \ubbff\uc5b4\ub3c4 \ub418\ub098" \uc7a5\ud130 \ubbfc\uc2ec\uc774 \ud749\ud749\ud569\ub2c8\ub2e4.', { CWS: -.08, CHC: -.08, HRS: -.08 }]
+);
+for (const k of Object.keys(DEED_NEWS)) delete DEED_NEWS[k];
+Object.assign(DEED_NEWS, {
+  daegu:   ['\ud83d\udd25', '\ud314\uacf5\uc0b0 \ud654\uadc0 \ud1a0\ubc8c \uc131\uacf5', '\uc57d\ucd08\uafbc\ub4e4\uc774 \ub2e4\uc2dc \ud314\uacf5\uc0b0\uc5d0 \uc624\ub985\ub2c8\ub2e4.', { BHP: .25 }],
+  busan:   ['\u2693', '\ubd80\uc0b0 \ud574\ub8e1 \ud1a0\ubc8c \u00b7 \ud56d\ub85c \uc815\uc0c1\ud654', '\ubc14\ub2e4\ub97c \ub9c9\ub358 \ud574\ub8e1\uc774 \uc4f0\ub7ec\uc84c\uc2b5\ub2c8\ub2e4.', { HRS: .25 }],
+  incheon: ['\u26f5', '\uc11c\ud574 \uc218\uad70 \uc6d0\ud63c \ud1f4\uce58', '\uc778\ucc9c \uc55e\ubc14\ub2e4 \ubc43\uae38\uc774 \ub2e4\uc2dc \uc5f4\ub9bd\ub2c8\ub2e4.', { HRS: .14, CHC: .06 }],
+  ulsan:   ['\ud83d\udd28', '\uc6b8\uc0b0 \ucca0\uc815\uad74 \ud1a0\ubc8c', '\uad11\uc0b0\uacfc \uc81c\ub828\uc18c\uac00 \ub2e4\uc2dc \ubd88\uc744 \uc9c0\ud54d\ub2c8\ub2e4.', { DBR: .25 }],
+  gwangju: ['\ud83c\udf3f', '\ubb34\ub4f1\uc0b0 \ub300\uc232 \ud3c9\uc815', '\ub0a8\ub3c4 \uae38\uc774 \uc548\uc804\ud574\uc84c\uc2b5\ub2c8\ub2e4.', { PGM: .25 }],
+  seoul:   ['\ud83c\udfef', '\ud55c\uc591 \uc655\ub989 \uc6d0\uadc0 \uc9c4\uc555', '\ub3c4\uc131 \ubcf5\uad6c \uacf5\uc0ac\uac00 \uace7 \uc2dc\uc791\ub41c\ub2e4\uace0 \ud569\ub2c8\ub2e4.', { CHC: .25 }],
+  jeju:    ['\ud83c\udf4a', '\uc81c\uc8fc \uac70\uc778 \uc5ec\uc2e0 \uc9c4\uc815', '\uc81c\uc8fc \ubc43\uae38\uacfc \uac10\uade4 \uad50\uc5ed\uc774 \ud65c\uae30\ub97c \ub771\ub2c8\ub2e4.', { CWS: .12, HRS: .1 }],
+  japan:   ['\u26f5', '\ud604\ud574\ud0c4 \ub108\uba38 \uc694\uad34 \ud1a0\ubc8c', '\uc77c\ubcf8 \ud56d\ub85c\uc5d0 \ub2e4\uc2dc \ubc30\uac00 \ubab0\ub9bd\ub2c8\ub2e4.', { HRS: .18 }]
+});
+/* \uc2dc\uc138 \uc804\uad11\ud310: \ucf54\uc778 \uc5c6\uc774 */
+updateTicker = function (M) {
+  const el = $('ticker'); if (!el || !G.player) return;
+  const btn = $('tickerBtn');
+  if (G.player.settings.ticker === false || !menuShown('market')) { el.style.display = 'none'; if (btn) btn.style.display = 'none'; return; }
+  if (btn) { btn.style.display = ''; btn.classList.toggle('on', !!G.tickerOpen); }
+  if (!G.tickerOpen) { el.style.display = 'none'; return; }
+  el.style.display = '';
+  const keys = [...new Set([...Object.keys(M.hold).filter(s => TICKERS[s]), ...STOCKS])].slice(0, 6);
+  el.innerHTML = keys.map(s => { const q = M.prices[s], d = pct(q.p, q.prev); return `<span class="${pcls(d)}">${TICKERS[s].icon}${TICKERS[s].n} ${fmtP(q.p)} ${d >= 0 ? '\u25b2' : '\u25bc'}${Math.abs(d).toFixed(1)}%</span>`; }).join('');
+};
+NPCS.propertyM.n = '\uc0c1\ub2e8 \ud589\uc218'; NPCS.propertyM.role = '\uc0c1\ub2e8 \uac1d\uc8fc'; NPCS.propertyM.line = '\uc774 \uace0\uc7a5 \uc0c1\ub2e8\uc5d0 \ubaab\ub3c8\uc744 \ub0b4 \ubcf4\uc2dc\uaca0\uc18c? \uc7a5\uc0ac\uac00 \uc798\ub418\uba74 \ud568\uaed8 \uc6c3\ub294 \uac70\uc694.';
+NPCS.investM.role = '\uccad\uc6d4\uc0c1\ub2e8 \uac1d\uc8fc'; NPCS.investM.line = '\uccad\uc6d4\uc0c1\ub2e8\uc5d0 \ucd9c\uc790\ud558\uc2dc\uaca0\uc18c? \ub3c8\uc774 \ub3c8\uc744 \ubc84\ub294 \ubc95\uc774\uc624.';
+
+/* ---------------- \uc608\uc804 \uc138\uc774\ube0c \uc62e\uae30\uae30 (\ud55c \ubc88) ---------------- */
+function sdMigrate() {
+  const p = G.player; if (!p) return;
+  const S = sdState(p); if (S.v >= SD_VER) return;
+  const M = mk(), conv = { coin: 0, land: [], landCash: 0 };
+  /* \ucf54\uc778 \u2192 \ud604\uc7ac\uac00\ub85c \ud658\uae09 */
+  for (const s of SD_COIN_SYMS) {
+    const h = M.hold[s]; const q = M.prices[s];
+    if (h && h.q > 0) conv.coin += Math.floor(h.q * (q ? q.p : 0));
+    delete M.hold[s];
+  }
+  p.gold += conv.coin;
+  /* \ubd80\ub3d9\uc0b0 \u2192 \uadf8 \uace0\uc7a5 \uc0c1\ub2e8 \ucd9c\uc790 (\uc0b0 \uac12\uacfc \uc9c0\uae08 \uac12 \uc911 \ud070 \ucabd + \uc313\uc778 \uc784\ub300\ub8cc) */
+  for (const [city, lots] of Object.entries(p.props || {})) for (const L of Object.values(lots || {})) {
+    if (!L) continue;
+    let v = Math.max(L.cost || 0, lotValue(M, city, L));
+    if (L.b) { try { v += Math.floor(propIncome(L, city) * Math.min(600, (p.playTime - L.t) / 60)); } catch (e) { } }
+    v = Math.floor(v);
+    if (SANGDAN[city]) { S.c[city].inv += v; conv.land.push([city, v]); } else { p.gold += v; conv.landCash += v; }
+  }
+  p.props = {};
+  /* \ub3d9\ubc29\uc77c\ubcf4: \ucf54\uc778 \uc18c\uc2dd\u00b7\uc61b \uac1c\uc7a5 \uae30\uc0ac\ub294 \ub0b4\ub9ac\uace0 \uc0c8 \uae30\uc0ac \ud558\ub098 */
+  M.news = (M.news || []).filter(n => n.t !== '\ub3d9\ubc29 \ud22c\uc790\uc13c\ud130 \uac1c\uc7a5' && !(n.syms || []).some(x => SD_COIN_SYMS.includes(x)));
+  M.news.unshift({ id: ++M.newsId, icon: '\ud83c\udfee', t: '\ud22c\uc790\uc13c\ud130, \uc0c1\ub2e8 \uc7a5\ubd80\ub85c \uc0c8 \ucd9c\ubc1c', b: '\ud314\ub3c4 \uc5ec\uc12f \uc0c1\ub2e8\uc758 \uc8fc\uad8c\uc744 \uc0ac\uace0\ud314\uace0, \uace0\uc7a5 \uc0c1\ub2e8\uc5d0 \ucd9c\uc790\ud574 \uadf8 \uace0\uc7a5 \ud61c\ud0dd\uc744 \uc5f4 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc7a5\uc740 3~5\ubd84\ub9c8\ub2e4 \uac31\uc2e0\ub429\ub2c8\ub2e4.', syms: [], up: 1, day: M.day });
+  S.v = SD_VER;
+  if (conv.coin || conv.land.length || conv.landCash) {
+    S.conv = conv;
+    setTimeout(() => toast('\ud83c\udfee \ud22c\uc790\uc13c\ud130\uac00 \u300c\uc0c1\ub2e8 \uc7a5\ubd80\u300d\ub85c \ubc14\ub00c\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 \uc7a5\ubd80(O)\uc5d0\uc11c \ubc14\ub010 \ub0b4\uc5ed\uc744 \ubcf4\uc138\uc694', 'gold'), 2500);
+  }
+}
+{
+  const _startGame383 = startGame;
+  startGame = function () { const r = _startGame383.apply(this, arguments); try { sdMigrate(); sdSync(true); calcStats(G.player); } catch (e) { reportError(e); } return r; };
+}
+if (typeof SAVE_FIELDS !== 'undefined' && !SAVE_FIELDS.includes('sangdan')) SAVE_FIELDS.push('sangdan');
+
+/* ---------------- \ucd9c\uc790 ---------------- */
+function sdInvest(c, amt) {
+  const p = G.player; amt = Math.floor(amt);
+  if (!SANGDAN[c] || !(amt > 0)) return false;
+  if (p.gold < amt) { toast('\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red'); return false; }
+  p.gold -= amt; sdState().c[c].inv += amt;
+  Sfx.coin();
+  if (!sdSync()) toast(`\ud83e\udd1d ${sdName(c)}\uc5d0 ${fmt(amt)}\ubb38\uc744 \ucd9c\uc790\ud588\uc2b5\ub2c8\ub2e4`, 'gold');
+  sdStoryInvest();
+  return true;
+}
+function sdLevelUp(c, k) {
+  centerMsg(`\ud83c\udfee ${sdName(c)} ${SD_LV[k].n}`, SD_PERK[c][k], 'legend', 2.6);
+  addFx('pillar', G.player.x, G.player.y, { col: '#ffd27a', dur: 1.4 });
+  if (k >= 5) { grantTitle(SD_TITLE[c]); calcStats(G.player); }
+  calcStats(G.player);
+}
+/* \ub2e8\uacc4\uac00 \uc624\ub978 \uc0c1\ub2e8\uc774 \uc788\uc73c\uba74 \uc54c\ub9b0\ub2e4 (\ucd9c\uc790\u00b7\ud310\ub9e4 \uc2e4\uc801\u00b7\ubcf4\uc2a4 \uc5b4\ub290 \ucabd\uc73c\ub85c\ub4e0) \u2014 \ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc54c\ub9b0 \ub2e8\uacc4\ub97c \uae30\uc5b5\ud55c\ub2e4 */
+function sdSync(silent) {
+  const S = sdState(); if (!S) return false; let up = false;
+  for (const c of Object.keys(SANGDAN)) {
+    const C = S.c[c], k = sdLevel(c);
+    if (C.lk === undefined) C.lk = silent ? k : 0;
+    if (k > C.lk) { C.lk = k; if (silent) { if (k >= 5) grantTitle(SD_TITLE[c]); } else { sdLevelUp(c, k); up = true; } }
+  }
+  return up;
+}
+function sdStoryInvest() { try { const s = G.player && curStep(); if (s && s.t === 'invest') { stepDone(); toast('\ud83d\udcdc \uc774\uc57c\uae30 \u2014 \uccab \ud22c\uc790\ub97c \ud588\uc2b5\ub2c8\ub2e4', 'gold'); } } catch (e) { reportError(e); } }
+
+/* \uad50\uc5ed: \uadf8 \uace0\uc7a5 \ubb3c\uac74\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ud314\uba74 \u2192 \ud310\ub9e4 \uc2e4\uc801 + \uadf8 \uc0c1\ub2e8 \uc8fc\uad8c\uc5d0 \uc6c3\ubc14\ub78c */
+{
+  const _tradeSell383 = tradeSell;
+  tradeSell = function (g) {
+    const d = TR_GOODS[g], town = G.mapId, origin = d && d.town;
+    const r = _tradeSell383.apply(this, arguments);
+    try {
+      if (r && r[0] > 0 && origin && origin !== town && SANGDAN[origin]) {
+        sdState().c[origin].sold += r[0];
+        const M = mk(); M.sdPush = M.sdPush || {}; const s = SANGDAN[origin].sym; M.sdPush[s] = (M.sdPush[s] || 0) + r[0];
+        sdSync();
+      }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  const _marketUpdate383 = marketUpdate;
+  marketUpdate = function (M) {
+    try { if (M.sdPush) { const b = {}; for (const [s, n] of Object.entries(M.sdPush)) if (TICKERS[s] && n > 0) b[s] = Math.min(.15, n * .004); if (Object.keys(b).length) M.fx.push({ b, n: 1 }); M.sdPush = {}; } } catch (e) { reportError(e); }
+    return _marketUpdate383.apply(this, arguments);
+  };
+  /* \uc7a5\ub0a0: \ucd9c\uc790 \ubc30\ub2f9 */
+  const _payDividends383 = payDividends;
+  payDividends = function (M) {
+    const r = _payDividends383.apply(this, arguments);
+    try {
+      const S = sdState(); let tot = 0;
+      for (const c of Object.keys(SANGDAN)) {
+        const k = sdLevel(c); if (!k) continue;
+        let rate = SD_DIV[k]; if (k >= 4 && !SANGDAN[c].act) rate *= 1.5;
+        tot += Math.floor(S.c[c].inv * rate);
+      }
+      if (tot > 0) { G.player.gold += tot; M.divTotal = (M.divTotal || 0) + tot; S.divTot = (S.divTot || 0) + tot; toast(`\ud83c\udfee \ucd9c\uc790 \ubc30\ub2f9 +${fmt(tot)}\ubb38`, 'gold'); }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  /* 5\ub2e8 \ubcf4\uc2a4: \uc7a1\ub294 \uc21c\uac04 \ub2e8\uacc4\uac00 \uc624\ub97c \uc218 \uc788\ub2e4 */
+  const _marketEvent383 = marketEvent;
+  marketEvent = function (kind) {
+    const r = _marketEvent383.apply(this, arguments);
+    if (kind === 'boss') try { sdSync(); } catch (e) { reportError(e); }
+    return r;
+  };
+}
+/* 2\ub2e8: \uadf8 \uace0\uc7a5 \uc0c1\uc810 10% \ud560\uc778 */
+{
+  const _buyPrice383 = buyPrice;
+  buyPrice = function (id) { const v = _buyPrice383.apply(this, arguments); return SANGDAN[G.mapId] && sdLevel(G.mapId) >= 2 ? Math.max(1, Math.round(v * .9)) : v; };
+}
+
+/* ---------------- \ub300\uad6c \uc57d\ub839\uc2dc: \ub2e8\uc57d ---------------- */
+const DAN = {
+  danGi:     { key: '\uae30\ub825\ub2e8', name: '\uae30\ub825\ub2e8', desc: '\uacf5\uaca9\ub825\u00b7\ub9c8\ubc95\ub825 +8%', mul: 1 },
+  danGeum:   { key: '\uae08\uac15\ub2e8', name: '\uae08\uac15\ub2e8', desc: '\ubc29\uc5b4 +20% \u00b7 \ucd5c\ub300 HP +8%', mul: 1.3 },
+  danCheong: { key: '\uccad\uc2ec\ub2e8', name: '\uccad\uc2ec\ub2e8', desc: '\ub9c8\ub825 \uc7ac\uc0dd +60% \u00b7 \uc774\ub3d9 \uc18d\ub3c4 +8%', mul: .9 }
+};
+for (const [id, D] of Object.entries(DAN)) ITEMS[id] = { name: D.name, slot: 'use', icon: '\ud83d\udc8a', rarity: 2, desc: `\ub300\uad6c \uc57d\ub839\uc2dc \ub2e8\uc57d \u2014 10\ubd84 \ub3d9\uc548 ${D.desc} (\ub2e8\uc57d\uc740 \ud55c \ubc88\uc5d0 \ud558\ub098\ub9cc)`, price: 60, dan: id };
+const DAN_KEYS = Object.values(DAN).map(D => D.key);
+const danPower = () => sdLevel('city_daegu') >= 4 ? 1.5 : 1;
+const danDur = () => sdLevel('city_daegu') >= 3 ? 900 : 600;
+const danCost = id => round100(goldRate(G.player.lv) * .5 * DAN[id].mul * sdDisc('city_daegu'));
+{
+  const _useItem383 = useItem;
+  useItem = function (p, it) {
+    const d = ITEMS[it && it.id];
+    if (d && d.dan && p === G.player) {
+      for (const k of DAN_KEYS) delete p.buffs[k];
+      takeItem(p, it.id, 1); p.buffs[DAN[d.dan].key] = danDur(); calcStats(p);
+      toast(`\ud83d\udc8a ${d.name}\uc744 \uba39\uc5c8\uc2b5\ub2c8\ub2e4 \u2014 ${Math.round(danDur() / 60)}\ubd84`, 'gold'); addFx('heal', p.x, p.y, { col: '#ffd27a', r: 40, dur: .5 }); Sfx.potion();
+      return true;
+    }
+    /* 3\ub2e8: \ubb3c\uc57d \ud68c\ubcf5 +20% (\uad11\uc8fc 3\ub2e8: \uc74c\uc2dd +30%) */
+    const food = d && /\uc57d\uacfc|\uc5b4\ubb35|\uac10\uade4|\ucd08\ucf5c\ub9bf|\ud55c\ub77c\ubd09|\uc8fc\uba39\ubc25|\ub5a1/.test(d.name || '');
+    G._potBoost = d && d.heal && p === G.player ? (sdLevel('city_daegu') >= 3 ? 1.2 : 1) * (food && sdLevel('city_gwangju') >= 3 ? 1.3 : 1) : 0;
+    try { return _useItem383.apply(this, arguments); } finally { G._potBoost = 0; }
+  };
+  const _healAlly383 = healAlly;
+  healAlly = function (t, amt) { if (G._potBoost > 1 && t === G.player) arguments[1] = amt * G._potBoost; return _healAlly383.apply(this, arguments); };
+}
+
+/* ---------------- \uc6b8\uc0b0 \ucca0\ubb3c: \ud2b9\uc218 \ub2e8\ub828 (\ubb34\uae30\uc5d0 \uc0c8\uae34\ub2e4) ---------------- */
+const temMax = () => sdLevel('city_ulsan');
+const temCost = it => { const d = ITEMS[it.id]; return round100(goldRate(d.lv || G.player.lv) * .8 * (1 + (it.tem | 0) * .9) * sdDisc('city_ulsan')); };
+{
+  const _enhanceRate383 = enhanceRate;
+  enhanceRate = function (p, it, bonus = 0, aid = {}) { return _enhanceRate383(p, it, bonus + (p === G.player && sdLevel('city_ulsan') >= 3 ? .05 : 0), aid); };
+}
+
+/* ---------------- \uc11c\uc6b8 \uc2dc\uc804: \uacfc\uac70\uc2dc\ud5d8 \u00b7 \ud488\uacc4 ---------------- */
+const PUM = ['\ud488\uacc4 \uc5c6\uc74c', '\uc8859\ud488', '\uc8159\ud488', '\uc8858\ud488', '\uc8158\ud488', '\uc8857\ud488', '\uc8157\ud488', '\uc8856\ud488', '\uc8156\ud488', '\uc8855\ud488', '\uc8155\ud488', '\uc8854\ud488', '\uc8154\ud488', '\uc8853\ud488', '\uc8153\ud488', '\uc8852\ud488', '\uc8152\ud488', '\uc8851\ud488', '\uc8151\ud488'];
+const PUM_CAP = [0, 4, 8, 12, 14, 18];        /* \uc2dc\uc804\uc0c1\ub2e8 \ub2e8\uacc4\ubcc4\ub85c \uc624\ub97c \uc218 \uc788\ub294 \ud488\uacc4 */
+const PUM_PER = .004;                          /* \ud488\uacc4 \ud558\ub098\uc5d0 \uacf5\uaca9\u00b7HP +0.4% */
+const pumMul = () => sdLevel('city_seoul') >= 3 ? 1.5 : 1;
+const gwaFee = () => round100(goldRate(G.player.lv) * .3 * (1 + (sdState().pum | 0) * .12) * sdDisc('city_seoul'));
+/* [\ubb38\uc81c, [\ubcf4\uae30 \ub137 \u2014 \uccab\uc9f8\uac00 \uc815\ub2f5], \ud480\uc774] */
+const GWA_Q = [
+  ['\ud6c8\ubbfc\uc815\uc74c\uc744 \ub9cc\ub4e0 \uc784\uae08\uc740?', ['\uc138\uc885', '\ud0dc\uc885', '\uc131\uc885', '\uc815\uc870'], '\uc138\uc885\uc774 1443\ub144\uc5d0 \ub9cc\ub4e4\uace0 1446\ub144\uc5d0 \ubc18\ud3ec\ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\uc870\uc120\uc744 \uc138\uc6b4 \uc784\uae08\uc740?', ['\ud0dc\uc870 \uc774\uc131\uacc4', '\ud0dc\uc885 \uc774\ubc29\uc6d0', '\uc138\uc885', '\uc815\ub3c4\uc804'], '1392\ub144 \ud0dc\uc870 \uc774\uc131\uacc4\uac00 \uc870\uc120\uc744 \uc138\uc6e0\uc2b5\ub2c8\ub2e4.'],
+  ['\uc218\uc6d0 \ud654\uc131\uc744 \uc313\uac8c \ud55c \uc784\uae08\uc740?', ['\uc815\uc870', '\uc601\uc870', '\uc219\uc885', '\uc138\uc870'], '\uc815\uc870\uac00 1794~1796\ub144\uc5d0 \uc313\uac8c \ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\uc870\uc120\uc758 \uae30\ubcf8 \ubc95\uc804 \u300c\uacbd\uad6d\ub300\uc804\u300d\uc744 \uc644\uc131\ud574 \ud3b4\ub0b8 \uc784\uae08\uc740?', ['\uc131\uc885', '\uc138\uc870', '\ud0dc\uc885', '\uc138\uc885'], '\uc138\uc870 \ub54c \uc2dc\uc791\ud574 \uc131\uc885 \ub54c \uc644\uc131\u00b7\uc2dc\ud589\ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\u300c\ub300\ub3d9\uc5ec\uc9c0\ub3c4\u300d\ub97c \ub9cc\ub4e0 \uc0ac\ub78c\uc740?', ['\uae40\uc815\ud638', '\uc815\uc57d\uc6a9', '\ud5c8\uc900', '\ubc15\uc9c0\uc6d0'], '\uae40\uc815\ud638\uac00 1861\ub144\uc5d0 \ud3b4\ub0b8 \uc804\uad6d \uc9c0\ub3c4\uc785\ub2c8\ub2e4.'],
+  ['\u300c\ub3d9\uc758\ubcf4\uac10\u300d\uc744 \uc9c0\uc740 \uc0ac\ub78c\uc740?', ['\ud5c8\uc900', '\ud5c8\uade0', '\uc815\uc57d\uc6a9', '\uc774\ud669'], '\ud5c8\uc900\uc774 \ud3b4\ub0b8 \uc758\uc11c\ub85c, \uc57d\ub839\uc2dc \uc57d\uc7ac\uc0c1\uc758 \ud544\ub3c5\uc11c\uc600\uc9c0\uc694.'],
+  ['\u300c\ubaa9\ubbfc\uc2ec\uc11c\u300d\ub97c \uc9c0\uc740 \uc2e4\ud559\uc790\ub294?', ['\uc815\uc57d\uc6a9', '\ubc15\uc9c0\uc6d0', '\uc774\uc775', '\uc720\ud615\uc6d0'], '\uc815\uc57d\uc6a9\uc774 \uace0\uc744 \uc218\ub839\uc758 \ub3c4\ub9ac\ub97c \uc801\uc740 \ucc45\uc785\ub2c8\ub2e4.'],
+  ['\u300c\uc5f4\ud558\uc77c\uae30\u300d\ub97c \uc4f4 \uc0ac\ub78c\uc740?', ['\ubc15\uc9c0\uc6d0', '\ubc15\uc81c\uac00', '\uae40\uc815\ud76c', '\uc815\uc57d\uc6a9'], '\ubc15\uc9c0\uc6d0\uc774 \uccad\ub098\ub77c \uc5f4\ud558\uc5d0 \ub2e4\ub140\uc628 \uae30\ud589\ubb38\uc785\ub2c8\ub2e4.'],
+  ['\ud55c\uc591 \uc2dc\uc804\uc5d0\uc11c \uac00\uc7a5 \ud070 \uc5ec\uc12f \uac00\uac8c\ub97c \ubb36\uc5b4 \ubd80\ub978 \ub9d0\uc740?', ['\uc721\uc758\uc804', '\uc721\uc870', '\uc624\uad70\uc601', '\uc721\ubc29'], '\ube44\ub2e8\u00b7\ubb34\uba85\u00b7\uba85\uc8fc\u00b7\uc885\uc774\u00b7\ubaa8\uc2dc\u00b7\uc5b4\ubb3c\uc744 \ud30c\ub294 \uc5ec\uc12f \uc2dc\uc804\uc785\ub2c8\ub2e4.'],
+  ['\uac1c\uc131 \uc0c1\uc778\uc744 \ubd80\ub974\ub358 \uc774\ub984\uc740?', ['\uc1a1\uc0c1', '\ub9cc\uc0c1', '\ub0b4\uc0c1', '\uacbd\uac15\uc0c1\uc778'], '\uac1c\uc131(\uc1a1\ub3c4) \uc0c1\uc778\uc774\ub77c \uc1a1\uc0c1\uc774\ub77c \ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\uc758\uc8fc\ub97c \uadfc\uac70\ub85c \uccad\ub098\ub77c\uc640 \uc7a5\uc0ac\ud558\ub358 \uc0c1\uc778\uc740?', ['\ub9cc\uc0c1', '\uc1a1\uc0c1', '\ub0b4\uc0c1', '\ubcf4\ubd80\uc0c1'], '\uc758\uc8fc \uc0c1\uc778\uc744 \ub9cc\uc0c1\uc774\ub77c \ubd88\ub800\uc2b5\ub2c8\ub2e4.'],
+  ['\ub3d9\ub798(\ubd80\uc0b0)\ub97c \uadfc\uac70\ub85c \uc65c\uc640 \uc7a5\uc0ac\ud558\ub358 \uc0c1\uc778\uc740?', ['\ub0b4\uc0c1', '\ub9cc\uc0c1', '\uc1a1\uc0c1', '\uacbd\uac15\uc0c1\uc778'], '\ub3d9\ub798 \uc0c1\uc778\uc744 \ub0b4\uc0c1\uc774\ub77c \ubd88\ub800\uc2b5\ub2c8\ub2e4.'],
+  ['\uc601\uc758\uc815\u00b7\uc88c\uc758\uc815\u00b7\uc6b0\uc758\uc815\uc744 \ud568\uaed8 \uc774\ub974\ub294 \ub9d0\uc740?', ['\uc0bc\uc815\uc2b9', '\uc0bc\uc0ac', '\uc721\uc870', '\uc2b9\uc815\uc6d0'], '\uc138 \uc815\uc2b9\uc774 \uc758\uc815\ubd80\ub97c \uc774\ub04c\uc5c8\uc2b5\ub2c8\ub2e4.'],
+  ['\uc870\uc120 \ucd5c\uace0\uc758 \uad6d\ub9bd \uad50\uc721 \uae30\uad00\uc740?', ['\uc131\uade0\uad00', '\ud5a5\uad50', '\uc11c\uc6d0', '\uc11c\ub2f9'], '\ud55c\uc591\uc5d0 \uc788\ub358 \ucd5c\uace0 \ud559\ubd80\uc785\ub2c8\ub2e4.'],
+  ['\uacfc\uac70\uc758 \ub9c8\uc9c0\ub9c9 \uc2dc\ud5d8\uc73c\ub85c, \uc784\uae08 \uc55e\uc5d0\uc11c \uce58\ub974\ub358 \uc2dc\ud5d8\uc740?', ['\uc804\uc2dc', '\ucd08\uc2dc', '\ubcf5\uc2dc', '\ud5a5\uc2dc'], '\ucd08\uc2dc \u2192 \ubcf5\uc2dc \u2192 \uc804\uc2dc \uc21c\uc11c\uc600\uc2b5\ub2c8\ub2e4.'],
+  ['\ubb34\uad00\uc744 \ubf51\ub358 \uacfc\uac70 \uc2dc\ud5d8\uc740?', ['\ubb34\uacfc', '\uc7a1\uacfc', '\ubb38\uacfc', '\uc0dd\uc6d0\uc2dc'], '\ud65c\uc3d8\uae30\u00b7\ub9d0\ud0c0\uae30\u00b7\ubcd1\uc11c\ub97c \ubcf4\uc558\uc2b5\ub2c8\ub2e4.'],
+  ['\uacfc\uac70\uc5d0\uc11c \uccab\uc9f8\ub85c \ubd99\uc740 \uc0ac\ub78c\uc744 \ubd80\ub974\ub294 \ub9d0\uc740?', ['\uc7a5\uc6d0', '\uc9c4\uc0ac', '\uc0dd\uc6d0', '\uae09\uc81c'], '\uc7a5\uc6d0 \uae09\uc81c\ub77c\uace0 \ud558\uc9c0\uc694.'],
+  ['\uc870\uc120 \ud314\ub3c4\uc5d0 \ub4e4\uc9c0 \uc54a\ub294 \uac83\uc740?', ['\uc81c\uc8fc\ub3c4', '\ud669\ud574\ub3c4', '\ud568\uacbd\ub3c4', '\uac15\uc6d0\ub3c4'], '\uc81c\uc8fc\ub294 \uc804\ub77c\ub3c4\uc5d0 \uc18d\ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\ube44\uc758 \uc591\uc744 \uc7ac\ub358 \uae30\uad6c\ub85c \uc138\uc885 \ub54c \ub9cc\ub4e0 \uac83\uc740?', ['\uce21\uc6b0\uae30', '\uc559\ubd80\uc77c\uad6c', '\uc790\uaca9\ub8e8', '\ud63c\ucc9c\uc758'], '1441\ub144\uc5d0 \ub9cc\ub4e4\uc5c8\uc2b5\ub2c8\ub2e4.'],
+  ['\uc5b5\uc6b8\ud55c \uc77c\uc744 \uc784\uae08\uaed8 \uc54c\ub9ac\ub3c4\ub85d \ub300\uad90\uc5d0 \ub2e8 \ubd81\uc740?', ['\uc2e0\ubb38\uace0', '\ubcf4\uc2e0\uac01\uc885', '\ucde8\ud0c0', '\uc790\uba85\uace0'], '\ud0dc\uc885 \ub54c \ucc98\uc74c \ub2ec\uc558\uc2b5\ub2c8\ub2e4.'],
+  ['\uac70\ubd81\uc120\uc744 \uc55e\uc138\uc6cc \ud55c\uc0b0\ub3c4\uc5d0\uc11c \ud06c\uac8c \uc774\uae34 \uc7a5\uc218\ub294?', ['\uc774\uc21c\uc2e0', '\uad8c\uc728', '\uae40\uc2dc\ubbfc', '\uacfd\uc7ac\uc6b0'], '1592\ub144 \ud55c\uc0b0\ub3c4 \ub300\ucca9\uc785\ub2c8\ub2e4.'],
+  ['\uacf5\ub0a9\uc744 \uc300\ub85c \ub0b4\uac8c \ud55c \uc81c\ub3c4\ub294?', ['\ub300\ub3d9\ubc95', '\uade0\uc5ed\ubc95', '\uc601\uc815\ubc95', '\uacfc\uc804\ubc95'], '\uad11\ud574\uad70 \ub54c \uacbd\uae30\ub3c4\uc5d0\uc11c \ucc98\uc74c \uc2dc\ud589\ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\uad70\ud3ec\ub97c 2\ud544\uc5d0\uc11c 1\ud544\ub85c \uc904\uc778 \uc81c\ub3c4\uc640 \uadf8 \uc784\uae08\uc740?', ['\uade0\uc5ed\ubc95 \u00b7 \uc601\uc870', '\ub300\ub3d9\ubc95 \u00b7 \uad11\ud574\uad70', '\uade0\uc5ed\ubc95 \u00b7 \uc815\uc870', '\ud638\ud328\ubc95 \u00b7 \ud0dc\uc885'], '\uc601\uc870\uac00 1750\ub144\uc5d0 \uc2dc\ud589\ud588\uc2b5\ub2c8\ub2e4.'],
+  ['\ud0d5\ud3c9\ube44\ub97c \uc131\uade0\uad00 \uc55e\uc5d0 \uc138\uc6b4 \uc784\uae08\uc740?', ['\uc601\uc870', '\uc815\uc870', '\uc219\uc885', '\uc21c\uc870'], '\ubd95\ub2f9\uc744 \uace0\ub8e8 \uc4f0\uaca0\ub2e4\ub294 \ub73b\uc744 \uc0c8\uacbc\uc2b5\ub2c8\ub2e4.'],
+  ['\uc8153\ud488 \uc774\uc0c1 \ub192\uc740 \ubcbc\uc2ac\uc544\uce58\ub97c \uc774\ub974\ub358 \ub9d0\uc740?', ['\ub2f9\uc0c1\uad00', '\ub2f9\ud558\uad00', '\ucc38\ud558\uad00', '\uc74c\uad00'], '\ub2f9\uc0c1\uad00\ubd80\ud130 \ub098\ub78f\uc77c\uc758 \ud070 \ud68c\uc758\uc5d0 \ub4e4\uc5c8\uc2b5\ub2c8\ub2e4.'],
+  ['\uc870\uc120 \ud488\uacc4\ub294 \uc8151\ud488\ubd80\ud130 \uc8859\ud488\uae4c\uc9c0 \ubaa8\ub450 \uba87 \ub4f1\uae09?', ['18\ub4f1\uae09', '9\ub4f1\uae09', '12\ub4f1\uae09', '24\ub4f1\uae09'], '\uc815\u00b7\uc885\uc73c\ub85c \ub098\ub258\uc5b4 18\ub4f1\uae09\uc785\ub2c8\ub2e4.']
+];
+function gwaStart(ctx) {
+  const p = G.player, S = sdState(), fee = gwaFee();
+  if (S.pum >= PUM_CAP[sdLevel('city_seoul')]) { toast('\uc2dc\uc804\uc0c1\ub2e8 \ub2e8\uacc4\ub97c \uc62c\ub824\uc57c \ub354 \ub192\uc740 \ud488\uacc4\uc5d0 \uc751\uc2dc\ud560 \uc218 \uc788\uc5b4\uc694', 'red'); return; }
+  if (p.gold < fee) { toast('\uc751\uc2dc\ub8cc\uac00 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red'); return; }
+  p.gold -= fee; Sfx.coin();
+  const pool = GWA_Q.map((q, i) => i).sort(() => Math.random() - .5).slice(0, 3);
+  ctx.exam = { qs: pool.map(i => ({ i, ord: [0, 1, 2, 3].sort(() => Math.random() - .5), pick: null })), at: 0, ok: 0, done: false };
+}
+function gwaAnswer(ctx, choice) {
+  const E = ctx.exam; if (!E || E.done) return;
+  const Q = E.qs[E.at]; if (Q.pick !== null) return;
+  Q.pick = choice; if (choice === 0) { E.ok++; Sfx.coin(); } else Sfx.hurt?.();
+}
+function gwaNext(ctx) {
+  const E = ctx.exam; if (!E) return;
+  if (E.at < E.qs.length - 1) { E.at++; return; }
+  E.done = true;
+  const S = sdState();
+  if (E.ok >= 2) {
+    S.pum = Math.min(18, S.pum + 1); calcStats(G.player);
+    centerMsg('\ud83d\udcdc \uae09\uc81c!', `${PUM[S.pum]}\uc5d0 \uc62c\ub790\uc2b5\ub2c8\ub2e4 \u00b7 \uacf5\uaca9\u00b7HP +${(S.pum * PUM_PER * pumMul() * 100).toFixed(1)}%`, 'legend', 2.6); Sfx.level();
+    addFx('pillar', G.player.x, G.player.y, { col: '#ffe38a', dur: 1.5 });
+  } else centerMsg('\ud83d\udcdc \ub099\ubc29', `${E.ok}/3 \u2014 \ub450 \ubb38\uc81c \uc774\uc0c1 \ub9de\ud600\uc57c \ubd99\uc2b5\ub2c8\ub2e4`, 'fail', 1.8);
+}
+
+/* ---------------- \ub2a5\ub825\uce58 ---------------- */
+{
+  const _calcStats383 = calcStats;
+  calcStats = function (e) {
+    const s = _calcStats383.apply(this, arguments);
+    try {
+      if (!s || !e || e.kind !== 'player' || e !== G.player || !e.sangdan) return s;
+      const b = e.buffs || {}, pw = danPower(); let atk = 1, hp = 1;
+      if (b['\uae30\ub825\ub2e8']) atk *= 1 + .08 * pw;
+      if (b['\uae08\uac15\ub2e8']) { s.def *= 1 + .2 * pw; hp *= 1 + .08 * pw; }
+      if (b['\uccad\uc2ec\ub2e8']) { s.mpRegen *= 1 + .6 * pw; s.move *= 1 + .08 * pw; }
+      const w = e.eq && e.eq.weapon; if (w && w.tem) atk *= 1 + .03 * Math.min(5, w.tem);
+      const pum = e.sangdan.pum | 0; if (pum) { const m = pum * PUM_PER * pumMul(); atk *= 1 + m; hp *= 1 + m; }
+      if (sdLevel('city_daegu', e) >= 5) hp *= 1.03;
+      if (sdLevel('city_ulsan', e) >= 5) atk *= 1.03;
+      if (sdLevel('city_seoul', e) >= 5) { const fx = s.fx || (s.fx = {}); fx.xpBonus = (fx.xpBonus || 0) + .03; }
+      if (atk !== 1) { s.patk *= atk; s.matk *= atk; s.power = JOBS[e.job || 'none'].magic ? s.matk : s.patk; }
+      if (hp !== 1 && !e.test) { s.maxHp = Math.round(s.maxHp * hp); }
+    } catch (err) { reportError(err); }
+    return s;
+  };
+}
+/* \uce6d\ud638 */
+Object.assign(TITLE_FX, { '\uc57d\uc120': ['gold', { hp: 4, gold: 4 }], '\uba85\uc7a5': ['enh', { atk: 3, enh: 2 }], '\ub2f9\uc0c1\uad00': ['grow', { atk: 3, hp: 3, xp: 2 }], '\uccad\uc6d4 \ub300\ubc29': ['gold', { gold: 8 }], '\ub0a8\ub3c4 \ub300\ubc29': ['gold', { gold: 6, hp: 2 }], '\ud3ec\uad6c \ub300\ubc29': ['trip', { move: 4, gold: 4 }] });
+if (typeof TITLE_TIER !== 'undefined') Object.assign(TITLE_TIER, { '\uc57d\uc120': 6, '\uba85\uc7a5': 6, '\ub2f9\uc0c1\uad00': 6, '\uccad\uc6d4 \ub300\ubc29': 5, '\ub0a8\ub3c4 \ub300\ubc29': 5, '\ud3ec\uad6c \ub300\ubc29': 5 });
+
+/* ---------------- \uadf8\ub9ac\uae30 ---------------- */
+function sdBar(cur, max) { const w = max > 0 ? clamp(cur / max * 100, 0, 100) : 100; return `<div class="sd-bar"><i style="width:${w}%"></i></div>`; }
+function sdCardHTML(c, opts = {}) {
+  const D = SANGDAN[c], p = G.player, S = sdState(), C = S.c[c], k = sdLevel(c), nx = sdNext(c), q = mk().prices[D.sym];
+  let h = `<div class="sd-card"><div class="sd-h"><span class="sd-ic">${D.icon}</span><b>${esc(D.n)}</b><span class="muted">${esc(sdCity(c))}</span><span class="sd-lv">${k ? `${k}\ub2e8 \u00b7 ${SD_LV[k].n}` : '\uc544\uc9c1 \ucd9c\uc790 \uc804'}</span></div>`;
+  if (nx) {
+    const need = sdNeed(c, nx.k);
+    h += `<div class="sd-row"><span>\ucd9c\uc790</span><b>${fmt(C.inv)} / ${fmt(need)}\ubb38</b></div>${sdBar(C.inv, need)}`;
+    if (SD_LV[nx.k].sold) h += `<div class="sd-row"><span>\ud310\ub9e4 \uc2e4\uc801 <small class="muted">\u2014 ${esc(sdCity(c))} \ud2b9\uc0b0\ud488\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ud310 \uac1c\uc218</small></span><b>${fmt(Math.min(C.sold, SD_LV[nx.k].sold))} / ${SD_LV[nx.k].sold}</b></div>${sdBar(C.sold, SD_LV[nx.k].sold)}`;
+    if (SD_LV[nx.k].boss) { const ok = !nx.boss; h += `<div class="sd-row"><span>\uadf8 \uc9c0\uc5ed \ubcf4\uc2a4 \ucc98\uce58</span><b class="${ok ? 'up' : ''}">${ok ? '\uc644\ub8cc' : esc(MOBS[D.boss]?.n || D.boss)}</b></div>`; }
+    h += `<div class="sd-next">\ub2e4\uc74c ${nx.k}\ub2e8 \u300c${SD_LV[nx.k].n}\u300d \u2014 ${esc(SD_PERK[c][nx.k])}</div>`;
+    if (opts.invest !== false) {
+      const amts = [...new Set([nx.gold, Math.ceil(nx.gold / 4 / 100) * 100].filter(a => a >= 100))];
+      h += `<div class="mk-btns"><span>\ucd9c\uc790</span>${amts.map(a => `<button class="btn ${a === nx.gold ? 'teal' : ''}" data-a="sdInv" data-v="${c}" data-n="${a}" ${p.gold < a ? 'disabled' : ''}>${a === nx.gold ? '\ub2e4\uc74c \ub2e8\uacc4\uae4c\uc9c0 ' : ''}${fmt(a)}\ubb38</button>`).join('')}</div>`;
+      if (!nx.gold) h += `<div class="muted">\ucd9c\uc790\uae08\uc740 \ucc44\uc6e0\uc5b4\uc694${nx.sold ? ` \u2014 \ud310\ub9e4 \uc2e4\uc801 ${nx.sold}\uac1c\uac00 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4` : nx.boss ? ' \u2014 \uadf8 \uc9c0\uc5ed \ubcf4\uc2a4\ub97c \uc4f0\ub7ec\ub728\ub9ac\uc138\uc694' : ''}</div>`;
+    }
+  } else h += `<div class="sd-next up">\ucd5c\uace0 \ub2e8\uacc4 \u300c\ub300\ubc29\u300d \u2014 ${esc(SD_PERK[c][5])}</div>`;
+  h += `<div class="sd-perks">${SD_PERK[c].slice(1).map((t, i) => `<span class="${k >= i + 1 ? 'on' : ''}">${i + 1}\ub2e8 ${esc(t)}</span>`).join('')}</div>`;
+  if (q && opts.stock !== false) { const d = pct(q.p, q.prev), hd = mk().hold[D.sym]; h += `<button class="row mk-row" data-a="sdMarket" data-v="${D.sym}"><div class="ic">\ud83d\udcdc</div><div class="tx"><div class="t1">${esc(D.n)} \uc8fc\uad8c ${fmtP(q.p)}\ubb38 <span class="${pcls(d)}">${d >= 0 ? '\u25b2' : '\u25bc'}${Math.abs(d).toFixed(1)}%</span></div><div class="t2">${hd ? `\ubcf4\uc720 ${fmt(hd.q)}\uc8fc \u00b7 ` : ''}\uc0c1\ub2e8 \uc7a5\ubd80\uc5d0\uc11c \uc0ac\uace0\ud314\uae30</div></div></button>`; }
+  return h + `</div>`;
+}
+function sdActHTML(c, ctx) {
+  const D = SANGDAN[c], p = G.player, k = sdLevel(c);
+  if (!D.act) return `<div class="muted" style="margin:6px 0">\uc774 \uace0\uc7a5 \ud2b9\uc0c9 \ud65c\ub3d9\uc740 \ub2e4\uc74c \uc5c5\ub370\uc774\ud2b8\uc5d0\uc11c \uc5f4\ub9bd\ub2c8\ub2e4. \uc9c0\uae08\uc740 \ucd9c\uc790 \ubc30\ub2f9\uacfc \ud560\uc778\uc744 \ubc1b\uc744 \uc218 \uc788\uc5b4\uc694.</div>`;
+  if (k < 1) return `<div class="muted" style="margin:6px 0">1\ub2e8(\ucd9c\uc790\uc778)\uc774 \ub418\uba74 ${D.act === 'yak' ? '\uc57d\ub839\uc2dc \ub2e8\uc57d \uc870\uc81c' : D.act === 'dan' ? '\ubb34\uae30 \ud2b9\uc218 \ub2e8\ub828' : '\uacfc\uac70 \uc751\uc2dc'}\uac00 \uc5f4\ub9bd\ub2c8\ub2e4.</div>`;
+  let h = `<div class="sep"></div>`;
+  if (D.act === 'yak') {
+    h += `<b>\ud83d\udc8a \uc57d\ub839\uc2dc \uc870\uc81c</b> <span class="muted">\ub2e8\uc57d\uc740 \ud55c \ubc88\uc5d0 \ud558\ub098 \u00b7 ${Math.round(danDur() / 60)}\ubd84${danPower() > 1 ? ' \u00b7 \ud6a8\uacfc 1.5\ubc30' : ''}</span>`;
+    for (const [id, Dn] of Object.entries(DAN)) {
+      const cost = danCost(id), have = invCount(p, id);
+      h += `<div class="row"><div class="ic">\ud83d\udc8a</div><div class="tx"><div class="t1">${Dn.name}${have ? ` <span class="muted">\ubcf4\uc720 ${have}</span>` : ''}</div><div class="t2">${Dn.desc}${danPower() > 1 ? ' (\u00d71.5)' : ''}</div></div><div class="pr">${fmt(cost)}\ubb38</div><button class="btn" data-a="sdDan" data-v="${id}" ${p.gold < cost ? 'disabled' : ''}>\uc870\uc81c</button></div>`;
+    }
+  } else if (D.act === 'dan') {
+    const w = p.eq.weapon, mx = temMax();
+    h += `<b>\ud83d\udd28 \ud2b9\uc218 \ub2e8\ub828</b> <span class="muted">\ubb34\uae30\uc5d0 \uc0c8\uae40 \u00b7 \ub2e8\ub828 1\ub2e8\uacc4\ub9c8\ub2e4 \uacf5\uaca9\ub825 +3% \u00b7 \uc9c0\uae08 ${mx}\ub2e8\uacc4\uae4c\uc9c0</span>`;
+    if (!w) h += `<div class="muted">\ubb34\uae30\ub97c \ub4e4\uace0 \uc624\uc138\uc694.</div>`;
+    else {
+      const t = w.tem | 0, cost = temCost(w);
+      h += `<div class="row"><div class="ic">${ic(ITEMS[w.id])}</div><div class="tx"><div class="t1">${esc(itemDisplayName(w))}</div><div class="t2">\ub2e8\ub828 <b>${t}</b> / 5 \u00b7 \uacf5\uaca9\ub825 +${t * 3}%</div></div>${t >= 5 ? '<b class="up">\uc644\uc131</b>' : t >= mx ? `<span class="muted">${t + 1}\ub2e8\uacc4\ub294 \ucca0\ubb3c\uc0c1\ub2e8 ${t + 1}\ub2e8\ubd80\ud130</span>` : `<div class="pr">${fmt(cost)}\ubb38</div><button class="btn teal" data-a="sdTem" ${p.gold < cost ? 'disabled' : ''}>\ub2e8\ub828</button>`}</div>`;
+      h += `<div class="muted">\ub2e8\ub828\uc740 \uc2e4\ud328\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uac15\ud654(+)\uc640 \ub530\ub85c \uc313\uc774\uace0, \ubb34\uae30\ub97c \ubc14\uafb8\uba74 \uadf8 \ubb34\uae30\uc758 \ub2e8\ub828\ub9cc \uc801\uc6a9\ub3fc\uc694.</div>`;
+    }
+  } else if (D.act === 'gwa') {
+    const S = sdState(), cap = PUM_CAP[k], E = ctx.exam;
+    h += `<b>\ud83d\udcdc \uacfc\uac70 \uc2dc\ud5d8</b> <span class="muted">\uc9c0\uae08 <b>${PUM[S.pum]}</b> \u00b7 \uacf5\uaca9\u00b7HP +${(S.pum * PUM_PER * pumMul() * 100).toFixed(1)}% \u00b7 ${PUM[cap]}\uae4c\uc9c0 \uc751\uc2dc \uac00\ub2a5</span>`;
+    if (E && !E.done) {
+      const Q = E.qs[E.at], G_ = GWA_Q[Q.i];
+      h += `<div class="sd-exam"><div class="sd-q">${E.at + 1}/3 \u00b7 ${esc(G_[0])}</div>${Q.ord.map(o => `<button class="btn ${Q.pick === null ? '' : o === 0 ? 'teal' : Q.pick === o ? 'red' : ''}" data-a="sdAns" data-v="${o}" ${Q.pick === null ? '' : 'disabled'}>${esc(G_[1][o])}</button>`).join('')}`;
+      if (Q.pick !== null) h += `<div class="sd-exp">${Q.pick === 0 ? '\u2b55 \ub9de\uc558\uc2b5\ub2c8\ub2e4' : '\u274c \ud2c0\ub838\uc2b5\ub2c8\ub2e4'} \u2014 ${esc(G_[2])}</div><button class="btn big" data-a="sdNextQ">${E.at < 2 ? '\ub2e4\uc74c \ubb38\uc81c' : '\ucc44\uc810'}</button>`;
+      h += `</div>`;
+    } else {
+      if (E && E.done) h += `<div class="sd-exp">${E.ok >= 2 ? `\uae09\uc81c \u2014 ${PUM[S.pum]}` : `\ub099\ubc29 \u2014 ${E.ok}/3`}</div>`;
+      const fee = gwaFee();
+      h += S.pum >= cap ? `<div class="muted">${S.pum >= 18 ? '\uc8151\ud488 \u2014 \ub354 \uc624\ub97c \ud488\uacc4\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.' : `\uc2dc\uc804\uc0c1\ub2e8 ${k + 1}\ub2e8\uc774 \ub418\uba74 \ub354 \ub192\uc740 \ud488\uacc4\uc5d0 \uc751\uc2dc\ud560 \uc218 \uc788\uc5b4\uc694.`}</div>`
+        : `<div class="row"><div class="ic">\ud83d\udcdc</div><div class="tx"><div class="t1">${PUM[S.pum + 1]} \uc751\uc2dc</div><div class="t2">\uc138 \ubb38\uc81c \uc911 \ub450 \ubb38\uc81c\ub97c \ub9de\ud788\uba74 \uae09\uc81c \u00b7 \ub5a8\uc5b4\uc838\ub3c4 \uc751\uc2dc\ub8cc\ub294 \ub3cc\ub824\uc8fc\uc9c0 \uc54a\uc544\uc694</div></div><div class="pr">${fmt(fee)}\ubb38</div><button class="btn teal" data-a="sdGwa" ${G.player.gold < fee ? 'disabled' : ''}>\uc751\uc2dc</button></div>`;
+    }
+  }
+  return h;
+}
+function sdNpcView(n, ctx, town) {
+  const p = G.player; town = town || G.mapId;
+  if (!SANGDAN[town]) {
+    return [`\ud83c\udfee ${n.name} \u00b7 ${sdCity(town)}`, sayBox(n, '\uc774 \uace0\uc7a5 \uc0c1\ub2e8\uc740 \uc544\uc9c1 \uc7a5\ubd80\ub97c \uc5f4\uc9c0 \uc54a\uc558\uc18c. \uace7 \ubb38\uc744 \uc5f4 \ud14c\ub2c8 \uadf8\ub54c \uc624\uc2dc\uc624.') + `<div class="muted" style="margin-bottom:8px">\uc9c0\uae08 \ucd9c\uc790\ud560 \uc218 \uc788\ub294 \uc0c1\ub2e8: ${Object.keys(SANGDAN).map(c => `${sdName(c)}(${sdCity(c)})`).join(' \u00b7 ')}</div><button class="btn big teal" data-a="openMarket" data-v="sd">\ud83c\udfee \uc0c1\ub2e8 \uc7a5\ubd80 \uc5f4\uae30</button>`];
+  }
+  let h = sayBox(n, SANGDAN[town].line) + sdCardHTML(town) + sdActHTML(town, ctx);
+  h += `<div class="sep"></div><button class="btn big" data-a="openMarket" data-v="sd">\ud83c\udfee \uc0c1\ub2e8 \uc7a5\ubd80 (\uc804\uad6d \uc0c1\ub2e8 \u00b7 \uc8fc\uad8c \u00b7 \ub3d9\ubc29\uc77c\ubcf4)</button>`;
+  return [`${SANGDAN[town].icon} ${sdName(town)} \u00b7 ${sdCity(town)}`, h];
+}
+NPCV.property = function (n, ctx) { return sdNpcView(n, ctx); };
+NPCV.invest = function (n, ctx) {
+  const p = G.player, r = sdNpcView(n, ctx, 'buyeo');
+  if ((p.invest || []).length) {
+    let h = `<div class="sep"></div><b>\uc608\uc804\uc5d0 \ub4e4\uc5b4 \ub454 \ub9cc\uae30 \ud22c\uc790</b>`;
+    for (const inv of p.invest) { const D = INVESTMENTS[inv.k], left = Math.max(0, inv.end - p.playTime); h += `<div class="row"><div class="ic">\ud83d\udcc8</div><div class="tx"><div class="t1">${D.n} \u00b7 ${fmt(inv.amt)}\ubb38</div><div class="t2">${left > 0 ? `\ub9cc\uae30\uae4c\uc9c0 ${Math.ceil(left / 60)}\ubd84` : '\ub9cc\uae30 \u2014 \ucc3e\uc744 \uc218 \uc788\uc5b4\uc694'}</div></div>${left > 0 ? '' : `<button class="btn teal" data-a="collectInv" data-u="${inv.id}">\ucc3e\uae30</button>`}</div>`; }
+    r[1] += h;
+  }
+  return r;
+};
+
+/* \uc0c1\ub2e8 \uc7a5\ubd80 (O) */
+const SD_TABS = [['asset', '\ud83d\udcca \ub0b4 \uc790\uc0b0'], ['stock', '\ud83d\udcdc \uc8fc\uad8c'], ['sd', '\ud83c\udfee \ucd9c\uc790'], ['news', '\ud83d\udcf0 \ub3d9\ubc29\uc77c\ubcf4']];
+MENU.market = function (ctx) {
+  const M = mk(), p = G.player;
+  const tab = SD_TABS.some(t => t[0] === ctx.tab) ? ctx.tab : 'asset'; ctx.tab = tab;
+  if (tab === 'news') { M.unread = 0; newsBadge(); }
+  let h = `<div class="mk-clock"><span>\ud83d\uddd3\ufe0f \uc7a5\ub0a0 <b>${M.day}</b>\uc77c\ucc28</span><span>\ub2e4\uc74c \uc7a5 \uac31\uc2e0 <b id="mk-upd">${mmss(M.updT)}</b></span><span>\ud83d\udcb0 <b id="mk-cash">${fmt(p.gold)}</b>\ubb38</span></div>`;
+  h += `<div class="tabs mk-tabs">${SD_TABS.map(([k, n]) => `<button class="tab ${tab === k ? 'on' : ''}" data-a="tab" data-v="${k}">${n}${k === 'news' && M.unread ? ` <i class="mk-nb">${M.unread}</i>` : ''}</button>`).join('')}</div>`;
+  if (tab === 'asset') h += sdAssetView(M, p);
+  else if (tab === 'stock') h += `<div class="muted" style="margin-bottom:6px">\uc8fc\uad8c\uc740 \uace0\uc7a5 \uc0c1\ub2e8\uc758 \ubaab\uc785\ub2c8\ub2e4. \uadf8 \uace0\uc7a5 \ud2b9\uc0b0\ud488\uc744 \ub2e4\ub978 \uace0\uc7a5\uc5d0 \ub0b4\ub2e4 \ud314\uba74 \ub2e4\uc74c \uc7a5 \uac31\uc2e0\uc5d0 \uadf8 \uc0c1\ub2e8 \uc8fc\uad8c\uc774 \uc624\ub974\uace0, \uadf8 \uc9c0\uc5ed \ubcf4\uc2a4\ub97c \uc7a1\uc73c\uba74 \ud06c\uac8c \ub701\ub2c8\ub2e4.</div>` + mkTradeView(M, p, ctx, 'stock');
+  else if (tab === 'sd') {
+    h += `<div class="muted" style="margin-bottom:6px">\ucd9c\uc790\uae08\uc740 \ub3cc\ub824\ubc1b\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ub300\uc2e0 \ub2e8\uacc4\uac00 \uc624\ub974\uba74 \uadf8 \uace0\uc7a5 \ud61c\ud0dd\uc774 \uc601\uad6c\ud788 \uc5f4\ub9ac\uace0, \uc7a5\ub0a0\ub9c8\ub2e4 \ucd9c\uc790 \ubc30\ub2f9\uc774 \ub4e4\uc5b4\uc635\ub2c8\ub2e4. \ud2b9\uc0c9 \ud65c\ub3d9\uc740 \uadf8 \uace0\uc7a5 <b>\uc0c1\ub2e8 \ud589\uc218</b>(\uccad\uc6d4\ucd0c\uc740 \uac1d\uc8fc \ud5c8\ub300\ubc15)\uc5d0\uac8c\uc11c \ud569\ub2c8\ub2e4.</div>`;
+    for (const c of Object.keys(SANGDAN)) h += sdCardHTML(c, { stock: false });
+  } else h += mkNewsView(M);
+  setTimeout(drawMarketCharts, 0);
+  return ['\ud83c\udfee \uc0c1\ub2e8 \uc7a5\ubd80', h];
+};
+function sdAssetView(M, p) {
+  const pf = portfolio(M), S = sdState(), inv = Object.keys(SANGDAN).reduce((a, c) => a + S.c[c].inv, 0), total = p.gold + pf.stock + pf.inv, plP = pf.stockC ? (pf.stock - pf.stockC) / pf.stockC * 100 : 0, pl = pf.stock - pf.stockC;
+  let h = '';
+  if (S.conv) {
+    const C = S.conv;
+    h += `<div class="sq main"><div class="sq-h"><span class="sq-mark">!</span><b>\ud22c\uc790\uc13c\ud130\uac00 \uc0c1\ub2e8 \uc7a5\ubd80\ub85c \ubc14\ub00c\uc5c8\uc2b5\ub2c8\ub2e4</b></div><div class="sq-say">${C.coin ? `\ud83e\ude99 \ucf54\uc778\uc744 \uc5c6\uc560\uace0 \ud604\uc7ac\uac00\ub85c <b>${fmt(C.coin)}\ubb38</b>\uc744 \ub3cc\ub824\ub4dc\ub838\uc2b5\ub2c8\ub2e4.<br>` : ''}${C.land.map(([c, v]) => `\ud83c\udfe0 ${esc(sdCity(c))} \ubd80\ub3d9\uc0b0 \u2192 <b>${esc(sdName(c))}</b> \ucd9c\uc790 ${fmt(v)}\ubb38`).join('<br>')}${C.land.length ? '<br>' : ''}${C.landCash ? `\ud83c\udfe0 \uc0c1\ub2e8\uc774 \uc544\uc9c1 \uc5c6\ub294 \uace0\uc7a5 \ubd80\ub3d9\uc0b0\uc740 <b>${fmt(C.landCash)}\ubb38</b>\uc73c\ub85c \ub3cc\ub824\ub4dc\ub838\uc2b5\ub2c8\ub2e4.<br>` : ''}\uac00\uc9c4 \uc8fc\uc2dd\uc740 \uadf8\ub300\ub85c \uc0c1\ub2e8 \uc8fc\uad8c\uc774 \ub418\uc5c8\uc2b5\ub2c8\ub2e4.</div><button class="btn" data-a="sdConvOk">\ud655\uc778</button></div>`;
+  }
+  h += `<div class="mk-asset"><div class="mk-ah">\ub098\uc758 \uc790\uc0b0</div>
+    <div class="stat"><span>\ubcf4\uc720 \ud604\uae08</span><b id="mk-a-cash">${fmt(p.gold)}\ubb38</b></div>
+    <div class="stat"><span>\uc8fc\uad8c \ud3c9\uac00\uae08\uc561</span><b id="mk-a-stock">${fmt(pf.stock)}\ubb38</b></div>
+    ${pf.inv ? `<div class="stat"><span>\ub9cc\uae30 \ud22c\uc790 (\ucc3e\uae30 \uc804)</span><b>${fmt(pf.inv)}\ubb38</b></div>` : ''}
+    <div class="sep"></div>
+    <div class="stat mk-big"><span>\ucd1d\uc790\uc0b0</span><b id="mk-a-tot">${fmt(total)}\ubb38</b></div>
+    <div class="stat"><span>\uc8fc\uad8c \uc190\uc775</span><b class="${pcls(pl)}">${sgn(pl)}${fmt(pl)}\ubb38 (${sgn(plP)}${plP.toFixed(1)}%)</b></div>
+    <div class="stat"><span>\uc0c1\ub2e8 \ucd9c\uc790 \ub204\uc801</span><b>${fmt(inv)}\ubb38</b></div>
+    <div class="muted" style="margin-top:4px">\ubc1b\uc740 \ubc30\ub2f9 ${fmt(M.divTotal || 0)}\ubb38 (\ucd9c\uc790 \ubc30\ub2f9 ${fmt(S.divTot || 0)}\ubb38) \u00b7 \uc2e4\ud604 \uc190\uc775 ${sgn(M.realized)}${fmt(M.realized)}\ubb38</div></div>`;
+  h += `<b>\ubcf4\uc720 \uc8fc\uad8c</b>`;
+  const held = Object.entries(M.hold).filter(([s]) => TICKERS[s]);
+  for (const [s, hd] of held) {
+    const T_ = TICKERS[s], q = M.prices[s], r = pct(q.p, hd.avg);
+    h += `<button class="row mk-row" data-a="mgo" data-v="${s}"><div class="ic">${T_.icon}</div><div class="tx"><div class="t1">${esc(T_.n)} ${fmt(hd.q)}\uc8fc</div><div class="t2">\ud3c9\uade0\ub9e4\uc218\uac00 ${fmtP(hd.avg)}\ubb38 \u00b7 \ud604\uc7ac\uac00 <span id="mk-hp-${s}">${fmtP(q.p)}</span>\ubb38</div></div><div class="mk-pr"><b id="mk-hr-${s}" class="${pcls(r)}">${sgn(r)}${r.toFixed(1)}%</b></div></button>`;
+  }
+  if (!held.length) h += `<div class="muted" style="padding:6px 0">\uc544\uc9c1 \uc8fc\uad8c\uc774 \uc5c6\uc5b4\uc694. \ud83d\udcdc \uc8fc\uad8c \ud0ed\uc5d0\uc11c \uc0ac \ubcf4\uc138\uc694.</div>`;
+  h += `<b>\ub0b4 \uc0c1\ub2e8</b>`;
+  const mine = Object.keys(SANGDAN).filter(c => S.c[c].inv > 0);
+  for (const c of mine) { const k = sdLevel(c); h += `<button class="row mk-row" data-a="tab" data-v="sd"><div class="ic">${SANGDAN[c].icon}</div><div class="tx"><div class="t1">${esc(sdName(c))} ${k ? `${k}\ub2e8 \u00b7 ${SD_LV[k].n}` : '(1\ub2e8 \uc804)'}</div><div class="t2">\ucd9c\uc790 ${fmt(S.c[c].inv)}\ubb38 \u00b7 \ud310\ub9e4 \uc2e4\uc801 ${fmt(S.c[c].sold)}\uac1c</div></div></button>`; }
+  if (!mine.length) h += `<div class="muted" style="padding:6px 0">\uc544\uc9c1 \ucd9c\uc790\ud55c \uc0c1\ub2e8\uc774 \uc5c6\uc5b4\uc694. \ud83c\udfee \ucd9c\uc790 \ud0ed\uc774\ub098 \uac01 \uace0\uc7a5 \uc0c1\ub2e8 \ud589\uc218\uc5d0\uac8c\uc11c \uc2dc\uc791\ud558\uc138\uc694.</div>`;
+  if (S.pum) h += `<div class="muted" style="margin-top:6px">\ud83d\udcdc \ud488\uacc4 ${PUM[S.pum]}</div>`;
+  return h;
+}
+
+/* ---------------- \ubc84\ud2bc ---------------- */
+{
+  const _onModalClick383 = onModalClick;
+  onModalClick = function (e) {
+    const b = e.target.closest('[data-a]');
+    const A = ['sdInv', 'sdMarket', 'sdDan', 'sdTem', 'sdGwa', 'sdAns', 'sdNextQ', 'sdConvOk'];
+    if (!b || b.disabled || !A.includes(b.dataset.a)) return _onModalClick383(e);
+    const a = b.dataset.a, ctx = modalCtx, p = G.player; if (!ctx) return;
+    Sfx.click();
+    try {
+      if (a === 'sdInv') sdInvest(b.dataset.v, +b.dataset.n);
+      else if (a === 'sdMarket') { closeModal(); openMenu('market'); if (modalCtx) { modalCtx.tab = 'stock'; modalCtx.sym = b.dataset.v; rerender(); } return; }
+      else if (a === 'sdDan') {
+        const id = b.dataset.v, cost = danCost(id);
+        if (sdLevel('city_daegu') < 1 || G.mapId !== 'city_daegu') return;
+        if (p.gold < cost) { toast('\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red'); }
+        else if (!addItem(p, id, 1)) toast('\uac00\ubc29\uc774 \uac00\ub4dd \ucc3c\uc5b4\uc694', 'red');
+        else { p.gold -= cost; toast(`\ud83d\udc8a ${ITEMS[id].name}\uc744 \uc9c0\uc5c8\uc2b5\ub2c8\ub2e4`, 'gold'); Sfx.coin(); }
+      } else if (a === 'sdTem') {
+        const w = p.eq.weapon; if (!w || G.mapId !== 'city_ulsan') return;
+        const t = w.tem | 0, cost = temCost(w);
+        if (t >= Math.min(5, temMax())) return;
+        if (p.gold < cost) toast('\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red');
+        else { p.gold -= cost; w.tem = t + 1; calcStats(p); centerMsg('\ud83d\udd28 \ub2e8\ub828 \uc644\ub8cc', `${itemDisplayName(w)} \ub2e8\ub828 ${w.tem} \u00b7 \uacf5\uaca9\ub825 +${w.tem * 3}%`, 'enh', 2); addFx('pillar', p.x, p.y, { col: '#ffb070', dur: 1.2 }); sfxOr('enh_success', () => Sfx.level()); }
+      } else if (a === 'sdGwa') { if (G.mapId === 'city_seoul' && sdLevel('city_seoul') >= 1) gwaStart(ctx); }
+      else if (a === 'sdAns') gwaAnswer(ctx, +b.dataset.v);
+      else if (a === 'sdNextQ') gwaNext(ctx);
+      else if (a === 'sdConvOk') { delete sdState().conv; }
+    } catch (err) { reportError(err); }
+    if (modalOpen()) rerender();
+  };
+}
+
+/* ---------------- \uc774\uc57c\uae30: \ud22c\uc790 \ub2e8\uacc4 ---------------- */
+{
+  const _econHasInvest383 = econHasInvest;
+  econHasInvest = function (p) { if (_econHasInvest383.apply(this, arguments)) return true; const S = p && p.sangdan; return !!(S && S.c && Object.values(S.c).some(C => C && C.inv > 0)); };
+}
+for (const ch of STORY) for (const s of ch.steps || []) if (s.t === 'invest') s.hint = '\uc0c1\ub2e8 \uc7a5\ubd80(O)\uc5d0\uc11c \uc8fc\uad8c\uc744 \uc0ac\uac70\ub098, \uace0\uc7a5 \uc0c1\ub2e8 \ud589\uc218\uc5d0\uac8c \ucd9c\uc790\ud558\uae30';
+
+/* ============================================================
+   98zc_sky384 (v384): \ubc24\ub0ae\uacfc \ub0a0\uc528 \u2014 \uadf8\ub9bc\ub9cc (\uc2dc\uc57c\u00b7\ud310\uc815\u00b7\ubaac\uc2a4\ud130\uc5d0\ub294 \uc601\ud5a5 \uc5c6\uc74c, \uad74\u00b7\uc131 \uc548\uc5d0\uc11c\ub294 \uc548 \ubcf4\uc778\ub2e4)
+   \u00b7 \uc2dc\ud5d8\ud310(v382 /test)\uc5d0\uc11c \ubcf8\ud310\uc73c\ub85c. \ubc14\ub010 \uc810: \ubc24\uc744 \ub9ce\uc774 \ubc1d\ud614\ub2e4 (\uc5b4\ub460 .58 \u2192 .42, \ub0b4 \ub458\ub808 \ube5b\uc744 \ub113\uac8c) \u00b7 \uc548\uac1c\ub294 \ube90\ub2e4
+   \u00b7 \ud558\ub8e8 = 20\ubd84: \ub0ae 11\ubd84 \u2192 \ub178\uc744 1\ubd84 \ubc18 \u2192 \ubc24 5\ubd84 \ubc18 \u2192 \uc0c8\ubcbd 2\ubd84. \uc2e4\uc81c \uc2dc\uacc4\ub85c \ub3cc\uc544\uc11c \ub204\uad6c\uc5d0\uac8c\ub098 \uac19\uc740 \uc2dc\uac01\uc774\ub2e4
+   \u00b7 \ub0a0\uc528: 5\ubd84\ub9c8\ub2e4 \ubc14\ub010\ub2e4 \u2014 \ub9d1\uc74c / \ube44 / \uc18c\ub098\uae30(\ubc88\uac1c) / \ub208. \uace0\uc7a5\ub9c8\ub2e4 \uc798 \uc624\ub294 \ub0a0\uc528\uac00 \ub2e4\ub974\ub2e4 (\ubd80\uc0b0\u00b7\uc81c\uc8fc\u00b7\uc778\ucc9c \ube44, \ub300\uad6c \ub9d1\uc74c, \ub208\ubc2d \ub208)
+   \u00b7 \uc124\uc815\uc5d0\uc11c \ub04c \uc218 \uc788\ub2e4 (\ubc24\ub0ae\u00b7\ub0a0\uc528)
+   ============================================================ */
+const Sky = { on: true, DAY: 1200, SLOT: 300, force: { t: null, wx: null }, drops: [], splash: [], flakes: [], fogs: [], bolt: 0, boltAt: 0, last: 0, cv: null, fogImg: null, now: { phase: '\ub0ae', wx: '\ub9d1\uc74c' } };
+const SKY_WX = {
+  def: { clear: 76, rain: 18, storm: 4, snow: 0 }, coast: { clear: 60, rain: 28, storm: 10, snow: 0 }, mist: { clear: 62, rain: 32, storm: 4, snow: 0 },
+  dry: { clear: 88, rain: 9, storm: 2, snow: 0 }, cold: { clear: 52, snow: 48, rain: 0, storm: 0 }
+};
+const SKY_CLIMATE = { busan: 'coast', jeju: 'coast', fukuoka: 'coast', ulsan: 'coast', incheon: 'mist', shizuoka: 'mist', daegu: 'dry', sapporo: 'cold' };
+const SKY_NAME = { clear: '\ub9d1\uc74c', rain: '\ube44', storm: '\uc18c\ub098\uae30', snow: '\ub208' };
+const SKY_LIGHTS = { lanternPost: [-44, 72, .95], stoneLantern: [-20, 52, .75], chochin: [-30, 66, .95], toro: [-22, 52, .75], lantern: [-24, 62, .85], torch: [-26, 80, 1], campfire: [-10, 115, 1] };
+function skyIndoor(m) { const k = m && m.def && m.def.kind; return k === 'cave' || k === 'dungeon'; }
+function skyClimate(m) {
+  const d = m.def; if (d.theme === 'snow') return 'cold';
+  const key = d.city || (d.region && d.region !== 'korea' && d.region !== 'japan' ? d.region : m.id.replace(/^(city_|japan_)/, ''));
+  return SKY_CLIMATE[key] || 'def';
+}
+function skyTime() { return Sky.force.t != null ? Sky.force.t : ((Date.now() / 1000) % Sky.DAY) / Sky.DAY; }
+function skyPhase(t) {
+  if (t < .55) return { n: '\ub0ae', dark: 0, warm: 0, rose: 0 };
+  if (t < .63) { const p = (t - .55) / .08; return { n: '\ub178\uc744', dark: p * p, warm: Math.sin(p * Math.PI), rose: 0 }; }
+  if (t < .90) return { n: '\ubc24', dark: 1, warm: 0, rose: 0 };
+  const p = (t - .90) / .10; return { n: '\uc0c8\ubcbd', dark: (1 - p) * (1 - p), warm: 0, rose: Math.sin(p * Math.PI) };
+}
+function skyWeather(m) {
+  const cold = skyClimate(m) === 'cold';
+  if (Sky.force.wx) { let k = Sky.force.wx; if (k === 'fog') k = 'clear'; if (cold && (k === 'rain' || k === 'storm')) k = 'snow'; return { kind: k, k: k === 'clear' ? 0 : 1 }; }
+  const now = Date.now() / 1000, slot = Math.floor(now / Sky.SLOT), tin = now - slot * Sky.SLOT, tab = SKY_WX[skyClimate(m)];
+  let h = Math.imul(slot ^ 0x9e3779b9, 2654435761) ^ hashStr(skyClimate(m)); h = Math.imul(h ^ (h >>> 15), 2246822519); const u = ((h ^ (h >>> 13)) >>> 0) / 4294967296;
+  const tot = Object.values(tab).reduce((a, b) => a + b, 0); let acc = 0, kind = 'clear';
+  for (const [k, w] of Object.entries(tab)) { acc += w / tot; if (u < acc) { kind = k; break; } }
+  return { kind, k: kind === 'clear' ? 0 : clamp(Math.min(tin, Sky.SLOT - tin) / 14, 0, 1) };
+}
+function skyLights(m) {
+  if (m._skyL) return m._skyL;
+  const L = [];
+  for (const p of m.props) {
+    const s = SKY_LIGHTS[p.type]; if (s) { L.push({ x: p.x, y: p.y + s[0], r: s[1], a: s[2], glow: 1 }); continue; }
+    if ((p.type === 'hanok' || p.type === 'jhouse' || p.type === 'jejuHouse') && p.data) { const dx = p.data.w * TILE * .33; for (const sx of [-1, 1]) L.push({ x: p.x + sx * dx, y: p.y - 70, r: 46, a: .5, glow: 2 }); }
+    if (p.type === 'landmark') L.push({ x: p.x, y: p.y - 30, r: 120, a: .35 });
+  }
+  if (m.camp) L.push({ x: m.camp.x, y: m.camp.y, r: 150, a: 1, glow: 1 });
+  return (m._skyL = L);
+}
+function skyDraw() {
+  const m = G.map, p = G.player; if (!Sky.on || !m || !p || G.voyage || G.fade > .6 || (p.settings && p.settings.sky === false)) return;
+  const nowMs = performance.now(), dt = Math.min(.05, Math.max(0, (nowMs - (Sky.last || nowMs)) / 1000)); Sky.last = nowMs;
+  const ph = skyPhase(skyTime()), wx = skyWeather(m); Sky.now.phase = ph.n; Sky.now.wx = SKY_NAME[wx.kind]; Sky.now.in = skyIndoor(m);
+  if (skyIndoor(m)) return;
+  const z = G.cam.zoom, S = z * DPR, W = cv.width, H = cv.height, cx = G.cam.x, cy = G.cam.y, vw = W / S, vh = H / S;
+  const wet = wx.kind === 'rain' ? wx.k : wx.kind === 'storm' ? wx.k * 1.5 : 0;
+  ctx.save();
+  /* ---- \uc5b4\ub460 (\ubc24 + \uad82\uc740 \ub0a0\uc528) : \ub0ae\uc740 \ud574\uc0c1\ub3c4 \ud310\uc5d0 \uce60\ud558\uace0 \ube5b \uc790\ub9ac\ub97c \ub3c4\ub824\ub0b8\ub2e4 ---- */
+  const dark = Math.min(.5, ph.dark * .42 + (wx.kind === 'storm' ? .14 : wx.kind === 'rain' ? .07 : 0) * wx.k);
+  if (dark > .015) {
+    const Q = 4, ow = Math.ceil(W / Q), oh = Math.ceil(H / Q); let o = Sky.cv; if (!o || o.width !== ow || o.height !== oh) o = Sky.cv = makeCanvas(ow, oh);
+    const g = o.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-over'; g.clearRect(0, 0, ow, oh);
+    const nightK = ph.dark; g.fillStyle = `rgba(${Math.round(lerp(38, 6, nightK))},${Math.round(lerp(48, 14, nightK))},${Math.round(lerp(70, 58, nightK))},${dark})`; g.fillRect(0, 0, ow, oh);
+    if (ph.dark > .04) {
+      g.globalCompositeOperation = 'destination-out'; const sc = S / Q;
+      const hole = (x, y, r, a) => { const X = (x - cx) * sc, Y = (y - cy) * sc, R = r * sc; if (X < -R || Y < -R || X > ow + R || Y > oh + R) return; const gr = g.createRadialGradient(X, Y, R * .12, X, Y, R); gr.addColorStop(0, `rgba(0,0,0,${a})`); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(X - R, Y - R, R * 2, R * 2); };
+      hole(p.x, p.y - 20, 280, .85 * ph.dark);
+      for (const c of G.party) if (c.hp > 0) hole(c.x, c.y - 18, 150, .6 * ph.dark);
+      const fl = .92 + Math.sin(nowMs / 130) * .04 + Math.sin(nowMs / 57) * .03;
+      for (const l of skyLights(m)) hole(l.x, l.y, l.r * (l.glow === 1 ? fl : 1), l.a * ph.dark);
+    }
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(o, 0, 0, W, H);
+    /* \ubd88\ube5b: \ub4f1\ubd88\uc740 \uc8fc\ud669, \ucc3d\ubb38\uc740 \ub178\ub797\uac8c */
+    if (ph.dark > .15) {
+      ctx.setTransform(S, 0, 0, S, -cx * S, -cy * S);
+      for (const l of skyLights(m)) { if (!l.glow || l.x < cx - 80 || l.x > cx + vw + 80 || l.y < cy - 80 || l.y > cy + vh + 80) continue; HD.light(l.x, l.y, l.glow === 1 ? 30 : 15, l.glow === 1 ? '#ffb24a' : '#ffd88a', (l.glow === 1 ? .5 : .55) * ph.dark); }
+    }
+  }
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'source-over';
+  if (ph.warm > .01) { ctx.fillStyle = `rgba(255,128,48,${.17 * ph.warm})`; ctx.fillRect(0, 0, W, H); }
+  if (ph.rose > .01) { ctx.fillStyle = `rgba(255,176,158,${.11 * ph.rose})`; ctx.fillRect(0, 0, W, H); }
+  /* ---- \ub0a0\uc528 (\ud654\uba74 \uae30\uc900, CSS px) ---- */
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0); const sw = W / DPR, sh = H / DPR, area = sw * sh / (900 * 600);
+  if (wet > 0) {
+    const want = Math.round(150 * wet * area); while (Sky.drops.length < want) Sky.drops.push({ x: Math.random() * (sw + 160), y: Math.random() * sh, l: 14 + Math.random() * 14, v: 640 + Math.random() * 260 }); if (Sky.drops.length > want) Sky.drops.length = want;
+    ctx.strokeStyle = 'rgba(206,222,244,.62)'; ctx.lineWidth = 1.4; ctx.beginPath();
+    for (const d of Sky.drops) { d.x -= d.v * .2 * dt; d.y += d.v * dt; if (d.y > sh + 20) { d.y = -20; d.x = Math.random() * (sw + 160); if (Math.random() < .5) Sky.splash.push({ x: d.x - 20 - Math.random() * 40, y: sh * (.15 + Math.random() * .85), t: 0 }); } ctx.moveTo(d.x, d.y); ctx.lineTo(d.x + d.l * .2, d.y - d.l); }
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(214,228,246,.5)'; ctx.lineWidth = 1;
+    for (const s of Sky.splash) { s.t += dt; const q = s.t / .32; if (q >= 1) continue; ctx.globalAlpha = 1 - q; ctx.beginPath(); ctx.ellipse(s.x, s.y, 2 + q * 6, 1 + q * 2.4, 0, 0, TAU); ctx.stroke(); }
+    ctx.globalAlpha = 1; Sky.splash = Sky.splash.filter(s => s.t < .32); if (Sky.splash.length > 90) Sky.splash.length = 90;
+    if (wx.kind === 'storm' && wx.k > .6) {   /* \ubc88\uac1c: \uac00\ub054 \ub450 \ubc88 \ubc88\uca4d */
+      if (!Sky.boltAt) Sky.boltAt = nowMs + 5000 + Math.random() * 7000;
+      if (nowMs > Sky.boltAt) { Sky.bolt = .34; Sky.boltAt = nowMs + 7000 + Math.random() * 9000; }
+      if (Sky.bolt > 0) { const b = Sky.bolt; ctx.fillStyle = `rgba(232,240,255,${(b > .22 ? (b - .22) / .12 : b > .14 ? 0 : b / .14 * .7) * .3})`; ctx.fillRect(0, 0, sw, sh); Sky.bolt -= dt; }
+    }
+  } else { Sky.drops.length = 0; Sky.splash.length = 0; Sky.bolt = 0; Sky.boltAt = 0; }
+  if (wx.kind === 'snow' && wx.k > 0) {
+    const want = Math.round(95 * wx.k * area); while (Sky.flakes.length < want) Sky.flakes.push({ x: Math.random() * sw, y: Math.random() * sh, s: 1.4 + Math.random() * 2, v: 26 + Math.random() * 34, ph: Math.random() * TAU }); if (Sky.flakes.length > want) Sky.flakes.length = want;
+    ctx.fillStyle = 'rgba(255,255,255,.9)';
+    for (const f of Sky.flakes) { f.y += f.v * dt; f.x += (Math.sin(nowMs / 900 + f.ph) * 14 - 10) * dt; if (f.y > sh + 6) { f.y = -6; f.x = Math.random() * sw; } if (f.x < -6) f.x = sw + 6; ctx.fillRect(f.x, f.y, f.s, f.s); }
+    ctx.fillStyle = `rgba(206,220,238,${.07 * wx.k})`; ctx.fillRect(0, 0, sw, sh);
+  } else Sky.flakes.length = 0;
+  ctx.restore();
+}
+{
+  /* \uc774\ub984\ud45c\u00b7\ub9d0\ud48d\uc120\ubcf4\ub2e4 \uba3c\uc800 \uadf8\ub9b0\ub2e4 (\uae00\uc790\ub294 \ubc24\uc5d0\ub3c4 \ub610\ub837\ud558\uac8c) */
+  const _flushTags382 = flushTags;
+  flushTags = function () { try { skyDraw(); } catch (e) { reportError(e); } return _flushTags382.apply(this, arguments); };
+}
+/* \uc124\uc815: \ubc24\ub0ae\u00b7\ub0a0\uc528 \ucf1c\uace0 \ub044\uae30 */
+{
+  const _set384 = MENU.set;
+  MENU.set = function (ctx) {
+    const r = _set384.apply(this, arguments);
+    try {
+      const p = G.player, on = p.settings.sky !== false, at = r[1].indexOf('<div class="row"><div class="tx"><div class="t1">\uae38 \uc548\ub0b4 \ud654\uc0b4\ud45c');
+      const row = `<div class="row"><div class="tx"><div class="t1">\ubc24\ub0ae \u00b7 \ub0a0\uc528</div><div class="t2">20\ubd84\ub9c8\ub2e4 \ub0ae\uacfc \ubc24\uc774 \ub3cc\uace0, \uace0\uc7a5\ub9c8\ub2e4 \ube44\u00b7\ub208\uc774 \uc635\ub2c8\ub2e4 (\uadf8\ub9bc\ub9cc \u2014 \uc2f8\uc6c0\uc5d0\ub294 \uc601\ud5a5 \uc5c6\uc74c)</div></div><button class="btn ${on ? 'teal' : ''}" data-a="toggle" data-v="sky">${on ? '\ucf1c\uc9d0' : '\uaebc\uc9d0'}</button></div>`;
+      if (at >= 0) r[1] = r[1].slice(0, at) + row + r[1].slice(at);
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  const _startGame384 = startGame;
+  startGame = function () { const r = _startGame384.apply(this, arguments); try { const st = G.player && G.player.settings; if (st && st.sky === undefined) st.sky = true; } catch (e) { reportError(e); } return r; };
+}
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
