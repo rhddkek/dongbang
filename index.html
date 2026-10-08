@@ -854,7 +854,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v387</div>
+    <div class="sub">v388</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -5866,7 +5866,7 @@ function useSkill(e, i) {
       break;
     }
     case 'heal': {
-      for (const a of allies()) if (dist(a, e) <= sk.radius) { healAlly(a, a.s.maxHp * sk.pct * rk + pw * .8, e); if (sk.guard) { a.buffs.bless = Math.max(a.buffs.bless || 0, sk.guard); calcStats(a); } }
+      for (const a of allies()) if (dist(a, e) <= sk.radius) { healAlly(a, a.s.maxHp * sk.pct * rk + pw * (sk.pwHeal ?? .8), e); if (sk.guard) { a.buffs.bless = Math.max(a.buffs.bless || 0, sk.guard); calcStats(a); } }
       if (sk.revive) for (const c of G.party) if (c.hp <= 0 && dist(c, e) <= sk.radius) reviveCompanion(c, sk.revive);
       if (sk.guard) addFx('talisBurn', e.x, e.y - 30, { col, dur: .7 });
       addFx('heal', e.x, e.y, { col, r: 90, dur: .6 }); for (const al of allies()) if (dist(al, e) <= sk.radius) addFx('heal', al.x, al.y, { col, r: 34, dur: .5 });
@@ -6820,6 +6820,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+    notes += `<div class="sep"></div><b>v388 \ubaac\uc2a4\ud130 \u00b7 \ud48d\ub958\uac1d \u00b7 \uc220\uc0ac \uc7a5\ube44 \u00b7 2\ucc28 \uc2b9\uae09 \u00b7 \uc9c0\uc5ed \uc138\ud2b8</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udc79 Lv.50\ubd80\ud130 \ub4e4\ud310\u00b7\ub3d9\uad74 \ubaac\uc2a4\ud130\uac00 \ub354 \uc544\ud504\uac8c \uce69\ub2c8\ub2e4 (\uacf5\uaca9 1.2\ubc30 \u2192 Lv.90 1.6\ubc30, \uccb4\ub825\uc740 \uc870\uae08\ub9cc). \ubcf4\uc2a4\ub294 \uadf8\ub300\ub85c. \uc124\uc6d0(Lv.40\ub300)\uc740 \uc870\uae08 \uc57d\ud558\uac8c.<br>\ud83e\udead \ud48d\ub958\uac1d: \uccad\uc2ec\ubd80 \ud68c\ubcf5\ub7c9\uacfc \ud638\uc2e0 \uc2dc\uac04(20\ucd08\u219210\ucd08)\u00b7\ubd09\ub9c8\uc778 \ud68c\ubcf5\u00b7\ud574\ud0dc \uccb4\ub825\uc744 \ub0ae\ucdc4\uc2b5\ub2c8\ub2e4.<br>\ud83e\ude84 \ubc29\uc220\uac00\u00b7\ud48d\ub958\uac1d \uc804\uc124\u00b7\uc720\uc77c \uc7a5\ube44 22\uc885 \ucd94\uac00 (\uc9c0\ud321\uc774 8 \u00b7 \ubd80\ucc44 8 \u00b7 \ub3c4\ud3ec 6) \u2014 \uac01 \uc9c0\uc5ed \ubcf4\uc2a4\uac00 \ub5a8\uad7d\ub2c8\ub2e4.<br>\ud83c\udfb5 \ud48d\ub958\uac1d \ubb34\uae30\ub294 \ubd80\ucc44\u00b7\uc9c0\ud321\uc774\ub85c. \uac00\uc9c4 \uac70\ubb38\uace0\u00b7\uac00\uc57c\uae08\uc740 \uac19\uc740 \ub4f1\uae09 \ubd80\ucc44\ub85c \ubc14\uafd4 \ub4dc\ub838\uc5b4\uc694 (\uac15\ud654\u00b7\uc635\uc158 \uadf8\ub300\ub85c).<br>\u2b50 2\ucc28 \uc2b9\uae09: Lv.50 + \ud751\ud638\uc655\uc744 \uc4f0\ub7ec\ub728\ub838\uc73c\uba74 \uc774\uc57c\uae30 \uc21c\uc11c\uc640 \uc0c1\uad00\uc5c6\uc774 \uccad\uc6d4\ucd0c \ucd0c\uc7a5\uc5d0\uac8c\uc11c.<br>\ud83e\udde9 \uc6b8\uc0b0\u00b7\ubd80\uc0b0\u00b7\uc218\uc6d0\u00b7\uc778\ucc9c \uc7a5\uc778\u00b7\uc0c1\uc778\uc774 \uc9c0\uc5ed \uc138\ud2b8 \uc758\ub8b0\ub97c \uc90d\ub2c8\ub2e4 (\uc138\ud2b8 \uac00\ub77d\uc9c0 + \uc7ac\ub8cc).</div>`;
     notes += `<div class="sep"></div><b>v387 UI \uc544\uc774\ucf58 \uadf8\ub9bc</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83c\udfa8 \uba54\ub274\u00b7\uc54c\ub9bc\u00b7\ubc84\ud2bc \uacf3\uacf3\uc758 \uc791\uc740 \uc544\uc774\ucf58 72\uc885\uc744 \uc0c8 \uadf8\ub9bc\uc73c\ub85c \ubc14\uafe8\uc2b5\ub2c8\ub2e4 (\uc5fd\uc804, \uc2dc\uc138, \ub450\ub8e8\ub9c8\ub9ac, \uc790\ubb3c\uc1e0, \ubb3c\uc57d, \uad6d\ubc25, \ub9d0, \ubc30 \u2026).<br>\u2754 \ub3c4\uac10\uc758 \ube48\uce78, \ud604\uc0c1\uae08 \uc0c1\uc810\uc758 \uc758\uc0c1, \uc9c0\ub3c4 \ubc94\ub840\ucc98\ub7fc \uc774\ubaa8\uc9c0\uac00 \uadf8\ub300\ub85c \ub0a8\uc544 \uc788\ub358 \uacf3\ub3c4 \uadf8\ub9bc\uc73c\ub85c.</div>`;
     notes += `<div class="sep"></div><b>v386 \ub808\ubca8\uc5c5\uc744 \ub4a4\ub85c \uac08\uc218\ub85d \ucc9c\ucc9c\ud788</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcc8 Lv.20\uae4c\uc9c0\ub294 \uadf8\ub300\ub85c, \uadf8 \ub4a4\ub85c\ub294 \ub808\ubca8\ub9c8\ub2e4 \ud544\uc694\ud55c \uacbd\ud5d8\uce58\uac00 \uc870\uae08\uc529 \ub298\uc5b4\ub0a9\ub2c8\ub2e4 (Lv.40 1.5\ubc30 \u2192 Lv.60 2.25\ubc30 \u2192 Lv.80 3\ubc30 \u2192 Lv.120 4\ubc30). \ub9cc\ub819\uae4c\uc9c0 \uc790\ub3d9\uc0ac\ub0e5\ub9cc\uc73c\ub85c 8\uc2dc\uac04\ucbe4 \uac78\ub9ac\ub358 \uac83\uc774 21\uc2dc\uac04\ucbe4\uc73c\ub85c.<br>\ud83d\udcbe \uc9c0\uae08 \ub808\ubca8\uc740 \uadf8\ub300\ub85c, \uc9c0\uae08 \ub808\ubca8\uc5d0\uc11c \ucc44\uc6b4 %\ub3c4 \uadf8\ub300\ub85c\uc785\ub2c8\ub2e4.<br>\ud83d\udcdc \uacbd\ud5d8\uce58 2\ubc30 \ubd80\uc801\uc758 \uac12\uc5b4\uce58\uac00 \uc62c\ub77c\uac14\uc5b4\uc694.</div>`;
     notes += `<div class="sep"></div><b>v385 \uc774\ub984\uc774 \ube5b\ub098\ub294 \uc7a5\ube44 \u00b7 \ubd80\ub3d9\uc0b0 \u00b7 \ub3d9\ub8cc \ub808\ubca8</b><div class="muted" style="margin-top:4px;line-height:1.8">\u2728 \uac00\ubc29 \uc7a5\ube44 \uce78\uc5d0\uc11c \uc804\uc124\u00b7\uc2e0\ud654 \uc7a5\ube44\ub294 \ube5b\uc774 \uadf8\ub9bc \ub4a4\ub85c \uac00\uace0 \uc774\ub984\uc774 \ube5b\ub0a9\ub2c8\ub2e4 (\uae00\uc790\uac00 \uac00\ub824\uc9c0\uc9c0 \uc54a\uac8c).<br>\ud83c\udfe0 \ubd80\ub3d9\uc0b0\uc774 \ub3cc\uc544\uc654\uc2b5\ub2c8\ub2e4 \u2014 \uac01 \ub3c4\uc2dc \uc0c1\ub2e8 \ud589\uc218 \ucc3d \uc544\ub798\uc640 \uc0c1\ub2e8 \uc7a5\ubd80 '\ubd80\ub3d9\uc0b0' \ud0ed\uc5d0\uc11c \ub545\u00b7\uac74\ubb3c\uc744 \uc0ac\uace0, \uc784\ub300\ub8cc\ub97c \ubc1b\uc2b5\ub2c8\ub2e4.<br>\ud83d\udccb \ud3f0 \uc138\ub85c \ud654\uba74: \ud560 \uc77c \uce78\uc740 \ubcf8 \uc774\uc57c\uae30\ub9cc \ud3bc\uce58\uace0, \uc758\ub8b0\ub294 \ud55c \uc904(\uc758\ub8b0 N\uac1c)\ub85c \uc811\uc5c8\uc2b5\ub2c8\ub2e4.<br>\ud83d\udc65 \ud654\uba74 \uc67c\ucabd \ub3d9\ub8cc \uc774\ub984 \uc606\uc5d0 \ub808\ubca8\uc774 \ubcf4\uc785\ub2c8\ub2e4. \uc8fc\ub9c9\ub9c8\ub2e4 \uad6c\ud560 \uc218 \uc788\ub294 \ub3d9\ub8cc\uc758 \ucd5c\uace0 \ub808\ubca8\uc774 \ub2e4\ub985\ub2c8\ub2e4 \u2014 \uccad\uc6d4\ucd0c Lv.25 \u2192 \ub300\uc804 35 \u2192 \u2026 \u2192 \uc11c\uc6b8 83 \u2192 \uc81c\uc8fc 95 \u2192 \uc77c\ubcf8 120. \uba3c \uace0\uc744\uc77c\uc218\ub85d \uac15\ud558\uace0 \uace0\uc6a9\ube44\ub3c4 \ube44\uc309\ub2c8\ub2e4 (\uc608\uc804\uc5d0 \uad6c\ud55c \ub3d9\ub8cc\ub294 \uadf8\ub300\ub85c).</div>`;
@@ -12722,7 +12723,7 @@ function summonStats(e) {
   const o = e.owner || G.player, os = o.s || {}, rk = e.rank || 0, b = e.buffs || {};
   const hpP = e.s ? e.hp / (e.s.maxHp || 1) : 1;
   const nh = Math.max(1, G.summons.filter(z => z.owner === o).length), sh = HAETAE_SHARE[nh - 1] || .62, hh = HAETAE_HP[nh - 1] || .66;
-  const s = { maxHp: Math.round((os.maxHp || 500) * (.8 + .15 * rk) * hh), maxMp: 1, def: (os.def || 10) * (1 + .2 * rk), power: (os.power || 50) * (.8 + .1 * rk) * sh, crit: .08, critDmg: 1.6, dodge: 0, move: 170, aspd: .85, range: 40, hpRegen: 0, mpRegen: 0, fx: {} };
+  const s = { maxHp: Math.round((os.maxHp || 500) * (.8 + .15 * rk) * hh * (typeof HAETAE_HP_MUL !== 'undefined' ? HAETAE_HP_MUL : 1)), maxMp: 1, def: (os.def || 10) * (1 + .2 * rk), power: (os.power || 50) * (.8 + .1 * rk) * sh, crit: .08, critDmg: 1.6, dodge: 0, move: 170, aspd: .85, range: 40, hpRegen: 0, mpRegen: 0, fx: {} };
   if (b.bless) { s.def *= 1.4; s.power *= 1.15; }
   if (b.fury) s.power *= 1 + (e.furyUp || .2);
   if (b.roar) s.def *= 1.3;
@@ -12819,7 +12820,7 @@ function haetaeInk(z, t) {
   z.atkAnim = .4; G.shake = Math.max(G.shake || 0, 3);
   for (const m of mobsInRadius(t.x, t.y, 90)) damageMob(z, m, z.s.power * 1.9, { slow: 2, col: '#b8c0d0', noKb: m !== t });
   addFx('inkSpray', z.x + Math.cos(ang) * 14, z.y - 16, { dur: .55, ang, tx: t.x, ty: t.y - 10, rank: z.rank });
-  if (z.rank >= 2) for (const a of allies()) if (dist(a, z) < 300) healAlly(a, a.s.maxHp * .03, z);
+  if (z.rank >= 2) for (const a of allies()) if (dist(a, z) < 300) healAlly(a, a.s.maxHp * (typeof HAETAE_INK_HEAL !== 'undefined' ? HAETAE_INK_HEAL : .03), z);
 }
 const _update220 = update;
 update = function (dt) {
@@ -15199,7 +15200,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v387';
+const GAME_VER = 'v388';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -22296,6 +22297,161 @@ if (!GLYPH_ART.coins) GLYPH_ART.coins = GLYPH_ART.coin;
     } catch (e) { reportError(e); }
   };
   img.src = UI_ICON_S48;
+}
+
+/* ============================================================
+   98zg_v388 (v388): \uce5c\uad6c\ub4e4\u00b7\uad11\uc6b0 \ud53c\ub4dc\ubc31 \u2014 \ubaac\uc2a4\ud130 \u00b7 \ud48d\ub958\uac1d \u00b7 \uc220\uc0ac \uc7a5\ube44 \u00b7 2\ucc28 \uc2b9\uae09 \u00b7 \uc9c0\uc5ed \uc138\ud2b8
+   1) \ubaac\uc2a4\ud130: Lv.50 \uc774\ud6c4 \ub4e4\ud310\u00b7\ub3d9\uad74 \ubaac\uc2a4\ud130\ub97c \uacf5\uaca9 \uc704\uc8fc\ub85c \uc138\uac8c (\ubcf4\uc2a4 \uc81c\uc678) \u2014 \uc124\uc6d0\uc740 \ubc18\ub300\ub85c \uc870\uae08 \uc57d\ud558\uac8c
+   2) \ud48d\ub958\uac1d: \uccad\uc2ec\ubd80 \ud68c\ubcf5\ub7c9\u00b7\ud638\uc2e0 \uc2dc\uac04, \ubd09\ub9c8\uc778 \ud68c\ubcf5, \ud574\ud0dc \uccb4\ub825\u00b7\uba39\ubb3c \ud68c\ubcf5\uc744 \ub0ae\ucd98\ub2e4
+   3) \ubc29\uc220\uac00\u00b7\ud48d\ub958\uac1d \uc804\uc124\u00b7\uc720\uc77c \ubb34\uae30\u00b7\ub3c4\ud3ec\ub97c \ucc44\uc6b4\ub2e4 (\uc9c0\ud321\uc774 8 \u00b7 \ubd80\ucc44 8 \u00b7 \ub3c4\ud3ec 6) \u2014 \ubb34\uc0ac\u00b7\ube44\uac1d\uacfc \ube44\uc2b7\ud558\uac8c
+      \ud48d\ub958\uac1d \ubb34\uae30\ub294 \ubd80\ucc44\u00b7\uc9c0\ud321\uc774\ub85c (\uac70\ubb38\uace0\u00b7\uac00\uc57c\uae08\uc740 \ub370\uc774\ud130\ub9cc \ub0a8\uae30\uace0 \ub098\uc624\uc9c0 \uc54a\ub294\ub2e4 \u00b7 \uac00\uc9c4 \uac83\uc740 \uac19\uc740 \ub4f1\uae09 \ubd80\ucc44\ub85c)
+   4) 2\ucc28 \uc2b9\uae09: Lv.50 + \ud751\ud638\uc655\uc744 \ub118\uc5c8\uc73c\uba74 \uc774\uc57c\uae30 \uc21c\uc11c\uc640 \uc0c1\uad00\uc5c6\uc774 \uccad\uc6d4\ucd0c \ucd0c\uc7a5\uc5d0\uac8c\uc11c (\uc608\uc804\uc5d4 \ud3d0\uc131\uc7a5\uad70\u00b7Lv.60 \ub4a4)
+   5) \uc9c0\uc5ed \uc138\ud2b8 \uc54c\ub9ac\uae30: \uc6b8\uc0b0\u00b7\ubd80\uc0b0\u00b7\uc218\uc6d0\u00b7\uc778\ucc9c \uc7a5\uc778\u00b7\uc0c1\uc778\uc774 \uc138\ud2b8 \uc758\ub8b0\ub97c \uc900\ub2e4 (\ubcf4\uc0c1: \uc138\ud2b8 \uac00\ub77d\uc9c0 + \uc7ac\ub8cc)
+   ============================================================ */
+
+/* ---------------- 1) \ubaac\uc2a4\ud130 ---------------- */
+const MOB388 = { atk: [[45, 1], [50, 1.2], [70, 1.4], [90, 1.6]], hp: [[45, 1], [50, 1.05], [70, 1.1], [90, 1.15]], snow: { atk: .75, hp: .85 } };
+function curve388(T, L) { if (L <= T[0][0]) return T[0][1]; for (let i = 1; i < T.length; i++) { const [a, x] = T[i - 1], [b, y] = T[i]; if (L <= b) return x + (y - x) * (L - a) / (b - a); } return T[T.length - 1][1]; }
+{
+  const _makeMob388 = makeMob;
+  makeMob = function (type, lv) {
+    const m = _makeMob388.apply(this, arguments);
+    try {
+      if (m && !m.boss && !m.fieldBoss) {
+        let a = curve388(MOB388.atk, m.lv || lv), h = curve388(MOB388.hp, m.lv || lv);
+        if (G.mapId === 'snow') { a *= MOB388.snow.atk; h *= MOB388.snow.hp; }
+        if (a !== 1) m.atk = Math.round(m.atk * a);
+        if (h !== 1) { m.maxHp = Math.round(m.maxHp * h); m.hp = Math.round(m.hp * h); }
+      }
+    } catch (e) { reportError(e); }
+    return m;
+  };
+}
+
+/* ---------------- 2) \ud48d\ub958\uac1d ---------------- */
+const HAETAE_HP_MUL = .75, HAETAE_INK_HEAL = .015;
+{
+  const d2 = SKILLS.taoist.find(s => s.id === 'd2'), d4 = SKILLS.taoist.find(s => s.id === 'd4');
+  if (d2) { d2.pct = .12; d2.pwHeal = .3; d2.guard = 10; d2.cd = 8; d2.desc = d2.desc.replace('20\ucd08 \ub3d9\uc548 \ud638\uc2e0', '10\ucd08 \ub3d9\uc548 \ud638\uc2e0'); }
+  if (d4) d4.healPct = .12;
+}
+
+/* ---------------- 3) \uc220\uc0ac \uc804\uc124\u00b7\uc720\uc77c + \uac70\ubb38\uace0 \uc815\ub9ac ---------------- */
+JOBS.taoist.weapons = ['fan', 'staff'];
+const GEUM_IDS = Object.keys(ITEMS).filter(k => ITEMS[k].wt === 'geum');
+{
+  const drop = new Set(GEUM_IDS);
+  for (let i = GEAR_IDS.length - 1; i >= 0; i--) if (drop.has(GEAR_IDS[i])) GEAR_IDS.splice(i, 1);
+  for (let i = LEGEND_IDS.length - 1; i >= 0; i--) if (drop.has(LEGEND_IDS[i])) LEGEND_IDS.splice(i, 1);
+  for (const B of Object.values(BOSSES)) if (B.drops) B.drops = B.drops.filter(x => !drop.has(x));
+  for (const n of Object.values(NPCS)) if (n.goods) n.goods = n.goods.filter(x => !drop.has(x));
+}
+const MAGE388 = [
+  /* id, \uc774\ub984, \uc885\ub958, Lv, \ub4f1\uae09, \ubcf4\uc2a4, \uc124\uba85, \ub364 */
+  ['sanchaeFan', '\uc0b0\ucc44\uc655\uc758 \ub9e4\uae43\uc120', 'fan', 38, 4, 'roadKing', '\uc0b0\ucc44\uc655\uc774 \ubd80\ud558\ub97c \ubd80\ub974\ub358 \ub9e4 \uae43\ud138 \ubd80\ucc44.', { crit: .04 }],
+  ['jukrimStaff', '\uc8fd\ub9bc \ub3c4\uc0ac\uc758 \uccad\uc8fd\uc7a5', 'staff', 47, 4, 'thousandDokkaebi', '\ucc9c \ub144 \ubb35\uc740 \ub300\ub85c \uae4e\uc740 \uc9c0\ud321\uc774. \uc9da\uc73c\uba74 \ub300\uc232\uc774 \uc6b4\ub2e4.', { mpRegen: 2 }],
+  ['hukhoFan', '\ud751\ud638\uc655\uc758 \ud638\ud53c\uc120', 'fan', 48, 4, 'tigerLord', '\ud751\ud638\uc655\uc758 \uac00\uc8fd\uc744 \ub304 \ubd80\ucc44. \ubd80\uce60 \ub54c \ubc94 \uc6b8\uc74c\uc774 \uc11e\uc778\ub2e4.', { crit: .05 }],
+  ['hwagwiStaff', '\ud654\uadc0\uc655\uc758 \uc7bf\ubd88\uc7a5', 'staff', 58, 4, 'palgongFireKing', '\uaebc\uc9c0\uc9c0 \uc54a\ub294 \uc7bf\ubd88\uc774 \ubc15\ud78c \uc9c0\ud321\uc774.', { fx: { critSplash: .3 } }],
+  ['taehwaStaff', '\ud0dc\ud654 \ucca0\uc2ec\uc7a5', 'staff', 62, 4, 'ironMasterSpirit', '\ucca0\uc7a5\uc778 \ud63c\ub839\uc774 \ub9c8\uc9c0\ub9c9\uc73c\ub85c \ubcbc\ub9b0 \uc1e0\uc2ec \uc9c0\ud321\uc774.', { hpRegen: 2 }],
+  ['gwiwangStaff', '\uadc0\uc655\uc758 \uc6d0\ud63c\uc7a5', 'staff', 66, 5, 'gwiwang', '\uadc0\uc655\uc774 \uc9da\ub358 \uc9c0\ud321\uc774. \uc6d0\ud63c\ub4e4\uc774 \uc8fc\uc778\uc744 \ub530\ub978\ub2e4.', { fx: { leech: .025 }, crit: .05 }],
+  ['yongwangStaff', '\uc6a9\uc655\uc758 \uc218\uc815\uc7a5', 'staff', 70, 4, 'dragonKing', '\uc2ec\uc5f0\uc758 \uc81c\ub2e8\uc744 \ubc1d\ud788\ub358 \uc218\uc815 \uc9c0\ud321\uc774.', { mpRegen: 3 }],
+  ['cheonmaFan', '\ucc9c\ub9c8 \ube44\ucc9c\uc120', 'fan', 72, 5, 'seaDragonKing', '\ud558\ub298\uc744 \ub098\ub294 \ub9d0\uc758 \uac08\uae30\ub85c \uc5ee\uc740 \ubd80\ucc44. \ubc14\ub78c\uc774 \uba3c\uc800 \uc801\uc744 \uce5c\ub2e4.', { crit: .08, fx: { dodge: .05 } }],
+  ['haeryongFan', '\ud574\ub8e1\uc758 \ube44\ub298\uc120', 'fan', 75, 4, 'seaDragonKing', '\ud574\ub8e1\uc758 \ube44\ub298\uc744 \uacb9\uccd0 \ub304 \ubd80\ucc44.', { hpRegen: 2.5 }],
+  ['baekgolStaff', '\ubc31\uace8 \uad70\ub839\uc7a5', 'staff', 84, 4, 'boneGeneral', '\ubc31\uace8\ub300\uc7a5\uad70\uc774 \uad70\ub839\uc744 \ub0b4\ub9ac\ub358 \uc9c0\ud321\uc774.', { fx: { bossDmg: .08 } }],
+  ['jedokFan', '\uc218\uad70 \uc81c\ub3c5\uc758 \uad70\uc120', 'fan', 84, 4, 'seaAdmiral', '\uac00\ub77c\uc549\uc740 \ud568\ub300\ub97c \uc9c0\ud718\ud558\ub358 \ubd80\ucc44.', { crit: .05 }],
+  ['wangneungFan', '\uc655\ub989 \uc6d0\uadc0\uc120', 'fan', 86, 4, 'royalTombKing', '\uc655\ub989 \uae4a\uc774 \ubb3b\ud614\ub358 \ubd80\ucc44. \ud3bc\uce58\uba74 \uace1\uc18c\ub9ac\uac00 \ub09c\ub2e4.', { fx: { explode: 1 } }],
+  ['kyuubiStaff', '\uad6c\ubbf8\ud638 \uc5ec\uc6b0\ubd88\uc7a5', 'staff', 110, 4, 'kyuubi', '\uc544\ud649 \uaf2c\ub9ac\uc758 \uc5ec\uc6b0\ubd88\uc774 \uae43\ub4e0 \uc9c0\ud321\uc774.', { crit: .06, mpRegen: 3 }],
+  ['yukiFan', '\uc124\ub140\uc758 \ube59\ud654\uc120', 'fan', 112, 5, 'yukiQueen', '\ud3bc\uce60 \ub54c\ub9c8\ub2e4 \ub208\uaf43\uc774 \ud53c\uc5b4 \ud769\ub0a0\ub9b0\ub2e4.', { crit: .1, fx: { critSplash: .4 } }],
+  ['raijinFan', '\ub1cc\uc2e0\uc758 \ud48d\ub8b0\uc120', 'fan', 113, 4, 'raijin', '\ucc9c\ub465 \ubd81 \uac00\uc8fd\uc744 \ub304 \ubd80\ucc44.', { fx: { bossDmg: .1 } }],
+  ['dokuganStaff', '\ub3c5\uc548\ub8e1\uc758 \uc6d4\ub95c\uc7a5', 'staff', 116, 5, 'dokuganryu', '\ucd08\uc2b9\ub2ec \ud22c\uad6c\uc758 \uc7a5\uc2dd\uc744 \ub179\uc5ec \ub9cc\ub4e0 \uc9c0\ud321\uc774.', { crit: .08, fx: { leech: .03 } }],
+  /* \ub3c4\ud3ec */
+  ['jukrimRobe', '\uc8fd\ub9bc \ub3c4\uc0ac\uc758 \ud559\ucc3d\uc758', 'robe', 48, 4, 'thousandDokkaebi', '\ud559 \uae43\ud138\ub85c \uc218\ub193\uc740 \ub3c4\uc0ac\uc758 \uac89\uc637.', { mpRegen: 2 }],
+  ['hwagwiRobe', '\ud654\uadc0 \uc7bf\ube5b \ub3c4\ud3ec', 'robe', 58, 4, 'palgongFireKing', '\ubd88\uae38 \uc18d\uc5d0\uc11c\ub3c4 \ud0c0\uc9c0 \uc54a\ub294 \ub3c4\ud3ec.', { fx: { lowHpDef: .3 } }],
+  ['gwiwangRobe', '\uadc0\uc655\uc758 \ud751\uc6b4\ud3ec', 'robe', 66, 5, 'gwiwang', '\uac80\uc740 \uad6c\ub984\uc744 \uc9c0\uc5b4 \ub9cc\ub4e0 \uadc0\uc655\uc758 \uc637.', { fx: { dodge: .06 }, hpRegen: 2 }],
+  ['yongwangRobe', '\uc6a9\uad81 \ube44\ub2e8 \ub3c4\ud3ec', 'robe', 70, 4, 'dragonKing', '\uc6a9\uad81 \uc9c1\ub140\uac00 \uc9f0\ub2e4\ub294 \ubb3c\ube5b \ube44\ub2e8.', { mpRegen: 3 }],
+  ['wangneungRobe', '\uc655\ub989 \uc81c\uad00\ubcf5', 'robe', 86, 4, 'royalTombKing', '\uc81c\ub840 \ub54c \uc785\ub358 \ubd89\uc740 \uad00\ubcf5.', { fx: { thorns: .1 } }],
+  ['kyuubiRobe', '\uad6c\ubbf8\ud638 \uc5ec\uc6b0\ud138 \ub3c4\ud3ec', 'robe', 110, 4, 'kyuubi', '\uc544\ud649 \uaf2c\ub9ac \ud138\ub85c \uc548\uac10\uc744 \ub304 \ub3c4\ud3ec.', { fx: { dodge: .07 } }]
+];
+for (const [id, nm, kind, L, r, boss, desc, x] of MAGE388) {
+  let d;
+  if (kind === 'robe') {
+    d = mkGear(nm, 'armor', L, r, { icon: '\ud83e\udd4b', desc });
+    const rm = _RM[r]; Object.assign(d, { hp: Math.round((14 + L * 6.5) * rm), def: Math.round((1 + L * .7) * rm), mp: Math.round((10 + L * 3) * rm), robe: 1 });
+  } else d = mkGear(nm, 'weapon', L, r, { wt: kind, icon: kind === 'fan' ? '\ud83e\udead' : '\ud83e\ude84', desc });
+  for (const [k, v] of Object.entries(x || {})) if (k === 'fx') ITEM_FX[id] = v; else d[k] = v;
+  ITEMS[id] = d;
+  if (!GEAR_IDS.includes(id)) GEAR_IDS.push(id);
+  if (!LEGEND_IDS.includes(id)) LEGEND_IDS.push(id);
+  const B = BOSSES[boss]; if (B) (B.drops = B.drops || []).push(id);
+}
+/* \uac00\uc9c4 \uac70\ubb38\uace0\u00b7\uac00\uc57c\uae08 \u2192 \uac19\uc740 \ub4f1\uae09\u00b7\uac00\uae4c\uc6b4 \ub808\ubca8\uc758 \ubd80\ucc44 (\uac15\ud654\u00b7\uc635\uc158\u00b7\uac01\uc131\uc740 \uadf8\ub300\ub85c) */
+function geumToFan(id) {
+  const d = ITEMS[id]; if (!d || d.wt !== 'geum') return id;
+  const same = id.replace(/_geum$/, '_fan'); if (same !== id && ITEMS[same] && ITEMS[same].wt === 'fan') return same;
+  let best = null, bd = 1e9;
+  for (const k of GEAR_IDS) { const f = ITEMS[k]; if (!f || f.wt !== 'fan' || f.rarity !== d.rarity || f.fill) continue; const dd = Math.abs((f.lv || 1) - (d.lv || 1)) + (f.base ? 50 : 0) * (d.base ? 0 : 1); if (dd < bd) { bd = dd; best = k; } }
+  return best || id;
+}
+function migrateGeum388(p) {
+  if (!p || (p.geumv | 0) >= 388) return; let n = 0;
+  const fix = it => { if (it && ITEMS[it.id] && ITEMS[it.id].wt === 'geum') { const nid = geumToFan(it.id); if (nid !== it.id) { it.id = nid; n++; } } };
+  for (const it of p.inv || []) fix(it);
+  for (const s of Object.keys(p.eq || {})) fix(p.eq[s]);
+  for (const d of p.partyDefs || []) if (d.eq) for (const s of Object.keys(d.eq)) fix(d.eq[s]);
+  p.geumv = 388;
+  if (n) { calcStats(p); setTimeout(() => toast(`\ud83e\udead \uac70\ubb38\uace0\u00b7\uac00\uc57c\uae08 ${n}\uac1c\ub97c \uac19\uc740 \ub4f1\uae09\uc758 \ubd80\ucc44\ub85c \ubc14\uafd4 \ub4dc\ub838\uc2b5\ub2c8\ub2e4 (\uac15\ud654\u00b7\uc635\uc158 \uadf8\ub300\ub85c)`, 'gold'), 2600); }
+}
+if (typeof SAVE_FIELDS !== 'undefined' && !SAVE_FIELDS.includes('geumv')) SAVE_FIELDS.push('geumv');
+
+/* ---------------- 4) 2\ucc28 \uc2b9\uae09 ---------------- */
+function promote2Ready(p) { return p && p.job !== 'none' && (p.rank | 0) === 1 && p.lv >= PROMOTE_LV[1] && !!(p.bossKills && p.bossKills.tigerLord); }
+{
+  const _onTalkChief388 = onTalkChief;
+  onTalkChief = function () {
+    const p = G.player, s = curStep();
+    if (promote2Ready(p) && !(s && s.t === 'talk' && s.npc === 'chief')) return { say: '\ud751\ud638\uc655\uae4c\uc9c0 \ub118\uc5c8\uace0 \ubab8\ub3c4 \ubb34\ub974\uc775\uc5c8\uad70. \ub450 \ubc88\uc9f8 \uc2b9\uae09\uc758 \uc790\uaca9\uc740 \ucda9\ubd84\ud558\ub124. \ubc1b\uac8c.', then: 'promote' };
+    return _onTalkChief388.apply(this, arguments);
+  };
+  const _npcMark388 = npcMark;
+  npcMark = function (n) { if (n && n.id === 'chief' && G.mapId === 'buyeo' && promote2Ready(G.player)) return { c: '!', k: 'gold' }; return _npcMark388.apply(this, arguments); };
+  /* \uc790\uaca9\uc774 \uc0dd\uae30\uba74 \ud55c \ubc88 \uc54c\ub9b0\ub2e4 */
+  let told = false;
+  setInterval(() => { try { const p = G.player; if (!told && p && $('title').hidden && promote2Ready(p)) { told = true; toast(`\u2b50 2\ucc28 \uc2b9\uae09 \uc790\uaca9! \uccad\uc6d4\ucd0c \ucd0c\uc7a5\uc5d0\uac8c \uac00\uba74 ${JOBS[p.job].ranks[2]}(\uc73c)\ub85c \uc2b9\uae09\ud560 \uc218 \uc788\uc5b4\uc694`, 'gold'); chat('', `\u2b50 2\ucc28 \uc2b9\uae09 \u2014 \uccad\uc6d4\ucd0c \ucd0c\uc7a5 \ud55c\ubc31\uc218\uc5d0\uac8c \ub9d0\uc744 \uac78\uc5b4 \ubcf4\uc138\uc694 (\uc5ed\ucc38\u00b7\uadc0\ud658 \ubd80\uc801\uc73c\ub85c \uccad\uc6d4\ucd0c)`, true); } } catch (e) { } }, 4000);
+  /* \ud3d0\uc131 \uc7a5\uc758 \ucd0c\uc7a5 \ub300\uc0ac: \uc774\ubbf8 \uc2b9\uae09\ud588\uc73c\uba74 \uc2b9\uae09 \uc774\uc57c\uae30\ub294 \ube7c\uace0 */
+  const seal = STORY.find(c => c.id === 'seal');
+  if (seal) { seal.sum = '\ud3d0\uc131 \ubb38\uc744 \uc9c0\ud0a4\ub358 \uc7a5\uad70\uc744 \ub118\uc5c8\ub2e4. \ub204\uad70\uac00 \ubd09\uc778\uc758 \ubabb\uc744 \uc77c\ubd80\ub7ec \ubf51\uc558\ub2e4.'; for (const s of seal.steps) if (s.t === 'talk' && s.npc === 'chief') s.say = s.say.replace('\ub450 \ubc88\uc9f8 \uc2b9\uae09\uc758 \uc790\uaca9\uc740 \ucda9\ubd84\ud558\uad70. \ubc1b\uac8c, \uadf8\ub9ac\uace0 \ud3d0\uc131 \uae4a\uc740 \uacf3\uc73c\ub85c \uac00 \uc8fc\uac8c.', '\ud3d0\uc131 \uae4a\uc740 \uacf3\uc73c\ub85c \uac00 \uc8fc\uac8c. \uc544\uc9c1 \ub450 \ubc88\uc9f8 \uc2b9\uae09\uc744 \uc548 \ud588\ub2e4\uba74 \uc9c0\uae08 \ud574 \uc8fc\uc9c0.'); }
+}
+
+/* ---------------- 5) \uc9c0\uc5ed \uc138\ud2b8 \uc758\ub8b0 ---------------- */
+{
+  const SETQ = [
+    ['\ud0dc\ud654 \ucca0\uc7a5', 'ulsan_m', 'city_ulsan', 'ulsan_iron_cave', '\uc6b8\uc0b0 \ucca0\uc815\uad74 \uc57c\ucc28\ub4e4 \uac11\uc637 \uc870\uac01\uc73c\ub85c \uc138\ud2b8 \uc7a5\ube44\ub97c \uc9d3\uc18c. \ub137\uc744 \ub2e4 \ub9de\ucd94\uba74 \uacf5\uaca9\uc774 \ud06c\uac8c \uc624\ub974\uc9c0. \uad74\uc5d0\uc11c \uc2a4\ubb3c\ub2e4\uc12f\ub9cc \uc7a1\uc544 \uc624\uba74 \uac00\ub77d\uc9c0 \ud558\ub098\ub294 \uba3c\uc800 \ub0b4\uc5b4 \uc8fc\ub9ac\ub2e4.'],
+    ['\ub3d9\ubc31 \ud574\ub8e1', 'busan_m', 'city_busan', 'busan_sea_cave', '\ub3d9\ubc31 \ud574\ub8e1 \ube44\ub298\ub85c \uc9d3\ub294 \uc138\ud2b8\uac00 \uc788\uc18c. \ub137\uc774\uba74 \uccb4\ub825\uacfc \ud761\ud608\uc774 \ubd99\ub294\ub2e4\uc624. \ud574\uc2dd\uad74\uc5d0\uc11c \uc2a4\ubb3c\ub2e4\uc12f \ub9c8\ub9ac\ub9cc \uc7a1\uc544 \uc8fc\uc2dc\uc624, \uac00\ub77d\uc9c0\ubd80\ud130 \ub4dc\ub9ac\ub9ac\ub2e4.'],
+    ['\ud654\uc131 \uc218\ub828', 'suwon_m', 'city_suwon', 'suwon_fort_cave', '\ud654\uc131 \ubcbd\ub3cc\ub85c \uc9c0\uc740 \uc218\ub828 \uc138\ud2b8\ub97c \uc544\uc2dc\uc624? \uc0ac\ub0e5 \uacbd\ud5d8\uce58\uac00 \ubd99\uc5b4 \uc218\ub828\ud558\uae30 \uc88b\uc18c. \uc131\uacfd \uad74\uc5d0\uc11c \uc2a4\ubb3c\ub2e4\uc12f\ub9cc \uc7a1\uc544 \uc624\uc2dc\uc624.'],
+    ['\uc81c\ubb3c\ud3ec \uc0c1\ub2e8', 'incheon_m', 'city_incheon', 'incheon_tide_cave', '\uc81c\ubb3c\ud3ec \uc0c1\ub2e8 \uc138\ud2b8\ub294 \ubaac\uc2a4\ud130\uac00 \ub5a8\uad6c\ub294 \ub3c8\uc744 \ub298\ub824 \uc8fc\uc624. \ud574\uc2dd\uad74 \uc218\uad70 \uc6d0\ud63c \uc2a4\ubb3c\ub2e4\uc12f\ub9cc \ucad3\uc544 \uc8fc\uba74 \uac00\ub77d\uc9c0\ub97c \ub4dc\ub9ac\uc9c0.']
+  ];
+  for (const [set, npc, town, map, say] of SETQ) {
+    const T = SET_TIERS[set]; if (!T || !MAPS[map] || !NPCS[npc]) continue;
+    const ring = T.ids && T.ids.find(x => /_ring$/.test(x));
+    SIDE_QUESTS.unshift({ id: 'sq_set_' + town, npc, town, lv: Math.max(1, T.lv - 4), t: `${set} \uc138\ud2b8 \ub9db\ubcf4\uae30`, maps: [map], n: 25, items: [[ring, 1], [T.mat, 12], ['spiritStone', 3]], xp: .25,
+      say: say + ` (\uc138\ud2b8 \ud6a8\uacfc: ${T.tiers.map(t => `${t[0]}\uc810 ${t[2]}`).join(' / ')} \u00b7 \ub098\uba38\uc9c0\ub294 \ub300\uc7a5\uac04 \uc81c\uc791 \ud0ed\uc5d0\uc11c)`, done: `${set} \uac00\ub77d\uc9c0\uc694. \uc7ac\ub8cc\ub3c4 \ub109\ub109\ud788 \ub123\uc5c8\uc73c\ub2c8 \ub300\uc7a5\uac04\uc5d0\uc11c \ub098\uba38\uc9c0\ub97c \ub9de\ucdb0 \ubcf4\uc2dc\uc624.` });
+  }
+}
+
+/* ---------------- \ubd88\ub7ec\uc62c \ub54c ---------------- */
+{
+  const _startGame388 = startGame;
+  startGame = function () { const r = _startGame388.apply(this, arguments); try { migrateGeum388(G.player); } catch (e) { reportError(e); } return r; };
+}
+/* \uac19\uc740 \uc0ac\ub78c\uc774 \uc758\ub8b0\ub97c \uc5ec\ub7ff \uac00\uc9c0\uba74, \uc774\ubbf8 \ubc1b\uc740 \uac83(\uc9c4\ud589\u00b7\ubcf4\uace0)\uc744 \uba3c\uc800 \ubcf4\uc5ec \uc900\ub2e4 */
+{
+  const _sideFor388 = sideFor;
+  sideFor = function (npcId, town) {
+    const p = G.player; if (!p || p.job === 'none') return _sideFor388.apply(this, arguments);
+    const S = sideState(p);
+    for (const q of SIDE_QUESTS) { if (q.npc !== npcId || (town && q.town !== town)) continue; const s = S[q.id]; if (s && !s.done) return { q, s, state: s.prog >= q.n ? 'ready' : 'active' }; }
+    return _sideFor388.apply(this, arguments);
+  };
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
