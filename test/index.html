@@ -21439,8 +21439,8 @@ function groundOk(e, x, y) {   /* \ub0a0\uac1c\uac00 \uc5c6\ub2e4\uace0 \uce58\u
    98z4_skill385 (\uc2dc\ud5d8\ud310 \u00b7 \ub2e4\uc2dc \uc9ec v389): \uc9c1\uc5c5\ub9c8\ub2e4 \uc0c8 \uae30\uc220 4\uac1c + \uae30\uc220 \uace0\ub974\uae30
    \uc6d0\uce59
    \u00b7 \uc9c0\uae08 \uae30\uc220(5\u00b712\u00b725\u00b750)\uacfc \ud558\ub294 \uc77c\uc774 \uacb9\uce58\uc9c0 \uc54a\ub294\ub2e4 \u2014 \ub2e4\ub978 \uc9c1\uc5c5 \uae30\uc220\uacfc\ub3c4 \uacb9\uce58\uc9c0 \uc54a\ub294\ub2e4
-       \ubb34\uc0ac: \uac80\uae30\u00b7\ud68c\uc804\u00b7\ud3ec\ud6a8\u00b7\uc9c0\uc9c4  \u2192  \ub4e4\uc774\ubc1b\uae30 \u00b7 \uba54\uce58\uae30 \u00b7 \ubaa8\uc544 \ubca0\uae30 \u00b7 \uc77c\uc12c
-       \ube44\uac1d: \uce58\uba85\ucc0c\ub974\uae30\u00b7\ub3c5\uc548\uac1c\u00b7\uc2e0\uc18d\u00b7\ubd84\uc2e0\ub09c\ubb34  \u2192  \uc0ac\uc2ac\ub85c \ub04c\uae30 \u00b7 \ud45c\uc2dd \u00b7 \uc740\uc2e0 \uc554\uc2b5 \u00b7 \uc21c\uac04\uc774\ub3d9 \ucc98\ud615 (\uad6c\ub984 \uae30\uc220 \uc5c6\uc74c)
+       \ubb34\uc0ac: \uac80\uae30\u00b7\ud68c\uc804\u00b7\ud3ec\ud6a8\u00b7\uc9c0\uc9c4  \u2192  \ub4e4\uc774\ubc1b\uae30 \u00b7 \ubb34\uc801 \u00b7 \uba40\ub9ac \ub098\ub294 \uac80\uae30 \u00b7 \ud654\uba74 \uc804\uccb4 \uc77c\uc12c
+       \ube44\uac1d: \uce58\uba85\ucc0c\ub974\uae30\u00b7\ub3c5\uc548\uac1c\u00b7\uc2e0\uc18d\u00b7\ubd84\uc2e0\ub09c\ubb34  \u2192  \ud45c\ucc3d \u00b7 \ud45c\uc2dd \u00b7 \uc740\uc2e0 \uc554\uc2b5 \u00b7 \uc21c\uac04\uc774\ub3d9 \ucc98\ud615 (\uad6c\ub984 \uae30\uc220 \uc5c6\uc74c)
        \ubc29\uc220\uac00: \ubd88\ub369\uc774\u00b7\uc5bc\uc74c\uc9c4\u00b7\uc5f0\uc1c4\ubc88\uac1c\u00b7\uc720\uc131  \u2192  \uc21c\uac04\uc774\ub3d9 \u00b7 \uc0c1\ud0dc \ud130\ub728\ub9ac\uae30 \u00b7 \ub04c\uc5b4\ub2f9\uae30\ub294 \ud751\uad6c \u00b7 \uc2dc\uac04 \uc815\uc9c0
        \ud48d\ub958\uac1d: \ubd80\uc801\u00b7\ud68c\ubcf5\u00b7\ud574\ud0dc\u00b7\ubd09\uc778  \u2192  \ud559(\uc57d\ud654) \u00b7 \ubd80\ucc44\ucda4(\ucfe8 \uac00\uc18d) \u00b7 \uba39\ud638\ub791\uc774 \u00b7 \uc0ac\uc2e0 \uac15\ub9bc(\ubcf4\ud638\ub9c9)
    \u00b7 \ub808\ubca8\uc774 \ub192\uc744\uc218\ub85d \uc138\ub2e4: Lv.18 < \uc6d0\ub798 Lv.25 \u00b7 Lv.35 \u2248 \uc4f0\uc784\uc0c8 \u00b7 Lv.65 > \uc6d0\ub798 Lv.50 \u00b7 Lv.85 \ub294 \ub05d\ud310\uc655 (\ucd1d \uc704\ub825 \uc6d0\ub798 Lv.50 \uc758 3\ubc30\ucbe4 + \ud654\uba74 \uc5f0\ucd9c)
@@ -21450,18 +21450,18 @@ function groundOk(e, x, y) {   /* \ub0a0\uac1c\uac00 \uc5c6\ub2e4\uace0 \uce58\u
 const SKILLS_EX = {
   warrior: [
     { id: 'w5', ex: 1, names: ['\uc5b4\uae68\uce58\uae30', '\ucca0\uacac\ub3cc\uaca9', '\ud0dc\uc0b0\ub3cc\uaca9'], lv: 18, mp: 10, mpPct: .02, cd: 6, kind: 'charge', mult: 2.4, range: 260, glyph: 'dash', col: '#ffb45e', desc: '\ubaa9\ud45c\uc5d0\uac8c \ub2ec\ub824\ub4e4\uc5b4 \uc5b4\uae68\ub85c \ub4e4\uc774\ubc1b\ub294\ub2e4. \ub9de\uc740 \uc801\uc740 \uba40\ub9ac \ub0a0\uc544\uac00 \uc7a0\uae50 \uae30\uc808\ud558\uace0, \ubd80\ub52a\uce5c \uc790\ub9ac \ub458\ub808\ub3c4 \ud568\uaed8 \ub2e4\uce5c\ub2e4.' },
-    { id: 'w6', ex: 1, names: ['\uba54\uce58\uae30', '\ucc9c\uadfc\uba54\uce58\uae30', '\ud0dc\uc0b0\uba54\uce58\uae30'], lv: 35, mp: 14, mpPct: .025, cd: 9, kind: 'throw', mult: 4, range: 90, glyph: 'strike', col: '#ffd27a', desc: '\ub208\uc55e\uc758 \uc801\uc744 \uc6c0\ucf1c\uc7a1\uc544 \uba38\ub9ac \uc704\ub85c \ub4e4\uc5b4 \ub4f1 \ub4a4\ub85c \ub0b4\ub9ac\uaf42\ub294\ub2e4. \ub5a8\uc5b4\uc9c4 \uc790\ub9ac\uc758 \uc801\uae4c\uc9c0 \ub2e4\uce58\uace0 \ubaa8\ub450 \uae30\uc808. \ubcf4\uc2a4\ub294 \ub4e4\ub9ac\uc9c0 \uc54a\uc544 \uadf8 \uc790\ub9ac\uc5d0\uc11c \uc9d3\ub20c\ub7ec \ub354 \ud070 \ud53c\ud574.' },
-    { id: 'w7', ex: 1, names: ['\ud328\ub3c4\uc77c\uaca9', '\ud30c\ucc9c\uc77c\uaca9', '\uac1c\ucc9c\uc77c\uaca9'], lv: 65, mp: 26, mpPct: .045, cd: 14, kind: 'cleave', mult: 7, range: 210, glyph: 'wave', col: '#ffcf4a', desc: '0.7\ucd08 \ub3d9\uc548 \uae30\ub97c \ubaa8\uc558\ub2e4\uac00 \uc55e\ucabd \ub113\uc740 \ubd80\ucc44\uaf34\uc744 \ud55c \ubc88\uc5d0 \ucabc\uac20\ub2e4. \ub9de\uc740 \uc801\uc740 8\ucd08 \ub3d9\uc548 \uac11\uc637\uc774 \uae68\uc838 \ubc1b\ub294 \ud53c\ud574 +25%.' },
-    { id: 'w8', ex: 1, names: ['\uac80\uc131\uc77c\uc12c', '\uac80\uc131\uc77c\uc12c', '\ucc9c\ud558\uc77c\uc12c'], lv: 85, mp: 40, mpPct: .07, cd: 35, kind: 'issen', mult: 6, range: 360, glyph: 'strike', col: '#ffffff', desc: '\ub05d\ud310\uc655. \uc138\uc0c1\uc774 \uc5b4\ub450\uc6cc\uc9c0\uace0 \uce7c\uc744 \uac70\ub450\ub294 \uc21c\uac04, \ud55c \uc904\uae30 \ube5b\uc774 \ub418\uc5b4 \uc55e\uc744 \uaff0\ub6ab\uace0 \uc9c0\ub098\uac04\ub2e4(\uadf8\ub3d9\uc548 \ubb34\uc801). \uc9c0\ub098\uac04 \uae38\uc758 \uc801\uc740 \ubca0\uc774\uace0, \uc7a0\uc2dc \ub4a4 \ud55c \ubc88 \ub354 \uac08\ub77c\uc9c4\ub2e4 (\ud569\uccd0 \uc6d0\ub798 \ucc9c\uc9c0\ud30c\uc5f4\uc758 3\ubc30 \uc774\uc0c1).' }
+    { id: 'w6', ex: 1, names: ['\uae08\uac15\ubd88\uad34', '\uae08\uac15\ubd88\uad34\uc2e0', '\ucc9c\uac15\ubd88\uad34'], lv: 35, mp: 18, mpPct: .03, cd: 15, kind: 'adamant', dur: 8, glyph: 'bless', col: '#ffd24a', desc: '\uc628\ubab8\uc744 \uae08\uac15\uc73c\ub85c \uad73\ud78c\ub2e4. 8\ucd08 \ub3d9\uc548 \uc5b4\ub5a4 \uacf5\uaca9\ub3c4 \ubc1b\uc9c0 \uc54a\ub294\ub2e4 (\ubb34\uc801). \ucfe8\ud0c0\uc784 15\ucd08.' },
+    { id: 'w7', ex: 1, names: ['\ud328\ub3c4\uc77c\uaca9', '\ud30c\ucc9c\uc77c\uaca9', '\uac1c\ucc9c\uc77c\uaca9'], lv: 65, mp: 26, mpPct: .045, cd: 14, kind: 'cleave', mult: 7, range: 520, width: 95, glyph: 'wave', col: '#ffcf4a', desc: '0.7\ucd08 \ub3d9\uc548 \uae30\ub97c \ubaa8\uc558\ub2e4\uac00, \ubcf4\uace0 \uc788\ub294(\uc6c0\uc9c1\uc774\ub294) \ubc29\ud5a5\uc73c\ub85c \uac70\ub300\ud55c \ubc18\ub2ec \uac80\uae30\ub97c \uba40\ub9ac \ub0a0\ub9b0\ub2e4. \uac80\uae30\ub294 \uc9c0\ub098\ub294 \uae38\uc758 \uc801\uc744 \ubaa8\ub450 \ubca0\uace0, \ub9de\uc740 \uc801\uc740 8\ucd08 \ub3d9\uc548 \uac11\uc637\uc774 \uae68\uc838 \ubc1b\ub294 \ud53c\ud574 +25%. \ub300\uc0c1\uc744 \uace0\ub974\uc9c0 \uc54a\ub294\ub2e4.' },
+    { id: 'w8', ex: 1, names: ['\uac80\uc131\uc77c\uc12c', '\uac80\uc131\uc77c\uc12c', '\ucc9c\ud558\uc77c\uc12c'], lv: 85, mp: 40, mpPct: .07, cd: 35, kind: 'issen', mult: 25, glyph: 'strike', col: '#ffffff', desc: '\ub05d\ud310\uc655. \uc138\uc0c1\uc774 \uc5b4\ub450\uc6cc\uc9c0\uace0 \uce7c\uc744 \uac70\ub450\ub294 \uc21c\uac04 \u2014 \ud654\uba74\uc5d0 \ubcf4\uc774\ub294 \uc801\uc774 \ubaa8\ub450 \ubca0\uc5ec \uc4f0\ub7ec\uc9c4\ub2e4 (\uadf8\ub3d9\uc548 \ubb34\uc801). \ubcf4\uc2a4\ub294 \uc4f0\ub7ec\uc9c0\uc9c0 \uc54a\uc9c0\ub9cc \uc544\uc8fc \ud070 \ud53c\ud574.' },
   ],
   thief: [
-    { id: 't5', ex: 1, names: ['\uc0ac\uc2ac\ub0ab', '\ud751\uc0ac\uc2ac', '\ucc9c\ub77c\uc0ac\uc2ac'], lv: 18, mp: 8, mpPct: .02, cd: 6, kind: 'hook', mult: 2.6, range: 300, glyph: 'spread', col: '#c9c9d6', desc: '\uc0ac\uc2ac\ub0ab\uc744 \ub358\uc838 \uac78\ub9b0 \uc801\uc744 \ub208\uc55e\uae4c\uc9c0 \ub04c\uc5b4\uc624\uace0 \uc7a0\uae50 \ubb36\ub294\ub2e4. \ubcf4\uc2a4\ub294 \ub04c\ub824\uc624\uc9c0 \uc54a\uace0 \ub0b4\uac00 \ubcf4\uc2a4 \uc55e\uc73c\ub85c \ub04c\ub824\uac04\ub2e4.' },
-    { id: 't6', ex: 1, names: ['\uc0ac\ub0e5\uac10 \ud45c\uc2dd', '\ud608\ud45c\uc2dd', '\uc0ac\uc2e0\uc758 \ud45c\uc2dd'], lv: 35, mp: 12, mpPct: .02, cd: 12, kind: 'mark', dur: 15, amp: .3, range: 320, glyph: 'chain', col: '#ff4a5a', desc: '\ud55c \ub188\uc5d0\uac8c \ubd89\uc740 \ud45c\uc2dd\uc744 \uc0c8\uae34\ub2e4. 15\ucd08 \ub3d9\uc548 \ubaa8\ub450\uc5d0\uac8c \ubc1b\ub294 \ud53c\ud574 +30%, \ub0b4 \uce58\uba85\ud0c0 \ud655\ub960 +25%. \ud45c\uc2dd\uc774 \ubd99\uc740 \uc801\uc774 \uc8fd\uc73c\uba74 \ud45c\uc2dd\uc774 \uac00\uae4c\uc6b4 \uc801\uc5d0\uac8c \uc62e\uaca8 \ubd99\uace0 MP \ub97c 20% \ub3cc\ub824\ubc1b\ub294\ub2e4.' },
-    { id: 't7', ex: 1, names: ['\uc740\uc2e0 \uc554\uc2b5', '\ubb34\uc601\uc554\uc2b5', '\uadc0\uc601\uc554\uc2b5'], lv: 65, mp: 22, mpPct: .04, cd: 15, kind: 'stealth', mult: 10, range: 320, glyph: 'dash', col: '#a98cff', desc: '\uadf8\ub9bc\uc790\uc5d0 \ub179\uc544 1\ucd08 \ub3d9\uc548 \uc0ac\ub77c\uc9c4\ub2e4 (\ubb34\uc801 \u00b7 \uc801\uc774 \ub098\ub97c \ub193\uce5c\ub2e4). \uadf8\ub2e4\uc74c \ubaa9\ud45c\uc758 \ub4f1 \ub4a4\uc5d0\uc11c \ub098\ud0c0\ub098 \ubc18\ub4dc\uc2dc \uce58\uba85\ud0c0\ub85c \ucc0c\ub974\uace0 1.5\ucd08 \uae30\uc808 (\ubcf4\uc2a4\ub294 \uae30\uc808 \uc5c6\uc74c). \ub098\ud0c0\ub0a0 \ub54c \ud130\uc9c0\ub294 \uadf8\ub9bc\uc790\uc5d0 \ub458\ub808 \uc801\ub3c4 \ubca0\uc778\ub2e4.' },
+    { id: 't5', ex: 1, names: ['\ud45c\ucc3d', '\uc5f0\ud658\ud45c', '\ub9cc\ucc9c\ud654\uc6b0'], lv: 18, mp: 8, mpPct: .02, cd: 3, kind: 'knives', mult: 1.5, range: 300, count: 3, glyph: 'spread', col: '#d9e2ff', desc: '\ud45c\ucc3d \uc138 \uac1c\ub97c \ubd80\ucc44\uaf34\ub85c \ub358\uc9c4\ub2e4. \ud45c\ucc3d\uc740 \uc801 \ud558\ub098\ub97c \uaff0\ub6ab\uace0 \ub0a0\uc544\uac04\ub2e4.' },
+    { id: 't6', ex: 1, names: ['\uc0ac\ub0e5\uac10 \ud45c\uc2dd', '\ud608\ud45c\uc2dd', '\uc0ac\uc2e0\uc758 \ud45c\uc2dd'], lv: 35, mp: 12, mpPct: .02, cd: 12, kind: 'mark', dur: 15, amp: .6, range: 320, glyph: 'chain', col: '#ff4a5a', desc: '\ud55c \ub188\uc5d0\uac8c \ubd89\uc740 \ud45c\uc2dd\uc744 \uc0c8\uae34\ub2e4. 15\ucd08 \ub3d9\uc548 \ubaa8\ub450\uc5d0\uac8c \ubc1b\ub294 \ud53c\ud574 +60%, \ub0b4 \uacf5\uaca9\uc740 \ubc18\ub4dc\uc2dc \uce58\uba85\ud0c0. \ud45c\uc2dd\uc774 \ubd99\uc740 \uc801\uc774 \uc8fd\uc73c\uba74 \ud45c\uc2dd\uc774 \ud130\uc838 \ub458\ub808\ub97c \ud06c\uac8c \ub2e4\uce58\uac8c \ud558\uace0, \uac00\uae4c\uc6b4 \uc801\uc5d0\uac8c \uc62e\uaca8 \ubd99\uc73c\uba70 MP \ub97c 20% \ub3cc\ub824\ubc1b\ub294\ub2e4.' },
+    { id: 't7', ex: 1, names: ['\uc740\uc2e0 \uc554\uc2b5', '\ubb34\uc601\uc554\uc2b5', '\uadc0\uc601\uc554\uc2b5'], lv: 65, mp: 22, mpPct: .04, cd: 15, kind: 'stealth', mult: 10, range: 320, glyph: 'dash', col: '#a98cff', desc: '\uadf8\ub9bc\uc790\uc5d0 \ub179\uc544 1\ucd08 \ub3d9\uc548 \uc0ac\ub77c\uc9c4\ub2e4 (\ubb34\uc801 \u00b7 \ubaac\uc2a4\ud130\ub294 \ub098\ub97c \uc544\uc608 \ubcf4\uc9c0 \ubabb\ud55c\ub2e4). \uadf8\ub2e4\uc74c \ubaa9\ud45c\uc758 \ub4f1 \ub4a4\uc5d0\uc11c \ub098\ud0c0\ub098 \ubc18\ub4dc\uc2dc \uce58\uba85\ud0c0\ub85c \ucc0c\ub974\uace0 1.5\ucd08 \uae30\uc808 (\ubcf4\uc2a4\ub294 \uae30\uc808 \uc5c6\uc74c). \ub098\ud0c0\ub0a0 \ub54c \ud130\uc9c0\ub294 \uadf8\ub9bc\uc790\uc5d0 \ub458\ub808 \uc801\ub3c4 \ubca0\uc778\ub2e4.' },
     { id: 't8', ex: 1, names: ['\uba78\uc601\ucc98\ud615', '\uba78\uc601\ucc98\ud615', '\ud608\uc6d4 \ub9cc\uc601\ucc98\ud615'], lv: 85, mp: 38, mpPct: .07, cd: 35, kind: 'massacre', mult: 3.2, radius: 340, count: 8, glyph: 'strike', col: '#ff3048', desc: '\ub05d\ud310\uc655. \ud54f\ube5b \ub2ec\uc774 \ub728\uace0, \ub458\ub808\uc758 \uc801 8\ub9c8\ub9ac \uc0ac\uc774\ub97c \uc21c\uac04\uc774\ub3d9\ud558\uba70 \ud558\ub098\uc529 \ubca4\ub2e4 (\ubaa8\ub450 \uce58\uba85\ud0c0 \u00b7 \uadf8\ub3d9\uc548 \ubb34\uc801). \uc81c\uc790\ub9ac\ub85c \ub3cc\uc544\uc640 \uce7c\uc744 \uac70\ub450\uba74 \ubca4 \uc801\uc774 \ubaa8\ub450 \ud55c\uaebc\ubc88\uc5d0 \ud130\uc9c0\uace0, \uccb4\ub825\uc774 25% \uc544\ub798\uc778 \uc77c\ubc18 \uc801\uc740 \uadf8\ub300\ub85c \ucc98\ud615.' }
   ],
   shaman: [
-    { id: 's5', ex: 1, names: ['\ucd95\uc9c0', '\ucd95\uc9c0\uc220', '\ucc9c\ub9ac\ucd95\uc9c0'], lv: 18, mp: 9, mpPct: .02, cd: 7, kind: 'blink', mult: 2.2, radius: 100, glyph: 'dash', col: '#c9a8ff', desc: '\ub545\uc744 \uc811\uc5b4 \uc801\uc5d0\uac8c\uc11c \uba40\ub9ac \uc21c\uac04\uc774\ub3d9\ud55c\ub2e4. \ub0a8\uaca8 \ub454 \uc794\uc0c1\uc774 \uc7a0\uc2dc \ub4a4 \ud130\uc838 \ub458\ub808\uc758 \uc801\uc744 \ub2e4\uce58\uac8c \ud558\uace0 \ub290\ub9ac\uac8c \ud55c\ub2e4.' },
+    { id: 's5', ex: 1, names: ['\ucd95\uc9c0', '\ucd95\uc9c0\uc220', '\ucc9c\ub9ac\ucd95\uc9c0'], lv: 18, mp: 9, mpPct: .02, cd: 6, kind: 'blink', mult: 2.2, radius: 100, glyph: 'dash', col: '#c9a8ff', desc: '\ub545\uc744 \uc811\uc5b4 \uc801\uc5d0\uac8c\uc11c \uba40\ub9ac \uc21c\uac04\uc774\ub3d9\ud55c\ub2e4. \ub0a8\uaca8 \ub454 \uc794\uc0c1\uc774 \uc7a0\uc2dc \ub4a4 \ud130\uc838 \ub458\ub808\uc758 \uc801\uc744 \ub2e4\uce58\uac8c \ud558\uace0 \ub290\ub9ac\uac8c \ud55c\ub2e4.' },
     { id: 's6', ex: 1, names: ['\uc6d0\uc18c\ud3ed\ubc1c', '\uc624\ud589\ud3ed\ub82c', '\uc624\ud589\ucc9c\ubd95'], lv: 35, mp: 18, mpPct: .03, cd: 10, kind: 'detonate', mult: 2.6, radius: 300, glyph: 'nova', col: '#ffe08a', desc: '\ub458\ub808 \uc801\uc5d0\uac8c \uac78\ub9b0 \uc0c1\ud0dc\ub97c \ud55c\uaebc\ubc88\uc5d0 \ud130\ub728\ub9b0\ub2e4. \ubd88\ud0d0 \u2192 \ud654\uc5fc \ud3ed\ubc1c(\ub458\ub808\uae4c\uc9c0), \ub290\ub9bc(\uc5bc\uc74c) \u2192 \uc0b0\uc0b0\uc870\uac01 + \uae30\uc808, \uae30\uc808\u00b7\uac10\uc804 \u2192 \ubcbc\ub77d. \uc0c1\ud0dc\uac00 \ub9ce\uc774 \uac78\ub9b0 \uc801\uc77c\uc218\ub85d \ud06c\uac8c \ud130\uc9c4\ub2e4. \ud654\uc5fc\uad6c\u00b7\ube59\uacb0\uc9c4\u00b7\ub1cc\uaca9 \ub4a4\uc5d0 \uc4f0\uba74 \uc88b\ub2e4.' },
     { id: 's7', ex: 1, names: ['\ud751\uacf5\uad6c', '\ud0dc\ud5c8\ud751\uacf5', '\ud63c\ub3c8\ud751\uacf5'], lv: 65, mp: 30, mpPct: .05, cd: 16, kind: 'void', mult: .6, radius: 190, range: 300, glyph: 'spin', col: '#9b6bff', desc: '\uac80\uc740 \uad6c\uc2ac\uc744 \ub744\uc6cc \ubcf4\ub0b8\ub2e4. \uad6c\uc2ac\uc740 2.5\ucd08 \ub3d9\uc548 \ub458\ub808\uc758 \uc801\uc744 \ube68\uc544\ub4e4\uc774\uba70 \uacc4\uc18d \uac09\uc544\uba39\ub2e4\uac00 \ub9c8\uc9c0\ub9c9\uc5d0 \uc548\uc73c\ub85c \ubb34\ub108\uc838 \ud06c\uac8c \ud130\uc9c4\ub2e4.' },
     { id: 's8', ex: 1, names: ['\uc2dc\uac04\uc815\uc9c0', '\uc2dc\uac04\uc815\uc9c0', '\ucc9c\uae30\uc5ed\ud589'], lv: 85, mp: 44, mpPct: .08, cd: 45, kind: 'timestop', mult: 9, radius: 600, glyph: 'chain', col: '#e8d9a8', desc: '\ub05d\ud310\uc655. \ud558\ub298\uc758 \uc2dc\uacc4\ub97c \uba48\ucd98\ub2e4. \ud654\uba74\uc774 \ube5b\uc744 \uc783\uace0 \ub458\ub808\uc758 \ubaa8\ub4e0 \uc801\uacfc \uc801\uc758 \ud0c4\uc774 3.5\ucd08 \ub3d9\uc548 \uba48\ucd98\ub2e4 (\ubcf4\uc2a4\ub294 1.8\ucd08). \uba48\ucd98 \uc801\uc740 \ubc1b\ub294 \ud53c\ud574 +60%. \uc2dc\uac04\uc774 \ub2e4\uc2dc \ud750\ub974\ub294 \uc21c\uac04 \uba48\ucdb0 \uc788\ub358 \uc801\uc774 \ubaa8\ub450 \uae08\uc774 \uac00\uba70 \ubd80\uc11c\uc9c4\ub2e4.' }
@@ -21506,8 +21506,8 @@ if (typeof SAVE_FIELDS !== 'undefined') SAVE_FIELDS.push('skSlots', 'skSlotsJob'
 }
 
 /* ---------------- \uc0c8 \uae30\uc220 \ud6a8\uacfc ---------------- */
-const EX_NEED_T = { charge: 1, throw: 1, cleave: 0, issen: 0, hook: 1, mark: 1, stealth: 1, massacre: 0, blink: 0, detonate: 0, void: 1, timestop: 0, crane: 1, dance: 0, tiger: 1, fourgods: 0 };
-const EX_ULT = { issen: 1, massacre: 1, timestop: 1, fourgods: 1 };
+const EX_NEED_T = { charge: 1, adamant: 0, cleave: 0, issen: 0, knives: 0, mark: 1, stealth: 1, massacre: 0, blink: 0, detonate: 0, void: 1, timestop: 0, crane: 1, dance: 0, tiger: 1, fourgods: 0 };
+const EX_ULT = { issen: 1, adamant: 0, massacre: 1, timestop: 1, fourgods: 1 };
 const exNow = () => G.time;
 {
   const _useSkill385 = useSkill;
@@ -21526,6 +21526,8 @@ const exNow = () => G.time;
       if ((sk.kind === 'cleave' || sk.kind === 'detonate') && !near.length) return false;
       if (sk.kind === 'blink' && !mobsInRadius(e.x, e.y, 90).length) return false;
       if (sk.kind === 'mark' && t && t._markT > exNow()) return false;
+      if (sk.kind === 'adamant' && !(e.hp < e.s.maxHp * .6 || near.length >= 4 || near.some(m => m.boss))) return false;
+      if (sk.kind === 'knives' && (!t || dist(e, t) > sk.range)) return false;
     }
     const r = _useSkill385.apply(this, arguments);       /* MP\u00b7\ucfe8\ud0c0\uc784\u00b7\ubc14\ub77c\ubcf4\uae30\u00b7\uc18c\ub9ac */
     if (!r) return r;
@@ -21540,6 +21542,11 @@ const exSlow = (sec) => { G._exSlow = Math.max(G._exSlow || 0, sec); };
 const exInv = (e, sec) => { e._exInv = Math.max(e._exInv || 0, exNow() + sec); };
 function exMoveTo(e, x, y) { const d = Math.hypot(x - e.x, y - e.y), a = Math.atan2(y - e.y, x - e.x); for (let s = 0; s < d; s += 10) { const st = Math.min(10, d - s), ox = e.x, oy = e.y; tryMove(e, Math.cos(a) * st, Math.sin(a) * st); if (Math.hypot(e.x - ox, e.y - oy) < 1) break; } }
 function exBehind(e, t, gap = 26) { const a = Math.atan2(t.y - e.y, t.x - e.x), bx = t.x + Math.cos(a) * ((t.r || 12) + gap), by = t.y + Math.sin(a) * ((t.r || 12) + gap); if (canStand(e, bx, by)) { e.x = bx; e.y = by; } else { const fx = t.x - Math.cos(a) * ((t.r || 12) + gap), fy = t.y - Math.sin(a) * ((t.r || 12) + gap); if (canStand(e, fx, fy)) { e.x = fx; e.y = fy; } } faceTo(e, t.x, t.y); }
+function exAimAng(e, t) {
+  if (e === G.player && !e.auto) { const mv = readMoveInput(); if (Math.hypot(mv.x, mv.y) > .2) return Math.atan2(mv.y, mv.x); return e._lastAng != null ? e._lastAng : dirAngle(e.dir); }
+  if (t) return Math.atan2(t.y - e.y, t.x - e.x);
+  return dirAngle(e.dir);
+}
 function exDropAggro(e) { for (const m of G.mobs) { if (m.threat) m.threat.delete(e); if (m.target === e) { const o = allies().find(a => a !== e && a.hp > 0 && dist(a, m) < 400); m.target = o || null; m.state = o ? 'chase' : 'idle'; } } }
 
 function exSkill(e, sk, t) {
@@ -21556,71 +21563,59 @@ function exSkill(e, sk, t) {
       addFx('exImpact', e.x + Math.cos(a) * 30, e.y - 14 + Math.sin(a) * 30, { col, dur: .35, r: 60 }); exShake(6); Sfx.boom && Sfx.boom();
       break;
     }
-    case 'throw': {
-      const a = Math.atan2(t.y - e.y, t.x - e.x);
-      if (t.boss || t.sig) {
-        damageMob(e, t, D * 1.3, { big: true, noKb: true, threatMul: 1.6 });
-        addFx('exImpact', t.x, t.y - 8, { col, dur: .45, r: 80 }); addFx('quake', t.x, t.y, { r: 120, dur: .5 }); exShake(7);
-        floatText(t.x, t.y - 70, '\uc9d3\ub204\ub974\uae30!', col, true); break;
-      }
-      t.status.stun = { t: 1.4 }; exInv(e, .2); e._exBusy = exNow() + .45;
-      const lx = e.x - Math.cos(a) * 70, ly = e.y - Math.sin(a) * 70, sx = t.x, sy = t.y;
-      addFx('exArc', sx, sy, { x2: lx, y2: ly, h: 110, dur: .42, col, mob: t });
-      exLater(.42, () => {
-        if (t.hp > 0) { t.x = sx; t.y = sy; exMoveTo(t, lx, ly); }
-        const cx = t.hp > 0 ? t.x : lx, cy = t.hp > 0 ? t.y : ly;
-        if (t.hp > 0) damageMob(e, t, D, { stun: 1.2, big: true, noKb: true, threatMul: 1.6 });
-        for (const m of mobsInRadius(cx, cy, 110)) if (m !== t) damageMob(e, m, D * .6, { stun: 1, noKb: true });
-        addFx('exImpact', cx, cy - 6, { col, dur: .45, r: 90 }); addFx('quake', cx, cy, { r: 130, dur: .5 }); burst(cx, cy - 10, '#d8b98a', 14, 200);
-        exShake(9); Sfx.boom && Sfx.boom(); floatText(cx, cy - 70, nm + '!', col, true);
-      });
+    case 'adamant': {
+      exInv(e, sk.dur); e._exGold = exNow() + sk.dur;
+      addFx('exAdamant', e.x, e.y, { src: e, dur: sk.dur, col });
+      addFx('exImpact', e.x, e.y - 10, { col, dur: .45, r: 80 }); addFx('exKanji', e.x, e.y - 96, { s: '\u91d1\u525b', col, dur: .9, size: 34 });
+      floatText(e.x, e.y - 70, `${nm} \u2014 ${sk.dur}\ucd08 \ubb34\uc801`, col, true); exShake(5); Sfx.roar && Sfx.roar();
       break;
     }
     case 'cleave': {
-      const a = t ? Math.atan2(t.y - e.y, t.x - e.x) : dirAngle(e.dir);
+      const a = exAimAng(e, t);
       e._exBusy = exNow() + .75;
       addFx('exCharge', e.x, e.y - 18, { col, dur: .7, src: e, r: 90 });
+      addFx('exAimLine', e.x, e.y - 18, { ang: a, len: sk.range, w: sk.width, col, dur: .7, src: e });
       exLater(.7, () => {
-        const hit = G.mobs.filter(m => m.hp > 0 && dist(e, m) <= sk.range + (m.r || 10) && Math.abs(angDiff(Math.atan2(m.y - e.y, m.x - e.x), a)) < 1.4);
-        for (const m of hit) { m._brkT = exNow() + 8; damageMob(e, m, D, { big: true, threatMul: 1.6 }); addFx('vCrackMark', m.x, m.y, { dur: 1.2, col }); }
-        addFx('exCrescent', e.x, e.y - 18, { ang: a, r: sk.range, col, dur: .45 }); addFx('exCrescent', e.x, e.y - 18, { ang: a, r: sk.range * .7, col: '#ffffff', dur: .35 });
-        exFlash('#fff2c0', .25); exShake(10); exSlow(.12); Sfx.boom && Sfx.boom();
+        const x0 = e.x, y0 = e.y, hitSet = new Set(), steps = 12, T = .42;
+        addFx('exWaveFly', x0, y0 - 18, { ang: a, len: sk.range, r: sk.width * 1.25, col, dur: T + .12 });
+        for (let k = 1; k <= steps; k++) exLater(T * k / steps, () => {
+          const d = sk.range * k / steps, px = x0 + Math.cos(a) * d, py = y0 + Math.sin(a) * d;
+          for (const m of mobsInRadius(px, py, sk.width)) if (!hitSet.has(m) && (m.x - x0) * Math.cos(a) + (m.y - y0) * Math.sin(a) > -10) { hitSet.add(m); m._brkT = exNow() + 8; damageMob(e, m, D, { big: true, threatMul: 1.6 }); addFx('vCrackMark', m.x, m.y, { dur: 1.2, col }); }
+        });
+        exFlash('#fff2c0', .22); exShake(10); exSlow(.1); Sfx.boom && Sfx.boom();
         floatText(e.x, e.y - 74, nm + '!', col, 2);
       });
       break;
     }
     case 'issen': {
-      const a = t ? Math.atan2(t.y - e.y, t.x - e.x) : dirAngle(e.dir), x0 = e.x, y0 = e.y;
-      exInv(e, 1.6); e._exBusy = exNow() + 1.3;
-      addFx('exVeil', e.x, e.y, { dur: 1.7, col: '0,0,0', a: .62, hold: .7 });
-      addFx('exCharge', e.x, e.y - 18, { col: '#ffffff', dur: .55, src: e, r: 70 });
-      addFx('exKanji', e.x, e.y - 90, { s: '\u5c45\u5408', col: '#ffffff', dur: .55, size: 26 });
-      exLater(.55, () => {
-        exMoveTo(e, x0 + Math.cos(a) * sk.range, y0 + Math.sin(a) * sk.range);
-        const x1 = e.x, y1 = e.y, ex = x1 + Math.cos(a) * 60, ey = y1 + Math.sin(a) * 60, sx = x0 - Math.cos(a) * 40, sy = y0 - Math.sin(a) * 40;
-        const hit = G.mobs.filter(m => m.hp > 0 && segDist(m.x, m.y, sx, sy, ex, ey) < 70 + (m.r || 10));
-        addFx('exIssen', sx, sy - 18, { x2: ex, y2: ey - 18, col: '#ffffff', dur: .9 }); addFx('ghost', x0, y0, { dur: .5, src: e });
-        for (const m of hit) { damageMob(e, m, D, { big: true, noKb: true, threatMul: 2 }); m.status.stun = m.boss ? null : { t: .8 }; }
-        exFlash('#ffffff', .45); exShake(12); exSlow(.35); Sfx.gyeok && Sfx.gyeok();
+      exInv(e, 2); e._exBusy = exNow() + 1.3;
+      addFx('exVeil', e.x, e.y, { dur: 1.9, col: '0,0,0', a: .66, hold: .9 });
+      addFx('exCharge', e.x, e.y - 18, { col: '#ffffff', dur: .6, src: e, r: 70 });
+      addFx('exKanji', e.x, e.y - 90, { s: '\u5c45\u5408', col: '#ffffff', dur: .6, size: 26 });
+      exLater(.6, () => {
+        const z = G.cam.zoom, hw = VW / z / 2 + 20, hh = VH / z / 2 + 20, X0 = e.x - hw, Y0 = e.y - hh, X1 = e.x + hw, Y1 = e.y + hh;
+        const hit = G.mobs.filter(m => m.hp > 0 && m.x > X0 && m.x < X1 && m.y > Y0 && m.y < Y1);
+        for (let i = 0; i < 6; i++) { const yy = Y0 + (Y1 - Y0) * (i + .5) / 6 + rnd(-30, 30); addFx('exIssen', X0, yy, { x2: X1, y2: yy + rnd(-90, 90), col: '#ffffff', dur: .7, delay: i * .03, w: 10 }); }
+        for (const m of hit) { m.status.stun = m.boss ? null : { t: 2 }; addFx('exIssen', m.x - 50, m.y - 18 + 20, { x2: m.x + 50, y2: m.y - 18 - 20, col: '#fff', dur: .5, w: 6 }); }
+        exFlash('#ffffff', .5); exShake(12); exSlow(.35); Sfx.gyeok && Sfx.gyeok();
         exLater(.6, () => {
-          for (const m of hit) if (m.hp > 0) { damageMob(e, m, pw * 9 * rk, { critBonus: .35, big: true, noKb: true }); addFx('exSplit', m.x, m.y - 18, { ang: a, col: '#fff', dur: .45 }); }
-          addFx('exKanji', e.x, e.y - 100, { s: '\u4e00\u9583', col: '#fff6d8', dur: 1.1, size: 54 });
-          exFlash('#ffeeb0', .35); exShake(14); Sfx.boom && Sfx.boom();
+          for (const m of hit) {
+            if (m.hp <= 0 || !G.mobs.includes(m)) continue;
+            addFx('exSplit', m.x, m.y - 18, { ang: -.4, col: '#fff', dur: .5 }); burst(m.x, m.y - 18, '#ffffff', 8, 180);
+            if (m.boss || m.sig) damageMob(e, m, D * rk, { big: true, noKb: true, critBonus: .3 });
+            else damageMob(e, m, Math.max(D, (m.hp + m.dr) * 1.12 + 10), { critBonus: -1, big: true, noKb: true });
+          }
+          addFx('exKanji', e.x, e.y - 100, { s: '\u4e00\u9583', col: '#fff6d8', dur: 1.2, size: 58 });
+          exFlash('#ffeeb0', .4); exShake(15); Sfx.boom && Sfx.boom();
         });
       });
       break;
     }
     /* ---------- \ube44\uac1d ---------- */
-    case 'hook': {
-      const a = Math.atan2(t.y - e.y, t.x - e.x);
-      addFx('exChain', e.x, e.y - 18, { src: e, tgt: t, dur: .45, col });
-      exLater(.16, () => {
-        if (t.hp <= 0) return;
-        damageMob(e, t, D, { big: true, noKb: true, threatMul: 1.4 });
-        if (t.boss || t.sig) { addFx('ghost', e.x, e.y, { dur: .3, src: e }); exMoveTo(e, t.x - Math.cos(a) * ((t.r || 12) + 26), t.y - Math.sin(a) * ((t.r || 12) + 26)); }
-        else { exMoveTo(t, e.x + Math.cos(a) * 40, e.y + Math.sin(a) * 40); t.status.stun = { t: 1 }; }
-        addFx('hitspark', t.x, t.y - 18, { col, dur: .25 });
-      });
+    case 'knives': {
+      const a = t ? Math.atan2(t.y - 16 - (e.y - 22), t.x - e.x) : exAimAng(e, null);
+      for (let k = 0; k < sk.count; k++) fireProj(e, a + (k - (sk.count - 1) / 2) * .2, { dmg: D, kind: 'arrow', col, range: sk.range, speed: 640, pierce: 1, hitSet: new Set(), hitOpt: { col, critBonus: .15 }, shuriken: 1 });
+      addFx('vSpeedLines', e.x, e.y - 20, { dur: .18, col, src: e });
       break;
     }
     case 'mark': {
@@ -21832,7 +21827,7 @@ function exMark(e, t, sk) {
   damageMob = function (src, m, base, opt = {}) {
     if (src && src.kind !== 'mob') {
       const now = exNow();
-      if (m._markT > now) { base *= 1 + (m._markSk?.amp || .3); if (src === m._markBy) opt = { ...opt, critBonus: (opt.critBonus || 0) + .25 }; }
+      if (m._markT > now) { base *= 1 + (m._markSk?.amp || .3); if (src === m._markBy) opt = { ...opt, critBonus: (opt.critBonus || 0) + 5 }; }
       if (m._brkT > now) base *= 1.25;
       if (m._tsT > now) { base *= 1.6; if (!opt.noKb) opt = { ...opt, noKb: true }; }
     }
@@ -21845,16 +21840,20 @@ function exMark(e, t, sk) {
     if (marked) {
       const e = m._markBy, sk = m._markSk; m._markT = 0;
       const n = nearestMob(m.x, m.y, 300, o => o !== m && o.hp > 0);
-      if (e && e.hp > 0) { e.mp = Math.min(e.s.maxMp, e.mp + e.s.maxMp * .2); floatText(e.x, e.y - 52, 'MP +20%', '#7fb8ff'); }
+      if (e && e.hp > 0) { e.mp = Math.min(e.s.maxMp, e.mp + e.s.maxMp * .2); floatText(e.x, e.y - 52, 'MP +20%', '#7fb8ff');
+        const pw = e.s.power * (1 + (e.rank || 0) * .25);
+        for (const o of mobsInRadius(m.x, m.y, 130)) if (o !== m) damageMob(e, o, pw * 3, { big: true, noKb: true, col: '#ff4a5a' });
+        addFx('vBurst', m.x, m.y - 16, { col: '#ff4a5a', dur: .45, s: 3 }); addFx('ring', m.x, m.y, { col: '#ff4a5a', r: 130, dur: .4 }); addFx('exKanji', m.x, m.y - 60, { s: '\u7375', col: '#ff4a5a', dur: .7, size: 30 }); exShake(5); }
       if (n && sk) { addFx('exIssen', m.x, m.y - 18, { x2: n.x, y2: n.y - 18, col: '#ff4a5a', dur: .3, w: 3 }); exMark(e, n, sk); }
     }
     return r;
   };
   const _damageAlly389 = damageAlly;
   damageAlly = function (t, raw, src, opt) {
-    if (t && t._exInv > exNow()) return;
+    if (t && t._exInv > exNow()) { if (t._exGold > exNow() && Math.random() < .35) floatText(t.x, t.y - 44, '\ubb34\uc801', '#ffd24a'); return; }
     if (src && src._mukT > exNow()) raw *= .75;
     if (src && src._tsT > exNow()) return;
+    if (t && t._exHide > exNow() && src && src.kind === 'mob') return;
     if (t && t._shield > 0 && t._shieldT > exNow()) {
       const take = Math.min(t._shield, raw); t._shield -= take; raw -= take;
       floatText(t.x, t.y - 44, '\ub9c9\uc74c', '#7fd0c8');
@@ -21878,6 +21877,8 @@ function exLater(sec, fn) { EX_Q.push({ at: G.time + sec, map: G.mapId, fn }); }
     const r = _update385.call(this, dt);
     const now = exNow();
     for (let i = EX_Q.length - 1; i >= 0; i--) { const q = EX_Q[i]; if (q.map !== G.mapId) { EX_Q.splice(i, 1); continue; } if (now >= q.at) { EX_Q.splice(i, 1); try { q.fn(); } catch (e) { reportError(e); } } }
+    const hp = G.player; if (hp && hp._exHide > now) exDropAggro(hp);
+    if (hp) { const mv = readMoveInput(); if (Math.hypot(mv.x, mv.y) > .2) hp._lastAng = Math.atan2(mv.y, mv.x); else if (hp._lastDir !== hp.dir) hp._lastAng = dirAngle(hp.dir); hp._lastDir = hp.dir; }
     for (const a of allies()) if (a._cdHaste > now && a.cds) for (const k in a.cds) if (a.cds[k] > 0) a.cds[k] = Math.max(0, a.cds[k] - dt);
     if (G._tsUntil && G._tsUntil < now && cv.style.filter) { cv.style.filter = ''; G._tsUntil = 0; }
     return r;
@@ -21894,6 +21895,17 @@ function segDist(px, py, ax, ay, bx, by) { const vx = bx - ax, vy = by - ay, l2 
 const exK = f => clamp(f.t / f.dur, 0, 1);
 const exSrc = f => { if (f.src) { f.x = f.src.x; f.y = f.src.y; } };
 Object.assign(AIR_FX, {
+  exAdamant(f) { exSrc(f); if (!f.src || f.src.hp <= 0) { f.t = f.dur; return; } const left = f.dur - f.t, a = left < 1 ? (Math.floor(f.t * 8) % 2 ? .25 : .7) : .7, y = f.y - 22;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; const g = ctx.createRadialGradient(f.x, y, 6, f.x, y, 40); g.addColorStop(0, 'rgba(255,215,90,.0)'); g.addColorStop(.7, `rgba(255,200,60,${.35 * a})`); g.addColorStop(1, 'rgba(255,200,60,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(f.x, y, 34, 42, 0, 0, TAU); ctx.fill();
+    ctx.globalAlpha = a; ctx.strokeStyle = f.col; ctx.lineWidth = 2; ctx.beginPath(); for (let i = 0; i <= 6; i++) { const q = i / 6 * TAU + f.t * .8; i ? ctx.lineTo(f.x + Math.cos(q) * 30, y + Math.sin(q) * 38) : ctx.moveTo(f.x + Math.cos(q) * 30, y + Math.sin(q) * 38); } ctx.stroke();
+    for (let i = 0; i < 4; i++) { const q = f.t * 2 + i * 1.57; ctx.fillStyle = '#fff2b0'; ctx.fillRect(f.x + Math.cos(q) * 30 - 1.5, y + Math.sin(q) * 38 - 1.5, 3, 3); }
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = f.col; ctx.strokeStyle = '#000'; ctx.lineWidth = 3; const tx = `\ubb34\uc801 ${Math.ceil(left)}`; ctx.strokeText(tx, f.x, f.y + 16); ctx.fillText(tx, f.x, f.y + 16); ctx.restore(); },
+  exAimLine(f) { exSrc(f); const k = exK(f); ctx.save(); ctx.translate(f.x, f.y - 18); ctx.rotate(f.ang); ctx.globalAlpha = .18 + k * .25; ctx.fillStyle = f.col; ctx.fillRect(0, -f.w, f.len * Math.min(1, k * 1.6), f.w * 2); ctx.globalAlpha = .6; ctx.strokeStyle = f.col; ctx.setLineDash([10, 8]); ctx.lineWidth = 2; ctx.strokeRect(0, -f.w, f.len, f.w * 2); ctx.restore(); },
+  exWaveFly(f) { const k = exK(f), d = f.len * Math.min(1, k * 1.15), x = f.x + Math.cos(f.ang) * d, y = f.y + Math.sin(f.ang) * d, a = k > .85 ? (1 - k) / .15 : 1;
+    ctx.save(); ctx.globalCompositeOperation = 'lighter';
+    for (let j = 1; j <= 4; j++) { const dd = Math.max(0, d - j * 34); ctx.save(); ctx.translate(f.x + Math.cos(f.ang) * dd, f.y + Math.sin(f.ang) * dd); ctx.rotate(f.ang); ctx.globalAlpha = a * .18 * (5 - j) / 4; ctx.fillStyle = f.col; ctx.beginPath(); ctx.arc(0, 0, f.r, -1.25, 1.25); ctx.arc(-f.r * .3, 0, f.r * .85, 1.2, -1.2, true); ctx.closePath(); ctx.fill(); ctx.restore(); }
+    ctx.translate(x, y); ctx.rotate(f.ang); ctx.globalAlpha = a; ctx.fillStyle = f.col; ctx.beginPath(); ctx.arc(0, 0, f.r, -1.3, 1.3); ctx.arc(-f.r * .3, 0, f.r * .86, 1.25, -1.25, true); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(0, 0, f.r * .97, -1.1, 1.1); ctx.arc(-f.r * .12, 0, f.r * .9, 1.05, -1.05, true); ctx.closePath(); ctx.fill(); ctx.restore(); },
   exImpact(f) { const k = exK(f); ctx.save(); ctx.globalAlpha = 1 - k; ctx.strokeStyle = f.col; ctx.lineWidth = 6 * (1 - k) + 1; ctx.beginPath(); ctx.ellipse(f.x, f.y, f.r * (.3 + k), f.r * .5 * (.3 + k), 0, 0, TAU); ctx.stroke();
     ctx.fillStyle = f.col; for (let i = 0; i < 10; i++) { const a = i / 10 * TAU, d = f.r * (.4 + k * 1.1); ctx.fillRect(f.x + Math.cos(a) * d - 2, f.y + Math.sin(a) * d * .5 - 2, 4, 4); } ctx.restore(); },
   exArc(f) { const k = exK(f), x = lerp(f.x, f.x2, k), y = lerp(f.y, f.y2, k) - Math.sin(k * Math.PI) * f.h;
@@ -21985,6 +21997,13 @@ Object.assign(AIR_FX, {
     for (const d of [-1, 1]) { ctx.fillStyle = 'rgba(255,90,40,.8)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(d * 80, -90, d * 190, -40); ctx.quadraticCurveTo(d * 110, -20, d * 150, 20); ctx.quadraticCurveTo(d * 60, 0, 0, 20); ctx.fill(); ctx.fillStyle = 'rgba(255,220,120,.7)'; ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(d * 60, -60, d * 120, -30); ctx.quadraticCurveTo(d * 60, -10, 0, 12); ctx.fill(); }
     ctx.fillStyle = '#fff2b0'; ctx.beginPath(); ctx.ellipse(0, 0, 14, 26, 0, 0, TAU); ctx.fill(); ctx.restore(); }
 });
+
+/* MP: \uae30\uc220 \uc804\uccb4 \uc18c\ube44 +30% (\uc790\ub3d9\uc0ac\ub0e5\uc5d0\uc11c\ub3c4 MP \uac00 \uc904\uc5b4\ub4e4\uac8c) */
+const MP_MUL389 = 1.3;
+{
+  const _skillMp389 = skillMp;
+  skillMp = function (e, sk) { const v = _skillMp389.apply(this, arguments); return e === G.player ? Math.round(v * MP_MUL389) : v; };
+}
 /* ---------------- \uae30\uc220 \ucc3d: \uce78 \uace0\ub974\uae30 ---------------- */
 {
   const _menuSkill385 = MENU.skill;
