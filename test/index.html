@@ -22173,6 +22173,7 @@ function skL(key, x, y, w, o = {}) {
   let a = Math.max(0, Math.min(1, o.a == null ? 1 : o.a)); if (o.flick) a *= 1 - o.flick * Math.random();
   if (a <= .01) return true;
   ctx.save(); ctx.translate(x + (o.jit ? rnd(-o.jit, o.jit) : 0), y + (o.jit ? rnd(-o.jit, o.jit) : 0));
+  if (o.flatY) ctx.scale(1, o.flatY);   /* \ub545\uc5d0 \ub215\ud78c\ub2e4 (\ub3cc\ub824\ub3c4 \ub0a9\uc791\ud558\uac8c) */
   if (o.ang != null) { if (Math.cos(o.ang) < 0) { ctx.scale(-1, 1); ctx.rotate(Math.PI - o.ang); } else ctx.rotate(o.ang); } else if (o.flip) ctx.scale(-1, 1);
   if (o.rot) ctx.rotate(o.rot);
   if (o.skew) ctx.transform(1, 0, o.skew, 1, 0, 0);
@@ -22346,6 +22347,115 @@ Object.assign(AIR_FX, {
     return _drawProj398.apply(this, arguments);
   };
 }
+
+const SKX_V399 = Object.assign({}, AIR_FX);   /* \uc544\ub798\uc5d0\uc11c \ub36e\uc5b4\uc4f0\uae30 \uc804 \uadf8\ub9bc (\ubc29\uc220\uac00 \ucd95\uc9c0 \uc9c4 \ub4f1\uc740 \uadf8\ub300\ub85c \uc4f4\ub2e4) */
+/* ============================================================
+   v400 \u00b7 \ub545\uc5d0 \ub179\uc774\uae30 \u2014 \ubc29\uc220\uac00\u00b7\ud48d\ub958\uac1d \uc2e0\uae30\uc220\uc774 \ud654\uba74 \uc704\uc5d0 "\ubd99\uc5ec \ub123\uc740" \uac83\ucc98\ub7fc \ub5a0 \ubcf4\uc774\ub358 \uac83 \uace0\uce68
+   \u00b7 \uae30\uc6b4(\ube5b\u00b7\ubd88\u00b7\ubc14\ub78c\u00b7\uc601\ud63c)\uc740 \ub354\ud558\uae30 \uc11e\uae30\ub85c \uadf8\ub9b0\ub2e4: \uadf8\ub9bc\uc758 \uc5b4\ub450\uc6b4 \ubc14\ud0d5\uc774 \uc0ac\ub77c\uc9c0\uace0 \ube5b\ub9cc \ub0a8\uc544 \ubc30\uacbd\uacfc \uc11e\uc778\ub2e4
+   \u00b7 \ub545\uc5d0 \ub2ff\ub294 \uac83\uc5d4 \uadf8\ub9bc\uc790, \ube5b\ub098\ub294 \uac83\uc5d4 \ub545\uc5d0 \ube44\uce5c \ube5b(\ubb3c\uc6c5\ub369\uc774\ucc98\ub7fc \ub0a9\uc791\ud55c \ube5b)\uc744 \uae50\ub2e4
+   \u00b7 \uc9c4\u00b7\uc18c\uc6a9\ub3cc\uc774\ub294 \ub545\uc5d0 \ub215\ud600\uc11c(\ub0a9\uc791\ud558\uac8c) \ub3cc\ub9b0\ub2e4
+   \u00b7 \ub098\ud0c0\ub0a0 \ub54c \ud558\ub298\uc5d0\uc11c \ube5b\uae30\ub465\uacfc \ud568\uaed8 \ub0b4\ub824\uc624\uace0, \uc0ac\ub77c\uc9c8 \ub54c \ube5b \uc54c\uac31\uc774\ub85c \ud769\uc5b4\uc9c4\ub2e4 (\ub69d \uc0ac\ub77c\uc9c0\uc9c0 \uc54a\uac8c)
+   ============================================================ */
+function skShadow(x, y, rx, a) { ctx.save(); ctx.globalAlpha = a; const g = ctx.createRadialGradient(x, y, 0, x, y, rx); g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.translate(x, y); ctx.scale(1, .4); ctx.translate(-x, -y); ctx.beginPath(); ctx.arc(x, y, rx, 0, TAU); ctx.fill(); ctx.restore(); }
+function skPool(x, y, rx, col, a) { if (a <= .01) return; ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = Math.min(1, a); const g = ctx.createRadialGradient(x, y, 0, x, y, rx); g.addColorStop(0, col); g.addColorStop(.55, col.replace(/[\d.]+\)$/, '0.25)')); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.translate(x, y); ctx.scale(1, .42); ctx.translate(-x, -y); ctx.beginPath(); ctx.arc(x, y, rx, 0, TAU); ctx.fill(); ctx.restore(); }
+Object.assign(AIR_FX, {
+  /* \ub545 \uc704\ub85c \ud37c\uc9c0\ub294 \ub0a9\uc791\ud55c \uace0\ub9ac */
+  skRing(f) { const k = skK(f), r = f.r0 + (f.r1 - f.r0) * (1 - (1 - k) ** 3); ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = (1 - k) * (f.a || .8); ctx.strokeStyle = f.col; ctx.lineWidth = (f.w || 6) * (1 - k) + 1; ctx.shadowColor = f.col; ctx.shadowBlur = 12; ctx.beginPath(); ctx.ellipse(f.x, f.y, r, r * .42, 0, 0, TAU); ctx.stroke(); ctx.restore(); },
+  /* \ud558\ub298\uc5d0\uc11c \ub0b4\ub9ac\uaf42\ub294 \ube5b\uae30\ub465 */
+  skPillar(f) { const k = skK(f), a = (k < .15 ? k / .15 : 1 - (k - .15) / .85) * (f.a || .38), w = (f.w || 50) * (1 - k * .5); ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = a;
+    const g = ctx.createLinearGradient(f.x, f.y - 420, f.x, f.y); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.7, f.col); g.addColorStop(1, '#ffffff'); ctx.fillStyle = g; ctx.fillRect(f.x - w / 2, f.y - 420, w, 420);
+    ctx.globalAlpha = a * .5; ctx.fillRect(f.x - w, f.y - 300, w * 2, 300); ctx.restore(); skPool(f.x, f.y, w * 2.4, f.col.replace('rgb(', 'rgba(').replace(')', ',.8)'), a); }
+});
+const skRingAt = (x, y, col, r0, r1, dur, o = {}) => addFx('skRing', x, y, Object.assign({ col, r0, r1, dur }, o));
+const skPillarAt = (x, y, col, w, dur) => addFx('skPillar', x, y, { col, w, dur });
+Object.assign(AIR_FX, {
+  /* \u2500\u2500 \uc624\ud589\ud3ed\ub82c \u00b7 \uc624\ud589\ucc9c\ubd95: \ub545\uc5d0\uc11c \ud130\uc838 \uc624\ub974\ub294 \ube5b (\uadf8\ub9bc\uc740 \ub354\ud558\uae30 \uc11e\uae30\ub85c, \ube68\ub9ac \ud37c\uc9c0\uace0 \ube68\ub9ac \uc0ac\ub77c\uc9c4\ub2e4) \u2500\u2500 */
+  exRune(f) {
+    if (f.sk !== 'detonate' || f.r < 60) return SKX_V399.exRune(f);
+    const k = skK(f), big = f.rk === 2;
+    skOnce(f, () => {
+      skBurst(f.x, f.y - 20, ['#ff7a3a', '#8ad8ff', '#fff27a', '#9fe86a', '#e0b070'], big ? 44 : 30, big ? 480 : 380, { dur: .8, size: 4, g: 200 });
+      skRingAt(f.x, f.y, '#ffe9b0', 20, big ? 330 : 260, .55, { w: 10 }); skRingAt(f.x, f.y, '#ffffff', 10, big ? 220 : 170, .35, { w: 6 });
+      if (big) for (const [i, c] of ['#ff6a3a', '#7ad0ff', '#fff27a', '#8ae06a', '#d8a060'].entries()) { const a = i / 5 * TAU - Math.PI / 2; for (let j = 0; j < 6; j++) skMote(f.x, f.y - 20, c, { vx: Math.cos(a) * (280 + j * 40), vy: Math.sin(a) * (140 + j * 20), dur: .6, size: 4.5 }); }
+      G.shake = Math.max(G.shake || 0, big ? 12 : 8);
+    });
+    skPool(f.x, f.y, (big ? 260 : 200) * (.4 + k), 'rgba(255,220,150,.9)', (1 - k) * .9);
+    const spread = 1 - (1 - Math.min(1, k / .5)) ** 3;
+    skL('S1_' + f.rk, f.x, f.y - 30 - spread * 12, 300 * (.5 + spread * .75), { add: true, a: (1 - k) ** 1.4 * 1.1, rot: k * .9, glow: .6, gf: 30 });
+    skL('S1_' + f.rk, f.x, f.y, 300 * (.6 + spread * .9), { add: true, flatY: .42, a: (1 - k) ** 2 * .6, rot: -k * .6 });   /* \ub545\uc5d0 \ube44\uce5c \uac19\uc740 \ubb34\ub2ac */
+  },
+  /* \u2500\u2500 \ud751\uacf5\uad6c \u00b7 \ud63c\ub3c8\ud751\uacf5: \uc5b4\ub450\uc6b4 \ud575\uc740 \uc9c1\uc811 \uadf8\ub9ac\uace0, \ubcf4\ub78f\ube5b \uc18c\uc6a9\ub3cc\uc774\ub294 \ube5b\uc73c\ub85c (\ub545\uc5d0\ub3c4 \ub215\ud600\uc11c \ud55c \uc7a5 \ub354) \u2500\u2500 */
+  exVoid(f) {
+    if (!SKFX.ok) return SKX_V399.exVoid(f);
+    const age = f.t, fly = Math.min(1, age / .6), x = lerp(f.x, f.tx, fly), y = lerp(f.y, f.ty - 34, fly), gy = lerp(f.y + 24, f.ty, fly), end = age > 3.2 ? (age - 3.2) / .4 : 0, live = 1 - end, r = f.r * (fly < 1 ? .6 + fly * .4 : 1) * (1 - end * .9), key = 'S2_' + (f.rk || 0), big = f.rk === 2;
+    if (end > 0 && !f._boom) { f._boom = 1; skBurst(x, y, ['#c9a8ff', '#ffffff', '#6a3aaa'], 34, 420, { dur: .7 }); skRingAt(f.tx, f.ty, '#c9a8ff', 20, f.R * 1.3, .5, { w: 8 }); G.shake = Math.max(G.shake || 0, 10); }
+    skShadow(x, gy, r * 2.4, .5 * live);
+    if (fly >= 1) {
+      skL(key, f.tx, f.ty, f.R * 2.3, { add: true, flatY: .42, rot: -age * 1.8, a: .55 * live, glow: .3, gf: 5 });   /* \ub545\uc5d0 \uae54\ub9b0 \uc18c\uc6a9\ub3cc\uc774 */
+      skPool(f.tx, f.ty, f.R * 1.1, 'rgba(150,90,255,.7)', .5 * live);
+      if (end === 0) for (let i = 0; i < (big ? 4 : 2); i++) { const a = rnd(TAU), d = f.R * rnd(.7, 1.15); skMote(f.tx + Math.cos(a) * d, f.ty + Math.sin(a) * d * .42, i % 2 ? '#c9a8ff' : '#7a4ad8', { vx: -Math.cos(a) * d * 2.3, vy: -Math.sin(a) * d * 1 - 25, drag: 1, dur: .42, size: 3 }); }
+    }
+    if (fly < 1) for (let j = 1; j <= 3; j++) { const q = Math.max(0, fly - j * .08); skL(key, lerp(f.x, f.tx, q), lerp(f.y, f.ty - 34, q), r * 3.6, { a: .18 * (4 - j) / 3, add: true, rot: age * 2 }); }
+    /* \ud575: \ube5b\uc744 \ube68\uc544\ub4e4\uc774\ub294 \uac80\uc740 \uad6c (\uc8fc\ubcc0\uc774 \uc0b4\uc9dd \uc77c\uadf8\ub7ec\uc838 \ubcf4\uc774\uac8c \uace0\ub9ac \ud558\ub098) */
+    ctx.save(); const g = ctx.createRadialGradient(x, y, 0, x, y, r * 1.35); g.addColorStop(0, 'rgba(0,0,0,.95)'); g.addColorStop(.6, 'rgba(10,0,20,.85)'); g.addColorStop(1, 'rgba(10,0,20,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 1.35, 0, TAU); ctx.fill(); ctx.restore();
+    skL(key, x, y, r * 4.4, { add: true, rot: age * 2.2, breathe: .06, bf: 9, a: .95 * live + .05, glow: .5, gf: 6 });
+    ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = '#e8d8ff'; ctx.globalAlpha = .35 * live; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.ellipse(x, y, r * 1.5 + Math.sin(age * 12) * 2, r * 1.5, 0, 0, TAU); ctx.stroke(); ctx.restore();
+  },
+  /* \u2500\u2500 \uba39\ud638\ub791\uc774 \u00b7 \uae08\ubc15\uc2e0\ud638: \ub545\uc5d0 \uadf8\ub9bc\uc790, \ub450\ub8e8\ub9c8\ub9ac\uc5d0\uc11c \uba39\uc774 \ud280\uba70 \ud280\uc5b4\ub098\uc624\uace0, \ucc29\uc9c0\ud558\uba74 \ud759\uba3c\uc9c0\u00b7\uace0\ub9ac, \uc0ac\ub77c\uc9c8 \ub550 \uba39/\uae08\uac00\ub8e8\ub85c \u2500\u2500 */
+  exInkTiger(f) {
+    if (!SKFX.ok) return SKX_V399.exInkTiger(f);
+    const k = skK(f), rk = f.rk != null ? f.rk : f.gold ? 2 : 0, key = 'D2_' + rk, flip = f.x2 < f.x, H = 60, P = q => [lerp(f.x, f.x2, q), lerp(f.y, f.y2, q) - Math.sin(q * Math.PI) * H], [x, y] = P(k), gx = lerp(f.x, f.x2, k), gy = lerp(f.y, f.y2, k) + 14;
+    const air = Math.sin(k * Math.PI), born = Math.min(1, k / .14), ink = rk === 2 ? '#ffd76a' : rk ? '#3fae8a' : '#1d1a17';
+    skOnce(f, () => skBurst(f.x, f.y, [ink, '#1d1a17'], 14, 220, { dur: .5, size: 4, g: 200 }));
+    skShadow(gx, gy, 62 - air * 18, .55 - air * .25);
+    if (rk === 2) skPool(gx, gy, 90, 'rgba(255,210,110,.8)', .45);
+    for (let j = 3; j >= 1; j--) { const [tx, ty] = P(Math.max(0, k - j * .06)); skL(key, tx, ty, 150, { flip, a: .12 * (4 - j) * born, add: rk === 2, sx: 1 + air * .2 }); }
+    const land = k > .82 ? (k - .82) / .18 : 0;
+    skL(key, x, y, 150 * (.4 + born * .6), { flip, a: born * (1 - land * .9), sx: 1 + air * .18 - land * .08, sy: 1 - air * .07 + land * .06, skew: (flip ? 1 : -1) * air * .12, glow: rk === 2 ? .55 : rk ? .3 : 0, gf: 12 });
+    if (Math.random() < .5) skMote(x + (flip ? 40 : -40), y + rnd(-10, 20), ink, { vx: (flip ? 1 : -1) * 60, vy: rnd(20, 60), g: 120, dur: .5, size: 4 });
+    if (k > .82 && !f._land) { f._land = 1; skBurst(f.x2, f.y2 + 12, ['#8a7a60', ink], 18, 240, { flat: true, dur: .55, size: 4, g: 100 }); skRingAt(f.x2, f.y2 + 14, rk === 2 ? '#ffd76a' : '#e8e0d0', 10, 120, .4, { w: 5 });
+      for (let i = 0; i < 16; i++) skMote(x + rnd(-50, 50), y + rnd(-30, 20), ink, { vx: rnd(-40, 40), vy: rnd(-90, -30), dur: .7, size: 3.5 }); }
+  },
+  /* \u2500\u2500 \uc0ac\uc2e0\ucc9c\uac15\uc9c4: \uc9c4\uc740 \ub545\uc758 \ube5b, \uc2e0\ub4e4\uc740 \ube5b\uc73c\ub85c \ub41c \uc601\ud63c \u2014 \ube5b\uae30\ub465\uacfc \ud568\uaed8 \ub0b4\ub824\uc640\uc11c \ube5b\uac00\ub8e8\ub85c \ud769\uc5b4\uc9c4\ub2e4 \u2500\u2500 */
+  exArray(f) { const k = f.t / f.dur, grow = skEaseBack(Math.min(1, f.t / .45)), a = Math.min(1, f.t / .3) * (k > .85 ? (1 - k) / .15 : 1);
+    skOnce(f, () => { skRingAt(f.x, f.y, '#ffe08a', 30, f.r * 1.1, .6, { w: 8 }); skPillarAt(f.x, f.y, 'rgb(255,220,120)', 70, .6); });
+    skPool(f.x, f.y, f.r * 1.1, 'rgba(255,190,80,.6)', a * .25);
+    if (Math.random() < .6) { const q = rnd(TAU), d = f.r * rnd(.2, 1); skMote(f.x + Math.cos(q) * d, f.y + Math.sin(q) * d * .42, '#ffe08a', { vx: 0, vy: rnd(-120, -50), dur: .9, size: 2.5 }); }
+    skL('D3_0', f.x, f.y, f.r * 2.1 * grow, { add: true, a: a * .62, glow: .25, gf: 3 }); },
+  exDragon(f) { if (!SKFX.ok) return SKX_V399.exDragon(f); const k = skK(f), x = lerp(f.x, f.x2, k), a = (k < .12 ? k / .12 : k > .75 ? (1 - k) / .25 : 1), dive = (1 - Math.min(1, k / .25)) * -120, y = f.y + dive + Math.sin(f.t * 6) * 10;
+    skOnce(f, () => skPillarAt(f.x + 120, f.y + 40, 'rgb(90,170,255)', 60, .6));
+    skPool(x, f.y + 70, 140, 'rgba(90,170,255,.7)', a * .25); skShadow(x, f.y + 70, 130, a * .35);
+    for (let j = 3; j >= 1; j--) skL('D3_1', x - j * 55, y - dive * .1 * j, 290, { a: a * .1 * (4 - j), add: true, waveV: 6, wf: 10, seed: -j * .1 });
+    skL('D3_1', x, y, 300, { a: a * .88, waveV: 6, wf: 10, glow: .22, gf: 14 });
+    if (Math.random() < .9) skMote(x - rnd(0, 160), y + rnd(-50, 50), Math.random() < .5 ? '#bfe4ff' : '#ffffff', { vx: rnd(-80, -20), vy: rnd(-20, 20), dur: .5, size: 3 });
+    if (k > .75 && Math.random() < .8) skMote(x + rnd(-120, 120), y + rnd(-50, 50), '#7ac8ff', { vx: rnd(-30, 30), vy: rnd(-60, -20), dur: .6, size: 3 }); },
+  exBigClaw(f) { if ((f.k || 0) !== 0) return SKX_V399.exBigClaw(f); const k = skK(f), lunge = (1 - Math.min(1, k / .25)) * -60, a = skFade(k, .08, .55);
+    skOnce(f, () => { skBurst(f.x, f.y, ['#ffffff', '#e0f0ff'], 22, 340, { dur: .5 }); skPillarAt(f.x - 120, f.y + 20, 'rgb(230,240,255)', 60, .5); skRingAt(f.x, f.y + 20, '#ffffff', 20, f.r, .45, { w: 7 }); });
+    skPool(f.x, f.y + 30, f.r * .7, 'rgba(200,220,255,.6)', a * .2); skShadow(f.x + lunge, f.y + 40, 120, a * .35);
+    skL('D3_2', f.x + lunge, f.y - 10, f.r * 1.0, { a: a * .88, glow: .25, gf: 20, jit: k < .3 ? 3 : 0 });
+    if (k > .55 && Math.random() < .8) skMote(f.x + rnd(-100, 100), f.y + rnd(-60, 40), '#ffffff', { vx: rnd(-30, 30), vy: rnd(-70, -20), dur: .6, size: 3 }); },
+  exGod(f) {
+    const k = skK(f), a = k < .2 ? k / .2 : k > .75 ? (1 - k) / .25 : 1, col = f.col || '#ffe08a';
+    skOnce(f, () => skPillarAt(f.x, f.y + 10, col.startsWith('#') ? 'rgb(' + [1, 3, 5].map(i => parseInt(col.slice(i, i + 2), 16)).join(',') + ')' : col, 54, .9));
+    if (f.s === '\u7384\u6b66' && SKFX.ok) { const drop = f.t < .35 ? (1 - skEaseBack(f.t / .35)) * 140 : 0;
+      skOnce(f, () => {}); if (f.t > .32 && !f._land) { f._land = 1; skRingAt(f.x, f.y + 10, '#7fd0c8', 20, 180, .55, { w: 7 }); skRingAt(f.x, f.y + 10, '#bff0e8', 10, 120, .4, { w: 4 }); skBurst(f.x, f.y - 10, ['#7fd0c8', '#bff0e8'], 24, 260, { g: 260, dur: .8 }); G.shake = Math.max(G.shake || 0, 8); }
+      skPool(f.x, f.y + 10, 140, 'rgba(110,210,200,.6)', a * .22); skShadow(f.x, f.y + 14, 110, a * .45);
+      skL('D4_1', f.x, f.y - 46 - drop, 190, { a: a * .9, breathe: .03, bf: 3, glow: .3, gf: 4, wave: .6, wf: 4, waveTop: 1 });
+      if (k > .7 && Math.random() < .8) skMote(f.x + rnd(-80, 80), f.y - rnd(0, 90), '#bff0e8', { vx: rnd(-20, 20), vy: rnd(-80, -30), dur: .6, size: 3 }); return; }
+    /* \ub098\uba38\uc9c0 \uc2e0\uc758 \uc774\ub984: \uac80\uc740 \uc6d0\ud310 \ub300\uc2e0 \ube5b\uae30\ub465 \uc18d \uae00\uc528\ub9cc */
+    const y = f.y - 60 - k * 20; ctx.save(); ctx.globalAlpha = a; ctx.font = 'bold 30px "Nanum Myeongjo", "Noto Serif KR", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fffaf0'; ctx.shadowColor = col; ctx.shadowBlur = 18;
+    ctx.fillText(f.s[0], f.x, y - 17); ctx.fillText(f.s[1], f.x, y + 17); ctx.restore();
+  },
+  exPhoenix(f) { const k = skK(f), a = skFade(k, .06, .55);
+    skOnce(f, () => { skBurst(f.x, f.y - 40, ['#ff5a2a', '#ffb347', '#fff2b0'], 40, 460, { dur: .9, size: 4 }); skPillarAt(f.x, f.y + 20, 'rgb(255,130,60)', 80, .7); skRingAt(f.x, f.y + 20, '#ff9a4a', 20, 300, .6, { w: 9 }); });
+    skPool(f.x, f.y + 20, 220, 'rgba(255,130,50,.6)', a * .28);
+    if (Math.random() < .95) skMote(f.x + rnd(-140, 140), f.y - 40 + rnd(-60, 60), Math.random() < .5 ? '#ff7a3a' : '#ffd27a', { vx: rnd(-30, 30), vy: rnd(-160, -60), dur: .6, size: 3.5 });
+    skL('D4_0', f.x, f.y - 60 - k * 80, Math.min(400, (f.r || 300) * 1.25), { k, pop: .3, a: a * .92, flap: 12, flapA: .12, glow: .3, gf: 18, wave: 1.2, wf: 16, waveTop: 1 }); },
+  exShieldOrb(f) { if (f.src) { f.x = f.src.x; f.y = f.src.y; } if (!f.src || f.src.hp <= 0 || !(f.src._shield > 0) || !(f.src._shieldT > exNow())) { f.t = f.dur; return; }
+    skPool(f.x, f.y, 34, 'rgba(110,210,200,.8)', .3);
+    if (Math.random() < .05) skMote(f.x + rnd(-24, 24), f.y - rnd(10, 50), '#bff0e8', { vx: 0, vy: -30, dur: .7, size: 2 });
+    skL('D4_2', f.x, f.y + 6, 64, { ay: 1, add: true, k: Math.min(1, f.t / .3), pop: 1, a: .7, breathe: .03, bf: 3, glow: .25, gf: 3, seed: f.x }); }
+});
 
 /* ============================================================
    98za_econ382 (v382): \uc774\uc57c\uae30 \uc911\uc5d0 \uad50\uc5ed\u00b7\ud22c\uc790\ub97c \uaf2d \ud55c \ubc88 \ud574 \ubcf4\uac8c \ud55c\ub2e4
