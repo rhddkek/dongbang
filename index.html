@@ -855,7 +855,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v413</div>
+    <div class="sub">v414</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -1124,7 +1124,7 @@ function xpToNext(L) {
   const mobXp = 8 + 4.5 * Math.pow(L, 1.15), kills = xpToNextBase(70) / (8 + 4.5 * Math.pow(70, 1.15)) + 5 * (L - 70);
   return Math.round(mobXp * kills);
 }
-const MAX_LV = 120;
+const MAX_LV = 150;   /* v414: \ub9cc\ub819 150 (\uc77c\ubcf8\uc744 Lv.100~130 \uc73c\ub85c \ud480\uace0, 130~150 \uc740 \ub4a4\uc5d0 \uc774\uc5b4 \ub9cc\ub4e0\ub2e4) */
 
 /* rarity table shared by items */
 const RARITY = [
@@ -1609,7 +1609,8 @@ const ACHIEVEMENTS = [
   { id: 'party', n: '\ub3d9\ub8cc\uc640 \ud568\uaed8', d: '\ub3d9\ub8cc 2\uba85\uacfc \ud30c\ud2f0 \uad6c\uc131', c: s => s.party >= 2, gold: 500 },
   { id: 'lv70', n: '\ub3d9\ubc29\uc758 \uc815\uc810', d: '\ub808\ubca8 70 \ub2ec\uc131', c: s => s.level >= 70, gold: 30000 },
   { id: 'lv100', n: '\ubc31\ub144 \uace0\uc218', d: '\ub808\ubca8 100 \ub2ec\uc131', c: s => s.level >= 100, gold: 120000 },
-  { id: 'lv120', n: '\ub3d9\ubc29\uc758 \uc2e0\ud654', d: '\ub808\ubca8 120(\ub9cc\ub819) \ub2ec\uc131', c: s => s.level >= 120, gold: 200000 }
+  { id: 'lv120', n: '\ub3d9\ubc29\uc758 \uc2e0\ud654', d: '\ub808\ubca8 120 \ub2ec\uc131', c: s => s.level >= 120, gold: 200000 },
+  { id: 'lv150', n: '\ub3d9\ubc29\uc758 \uc804\uc124', d: '\ub808\ubca8 150(\ub9cc\ub819) \ub2ec\uc131', c: s => s.level >= 150, gold: 500000 }
 ];
 
 /* ============================================================
@@ -6823,6 +6824,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  notes += `<div class="sep"></div><b>v414 \u2014 \ub9cc\ub819 150 \u00b7 \uc7a5\ube44 \uc131\uc7a5 \uac1c\ud3b8</b><br>\u00b7 \ub9cc\ub819 150. \uc77c\ubcf8 \uc9c0\uc5ed\uc744 Lv.100~130 \uc73c\ub85c \ub113\ud600 \uc9c0\uc5ed\ub9c8\ub2e4 \uc624\ub798 \uba38\ubb38\ub2e4 (130 \uc774\ud6c4\ub294 \uc774\uc5b4\uc11c \uc5f4\ub9b0\ub2e4)<br>\u00b7 \uac15\ud654: +12 \uae4c\uc9c0 \ud574\ub3c4 '10\ub808\ubca8 \uc704 \uac19\uc740 \ub4f1\uae09 \uc7a5\ube44'\ub9cc\ud07c \u2014 \uad6c\ub819\ud15c\uc744 \ubb35\ud788\uc9c0 \uc54a\uace0 \uc0c8 \uc7a5\ube44\ub85c \uac08\uc544\ud0c0\uac8c<br>\u00b7 \ub4f1\uae09 \ucc28\uc774\ub97c \ud06c\uac8c: \uc601\uc6c5 \u00d71.45 \u00b7 \uc804\uc124 \u00d71.7 \u00b7 \uc720\uc77c \u00d72.0 (\uc608\uc804 \ucd5c\ub300 \u00d71.65)<br>\u00b7 \uc7a5\ube44 \ub808\ubca8\uc744 5\ub808\ubca8 \uad6c\uac04\uc73c\ub85c \uc815\ub9ac (\uc608: \ucc9c\uba85\uac80 91\u00b7\ud0dc\uc870 \uc5b4\uac80 92 \u2192 90)<br>\u00b7 \uc601\uc6c5 +5 \uc7a5\ube44\ub97c \ub080 \uae30\uc900\uc73c\ub85c \ud798\uc740 \uc608\uc804\uacfc \uac19\uac8c \ub9de\ucdc4\ub2e4 \u2014 \uac15\ud654\ub97c \ub9ce\uc774 \ud55c \uc7a5\ube44\ub294 \uc870\uae08 \uc57d\ud574\uc9c0\uace0, \uc0c8\ub85c \uc8fc\uc6b4 \uc7a5\ube44\ub294 \uc138\uc9c4\ub2e4`;
   notes += `<div class="sep"></div><b>v413 \u2014 \uae30\uc220 \uadf8\ub9bc \uc190\uc9c8 \u00b7 \ud0ed \uae00\uc790</b><br>\u00b7 \uae30\uc874 \uae30\uc220 \uc774\ud399\ud2b8\ub294 \uc608\uc804 \uadf8\ub9bc\uc73c\ub85c \ub418\ub3cc\ub838\ub2e4<br>\u00b7 \uc0c8 \uae30\uc220 16\uac1c\uac00 \ud654\uba74\uc5d0 \ub179\uc544\ub4e4\uac8c: \ube5b\uc774 \uacb9\uccd0\ub3c4 \ud558\uc597\uac8c \ud0c0\uc9c0 \uc54a\uace0, \ud654\uba74\uc744 \ub36e\ub294 \ud070 \uadf8\ub9bc\uc740 \ube44\uccd0 \ubcf4\uc774\uba70, \ub098\ud0c0\ub0a0 \ub550 \uc11c\uc11c\ud788 \u00b7 \uc0ac\ub77c\uc9c8 \ub550 \ubd80\ud480\uba70 \ud769\uc5b4\uc9c4\ub2e4<br>\u00b7 \ud070 \ud55c\uc790 \u00b7 \ud654\uba74 \ubc88\uca4d\uc784 \u00b7 \uc5b4\ub461\uac8c \uac00\ub9ac\uae30 \u00b7 \uc2dc\uac04\uc815\uc9c0 \ud751\ubc31\uc744 \uc808\ubc18\ucbe4\uc73c\ub85c \u00b7 \ube5b\uae30\ub465 \uac00\uc7a5\uc790\ub9ac\uac00 \ubd80\ub4dc\ub7fd\uac8c<br>\u00b7 \uc0c1\ub2e8 \uc7a5\ubd80 \ub4f1 \ud0ed \uae00\uc790\uac00 \ud14c\ub450\ub9ac\uc5d0 \uac78\ub9ac\ub358 \uac83 \u2014 \uac00\uc6b4\ub370\ub85c`;
   notes += `<div class="sep"></div><b>v412 \u2014 \ub0a8\uc740 \uadf8\ub9bc 2\ucc28</b><br>\u00b7 \ub545 \ubc14\ud0d5 \uc0c8 \ubb34\ub2ac: \ud480 \u00b7 \ud759\uae38 \u00b7 \ub3cc\ubc14\ub2e5 \u00b7 \ubaa8\ub798 \u00b7 \ub208 \u00b7 \ubb3c \u00b7 \uc6a9\uc554 \u00b7 \uc7bf\ube5b \ub545 \u00b7 \ubd89\uc740 \ud759 \u00b7 \ud654\uc0b0\ud1a0 \u00b7 \uc790\uac08\uae38 \u00b7 \uac2f\ubc8c (\uace0\uc7a5\ub9c8\ub2e4 \ub2e4\ub978 \ud480\ube5b\uc740 \uadf8\ub300\ub85c)<br>\u00b7 \uad74 \ubc14\ub2e5 \u00b7 \ubcbd: \ud759\uad74 \u00b7 \ubd88\uad74 \u00b7 \ubb3c\uad74 \u00b7 \uc5bc\uc74c\uad74 \u00b7 \uc131 \u00b7 \uace0\ubd84 \u00b7 \uc2e0\uc0ac \u00b7 \uad11\uc0b0 \u00b7 \uc601\ud63c\uad74 \u00b7 \ub300\uc232\uad74 \u00b7 \uce68\ubab0\uc120 \u00b7 \ud751\uc694\uc11d<br>\u00b7 \uae30\uc874 \uae30\uc220 16\uac1c \uc774\ud399\ud2b8\uac00 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c (\uc2b9\uae09\ub9c8\ub2e4 \ub354 \ucee4\uc9c0\uace0 \ud654\ub824\ud558\uac8c)<br>\u00b7 \ucc3d \ud14c\ub450\ub9ac \u00b7 \ub2e8\ucd94 \u00b7 \ud0ed \u00b7 \ub2eb\uae30 \u00b7 \uccb4\ub825/\uae30\ub825/\uacbd\ud5d8 \ub9c9\ub300\uac00 \ub098\ubb34\uc640 \ub18b\uc1e0 \ub3c4\ud2b8\ub85c`;
   notes += `<div class="sep"></div><b>v411 \u2014 \ub0a8\uc740 \uadf8\ub9bc 1\ucc28</b><br>\u00b7 \uccb4\ub825\u00b7\ub9c8\ub098 \uc904 \uc606 \uc5bc\uad74: \uc9c1\uc5c5\u00b7\uc2b9\uae09\ub9c8\ub2e4 \uc804\uc6a9 \ucd08\uc0c1<br>\u00b7 \uba54\ub274 \ub2e8\ucd94 9\uac1c\uc640 \ud654\uba74 \uacf3\uacf3 \uc544\uc774\ucf58 72\uac1c\uac00 \uc0c8 \uadf8\ub9bc<br>\u00b7 \ub3d9\ud589 \uc601\ubb3c 11\ub9c8\ub9ac \uc0c8 \uadf8\ub9bc (\uac77\uae30 \u00b7 \uc2f8\uc6b8 \ub54c \uc2e0\ub09c \ubaa8\uc2b5)<br>\u00b7 \ubc43\uae38: \uc0c8 \ub3db\ubc30(\ud754\ub4e4\ub9bc) \u00b7 \uac08\ub9e4\uae30 \u00b7 \uc18c\ub098\ubb34 \uc12c \u00b7 \ub300\uc655 \ubb38\uc5b4<br>\u00b7 \uccab \ud654\uba74 \uadf8\ub9bc`;
@@ -9173,7 +9175,7 @@ function makeTester(p) {
   calcStats(p); p.hp = p.s.maxHp; p.mp = p.s.maxMp;
 }
 function testerJobModal() {
-  let h = `<div class="say"><span class="who">\ud83e\uddea \ud14c\uc2a4\ud2b8\uc6a9 \uce90\ub9ad\ud130</span>Lv.120 \u00b7 HP/MP 99,999,999 \u00b7 999,999,999\ubb38 \u00b7 \uc774\ub3d9\uc18d\ub3c4 2.2\ubc30. \uc804\uc124 \ubb34\uae30(+10)\u00b7\uc7ac\ub8cc\uac00 \uac00\ubc29\uc5d0 \ub4e4\uc5b4 \uc788\uc5b4\uc694. \uc9c1\uc5c5\uc744 \uace0\ub974\uba74 2\ucc28 \uc2b9\uae09 \uc0c1\ud0dc\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4.</div><div class="jobs">`;
+  let h = `<div class="say"><span class="who">\ud83e\uddea \ud14c\uc2a4\ud2b8\uc6a9 \uce90\ub9ad\ud130</span>Lv.150 \u00b7 HP/MP 99,999,999 \u00b7 999,999,999\ubb38 \u00b7 \uc774\ub3d9\uc18d\ub3c4 2.2\ubc30. \uc804\uc124 \ubb34\uae30(+10)\u00b7\uc7ac\ub8cc\uac00 \uac00\ubc29\uc5d0 \ub4e4\uc5b4 \uc788\uc5b4\uc694. \uc9c1\uc5c5\uc744 \uace0\ub974\uba74 2\ucc28 \uc2b9\uae09 \uc0c1\ud0dc\ub85c \uc2dc\uc791\ud569\ub2c8\ub2e4.</div><div class="jobs">`;
   for (const j of ['warrior', 'thief', 'shaman', 'taoist']) h += `<button class="job" data-a="testJob" data-v="${j}"><b>${jobIcon(j)} ${JOBS[j].n}</b><p>${esc(JOBS[j].desc)}</p></button>`;
   openModal('\ud83e\uddea \ud14c\uc2a4\ud2b8 \uce90\ub9ad\ud130', h + '</div>', { test: true });
 }
@@ -15230,7 +15232,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v413';
+const GAME_VER = 'v414';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -15389,7 +15391,7 @@ onModalClick = function (e) {
   if (b && p?.test && (b.dataset.a === 'tnSet' || b.dataset.a === 'tnToggle')) {
     Sfx.click();
     if (b.dataset.a === 'tnToggle') p.testNormal = !p.testNormal;
-    else { const L = clamp(+(document.getElementById('tn-lv')?.value || p.lv) | 0, 1, 120); p.lv = L; p.rank = L >= 50 ? 2 : L >= 25 ? 1 : 0; p.testNormal = true; testerGear(p, L); }
+    else { const L = clamp(+(document.getElementById('tn-lv')?.value || p.lv) | 0, 1, MAX_LV); p.lv = L; p.rank = L >= 50 ? 2 : L >= 25 ? 1 : 0; p.testNormal = true; testerGear(p, L); }
     calcStats(p); p.hp = p.s.maxHp; p.mp = p.s.maxMp; for (const c of G.party) { if (typeof syncCompanion === 'function') syncCompanion(c); }
     toast(p.testNormal ? `\ud83e\uddea \uc77c\ubc18 \ubaa8\ub4dc \u00b7 Lv.${p.lv}` : '\ud83e\uddea \ud14c\uc2a4\ud2b8 \ubaa8\ub4dc(\ubb34\ud55c \uccb4\ub825)', 'blue'); rerender(); return;
   }
@@ -25739,6 +25741,80 @@ skL = function (key, x, y, w, o = {}) {
   for (const nm of LIGHT_FX) { const old = AIR_FX[nm]; if (old) AIR_FX[nm] = function () { soft = SKFLOW.on; try { return old.apply(this, arguments); } finally { soft = false; } }; }
   const _pool = skPool; skPool = function () { soft = SKFLOW.on; try { return _pool.apply(this, arguments); } finally { soft = false; } };
 }
+
+/* ============================================================
+   98zzc_rev414 (v414): \uac1c\ud3b8 1\ub2e8\uacc4 \u2014 \ub9cc\ub819 150 \u00b7 \uc544\uc774\ud15c \uc131\uc7a5 \uace1\uc120
+   \uc65c (\uac1c\ud3b8\uc548 \ubb38\uc11c \u00b7 \ub370\uc774\ud130\ub85c \uc7b0 \uac83)
+   \u00b7 \uac15\ud654\uac00 \uacf1\uc148(+1\ub9c8\ub2e4 7%, +12 = \u00d71.84)\uc774\ub77c Lv.60 \ubb34\uae30 +12 = \uac19\uc740 \ub4f1\uae09 Lv.112 \ubb34\uae30 \u2192 \ub192\uc740 \uc0ac\ub0e5\ud130\ub85c \uc810\ud504 \u2192 \uc4f8 \uc218 \uc5c6\ub294 \ud15c\ub9cc \ub738
+   \u00b7 \ub4f1\uae09 \ucc28\uc774(\uc77c\ubc18\u2192\uc720\uc77c)\ub294 \u00d71.65 \ubfd0 \u2014 \uac15\ud654\ubcf4\ub2e4 \ub35c \uc911\uc694\ud588\ub2e4
+   \u00b7 \uc7a5\ube44 \ub808\ubca8\uc774 1\ub808\ubca8 \ub2e8\uc704\ub85c \ud769\uc5b4\uc838(88\u00b791\u00b792\u2026) \uc5b4\ub514\uc11c \ubb34\uc5c7\uc744 \ub9de\ucd9c\uc9c0 \ubcf4\uc774\uc9c0 \uc54a\uc558\ub2e4
+   \ubb34\uc5c7
+   1) \uac15\ud654: +12 = '\ud55c \uad6c\uac04(10\ub808\ubca8) \uc704 \uac19\uc740 \ub4f1\uae09 \ud15c'\ub9cc\ud07c. \ub0ae\uc740 \ub808\ubca8\uc740 \uc870\uae08 \ub354(\ucd5c\ub300 +60%), \ub192\uc740 \ub808\ubca8\uc740 \ucd5c\uc18c +12%. \uac01\uc131 \u00d71.1
+   2) \ub4f1\uae09 \ubc30\uc728: \uc77c\ubc18 1 \u00b7 \uace0\uae09 1.1 \u00b7 \ud76c\uadc0 1.25 \u00b7 \uc601\uc6c5 1.45 \u00b7 \uc804\uc124 1.7 \u00b7 \uc720\uc77c 2.0
+   3) \ubcf4\uc815: '\uc601\uc6c5 +5' \ub97c \ub080 \uc0ac\ub78c\uc758 \ud798\uc740 \uc608\uc804\uacfc \uac19\uac8c (\uadf8 \ub808\ubca8\uc5d0\uc11c) \u2014 \uac15\ud654\ub97c \ub9ce\uc774 \ud55c \uc0ac\ub78c\uc740 \uc870\uae08 \uc57d\ud574\uc9c0\uace0, \ub35c \ud55c \uc0ac\ub78c\uc740 \uc138\uc9c4\ub2e4
+   4) \uc7a5\ube44 \ub808\ubca8\uc740 5\ub808\ubca8 \uad6c\uac04\uc73c\ub85c (5\u00b710\u00b7\u2026), \ub2a5\ub825\uce58\ub3c4 \uadf8 \ub808\ubca8 \uace1\uc120\uc5d0 \ub9de\ucdb0 \uc62e\uae34\ub2e4
+   5) \ub9cc\ub819 150 \u00b7 \uc77c\ubcf8(Lv.100~125)\uc744 Lv.100~137 \ub85c \ub298\ub9b0\ub2e4 (\uc9c0\uc5ed\ub9c8\ub2e4 \uc624\ub798 \uba38\ubb3c\uac8c) \u2014 \uc0ac\ub0e5\ud130 \u00b7 \uc6b0\ub450\uba38\ub9ac \u00b7 \uc228\uc740 \uad74 \u00b7 \uc758\ub8b0 \u00b7 \uc77c\ubcf8 \uc7a5\ube44\uac00 \ud568\uaed8 \uc6c0\uc9c1\uc778\ub2e4
+   \u00b7 \uc138\uc774\ube0c: \uc7a5\ube44\ub294 id \ub85c\ub9cc \uc800\uc7a5 \u2192 \ubd88\ub7ec\uc624\uba74 \uc0c8 \uc218\uce58. \uac15\ud654 \ub2e8\uacc4\ub294 \uadf8\ub300\ub85c
+   ============================================================ */
+const REV414 = {
+  RM_OLD: [1, 1.08, 1.18, 1.32, 1.48, 1.65], RM_NEW: [1, 1.1, 1.25, 1.45, 1.7, 2.0],
+  STATS: ['atk', 'mag', 'hp', 'def', 'mp'],
+  /* mkGear \uc758 \ub808\ubca8 \uace1\uc120 [a, b] : a + b\u00d7L */
+  LINES: {
+    weapon: { atk: [5, 2.5], mag: [6, 2.6], mp: [8, 2.2] }, armor: { hp: [18, 8.5], def: [2, 1.1], mp: [10, 3] }, robe: { hp: [14, 6.5], def: [1, .7], mp: [10, 3] },
+    helmet: { hp: [7, 3.4], def: [1, .45], mp: [6, 1.8] }, shoes: { hp: [4, 1.5], def: [.5, .18] }, gloves: { atk: [1, .4], mag: [1, .4] },
+    necklace: { atk: [2, .75], hp: [8, 3.2], mp: [6, 1.8] }, ring: { atk: [2, .95], hp: [6, 2.2], mp: [6, 1.8] }, charm: { hp: [12, 4.2], atk: [1, .6], mp: [6, 1.8] }
+  },
+  JP: v => v >= 100 ? Math.round(100 + (v - 100) * 1.5) : v
+};
+/* \uac15\ud654 \ud55c \uad6c\uac04 \uac12: \uc774 \ub808\ubca8 \ud15c \u2192 10\ub808\ubca8 \uc704 \uac19\uc740 \ub4f1\uae09 \ud15c (\ubb34\uae30 \uace1\uc120 \uae30\uc900) */
+function enhStep414(L) { L = Math.max(1, L || 1); return clamp(25 / (5 + 2.5 * L), .12, .6); }
+function enhMulAt414(L, plus, awk) { return (1 + (plus || 0) / 12 * enhStep414(L)) * (awk ? 1.1 : 1); }
+{
+  const _enhMul414 = enhMul;
+  enhMul = function (it) {
+    const d = it && ITEMS[it.id]; if (!d || !d.lv) return _enhMul414.apply(this, arguments);
+    return enhMulAt414(d.lv, it.plus, it.awk);
+  };
+}
+/* ---- \uc77c\ubcf8 \ub808\ubca8\uc744 \ub113\ud78c\ub2e4 (\ub9cc\ub819 150 \uc900\ube44) ---- */
+(function () {
+  const J = REV414.JP;
+  for (const m of Object.values(MAPS)) {
+    if (m.lv && m.lv[0] >= 100) m.lv = [J(m.lv[0]), Math.max(J(m.lv[0]), J(m.lv[1]))];
+    if (m.bossLv >= 100) m.bossLv = J(m.bossLv);
+    if (m.rareLv >= 100) m.rareLv = J(m.rareLv);
+  }
+  if (typeof LAIRS !== 'undefined') for (const L of LAIRS) if (L.lv >= 100) L.lv = J(L.lv);
+  if (typeof SIDE_QUESTS !== 'undefined') for (const q of SIDE_QUESTS) if (q.lv >= 100) q.lv = J(q.lv);
+  if (typeof CHAINS !== 'undefined') for (const c of CHAINS) if (c.lv >= 100) c.lv = J(c.lv);
+  if (typeof XP386 !== 'undefined' && !XP386.some(x => x[0] === 150)) XP386.push([150, 5]);
+})();
+/* \ub3c8\ubc8c\uc774 \uace1\uc120\ub3c4 150 \uae4c\uc9c0 */
+{
+  const GR = [[120, 9000], [135, 10500], [150, 12000]];
+  const _goldRate414 = goldRate;
+  goldRate = function (L) { if (L <= 120) return _goldRate414(L); L = Math.min(L, 150); for (let i = 1; i < GR.length; i++) { const [a, ra] = GR[i - 1], [b, rb] = GR[i]; if (L <= b) return lerp(ra, rb, (L - a) / (b - a)); } return GR[GR.length - 1][1]; };
+}
+/* ---- \uc7a5\ube44: \ub808\ubca8 \uad6c\uac04 \u00b7 \ub4f1\uae09 \ubc30\uc728 \u00b7 \ubcf4\uc815 ---- */
+(function () {
+  const R = REV414, typical = L => R.RM_OLD[3] * (1 + .07 * 5) / (R.RM_NEW[3] * enhMulAt414(L, 5));
+  for (const [id, d] of Object.entries(ITEMS)) {
+    if (!d || !d.slot || d.slot === 'use' || d.slot === 'material' || !d.lv || d.rev414) continue;
+    const lines = d.slot === 'armor' && d.robe ? R.LINES.robe : R.LINES[d.slot]; if (!lines) continue;
+    const L0 = d.lv; let L1 = R.JP(L0); if (L1 >= 5) L1 = Math.max(5, Math.round(L1 / 5) * 5);
+    const r = clamp(d.rarity | 0, 0, 5), rm = R.RM_NEW[r] / R.RM_OLD[r], k = typical(L1);
+    for (const s of R.STATS) {
+      if (typeof d[s] !== 'number' || !d[s]) continue;
+      const ln = lines[s] || lines.atk || lines.hp, lv = ln ? (ln[0] + ln[1] * L1) / (ln[0] + ln[1] * L0) : 1;
+      d[s] = Math.max(1, Math.round(d[s] * lv * rm * k));
+    }
+    if (d.price && L1 !== L0) d.price = Math.round(d.price * (15 + L1 ** 1.7 * 6) / (15 + L0 ** 1.7 * 6));
+    d.lv = L1; d.rev414 = 1;
+  }
+})();
+/* \uac15\ud654 \ucc3d \u00b7 \uc124\uba85: \uc774 \uc7a5\ube44\ub294 \uac15\ud654\ub85c \uc5bc\ub9c8\ub098 \uc624\ub974\ub294\uc9c0 */
+function enhNote414(it) { const d = it && ITEMS[it.id]; if (!d || !d.lv) return ''; return `+12 \uae4c\uc9c0 \uac15\ud654\ud558\uba74 \uae30\ubcf8 \ub2a5\ub825\uce58 +${Math.round(enhStep414(d.lv) * 100)}% (Lv.${d.lv + 10} \uac19\uc740 \ub4f1\uae09 \uc7a5\ube44\ucbe4)`; }
 
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
