@@ -72,9 +72,9 @@ button:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 #stick{position:absolute;left:calc(18px + env(safe-area-inset-left));bottom:calc(22px + env(safe-area-inset-bottom));width:132px;height:132px;border-radius:50%;background:radial-gradient(circle,rgba(40,30,22,.35),rgba(20,14,10,.55));border:2px solid rgba(217,178,95,.45);z-index:6;touch-action:none}
 #knob{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f3d68a,#a7834a);border:2px solid #ffe7a6;box-shadow:0 3px 8px rgba(0,0,0,.5)}
 .pc #stick{display:none}
-#actions{position:absolute;right:calc(14px + env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));width:206px;height:206px;z-index:6;pointer-events:none}
+#actions{position:absolute;right:calc(14px + env(safe-area-inset-right));bottom:calc(34px + env(safe-area-inset-bottom));width:206px;height:206px;z-index:6;pointer-events:none}
 #actions button{position:absolute;pointer-events:auto;border-radius:50%;border:2px solid var(--line2);background:radial-gradient(circle at 40% 30%,#4a3524,#1d150f);box-shadow:0 3px 0 #000,inset 0 1px 0 rgba(255,230,170,.15);padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;overflow:hidden;touch-action:none}
-#bAtk{right:6px;bottom:6px;width:84px;height:84px;font-size:13px;border-color:#e7a36a!important;background:radial-gradient(circle at 40% 30%,#b8432f,#5e1a12)!important}
+#bAtk{right:6px;bottom:6px;width:74px;height:74px;font-size:12px;border-color:#e7a36a!important;background:radial-gradient(circle at 40% 30%,#b8432f,#5e1a12)!important}
 #bAtk .ic{font-size:26px;line-height:1}
 .sk{width:52px;height:52px;font-size:9px}
 .sk .ic{font-size:19px;line-height:1.1}
@@ -83,7 +83,7 @@ button:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 .sk .cdt{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;font-weight:900;text-shadow:0 1px 2px #000;pointer-events:none}
 .sk.lock{filter:grayscale(1) brightness(.55)}
 .sk.nomp{box-shadow:inset 0 0 0 3px rgba(63,134,216,.7)!important}
-#s0{right:96px;bottom:4px}#s1{right:104px;bottom:64px}#s2{right:70px;bottom:118px}#s3{right:12px;bottom:140px}
+#s0{right:88px;bottom:2px}#s1{right:96px;bottom:64px}#s2{right:70px;bottom:118px}#s3{right:17px;bottom:86px}#s4{right:12px;bottom:144px}
 #bHp,#bMp{width:40px;height:40px;font-size:15px}
 #bHp{right:150px;bottom:132px}#bMp{right:104px;bottom:168px}
 #bHp small,#bMp small{font-size:8px;font-variant-numeric:tabular-nums}
@@ -845,6 +845,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
     <button class="sk" id="s1" data-i="1"></button>
     <button class="sk" id="s2" data-i="2"></button>
     <button class="sk" id="s3" data-i="3"></button>
+    <button class="sk" id="s4" data-i="4"></button>
     <button id="bHp">&#x1f9ea;<small id="nHp">0</small><span class="key">Q</span></button>
     <button id="bMp">&#x1f4a7;<small id="nMp">0</small><span class="key">R</span></button>
     <button id="bAuto">&#xc790;&#xb3d9;<span class="key">T</span></button>
@@ -854,7 +855,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v408</div>
+    <div class="sub">v409</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6269,7 +6270,7 @@ function autoHunt(p, dt) {
   const d = dist(p, t), magic = JOBS[p.job].magic;
   /* skills */
   const sk = skillList(p);
-  for (let i = 3; i >= 0; i--) {
+  for (let i = sk.length - 1; i >= 0; i--) {
     if (!sk[i] || !skillUnlocked(p, i) || (p.cds[sk[i].id] || 0) > 0 || p.mp < skillMp(p, sk[i])) continue;
     const k = sk[i].kind;
     if (k === 'heal' && !allies().some(a => a.hp < a.s.maxHp * .65) && !(sk[i].guard && !p.buffs.bless && (p.combatT > 0 || p.fightT > 0))) continue;
@@ -6822,6 +6823,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  notes += `<div class="sep"></div><b>v409 \u2014 \uacf5\uaca9\u00b7\uae30\uc220 \ub2e8\ucd94 \uc790\ub9ac</b><br>\u00b7 \uacf5\uaca9\u00b7\uae30\uc220 \ub2e8\ucd94\ub97c \uc870\uae08 \uc704\ub85c \uc62c\ub9ac\uace0 \uacf5\uaca9 \ub2e8\ucd94\ub97c \uc0b4\uc9dd \uc904\uc600\ub2e4 \u00b7 \ub9c8\uc9c0\ub9c9 \uae30\uc220 \uce78\uc740 \uacf5\uaca9 \ub2e8\ucd94 \ubc14\ub85c \uc704\ub85c<br>\u00b7 \uae30\uc220 \uce78 5\ubc88\uc9f8 \uc790\ub9ac\ub97c \ub9c8\ub828\ud588\ub2e4 (\uc0c8 \uae30\uc220\uc774 \ub4e4\uc5b4\uc624\uba74 \uc5f4\ub9b0\ub2e4 \u00b7 PC \uc22b\uc790\ud0a4 5 \u00b7 \uc870\uc774\ud328\ub4dc \uc624\ub978\ucabd \uc2a4\ud2f1 \ub204\ub974\uae30)`;
   notes += `<div class="sep"></div><b>v408 \u2014 \uac74\ubb3c \uc0c8 \uadf8\ub9bc</b><br>\u00b7 \ub9c8\uc744 \uac74\ubb3c\uc774 \uc0c8 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\ub2e4 \u2014 \ubb34\uae30\uc0c1\u00b7\ubc29\uc5b4\uad6c\uc0c1\u00b7\uc57d\ubc29\u00b7\ub300\uc7a5\uac04\u00b7\uc8fc\ub9c9\u00b7\uc5ec\uad00\u00b7\uc5ed\ucc38\u00b7\ud3ec\ub3c4\uccad\u00b7\uad00\uc544\u00b7\uac1d\uc8fc, \uc77c\ubcf8 \uc0c1\uc810\u00b7\ucc3b\uc9d1\u00b7\uc5ec\uad00\u00b7\ucc3d\uace0, \uc81c\uc8fc \ub3cc\uc9d1\u00b7\ud574\ub140 \uc27c\ud130\u00b7\ub098\ub8e8\ud130 \u00b7 \ube48 \uc9d1\uc740 \ucd08\uac00\u00b7\uae30\uc640\u00b7\uacf3\uac04, \uc0bf\ud3ec\ub85c\ub294 \ub208 \uc9c0\ubd95`;
   notes += `<div class="sep"></div><b>v407 \u2014 \uc9c0\ud615\uc9c0\ubb3c \u00b7 \ub9c8\uc744 \uc0ac\ub78c \uc0c8 \uadf8\ub9bc</b><br>\u00b7 \ub098\ubb34 \u00b7 \ubc14\uc704 \u00b7 \ub3d9\uad74 \u00b7 \ub4f1\ub871 \u00b7 \uac00\ub85c\ub4f1 \u00b7 \uc6b0\ubb3c \u00b7 \uc7a5\ub3c5 \u00b7 \ub3c4\ub9ac\uc774 \u00b7 \uae38\ubaa9 \ud45c\uc2dd \u00b7 \uc77c\ubcf8\u00b7\ubc14\ub2f7\uac00 \ud45c\uc2dd\uc774 \ubaa8\ub450 \uc0c8 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\ub2e4<br>\u00b7 \ucd0c\uc7a5 \u00b7 \uc0c1\uc778 \u00b7 \ub300\uc7a5\uc7a5\uc774 \u00b7 \ud3ec\uc878 \u00b7 \uc120\ube44 \u00b7 \uc8fc\ubaa8 \u00b7 \ubc43\uc0ac\uacf5 \u00b7 \ud574\ub140 \u00b7 \ubb34\ub140 \u00b7 \ub0ad\uc778 \u00b7 \uc8fc\ubbfc \u00b7 \ub5a0\ub3cc\uc774 \uc7a5\uc0ac\uafbc\ub3c4 \uc0c8 \uadf8\ub9bc (\ub9d0\uc744 \uac78\uba74 \uc190\uc9d3\uc744 \ud55c\ub2e4)`;
   notes += `<div class="sep"></div><b>v406 \u2014 \ub0a8\uc740 \uc608\uc804 \uadf8\ub9bc \uc815\ub9ac</b><br>\u00b7 \uccb4\ub825\u00b7\ub9c8\ub098 \uc904 \uc606 \uc5bc\uad74\uc774 \uc0c8 \uc8fc\uc778\uacf5 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub00c\uc5c8\ub2e4 (\uc2b9\uae09\ud558\uba74 \uac19\uc774 \ubc14\ub010\ub2e4)<br>\u00b7 \ub3c4\uac10\uc758 \uc0ac\ub78c \ubaa8\uc591 \ubaac\uc2a4\ud130 \u00b7 \uc6b0\ub450\uba38\ub9ac \uce78\ub3c4 \uc0c8 \uadf8\ub9bc \u00b7 \ub2ec\ub9b4 \ub54c \uc794\uc0c1\ub3c4 \uc0c8 \uadf8\ub9bc`;
@@ -7457,7 +7459,7 @@ function updateHUD() {
   setH($('tracker'), tr);
   /* skills */
   const sk = skillList(p);
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const b = $('s' + i), k = sk[i];
     if (!k) { b.style.visibility = 'hidden'; continue; }
     b.style.visibility = 'visible';
@@ -7575,7 +7577,7 @@ function setupInput() {
     if (upf) { el.addEventListener('pointerup', upf); el.addEventListener('pointercancel', upf); el.addEventListener('pointerleave', upf); }
   };
   hold($('bAtk'), () => { Input.atkHeld = true; G.player.auto = false; }, () => { Input.atkHeld = false; });
-  for (let i = 0; i < 4; i++) hold($('s' + i), () => { if (!G.paused) useSkill(G.player, i); });
+  for (let i = 0; i < 5; i++) hold($('s' + i), () => { if (!G.paused) useSkill(G.player, i); });
   hold($('bHp'), () => { if (!G.paused && !usePotionAuto(G.player, 'hp')) toast('\ud68c\ubcf5\uc57d\uc774 \uc5c6\uc5b4\uc694'); });
   hold($('bMp'), () => { if (!G.paused && !usePotionAuto(G.player, 'mp')) toast('MP \ud68c\ubcf5\uc57d\uc774 \uc5c6\uc5b4\uc694'); });
   hold($('bAuto'), () => toggleAuto());
@@ -7603,7 +7605,7 @@ function setupInput() {
     if (G.voyage && !/^Key[ICKLMPBO]$/.test(e.code)) return;
     switch (e.code) {
       case 'Space': case 'KeyJ': Input.atkHeld = true; G.player.auto = false; e.preventDefault(); break;
-      case 'Digit1': case 'Digit2': case 'Digit3': case 'Digit4': useSkill(G.player, +e.code.slice(5) - 1); break;
+      case 'Digit1': case 'Digit2': case 'Digit3': case 'Digit4': case 'Digit5': useSkill(G.player, +e.code.slice(5) - 1); break;
       case 'KeyQ': usePotionAuto(G.player, 'hp'); break;
       case 'KeyR': usePotionAuto(G.player, 'mp'); break;
       case 'KeyE': case 'KeyF': case 'Enter': doInteract(); break;
@@ -15224,7 +15226,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v408';
+const GAME_VER = 'v409';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -24328,7 +24330,7 @@ function b408Key(p) {
    98zz_pad403 (v403): \ud83c\udfae \uc870\uc774\ud328\ub4dc (Gamepad API) \u2014 \uc544\uc774\ud3f0\u00b7\uc548\ub4dc\ub85c\uc774\ub4dc\u00b7PC \ubaa8\ub450
    \u00b7 \uc544\uc774\ud3f0/\uc544\uc774\ud328\ub4dc: \ube14\ub8e8\ud22c\uc2a4\ub098 \uc720\uc120\uc73c\ub85c \uc5f0\uacb0\ud55c \uc5d1\uc2a4\ubc15\uc2a4 \u00b7 \ud50c\ub808\uc774\uc2a4\ud14c\uc774\uc158 \u00b7 MFi \ud328\ub4dc\ub97c \uc0ac\ud30c\ub9ac(\ud648 \ud654\uba74 \uc571 \ud3ec\ud568)\uac00 \uadf8\ub300\ub85c \uc77d\ub294\ub2e4
    \u00b7 \uc67c\ucabd \uc2a4\ud2f1 / \uc2ed\uc790\ud0a4: \uc774\ub3d9 \u00b7 A(\u2715): \uacf5\uaca9(\ub204\ub974\uace0 \uc788\uc73c\uba74 \uacc4\uc18d) \u00b7 B(\u25cb): \ub300\ud654\u00b7\uc90d\uae30\u00b7\ucc3d \ub2eb\uae30
-     X(\u25a1) Y(\u25b3) LB RB: \uae30\uc220 1~4 \u00b7 LT: \uccb4\ub825\uc57d \u00b7 RT: \uae30\ub825\uc57d \u00b7 \ubcf4\uae30(Select): \uc790\ub3d9\uc0ac\ub0e5 \u00b7 \uba54\ub274(Start): \uac00\ubc29
+     X(\u25a1) Y(\u25b3) LB RB: \uae30\uc220 1~4 \u00b7 \uc624\ub978\ucabd \uc2a4\ud2f1 \ub204\ub974\uae30(R3): \uae30\uc220 5 \u00b7 LT: \uccb4\ub825\uc57d \u00b7 RT: \uae30\ub825\uc57d \u00b7 \ubcf4\uae30(Select): \uc790\ub3d9\uc0ac\ub0e5 \u00b7 \uba54\ub274(Start): \uac00\ubc29
      \ucc3d\uc774 \uc5f4\ub824 \uc788\uc744 \ub54c: LB/RB \ub85c \uba54\ub274 \ub118\uae30\uae30 (\uac00\ubc29 \u2192 \ub2a5\ub825\uce58 \u2192 \uae30\uc220 \u2192 \uc758\ub8b0 \u2192 \uc9c0\ub3c4) \u00b7 B \ub2eb\uae30
    \u00b7 \ud328\ub4dc\ub97c \uc4f0\ub294 \ub3d9\uc548\uc5d4 \ud654\uba74 \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1\uc744 \uac10\ucd98\ub2e4 (\ud654\uba74\uc744 \ub2e4\uc2dc \ub9cc\uc9c0\uba74 \ub3cc\uc544\uc628\ub2e4)
    ============================================================ */
@@ -24368,7 +24370,7 @@ function padPoll() {
   if (B[0]) { if (!prev[0]) G.player.auto = false; Input.atkHeld = true; } else if (prev[0]) Input.atkHeld = false;
   if (G.voyage) return;
   if (hit(1)) doInteract();
-  if (hit(2)) useSkill(G.player, 0); if (hit(3)) useSkill(G.player, 1); if (hit(4)) useSkill(G.player, 2); if (hit(5)) useSkill(G.player, 3);
+  if (hit(2)) useSkill(G.player, 0); if (hit(3)) useSkill(G.player, 1); if (hit(4)) useSkill(G.player, 2); if (hit(5)) useSkill(G.player, 3); if (hit(11)) useSkill(G.player, 4);
   if (hit(6)) usePotionAuto(G.player, 'hp'); if (hit(7)) usePotionAuto(G.player, 'mp');
   if (hit(8)) toggleAuto();
   if (hit(9)) openMenu('bag');
