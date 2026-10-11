@@ -26710,6 +26710,42 @@ function wm425Target() {
   document.head.appendChild(st);
 })();
 
+/* ============================================================
+   \uc2dc\ud5d8\ud310 \u00b7 \ud654\uba74 \uc22b\uc790 \u00d710 (\uc18d \uacc4\uc0b0\uc740 \uadf8\ub300\ub85c, \ubcf4\uc774\ub294 \uc22b\uc790\ub9cc)
+   \u00b7 \ud53c\ud574 \uc22b\uc790 \u00b7 \ud68c\ubcf5 \uc22b\uc790 \u00b7 \uccb4\ub825/MP \uc904 \u00b7 \ucc3d \uc548\uc758 \uacf5\uaca9/\ub9c8\ubc95/\ubc29\uc5b4/\uccb4\ub825/MP \uc22b\uc790
+   ============================================================ */
+const X10 = 10;
+const x10s = s => String(s).replace(/\d[\d,]*/g, m => fmt(Math.round(+m.replace(/,/g, '') * X10)));
+{
+  const _ft = floatText;
+  floatText = function (x, y, s, col, big) { if (/^[-+]?[\d,]+!?$/.test(String(s).trim())) s = x10s(s); return _ft.call(this, x, y, s, col, big); };
+  const _hud = updateHUD;
+  updateHUD = function () {
+    const r = _hud.apply(this, arguments);
+    try { const p = G.player, s = p.s; $('hHpT').textContent = `${fmt(Math.max(0, p.hp) * X10)} / ${fmt(s.maxHp * X10)}`; $('hMpT').textContent = `${fmt(p.mp * X10)} / ${fmt(s.maxMp * X10)}`; } catch (e) { }
+    return r;
+  };
+}
+const X10_RE = /(\uacf5\uaca9\ub825?|\ub9c8\ubc95\ub825?|\ub9c8\ub825|\ubc29\uc5b4\ub825?|\uccb4\ub825|\ucd5c\ub300 ?\uccb4\ub825|HP|MP)(\s*[:+]?\s*)(\d[\d,]*)(?![\d,.]*\s*%)/g;
+function x10Tree(root) {
+  if (!root) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), list = [];
+  while (w.nextNode()) list.push(w.currentNode);
+  for (const n of list) { const t = n.nodeValue; if (!/\d/.test(t)) continue; const u = t.replace(X10_RE, (m, a, b, c) => a + b + fmt(Math.round(+c.replace(/,/g, '') * X10))); if (u !== t) n.nodeValue = u; }
+  /* \uc774\ub984 \uce78\uacfc \uc22b\uc790 \uce78\uc774 \ub530\ub85c\uc778 \ud45c (\uce90\ub9ad\ud130 \ucc3d \ub4f1) */
+  const LAB = /^(\ucd5c\ub300 ?HP|\ucd5c\ub300 ?MP|\ubb3c\ub9ac \uacf5\uaca9|\ub9c8\ubc95 \uacf5\uaca9|\ubc29\uc5b4\ub825|\uacf5\uaca9\ub825|\ub9c8\ub825|HP|MP)$/;
+  for (const n of list) {
+    if (!LAB.test(n.nodeValue.trim()) || n.nodeValue.trim() === '\ud798') continue;
+    const el = n.parentElement && n.parentElement.nextElementSibling; if (!el || el.children.length) continue;
+    const t = el.textContent; if (/^\s*[\d,]+\s*$/.test(t)) el.textContent = fmt(Math.round(+t.replace(/[,\s]/g, '') * X10));
+  }
+}
+{
+  const _om = openModal, _rm = refreshModal;
+  openModal = function () { const r = _om.apply(this, arguments); x10Tree($('mBody')); return r; };
+  refreshModal = function () { const r = _rm.apply(this, arguments); x10Tree($('mBody')); return r; };
+}
+
 /* 99_boot: start once every file above has defined its data and renderers */
 boot();
 
