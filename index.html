@@ -528,6 +528,10 @@ body:has(#modal:not([hidden])) #toasts{top:auto;bottom:max(18px,env(safe-area-in
 .qbar i{display:block;height:100%;background:#b3261e}
 .qway{margin-top:8px;font-size:12px;color:#5a452b;word-break:keep-all}
 .qway b{color:#1f6b62}
+.qway summary,.qfold summary,.nav-more summary{cursor:pointer;font-size:12px;font-weight:700;padding:4px 0;list-style:none}
+.qway summary::-webkit-details-marker,.qfold summary::-webkit-details-marker,.nav-more summary::-webkit-details-marker{display:none}
+.qway summary::before,.qfold summary::before,.nav-more summary::before{content:'\25b8  '}.qway[open] summary::before,.qfold[open] summary::before,.nav-more[open] summary::before{content:'\25be  '}
+.qo.sum .qo-x{text-decoration:none!important;opacity:.7}.qway summary{color:#7a5f3a}.qfold summary{color:var(--gold2);margin:2px 0 6px}.nav-more summary{color:var(--muted)}
 /* \bcf4 \c0c1  */
 .qrw{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .qrw span{display:inline-flex;align-items:center;gap:5px;background:#2b1d12;color:#f4ead2;border-radius:3px;padding:3px 9px 3px 5px;font-size:12px;font-weight:800;line-height:22px;min-height:28px}
@@ -855,7 +859,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v421</div>
+    <div class="sub">v422</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6841,6 +6845,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  notes += `<div class="sep"></div><b>v422 \u2014 \uae00 \uc904\uc774\uae30 (\uc774\uc57c\uae30 \u00b7 \uae30\uc220 \ucc3d)</b><br>\u00b7 \uae30\uc220 \ucc3d: \uae30\uc220\ub9c8\ub2e4 \ud55c \uc904 \uc694\uc57d\ub9cc \u2014 \uc774\ub984\uc744 \ub204\ub974\uba74 \uc804\uccb4 \uc124\uba85 \u00b7 \ub080 \uae30\uc220 \uc124\uba85\uc744 \ub450 \ubc88 \ubcf4\uc5ec \uc8fc\ub358 \uc544\ub798 \ubaa9\ub85d\uc740 \ube90\ub2e4 \u00b7 \ud328\uc2dc\ube0c\ub3c4 \uccab \ubb38\uc7a5\ub9cc<br>\u00b7 \uc774\uc57c\uae30 \ucc3d: \ub05d\ub0b8 \uc77c\uc740 \ud55c \uc904\ub85c, \uc9c0\uae08 \ud560 \uc77c\uacfc \ub2e4\uc74c \ud558\ub098\ub9cc \u00b7 \uac00\ub294 \uae38\uc740 \ub20c\ub7ec\uc11c \ubcf4\uae30 \u00b7 \ubc1b\uc744 \uc218 \uc788\ub294 \uc758\ub8b0\ub294 \uc811\uc5b4 \ub450\uace0 \uc9c4\ud589 \uc911\uc778 \uac83\ub9cc \ud3bc\uce68<br>\u00b7 \uc790\ub3d9 \uc774\ub3d9 \ubaa9\ub85d\uc740 \uc14b\uae4c\uc9c0\ub9cc \ubcf4\uc774\uace0 \ub098\uba38\uc9c0\ub294 \uc811\uc74c`;
   notes += `<div class="sep"></div><b>v421 \u2014 \ub9c8\uc744 \uc0ac\ub78c \uadf8\ub9bc \ub9de\ucd94\uae30</b><br>\u00b7 \ub9c8\uc744 \uc0ac\ub78c \uadf8\ub9bc\uc744 \uc774\ub984\uc5d0 \ub9de\ucda4 \u2014 \uc120\ube44\ub294 \uc120\ube44, \ud3ec\uc878\uc740 \ud3ec\uc878, \ud560\ub9e4\ub294 \ud560\ub9e4 (\uc608\uc804\uc5d4 \uc120\ube44 \uae40\uc528\uac00 \uaf2c\ub9c8 \uadf8\ub9bc\uc73c\ub85c \ub098\uc624\uae30\ub3c4 \ud588\ub2e4)<br>\u00b7 \ubcf4\ubd80\uc0c1 \u00b7 \ud589\uc0c1\uc740 \uc5b4\ub514\uc11c\ub098 \ub4f1\uc9d0 \uc9c4 \ubcf4\ubd80\uc0c1 \uadf8\ub9bc`;
   notes += `<div class="sep"></div><b>v420 \u2014 \uccad\uc6d4 \uc0ac\ub3c4\uad00 \uac70\ub9ac</b><br>\u00b7 \uccad\uc6d4\ucd0c \ub3d9\ubd81\ucabd \ubb38 \ub108\uba38\uc5d0 \uc0c8 \ub9c8\uc744 \uad6c\uc5ed \u300c\uccad\uc6d4 \uc0ac\ub3c4\uad00 \uac70\ub9ac\u300d \u2014 \uc2f8\uc6c0 \uc5c6\ub294 \uac70\ub9ac \ud558\ub098\ub97c \ub354 \ub450\uc5c8\ub2e4<br>\u00b7 \ub124 \uac08\ub798 \uae38\uc758 \uc2a4\uc2b9: \uc774\uc815\ubb34(\ubb34\uc0ac) \u00b7 \ubb35\uc601(\ube44\uac1d) \u00b7 \uccad\ud5c8 \ub3c4\uc0ac(\ubc29\uc220\uac00) \u00b7 \uc6d4\ud558 \uc120\ube44(\ud48d\ub958\uac1d) + \uad00\uc7a5 \uc11c\uacbd\ud5cc<br>\u00b7 \uc2a4\uc2b9\uc5d0\uac8c\uc11c \uc9c1\uc5c5 \uace0\ub974\uae30 \u00b7 \uc2b9\uae09 (\ucd0c\uc7a5\ub3c4 \uadf8\ub300\ub85c) \u00b7 \ubc30\uc6b8 \uae30\uc220 8\uac1c\ub97c \ubbf8\ub9ac \ubcf4\uae30 \u00b7 3\ucc28 \uc804\uc9c1 \uc790\ub9ac(\uc900\ube44 \uc911)<br>\u00b7 \uc131\ud654 \ud654\ub85c(\ucb10\uba74 \uae30\uc6b4 \ud68c\ubcf5) \u00b7 \uc7a5\uc2b9 \u00b7 \uc885\ub8e8`;
   notes += `<div class="sep"></div><b>v419 \u2014 \ub3d9\ub8cc \uc815\ub9ac \u00b7 \uac15\ud654 \uacc4\uc2b9</b><br>\u00b7 \uc601\uc6c5 \ub3d9\ub8cc\ub294 \ud55c \ubc88\uc5d0 \ud55c \uba85\ub9cc<br>\u00b7 \uc8fc\ub9c9 \ub3d9\ub8cc: 4\ubc88\uc9f8(\ub05d\ud310) \uae30\uc220\uc744 \uc4f0\uc9c0 \uc54a\uace0, \uacf5\uaca9 \u221215% \u00b7 \uccb4\ub825 \u221210%<br>\u00b7 \ub300\uc7a5\uac04 '\uacc4\uc2b9' \ud0ed: +3 \uc774\uc0c1 \uac15\ud654\ub41c \uc7a5\ube44\uc758 \uac15\ud654\ub97c \uac19\uc740 \ubd80\uc704\uc758 \ub354 \ub192\uc740 \ub808\ubca8 \uc7a5\ube44\ub85c \uc62e\uae34\ub2e4 (70%, \uc6d0\ub798 \uc7a5\ube44\ub294 +0)`;
@@ -15256,7 +15261,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v421';
+const GAME_VER = 'v422';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -20336,7 +20341,7 @@ function qCard(o) {
   h += `<div class="bang-k">${esc(o.kicker || '')}</div><div class="bang-t">${esc(o.title || '')}</div>`;
   if (o.say) { const f = o.npc ? qFaceURL(o.npc) : ''; h += `<div class="bang-say">${f ? `<img class="bang-face" src="${f}" alt="">` : ''}<p>${o.npc ? `<span class="bang-who">${esc(o.npc.name)}</span>` : ''}${esc(o.say)}</p></div>`; }
   if (o.objs && o.objs.length) h += `<div class="bang-sec">${esc(o.objLabel || '\ud560 \uc77c')}</div>` + o.objs.map(([ob, st]) => qObjHTML(ob, st)).join('');
-  if (o.way) h += `<div class="qway">\uac00\ub294 \uae38 <b>${esc(o.way)}</b></div>`;
+  if (o.way) h += o.wayFold ? `<details class="qway"><summary>\uac00\ub294 \uae38 \ubcf4\uae30</summary><b>${esc(o.way)}</b></details>` : `<div class="qway">\uac00\ub294 \uae38 <b>${esc(o.way)}</b></div>`;
   if (o.rw && o.rw.length) h += `<div class="bang-sec">${esc(o.rwLabel || '\ubcf4\uc0c1')}</div>` + qRwHTML(o.rw);
   return h + '</div>';
 }
@@ -20488,8 +20493,13 @@ MENU.quest = function (ctx) {
   const p = G.player, S = sideState(p); let h = '';
   const c = curChapter();
   if (c) {
-    const objs = c.steps.map((s, j) => [qObj(s, j === p.story.step), j < p.story.step ? 'done' : j === p.story.step ? 'now' : 'wait']);
-    h += qCard({ kicker: `${STORY_ACTS[c.act] || ''}`, title: `${STORY.indexOf(c) + 1}\ud654 ${c.t}`, stamp: { t: '\uc9c4\ud589 \uc911', cls: 'ink' }, objs, way: qWay(), rw: qRwChapter(c) });
+    /* v421: \ub05d\ub0b8 \uc77c\uc740 \ud55c \uc904\ub85c \uc811\uace0, \uc9c0\uae08 \ud560 \uc77c + \ub2e4\uc74c \ud558\ub098\ub9cc \u00b7 \uac00\ub294 \uae38\uc740 \uc811\uc5b4 \ub454\ub2e4 */
+    const st = p.story.step, objs = [];
+    if (st > 0) objs.push([{ text: `\ub05d\ub0b8 \uc77c ${st}\uac1c` }, 'done sum']);
+    objs.push([qObj(c.steps[st], true), 'now']);
+    if (c.steps[st + 1]) objs.push([qObj(c.steps[st + 1], false), 'wait']);
+    if (c.steps.length > st + 2) objs.push([{ text: `\u2026 \uadf8 \ub4a4\ub85c ${c.steps.length - st - 2}\uac1c` }, 'wait']);
+    h += qCard({ kicker: `${STORY_ACTS[c.act] || ''}`, title: `${STORY.indexOf(c) + 1}\ud654 ${c.t}`, stamp: { t: '\uc9c4\ud589 \uc911', cls: 'ink' }, objs, way: qWay(), wayFold: 1, rw: qRwChapter(c) });
   } else h += qCard({ kicker: '\uc774\uc57c\uae30', title: '\ub3d9\ubc29\ud3b8 \uc644\uacb0', say: '\uac80\uc740 \ubc14\ub78c\uc740 \uc11c\ucabd \ub300\ub959\uc5d0\uc11c \ubd88\uc5b4\uc628\ub2e4. \ub2e4\uc74c \uc774\uc57c\uae30\ub97c \uae30\ub2e4\ub824 \uc8fc\uc138\uc694.' });
   /* \uc758\ub8b0 */
   const rows = [];
@@ -20505,7 +20515,11 @@ MENU.quest = function (ctx) {
   rows.sort((a, b) => a.o - b.o);
   h += `<div class="qsec">\uc758\ub8b0${fin ? `<small>\ub9c8\uce5c \uc758\ub8b0 ${fin}\uac74</small>` : ''}</div>`;
   if (!rows.length) h += `<div class="muted">${p.job === 'none' ? '\uc9c1\uc5c5\uc744 \uace0\ub974\uba74 \ub9c8\uc744 \uc0c1\uc778\ub4e4\uc774 \uc758\ub8b0\ub97c \ub9e1\uae41\ub2c8\ub2e4.' : '\uc9c0\uae08 \ubc1b\uc744 \uc218 \uc788\ub294 \uc758\ub8b0\uac00 \uc5c6\uc5b4\uc694. \ub808\ubca8\uc774 \uc624\ub974\uba74 \uc0c8 \uc758\ub8b0\uac00 \uc0dd\uae41\ub2c8\ub2e4.'}</div>`;
-  for (const r of rows) h += `<div class="qrow ${r.cls}"><i class="seal side">${r.seal}</i><div class="qrow-b"><div class="qrow-t">${esc(r.t)}</div><div class="qrow-s">${esc(r.s)}</div>${r.cls === 'active' ? `<div class="qbar"><i style="width:${Math.round(r.cur / r.max * 100)}%"></i></div>` : ''}</div><div class="qrow-r">${r.r}</div></div>`;
+  /* v421: \ubc1b\uc744 \uc218 \uc788\ub294 \uc758\ub8b0 \u00b7 \uc7a0\uae34 \uc758\ub8b0\ub294 \uc811\uc5b4 \ub454\ub2e4 (\uc9c4\ud589 \uc911 \u00b7 \ubcf4\uace0\ud558\uae30\ub9cc \ud3bc\uce68) */
+  const nOpen = rows.filter(r => r.cls === 'ready' || r.cls === 'active').length, nFold = rows.length - nOpen;
+  rows.forEach((r, ri) => { if (ri === nOpen && nFold) h += `<details class="qfold" ${nOpen ? '' : 'open'}><summary>\ubc1b\uc744 \uc218 \uc788\ub294 \uc758\ub8b0 ${rows.filter(x => x.cls === 'offer').length}\uac74${rows.some(x => x.cls === 'lock') ? ' \u00b7 \uace7 \uc5f4\ub9b4 \uc758\ub8b0' : ''}</summary>`;
+  h += `<div class="qrow ${r.cls}"><i class="seal side">${r.seal}</i><div class="qrow-b"><div class="qrow-t">${esc(r.t)}</div><div class="qrow-s">${esc(r.s)}</div>${r.cls === 'active' ? `<div class="qbar"><i style="width:${Math.round(r.cur / r.max * 100)}%"></i></div>` : ''}</div><div class="qrow-r">${r.r}</div></div>`; });
+  if (nFold) h += `</details>`;
   /* \uc904\uac70\ub9ac */
   h += `<div class="qsec">\uc904\uac70\ub9ac</div>`;
   const curAct = (STORY[p.story.ch] || STORY[STORY.length - 1]).act;
@@ -22048,25 +22062,52 @@ const MP_MUL389 = 1.3;
   startGame = function (p) { if (p) for (const k of ['_exBusy', '_exInv', '_exHide', '_exGold', '_cdHaste', '_shieldT']) p[k] = 0; EX_Q.length = 0; G._tsUntil = 0; if (typeof cv !== 'undefined') cv.style.filter = ''; return _startGame389s.apply(this, arguments); };
 }
 /* ---------------- \uae30\uc220 \ucc3d: \uce78 \uace0\ub974\uae30 ---------------- */
+/* v421: \uae30\uc220 \ucc3d \uae00 \uc904\uc774\uae30 \u2014 \ud55c \uc904 \uc694\uc57d\ub9cc \ubcf4\uc774\uace0, \ub204\ub974\uba74 \uc804\uccb4 \uc124\uba85 */
+const SK_SHORT = {
+  w1: '\uaff0\ub6ab\ub294 \uac80\uae30 \u00b7 \uc911\uac70\ub9ac 2~4\ub9c8\ub9ac', w2: '\uc8fc\ubcc0 \ubaa8\ub4e0 \uc801 \ubca0\uae30', w3: '\uacf5\uaca9\ub825 +20% 3\ubd84 \u00b7 \uc8fc\ubcc0 \ucda9\uaca9 \u00b7 \uc2dc\uc120 \ub04c\uae30', w4: '\ub113\uc740 \ubc94\uc704 \uae30\uc808',
+  w5: '\uc55e\uc73c\ub85c \ub3cc\uc9c4 \u00b7 \ub4e4\uc774\ubc1b\uc544 \uae30\uc808 (\ubb34\uc801)', w6: '8\ucd08 \ubb34\uc801', w7: '\uba40\ub9ac \uac00\ub294 \ubc18\ub2ec \uac80\uae30 \u00b7 \ubc1b\ub294 \ud53c\ud574 +25%', w8: '\ud654\uba74\uc758 \uc801 \ubaa8\ub450 \ubca0\uae30 (\ubb34\uc801)',
+  t1: '\ub4f1 \ub4a4\ub85c \uc21c\uac04\uc774\ub3d9 \u00b7 \uce58\uba85 \uc77c\uaca9', t2: '\ub3c5 \uc548\uac1c \u00b7 \uc9c0\uc18d \ud53c\ud574', t3: '\uacf5\uc18d\u00b7\uc774\uc18d +25% \u00b7 \uacf5\uaca9\ub825 +15% 3\ubd84', t4: '\ubd84\uc2e0\uacfc \uc8fc\ubcc0 \uc5f0\uc18d \ubca0\uae30',
+  t5: '\ud45c\ucc3d 3\uac1c \ubd80\ucc44\uaf34 \u00b7 \uaff0\ub6ab\uc74c', t6: '\ud45c\uc2dd 15\ucd08 \u00b7 \ubc1b\ub294 \ud53c\ud574 +60% \u00b7 \ubc18\ub4dc\uc2dc \uce58\uba85', t7: '1\ucd08 \uc740\uc2e0(\ubb34\uc801) \u2192 \ub4f1 \ub4a4 \uce58\uba85 \u00b7 \uae30\uc808', t8: '8\ub9c8\ub9ac \uc21c\uac04\uc774\ub3d9 \ubca0\uae30 \u00b7 \ucc98\ud615 (\ubb34\uc801)',
+  s1: '\ubd88\ub369\uc774 \u00b7 \ubd88\ud0dc\uc6c0', s2: '\uc5bc\uc74c \uacb0\uacc4 \u00b7 \ub290\ub9ac\uac8c', s3: '\uc801 \uc0ac\uc774\ub97c \ud280\ub294 \ubc88\uac1c', s4: '\ud558\ub298\uc5d0\uc11c \uc720\uc131 \u00b7 \ub113\uc740 \ubc94\uc704',
+  s5: '\uba40\ub9ac \uc21c\uac04\uc774\ub3d9 \u00b7 \uc794\uc0c1 \ud3ed\ubc1c', s6: '\uac78\ub9b0 \uc0c1\ud0dc\ub97c \ud55c\uaebc\ubc88\uc5d0 \ud130\ub728\ub9bc', s7: '2.5\ucd08 \ube68\uc544\ub4e4\uc778 \ub4a4 \ud3ed\ubc1c', s8: '3.5\ucd08 \uc2dc\uac04 \uc815\uc9c0 \u00b7 \ubc1b\ub294 \ud53c\ud574 +60%',
+  d1: '\ubd80\uc801 3\uc7a5 \u00b7 \ubd99\uc5c8\ub2e4 \ud130\uc9d0', d2: '\ud68c\ubcf5 \u00b7 \ud638\uc2e0 10\ucd08 \u00b7 \ub3d9\ub8cc \ubd80\ud65c', d3: '\ud574\ud0dc \uc18c\ud658 3\ubd84 (\ub808\ubca8 \ub530\ub77c 1~4\ub9c8\ub9ac)', d4: '\ud314\uad18 \uacb0\uacc4 \u00b7 \ud070 \ud53c\ud574 + \ub3d9\ub8cc \ud68c\ubcf5',
+  d5: '4\ub9c8\ub9ac \ud280\ub294 \ud559 \u00b7 \uacf5\uaca9\ub825 \u221225%', d6: 'MP 15% \u00b7 10\ucd08 \ucfe8\ud0c0\uc784 2\ubc30\uc18d', d7: '\uba39\ud638\ub791\uc774 \uc138 \ubc88 \ub36e\uce68 \u00b7 \uae30\uc808', d8: '\ubcf4\ud638\ub9c9 30% + \uc0ac\uc2e0 4\uc5f0\ud0c0'
+};
+function skShort(s) { return SK_SHORT[s.id] || String(s.desc || '').split(/[.\u3002]/)[0]; }
+/* \ud328\uc2dc\ube0c \uc904\ub3c4 \uccab \ubb38\uc7a5\ub9cc \u2014 \ub098\uba38\uc9c0\ub294 \uc811\uc5b4 \ub454\ub2e4 */
+function skPassives421(html) {
+  try {
+    const d = document.createElement('div'); d.innerHTML = html; let out = '';
+    for (const row of d.querySelectorAll('.row')) {
+      const t1 = row.querySelector('.t1'); if (!t1 || !/\ud328\uc2dc\ube0c/.test(t1.textContent)) continue;
+      const t2 = row.querySelector('.t2'), t3 = row.querySelector('.t3');
+      if (t2) { const txt = t2.innerHTML, m = txt.match(/^(.*?[.\u3002])\s+(.+)$/s);
+        t2.outerHTML = m ? `<details class="sk-d"><summary>${m[1]}</summary><div class="sk-full">${m[2]}</div></details>` : `<div class="t2">${txt}</div>`; }
+      if (t3) t3.classList.add('sk-st');
+      out += row.outerHTML;
+    }
+    return out ? `<div class="sk-ph" style="margin-top:4px"><b>\ud328\uc2dc\ube0c</b></div>` + out : '';
+  } catch (e) { return ''; }
+}
 {
   const _menuSkill385 = MENU.skill;
   MENU.skill = function (ctx) {
     const r = _menuSkill385.apply(this, arguments), p = G.player;
     if (!SKILLS_EX[p.job]) return r;
     const slots = skSlots(p);
-    let h = `<div class="sk-pick"><div class="sk-ph"><b>\uae30\uc220 \uce78</b> <span class="muted">\ubc30\uc6b4 \uae30\uc220 ${skillAll(p.job).filter(s => skLearned(p, s)).length}/8 \u00b7 \uc544\ub798\uc5d0\uc11c \uae30\uc220 \uc606 \ubc88\ud638\ub97c \ub204\ub974\uba74 \uadf8 \uce78\uc5d0 \ub4e4\uc5b4\uac11\ub2c8\ub2e4</span></div><div class="sk-slots">`;
+    let h = `<div class="sk-pick"><div class="sk-ph"><b>\uae30\uc220 \uce78</b> <span class="muted">${skillAll(p.job).filter(s => skLearned(p, s)).length}/8 \u00b7 \ubc88\ud638\ub97c \ub20c\ub7ec \uce78\uc5d0 \ub123\uae30 \u00b7 \uc774\ub984\uc744 \ub204\ub974\uba74 \uc124\uba85</span></div><div class="sk-slots">`;
     slots.forEach((id, i) => { const s = skById(p.job, id); h += `<div class="sk-slot ${skLearned(p, s) ? '' : 'off'}"><i>${i + 1}</i>${skillIconHTML(s)}<span>${esc(s.names[p.rank || 0])}</span></div>`; });
     h += `</div>`;
     for (const s of skillAll(p.job)) {
       const on = skLearned(p, s), at = slots.indexOf(s.id);
       const req = !on ? (p.lv < s.lv ? `Lv.${s.lv}` : s.rk === 1 ? '1\ucc28 \uc2b9\uae09' : '2\ucc28 \uc2b9\uae09') : '';
-      h += `<div class="row sk-row ${on ? '' : 'off'}"><div class="ic">${skillIconHTML(s)}</div><div class="tx"><div class="t1">${esc(s.names[p.rank || 0])}${s.ex ? ' <span class="sk-new">\uc0c8 \uae30\uc220</span>' : ''} <span class="muted">Lv.${s.lv} \u00b7 \ucfe8 ${s.cd}\ucd08</span></div><div class="t2">${esc(s.desc)}</div></div>`;
+      h += `<div class="row sk-row ${on ? '' : 'off'}"><div class="ic">${skillIconHTML(s)}</div><div class="tx"><details class="sk-d"><summary><span class="t1">${esc(s.names[p.rank || 0])}${s.ex && !on ? ' <span class="sk-new">\uc0c8</span>' : ''}</span> <span class="sk-cd">\u23f1${s.cd}</span><span class="t2">${esc(skShort(s))}</span></summary><div class="sk-full">${esc(s.desc)}<div class="muted">MP ${skillMp(p, s)} \u00b7 \ucfe8 ${s.cd}\ucd08 \u00b7 Lv.${s.lv} \u00b7 ${s.names.filter((n, j, a) => a.indexOf(n) === j).join(' \u2192 ')}</div></div></details></div>`;
       h += on ? `<div class="sk-btns">${[...Array(SK_N).keys()].map(k => `<button class="btn ${at === k ? 'teal' : ''}" data-a="skPut" data-v="${s.id}" data-n="${k}">${k + 1}</button>`).join('')}</div>` : `<div class="muted sk-req">${req}</div>`;
       h += `</div>`;
     }
-    h += `</div><div class="sep"></div>`;
-    /* \uc6d0\ub798 \ubaa9\ub85d(\uc9c0\uae08 \ub080 4\uac1c \uc124\uba85)\uc740 \uc544\ub798\uc5d0 \ub0a8\uae34\ub2e4 */
-    return [r[0], h + r[1]];
+    h += `</div>`;
+    /* v421: \uc6d0\ub798 \ubaa9\ub85d(\ub080 \uae30\uc220 \uc124\uba85 \ub418\ud480\uc774)\uc740 \ube7c\uace0 \ud328\uc2dc\ube0c\ub9cc \uc9e7\uac8c */
+    return [r[0], h + skPassives421(r[1])];
   };
   const _onModalClick385 = onModalClick;
   onModalClick = function (e) {
@@ -22089,6 +22130,10 @@ const MP_MUL389 = 1.3;
 .sk-slot i{position:absolute;left:4px;top:2px;font-style:normal;font-size:10px;color:var(--gold2)}.sk-slot.off{opacity:.5}
 .sk-slot img.pxs{width:30px;height:30px}
 .sk-row.off{opacity:.5}.sk-row .t2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.sk-btns{display:flex;gap:3px;flex:none}.sk-btns .btn{min-width:30px;padding:6px 0}
+.sk-d summary{list-style:none;cursor:pointer}.sk-d summary::-webkit-details-marker{display:none}
+.sk-d summary .t1{display:inline;font-weight:700}.sk-d summary .t2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12px;opacity:.85;word-break:keep-all}
+.sk-cd{font-size:11px;color:var(--gold2);margin-left:2px}.sk-full{font-size:12px;line-height:1.5;margin-top:4px;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.25)}
+.sk-full .muted{margin-top:4px;font-size:11px}.sk-d[open] summary .t2{-webkit-line-clamp:unset}.sk-row:has(.sk-d[open]){flex-wrap:wrap}.sk-row:has(.sk-d[open]) .tx{flex:1 1 calc(100% - 52px)}.sk-row:has(.sk-d[open]) .sk-btns,.sk-row:has(.sk-d[open]) .sk-req{margin-left:auto}.sk-row .sk-btns{gap:2px}.sk-row .sk-btns .btn{min-width:26px}.sk-st{font-size:11px}.sk-row .tx{min-width:0}
 .sk-new{font-size:10px;padding:0 5px;border-radius:6px;background:rgba(47,122,114,.5);color:var(--ink)}.sk-req{flex:none;font-size:11px}`;
   document.head.appendChild(st);
 })();
@@ -23887,12 +23932,14 @@ function navListHTML() {
   for (const [k, v] of Object.entries(p.cityReq || {})) if (v.active && CITY_REQUESTS[k]) add('req:' + k, '\uc784', CITY_REQUESTS[k].t);
   (p.bounty?.list || []).forEach((q, i) => { if (!q.claimed) add('bounty:' + i, '\uc218', q.t); });
   if (!rows.length) return '';
-  let h = `<div class="nav-list"><div class="nav-h">\ud83e\udded \uc790\ub3d9 \uc774\ub3d9 <span class="muted">\ub204\ub974\uba74 \uadf8\uacf3\uae4c\uc9c0 \uc54c\uc544\uc11c \uac11\ub2c8\ub2e4</span></div>`;
-  for (const r of rows) {
+  let h = `<div class="nav-list"><div class="nav-h">\ud83e\udded \uc790\ub3d9 \uc774\ub3d9</div>`;
+  rows.forEach((r, ri) => {   /* v421: \uc14b\uae4c\uc9c0\ub9cc \ud3bc\uce58\uace0 \ub098\uba38\uc9c0\ub294 \uc811\ub294\ub2e4 */
+    if (ri === 3) h += `<details class="nav-more"><summary>+ ${rows.length - 3}\uacf3 \ub354</summary>`;
     const where = r.g.npc ? `${NPCS[r.g.npc]?.n || ''} \u00b7 ${guideMapName(r.g.maps[0])}` : guideMapName(r.g.maps[0]);
     const on = NAV.cur?.ref === r.ref;
     h += `<div class="nav-r"><i class="seal ${r.kind === '\ubcf8' ? '' : 'side'}">${r.kind}</i><div class="nav-t"><b>${esc(r.t)}</b><small>\ud83d\udccd ${esc(where)}${r.g.npc ? '' : r.g.boss ? ' \u00b7 \uc6b0\ub450\uba38\ub9ac' : ' \u00b7 \uc0ac\ub0e5'}</small></div><button class="btn ${on ? '' : 'gold'}" data-a="nav" data-v="${r.ref}">${on ? '\uba48\ucd94\uae30' : '\u25b6 \uac00\uae30'}</button></div>`;
-  }
+  });
+  if (rows.length > 3) h += '</details>';
   return h + '</div>';
 }
 {
