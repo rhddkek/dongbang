@@ -12,7 +12,7 @@ self.addEventListener('fetch', e => {
   const req = e.request; if (req.method !== 'GET') return;
   const url = new URL(req.url); if (url.origin !== self.location.origin) return;
   const page = req.mode === 'navigate' || /\/(index\.html)?$/.test(url.pathname);
-  const fixed = /\/audio\/[^/]+\.mp3$|\/icon-\d+\.png$/.test(url.pathname);
+  const fixed = /\/audio\/[^/]+\.mp3$|\/img\/[^/]+$|\/sfx\.[0-9a-f]+\.bin$|\/icon-\d+\.png$/.test(url.pathname);   /* v513: 그림 · 효과음 묶음도 지문 이름 → 한 번 받으면 그대로 */
   if (fixed) {
     e.respondWith((async () => {
       const c = await caches.open(CACHE), hit = await c.match(req, { ignoreSearch: true }); if (hit) return hit;
