@@ -859,7 +859,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v640 &#xc2dc;&#xd5d8;&#xd310;</div>
+    <div class="sub">v641 &#xc2dc;&#xd5d8;&#xd310;</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6839,6 +6839,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  if (window.SYS641) notes += `<div class="sep"></div><b>v641 \uc2dc\ud5d8 \u2014 \uadf8\ub9bc \ub2e4\uc12f \u00b7 \uc2dc\uc2a4\ud15c \ub2e4\uc12f</b><br>\u00b7 \ucd08\ubc18 \ubaac\uc2a4\ud130 9\uc885 \u00b7 \ub179\uac01\uc655 \u00b7 \uc124\ubc31\ub791: \ub9de\uc73c\uba74 \uc6c0\ucc14 \u00b7 \uc4f0\ub7ec\uc9c8 \ub54c \uc606\uc73c\ub85c \ub118\uc5b4\uc9d0 (\ud770 \uadf8\ub9bc\uc790 \ub300\uc2e0)<br>\u00b7 \uac19\uc740 \uadf8\ub9bc\uc744 \uc4f0\ub358 \uc7a5\uc0ac\uafbc\ub4e4 \uc637 \u00b7 \uba38\ub9ac\uc0c9\uc774 \uc0ac\ub78c\ub9c8\ub2e4 \ub2e4\ub984<br>\u00b7 \ub300\uc7a5\uac04 \uac15\ud654 \ubcf4\uc870\uc81c \u00b7 \ubb3c\uc57d \ub2e8\ucd94(\uc9c1\uc811 \uace0\ub978 \ubb3c\uc57d) \ub3c4\ud2b8 \uc544\uc774\ucf58<br>\u00b7 \ud759\uae38 \uac00\uc7a5\uc790\ub9ac: \ud480\uc774 \ubb3c\uacb0\uce58\ub4ef \ub118\uc5b4\uc624\uace0 \uadf8\ub298 \ud55c \uc904<br>\u00b7 \ub0b4\uac00 \uc9c1\uc811 \uc7a1\uc740 \ub9c8\uc9c0\ub9c9 \ud55c \ub300\ub294 \uc7a0\uae50 \ub290\ub824\uc9d0 \u00b7 \uc790\ub3d9\uc0ac\ub0e5\uc744 \ub044\uba74 \ubcf4\uace0\uc11c \ud55c \uc7a5<br>\u00b7 \uccad\uc6d4\ucd0c \uba85\ud488\uc0c1 \uc758\ub8b0 \u300c\ub291\ub300 \uc1a1\uacf3\ub2c8 \ub178\ub9ac\uac1c\u300d(Lv.13 \u00b7 \uc57d 1\ub9cc\ubb38 + \uc5f0\ub9c8\uc81c 2)<br>\u00b7 \uc774\uc57c\uae30\ucc3d \ub9e8 \uc704 \u300c\uc624\ub298\uc758 \uc6b0\ub450\uba38\ub9ac\u300d [\uac00\uae30] \u00b7 \uc21c\uc704 \ucc3d\uc5d0 \u300c\ub0b4 \uc21c\uc704 \u00b7 \uc704\uc544\ub798 \uc138 \uc0ac\ub78c\u300d`;
   if (window.TRK640) notes += `<div class="sep"></div><b>v640 \uc2dc\ud5d8 \u2014 \ud560 \uc77c \uc904 \uc790\ub9ac \uace0\ub974\uae30</b><br>\u00b7 \uc124\uc815 \ub9e8 \uc704 \u300c\ud83d\udcdc \ud560 \uc77c \uc904 \uc790\ub9ac\u300d [\uc67c\ucabd] [\uc624\ub978\ucabd] \u2014 \uc624\ub978\ucabd\uc774\uba74 \uc791\uc740 \uc9c0\ub3c4 \ubc14\ub85c \uc544\ub798\ub85c \u00b7 \uc774 \uae30\uae30\uc5d0 \uae30\uc5b5`;
   if (window.B4639) notes += `<div class="sep"></div><b>v639 \uc2dc\ud5d8 \u2014 \ud45c\uc9c0\ud310 \u00b7 \ucd08\ubc18 \ub9c8\ubb34\ub9ac 4 \u00b7 5\ubb36\uc74c</b><br>\u00b7 \ucd9c\uad6c \ud45c\uc9c0\ud310: \ub9c9\ub300 + \ub72c \uae00\uc790 \u2192 \ud53d\uc140\ub7a9 \uc774\uc815\ud45c(\ub3cc\ubb34\ub354\uae30 \uae30\ub465 + \ud654\uc0b4 \ub110\ud310) \u00b7 \ub110\ud310\uc774 \uc774\ub984 \uae38\uc774\ub9cc\ud07c \ub298\uc5b4\ub098\uace0 \uae00\uc790\ub97c \uc0c8\uae40 \u00b7 \ud654\uc0b4 \ub05d\uc774 \ucd9c\uad6c \ucabd \u00b7 \uc704\ud5d8\ud55c \uacf3\uc740 \ubd89\uc740 \uae00\uc528 \u00b7 \ubc14\ub2e5\uc5d4 \uae08\ube5b \uaebe\uc1e0 \uc14b<br>\u00b7 \uc124\uc815 \u300c\ub098\uac00\uae30\u300d: \uae30\uae30 \uc800\uc7a5\uc744 \ud655\uc778\ud55c \ub4a4(\uad6c\ub984\ub3c4) \u300c\uc624\ub298\uc758 \ubaa8\ud5d8 \u00b7 \ub2e4\uc74c \u00b7 \uc800\uc7a5\ub428\u300d \uc138 \uc904 \u00b7 \uc774\uc5b4\ud558\uae30 \uc9c1\ud6c4 \uac19\uc740 \uc138 \uc904 + [\uacc4\uc18d\ud558\uae30] [\ub9c8\uc744\uc5d0\uc11c \uc815\ube44]<br>\u00b7 \ucc98\uc74c \uc628 \uc0ac\ub78c: \ud070 \u300c\u2694\ufe0f \ubaa8\ud5d8 \uc2dc\uc791\u300d \ud55c \ubc88\uc774\uba74 \uc774\ub984 \uce78 (\ub85c\uadf8\uc778\uc740 \uc544\ub798 \uc791\uac8c)<br>\u00b7 \uc774\uc57c\uae30\ucc3d \u300c\uc9c0\uae08 \u00b7 \uba3c \uae38\u300d \u2014 \uc9c0\uae08\uc740 \ud55c \ud654\uba74(\uc9c4\ud589 \uc911 \uc774\uc57c\uae30 \u00b7 \uc758\ub8b0 \u00b7 \uc55e\uc73c\ub85c \ud55c \uc904) \u00b7 \uc2e0\ubb3c \u00b7 \ube44\uc0ac \u00b7 \uc2ec\ud654 \ubb34\uae30 \u00b7 \uc9c0\ub098\uac08 \uc7a5\uc740 \uba3c \uae38<br>\u00b7 \uace0\ub978 \uc801 \ubc1c\ubc11: \ud45c\uc801 \ubaa8\uc591 \u00b7 \ub2ff\uc9c0 \uc54a\uc73c\uba74 \ud68c\uc0c9<br>\u00b7 \uccab \uc0ac\uac74: Lv.5 \u00b7 \uc9c1\uc5c5\uc744 \ubc1b\uc73c\uba74 \ub179\uac01\ub3d9\uad74 \uc5b4\uadc0\uc5d0 \ub2e4\uce5c \uc0ac\ub0e5\uafbc \ubc94\uc218 \u2192 \uac80\uc740 \uae30\uc6b4 \uc11c\ub9b0 \ub4e4\uc5ec\uc6b0 \u2192 \uac80\uac8c \ubb3c\ub4e0 \ubf08 \uc870\uac01 \u2192 \ub179\uac01\uc655 \uc870\uc0ac<br>\u00b7 \uc9c1\uc5c5 \uce74\ub4dc: \uadf8\ub9bc \u00b7 \ud55c \uc904 \u00b7 \uac70\ub9ac + \ud2b9\uc9d5 \u00b7 [\ubbf8\ub9ac\ubcf4\uae30](\uccab \uae30\uc220 \ud55c \ubc88 \uc368 \ubcf4\ub294 2\ucd08) \u00b7 [\uc774 \uc9c1\uc5c5\uc73c\ub85c]`;
   if (window.G637) notes += `<div class="sep"></div><b>v638 \uc2dc\ud5d8 \u2014 \ucd08\ubc18 \ub9c8\ubb34\ub9ac 2 \u00b7 3\ubb36\uc74c</b><br>\u00b7 \ud560 \uc77c\uc740 \ud55c \uc904: \ucd94\uc801\uae30 \u00b7 [\uac00\uae30] \u00b7 \uae08\ube5b \ud654\uc0b4\ud45c \u00b7 \uc704 \ub760\uac00 \ubaa8\ub450 \uac19\uc740 \ubaa9\ud45c (\uc774\uc57c\uae30 > \uccab\uac78\uc74c > \ub808\ubca8 \ub9de\ub294 \uc0ac\ub0e5\ud130) \u00b7 \ub2e8\ucd94\uc5d0 \ubaa9\ud45c\ub97c \uc500(\u300c\ud55c\ubc31\uc218\uc5d0\uac8c \uac00\uae30\u300d \u300c\ub300\uc7a5\uac04\uc73c\ub85c\u300d) \u00b7 \uc774\uc57c\uae30\ucc3d \u300c\uc790\ub3d9 \uc774\ub3d9\u300d\uc5d0\uc11c [\ucd94\uc801]\uc73c\ub85c \ubc14\uafb8\uae30<br>\u00b7 Lv.5\uc5d0 [\uac00\uae30]\uac00 Lv.1~3 \ub4e4\ud310\uc73c\ub85c \ub418\ub3cc\ub9ac\ub358 \uac83 \u2192 \ub808\ubca8\uc774 \uce78 \uc548\uc5d0 \ub4dc\ub294 \uc0ac\ub0e5\ud130(\ub179\uac01\ub3d9\uad74 1\uce35)<br>\u00b7 \uc190\uc9d3 \uc548\ub0b4\ub294 \ud574\ub0b8 \uc21c\uac04 \ub05d \u00b7 \ubc14\ub85c \uc800\uc7a5(\ub2e4\uc2dc \ub4e4\uc5b4\uc640\ub3c4 \uc548 \ub738) \u00b7 \uc124\uc815 \u300c\ub3c4\uc6c0\ub9d0 \ub2e4\uc2dc \ubcf4\uae30\u300d \u2014 \uac00\uae30 \u00b7 \uc790\ub3d9 \u00b7 \uc9c1\uc5c5 \ubb34\uae30 \u00b7 \uac15\ud654(\ub300\uc7a5\uac04 \uc55e) \u00b7 \ud68c\ubcf5(\uccb4\ub825 \ubc18 \uc544\ub798)<br>\u00b7 \uac00\uc6b4\ub370 \ucc3d\uc740 \ud55c \ubc88\uc5d0 \ud558\ub098: \uc0c8 \uae30\ub2a5 \u00b7 \uc758\ub8b0 \uc644\ub8cc \u00b7 \uce6d\ud638 \ub4f1\uc740 \uad6c\uc11d \uc54c\ub9bc \u00b7 \ub3c8 \ubc1b\uc74c\uc740 \uae30\ub85d\ucc3d \u00b7 \uc804\uc9c1 \ub54c\ub294 \uc5f0\ucd9c \ud558\ub098\ub9cc (\u300c\uac15\ud574\uc9c0\ub294 \ub450 \uae38\u300d\uc740 Lv.8 \ub9c8\uc744\uc5d0\uc11c \u00b7 \uc308\uc9d3\ub3c8\uc740 \uccab \ud55c \ubc1c \ub4a4)<br>\u00b7 \uccab \uae30\uc220\uc774 \uc9c1\uc5c5 \ubc1b\ub294 Lv.3\uc5d0 \uc5f4\ub9bc \u2192 \ub4e4\ud310\uc5d0\uc11c \ud45c\uc801 \ud558\ub098(\uae08\ube5b \uace0\ub9ac) \u00b7 \uadf8\ub3d9\uc548 \uc9d0\uc2b9\uc774 \uc548 \ub364\ube54 \u00b7 \uc9c1\uc811 \ub20c\ub7ec \ub9de\ud788\uba74 \u300c\uc774\uac8c \ubb34\uc0ac\uc758 \ucc38\uaca9\u300d<br>\u00b7 \uac15\ud654: \u300c\ubaa9\uac80 +0 \u2192 +1 \u00b7 \uacf5\uaca9 80 \u2192 86 (\u25b26) \u00b7 \uc131\uacf5 100% \u00b7 11\ubb38 \u00b7 [11\ubb38\uc73c\ub85c \uac15\ud654]\u300d \u2014 \ubcf4\uc870\uc81c \u00b7 \uac01\uc131 \u00b7 \uacc4\uc2b9 \u00b7 \uaca9\uc11d\uc740 +4\ub098 \uc138 \ubc88\uc9f8 \uac15\ud654\ubd80\ud130 \u00b7 +1~3\uc740 \ubc18\uc9dd + \uc22b\uc790\ub9cc(\ud754\ub4e4\ub9bc \uc5c6\uc74c) \u00b7 [\uac15\ud654\ud55c \ubb34\uae30\ub85c \uc0ac\ub0e5\ud558\uae30]`;
@@ -53866,6 +53867,523 @@ body.trkR640.clean #tracker{background:none}
     try { const c = modalCtx; if (c && c.menu) openMenu(c.menu, true); } catch (er) { }
   }, true);
   window.trk640Test = s => { try { localStorage.setItem(K.KEY, s === 'R' ? 'R' : 'L'); } catch (e) { } place(); return side(); };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zd_sys641 (\uc2dc\ud5d8\ud310 \u00b7 v641): \uc2dc\uc2a4\ud15c \uac74\uc758 \ub2e4\uc12f \u2014 \uad11\uc6b0 \u300c\u3147\u3147 \ub2e4 \ud574\ubcf4\uac70\ub77c\u300d
+   \u2460 \ub9c8\uc9c0\ub9c9 \ud55c \ub300: \ub0b4\uac00 \uc9c1\uc811 \uc7a1\uc740 \ub9c8\uc9c0\ub9c9 \uc77c\uaca9\uc740 0.15\ucd08 \ub3d9\uc548 \uc2dc\uac04\uc774 \ub290\ub824\uc9d0 (\uc790\ub3d9\uc0ac\ub0e5 \u00b7 \uc6b0\ub450\uba38\ub9ac\ub294 \ube7c\uace0 \u00b7 0.8\ucd08\uc5d0 \ud55c \ubc88\uae4c\uc9c0)
+   \u2461 \uc124\ubc31\ub791 \uc55e \ub3c8\uc904: \uccad\uc6d4\ucd0c \uba85\ud488\uc0c1 \ubc31\uae08\uc21c \uc758\ub8b0 \u300c\ub291\ub300 \uc1a1\uacf3\ub2c8 \ub178\ub9ac\uac1c\u300d \u2014 Lv.13 \u00b7 \ub291\ub300\uace0\uc6d0 15\ub9c8\ub9ac \u00b7 \uc57d 1\ub9cc\ubb38 + \uc5f0\ub9c8\uc81c 2
+      (\uc9c0\ub09c \uc2e4\uce21: \uc124\ubc31\ub791 \uc55e\uc5d0\uc11c \ubaa8\uc778 \ub3c8 9\ucc9c~1\ub9cc6\ucc9c\uc774\ub77c \uac15\ud654\ub85c \ub118\uae30 \ube60\ub4ef\ud588\ub2e4)
+   \u2462 \uc790\ub3d9\uc0ac\ub0e5 \ubcf4\uace0\uc11c: \uc790\ub3d9\uc744 \ub044\uba74 (1\ubd84 \ub118\uac8c \ub3cc\uc558\uc744 \ub54c) \u300c23\ubd84 \u00b7 \ub178\ub8e8 41 \u00b7 \ub4e4\uc5ec\uc6b0 12 \u00b7 +2,100\ubb38 \u00b7 \uacbd\ud5d8 +38% \u00b7 \uccad\ub3d9 \uc7a5\uac11\u300d \ud55c \uc7a5
+   \u2463 \uc624\ub298\uc758 \uc6b0\ub450\uba38\ub9ac: \uc788\ub358 \uae30\ub2a5\uc778\ub370 \ucd94\uc801\uae30 \uc904\uc744 \ub4a4 \ubaa8\ub4c8(feat521)\uc774 \uc9c0\uc6cc \uc544\ubb34\ub3c4 \ubab0\ub790\ub2e4 \u2192
+      \uc774\uc57c\uae30\ucc3d \u300c\uc9c0\uae08\u300d \ub9e8 \uc704 \u00b7 \uc774\uc5b4\ud558\uae30 \uc138 \uc904 \ucc3d \u00b7 \uc811\uc18d \uc54c\ub9bc\uc73c\ub85c \ubcf4\uc5ec \uc90c (\ubcf4\uc0c1 \u00b7 \uc704\uce58 \u00b7 [\uac00\uae30])
+   \u2464 \uc21c\uc704: \ub9e8 \uc704\uc5d0 \u300c\ub0b4 \uc21c\uc704 N\ub4f1 \u00b7 \ubc14\ub85c \uc704 \u00b7 \uc544\ub798 \uc138 \uc0ac\ub78c\u300d
+   \u00b7 sys641Test(false) \u2192 \uc608\uc804
+   ============================================================ */
+window.SYS641 = { on: true, ks: 0, ksLast: -9 };
+{
+  const K = window.SYS641, P = () => G.player;
+  /* ---------- \u2460 \ub9c8\uc9c0\ub9c9 \ud55c \ub300 ---------- */
+  const _up = update;
+  update = function (dt) {
+    if (K.on && K.ks > 0) { K.ks -= dt; dt *= .3; }
+    return _up.call(this, dt);
+  };
+  const _km = killMob;
+  killMob = function (m, killer) {
+    const live = m && !m.dead;
+    const r = _km.apply(this, arguments);
+    try {
+      const p = P();
+      if (K.on && live && p && killer === p && !p.auto && !m.boss && !m.fake && G.time - K.ksLast > .8) {
+        K.ksLast = G.time; K.ks = .15;
+        addFx('ring', m.x, m.y - 4, { col: 'rgba(255,240,200,.9)', dur: .35, r: 30 });
+      }
+    } catch (e) { }
+    return r;
+  };
+  /* ---------- \u2461 \ub291\ub300 \uc1a1\uacf3\ub2c8 \ub178\ub9ac\uac1c ---------- */
+  if (typeof SIDE_QUESTS !== 'undefined' && !SIDE_QUESTS.some(q => q.id === 'sq_fang641')) {
+    SIDE_QUESTS.push({ id: 'sq_fang641', npc: 'premiumM', town: 'buyeo', lv: 13, t: '\ub291\ub300 \uc1a1\uacf3\ub2c8 \ub178\ub9ac\uac1c', maps: ['wolf_highland'], n: 15, gold: 45, items: [['enhPolish', 2]],
+      say: '\uc124\ubc31\ub791 \uad74\uc5d0 \uac00\ub294 \ubb34\uc0ac\ub2d8\ub4e4\uc774 \ub291\ub300 \uc1a1\uacf3\ub2c8 \ub178\ub9ac\uac1c\ub97c \ucc3e\ub294\ub2f5\ub2c8\ub2e4. \ub291\ub300\uace0\uc6d0\uc5d0\uc11c \uc5f4\ub2e4\uc12f \ub9c8\ub9ac\ub9cc \uc7a1\uc544 \uc1a1\uacf3\ub2c8\ub97c \ubaa8\uc544 \uc8fc\uc138\uc694. \uac12\uc740 \ub109\ub109\ud788 \uccd0 \ub4dc\ub9ac\uc9c0\uc694 \u2014 \uadf8 \ub3c8\uc73c\ub85c \uce7c\ubd80\ud130 \ubcbc\ub9ac\uace0 \uac00\uc138\uc694.',
+      done: '\uc1a1\uacf3\ub2c8\uac00 \uc544\uc8fc \uc2e4\ud558\ub124\uc694! \uc57d\uc18d\ud55c \uac12\uc5d0 \uc5f0\ub9c8\uc81c\ub3c4 \uc5b9\uc5b4 \ub4dc\ub824\uc694. \uc124\ubc31\ub791 \uc55e\uc5d0\uc11c\ub294 \uac15\ud654\uac00 \uace7 \ubaa9\uc228\uc774\uc5d0\uc694.' });
+  }
+  /* ---------- \u2462 \uc790\ub3d9\uc0ac\ub0e5 \ubcf4\uace0\uc11c ---------- */
+  let A = null;
+  const startA = p => { A = { t0: G.time, g0: p.gold, x0: totXp(p), lv0: p.lv, kills: {}, items: {} }; };
+  const totXp = p => { let s = p.xp || 0; try { for (let l = 1; l < p.lv; l++) s += xpToNext(l); } catch (e) { } return s; };
+  const _km2 = killMob;
+  killMob = function (m) { const live = m && !m.dead; const r = _km2.apply(this, arguments); try { if (A && live && m.dead) { const n = m.boss ? (BOSSES[m.boss] || {}).n || m.name : (MOBS[m.type] || {}).n || m.name; A.kills[n] = (A.kills[n] || 0) + 1; } } catch (e) { } return r; };
+  if (typeof giveItem === 'function') {
+    const _gi = giveItem;
+    giveItem = function (p, id, n) { const r = _gi.apply(this, arguments); try { if (A && p === P() && ITEMS[id] && !/gold/.test(id)) { const d = ITEMS[id]; if (d.slot && d.slot !== 'material' && d.slot !== 'potion' || (d.rarity || 0) >= 2) A.items[d.name] = (A.items[d.name] || 0) + (n || 1); } } catch (e) { } return r; };
+  }
+  const report = p => {
+    const a = A; A = null; if (!a) return;
+    const sec = G.time - a.t0; if (sec < 60) return;
+    const kills = Object.entries(a.kills).sort((x, y) => y[1] - x[1]), tot = kills.reduce((s, k) => s + k[1], 0);
+    const gold = p.gold - a.g0, xr = (totXp(p) - a.x0) / Math.max(1, xpToNext(p.lv)) * 100, xpPct = xr >= 10 ? Math.round(xr) : xr >= .1 ? Math.round(xr * 10) / 10 : xr > 0 ? '0.1 \ubbf8\ub9cc' : 0;
+    const items = Object.entries(a.items).slice(0, 4);
+    const min = Math.round(sec / 60);
+    const el = document.createElement('div'); el.id = 'ar641';
+    el.innerHTML = `<b>\ud83e\udd16 \uc790\ub3d9\uc0ac\ub0e5 ${min >= 60 ? Math.floor(min / 60) + '\uc2dc\uac04 ' + (min % 60) + '\ubd84' : min + '\ubd84'}</b>
+<div>\u2694\ufe0f ${tot}\ub9c8\ub9ac \u2014 ${kills.slice(0, 3).map(([n, c]) => `${esc(n)} ${c}`).join(' \u00b7 ')}${kills.length > 3 ? ' \u2026' : ''}</div>
+<div>\ud83d\udcb0 ${gold >= 0 ? '+' : ''}${fmt(gold)}\ubb38 \u00b7 \u2728 \uacbd\ud5d8 ${p.lv > a.lv0 ? `Lv.${a.lv0} \u2192 Lv.${p.lv}` : '+' + xpPct + '%'}</div>
+${items.length ? `<div>\ud83c\udf81 ${items.map(([n, c]) => esc(n) + (c > 1 ? ' \u00d7' + c : '')).join(' \u00b7 ')}</div>` : ''}<small>\ub20c\ub7ec\uc11c \ub2eb\uae30</small>`;
+    $('ar641') && $('ar641').remove(); ($('game') || document.body).appendChild(el);
+    const close = () => { el.classList.add('out'); setTimeout(() => el.remove(), 300); };
+    el.addEventListener('pointerdown', close); setTimeout(close, 7000);
+  };
+  let was = false;
+  setInterval(() => {
+    try {
+      const p = P(); if (!K.on || !p || !$('title').hidden) return;
+      const on = !!p.auto;
+      if (on && !was) startA(p);
+      if (!on && was) report(p);
+      was = on;
+    } catch (e) { reportError(e); }
+  }, 250);
+  /* ---------- \u2463 \uc624\ub298\uc758 \uc6b0\ub450\uba38\ub9ac ---------- */
+  const daily = () => {
+    const p = P(); if (!p || p.lv < 8) return null;
+    const today = typeof window.dayKey527 === 'function' ? window.dayKey527() : (d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`)(new Date());
+    if (!p.daily517 || p.daily517.d !== today) {
+      /* feat517 \uacfc \ub611\uac19\uc774 \ubf51\ub294\ub2e4 (\uadf8\ucabd \ubf51\uae30\ub294 \ucd94\uc801\uae30 \uc904\uc5d0\uc11c\ub9cc \ubd88\ub824\uc11c, \uc904\uc774 \ubc14\ub010 \ub4a4\ub85c\ub294 \ucc98\uce58\ud560 \ub54c\ub098 \ubf51\ud614\ub2e4) */
+      try {
+        const cands = Object.keys(BOSSES).filter(b => { const L = bossLv(b); if (!L) return false; if (BOSSES[b].fin445 || /^fin_/.test(b)) return false; return L <= p.lv + 5 && L >= Math.min(p.lv - 30, p.lv - 5); });
+        p.daily517 = { d: today, b: cands.length ? cands[hashStr(today + ':' + p.name) % cands.length] : null, done: 0 };
+      } catch (e) { }
+    }
+    const D = p.daily517; if (!D || D.d !== today || !D.b || !BOSSES[D.b]) return null;
+    let L = 0; try { L = bossLv(D.b); } catch (e) { }
+    let gold = 0; try { gold = Math.round(goldRate(Math.max(1, Math.min(150, (L || p.lv) | 0))) * 60 / 100) * 100; } catch (e) { }
+    let where = ''; try { const ms = bossMaps(D.b); where = ms.length ? guideMapName(ms[0]) : ''; } catch (e) { }
+    return { b: D.b, n: BOSSES[D.b].n, L, gold, done: !!D.done, where };
+  };
+  K.daily = daily;
+  const dailyHTML = () => {
+    const d = daily(); if (!d) return '';
+    return `<div class="dl641 ${d.done ? 'done' : ''}"><i>\ud83d\udc51</i><div><b>\uc624\ub298\uc758 \uc6b0\ub450\uba38\ub9ac \u00b7 ${esc(d.n)}</b> <small>Lv.${d.L}${d.where ? ' \u00b7 ' + esc(d.where) : ''}</small><div>${d.done ? '\u2705 \uc624\ub298 \ud1a0\ubc8c \uc644\ub8cc \u2014 \ub0b4\uc77c \uc0c8 \uc6b0\ub450\uba38\ub9ac' : `\uccab \ud1a0\ubc8c \ubcf4\uc0c1 ${gold641(d.gold)} \u00b7 \uc804\uc124 \uac15\ud654\uc11d 3 \u00b7 \uc815\uc218 2`}</div></div>${d.done ? '' : `<button class="btn" data-dl641="${d.b}">\uac00\uae30</button>`}</div>`;
+  };
+  const gold641 = g => g >= 10000 ? (Math.round(g / 1000) / 10) + '\ub9cc\ubb38' : fmt(g) + '\ubb38';
+  if (typeof MENU !== 'undefined' && MENU.quest) {
+    const _mq = MENU.quest;
+    MENU.quest = function (ctx) {
+      const r = _mq.apply(this, arguments);
+      try { if (K.on && Array.isArray(r) && !(ctx && ctx.qt639 === 'far')) { const h = dailyHTML(); if (h) { const i = r[1].indexOf('</div>', r[1].indexOf('qtab639')); return [r[0], i > 0 ? r[1].slice(0, i + 6) + h + r[1].slice(i + 6) : h + r[1]]; } } } catch (e) { reportError(e); }
+      return r;
+    };
+  }
+  document.addEventListener('click', e => {
+    const b = e.target && e.target.closest && e.target.closest('[data-dl641]'); if (!b) return; e.stopImmediatePropagation(); e.preventDefault();
+    try { closeModal(); navStart('boss:' + b.dataset.dl641); } catch (er) { reportError(er); }
+  }, true);
+  /* \uc811\uc18d \uc54c\ub9bc (\ud558\ub8e8 \ud55c \ubc88) + \uc774\uc5b4\ud558\uae30 \uc138 \uc904 \ucc3d\uc5d0 \ud55c \uc904 */
+  setInterval(() => {
+    try {
+      const p = P(); if (!K.on || !p || !$('title').hidden || modalOpen() || $('rt639')) return;
+      const d = daily(); if (!d || d.done) return;
+      if (p.dlSeen641 === p.daily517.d) return; p.dlSeen641 = p.daily517.d;
+      toast(`\ud83d\udc51 \uc624\ub298\uc758 \uc6b0\ub450\uba38\ub9ac \u2014 ${d.n} (Lv.${d.L}) \u00b7 \uccab \ud1a0\ubc8c ${gold641(d.gold)} \u00b7 \uc774\uc57c\uae30\ucc3d\uc5d0\uc11c [\uac00\uae30]`, 'gold');
+    } catch (e) { }
+  }, 3000);
+  if (typeof SAVE_FIELDS !== 'undefined' && !SAVE_FIELDS.includes('dlSeen641')) SAVE_FIELDS.push('dlSeen641');
+  const mo = new MutationObserver(() => { try { const el = $('rt639'); if (!el || el.dataset.dl641) return; el.dataset.dl641 = 1; const d = daily(); if (!d || d.done) return; const n = el.querySelector('.n'); const div = document.createElement('div'); div.className = 'n'; div.innerHTML = `\uc624\ub298 \u00b7 <b>\ud83d\udc51 ${esc(d.n)}</b> <small>Lv.${d.L} \u00b7 \uccab \ud1a0\ubc8c ${gold641(d.gold)}</small>`; (n || el.querySelector('.pp h3')).after(div); } catch (e) { } });
+  mo.observe(document.body, { childList: true });
+  /* ---------- \u2464 \uc21c\uc704: \ub0b4 \uc704 \u00b7 \uc544\ub798 ---------- */
+  if (typeof rankHtml === 'function') {
+    const _rh = rankHtml;
+    rankHtml = function () {
+      const h = _rh.apply(this, arguments);
+      try {
+        if (!K.on || !RankUI.list || !Cloud.user) return h;
+        const S = RANK_SORTS.find(s => s[0] === RankUI.sort) || RANK_SORTS[0], me = Cloud.user.uid;
+        const list = RankUI.list.filter(e => e.uid === me || (e.lv >= RANK_MIN_LV && !RANK_HIDE.test(e.n))).sort(S[3]);
+        const i = list.findIndex(e => e.uid === me && e.slot === 's' + SAVE_SLOT); if (i < 0) return h;
+        const a = Math.max(0, i - 3), b = Math.min(list.length, i + 4);
+        const rows = list.slice(a, b).map((e, k) => { const n = a + k, mine = n === i; const gap = !mine && S[2] ? '' : ''; return `<div class="nb641 ${mine ? 'me' : ''}"><span class="r">${n + 1}</span><span class="n">${esc(e.n)}</span><span class="v">${esc(String(typeof S[2] === 'function' ? S[2](e) : (e[S[0]] != null ? fmt(e[S[0]]) : 'Lv.' + e.lv)))}</span></div>`; }).join('');
+        const top = `<div class="rk641"><b>\ub0b4 \uc21c\uc704 ${i + 1}\ub4f1</b> <small>/ ${list.length}\uba85 \u00b7 ${esc(S[1])}</small>${rows}</div>`;
+        const j = h.indexOf('</div>', h.indexOf('stabs')); return j > 0 ? h.slice(0, j + 6) + top + h.slice(j + 6) : top + h;
+      } catch (e) { reportError(e); return h; }
+    };
+  }
+  /* ---------- \ubaa8\uc591 ---------- */
+  const css = document.createElement('style');
+  css.textContent = `#ar641{position:absolute;left:50%;bottom:22%;transform:translateX(-50%);z-index:33;min-width:min(330px,86vw);padding:9px 14px 8px;color:#f7ead0;background:rgba(18,12,8,.88);border:1px solid #d9b25f;border-radius:4px;font:700 12.5px/1.6 var(--ff,sans-serif);box-shadow:0 4px 14px rgba(0,0,0,.5);transition:opacity .3s}
+#ar641 b{color:#ffd77a;font-size:14px}#ar641 small{display:block;text-align:right;opacity:.55;font-size:10px}#ar641.out{opacity:0}
+.dl641{display:flex;align-items:center;gap:8px;margin:0 0 8px;padding:7px 9px;border:1px solid #c9a24a;border-radius:3px;background:linear-gradient(90deg,rgba(201,162,74,.22),rgba(201,162,74,.05))}
+.dl641 i{font-style:normal;font-size:20px}.dl641>div{flex:1;min-width:0;font-size:12px}.dl641 b{font-size:13px}.dl641.done{opacity:.6}.dl641 .btn{padding:4px 12px}
+.rk641{margin:6px 0 8px;padding:6px 8px;border:1px solid var(--gold,#d9b25f);border-radius:3px;background:rgba(217,178,95,.08)}
+.nb641{display:flex;gap:8px;padding:2px 2px;font-size:12px}.nb641 .r{width:34px;text-align:right;opacity:.8}.nb641 .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nb641.me{background:rgba(217,178,95,.25);font-weight:800}`;
+  document.head.appendChild(css);
+  window.sys641Test = on => { K.on = on !== false; return K.on; };
+}
+
+/* 98zzzzzzz_zzzz_ze_a_mobhit641data (\uc2dc\ud5d8\ud310 \u00b7 v641): \ucd08\ubc18 \ubaac\uc2a4\ud130 \u00b7 \uc6b0\ub450\uba38\ub9ac \ub9de\uae30 4\uc7a5 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 8\uc7a5 (PixelLab, \uc9c0\uae08 \uc11c\uae30 \uadf8\ub9bc\uc744 \uccab \uc7a5\uc73c\ub85c) */
+const MH641_META = {"m_fox": [44, 4, 8], "m_deer": [44, 4, 8], "m_caveBat": [64, 4, 8], "m_wildDog": [52, 4, 8], "m_wolf": [52, 4, 8], "m_hawk": [44, 4, 8], "m_squirrel": [36, 4, 8], "m_boar": [56, 4, 8], "m_direwolf": [56, 4, 8], "b_deerKing": [60, 4, 8], "b_whiteWolf": [76, 4, 8]};
+const MH641_IMG = {"m_fox": "data:image/webp;base64,UklGRjYFAABXRUJQVlA4TCkFAAAvX8EVELegJgBAxt57u7SQRv8EbmqwjiRZyXN3fw/9JTOSJSSq1EiSEgHedywR5ft8vWUqzn9AiqkyKLO48Xj9phtcde59jbOQE/D82BGIpDAiDTHyibUtPx3xF81O59n2y96uQMG21bqRdWUkS7Zo2RFJaf5TdWQ70Oly3rci+g/BbSNHknvmclBPucMG7wPax9t+/NdPSML22WdbK49Gn8PxlrVCiAj0OYzJd6wVPVYf7/f7O/vre9U71soXSSEEY8HYX9/t529XK6RSooncCYRyviEfTsfk9/r5b6iVvmA5cc5qRKJHdDhAjdTIKRjHdcXJmLwOhdNaGV1Qz1ziEgflKVsrM3a2edTgole4SkRw5K8rEclwVisyouVVlloDNBqf58qccDAaYrzfNafg1F9Xof31dMmiVq0BeE7fmUXqJmWPFqnMPPeKhcvXPYz311XrzgG099d1aO1qNTCLrNpawXWFQmbmJ656JZnKpgwADpgzxxjC62v6jXdDzB/46yp2KyL1lhPAzEWCslbDzMycEnMHKd5gqZ5zjtOUt8Zdi+HlN5k7AUPk2o/J63hzuzFPPvWlUl5NyMrMcVciWfVqoBh514oU5FHhgK4rPqX8JKwEXMd2kEtfq06rTvT0M8+BmSVxXBZv0q15pyoiNUUFX5znOe0dIOFSttuZOU2bJg6yeO0UJjVHzzwtMUYMBBPbMJfKzLuFGJoF28V5r/XeruSglBMz1ziFhXSlCiKyRoDZe8A7wEDYNC1LNxZWoAYjD8hyNbcY4ZnTssADSo0ABswDCC/czFYslxFAYlkWA050vU+cF7qe2+TMgbp7y0xmmjA0u1UPER2iY08w6XwkwLMnd0H3eWCwu7e3+4qZHA7+i4kSCHvGy2mO2nvvxOCdcxZwDdgxXtFjUu+/tFj2HWj/1mo//qv9FJrGt2U07c4nkSy3ZbQMMv8Gv1xYstyW0TTI/BG84gI9apc4tmU07Y6lCS7moLE1s8SxD82Qsb2AaOmta4mV01rRzhLHSkQrxnFs7RjRUr+k+BDChWg4ShwPrE0cuw7RiDHUEe0c0Ui5lHQpgmyazxLHakQbxtBZwAixhfHkSJN1rJy+P9Va9onj2ieOdYjbYcTYHTaIbVxHd7RIzLax8gHNfXeLsC+3FxLHSkSebBghUm8zmk2QOYhIl1V6dmhirpaxcgpwwe7dADTnmqFh0N6CEWyYOAZ3LR0zqu3ibILMTkQqJ7g0pczGsXJ6VIqGW1nbF44KgHe2jLpgcj5KHI+6YBFbMnYWOEHUqR5AWsfK/S/51e1yjLecZoZ5F0bnp5yyUeLYxZTNGJE2zbHXIKvOgiiVT7Quqkp6T+R9Q9f0uxw6gkwgtQnIH3SoY6R3YYT3aZc4LurEMQC3ZxxWJaOLae48UGOK8F41EDDxTqUIs18Jyle7Kcyzn7aWc6I0q3Y5+GI+gJzVJhi+LBnpRUaDxHFcD6ZFNWNMUb1hAAGJOa3rkwBO6QHmKe069BWhUth0OxpjzLpdDuRkQGpN4Mo7MKpm9ERATIOJYscIcoOz8YCHRVIRXev78/zIqdeIOe6vqmqXEx5VhHeQBiZwUg0Z8TKjPnMMD0KzyyejWcg9GS3D112g3Dn1zbBesfMuD5pdjl9F6jGk15iAFIy2/dFNIs7187qFCPtg8h/JCGyaYkpxWZaUUiQQoBhkzAkHkJHc6yZYRKQeMCYl47haMrb2ctj4O2ME0EA4bDpE6iENMAfnyJBxeJXxg24NAA==", "m_deer": "data:image/webp;base64,UklGRkIFAABXRUJQVlA4TDUFAAAvX8EVEJ+gsG0jNXX4zPxqJElKTnAy95z/v47L2AgAYORso3b9/2N2bfMfYnHrGI2ABAS+5dKv+QLHpWEL725JR94kdEw1FaVIm3txVI3So/drBQq2bdVtpAvoCT1xJUDS/AcrgVfx2t1K/yP6L8FtJEeSImu9U3ZGuQPyHnD9eON///Wf5YIZHvAT+163XIgwAZQLMeIHJkbnjMQo7ic2wEPFSpUxRg0/LuUjiUYbwnJkJRm/9wk85sILaTvsiuV4kCDdl1YLpFyILzSccjcrFoT7iU2Mlz3KBQcTpUMhr7SvxFtmxYq5bFuZYTBXXMCHbSU5kSG5XvuhTt9Fri9WbYplpPOOdTLYS+qZUoztspcGTzuO0jugNLvKq/yhYFgsefgiSBbBZLOA5bzlKBdYNUQZ0iGIqvGGjcwg5UXe1gBRdSTrNFosUPB82858wmyxIwspl8s6WCtXTuatbBGR3E+8isqR8l72nfnA+N+qZ2bhzv2wkpAPJUPcMkZHym1KZM7NBvQiY+ueaDUolgupcCOZxe64wrSziTw8GSLJBnE7zo1lxpuM7omW2WihyadSRawyitN6PCplx6iE1AcxH2Vpd+0XCSWPU7k4Ix1rSoxGAuM11ZM81+McPRU5Mt1wiecy3YHpehMJ07yqUa2EnOWCbiI2SvG6ppV8ajU6GRzjzbYmLv5q4m00TVaLjVBDMyHgnN11fFImua4wYRq2wNVk/0JXcralynAwUHL9nVBsHNPAwaZYDk9G/qWEq5sLYVwT0RYs2CZmMyVFpEN8nwF1U7OXwaRECQ2jaVo3ZUrwMEV8G03Asq7rImEe1zLDNYzLYqZ5vimBC14sEd/nW2S5Y55ni2ItInPDaKcmI5E7J1vEf7jF//7r+v+ern3/tS358E1GP4LWco8Y8YW1AlO49f4WAA8GiQIzE4QL0VnpVA+BmQVeTTWK2ulQL1FgJcZopkM94lsNx5ISGY1NYMVYNBlaQHzEa31ZuAMMVibIhiZwLGaI4FE1yevow+odmYFdjBgRxk3gPhD41i+WFnid/3Mi9Mp13wdbCj9VZ2ZrApN0QodoagHDoyzwR6gSIHqHsOstN2JkZwIDRP8B0cIt/oMFrHYf9dHZXSt+zzq7zmeyLAGTFWNvgi9BrL9gAbPdPYq3vFbYXvG+ihF739NdKiwZjzUETFaIS/CYbN1ippOWOiMuUw/YM5r0dOez4qsYfYe4HZZu0WNp3GL3qsQklh6A5RUPhqq0KcBxKusxX5cRI1lrMEHU4zx1U6NslCQtfku4rnYRUxFRmt4Uiqr/Sr/UOs4opM6rcl8M8gZ7RjFDXJXZYsRb53mq6nCZ3AaX+0WMHD7mmHsAsWPM6asYQaqfrHqOQZGpYTT6t5GHcfK0kJKy3uFlGNKVg5naT7LBYw7w2QNb44Eh50JvRj6MqgaM0ZSR0q4NJtMWbfG9iS7frQM2AqM2HhAAo4Q1s5lk2kyyMnTMAesHDygNLgrpWxkvx2CoC5bCnsQ9cjA6QyO0Xsd45o1b91JrATB0zHHl/OABMh51zAOu9Iyk1t+EcehB+bbxWWEiwJLRd5CrzQblIA+lRT4+KJkE3gcB/NAxB50HtOyr0g8dObGVs2dUUvcxRtZfYxxrfF7XdV3gnMEXInzLCB/HNQNrFwa9tsty03WcyyDkfBOiiXUdx5xX75sKACF4YOjICec/MXqq9x7TYscYMA09LJG56zm+ujBhXKwY27Dqeu4hTQitMOOyLGijIxyBXD4zAngemTHjTzouAA==", "m_caveBat": "data:image/webp;base64,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", "m_wildDog": "data:image/webp;base64,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", "m_wolf": "data:image/webp;base64,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", "m_hawk": "data:image/webp;base64,UklGRqoEAABXRUJQVlA4TJ4EAAAvX8EVELegqJEkNZkN43+PDJyCNpKUh2MQ8Oxf5CeKGklSlnfvvmjm/GviZP6DU4sZEYY/Qz/EGKcyJqSGXSkgdENAkAkCgw4cvrcztKJxcWEzhv8mULStLWujPbzlBZH3iTpT4/3fakRb3jWJ+X4b0X/XkqTGDZg4dxazyPhh8wHb2+s//tsP7Qa8iuyvK9KAl5C9Dpe0AQEYOCievxmQOejl3JFoZulhHLyOKfZKAc4t6WkcruZO4O5VH3bjbPBpA6jvMubZksAx+ysJs7pbzWVelmVdew8pAh5YVX2XMceWDEmO2V/HhkeM+0az+fenrndLnVZGCY35LSDAbnRpBjFLZ9lfRZSxlNaizfdfputK6duXMo4lBL9aAWZ20gz9wXqa/VX80JBlLLG5We8PX+cRXS2AMranieK1jImo1rNm6A4ynWV/IZczIeTm4fywpW8ggapIrc0WPWqFEMQqq1MzSLG6p6On2V/HnWSNrff7mrsvO7QpFZ0WEJRaG4zq0gwtXywesr+Ue6qJdrjpnxeQc6y1slrsrhWAUCrbHqurQzOgGlmZ2GR/JRFVJZpVs9ttXovLFIJQqznUClE12mgNB9Z7f7EgZvudJvvhUvaqeQBG0ow0OI2SUTWyv1ZQ1ailmnGYHSKKqmjTZzfDdi0PgPbSQ4cMt1md5M2jVrtHjVpvt09031eNipGmqSRsV+RhIXTR4LXNqjkPgA/EIpoVDieflAVt7tguyXRZUl4WBjeMaVkMnhgZPNr3LPdLspIXQ6DAEaN5Y3TO/Zo8xm2TF4HxnzH/8d+2H/+Fz8AbZiEVuGJ8w0iAgSXCF6MrCd4FYykKX4yOslx5A+4c1J0+ejfVE4yOstyiV39HMtwkxzCzJF4YBcCBMNOIa486JdmVinG9M/WqZ0nSCWMIZkZLAw9a8SsPM1IapWJc10n6EE4kLbpgFLOGA5E8EubixpzuYp0pFSu61LNTJVldMEo9QBTyhDBO/wJS4Hut8AoxyjjVh5EnkuNu9WyOLhjF2shGBxLgkMDhNDE0yho/DrwMjC7F8pAcy6FW7McINTuEB2GAGCM2gGRuxpzuof5LDrw8jOFYLAepYhCro8Vs1o0RIlYrYzQz8yBBVM0KNj5klynnCw6E7RVg7DpMOBZrmubefWjVs2Uid4zozFlUZJgmo7GfMIgp5xKjiOTmpXlm7Tyq4UsOvASM3cWaaDZNhr77DUCA846xdjM7SATSNJGcOHf3YxpErPHM/ikSD6d4cQBA4PSHYoQXRrTF0pmaSuwlKzTvS5ws1OSlkQZnKkkHEny0Q6RF9k+RiJokRicOIGqy58HYJznepNEcp+Chnt222xGji+uOUWNwOLO3M3qK5Dzff9X47T8MASQlOZLglAMdGOWJMPYVS5cl52WhONTKG2M6YOzbgGrVyHmqYpw/780U+c2lNIgkqWY0klUeIHs4EEQOR98DI/4QjH2a47QY5FT3/EwYg2gy4zSZSJ3meR9ylmbi+i5nRTntXmOe1y4ObIBoNeMzYezzj4/H89uJPxVGSGxctg0HD50n7Bal4Ny/D/HJML7NvgE=", "m_squirrel": "data:image/webp;base64,UklGRoADAABXRUJQVlA4THQDAAAvH8EREKegsJGkNPduOLSA2jaSlOO7Z4r++y/yQ0WNJCnLe0xazr+ue93Of6Bgz8yz04Y8TKVCT7AQkoNzJszifVlNLhT/4Pt8v/oSK08rHW8voCAAbNy2AQmSAEkgYGTr/3/1SdApu3sR/YfjRpIjKXpWnRVVrZy8D5x/eMb//vMvI2KMsAbIgG7/CGuK3CwQC/UOD133dhMOTODzF+kd1hS5WQoRdYWHrju7CUNbij5/pi5hTZF7hcy03BjCCV3dDFnk6OjzNyPpK4rcLtdv4x5yl6Ohp5s5Eo18ZJc/mFnr4C+SetgrEMyahPLQdVc38bhe8/EFngJOVKsMT1eIq8gXapscQa215647ulmxX67HDX8FDxyYYIEawkbBroer60HvmCZwthJUb4QQYGhNOA+/Utvkn1RvmGoGcE6dcU1hQQWllJxFj4YOtUSl3NX6PmHqRgWDd+r0KBdwbwFszVp/vEKmwSYi8nTL7HGgNla7JAQXxF3keoXT+/RuZuo6RFFbMzN7umV2+WRUGSOBb+paFhnDDarI9aLiukIwq8jF9PmW2eUXlhSjT6wUbJZwgb+OMUgzgOMQjXe3ouVBbZtQjDFn8rvhEreYU0VwuyVCOP/wjP/9518phBD/4LyISvhNxR5/iB0YES1hz7HHJXYisAJR+O1AT0lEyICr7DwYdz8hxrBbzLToUyp2lZ0f1+wBEcGGWJNEDENriqvsPFB3xtaCUS8bw5dEhMec1Co7B/TEUE5xEt7wyRjUWovxMRe6zM7zcIHwNHuzsAqcvujoi/iKMzz6U93mSaW/zEl90A6UKJHy4+xNI+Lc+4EInvH9q8Av5AaqDaXby5zUJ+2MqlRxzB6YMbNUAIDpEzQQCzxEkgDAcUAA/Ey3muIcRtRU9etVLvRzdidEERPP7AVTZkpVqUzv/UDEXUUlkkMOQhBRqeRyO5Gk/wy3M1kjtaMVBHc4UhbYnZH0uIj2+dkLqqpVus7v/WBEzMzEDjmMrfrdTiD+kNvck5PqGO4kGSZVWWBXMYzvC+XkuagBVVQv03sfzPQ+PHLARETv3WbotsKtvneb7ipxzzFm7wXLktDtdo5SEfOAL9/aZsmH9em9H4KZmaJDrkSx73duc1T7hJuD8ib36HPj0z/u/ksKKHk+Fwr34ZKD5+Er4HNuf5DGCQ==", "m_boar": "data:image/webp;base64,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", "m_direwolf": "data:image/webp;base64,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", "b_deerKing": "img/586b49671a.webp", "b_whiteWolf": "img/dda7f18c6a.webp"};
+
+/* ============================================================
+   98zzzzzzz_zzzz_ze_b_mobhit641 (\uc2dc\ud5d8\ud310 \u00b7 v641): \ucd08\ubc18 \ubaac\uc2a4\ud130 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 \uc6c0\uc9c1\uc784
+   \u00b7 \ub300\uc0c1: \uc5ec\uc6b0 \u00b7 \uc0ac\uc2b4(\ub178\ub8e8) \u00b7 \uad74\ubc15\uc950 \u00b7 \ub4e4\uac1c \u00b7 \ub291\ub300 \u00b7 \ub9e4 \u00b7 \ub2e4\ub78c\uc950 \u00b7 \uba67\ub3fc\uc9c0(\uc5b4\ub9b0 \uba67\ub3fc\uc9c0) \u00b7 \ud070\ub291\ub300 + \uc6b0\ub450\uba38\ub9ac \uc0ac\uc2b4\uc655 \u00b7 \uc124\ubc31\ub791
+   \u00b7 \ub9de\uc73c\uba74: \uc6c0\ucc14 4\uc7a5(0.28\ucd08) \u2014 \uacf5\uaca9 \uc911\uc77c \ub54c\ub294 \uacf5\uaca9 \uadf8\ub9bc\uc744 \ub04a\uc9c0 \uc54a\uc74c
+   \u00b7 \uc4f0\ub7ec\uc9c0\uba74: \ud770 \uadf8\ub9bc\uc790\uac00 \ub5a0\uc624\ub974\ub358 \uac83 \ub300\uc2e0 \uc606\uc73c\ub85c \uc4f0\ub7ec\uc9c0\ub294 8\uc7a5 \u2192 \uc7a0\uae50 \ub204\uc6cc \uc788\ub2e4\uac00 \ud750\ub824\uc9d0
+   \u00b7 \ud76c\uadc0 \ubcc0\uc885 \uc81c \uadf8\ub9bc \u00b7 \uc228\uc740 \uc6b0\ub450\uba38\ub9ac \uadf8\ub9bc\uc740 \uadf8\ub300\ub85c \u00b7 \ube44\uad50: mh641Test(false)
+   ============================================================ */
+window.MH641 = { on: true, img: {}, loading: {}, fr: {} };
+{
+  const K = window.MH641, HIT = .28;
+  const keyOf = m => {
+    if (!m || typeof MH641_META === 'undefined') return null;
+    if (m.boss) { const k = 'b_' + m.boss; return MH641_META[k] ? k : null; }
+    if (m.variant && typeof RV522 !== 'undefined' && RV522.f && RV522.f[m.variant.id]) return null;
+    let k = 'm_' + m.type; if (typeof MOB558_ALIAS !== 'undefined' && MOB558_ALIAS[k]) k = MOB558_ALIAS[k];
+    return MH641_META[k] ? k : null;
+  };
+  const load = k => {
+    if (K.img[k] || K.loading[k]) return;
+    K.loading[k] = 1;
+    const im = new Image();
+    im.onload = () => { K.img[k] = im; };
+    im.onerror = () => { K.loading[k] = 0; };
+    im.src = MH641_IMG[k];
+  };
+  const cut = (im, S, row, i, flip, white) => {
+    const c = document.createElement('canvas'); c.width = S; c.height = S; const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+    if (flip) { g.translate(S, 0); g.scale(-1, 1); }
+    g.drawImage(im, i * S, row * S, S, S, 0, 0, S, S);
+    if (white) { g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-in'; g.fillStyle = '#fff'; g.fillRect(0, 0, S, S); }
+    return c;
+  };
+  const frame = (k, row, i, flip) => {
+    const id = k + '|' + row + '|' + i + '|' + (flip ? 1 : 0);
+    let f = K.fr[id]; if (f) return f;
+    const im = K.img[k], S = MH641_META[k][0];
+    let a = null, b = null;
+    f = K.fr[id] = { get img() { return a || (a = cut(im, S, row, i, flip)); }, get flash() { return b || (b = cut(im, S, row, i, flip, true)); } };
+    return f;
+  };
+  K.keyOf = keyOf; K.frame = frame;
+  /* \ub9de\uae30 */
+  const _ms = mobSpr;
+  mobSpr = function (m, fr, right) {
+    const r = _ms.apply(this, arguments);
+    try {
+      if (m._die641 && m.hp > 0) m._die641 = 0;
+      if (!K.on || m._die641) return r;
+      const k = keyOf(m); if (!k) return r;
+      if (!K.img[k]) { load(k); return r; }
+      const now = G.time || 0, st = m._mh641 || (m._mh641 = { h0: -9 });
+      const s558 = m._m558, atk = (s558 && now - s558.t0 < .5) || m.lunge > 0 || !!(m.action && /windup|dash|leap/.test(m.action.k || ''));
+      if ((m.flashT || 0) > .09 && now - st.h0 > HIT + .05 && !atk) st.h0 = now;
+      const dt = now - st.h0;
+      if (dt >= 0 && dt < HIT && !atk) return [frame(k, 0, Math.min(3, Math.floor(dt / HIT * 4)), !right), r[1]];
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  /* \uc4f0\ub7ec\uc9c0\uae30 */
+  const DIE = .62, LIE = .38;
+  const _af = addFx;
+  addFx = function (type, x, y, o) {
+    if (type === 'death' && K.on && o && o.m) {
+      try { const k = keyOf(o.m); if (k) { if (!K.img[k]) load(k); if (K.img[k]) { o.die641 = k; o.dur = DIE + LIE + (o.m.boss ? .5 : 0); o.m._die641 = 1; } } } catch (e) { }
+    }
+    return _af.apply(this, arguments);
+  };
+  const _dA = AIR_FX.death;
+  AIR_FX.death = function (f) {
+    if (!f.die641) return _dA.apply(this, arguments);
+    try {
+      const m = f.m, k = f.die641, t = f.t, dd = DIE + (m.boss ? .3 : 0);
+      const scm = (() => { try { m._die641 = 0; const r = _ms(m, 0, m.face > 0); return r[1]; } catch (e) { return 1; } finally { m._die641 = 1; } })();
+      const S = MH641_META[k][0], n = MH641_META[k][2], i = Math.min(n - 1, Math.floor(t / dd * n));
+      const fr = frame(k, 1, i, !(m.face > 0)), sc = ART * scm, w = S * sc, h = S * sc;
+      const a = t < dd ? 1 : Math.max(0, 1 - (t - dd) / (f.dur - dd));
+      const X = Math.round(m.x - w / 2), Y = Math.round(m.y - h + 4);
+      ctx.save();
+      ctx.globalAlpha = a; ctx.drawImage(fr.img, X, Y, w, h);
+      if (t < .1) { ctx.globalAlpha = .75 * (1 - t / .1); ctx.drawImage(fr.flash, X, Y, w, h); }
+      ctx.restore();
+      if (!f.motes && t > dd * .7) {
+        f.motes = 1;
+        const nn = m.boss ? 24 : 7;
+        for (let j = 0; j < nn; j++) addFx('ember', m.x + rnd(-w * .35, w * .35), m.y - rnd(2, h * .35), { col: m.boss ? '#ffd24a' : '#e8dcc0', dur: rnd(.4, .9), vx: rnd(-24, 24), vy: -rnd(8, 30) });
+      }
+      if (m.boss) HD.light(m.x, m.y - h * .3, Math.max(w, h) * .6, '#ffd24a', a * .4);
+    } catch (e) { reportError(e); f.die641 = 0; }
+  };
+  window.mh641Test = on => { K.on = on !== false; return K.on; };
+  window.mh641Pre = () => { for (const k in MH641_META) load(k); return Object.keys(K.img).length; };
+  setTimeout(() => { try { window.mh641Pre(); } catch (e) { } }, 4000);
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zf_npc641 (\uc2dc\ud5d8\ud310 \u00b7 v641): \uac19\uc740 \uadf8\ub9bc\uc744 \ub098\ub220 \uc4f0\ub358 \uc7a5\uc0ac\uafbc\ub4e4\uc5d0\uac8c \uc81c \uc637 \u00b7 \uba38\ub9ac\uc0c9
+   \u00b7 \ubb34\uae30\uc0c1 \u00b7 \ubc29\uc5b4\uad6c\uc0c1 \u00b7 \uc7a5\uc2e0\uad6c\uc0c1 \u00b7 \uba85\ud488\uc0c1 (\uc544\ub099 \uc0c1\uc778 \uadf8\ub9bc) / \uc57d\ubc29 \u00b7 \uc7a1\ud654\uc0c1 \u00b7 \ud22c\uc790\uc18c \u00b7 \ub180\uc774\ud310 \u00b7 \uac1d\uc8fc \u00b7 \uc7a5\ube44\uc0c1 \u2026 (\uc0ac\ub0b4 \uc0c1\uc778 \uadf8\ub9bc)
+   \u00b7 \uadf8\ub9bc \ubaa8\uc591\uc740 \uadf8\ub300\ub85c \ub450\uace0 \uc800\uace0\ub9ac \u00b7 \uce58\ub9c8 \u00b7 \uba38\ub9ac\uc0c9\ub9cc \uc0ac\ub78c\ub9c8\ub2e4 \ub2e4\ub974\uac8c \ubb3c\ub4e4\uc778\ub2e4 \u2014 \uc11c\uae30 \u00b7 \uc228\uc26c\uae30 \u00b7 \uc190\uc9d3 \u00b7 \uc606\ubaa8\uc2b5 \ubaa8\ub450
+   \u00b7 \ube44\uad50: npc641Test(false)
+   ============================================================ */
+window.NPC641 = {
+  on: true,
+  /* id: [\uc800\uace0\ub9ac [\uc0c9\uc0c1, \ucc44\ub3c4\ubc30, \ubc1d\uae30\ubc30], \uce58\ub9c8/\ubc14\uc9c0(\uc5c6\uc73c\uba74 \uadf8\ub300\ub85c), \uba38\ub9ac\uc0c9(\uc5c6\uc73c\uba74 \uadf8\ub300\ub85c)] */
+  T: {
+    weaponM: [[215, .25, .9], [0, 1.6, 1.1]],
+    armorM: [[80, .75, 1], [30, 1.4, 1.2]],
+    accM: [[170, .85, 1], [225, 1.5, 1.2]],
+    premiumM: [[285, .8, 1.05], [285, 1.5, 1], [150, 150, 160]],
+    seoul_m: [[48, .9, 1.35], [350, 1.5, 1]],
+    gwangju_m: [[320, .6, 1.25], [260, 1.2, 1.1]],
+    jeju_f: [[28, 1.1, 1.4], [120, 1, 1.1]],
+    seoyeon: [[95, .5, 1.2], [30, 1, 1.2]],
+    potionM: [[130, .8, 1]],
+    generalM: [[28, .75, 1.1]],
+    investM: [[350, .75, 1], null, [140, 140, 150]],
+    gambleM: [[275, .5, .7]],
+    tradeK: [[42, .8, 1.3]],
+    gearM: [[0, 0, .9]],
+    gs_m: [[185, .7, 1]],
+    py_m: [[100, .4, .9]],
+    campM: [[20, .5, .8]],
+    rebuildM515: [[30, .3, .75], null, [120, 116, 110]],
+  },
+  cache: new WeakMap()
+};
+{
+  const K = window.NPC641;
+  const hsv = (r, g, b) => {
+    r /= 255; g /= 255; b /= 255;
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+    let h = 0;
+    if (d) { if (mx === r) h = ((g - b) / d) % 6; else if (mx === g) h = (b - r) / d + 2; else h = (r - g) / d + 4; h *= 60; if (h < 0) h += 360; }
+    return [h, mx ? d / mx : 0, mx];
+  };
+  const rgb = (h, s, v) => {
+    h = ((h % 360) + 360) % 360; const c = v * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = v - c;
+    const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+    return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
+  };
+  const cls = (h, s, v, base) => {
+    if (base === 'F') {
+      if ((h >= 340 || h <= 16) && s >= .45 && v >= .15 && v <= .72) return 1;
+      if ((h >= 300 || h <= 10) && s >= .18 && s <= .32 && v >= .14 && v <= .3) return 2;
+    } else {
+      if (h >= 205 && h <= 245 && s >= .4 && v >= .18) return 1;
+      if (h >= 205 && h <= 260 && s >= .1 && s <= .25 && v >= .35 && v <= .5) return 2;
+      if ((h <= 15 || h >= 345) && s <= .2 && v >= .2 && v <= .3) return 2;
+    }
+    return 0;
+  };
+  const isSkin = (h, s, v) => h >= 18 && h <= 40 && s >= .18 && s <= .5 && v >= .7;
+  const paint = (src, base, T) => {
+    const W = src.width, H = src.height, c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d'); g.imageSmoothingEnabled = false; g.drawImage(src, 0, 0);
+    const id = g.getImageData(0, 0, W, H), d = id.data, o = new Uint8ClampedArray(d);
+    const A = (x, y) => x < 0 || y < 0 || x >= W || y >= H ? 0 : d[(y * W + x) * 4 + 3];
+    const S = (x, y) => { if (x < 0 || y < 0 || x >= W || y >= H) return false; const i = (y * W + x) * 4; if (!d[i + 3]) return false; const [h, s, v] = hsv(d[i], d[i + 1], d[i + 2]); return isSkin(h, s, v); };
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const i = (y * W + x) * 4; if (!d[i + 3]) continue;
+      const [h, s, v] = hsv(d[i], d[i + 1], d[i + 2]), k = cls(h, s, v, base);
+      const t = k === 1 ? T[0] : k === 2 ? T[1] : null;
+      if (t) { const [r, gg, b] = rgb(t[0], Math.min(1, s * t[1]), Math.min(1, v * t[2])); o[i] = r; o[i + 1] = gg; o[i + 2] = b; }
+      else if (T[2] && v < .16 && y < H * .45 && A(x + 1, y) && A(x - 1, y) && A(x, y + 1) && A(x, y - 1)) {
+        let nearSkin = false;
+        for (let dy = -1; dy <= 1 && !nearSkin; dy++) for (let dx = -1; dx <= 1; dx++) if (S(x + dx, y + dy)) { nearSkin = true; break; }
+        if (!nearSkin) { o[i] = T[2][0]; o[i + 1] = T[2][1]; o[i + 2] = T[2][2]; }
+      }
+    }
+    g.putImageData(new ImageData(o, W, H), 0, 0);
+    return c;
+  };
+  const baseOf = e => { try { const n = NPCS[e.id]; const l = n && n.look; return l === 'merchantF' ? 'F' : l === 'merchantM' ? 'M' : null; } catch (er) { return null; } };
+  /* \uc544\ub099 \u00b7 \uc0ac\ub0b4 \uc0c1\uc778 \uadf8\ub9bc(\uc11c\uae30 \u00b7 \uc190\uc9d3 \u00b7 \uc606 \u00b7 \uc228\uc26c\uae30)\uc5d0\uc11c \ub098\uc628 \uce78\ub9cc \ubb3c\ub4e4\uc778\ub2e4 \u2014 \uc81c \uadf8\ub9bc\uc774 \ub530\ub85c \uc788\ub294 \uc0ac\ub78c(\uc11c\uc5f0 \ub4f1)\uc740 \uadf8\ub300\ub85c */
+  const yes = new WeakSet(), no = new WeakSet();
+  const isMerch = (f, base) => {
+    if (yes.has(f)) return true; if (no.has(f)) return false;
+    const look = base === 'F' ? 'merchantF' : 'merchantM'; let ok = false;
+    try { const S = W407.n && W407.n[look]; if (S) ok = S.some(x => x && (x.r === f || x.l === f)); } catch (e) { }
+    if (!ok) try { const pre = 'w_' + look + '|'; for (const k in NPC559.fr) if (k.startsWith(pre) && NPC559.fr[k] === f) { ok = true; break; } } catch (e) { }
+    (ok ? yes : no).add(f); return ok;
+  };
+  const _nf = w407NpcFrame;
+  w407NpcFrame = function (e) {
+    const f = _nf.apply(this, arguments);
+    try {
+      if (!K.on || !f || !e || !e.id) return f;
+      const T = K.T[e.id]; if (!T) return f;
+      const base = baseOf(e); if (!base) return f;
+      if (!isMerch(f, base)) return f;
+      let m = K.cache.get(f); if (!m) { m = {}; K.cache.set(f, m); }
+      let r = m[e.id];
+      if (!r) {
+        const im = f.img; if (!im || !im.width) return f;
+        let a = null;
+        r = m[e.id] = { get img() { return a || (a = paint(im, base, T)); }, get flash() { return f.flash; } };
+      }
+      return r;
+    } catch (er) { }
+    return f;
+  };
+  window.npc641Test = on => { K.on = on !== false; return K.on; };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zg_icon641 (\uc2dc\ud5d8\ud310 \u00b7 v641): \uadf8\ub9bc \ubb38\uc790 \ub300\uc2e0 \ub3c4\ud2b8 \uc544\uc774\ucf58
+   \u00b7 \ub300\uc7a5\uac04 \u300c\uac15\ud654 \ubcf4\uc870\uc81c\u300d \uce78: \ud83e\uddf4 \u00b7 \ud83d\udcdc \u00b7 \ud83e\udde7 \u2192 \uac00\ubc29\uc5d0 \ubcf4\uc774\ub294 \ubc14\ub85c \uadf8 \ub3c4\ud2b8 \uadf8\ub9bc (\uc5f0\ub9c8\uc81c \u00b7 \ucd95\ubcf5\uc11c \u00b7 \uc218\ud638\ubd80)
+   \u00b7 \ubb3c\uc57d \ub2e8\ucd94(Q \u00b7 R): \ub9c8\uc2e4 \ubb3c\uc57d\uc744 \uc9c1\uc811 \uace8\ub77c \ub450\uba74 \uadf8 \ubb3c\uc57d\uc758 \ub3c4\ud2b8 \uadf8\ub9bc\uc73c\ub85c \ubc14\ub010\ub2e4 (\uc790\ub3d9\uc774\uba74 \uc608\uc804 \uadf8\ub9bc)
+   ============================================================ */
+window.ICON641 = { on: true };
+{
+  const K = window.ICON641;
+  const css = document.createElement('style');
+  css.textContent = `.aid .ai641{width:22px;height:22px;image-rendering:pixelated;vertical-align:middle;margin:-3px 3px 0 0}
+#bHp img.pk641,#bMp img.pk641{image-rendering:pixelated}`;
+  document.head.appendChild(css);
+  const img = id => { try { return ITEMS[id] ? `<img class="ai641" src="${iconURL(id)}" alt="">` : ''; } catch (e) { return ''; } };
+  const SW = [['\ud83e\uddf4 \uc5f0\ub9c8\uc81c', 'enhPolish', '\uc5f0\ub9c8\uc81c'], ['\ud83d\udcdc \ucd95\ubcf5\uc11c', 'enhBless', '\ucd95\ubcf5\uc11c'], ['\ud83e\udde7 \uc218\ud638\ubd80', 'enhGuard', '\uc218\ud638\ubd80']];
+  const _sm = NPCV.smith;
+  NPCV.smith = function (n, ctx) {
+    const r = _sm.apply(this, arguments);
+    try {
+      if (!K.on || !Array.isArray(r) || typeof r[1] !== 'string' || r[1].indexOf('aidbox') < 0) return r;
+      let h = r[1];
+      for (const [a, id, nm] of SW) h = h.split('<span>' + a).join('<span>' + img(id) + nm);
+      return [r[0], h];
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  /* \ubb3c\uc57d \ub2e8\ucd94 */
+  const _uh = updateHUD;
+  updateHUD = function () {
+    const r = _uh.apply(this, arguments);
+    try {
+      const p = G.player; if (!p || !K.on || typeof potCfg !== 'function') return r;
+      const c = potCfg(p);
+      for (const [k, el] of [['hpMode', 'bHp'], ['mpMode', 'bMp']]) {
+        const b = $(el); if (!b) continue; const im = b.querySelector('img.uiic'); if (!im) continue;
+        if (!im.dataset.o641) im.dataset.o641 = im.src;
+        const m = c[k], want = ITEMS[m] ? iconURL(m) : im.dataset.o641;
+        if (im.dataset.c641 !== (ITEMS[m] ? m : '')) { im.dataset.c641 = ITEMS[m] ? m : ''; im.src = want; im.classList.toggle('pk641', !!ITEMS[m]); }
+      }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zh_road641 (\uc2dc\ud5d8\ud310 \u00b7 v641): \ud759\uae38\uacfc \ud480\ubc2d \uacbd\uacc4\ub97c \uc790\uc5f0\uc2a4\ub7fd\uac8c
+   \u00b7 \uc608\uc804: \uae38 \uac00\uc7a5\uc790\ub9ac\uac00 \uac70\uc758 \uace7\uc740 \uc904 (1~2\uc810 \ub4e4\ucb49\ub0a0\ucb49)
+   \u00b7 \uc774\uc81c: \ud480\uc774 \uae38 \ucabd\uc73c\ub85c \ubb3c\uacb0\uce58\ub4ef \ub118\uc5b4\uc624\uace0(\ud3ed 2~6\uc810) \u00b7 \uadf8 \ubc11\uc5d0 \uc605\uc740 \uadf8\ub298 \ud55c \uc904 \u00b7 \uae38\uac00\uc5d0 \ud480 \ud3ec\uae30 \uba87 \uac1c \u00b7 \ud480\ubc2d \ucabd\uc5d0 \ud759 \ubd80\uc2a4\ub7ec\uae30
+   \u00b7 \ubaa8\ud241\uc774\ub294 \ub465\uae00\uac8c \u00b7 \uae38 \uc704\uc5d0 \uadf8\ub824\uc9c4 \ubb34\ub2ac(\ub3cc \u00b7 \uc790\uad6d)\ub294 \uac74\ub4dc\ub9ac\uc9c0 \uc54a\uc74c \u00b7 \ub9c8\uc744 \u00b7 \uad74\uc740 \uadf8\ub300\ub85c(\ub4e4\ud310\ub9cc)
+   \u00b7 \ube44\uad50: road641Test(false) \u2192 \ub9f5 \ub2e4\uc2dc \uadf8\ub9bc
+   ============================================================ */
+window.ROAD641 = { on: true };
+{
+  const K = window.ROAD641;
+  const h2 = (x, y) => { let h = (x * 374761393 + y * 668265263) | 0; h = (h ^ (h >>> 13)) * 1274126177 | 0; return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
+  const sm = t => t * t * (3 - 2 * t);
+  const vn = (x, y) => { const xi = Math.floor(x), yi = Math.floor(y), xf = sm(x - xi), yf = sm(y - yi);
+    const a = h2(xi, yi), b = h2(xi + 1, yi), c = h2(xi, yi + 1), d = h2(xi + 1, yi + 1);
+    return a + (b - a) * xf + (c - a) * yf + (a - b - c + d) * xf * yf; };
+  const pass = m => {
+    if (!K.on || !m || !m.canvas || !m.def || m.def.kind !== 'field' || G.voyage) return;
+    const W = m.pw >> 1, H = m.ph >> 1, PW = m.pw;
+    const tileAt = (tx, ty) => (tx < 0 || ty < 0 || tx >= m.w || ty >= m.h) ? -1 : m.ground[m.idx(tx, ty)];
+    const isG = t => t === T.G || t === T.G2, isR = t => t === T.R;
+    let any = false;
+    for (let ty = 0; ty < m.h && !any; ty++) for (let tx = 0; tx < m.w; tx++) if (isR(tileAt(tx, ty)) && (isG(tileAt(tx + 1, ty)) || isG(tileAt(tx - 1, ty)) || isG(tileAt(tx, ty + 1)) || isG(tileAt(tx, ty - 1)))) { any = true; break; }
+    if (!any) return;
+    const g = m.canvas.getContext('2d'), img = g.getImageData(0, 0, m.pw, m.ph), D = img.data, S = new Uint8ClampedArray(D);
+    const px = (cx, cy) => ((cy * 2) * PW + cx * 2) * 4;
+    /* \ud3c9\uade0 \uc0c9 (\uae38 \u00b7 \ud480) */
+    const acc = [[0, 0, 0, 0], [0, 0, 0, 0]];
+    for (let cy = 1; cy < H; cy += 6) for (let cx = 1; cx < W; cx += 6) { const t = tileAt(cx >> 4, cy >> 4), k = isR(t) ? 0 : isG(t) ? 1 : -1; if (k < 0) continue; const i = px(cx, cy); acc[k][0] += S[i]; acc[k][1] += S[i + 1]; acc[k][2] += S[i + 2]; acc[k][3]++; }
+    if (!acc[0][3] || !acc[1][3]) return;
+    const RM = acc[0].slice(0, 3).map(v => v / acc[0][3]), GM = acc[1].slice(0, 3).map(v => v / acc[1][3]);
+    const d2 = (i, c) => (S[i] - c[0]) ** 2 + (S[i + 1] - c[1]) ** 2 + (S[i + 2] - c[2]) ** 2;
+    const RD = Math.max(900, ((RM[0] - GM[0]) ** 2 + (RM[1] - GM[1]) ** 2 + (RM[2] - GM[2]) ** 2) * .55);
+    const roadLike = i => d2(i, RM) < RD, grassLike = i => d2(i, GM) < RD;
+    const put = (cx, cy, r, gg, b) => { const i = px(cx, cy); for (let oy = 0; oy < 2; oy++) for (let ox = 0; ox < 2; ox++) { const q = i + (oy * PW + ox) * 4; D[q] = r; D[q + 1] = gg; D[q + 2] = b; } };
+    const copy = (cx, cy, sx, sy) => { sx = Math.max(0, Math.min(W - 1, sx)); sy = Math.max(0, Math.min(H - 1, sy)); const j = px(sx, sy); put(cx, cy, S[j], S[j + 1], S[j + 2]); };
+    const dark = (cx, cy, f) => { const i = px(cx, cy); put(cx, cy, S[i] * f, S[i + 1] * f, S[i + 2] * f); };
+    const spanX = new Map(), spanY = new Map();
+    const span = (tx, ty, hz) => { const M = hz ? spanX : spanY, key = tx + ',' + ty; let v = M.get(key); if (v != null) return v;
+      let n = 1; for (let k = 1; k < 12 && isR(hz ? tileAt(tx - k, ty) : tileAt(tx, ty - k)); k++) n++; for (let k = 1; k < 12 && isR(hz ? tileAt(tx + k, ty) : tileAt(tx, ty + k)); k++) n++;
+      M.set(key, n); return n; };
+    const RIM = new Uint8Array(W * H);
+    /* \uc190\ub308 \uce78: \ud480\uc5d0\uc11c \ub450 \uce78 \uc548\uc758 \uae38 \u00b7 \uae38 \ubc14\ub85c \uc606 \ud480 (\ub098\uba38\uc9c0\ub294 \uac74\ub108\ub700) */
+    const TL = [];
+    const nearG = (tx, ty, r) => { for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) if (isG(tileAt(tx + dx, ty + dy))) return true; return false; };
+    const nearR = (tx, ty) => isR(tileAt(tx + 1, ty)) || isR(tileAt(tx - 1, ty)) || isR(tileAt(tx, ty + 1)) || isR(tileAt(tx, ty - 1));
+    for (let ty = 0; ty < m.h; ty++) for (let tx = 0; tx < m.w; tx++) { const t = tileAt(tx, ty); if ((isR(t) && nearG(tx, ty, 1)) || (isG(t) && nearR(tx, ty))) TL.push(tx, ty); }
+    for (let q = 0; q < TL.length; q += 2) {
+      const tx = TL[q], ty = TL[q + 1], t = tileAt(tx, ty), X0 = tx * 16, Y0 = ty * 16;
+      if (isR(t)) {
+        const gL = isG(tileAt(tx - 1, ty)), gR = isG(tileAt(tx + 1, ty)), gU = isG(tileAt(tx, ty - 1)), gD = isG(tileAt(tx, ty + 1));
+        const dg = [[-1, -1], [1, -1], [-1, 1], [1, 1]].filter(([dx, dy]) => isG(tileAt(tx + dx, ty + dy)) && !isG(tileAt(tx + dx, ty)) && !isG(tileAt(tx, ty + dy)));
+        const spX = gL || gR || dg.length ? span(tx, ty, true) * 16 : 999, spY = gU || gD || dg.length ? span(tx, ty, false) * 16 : 999;
+        for (let ly = 0; ly < 16; ly++) for (let lx = 0; lx < 16; lx++) {
+          const cx = X0 + lx, cy = Y0 + ly; RIM[cy * W + cx] = 1;
+          /* \uac00\uc7a5 \uac00\uae4c\uc6b4 \ud480\uae4c\uc9c0 \uac70\ub9ac (\uce78 = 2\uc810) \u00b7 \uc5b4\ub290 \ucabd\uc5d0\uc11c \uc654\ub294\uc9c0 */
+          let best = 99, nx = 0, ny = 0;
+          if (gL && lx + .5 < best) { best = lx + .5; nx = -1; ny = 0; }
+          if (gR && 15.5 - lx < best) { best = 15.5 - lx; nx = 1; ny = 0; }
+          if (gU && ly + .5 < best) { best = ly + .5; nx = 0; ny = -1; }
+          if (gD && 15.5 - ly < best) { best = 15.5 - ly; nx = 0; ny = 1; }
+          for (let k = 0; k < dg.length; k++) { const dx = dg[k][0], dy = dg[k][1], ex = dx < 0 ? lx + .5 : 15.5 - lx, ey = dy < 0 ? ly + .5 : 15.5 - ly, dd = Math.sqrt(ex * ex + ey * ey); if (dd < best) { best = dd; nx = dx; ny = dy; } }
+          if (best > 22) continue;
+          const sp = Math.min(nx ? spX : 999, ny ? spY : 999);
+          const emax = Math.min(14, sp * .3);
+          const along = nx && !ny ? cy : ny && !nx ? cx : (cx + cy) * .7;
+          /* \ud070 \ubb3c\uacb0(\ud480\uc774 \ub465\uae00\uac8c \ub118\uc5b4\uc634) + \uc794 \ub4e4\ucb49\ub0a0\ucb49 */
+          const wave = vn(along / 11 + (nx && !ny ? tx * 1.7 + nx * 5 : ny && !nx ? ty * 2.3 + ny * 7 : 0), 3.3);
+          if (best > Math.min(emax, 3 + Math.pow(wave, 1.6) * 8.5 + 1.8) + 9) continue;
+          const edge = Math.min(emax, 3 + Math.pow(wave, 1.6) * 8.5 + vn(along / 2.2 + 50, cx * .19 + cy * .23) * 1.8);
+          const i = px(cx, cy);
+          if (best < edge) { if (!roadLike(i) && best < 5) continue; const m2 = Math.ceil(best + 3 + h2(cx, cy) * 6); copy(cx, cy, cx + nx * m2, cy + ny * m2); RIM[cy * W + cx] = 0; }
+          else if (best < edge + 9 && h2(cx >> 1, cy >> 1) < .012 && roadLike(i)) {
+            /* \ud480 \ud3ec\uae30 */
+            if (!((cx & 1) && (cy & 1))) { copy(cx, cy, cx + nx * (best + 6), cy + ny * (best + 6)); RIM[cy * W + cx] = 0; }
+          }
+        }
+      } else {
+        /* \ud480\ubc2d \ucabd \ud759 \ubd80\uc2a4\ub7ec\uae30 \u00b7 \ubc1f\ud78c \uc790\ub9ac */
+        const rL = isR(tileAt(tx - 1, ty)), rR = isR(tileAt(tx + 1, ty)), rU = isR(tileAt(tx, ty - 1)), rD = isR(tileAt(tx, ty + 1));
+        for (let ly = 0; ly < 16; ly++) for (let lx = 0; lx < 16; lx++) {
+          let best = 99, nx = 0, ny = 0;
+          if (rL && lx + .5 < best) { best = lx + .5; nx = -1; ny = 0; }
+          if (rR && 15.5 - lx < best) { best = 15.5 - lx; nx = 1; ny = 0; }
+          if (rU && ly + .5 < best) { best = ly + .5; nx = 0; ny = -1; }
+          if (rD && 15.5 - ly < best) { best = 15.5 - ly; nx = 0; ny = 1; }
+          if (best > 3.5) continue;
+          const cx = X0 + lx, cy = Y0 + ly;
+          if (h2(cx * 7 + 1, cy * 5) >= (best < 1.5 ? .08 : .025)) continue;
+          const i = px(cx, cy); if (!grassLike(i)) continue;
+          copy(cx, cy, cx + nx * 14, cy + ny * 14);
+        }
+      }
+    }
+    /* \uadf8\ub298: \uae38 \uce78 \uc911 \ubc14\ub85c \uc606(\uc704 \u00b7 \uc67c \u00b7 \uc624\ub978 \u00b7 \uc544\ub798)\uc774 \ud480\uc774 \ub41c \uce78 */
+    const isGr = (cx, cy) => { if (cx < 0 || cy < 0 || cx >= W || cy >= H) return false; const i = px(cx, cy); return (D[i] - GM[0]) ** 2 + (D[i + 1] - GM[1]) ** 2 + (D[i + 2] - GM[2]) ** 2 < RD * .8; };
+    const shade1 = [];
+    for (let q = 0; q < TL.length; q += 2) for (let cy = TL[q + 1] * 16, cy1 = cy + 16; cy < cy1; cy++) for (let cx = TL[q] * 16, cx1 = cx + 16; cx < cx1; cx++) {
+      if (!RIM[cy * W + cx]) continue; const i = px(cx, cy); if ((D[i] - RM[0]) ** 2 + (D[i + 1] - RM[1]) ** 2 + (D[i + 2] - RM[2]) ** 2 > RD) continue;
+      if (isGr(cx, cy - 1) || isGr(cx - 1, cy) || isGr(cx + 1, cy)) shade1.push([cx, cy, .8]);
+      else if (isGr(cx, cy + 1)) shade1.push([cx, cy, .9]);
+      else if (isGr(cx, cy - 2) && h2(cx, cy * 3) < .5) shade1.push([cx, cy, .9]);
+    }
+    for (const [cx, cy, f] of shade1) { const i = px(cx, cy); put(cx, cy, D[i] * f, D[i + 1] * f, D[i + 2] * f); }
+    g.putImageData(img, 0, 0); m._road641 = 1;
+  };
+  K.pass = pass;
+  /* \ubc14\ub2e5 \ubb34\ub2ac(v412)\ub97c \uae50 \ubc14\ub85c \ub4a4 \u00b7 \uba85\uc18c \ub458\ub808 \ub760 \u00b7 \uafb8\ubc08\uc744 \uc5b9\uae30 \uc804\uc5d0 */
+  const _eg = enhanceGround;
+  enhanceGround = function (m) {
+    const r = _eg.apply(this, arguments);
+    try { pass(m); } catch (e) { reportError(e); }
+    return r;
+  };
+  window.road641Test = on => { K.on = on !== false; try { if (G.map) prerenderMap(G.map); } catch (e) { } return K.on; };
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
