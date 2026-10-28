@@ -859,14 +859,14 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v652 &#xc2dc;&#xd5d8;&#xd310;</div>
+    <div class="sub">v653 &#xc2dc;&#xd5d8;&#xd310;</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
 </div>
 <script>
 const AUDIO_FILES = {"title": "../audio/title.e10899d4.mp3", "cheongwol": "../audio/cheongwol.9fa63454.mp3", "gwangju": "../audio/gwangju.e7fd2bde.mp3", "daejeon": "../audio/daejeon.676f1e12.mp3", "bgm_busan": "../audio/bgm_busan.a194df75.mp3", "bgm_incheon": "../audio/bgm_incheon.ec7f3a6b.mp3", "bgm_suwon": "../audio/bgm_suwon.5b9bb599.mp3", "bgm_japan1": "../audio/bgm_japan1.8a822903.mp3", "bgm_japan2": "../audio/bgm_japan2.076df22f.mp3", "bgm_japan3": "../audio/bgm_japan3.8800a9fa.mp3", "bgm_japan4": "../audio/bgm_japan4.0845a75f.mp3", "bgm_japan5": "../audio/bgm_japan5.ff32b9ca.mp3", "bgm_japan6": "../audio/bgm_japan6.d623f68a.mp3", "bgm_boss1": "../audio/bgm_boss1.334b9f88.mp3", "bgm_boss2": "../audio/bgm_boss2.8311ccdb.mp3", "bgm_boss3": "../audio/bgm_boss3.0e2dfa9c.mp3", "bgm_boss4": "../audio/bgm_boss4.cdb3babf.mp3", "bgm_daegu": "../audio/bgm_daegu.a04585c9.mp3", "bgm_ulsan": "../audio/bgm_ulsan.73f49a14.mp3", "bgm_jeju": "../audio/bgm_jeju.bf03287f.mp3", "bgm_sapporo": "../audio/bgm_sapporo.3d22018b.mp3", "bgm_sea": "../audio/bgm_sea.551ba9a1.mp3", "bgm_field": "../audio/bgm_field.1b016cdc.mp3", "bgm_forest": "../audio/bgm_forest.96d27fda.mp3", "bgm_cave1": "../audio/bgm_cave1.011e6658.mp3", "bgm_cave2": "../audio/bgm_cave2.c6cc5e37.mp3", "bgm_cave3": "../audio/bgm_cave3.a9d8e8a4.mp3", "bgm_dungeon": "../audio/bgm_dungeon.efe7a04e.mp3", "bgm_snow": "../audio/bgm_snow.8fb18adc.mp3", "bgm_fire": "../audio/bgm_fire.704c17e6.mp3", "bgm_japanfield1": "../audio/bgm_japanfield1.1cc62ffd.mp3", "bgm_japanfield2": "../audio/bgm_japanfield2.8c1db593.mp3", "bgm_first": "../audio/bgm_first.f746163b.mp3", "bgm_f_gwangju": "../audio/bgm_f_gwangju.12bd0c64.mp3", "bgm_f_jeju": "../audio/bgm_f_jeju.eae53002.mp3", "bgm_f_incheon": "../audio/bgm_f_incheon.0a7c6ac0.mp3", "bgm_f_ulsan": "../audio/bgm_f_ulsan.ffd9a021.mp3", "bgm_f_busan": "../audio/bgm_f_busan.1d7c04a2.mp3", "bgm_seoul": "../audio/bgm_seoul.4ef2d908.mp3", "bgm_gaeseong": "../audio/bgm_gaeseong.8e38e2be.mp3", "bgm_pyongyang": "../audio/bgm_pyongyang.119997a8.mp3", "bgm_sadogwan": "../audio/bgm_sadogwan.0862abe6.mp3", "bgm_f_fukuoka": "../audio/bgm_f_fukuoka.6b54756a.mp3", "bgm_f_kyoto": "../audio/bgm_f_kyoto.f10fc852.mp3", "bgm_f_shizuoka": "../audio/bgm_f_shizuoka.e5004eaa.mp3", "bgm_f_hanyang": "../audio/bgm_f_hanyang.b687cf9e.mp3", "bgm_f_north": "../audio/bgm_f_north.0cc8f110.mp3", "bgm_f_yeongnam": "../audio/bgm_f_yeongnam.8e5b0d8c.mp3"};
-const SFX_PACK = { url: "sfx.160641dcd9.bin", idx: {"hit_warrior": [0, 28852], "hit_thief": [28852, 14490], "hit_shaman": [43342, 13128], "hit_taoist": [56470, 152112], "skill_w4": [208582, 36407], "skill_t4": [244989, 24496], "skill_s4": [269485, 44871], "skill_d4": [314356, 29198], "skill_d4_boom": [343554, 44871], "skill_d2": [388425, 14778], "skill_basic_fan": [403203, 8822], "sfx_enh_success": [412025, 13524], "sfx_enh_fail": [425549, 6627], "sfx_mob_death": [432176, 3179], "sfx_mob_attack3": [435355, 4433], "sfx_passive_tuji": [439788, 10389], "sfx_passive_janyeong": [450177, 5060], "sfx_passive_barrier": [455237, 7881], "sfx_passive_gyogam": [463118, 10076], "sfx_map_move": [473194, 10389], "sfx_quest_done": [483583, 6627], "sfx_promote": [490210, 21360], "sfx_raid_appear": [511570, 20734], "sfx_raid_steal": [532304, 5687], "sfx_raid_recover": [537991, 7254], "sfx_player_hurt1": [545245, 6627], "sfx_player_hurt2": [551872, 4433], "sfx_gyeok": [556305, 5060], "hit_none": [561365, 3806], "sfx_level_up": [565171, 15405], "sfx_boom": [580576, 7254], "sfx_hit": [587830, 2239], "sfx_hit_crit": [590069, 5060], "sfx_reward": [595129, 9762], "sfx_attack_pongryu": [604891, 10389], "sfx_ui_click": [615280, 2239], "sfx_coin": [617519, 6627], "sfx_pickup": [624146, 5687], "sfx_potion": [629833, 4747], "sfx_equip": [634580, 3493], "sfx_boss_appear": [638073, 15405], "sfx_boss_roar": [653478, 13524], "sfx_legend": [667002, 18226], "sfx_ex_d5": [685228, 12583], "sfx_ex_d6": [697811, 11329], "sfx_ex_d7": [709140, 27943], "sfx_ex_d8": [737083, 45184], "sfx_ex_s5": [782267, 7881], "sfx_ex_s6": [790148, 24809], "sfx_ex_s7a": [814957, 36720], "sfx_ex_s7b": [851677, 36720], "sfx_ex_s8a": [888397, 36720], "sfx_ex_s8b": [925117, 24809], "sfx_ex_t5": [949926, 8195], "sfx_ex_t6": [958121, 8508], "sfx_ex_t6b": [966629, 6627], "sfx_ex_t7a": [973256, 11329], "sfx_ex_t7b": [984585, 9135], "sfx_ex_t8": [993720, 29511], "sfx_ex_t8cut": [1023231, 6000], "sfx_ex_w5": [1029231, 10703], "sfx_ex_w6": [1039934, 11329], "sfx_ex_w7a": [1051263, 10076], "sfx_ex_w7b": [1061339, 30451], "sfx_ex_w8a": [1091790, 8822], "sfx_ex_w8b": [1100612, 24809], "sfx_gn_shot1": [1125421, 7881], "sfx_gn_shot2": [1133302, 7881], "sfx_gn_hit": [1141183, 4433], "sfx_gn_reload": [1145616, 5687], "sfx_gn_snipe_a": [1151303, 5687], "sfx_gn_snipe_b": [1156990, 13524], "sfx_gn_shotgun": [1170514, 14151], "sfx_gn_rapid": [1184665, 5687], "sfx_gn_ricochet": [1190352, 7881], "sfx_gn_keg_throw": [1198233, 16345], "sfx_gn_keg_boom": [1214578, 22301], "sfx_gn_rocket_launch": [1236879, 22301], "sfx_gn_rocket_hit": [1259180, 5687], "sfx_gn_cannon_set": [1264867, 8822], "sfx_gn_cannon_fire": [1273689, 21987], "sfx_gn_barrage_whistle": [1295676, 10076], "sfx_gn_barrage_boom": [1305752, 21360], "sfx_gn_shell_drop": [1327112, 10389], "sfx_bw_punch1": [1337501, 3806], "sfx_bw_punch2": [1341307, 2552], "sfx_bw_punch3": [1343859, 4747], "sfx_bw_kick": [1348606, 3179], "sfx_bw_step": [1351785, 4120], "sfx_bw_combo": [1355905, 3806], "sfx_bw_whirl": [1359711, 10076], "sfx_bw_flurry": [1369787, 12583], "sfx_bw_qi_on": [1382370, 14778], "sfx_bw_qi_wave": [1397148, 2866], "sfx_bw_point": [1400014, 4747], "sfx_bw_point_mark": [1404761, 6941], "sfx_bw_counter_on": [1411702, 7881], "sfx_bw_counter_hit": [1419583, 4433], "sfx_bw_palm_charge": [1424016, 7568], "sfx_bw_palm": [1431584, 14151], "sfx_bw_quake_jump": [1445735, 8195], "sfx_bw_quake_fist": [1453930, 10389], "sfx_bw_quake_boom": [1464319, 10076], "sfx_bw_quake_boom2": [1474395, 11329], "sfx_bw_leap": [1485724, 4747], "sfx_bw_throw": [1490471, 4747], "sfx_bw_fist_rain": [1495218, 5374], "sfx_title533": [1500592, 17599], "sfx_bx_blade_a": [1518191, 5268], "sfx_bx_blade_b": [1523459, 8612], "sfx_bx_chg_ghost": [1532071, 8194], "sfx_bx_chg_heavy": [1540265, 9448], "sfx_bx_chg_magic": [1549713, 9866], "sfx_bx_fire_a": [1559579, 8194], "sfx_bx_fire_b": [1567773, 8194], "sfx_bx_ghost_a": [1575967, 8194], "sfx_bx_ghost_b": [1584161, 7776], "sfx_bx_gun_a": [1591937, 7776], "sfx_bx_gun_b": [1599713, 10910], "sfx_bx_ice_a": [1610623, 6940], "sfx_bx_ice_b": [1617563, 7358], "sfx_bx_rush_a": [1624921, 7358], "sfx_bx_rush_b": [1632279, 6522], "sfx_bx_shot_a": [1638801, 4641], "sfx_bx_shot_b": [1643442, 4223], "sfx_bx_slam_a": [1647665, 10910], "sfx_bx_slam_b": [1658575, 10075], "sfx_bx_throw_a": [1668650, 7776], "sfx_bx_throw_b": [1676426, 7358], "sfx_bx_thunder_a": [1683784, 8612], "sfx_bx_thunder_b": [1692396, 8612], "sfx_bx_ult_quake": [1701008, 19688], "sfx_bx_ult_spirit": [1720696, 8612], "sfx_bx_water_a": [1729308, 8194], "sfx_bx_water_b": [1737502, 8194], "sfx_bx_wind_a": [1745696, 10075], "sfx_bx_wind_b": [1755771, 9448], "sfx_enh_anvil_a": [1765219, 6314], "sfx_enh_anvil_b": [1771533, 5270], "sfx_enh_great": [1776803, 14674], "sfx_ec_paper": [1791477, 7359], "sfx_ec_coins": [1798836, 17808], "sfx_ec_coin_s": [1816644, 7621], "sfx_ks_aura": [1824265, 9188], "sfx_ks_aura_s": [1833453, 4225], "sfx_ks_fist": [1837678, 3963], "whiff643_1": [1841641, 11544], "whiff643_2": [1853185, 8898], "whiff643_3": [1862083, 8898]}, ok: false, failed: false, _w: [] };
+const SFX_PACK = { url: "sfx.4335553a08.bin", idx: {"hit_warrior": [0, 28852], "hit_thief": [28852, 14490], "hit_shaman": [43342, 13128], "hit_taoist": [56470, 152112], "skill_w4": [208582, 36407], "skill_t4": [244989, 24496], "skill_s4": [269485, 44871], "skill_d4": [314356, 29198], "skill_d4_boom": [343554, 44871], "skill_d2": [388425, 14778], "skill_basic_fan": [403203, 8822], "sfx_enh_success": [412025, 12717], "sfx_enh_fail": [424742, 6627], "sfx_mob_death": [431369, 3179], "sfx_mob_attack3": [434548, 4433], "sfx_passive_tuji": [438981, 10389], "sfx_passive_janyeong": [449370, 5060], "sfx_passive_barrier": [454430, 7881], "sfx_passive_gyogam": [462311, 10076], "sfx_map_move": [472387, 10389], "sfx_quest_done": [482776, 6627], "sfx_promote": [489403, 21360], "sfx_raid_appear": [510763, 20734], "sfx_raid_steal": [531497, 5687], "sfx_raid_recover": [537184, 7254], "sfx_player_hurt1": [544438, 6627], "sfx_player_hurt2": [551065, 4433], "sfx_gyeok": [555498, 5060], "hit_none": [560558, 3806], "sfx_level_up": [564364, 15405], "sfx_boom": [579769, 7254], "sfx_hit": [587023, 2239], "sfx_hit_crit": [589262, 5060], "sfx_reward": [594322, 9762], "sfx_attack_pongryu": [604084, 10389], "sfx_ui_click": [614473, 2239], "sfx_coin": [616712, 6627], "sfx_pickup": [623339, 5687], "sfx_potion": [629026, 4747], "sfx_equip": [633773, 3493], "sfx_boss_appear": [637266, 15405], "sfx_boss_roar": [652671, 13524], "sfx_legend": [666195, 18226], "sfx_ex_d5": [684421, 12583], "sfx_ex_d6": [697004, 11329], "sfx_ex_d7": [708333, 27943], "sfx_ex_d8": [736276, 45184], "sfx_ex_s5": [781460, 7881], "sfx_ex_s6": [789341, 24809], "sfx_ex_s7a": [814150, 36720], "sfx_ex_s7b": [850870, 36720], "sfx_ex_s8a": [887590, 36720], "sfx_ex_s8b": [924310, 24809], "sfx_ex_t5": [949119, 8195], "sfx_ex_t6": [957314, 8508], "sfx_ex_t6b": [965822, 6627], "sfx_ex_t7a": [972449, 11329], "sfx_ex_t7b": [983778, 9135], "sfx_ex_t8": [992913, 29511], "sfx_ex_t8cut": [1022424, 6000], "sfx_ex_w5": [1028424, 10703], "sfx_ex_w6": [1039127, 11329], "sfx_ex_w7a": [1050456, 10076], "sfx_ex_w7b": [1060532, 30451], "sfx_ex_w8a": [1090983, 8822], "sfx_ex_w8b": [1099805, 24809], "sfx_gn_shot1": [1124614, 7881], "sfx_gn_shot2": [1132495, 7881], "sfx_gn_hit": [1140376, 4433], "sfx_gn_reload": [1144809, 5687], "sfx_gn_snipe_a": [1150496, 5687], "sfx_gn_snipe_b": [1156183, 13524], "sfx_gn_shotgun": [1169707, 14151], "sfx_gn_rapid": [1183858, 5687], "sfx_gn_ricochet": [1189545, 7881], "sfx_gn_keg_throw": [1197426, 16345], "sfx_gn_keg_boom": [1213771, 22301], "sfx_gn_rocket_launch": [1236072, 22301], "sfx_gn_rocket_hit": [1258373, 5687], "sfx_gn_cannon_set": [1264060, 8822], "sfx_gn_cannon_fire": [1272882, 21987], "sfx_gn_barrage_whistle": [1294869, 10076], "sfx_gn_barrage_boom": [1304945, 21360], "sfx_gn_shell_drop": [1326305, 10389], "sfx_bw_punch1": [1336694, 3806], "sfx_bw_punch2": [1340500, 2552], "sfx_bw_punch3": [1343052, 4747], "sfx_bw_kick": [1347799, 3179], "sfx_bw_step": [1350978, 4120], "sfx_bw_combo": [1355098, 3806], "sfx_bw_whirl": [1358904, 10076], "sfx_bw_flurry": [1368980, 12583], "sfx_bw_qi_on": [1381563, 14778], "sfx_bw_qi_wave": [1396341, 2866], "sfx_bw_point": [1399207, 4747], "sfx_bw_point_mark": [1403954, 6941], "sfx_bw_counter_on": [1410895, 7881], "sfx_bw_counter_hit": [1418776, 4433], "sfx_bw_palm_charge": [1423209, 7568], "sfx_bw_palm": [1430777, 14151], "sfx_bw_quake_jump": [1444928, 8195], "sfx_bw_quake_fist": [1453123, 10389], "sfx_bw_quake_boom": [1463512, 10076], "sfx_bw_quake_boom2": [1473588, 11329], "sfx_bw_leap": [1484917, 4747], "sfx_bw_throw": [1489664, 4747], "sfx_bw_fist_rain": [1494411, 5374], "sfx_title533": [1499785, 17599], "sfx_bx_blade_a": [1517384, 5268], "sfx_bx_blade_b": [1522652, 8612], "sfx_bx_chg_ghost": [1531264, 8194], "sfx_bx_chg_heavy": [1539458, 9448], "sfx_bx_chg_magic": [1548906, 9866], "sfx_bx_fire_a": [1558772, 8194], "sfx_bx_fire_b": [1566966, 8194], "sfx_bx_ghost_a": [1575160, 8194], "sfx_bx_ghost_b": [1583354, 7776], "sfx_bx_gun_a": [1591130, 7776], "sfx_bx_gun_b": [1598906, 10910], "sfx_bx_ice_a": [1609816, 6940], "sfx_bx_ice_b": [1616756, 7358], "sfx_bx_rush_a": [1624114, 7358], "sfx_bx_rush_b": [1631472, 6522], "sfx_bx_shot_a": [1637994, 4641], "sfx_bx_shot_b": [1642635, 4223], "sfx_bx_slam_a": [1646858, 10910], "sfx_bx_slam_b": [1657768, 10075], "sfx_bx_throw_a": [1667843, 7776], "sfx_bx_throw_b": [1675619, 7358], "sfx_bx_thunder_a": [1682977, 8612], "sfx_bx_thunder_b": [1691589, 8612], "sfx_bx_ult_quake": [1700201, 19688], "sfx_bx_ult_spirit": [1719889, 8612], "sfx_bx_water_a": [1728501, 8194], "sfx_bx_water_b": [1736695, 8194], "sfx_bx_wind_a": [1744889, 10075], "sfx_bx_wind_b": [1754964, 9448], "sfx_enh_anvil_a": [1764412, 6314], "sfx_enh_anvil_b": [1770726, 5270], "sfx_enh_great": [1775996, 14674], "sfx_ec_paper": [1790670, 7359], "sfx_ec_coins": [1798029, 17808], "sfx_ec_coin_s": [1815837, 7621], "sfx_ks_aura": [1823458, 9188], "sfx_ks_aura_s": [1832646, 4225], "sfx_ks_fist": [1836871, 3963], "whiff643_1": [1840834, 11544], "whiff643_2": [1852378, 8898], "whiff643_3": [1861276, 8898], "sfx_boss_rage653": [1870174, 16461]}, ok: false, failed: false, _w: [] };
 SFX_PACK.ready = cb => { if (SFX_PACK.ok || SFX_PACK.failed) cb(); else SFX_PACK._w.push(cb); };
 SFX_PACK.load = () => fetch(SFX_PACK.url).then(r => { if (!r.ok) throw new Error("http " + r.status); return r.arrayBuffer(); }).then(ab => { for (const k in SFX_PACK.idx) { const [o, n] = SFX_PACK.idx[k]; AUDIO_DATA[k] = ab.slice(o, o + n); } SFX_PACK.ok = true; }).catch(e => { SFX_PACK.failed = true; try { console.warn("sfx pack", e); } catch (_) { } }).then(() => { const w = SFX_PACK._w; SFX_PACK._w = []; for (const f of w) try { f(); } catch (_) { } });
 /* 98zzzzzzz_perf513 \uc758 \uc55e\uc120 \uc2a4\uc704\uce58 (\uc2dc\ud5d8\ud310 \u00b7 v513): \uc790\uc0b0 \ub85c\ub529 \uad00\ub828 \u2014 \ub85c\ub529 \uc21c\uc11c\uc0c1 \ub9e8 \uc55e\uc5d0\uc11c \ucf1c\uc57c \ud558\ub294 \uac83\ub9cc \ub454\ub2e4 */
@@ -6839,10 +6839,12 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  if (window.HERO653) notes += `<div class="sep"></div><b>v653 \uc2dc\ud5d8 \u2014 \uc601\uc6c5 \ub3d9\ub8cc \ub124 \ubc29\ud5a5 \u00b7 \uc774\ub984 \uae08\ube5b \u00b7 \ud3ec\ud6a8 \u00b7 \uac15\ud654\uc74c \u00b7 \ubb34\uc704 \ub760</b><br>\u00b7 \uacb8 \u00b7 \ub0a8\uc774 \uc7a5\uad70 \u00b7 \ud64d\uae38\ub3d9 \u00b7 \uc0ac\uba85\ub300\uc0ac \u00b7 \uc804\uc6b0\uce58 \u00b7 \ud5c8\uc900 \u00b7 \ubc31\ub3d9\uc218 \u00b7 \uc2e0\ub958 \u00b7 \ucd5c\ubb34\uc120 \u00b7 \ubbf8\uce58\uc790\ub124 \u00b7 \uc138\uc774\uba54\uc774 \u00b7 \ubb34\uc0ac\uc2dc \u00b7 \uc544\uba54\ub178\ubaa8\ub9ac \u00b7 \ud55c\uc870 \u00b7 \ub2e4\ub2c8\uce74\uc81c \u2014 \uc55e\ubaa8\uc2b5 \ub450 \uce78\ubfd0\uc774\ub358 \uac83\uc744 PixelLab \ub85c \ub124 \ubc29\ud5a5 \uac77\uae30 4\uc7a5\uc529 (\uc704\ub85c \uac00\uba74 \ub4b7\ubaa8\uc2b5)<br>\u00b7 \uc774\uc57c\uae30 \uc778\ubb3c \ub3d9\ub8cc\uc758 \uc774\ub984\uc740 \uae08\ube5b, \uc544\ub798 \uc904\uc740 \u300c\uc0bf\uac13 \uc4f4 \uae38\uc7a1\uc774\u300d\ucc98\ub7fc \uadf8 \uc778\ubb3c\uc758 \uad6c\uc2e4 (\uc8fc\ub9c9 \ub3d9\ub8cc\ub294 \ud558\ub298\uc0c9 \uadf8\ub300\ub85c)<br>\u00b7 \uc6b0\ub450\uba38\ub9ac \uad11\ud3ed\ud654 \ub54c \uae4a\uc740 \ud3ec\ud6a8 \u00b7 \uac15\ud654 \uc131\uacf5\uc74c\uc744 \ubaa8\ub8e8 \uc18c\ub9ac + \ubc1d\uc740 \uc885\uc18c\ub9ac\ub85c (ElevenLabs)<br>\u00b7 \ubb34\uc704\uac00 \uc624\ub974\ub0b4\ub9ac\uba74 \ud654\uba74 \uc704\ucabd\uc5d0 \ud070 \ub760 \u300c\u6b66\u5a01 \u25b2 1,234 / 47,924 \u2192 49,158\u300d \u2014 \ucc3d\uc774 \uc5f4\ub824 \uc788\uc5b4\ub3c4 \ubcf4\uc784`;
+  if (HM16_IMG && HM16_IMG.brawler0_fist && HM16_IMG.brawler0_fist.length < 200000 && window.light652Test) notes += `<div class="sep"></div><b>v653 \uc2dc\ud5d8 \u2014 \uaca9\ud22c\uac00 \uc8fc\uba39</b><br>\u00b7 \uaca9\ud22c\uac00\uac00 \uac77\ub294 \ub0b4\ub0b4 \ucee4\ub2e4\ub780 \ube5b \uacf5\uc744 \ub4e4\uace0 \ub2e4\ub2c8\ub358 \uac83 \u2014 \uc8fc\uc778\uacf5 \uadf8\ub9bc 8\uc7a5(\uc804\uc9c1 4\ub2e8\uacc4 \u00b7 \uc637 4\uc885)\uc5d0 \uad8c\uac11\uc774 \uacf5\uc73c\ub85c \uadf8\ub824\uc838 \uc788\uc5c8\uc74c \u2192 \uc190\ubaa9 \ucabd\uc73c\ub85c \uc808\ubc18 \ud06c\uae30\ub85c \uc904\uc5ec \u300c\ube5b\ub098\ub294 \uad8c\uac11\u300d \uc815\ub3c4\ub85c`;
   if (window.light652Test) notes += `<div class="sep"></div><b>v652 \uc2dc\ud5d8 \u2014 \ud3f0 \ub04a\uae40 (\uac00\ubcbc\uc6b4 \ubaa8\ub4dc \uc790\ub3d9)</b><br>\u00b7 \uc7b0 \uac12(\ud3f0 \uc870\uac74): \uac00\ubcbc\uc6b4 \ubaa8\ub4dc\ub97c \ucf1c\uba74 \ub9c8\uc744 2.6 \u2192 72\uc7a5 \u00b7 \uc124\uc6d0 3 \u2192 83\uc7a5 \u00b7 \uad50\ud1a0 \uc9c0\ud558 15 \u2192 75\uc7a5 \u2014 \ucf1c\uc9c0\uae30\ub9cc \ud558\uba74 \ub410\ub294\ub370 \uac24\ub7ed\uc2dc A33(Mali-G68)\uc740 \uc790\ub3d9 \ucf1c\uc9d0 \ud310\uc815\uc5d0\uc11c \ube60\uc838 \uc788\uc5c8\uc74c<br>\u00b7 \uc57d\ud55c \uce69 \ud310\uc815\uc744 \ub113\ud788\uace0(Mali-G68 \uc774\ud558 \u00b7 Adreno 650 \uc544\ub798), \uadf8\ub798\ud53d \uc124\uc815\uacfc \uc0c1\uad00\uc5c6\uc774 2.5\ucd08 \ub118\uac8c \ucd08\ub2f9 55\uc7a5 \uc544\ub798\uba74 \ucf2c \u2014 \uc124\uc815\uc5d0\uc11c \ub044\uba74 \ub2e4\uc2dc \uc548 \ucf2c`;
   if (window.DMG651) notes += `<div class="sep"></div><b>v651 \uc2dc\ud5d8 \u2014 \ud53c\ud574 \uc22b\uc790 \uc798 \ubcf4\uc774\uac8c</b><br>\u00b7 \uc22b\uc790 \ub4a4\uc5d0 \uba39\ube5b \ud14c\ub450\ub9ac \u2014 \ub208\ubc2d \u00b7 \uae08\ube5b \uae30\uc220 \uc774\ud399\ud2b8 \uc704\uc5d0\uc11c\ub3c4 \uc77d\ud798 \u00b7 \ubcf4\ud1b5 \uc22b\uc790\ub294 \uc870\uae08 \ud06c\uac8c, \ud68c\uc2ec\uc740 \ub354 \ud06c\uac8c<br>\u00b7 \uc5f0\ud0c0 \u00b7 \uc5ec\ub7ec \ub9c8\ub9ac\ub97c \uce60 \ub54c \uac19\uc740 \uc790\ub9ac\uc5d0 \ud3ec\uac1c\uc9c0\uc9c0 \uc54a\uace0 \ube48 \uc790\ub9ac(\uc606 \u00b7 \uc704)\ub85c \ube44\ucf1c \ub738`;
   if (window.portal650Test) notes += `<div class="sep"></div><b>v650 \uc2dc\ud5d8 \u2014 \ud3ec\ud0c8\uc740 \ubc14\ub85c</b><br>\u00b7 \uc2f8\uc6b0\ub294 \uc911\uc5d0\ub3c4 \ucd9c\uad6c \u00b7 \uc785\uad6c\uc5d0 \ub2ff\uc73c\uba74 \uc608\uc804\ucc98\ub7fc \ubc14\ub85c \ub118\uc5b4\uac11\ub2c8\ub2e4 (v621\uc758 \u300c\uc7a0\uae50 \uc11c \uc788\uc5b4\uc57c\u300d \uc7a5\uce58\ub97c \ub054) \u00b7 \uc548\ub0b4 \uae00\ub3c4 \uc5c6\uc570`;
-  if (window.RE649) notes += `<div class="sep"></div><b>v649 \uc2dc\ud5d8 \u2014 \ub300\uc7a5\uac04 \u300c\uc0c8\uae30\uae30\u300d</b><br>\u00b7 \uc7a5\ube44\uc5d0 \ubd99\uc740 \uc635\uc158(\ud798 \u00b7 \uce58\uba85\ud0c0 \u00b7 \uacf5\uaca9\ub825 \u2026)\uc744 \ub3c8\uc744 \ub0b4\uace0 \ub2e4\uc2dc \uc0c8\uae41\ub2c8\ub2e4 \u2014 \uad74\ub9b0 \ub4a4 \u300c\uc0c8 \uac83 \uc4f0\uae30 / \uadf8\ub300\ub85c \ub450\uae30\u300d \uc911 \uace0\ub984<br>\u00b7 \ub9c8\uc74c\uc5d0 \ub4dc\ub294 \ud55c \uc904\uc740 \ud83d\udd12 \uc7a0\uadf8\uace0 \ub098\uba38\uc9c0\ub9cc (\uac12 \u00d73) \u00b7 \ub4f1\uae09 \ud55c\ub3c4\uae4c\uc9c0 \u300c\ud55c \uc904 \ub298\ub9ac\uae30\u300d (\uac12 \u00d76)<br>\u00b7 \uac12\uc740 \uc7a5\ube44 \ub4f1\uae09\ubcc4 \uc815\uac00: \uc77c\ubc18 1\ucc9c \u00b7 \uace0\uae09 2\ucc9c5\ubc31 \u00b7 \ud76c\uadc0 6\ucc9c \u00b7 \uc601\uc6c5 1\ub9cc5\ucc9c \u00b7 \uc804\uc124 5\ub9cc \u00b7 \uc720\uc77c 12\ub9cc \ubb38 (\ub808\ubca8 \ubb34\uad00) \u00b7 \uc228\uc740 \uc635\uc158 \u00b7 \uc2e0\ud654 \uc635\uc158\uc740 \uadf8\ub300\ub85c`;
+  if (window.RF623 && document.getElementById('nm553css')) notes += `<div class="sep"></div><b>v649 \uc2dc\ud5d8 \u2014 \ub300\uc7a5\uac04 \u300c\ub2e4\uc2dc \ubcbc\ub9ac\uae30\u300d\uac00 \ucc98\uc74c\ubd80\ud130 \ubcf4\uc784</b><br>\u00b7 \uc7a5\ube44 \uc635\uc158 \ub2e4\uc2dc \uad74\ub9ac\uae30(\ub2e4\uc2dc \ubcbc\ub9ac\uae30 \u00b7 \ud55c \uc904\ub9cc \u00b7 \uc218\uce58 \ub2e4\ub4ec\uae30 \u00b7 \uc7a0\uadf8\uace0 \uad74\ub9ac\uae30)\ub294 v616\ubd80\ud130 \uc788\uc5c8\ub294\ub370, \uac15\ud654\ub97c +4 \ub118\uac8c \ud574 \ubcf4\uae30 \uc804\uc5d4 \uc228\uaca8\uc838 \uc788\uc5b4 \ubabb \ubd24\ub358 \uac83 \u2014 \uc774\uc81c \ub300\uc7a5\uac04\uc5d0 \ub298 \ubcf4\uc785\ub2c8\ub2e4`;
   if (window.MH644_OPT && window.MH644_OPT.m_yukiGirl) notes += `<div class="sep"></div><b>v648 \uc2dc\ud5d8 \u2014 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 6\ucc28 (\uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 \ub9c8\ubb34\ub9ac)</b><br>\u00b7 \ub0a8\ubc29 \u00b7 \ud574\uc548 \u00b7 \uc655\uad81 \uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 25\uc885 \ub354: \ud3d0\uc131 \uae08\uc704\ub839 \u00b7 \uae08\uc704 \ud654\uc2b9\ucd1d\ubcd1 \u00b7 \uae08\uc704 \ubc29\ud328\ub839 \u00b7 \uae08\uc704 \uc8fc\uc220\ub839 \u00b7 \uc65c\uad6c \uad81\uc218\ub839 \u00b7 \ud574\ud48d \uc65c\uad6c\ub839 \u00b7 \ubc14\ub2e4\ubc40 \u00b7 \uc65c\uad6c \ubc29\ud328\ub839 \u00b7 \uc131\ub09c \uac08\ub9e4\uae30 \u00b7 \uc885\uc774 \uc2dd\uc2e0 \u00b7 \ubb34\uc778\uc11d \ubcd1\uc0ac \u00b7 \uc218\uad70 \ub9dd\ub839 \u00b7 \uc218\uad70 \ud654\uc2b9\ucd1d\ubcd1 \u00b7 \ucc28\ubc2d \uc694\uad34 \u00b7 \uc0b0 \ud150\uad6c \u00b7 \ubc14\ub2f9 \ubb34\ub140\ub839 \u00b7 \uace0\ubd84 \uc11d\uc218 \u00b7 \ubc14\ub2e4 \uc694\uad34 \u00b7 \ud574\uc2e0 \ubb34\ub140\ub839 \u00b7 \uc6b0\ubbf8\ub1e8\ubcf4 \u00b7 \ud654\uc0b0 \uc2ec\ubc29\ub839 \u00b7 \ud3c9\uc591\uc131 \uc65c\ubcd1 \uc6d0\ub839 \u00b7 \ubc14\ub78c \uc815\ub839 \u00b7 \ud6c4\uc9c0 \uc218\ud5d8\ub839 \u00b7 \uc124\ub140<br>\u00b7 \uc6d0\ub839 \u00b7 \ub9dd\ub839 \u00b7 \uc124\ub140\ub294 \uc4f0\ub7ec\uc9c0\uba70 \ud750\ub824\uc9c0\uace0, \ubc14\ub2e4 \uc694\uad34 \u00b7 \ubc14\ub78c \uc815\ub839\uc740 \ub5a0\uc624\ub974\uba70 \uc0ac\ub77c\uc9d0 \u2014 \uc774\uc81c \uac8c\uc784 \uc18d \ubaac\uc2a4\ud130 128\uc885 \ubaa8\ub450 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 \uadf8\ub9bc\uc774 \uc788\uc74c`;
   if (window.MH644_OPT && window.MH644_OPT.m_jellySpirit) notes += `<div class="sep"></div><b>v647 \uc2dc\ud5d8 \u2014 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 5\ucc28</b><br>\u00b7 \uc81c\uc8fc \u00b7 \uc65c \u00b7 \uad50\ud1a0 \uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 25\uc885 \ub354: \ud604\ubb34\uc554 \ub3cc\uc815\ub839 \u00b7 \uac10\uade4 \uc815\ub839 \u00b7 \ud574\ud48d \ub3c4\uae68\ube44 \u00b7 \uc81c\uc8fc \ubc14\ub78c\ub9d0 \u00b7 \ud574\ud30c\ub9ac \uc815\ub839 \u00b7 \uc870\ub85c\uad6c\ubaa8 \u00b7 \uac13\ud30c \u00b7 \uae4c\ub9c8\uadc0 \ud150\uad6c \u00b7 \uc6b0\uc0b0\uc694\uad34 \u00b7 \ucf54\ucf00\uc2dc \uc778\ud615\ub839 \u00b7 \ubc31\uc5ec\uc6b0 \uc694\uad34 \u00b7 \uad50\ud1a0 \ub4f1\ub871\uadc0 \u00b7 \ub4f1\ub871\uc694\uad34 \u00b7 \uc6a9\uc554 \uac8c \u00b7 \ub9cc\uc6d4\ub300 \uadc0\ud654 \u00b7 \uad11\ubd80 \ud22c\ucc99\ub839 \u00b7 \uac2f\ubc8c \uac8c \u00b7 \ubcbd\ud654 \uc120\ub140\ub839 \u00b7 \ub098\ub2c8\uc640 \ub0ad\uc778 \u00b7 \ub124\ucf54\ub9c8\ud0c0 \u00b7 \uc74c\uc591\uc0ac \uc6d0\ub839 \u00b7 \ud314\uacf5 \ud654\uadc0 \u00b7 \ud574\uc801 \ud574\uace8 \u00b7 \ub1cc\uace0 \uc694\uad34 \u00b7 \ubd89\uc740 \uc624\ub2c8<br>\u00b7 \ub3cc\uc815\ub839 \u00b7 \ub4f1\ub871\uadc0\ub294 \ubb34\ub108\uc838 \ub3cc\ubb34\ub354\uae30\ub85c, \uadc0\ud654 \u00b7 \ud654\uadc0\ub294 \ubd88\uaf43\uc774 \uc0ac\uadf8\ub77c\ub4e4\uba70 \uaebc\uc9d0 \u2014 \uc774\uc81c \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 \uadf8\ub9bc\uc774 \uc788\ub294 \ubaac\uc2a4\ud130 101\uc885`;
   if (window.MH644_OPT && window.MH644_OPT.m_hakataKappa) notes += `<div class="sep"></div><b>v646 \uc2dc\ud5d8 \u2014 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 4\ucc28</b><br>\u00b7 \ub3d9\ubc29 \u00b7 \ubd81\ubc29 \uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 25\uc885 \ub354: \uc544\uce74\ubca0\ucf54 \uc6d0\uadc0 \u00b7 \ubcf4\ub530\ub9ac \ub3c4\uae68\ube44 \u00b7 \ud669\uae08 \ubcf4\ub530\ub9ac \ub3c4\uae68\ube44 \u00b7 \uc218\ub85c \uc694\uad34 \u00b7 \uccad\uc790 \ub9e4\ubcd1\ub839 \u00b7 \uad81\uc911 \uc220\uc0ac\ub839 \u00b7 \ub300\ub3d9\uac15 \ubb3c\uadc0\uc2e0 \u00b7 \ub2e4\ud14c \uc544\uc2dc\uac00\ub8e8 \ub9dd\ub839 \u00b7 \uc5d0\ub3c4 \uc694\uc2b9\ub839 \u00b7 \uc5d0\ub3c4 \uc801\uadc0 \u00b7 \uc5d0\ub3c4 \ub9dd\ub839\ubb34\uc0ac \u00b7 \ud478\ub978 \uac13\ud30c \u00b7 \uc232 \uc624\ub2c8 \u00b7 \ube59\uc124 \ubb34\ub140\ub839 \u00b7 \ud6c4\uc9c0 \uc0b0\ub839 \u00b7 \uac1c\ub9c8\ubb34\uc0ac \uc6d0\ub839 \u00b7 \uac00\uc0e4\ub3c4\ucfe0\ub85c \u00b7 \uace0\uad6c\ub824 \uad81\uc218\ub839 \u00b7 \uace0\ub824 \uae08\uad70 \uc6d0\ub839 \u00b7 \ud558\uce74\ud0c0 \uac11\uac01\uc694\uad34 \u00b7 \ud558\uce74\ud0c0 \uac13\ud30c \u00b7 \ud751\ud604\ubb34 \u00b7 \ud654\uc131 \ucc3d\ubcd1 \u00b7 \ube59\ud558 \ub291\ub300 \u00b7 \ud0dc\ud654 \ucca0\uc815\ub839<br>\u00b7 \uccad\uc790 \ub9e4\ubcd1 \u00b7 \ud558\uce74\ud0c0 \uac13\ud30c\ub294 \uc606\uc73c\ub85c \ucff5 \ub118\uc5b4\uac00\uace0, \uc6d0\ub839 \u00b7 \ubb3c\uadc0\uc2e0\uc740 \ud750\ub824\uc9c0\uba70 \uc0ac\ub77c\uc9d0 \u2014 \uc774\uc81c \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 \uadf8\ub9bc\uc774 \uc788\ub294 \ubaac\uc2a4\ud130 76\uc885`;
@@ -54816,146 +54818,22 @@ Object.assign(MH641_IMG, {"m_royalGuardGhost": "data:image/webp;base64,UklGRq4IA
 window.MH644_OPT = Object.assign(window.MH644_OPT || {}, {"m_royalGuardGhost": {"fade": 1}, "m_royalShield": {"fade": 1}, "m_royalWarlock": {"fade": 1}, "m_seaArcher": {"fade": 1}, "m_seaRaider": {"fade": 1}, "m_seaShield": {"fade": 1}, "m_sugunGhost": {"fade": 1}, "m_tideWitch": {"fade": 1}, "m_tombBeast": {"fade": 1}, "m_umiGhost": {"fade": 1, "rise": 10}, "m_umiMiko": {"fade": 1}, "m_umiNyobo": {"fade": 1}, "m_volcanoShaman": {"fade": 1}, "m_waeGhost": {"fade": 1}, "m_windSpirit": {"fade": 1, "rise": 12}, "m_yamabushi": {"fade": 1}, "m_yukiGirl": {"fade": 1, "rise": 6}});
 
 /* ============================================================
-   98zzzzzzz_zzzz_zt_reopt649 (\uc2dc\ud5d8\ud310 \u00b7 v649): \ub300\uc7a5\uac04 \u300c\ub2e4\uc2dc \uc0c8\uae30\uae30\u300d \u2014 \uad11\uc6b0 \u300c\uc7a5\ube44\uc635\uc158\uc740 \uc88b\uc544!\u300d (\uba54\uc774\ud50c \ud050\ube0c \uac19\uc740 \ub3c8 \uc4f8 \uacf3)
-   \u00b7 \ub300\uc7a5\uac04 \ud0ed \u300c\uc0c8\uae30\uae30\u300d: \uc7a5\ube44\uc758 \ub367\ubd99\uc740 \uc635\uc158(\ud798 \u00b7 \uce58\uba85\ud0c0 \u00b7 \uacf5\uaca9\ub825 \u2026)\uc744 \ub3c8\uc744 \ub0b4\uace0 \ub2e4\uc2dc \uad74\ub9b0\ub2e4
-     \u00b7 \uc904 \uc218\ub294 \uadf8\ub300\ub85c, \uc885\ub958\uc640 \uc218\uce58\ub97c \uc0c8\ub85c \u2014 \uc218\uce58 \ud3ed\uc740 \ucc98\uc74c \ubd99\uc744 \ub54c\uc640 \uac19\ub2e4 (\uc7a5\ube44 \ub808\ubca8\uc5d0 \ub530\ub77c)
-     \u00b7 \uad74\ub9b0 \ub4a4 \u300c\uc0c8 \uac83 \uc4f0\uae30 / \uadf8\ub300\ub85c \ub450\uae30\u300d\ub97c \uace0\ub978\ub2e4 \u2014 \uace0\ub974\uae30 \uc804\uc5d0 \ucc3d\uc744 \ub2eb\uc73c\uba74 \uadf8\ub300\ub85c \ub454 \uac83\uc73c\ub85c
-     \u00b7 \ud55c \uc904 \uc7a0\uadf8\uae30: \uadf8 \uc904\uc740 \ub0a8\uae30\uace0 \ub098\uba38\uc9c0\ub9cc \u2014 \uac12 \u00d73 (\ub450 \uc904 \uc774\uc0c1\uc77c \ub54c)
-     \u00b7 \uc904 \ub298\ub9ac\uae30: \ub4f1\uae09 \ud55c\ub3c4\uae4c\uc9c0 \ud55c \uc904 \ub354 (\uc77c\ubc18 \u00b7 \uace0\uae09 1 \u00b7 \ud76c\uadc0 \u00b7 \uc601\uc6c5 2 \u00b7 \uc804\uc124 \u00b7 \uc720\uc77c 3) \u2014 \uac12 \u00d76
-   \u00b7 \uac12\uc740 \uc815\uac00 \u2014 \uc7a5\ube44 \ub4f1\uae09\ub9cc \ubcf8\ub2e4 (\ub808\ubca8 \u00b7 \ub0b4 \ub808\ubca8 \ubb34\uad00)
-   \u00b7 \uc228\uc740 \ud2b9\uc218 \uc635\uc158 \u00b7 \uc2e0\ud654 \uc635\uc158(\uac10\uc815)\uc740 \uac74\ub4dc\ub9ac\uc9c0 \uc54a\ub294\ub2e4
-   \u00b7 \uc800\uc7a5: \uc7a5\ube44\uc758 it.opts (\uc608\uc804\uacfc \uac19\uc740 \ubaa8\uc591) \u00b7 \uae30\ub85d re1
+   98zzzzzzz_zzzz_zt_rf649 (\uc2dc\ud5d8\ud310 \u00b7 v649 \u2192 v653): \u300c\ub2e4\uc2dc \ubcbc\ub9ac\uae30\u300d \ud0ed\uc744 \ucc98\uc74c\ubd80\ud130 \ubcf4\uc774\uac8c
+   \u00b7 v616 \uc5d0 \uc774\ubbf8 \uc7a5\ube44 \uc635\uc158 \ub2e4\uc2dc \uad74\ub9ac\uae30(\ub2e4\uc2dc \ubcbc\ub9ac\uae30 \u00b7 \ud55c \uc904\ub9cc \u00b7 \uc218\uce58 \ub2e4\ub4ec\uae30 \u00b7 \uc7a0\uadf8\uace0 \uad74\ub9ac\uae30)\uac00 \uc788\uc5c8\ub294\ub370
+     v637 \uc774 \u300c\uac15\ud654 +4 \uc774\uc0c1 \u00b7 \uc138 \ubc88 \ub118\uac8c\u300d \uc804\uc5d4 \uac01\uc131 \u00b7 \uacc4\uc2b9 \u00b7 \uaca9\uc11d\uacfc \ud568\uaed8 \uc228\uaca8\uc11c \uad11\uc6b0\ub3c4 \ubabb \ubd24\ub2e4
+   \u00b7 \uac01\uc131 \u00b7 \uacc4\uc2b9 \u00b7 \uaca9\uc11d\uc740 \uadf8\ub300\ub85c \uc228\uae30\uace0, \ub2e4\uc2dc \ubcbc\ub9ac\uae30\ub9cc \ub298 \ubcf4\uc778\ub2e4 (\ucc98\uc74c \ub9cc\ub4e0 \u300c\uc0c8\uae30\uae30\u300d \ud0ed\uc740 \uc911\ubcf5\uc774\ub77c \ube90\ub2e4)
+   \u00b7 \uc800\uc7a5 \uc5c6\uc74c
    ============================================================ */
-window.RE649 = {
-  on: true,
-  PRICE: [1000, 2500, 6000, 15000, 50000, 120000],
-  LOCK: 3, ADD: 6,
-  MAXL: [1, 1, 2, 2, 3, 3]
-};
 {
-  const K = window.RE649;
-  const rar = it => (ITEMS[it.id] && ITEMS[it.id].rarity) | 0;
-  const lines = it => (it.opts || []).length;
-  const maxL = it => K.MAXL[Math.min(5, rar(it))];
-  const cost = (it, mode) => K.PRICE[Math.min(5, rar(it))] * (mode === 'add' ? K.ADD : mode === 'lock' ? K.LOCK : 1);
-  window.re649Cost = cost;
-  /* \ucc98\uc74c \ubd99\uc744 \ub54c\uc640 \uac19\uc740 \uc2dd\uc73c\ub85c \ud55c \uc904 */
-  const rollOne = (d, have) => {
-    const pool = OPTION_POOL.filter(o => !have.some(x => x.k === o.k)); if (!pool.length) return null;
-    const o = pool[Math.floor(Math.random() * pool.length)];
-    let v = o.min + Math.random() * (o.max - o.min);
-    if (o.per) v *= 1 + (d.lv || 1) * o.per;
-    v = Math.round(v * 10) / 10; if (!o.pct && o.k !== 'mpRegen') v = Math.round(v);
-    return { k: o.k, v };
-  };
-  const reroll = (it, lockI, n) => {
-    const d = ITEMS[it.id], old = it.opts || [], out = [];
-    if (lockI != null && old[lockI]) out.push(Object.assign({}, old[lockI]));
-    while (out.length < n) { const o = rollOne(d, out); if (!o) break; out.push(o); }
-    if (lockI != null && old[lockI]) { const L = out.shift(); out.splice(lockI, 0, L); }   /* \uc7a0\uadfc \uc904\uc740 \uc81c\uc790\ub9ac */
-    return out;
-  };
-  const gearAll = p => [...EQUIP_SLOTS.map(s => p.eq[s]).filter(Boolean), ...p.inv.filter(it => isGear(ITEMS[it.id]))];
-  const optRows = (opts, lockI, pick) => {
-    if (!opts || !opts.length) return `<div class="muted">\ub367\ubd99\uc740 \uc635\uc158 \uc5c6\uc74c</div>`;
-    return opts.map((o, i) => `<div class="re649l${lockI === i ? ' lk' : ''}">${pick ? `<button class="re649k" data-a="re649lock" data-v="${i}" title="\uc774 \uc904 \uc7a0\uadf8\uae30">${lockI === i ? '\ud83d\udd12' : '\ud83d\udd13'}</button>` : ''}<span>${esc(optText(o))}</span></div>`).join('');
-  };
-  const css = document.createElement('style'); css.id = 're649css';
-  css.textContent = `
-.re649l{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:14px;color:#9fe0a0}
-.re649l.lk span{color:#ffd76a}
-.re649k{border:1px solid var(--line2);background:rgba(0,0,0,.25);border-radius:6px;padding:1px 5px;font-size:13px;cursor:pointer;color:inherit}
-.re649two{display:flex;gap:8px;margin:8px 0}
-.re649two>div{flex:1;border:1px solid var(--line2);border-radius:8px;padding:8px;background:rgba(0,0,0,.2)}
-.re649two>div.nw{border-color:var(--gold)}
-.re649two b{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
-.re649btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.re649btns .btn{flex:1;min-height:44px;font-size:14px}
-`;
-  document.head.appendChild(css);
-  const html = (n, ctx) => {
-    const p = G.player, all = gearAll(p);
-    let h = sayBox(n, n.def.line) + `<div class="tabs">${(ctx._tabs || '')}</div>`;
-    h += `<div class="muted" style="margin-bottom:6px">\ub367\ubd99\uc740 \uc635\uc158\uc744 \ub2e4\uc2dc \uc0c8\uae41\ub2c8\ub2e4. \uad74\ub9b0 \ub4a4 \ub9c8\uc74c\uc5d0 \ub4e4 \ub54c\ub9cc \ubc14\uafc9\ub2c8\ub2e4.</div>`;
-    const it = all.find(g => g.uid === ctx.re649);
-    if (!it) {
-      h += `<div class="grid">${all.map(g => slotHtml(g, false, `data-a="re649sel" data-u="${g.uid}"`)).join('')}</div>`;
-      if (!all.length) h += `<div class="muted">\uc7a5\ube44\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.</div>`;
-      return [`\ud83d\udd28 ${n.name} \u00b7 \uc0c8\uae30\uae30`, h];
-    }
-    const nL = lines(it), lockI = nL >= 2 && ctx.re649lock != null && ctx.re649lock < nL ? ctx.re649lock : null;
-    h += `<div class="row"><div class="ic">${ic(ITEMS[it.id])}</div><div class="tx"><div class="t1">${itemName(it)}</div><div class="t2">${RARITY[rar(it)].n} \u00b7 \uc635\uc158 ${nL}/${maxL(it)}\uc904</div></div><button class="btn" data-a="re649sel" data-u="">\ub2e4\ub978 \uc7a5\ube44</button></div>`;
-    if (ctx.re649new) {
-      h += `<div class="re649two"><div><b>\uc9c0\uae08</b>${optRows(it.opts)}</div><div class="nw"><b>\uc0c8\ub85c \ub098\uc628 \uac83</b>${optRows(ctx.re649new)}</div></div>`;
-      h += `<div class="re649btns"><button class="btn teal" data-a="re649take">\uc0c8 \uac83 \uc4f0\uae30</button><button class="btn" data-a="re649keep">\uadf8\ub300\ub85c \ub450\uae30</button></div>`;
-      return [`\ud83d\udd28 ${n.name} \u00b7 \uc0c8\uae30\uae30`, h];
-    }
-    h += `<div class="re649two"><div><b>\uc9c0\uae08 \uc635\uc158${nL >= 2 ? ' \u00b7 \ud83d\udd13 \ub20c\ub7ec \ud55c \uc904 \uc7a0\uadf8\uae30' : ''}</b>${optRows(it.opts, lockI, nL >= 2)}</div></div>`;
-    const c1 = cost(it, lockI != null ? 'lock' : 'roll'), cA = cost(it, 'add');
-    h += `<div class="re649btns">`;
-    if (nL) h += `<button class="btn teal" data-a="re649roll" ${p.gold < c1 ? 'disabled' : ''}>\ub2e4\uc2dc \uc0c8\uae30\uae30${lockI != null ? ' (\uc7a0\uae08)' : ''}<br><small>${fmt(c1)}\ubb38</small></button>`;
-    if (nL < maxL(it)) h += `<button class="btn" data-a="re649add" ${p.gold < cA ? 'disabled' : ''}>${nL ? '\ud55c \uc904 \ub298\ub9ac\uae30' : '\uc635\uc158 \uc0c8\uae30\uae30'}<br><small>${fmt(cA)}\ubb38</small></button>`;
-    else if (!nL) h += `<div class="muted">\uc774 \uc7a5\ube44\uc5d0\ub294 \uc635\uc158\uc744 \uc0c8\uae38 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.</div>`;
-    h += `</div><div class="muted" style="margin-top:6px">\uac00\uc9c4 \ub3c8 ${fmt(p.gold)}\ubb38</div>`;
-    if (ctx.msg) h += `<div class="say" style="margin-top:8px">${ctx.msg}</div>`;
-    return [`\ud83d\udd28 ${n.name} \u00b7 \uc0c8\uae30\uae30`, h];
-  };
   const _sm = NPCV.smith;
   NPCV.smith = function (n, ctx) {
-    if (K.on && ctx && ctx.tab === 're649') {
-      try {
-        /* \ud0ed \uc904\uc740 \uc6d0\ub798 \ucc3d\uc5d0\uc11c \ube4c\ub824 \uc628\ub2e4 (\uac15\ud654 \ud0ed\uc73c\ub85c \uadf8\ub824\uc11c \ud0ed \ub2e8\ucd94\ub9cc \ub5bc\uc5b4 \ub0c4) */
-        const base = _sm.call(this, n, Object.assign({}, ctx, { tab: 'enh', sel: null }));
-        const m = typeof base[1] === 'string' && base[1].match(/<div class="tabs">([\s\S]*?)<\/div>/);
-        ctx._tabs = (m ? m[1].replace(/ class="tab on"/g, ' class="tab"') : '') + '<button class="tab on" data-a="tab" data-v="re649">\uc0c8\uae30\uae30</button>';
-        return html(n, ctx);
-      } catch (e) { reportError(e); }
-    }
-    if (ctx) ctx.re649new = null;
     const r = _sm.apply(this, arguments);
     try {
-      if (K.on && Array.isArray(r) && typeof r[1] === 'string' && !r[1].includes('data-v="re649"'))
-        r[1] = r[1].replace(/(<div class="tabs">[\s\S]*?)(<\/div>)/, `$1<button class="tab${ctx && ctx.tab === 're649' ? ' on' : ''}" data-a="tab" data-v="re649">\uc0c8\uae30\uae30</button>$2`);
+      if (Array.isArray(r) && typeof r[1] === 'string' && !r[1].includes('data-v="rf"') && window.RF623 && RF623.on)
+        r[1] = r[1].replace(/(<div class="tabs">[\s\S]*?)(<\/div>)/, `$1<button class="tab${ctx && ctx.tab === 'rf' ? ' on' : ''}" data-a="tab" data-v="rf">\ub2e4\uc2dc \ubcbc\ub9ac\uae30</button>$2`);
     } catch (e) { reportError(e); }
     return r;
   };
-  const ACTS = ['re649sel', 're649lock', 're649roll', 're649add', 're649take', 're649keep'];
-  const _click = onModalClick;
-  onModalClick = function (e) {
-    const b = e.target.closest('[data-a]'); if (!b || b.disabled || !ACTS.includes(b.dataset.a)) return _click(e);
-    const p = G.player, ctx = modalCtx; if (!ctx || !p) return;
-    const a = b.dataset.a, it = gearAll(p).find(g => g.uid === ctx.re649);
-    try {
-      if (a === 're649sel') { ctx.re649 = b.dataset.u || null; ctx.re649new = null; ctx.re649lock = null; ctx.msg = null; Sfx.click(); }
-      else if (a === 're649lock') { const i = +b.dataset.v; ctx.re649lock = ctx.re649lock === i ? null : i; Sfx.click(); }
-      else if (!it) { }
-      else if (a === 're649roll' || a === 're649add') {
-        const nL = lines(it), add = a === 're649add';
-        if (add && nL >= maxL(it)) return;
-        if (!add && !nL) return;
-        const lockI = !add && nL >= 2 && ctx.re649lock != null && ctx.re649lock < nL ? ctx.re649lock : null;
-        const c = cost(it, add ? 'add' : lockI != null ? 'lock' : 'roll'); if (p.gold < c) { toast('\ub3c8\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4', 'red'); return; }
-        p.gold -= c;
-        if (add) {   /* \ub298\ub9ac\uae30\ub294 \ubc14\ub85c \ubd99\uc778\ub2e4 (\uc788\ub358 \uc904\uc740 \uadf8\ub300\ub85c) */
-          const o = rollOne(ITEMS[it.id], it.opts || []); if (o) { it.opts = [...(it.opts || []), o]; calcStats(p); ctx.msg = `\u2728 \uc0c8 \uc635\uc158 \u300c${esc(optText(o))}\u300d\uc774 \uc0c8\uaca8\uc84c\uc2b5\ub2c8\ub2e4`; }
-          try { Sfx.level(); } catch (er) { }
-        } else {
-          ctx.re649new = reroll(it, lockI, nL);
-          try { Sfx.coin(); } catch (er) { }
-          try { screenFlash('#fff2c8', .25); } catch (er) { }
-        }
-        try { ECON622.ms('re1'); } catch (er) { }
-        ctx.msg = add ? ctx.msg : null;
-      }
-      else if (a === 're649take') { if (ctx.re649new) { it.opts = ctx.re649new; calcStats(p); toast('\u2728 \uc0c8 \uc635\uc158\uc73c\ub85c \ubc14\uafe8\uc2b5\ub2c8\ub2e4', 'gold'); try { Sfx.level(); } catch (er) { } } ctx.re649new = null; }
-      else if (a === 're649keep') { ctx.re649new = null; Sfx.click(); }
-    } catch (er) { reportError(er); }
-    rerender();
-  };
-  /* \ucc3d\uc744 \ub2eb\uac70\ub098 \ub2e4\ub978 \ud0ed\uc73c\ub85c \uac00\uba74 \uace0\ub974\uc9c0 \uc54a\uc740 \uacb0\uacfc\ub294 \ubc84\ub9b0\ub2e4 (= \uadf8\ub300\ub85c) */
-  const _cm = closeModal;
-  closeModal = function () { try { if (modalCtx) { modalCtx.re649new = null; } } catch (e) { } return _cm.apply(this, arguments); };
-  window.re649Test = on => { K.on = on !== false; return K.on; };
 }
 
 /* ============================================================
@@ -55088,6 +54966,138 @@ window.DMG651 = { on: true, DX: 56, DY: 26, T: .55, OUT: 2, SIZE: { n: .92, c: 1
     }, 250);
     window.light652Test = s => weak2(s);
   }
+}
+
+/* 98zzzzzzz_zzzz_zx_fist653 (\uc2dc\ud5d8\ud310 \u00b7 v653): \uaca9\ud22c\uac00 \uc8fc\uba39\uc758 \ube5b \uacf5 \uc904\uc774\uae30 \u2014 \uad11\uc6b0 \u300c\uc774\uac70 \uc640\uc774\ub77c\ub178\u300d(\uac77\ub294 \ub0b4\ub0b4 \ud30c\ub780 \uacf5\uc744 \ub4e4\uace0 \ub2e4\ub2d8)
+   \u00b7 PixelLab \uc8fc\uc778\uacf5 \uadf8\ub9bc 8\uc7a5(\uc804\uc9c1 4\ub2e8\uacc4 \u00b7 \uc637 4\uc885)\uc5d0 \uad8c\uac11\uc774 \ucee4\ub2e4\ub780 \ube5b \uacf5\uc73c\ub85c \uadf8\ub824\uc838 \uc788\uc5c8\ub2e4 \u2192 \uacf5\uc744 \uc190\ubaa9 \ucabd\uc73c\ub85c 55% \ud06c\uae30\ub85c \uc904\uc784 (\ud14c\ub450\ub9ac \ud3ec\ud568) \u00b7 \ub3d9\uc791 21\uc904 \uc804\ubd80
+   \u00b7 \uadf8\ub9bc\ub9cc \ubc14\uafc8 \u00b7 \uc800\uc7a5 \uc5c6\uc74c */
+Object.assign(HM16_IMG, {"brawler0_fist": "img/c7c1ef7ab4.webp", "brawler1_fist": "img/8297a123d7.webp", "brawler2_fist": "img/d5aadff84a.webp", "brawler3_fist": "img/6831f5fea6.webp", "c_gold_fist": "img/88b1f916a3.webp", "c_moon_fist": "img/a20518569a.webp", "c_night_fist": "img/8bccc4f52e.webp", "c_redtiger_fist": "img/2de6d926b6.webp"});
+
+/* ============================================================
+   98zzzzzzz_zzzz_zy_heroname653 (\uc2dc\ud5d8\ud310 \u00b7 v653): \uc774\uc57c\uae30 \uc778\ubb3c \ub3d9\ub8cc(\uacb8 \u00b7 \ub0a8\uc774 \uc7a5\uad70 \u2026) \uc774\ub984\uc744 \uae08\ube5b\uc73c\ub85c \u2014 \uad11\uc6b0 \u300c\uc774\ub7f0 \uc560\ub4e4\uc740 \uc774\ub984 \uc0c9\uae54\ub3c4 \ub2e4\ub974\uac8c\u300d
+   \u00b7 \uc8fc\ub9c9 \ub3d9\ub8cc(\ud558\ub298\uc0c9)\uc640 \uad6c\ubd84 \u00b7 \uc774\ub984 \uc544\ub798 \uc904\uc740 \u300cLv\u300d \ub300\uc2e0 \uadf8 \uc778\ubb3c\uc758 \uad6c\uc2e4(\uc0bf\uac13 \uc4f4 \uae38\uc7a1\uc774 \u00b7 \uc80a\uc740 \ubb34\uc7a5 \u2026)
+   \u00b7 \uc800\uc7a5 \uc5c6\uc74c
+   ============================================================ */
+{
+  const COL = '#ffd98a';
+  const heroOf = name => { try { for (const c of G.party) if (c.name === name && c.def0 && c.def0.hero) return c; } catch (e) { } return null; };
+  const _nt = drawNameTag;
+  drawNameTag = function (x, y, name, col, sub) {
+    if (col === '#9fd8ff') {
+      const c = heroOf(name);
+      if (c) {
+        const H = (typeof HERO416 !== 'undefined' && HERO416[c.def0.hero]) || {}, role = H.role || (NPCS['hero_' + c.def0.hero] || {}).role || '';
+        const n0 = (G._tags || []).length, r = _nt.call(this, x, y, name, col, role || sub);
+        try { const T = G._tags; if (T && T.length > n0) T[T.length - 1].col = COL; } catch (e) { }
+        return r;
+      }
+    }
+    return _nt.apply(this, arguments);
+  };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zz_muwi653 (\uc2dc\ud5d8\ud310 \u00b7 v653): \ubb34\uc704\uac00 \uc624\ub974\uba74 \ud06c\uac8c \u2014 \uad11\uc6b0 \u300c\ubb34\uc704 \uc62c\ub77c\uac00\uba74 \uc880 \ub354 \ud06c\uace0 \uc798 \ubcf4\uc774\uac8c \uc5bc\ub9c8\ub098 \uc62c\ub77c\uac14\ub2e4 \ubcf4\uc5ec\uc918\uc57c\u300d
+   \u00b7 v545 \uc758 \uc791\uc740 \uba38\ub9ac \uc704 \uae00\uc528 \u00b7 \ucc3d \uc548 \ud1a0\uc2a4\ud2b8 \ub300\uc2e0, \ud654\uba74 \uc704\ucabd \uac00\uc6b4\ub370\uc5d0 \ud070 \ub760: \u300c\u6b66\u5a01 \u25b2 1,234\u300d + \u300c47,924 \u2192 49,158\u300d
+     \ucc3d(\uac00\ubc29 \u00b7 \ub300\uc7a5\uac04)\uc774 \uc5f4\ub824 \uc788\uc5b4\ub3c4 \uadf8 \uc704\uc5d0 \ubcf4\uc778\ub2e4 \u00b7 2.2\ucd08 \ub4a4 \uc0ac\ub77c\uc9d0 \u00b7 \ub0b4\ub9ac\uba74 \ubd89\uc740\uc0c9\uc73c\ub85c \uac19\uc740 \ub760
+   \u00b7 \uc800\uc7a5 \uc5c6\uc74c \u00b7 muwi653Test(false) \u2192 \uc608\uc804
+   ============================================================ */
+window.MW653 = { on: true, dur: 2200 };
+{
+  const K = window.MW653;
+  const css = document.createElement('style'); css.id = 'mw653css';
+  css.textContent = `
+#mw653{position:fixed;left:50%;top:18%;transform:translate(-50%,-50%) scale(.6);z-index:10050;pointer-events:none;text-align:center;opacity:0;transition:opacity .18s,transform .22s cubic-bezier(.2,1.4,.4,1);font-family:var(--fs,serif)}
+#mw653.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#mw653 .b{font-size:34px;font-weight:900;letter-spacing:1px;color:#ffd36a;text-shadow:0 0 2px #000,0 0 2px #000,2px 2px 0 #3a2200,0 0 14px rgba(255,200,90,.55)}
+#mw653.dn .b{color:#ff8a7a;text-shadow:0 0 2px #000,0 0 2px #000,2px 2px 0 #3a0a00,0 0 14px rgba(255,90,70,.45)}
+#mw653 .s{margin-top:2px;font-size:15px;font-weight:700;color:#fff3d6;text-shadow:0 0 3px #000,0 0 3px #000,1px 1px 0 #000}
+#mw653 .s i{font-style:normal;color:#ffe9a8}
+@media (max-height:480px){#mw653 .b{font-size:28px}#mw653 .s{font-size:13px}}
+`;
+  document.head.appendChild(css);
+  let el = null, tm = 0;
+  const banner = (v, now) => {
+    if (!el) { el = document.createElement('div'); el.id = 'mw653'; document.body.appendChild(el); }
+    const before = Math.max(0, (now || 0) - v);
+    el.className = v > 0 ? 'up' : 'dn';
+    el.innerHTML = `<div class="b">\u6b66\u5a01 ${v > 0 ? '\u25b2' : '\u25bc'} ${fmt(Math.abs(v))}</div><div class="s">${fmt(before)} \u2192 <i>${fmt(now || 0)}</i></div>`;
+    void el.offsetWidth; el.classList.add('on');
+    clearTimeout(tm); tm = setTimeout(() => { el.classList.remove('on'); }, K.dur);
+    try { if (v > 0) Sfx.level && Sfx.level(); } catch (e) { }
+  };
+  const parse = s => { const m = /^\ubb34\uc704 ([\u25b2\u25bc]) ([\d,]+)/.exec(String(s || '').trim()); return m ? (m[1] === '\u25b2' ? 1 : -1) * (+m[2].replace(/,/g, '') || 0) : 0; };
+  const _ft = floatText;
+  floatText = function (x, y, s, col) {
+    const v = K.on ? parse(s) : 0;
+    if (v) { try { banner(v, G.player && G.player.cp545); } catch (e) { } return; }
+    return _ft.apply(this, arguments);
+  };
+  const _toast = toast;
+  toast = function (msg, kind) {
+    const v = K.on && /cp545/.test(String(kind || '')) ? parse(msg) : 0;
+    if (v) { try { banner(v, G.player && G.player.cp545); } catch (e) { } return; }
+    return _toast.apply(this, arguments);
+  };
+  window.muwi653Test = on => { K.on = on !== false; return K.on; };
+}
+
+/* 98zzzzzzz_zzzz_zza_hero653data (\uc2dc\ud5d8\ud310 \u00b7 v653): \uc601\uc6c5 \ub3d9\ub8cc 4\ubc29\ud5a5 \uac77\uae30 \uadf8\ub9bc (PixelLab) \u2014 \uac00\ub85c 4\uce78(\uac77\uae30 \u00b7 0\ubc88\uc774 \uc11c\uae30) \u00d7 \uc138\ub85c 4\uc904(\ub0a8 \u00b7 \ub3d9 \u00b7 \ubd81 \u00b7 \uc11c) */
+window.HERO653_META = Object.assign(window.HERO653_META || {}, {"hero_seogyeom": [23, 34], "hero_nami": [19, 30], "hero_tanikaze": [24, 35], "hero_gildong": [23, 31], "hero_samyeong": [27, 34], "hero_woochi": [23, 30], "hero_heojun": [18, 33], "hero_baekdongsu": [23, 34], "hero_shinryu": [23, 32], "hero_choemuseon": [21, 35], "hero_michizane": [20, 38], "hero_seimei": [27, 36], "hero_musashi": [24, 32], "hero_amenomori": [23, 34], "hero_hanzo": [28, 32]});
+window.HERO653_IMG = Object.assign(window.HERO653_IMG || {}, {"hero_seogyeom": "img/cf489a1588.webp", "hero_nami": "img/00551c92d4.webp", "hero_tanikaze": "img/f477a4fba2.webp", "hero_gildong": "img/320f7f180b.webp", "hero_samyeong": "img/f1a1ce829e.webp", "hero_woochi": "img/9ed9d6c063.webp", "hero_heojun": "img/3d827f239b.webp", "hero_baekdongsu": "img/7a9ab92c8a.webp", "hero_shinryu": "img/8251abe3c8.webp", "hero_choemuseon": "img/b89fbf58ad.webp", "hero_michizane": "img/5147dc93b1.webp", "hero_seimei": "img/e45af566f2.webp", "hero_musashi": "img/1cf19b148f.webp", "hero_amenomori": "img/211569858b.webp", "hero_hanzo": "img/8c8da91f3d.webp"});
+
+/* ============================================================
+   98zzzzzzz_zzzz_zzb_hero653 (\uc2dc\ud5d8\ud310 \u00b7 v653): \uc601\uc6c5 \ub3d9\ub8cc(\uacb8 \u00b7 \ub0a8\uc774 \uc7a5\uad70 \u00b7 \ud64d\uae38\ub3d9 \u2026)\uac00 \ub124 \ubc29\ud5a5\uc73c\ub85c \uac77\ub294\ub2e4 \u2014 \uad11\uc6b0 \u300c\uacb8\uc774 \uc704\ub85c \uac00\ub3c4 \uc55e\ub9cc \ubcf4\uace0 \uc788\ub124 \u00b7 \ubaa8\uc158 \ucacc \ub123\uc5b4\ub77c\u300d
+   \u00b7 \uc9c0\uae08\uae4c\uc9c0\ub294 \uc55e\ubaa8\uc2b5 2\uce78 + \uc606\ubaa8\uc2b5 1\uce78\ubfd0\uc774\ub77c \ub4a4\ub85c \uac78\uc73c\uba74 \uc55e\ubaa8\uc2b5\uc744 \ub4a4\uc9d1\uc5b4 \uc37c\ub2e4 (v522 \u00b7 v524)
+   \u00b7 PixelLab \ub85c \uc55e\ubaa8\uc2b5 \ud55c \uc7a5\uc744 \ub124 \ubc29\ud5a5\uc73c\ub85c \ub3cc\ub9ac\uace0 \uac77\uae30 4\uc7a5\uc529 \u2014 HERO653_IMG \uc5d0 \uc788\ub294 \uc778\ubb3c\ub9cc \uc0c8 \uadf8\ub9bc, \uc5c6\ub294 \uc778\ubb3c\uc740 \uc608\uc804\ub300\ub85c
+   \u00b7 \uc11c\uae30 = \uac77\uae30 0\ubc88 \u00b7 \uacf5\uaca9 = \uac77\uae30 2\ubc88 \u00b7 \uadf8\ub9bc\uc740 \uc4f8 \ub54c \ud55c \ubc88 \ubd88\ub7ec\uc628\ub2e4
+   \u00b7 \uc800\uc7a5 \uc5c6\uc74c \u00b7 hero653Test(false) \u2192 \uc608\uc804
+   ============================================================ */
+window.HERO653 = { on: true, img: {}, fr: {} };
+{
+  const K = window.HERO653;
+  const load = k => { if (K.img[k] || K.img[k] === 0 || !HERO653_IMG[k]) return; K.img[k] = 0; const im = new Image(); im.onload = () => { K.img[k] = im; }; im.onerror = () => { delete K.img[k]; }; im.src = HERO653_IMG[k]; };
+  const cut = (im, w, h, col, row, flip, white) => {
+    const c = document.createElement('canvas'); c.width = w; c.height = h; const g = c.getContext('2d'); g.imageSmoothingEnabled = false;
+    if (flip) { g.translate(w, 0); g.scale(-1, 1); }
+    g.drawImage(im, col * w, row * h, w, h, 0, 0, w, h);
+    if (white) { g.setTransform(1, 0, 0, 1, 0, 0); g.globalCompositeOperation = 'source-in'; g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); }
+    return c;
+  };
+  const frame = (k, row, col) => {
+    const key = k + '|' + row + '|' + col; let f = K.fr[key]; if (f) return f;
+    const im = K.img[k]; if (!im) { load(k); return null; }
+    const [w, h] = HERO653_META[k]; let img = null, fl = null;
+    return (K.fr[key] = { get img() { return img || (img = cut(im, w, h, col, row)); }, get flash() { return fl || (fl = cut(im, w, h, col, row, false, true)); } });
+  };
+  const keyOf = e => { try { if (e && e.kind === 'comp' && e.def0 && e.def0.hero) { const k = 'hero_' + e.def0.hero; return HERO653_IMG[k] ? k : null; } } catch (er) { } return null; };
+  const _hf = heroFrame;
+  heroFrame = function (e) {
+    if (K.on) {
+      const k = keyOf(e);
+      if (k) {
+        const d = e.dir || 0, row = d === 0 ? 0 : d === 3 ? 1 : d === 1 ? 2 : 3;
+        const atk = (e.atkAnim || 0) > 0, step = Math.floor(e.walkT || 0) % 4;
+        const col = atk ? 2 : e.moving ? step : 0;
+        const f = frame(k, row, col); if (f) return f;
+      }
+    }
+    return _hf.apply(this, arguments);
+  };
+  window.hero653Test = on => { K.on = on !== false; return K.on; };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zzc_sfx653 (\uc2dc\ud5d8\ud310 \u00b7 v653): \uc6b0\ub450\uba38\ub9ac \uad11\ud3ed\ud654 \ud3ec\ud6a8 \u00b7 \uac15\ud654 \uc131\uacf5\uc74c \u2014 \uad11\uc6b0 \u300c\uad11\ud3ed\ud654\ud560 \ub54c \ucfe0\uc624\uc624\uc624 \u00b7 \uac15\ud654 \uc131\uacf5\uc774 \ud655\uc2e4\ud558\uac8c \ub4e4\ub9ac\uac8c\u300d (ElevenLabs)
+   \u00b7 \uc6b0\ub450\uba38\ub9ac \uad11\ud3ed\ud654(bossRage2)\uc5d0 \uc18c\ub9ac\uac00 \uc5c6\uc5c8\ub2e4 \u2192 \uae4a\uc740 \ud3ec\ud6a8 1.9\ucd08 (\ubd84\ub178 50% \ub54c\uc758 \uc608\uc804 \uc18c\ub9ac\ub294 \uadf8\ub300\ub85c)
+   \u00b7 \uac15\ud654 \uc131\uacf5: \ubaa8\ub8e8 \uce58\ub294 \uc18c\ub9ac + \ubc1d\uac8c \uc62c\ub77c\uac00\ub294 \uc885\uc18c\ub9ac 1.5\ucd08 (\uc608\uc804 enh_success \ub97c \ubc14\uafc8)
+   ============================================================ */
+AUDIO_DATA.sfx_boss_rage653 = 1;
+AUDIO_DATA.sfx_enh_success = 1;
+{
+  const _r2 = bossRage2;
+  bossRage2 = function (m) { const r = _r2.apply(this, arguments); try { sfxOr('boss_rage653', () => Sfx.roar(), { gap: 1, jit: .02, vol: 1 }); } catch (e) { } return r; };
+  try { if (typeof SFX_GAIN !== 'undefined') { SFX_GAIN.boss_rage653 = 1.1; SFX_GAIN.enh_success = 1.0; } } catch (e) { }
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
