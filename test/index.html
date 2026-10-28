@@ -859,7 +859,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v651 &#xc2dc;&#xd5d8;&#xd310;</div>
+    <div class="sub">v652 &#xc2dc;&#xd5d8;&#xd310;</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6839,6 +6839,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  if (window.light652Test) notes += `<div class="sep"></div><b>v652 \uc2dc\ud5d8 \u2014 \ud3f0 \ub04a\uae40 (\uac00\ubcbc\uc6b4 \ubaa8\ub4dc \uc790\ub3d9)</b><br>\u00b7 \uc7b0 \uac12(\ud3f0 \uc870\uac74): \uac00\ubcbc\uc6b4 \ubaa8\ub4dc\ub97c \ucf1c\uba74 \ub9c8\uc744 2.6 \u2192 72\uc7a5 \u00b7 \uc124\uc6d0 3 \u2192 83\uc7a5 \u00b7 \uad50\ud1a0 \uc9c0\ud558 15 \u2192 75\uc7a5 \u2014 \ucf1c\uc9c0\uae30\ub9cc \ud558\uba74 \ub410\ub294\ub370 \uac24\ub7ed\uc2dc A33(Mali-G68)\uc740 \uc790\ub3d9 \ucf1c\uc9d0 \ud310\uc815\uc5d0\uc11c \ube60\uc838 \uc788\uc5c8\uc74c<br>\u00b7 \uc57d\ud55c \uce69 \ud310\uc815\uc744 \ub113\ud788\uace0(Mali-G68 \uc774\ud558 \u00b7 Adreno 650 \uc544\ub798), \uadf8\ub798\ud53d \uc124\uc815\uacfc \uc0c1\uad00\uc5c6\uc774 2.5\ucd08 \ub118\uac8c \ucd08\ub2f9 55\uc7a5 \uc544\ub798\uba74 \ucf2c \u2014 \uc124\uc815\uc5d0\uc11c \ub044\uba74 \ub2e4\uc2dc \uc548 \ucf2c`;
   if (window.DMG651) notes += `<div class="sep"></div><b>v651 \uc2dc\ud5d8 \u2014 \ud53c\ud574 \uc22b\uc790 \uc798 \ubcf4\uc774\uac8c</b><br>\u00b7 \uc22b\uc790 \ub4a4\uc5d0 \uba39\ube5b \ud14c\ub450\ub9ac \u2014 \ub208\ubc2d \u00b7 \uae08\ube5b \uae30\uc220 \uc774\ud399\ud2b8 \uc704\uc5d0\uc11c\ub3c4 \uc77d\ud798 \u00b7 \ubcf4\ud1b5 \uc22b\uc790\ub294 \uc870\uae08 \ud06c\uac8c, \ud68c\uc2ec\uc740 \ub354 \ud06c\uac8c<br>\u00b7 \uc5f0\ud0c0 \u00b7 \uc5ec\ub7ec \ub9c8\ub9ac\ub97c \uce60 \ub54c \uac19\uc740 \uc790\ub9ac\uc5d0 \ud3ec\uac1c\uc9c0\uc9c0 \uc54a\uace0 \ube48 \uc790\ub9ac(\uc606 \u00b7 \uc704)\ub85c \ube44\ucf1c \ub738`;
   if (window.portal650Test) notes += `<div class="sep"></div><b>v650 \uc2dc\ud5d8 \u2014 \ud3ec\ud0c8\uc740 \ubc14\ub85c</b><br>\u00b7 \uc2f8\uc6b0\ub294 \uc911\uc5d0\ub3c4 \ucd9c\uad6c \u00b7 \uc785\uad6c\uc5d0 \ub2ff\uc73c\uba74 \uc608\uc804\ucc98\ub7fc \ubc14\ub85c \ub118\uc5b4\uac11\ub2c8\ub2e4 (v621\uc758 \u300c\uc7a0\uae50 \uc11c \uc788\uc5b4\uc57c\u300d \uc7a5\uce58\ub97c \ub054) \u00b7 \uc548\ub0b4 \uae00\ub3c4 \uc5c6\uc570`;
   if (window.RE649) notes += `<div class="sep"></div><b>v649 \uc2dc\ud5d8 \u2014 \ub300\uc7a5\uac04 \u300c\uc0c8\uae30\uae30\u300d</b><br>\u00b7 \uc7a5\ube44\uc5d0 \ubd99\uc740 \uc635\uc158(\ud798 \u00b7 \uce58\uba85\ud0c0 \u00b7 \uacf5\uaca9\ub825 \u2026)\uc744 \ub3c8\uc744 \ub0b4\uace0 \ub2e4\uc2dc \uc0c8\uae41\ub2c8\ub2e4 \u2014 \uad74\ub9b0 \ub4a4 \u300c\uc0c8 \uac83 \uc4f0\uae30 / \uadf8\ub300\ub85c \ub450\uae30\u300d \uc911 \uace0\ub984<br>\u00b7 \ub9c8\uc74c\uc5d0 \ub4dc\ub294 \ud55c \uc904\uc740 \ud83d\udd12 \uc7a0\uadf8\uace0 \ub098\uba38\uc9c0\ub9cc (\uac12 \u00d73) \u00b7 \ub4f1\uae09 \ud55c\ub3c4\uae4c\uc9c0 \u300c\ud55c \uc904 \ub298\ub9ac\uae30\u300d (\uac12 \u00d76)<br>\u00b7 \uac12\uc740 \uc7a5\ube44 \ub4f1\uae09\ubcc4 \uc815\uac00: \uc77c\ubc18 1\ucc9c \u00b7 \uace0\uae09 2\ucc9c5\ubc31 \u00b7 \ud76c\uadc0 6\ucc9c \u00b7 \uc601\uc6c5 1\ub9cc5\ucc9c \u00b7 \uc804\uc124 5\ub9cc \u00b7 \uc720\uc77c 12\ub9cc \ubb38 (\ub808\ubca8 \ubb34\uad00) \u00b7 \uc228\uc740 \uc635\uc158 \u00b7 \uc2e0\ud654 \uc635\uc158\uc740 \uadf8\ub300\ub85c`;
@@ -55038,6 +55039,55 @@ window.DMG651 = { on: true, DX: 56, DY: 26, T: .55, OUT: 2, SIZE: { n: .92, c: 1
     return _dd.apply(this, arguments);
   };
   window.dmg651Test = on => { K.on = on !== false; try { for (const k in K.SIZE) if (DMG427_KIND[k]) DMG427_KIND[k][2] = K.on ? K.SIZE[k] : DMG427_KIND[k]._sz651; } catch (e) { } return K.on; };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zw_light652 (\uc2dc\ud5d8\ud310 \u00b7 v652): \uac00\ubcbc\uc6b4 \ubaa8\ub4dc\uac00 A33 \uc5d0\uc11c \uc548 \ucf1c\uc9c0\ub358 \uac83 \u2014 \uad11\uc6b0 \u300cA33 \ub04a\uae40\u300d
+   \u00b7 \uc7b0 \uac12 (\ud3f0 \uac00\ub85c \u00b7 \ubc30\uc728 2.75 \u00b7 CPU 4\ubc30 \ub290\ub9ac\uac8c): \uac00\ubcbc\uc6b4 \ubaa8\ub4dc \ub054 2.6 \u00b7 3.1 \u00b7 15 fps \u2192 \ucf2c 72 \u00b7 83 \u00b7 75 fps (\ub9c8\uc744 \u00b7 \uc124\uc6d0 \u00b7 \uad50\ud1a0 \uc9c0\ud558)
+     \u2192 \ucf1c\uc9c0\uae30\ub9cc \ud558\uba74 \ub41c\ub2e4. \uadf8\ub7f0\ub370 A33(Mali-G68 MP5)\uc740 v549 \uc758 \u300c\ub9d0\ub9ac MP4 \uc774\ud558\u300d \ud310\uc815\uc5d0 \uc548 \uac78\ub9ac\uace0,
+       \ub290\ub9b4 \ub54c \ucf1c\ub294 \uac10\uc2dc\ub294 \uadf8\ub798\ud53d\uc744 \u300c\uc790\ub3d9\u300d\uc73c\ub85c \ub454 \uacbd\uc6b0\uc5d0\ub9cc \ub3cc\uc558\ub2e4
+   \u2460 \uc57d\ud55c \uce69 \ud310\uc815 \ub113\ud798: Mali-G 68 \uc774\ud558 \uc804\ubd80 \u00b7 G7x \ub294 MP6 \uc774\ud558 \u00b7 Adreno 650 \uc544\ub798 \u00b7 PowerVR \u00b7 Xclipse \uc81c\uc678 \u00b7 Immortalis \uc81c\uc678
+   \u2461 \ub290\ub9b4 \ub54c \ucf1c\uae30: \uadf8\ub798\ud53d \uc124\uc815\uacfc \uc0c1\uad00\uc5c6\uc774 (\uc9c1\uc811 \u300c\uac00\ubcbc\uc6b4 \ubaa8\ub4dc\u300d\ub97c \ub048 \uc801\uc774 \uc5c6\uc73c\uba74), 2.5\ucd08 \ub118\uac8c \ucd08\ub2f9 55\uc7a5 \uc544\ub798\uba74 \ucf20\ub2e4
+   \u00b7 \ud55c \ubc88 \ucf1c\uc9c0\uba74 \uc124\uc815\uc5d0\uc11c \ub044\uae30 \uc804\uae4c\uc9c0 \uc720\uc9c0 (\uae30\uae30\ubcc4 \uc800\uc7a5\uc740 v549 \uadf8\ub300\ub85c)
+   ============================================================ */
+{
+  const L = window.LIGHT549;
+  if (L && typeof light549 === 'function') {
+    const weak2 = s => {
+      if (!s) return false;
+      if (/Immortalis|Xclipse/i.test(s)) return false;
+      let m = /Mali-G(\d+)\s*M[PC]?(\d+)?/i.exec(s);
+      if (m) { const g = +m[1], mp = m[2] ? +m[2] : 4; return g <= 68 || (g < 100 && mp <= 6); }
+      if (/Mali-[GT]\d+/i.test(s)) return true;
+      m = /Adreno[^\d]*(\d{3})/i.exec(s); if (m) return +m[1] < 650;
+      if (/PowerVR/i.test(s)) return true;
+      return false;
+    };
+    const gpuStr = () => {
+      try { const c = document.createElement('canvas'), gl = c.getContext('webgl') || c.getContext('experimental-webgl'); if (!gl) return ''; const ext = gl.getExtension('WEBGL_debug_renderer_info'); const s = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER); try { const lose = gl.getExtension('WEBGL_lose_context'); lose && lose.loseContext(); } catch (e) { } return String(s || ''); } catch (e) { return ''; }
+    };
+    /* \u2460 \ucc98\uc74c: \uc57d\ud55c \uce69\uc774\uba74 \ubc14\ub85c */
+    try {
+      if (!L.on && L.user == null && typeof IS_TOUCH !== 'undefined' && IS_TOUCH) { const g = gpuStr(); if (weak2(g)) { light549(true); L.why = 'gpu'; L.gpu = g; } }
+    } catch (e) { }
+    /* \u2461 \uac8c\uc784 \uc911 \ub290\ub9ac\uba74 \u2014 \uadf8\ub798\ud53d \uc124\uc815\uacfc \uc0c1\uad00\uc5c6\uc774. \ud504\ub808\uc784 \uc2dc\uac04\uc740 \uc5ec\uae30\uc11c \uc9c1\uc811 \uc7b0\ub2e4
+       (v535 \uc758 ft \ub294 250ms \ub118\ub294 \ud504\ub808\uc784\uc744 \ubc84\ub824\uc11c \ucd08\ub2f9 4\uc7a5 \uc544\ub798\ub85c \ub5a8\uc5b4\uc9c0\uba74 \uc624\ud788\ub824 \uce21\uc815\uc774 \uba48\ucdc4\uace0, \uac10\uc2dc \ud0c0\uc774\uba38\ub3c4 1\ucd08 \ub118\uac8c \ubc00\ub9ac\uba74 \ucd08\uae30\ud654\ub410\ub2e4) */
+    let slow = 0, lastT = 0, grace = 6, told = 0, ft = 16.7, lastF = 0;
+    const _fr = frame; frame = function (t) { if (lastF) { const d = t - lastF; if (d > 0 && d < 3000) ft += (d - ft) * .08; } lastF = t; return _fr.apply(this, arguments); };
+    L.ft652 = () => ft;
+    const _em = enterMap; enterMap = function () { const r = _em.apply(this, arguments); grace = 5; slow = 0; return r; };
+    setInterval(() => {
+      try {
+        const now = performance.now(), dt = lastT ? Math.min(3, (now - lastT) / 1000) : 0; lastT = now;
+        if (L.on || L.user === false || !G.player || !$('title').hidden || document.hidden) { slow = 0; return; }
+        if (G.paused || (typeof modalOpen === 'function' && modalOpen())) return;
+        if (grace > 0) { grace -= dt; return; }
+        if (ft > 18.2) slow += dt; else slow = Math.max(0, slow - dt);
+        if (slow > 2.5) { light549(true); L.why = 'slow'; slow = 0; if (!told) { told = 1; toast('\ud654\uba74\uc774 \ubc84\ubc85\uc5ec \u300c\uac00\ubcbc\uc6b4 \ubaa8\ub4dc\u300d\ub97c \ucf30\uc2b5\ub2c8\ub2e4 \u2014 \uc124\uc815\uc5d0\uc11c \ub04c \uc218 \uc788\uc5b4\uc694', 'gold'); } }
+      } catch (e) { }
+    }, 250);
+    window.light652Test = s => weak2(s);
+  }
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
