@@ -859,7 +859,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v650 &#xc2dc;&#xd5d8;&#xd310;</div>
+    <div class="sub">v651 &#xc2dc;&#xd5d8;&#xd310;</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6839,6 +6839,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  if (window.DMG651) notes += `<div class="sep"></div><b>v651 \uc2dc\ud5d8 \u2014 \ud53c\ud574 \uc22b\uc790 \uc798 \ubcf4\uc774\uac8c</b><br>\u00b7 \uc22b\uc790 \ub4a4\uc5d0 \uba39\ube5b \ud14c\ub450\ub9ac \u2014 \ub208\ubc2d \u00b7 \uae08\ube5b \uae30\uc220 \uc774\ud399\ud2b8 \uc704\uc5d0\uc11c\ub3c4 \uc77d\ud798 \u00b7 \ubcf4\ud1b5 \uc22b\uc790\ub294 \uc870\uae08 \ud06c\uac8c, \ud68c\uc2ec\uc740 \ub354 \ud06c\uac8c<br>\u00b7 \uc5f0\ud0c0 \u00b7 \uc5ec\ub7ec \ub9c8\ub9ac\ub97c \uce60 \ub54c \uac19\uc740 \uc790\ub9ac\uc5d0 \ud3ec\uac1c\uc9c0\uc9c0 \uc54a\uace0 \ube48 \uc790\ub9ac(\uc606 \u00b7 \uc704)\ub85c \ube44\ucf1c \ub738`;
   if (window.portal650Test) notes += `<div class="sep"></div><b>v650 \uc2dc\ud5d8 \u2014 \ud3ec\ud0c8\uc740 \ubc14\ub85c</b><br>\u00b7 \uc2f8\uc6b0\ub294 \uc911\uc5d0\ub3c4 \ucd9c\uad6c \u00b7 \uc785\uad6c\uc5d0 \ub2ff\uc73c\uba74 \uc608\uc804\ucc98\ub7fc \ubc14\ub85c \ub118\uc5b4\uac11\ub2c8\ub2e4 (v621\uc758 \u300c\uc7a0\uae50 \uc11c \uc788\uc5b4\uc57c\u300d \uc7a5\uce58\ub97c \ub054) \u00b7 \uc548\ub0b4 \uae00\ub3c4 \uc5c6\uc570`;
   if (window.RE649) notes += `<div class="sep"></div><b>v649 \uc2dc\ud5d8 \u2014 \ub300\uc7a5\uac04 \u300c\uc0c8\uae30\uae30\u300d</b><br>\u00b7 \uc7a5\ube44\uc5d0 \ubd99\uc740 \uc635\uc158(\ud798 \u00b7 \uce58\uba85\ud0c0 \u00b7 \uacf5\uaca9\ub825 \u2026)\uc744 \ub3c8\uc744 \ub0b4\uace0 \ub2e4\uc2dc \uc0c8\uae41\ub2c8\ub2e4 \u2014 \uad74\ub9b0 \ub4a4 \u300c\uc0c8 \uac83 \uc4f0\uae30 / \uadf8\ub300\ub85c \ub450\uae30\u300d \uc911 \uace0\ub984<br>\u00b7 \ub9c8\uc74c\uc5d0 \ub4dc\ub294 \ud55c \uc904\uc740 \ud83d\udd12 \uc7a0\uadf8\uace0 \ub098\uba38\uc9c0\ub9cc (\uac12 \u00d73) \u00b7 \ub4f1\uae09 \ud55c\ub3c4\uae4c\uc9c0 \u300c\ud55c \uc904 \ub298\ub9ac\uae30\u300d (\uac12 \u00d76)<br>\u00b7 \uac12\uc740 \uc7a5\ube44 \ub4f1\uae09\ubcc4 \uc815\uac00: \uc77c\ubc18 1\ucc9c \u00b7 \uace0\uae09 2\ucc9c5\ubc31 \u00b7 \ud76c\uadc0 6\ucc9c \u00b7 \uc601\uc6c5 1\ub9cc5\ucc9c \u00b7 \uc804\uc124 5\ub9cc \u00b7 \uc720\uc77c 12\ub9cc \ubb38 (\ub808\ubca8 \ubb34\uad00) \u00b7 \uc228\uc740 \uc635\uc158 \u00b7 \uc2e0\ud654 \uc635\uc158\uc740 \uadf8\ub300\ub85c`;
   if (window.MH644_OPT && window.MH644_OPT.m_yukiGirl) notes += `<div class="sep"></div><b>v648 \uc2dc\ud5d8 \u2014 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 6\ucc28 (\uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 \ub9c8\ubb34\ub9ac)</b><br>\u00b7 \ub0a8\ubc29 \u00b7 \ud574\uc548 \u00b7 \uc655\uad81 \uc0ac\ub0e5\ud130 \ubaac\uc2a4\ud130 25\uc885 \ub354: \ud3d0\uc131 \uae08\uc704\ub839 \u00b7 \uae08\uc704 \ud654\uc2b9\ucd1d\ubcd1 \u00b7 \uae08\uc704 \ubc29\ud328\ub839 \u00b7 \uae08\uc704 \uc8fc\uc220\ub839 \u00b7 \uc65c\uad6c \uad81\uc218\ub839 \u00b7 \ud574\ud48d \uc65c\uad6c\ub839 \u00b7 \ubc14\ub2e4\ubc40 \u00b7 \uc65c\uad6c \ubc29\ud328\ub839 \u00b7 \uc131\ub09c \uac08\ub9e4\uae30 \u00b7 \uc885\uc774 \uc2dd\uc2e0 \u00b7 \ubb34\uc778\uc11d \ubcd1\uc0ac \u00b7 \uc218\uad70 \ub9dd\ub839 \u00b7 \uc218\uad70 \ud654\uc2b9\ucd1d\ubcd1 \u00b7 \ucc28\ubc2d \uc694\uad34 \u00b7 \uc0b0 \ud150\uad6c \u00b7 \ubc14\ub2f9 \ubb34\ub140\ub839 \u00b7 \uace0\ubd84 \uc11d\uc218 \u00b7 \ubc14\ub2e4 \uc694\uad34 \u00b7 \ud574\uc2e0 \ubb34\ub140\ub839 \u00b7 \uc6b0\ubbf8\ub1e8\ubcf4 \u00b7 \ud654\uc0b0 \uc2ec\ubc29\ub839 \u00b7 \ud3c9\uc591\uc131 \uc65c\ubcd1 \uc6d0\ub839 \u00b7 \ubc14\ub78c \uc815\ub839 \u00b7 \ud6c4\uc9c0 \uc218\ud5d8\ub839 \u00b7 \uc124\ub140<br>\u00b7 \uc6d0\ub839 \u00b7 \ub9dd\ub839 \u00b7 \uc124\ub140\ub294 \uc4f0\ub7ec\uc9c0\uba70 \ud750\ub824\uc9c0\uace0, \ubc14\ub2e4 \uc694\uad34 \u00b7 \ubc14\ub78c \uc815\ub839\uc740 \ub5a0\uc624\ub974\uba70 \uc0ac\ub77c\uc9d0 \u2014 \uc774\uc81c \uac8c\uc784 \uc18d \ubaac\uc2a4\ud130 128\uc885 \ubaa8\ub450 \ub9de\uae30 \u00b7 \uc4f0\ub7ec\uc9c0\uae30 \uadf8\ub9bc\uc774 \uc788\uc74c`;
@@ -54984,6 +54985,59 @@ window.RE649 = {
     if (typeof drawHumanoid === 'function') { const _dh = drawHumanoid; drawHumanoid = function (e) { if (e === G.player) glow(); return _dh.apply(this, arguments); }; }
     window.portal650Test = on => { K.on = !!on; return K.on; };
   }
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zv_dmg651 (\uc2dc\ud5d8\ud310 \u00b7 v651): \ud53c\ud574 \uc22b\uc790 \u2014 \uad11\uc6b0 \u300c\ub370\ubbf8\uc9c0 \ub728\ub294 \uc784\ud329\ud2b8 \uc5b4\ub54c \ubcf4\uc5ec\u300d \u2192 \ucc0d\uc5b4 \ubcf4\ub2c8 \uc774\ud399\ud2b8\uc5d0 \ubb3b\ud798
+   \u2460 \uacb9\uce68: 0.5\ucd08 \uc548\uc5d0 \uac19\uc740 \uc790\ub9ac(\uac00\ub85c 56 \u00b7 \uc138\ub85c 26 \uc548)\uc5d0 \ub610 \ub728\uba74 \ube48 \uc790\ub9ac(\uc624\ub978\ucabd \uc704 \u00b7 \uc67c\ucabd \uc704 \u00b7 \uc606 \u00b7 \ub354 \uc704 \u2026)\ub97c \ucc3e\uc544 \uc549\ud78c\ub2e4 (\uc5f0\ud0c0 \u00b7 \uc5ec\ub7ec \ub9c8\ub9ac)
+   \u2461 \ub300\ube44: \uae00\uc790 \ub4a4\uc5d0 \uba39\ube5b \ud14c\ub450\ub9ac(\ub450\uaed8 2)\ub97c \ub450\ub978\ub2e4 \u2014 \ub208\ubc2d \u00b7 \uae08\ube5b \uae30\uc220 \uc774\ud399\ud2b8 \uc704\uc5d0\uc11c\ub3c4 \uc77d\ud798
+   \u2462 \ud06c\uae30: \ubcf4\ud1b5 0.8 \u2192 0.92 \u00b7 \ud68c\uc2ec 1 \u2192 1.1 \u00b7 \uc6b0\ub450\uba38\ub9ac 1.4 \u2192 1.5 \u00b7 \ubc1b\ub294 \ud53c\ud574 0.85 \u2192 0.95
+   \u00b7 \uadf8\ub9bc \uae00\uaf34(v427)\uacfc \uc9e7\uac8c \ud280\uae30(v640)\ub294 \uadf8\ub300\ub85c \u2014 \ud14c\ub450\ub9ac\ub294 \uae00\uaf34\ub9c8\ub2e4 \ud55c \ubc88\ub9cc \ub9cc\ub4e4\uc5b4 \ub454\ub2e4
+   \u00b7 dmg651Test(false) \u2192 \uc608\uc804
+   ============================================================ */
+window.DMG651 = { on: true, DX: 56, DY: 26, T: .55, OUT: 2, SIZE: { n: .92, c: 1.1, h: .95, boss: 1.5, g: 1.15, gs: .95 } };
+{
+  const K = window.DMG651;
+  /* \u2462 \ud06c\uae30 */
+  try { for (const k in K.SIZE) if (DMG427_KIND[k]) { DMG427_KIND[k]._sz651 = DMG427_KIND[k][2]; DMG427_KIND[k][2] = K.SIZE[k]; } } catch (e) { }
+  /* \u2460 \uacb9\uce68 \ube44\ud0a4\uae30 */
+  const _ft = floatText;
+  floatText = function (x, y, s, col, big) {
+    const n0 = G.fx.length; const r = _ft.apply(this, arguments);
+    try {
+      if (!K.on) return r;
+      for (let i = n0; i < G.fx.length; i++) {
+        const f = G.fx[i]; if (!f || f.type !== 'dmg427') continue;
+        const rec = []; for (let j = 0; j < n0; j++) { const g = G.fx[j]; if (g && g.type === 'dmg427' && g.t < K.T && Math.abs(g.x - f.x) < K.DX * 3 && Math.abs(g.y - f.y) < K.DY * 4) rec.push(g); }
+        if (!rec.length) continue;
+        const free = (x, y) => !rec.some(g => Math.abs(g.x - x) < K.DX && Math.abs(g.y - y) < K.DY);
+        const SL = [[0, 0], [1, -1], [-1, -1], [1, 0], [-1, 0], [0, -2], [2, -1], [-2, -1], [1, -3], [-1, -3], [0, -4]];
+        for (const [sx, sy] of SL) { const x = f.x + sx * K.DX * 1.15, y = f.y + sy * K.DY * .7; if (free(x, y)) { f.x = x; f.y = y; break; } }
+      }
+    } catch (e) { }
+    return r;
+  };
+  /* \u2461 \ud14c\ub450\ub9ac \u2014 \uae00\uaf34 \uadf8\ub9bc\uc744 \uba39\ube5b\uc73c\ub85c \ubc14\uafbc \uac83\uc744 8\ubc29\ud5a5\uc73c\ub85c */
+  const outlineOf = img => {
+    if (img._o651) return img._o651;
+    const o = K.OUT, c = makeCanvas(img.width + o * 2, img.height + o * 2), g = c.getContext('2d');
+    for (let dx = -o; dx <= o; dx++) for (let dy = -o; dy <= o; dy++) if (dx * dx + dy * dy <= o * o + 1) g.drawImage(img, o + dx, o + dy);
+    g.globalCompositeOperation = 'source-in'; g.fillStyle = '#1a120c'; g.fillRect(0, 0, c.width, c.height);
+    img._o651 = c; return c;
+  };
+  /* \ud14c\ub450\ub9ac \uadf8\ub9ac\uae30: \uae00\uaf34 \uce78 \ud06c\uae30\ub294 \uadf8\ub300\ub85c \ub450\uace0(\uae00\uc790 \uac04\uaca9\uc774 \ud2c0\uc5b4\uc9c0\uc9c0 \uc54a\uac8c), drawImage \ub9cc \uc7a0\uc2dc \ubc14\uafd4 \uba39\ube5b \ud14c\ub450\ub9ac \uce78\uc744 2px \ub2f9\uaca8 \uadf8\ub9b0\ub2e4 */
+  const _dd = dmg427Draw;
+  dmg427Draw = function (f) {
+    if (!K.on) return _dd.apply(this, arguments);
+    const o = K.OUT, di = ctx.drawImage;
+    ctx.drawImage = function (img, x, y, w, h) {
+      try { if (img && img._isGlyph651 !== false && arguments.length <= 3 && img.width <= 80 && img.height <= 80) return di.call(ctx, outlineOf(img), x - o, y - o); } catch (e) { }
+      return di.apply(ctx, arguments);
+    };
+    try { _dd.call(this, f); } catch (e) { } finally { ctx.drawImage = di; }
+    return _dd.apply(this, arguments);
+  };
+  window.dmg651Test = on => { K.on = on !== false; try { for (const k in K.SIZE) if (DMG427_KIND[k]) DMG427_KIND[k][2] = K.on ? K.SIZE[k] : DMG427_KIND[k]._sz651; } catch (e) { } return K.on; };
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
