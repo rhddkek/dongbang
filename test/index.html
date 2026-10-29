@@ -859,7 +859,7 @@ img.pxg.ui{image-rendering:auto;width:1.3em;height:1.3em;vertical-align:-.3em;ma
   <div id="fade"></div>
   <div id="title">
     <h1>&#xb3d9;&#xbc29;&#xc804;&#xae30;</h1>
-    <div class="sub">v676</div>
+    <div class="sub">v677</div>
     <div class="box" id="titleBox"></div>
     <div class="hint" id="titleHint"></div>
   </div>
@@ -6839,6 +6839,7 @@ const MENU = {
     h += `<div class="sep"></div><b>\uc870\uc791\ubc95</b><div class="muted" style="margin-top:4px;line-height:1.8">\ud83d\udcf1 \ud3f0: \uc67c\ucabd \uc870\uc774\uc2a4\ud2f1 \uc774\ub3d9 \u00b7 \uc624\ub978\ucabd \ubc84\ud2bc \uacf5\uaca9/\uae30\uc220 \u00b7 \ud654\uba74\uc744 \ub204\ub974\uba74 \uadf8\uacf3\uc73c\ub85c \uc774\ub3d9, NPC\ub97c \ub204\ub974\uba74 \ub300\ud654, \ubaac\uc2a4\ud130\ub97c \ub204\ub974\uba74 \uacf5\uaca9<br>\ud83d\udcbb PC: WASD/\ubc29\ud5a5\ud0a4 \uc774\ub3d9 \u00b7 Space/J \uacf5\uaca9 \u00b7 1~4 \uae30\uc220 \u00b7 Q HP\ubb3c\uc57d \u00b7 R MP\ubb3c\uc57d \u00b7 E \ub300\ud654 \u00b7 T \uc790\ub3d9\uc0ac\ub0e5 \u00b7 I \uac00\ubc29 \u00b7 C \uce90\ub9ad\ud130 \u00b7 K \uae30\uc220 \u00b7 L \uc774\uc57c\uae30 \u00b7 M \uc9c0\ub3c4 \u00b7 P \ub3d9\ub8cc \u00b7 B \ub3c4\uac10 \u00b7 Esc \ub2eb\uae30</div>`;
     /* v322: \uc5c5\ub370\uc774\ud2b8 \ub0b4\uc5ed\uc740 \uc811\uc5b4 \ub454\ub2e4 (\ucd08\uae30\ud654 \ubc84\ud2bc\uae4c\uc9c0 \uc2a4\ud06c\ub864\uc774 \uae38\uc5b4\uc11c) */
     let notes = '';
+  if (window.IPO677) notes += `<div class="sep"></div><b>v677 \ub0b4 \uc0c1\ub2e8 \uc0c1\uc7a5</b><br>\u00b7 \ud589\ub82c \ub458 \u00b7 \ub2e4\ub140\uc628 \ubc88 \uc218 20 \uc744 \ub118\uae30\uba74 \ud22c\uc790\uc790(\ud55c\uc591 \uae40\ub300\uac10 \u00b7 \ub3d9\ub798 \uc65c\uad00 \u00b7 \uac1d\uc8fc \uc870\ud569)\uac00 \ubaab 30%\ub97c \uc0ac\ub7ec \uc628\ub2e4<br>\u00b7 \uc0c1\uc7a5\ud558\uba74 \uadf8 \uac12\uc744 \ud55c \ubc88\uc5d0 \ubc1b\uace0 \ud589\ub82c \uc790\ub9ac +1 \u2014 \ub300\uc2e0 \ud589\ub82c \ubc8c\uc774\uc758 30%\ub294 \ud22c\uc790\uc790 \ubaab<br>\u00b7 \ubaab \uac12\uc740 \uc7a5\ub0a0\ub9c8\ub2e4 \uc6c0\uc9c1\uc778\ub2e4: \ud589\ub82c \ubc8c\uc774\ub97c \ub530\ub77c\uac00\uace0, \ud638\uc704 \uc5c6\ub294 \ud589\ub82c \u00b7 \ud138\ub9bc\uc740 \ub0b4\ub9ac\uace0, \uad6c\ud574 \ub0b4\uba74 \uc624\ub978\ub2e4<br>\u00b7 5%\uc529 \ub354 \ud314\uae30(49%\uae4c\uc9c0) \u00b7 \ub418\uc0ac\uae30 \u00b7 \ud22c\uc790\uc790 \ud55c\ub9c8\ub514\ub85c \ubb34\uc5c7\uc744 \ud558\uba74 \uc624\ub974\ub294\uc9c0 \uc54c\ub824 \uc900\ub2e4`;
   if (window.SANGDAN676) notes += `<div class="sep"></div><b>v676 \ub0b4 \uc0c1\ub2e8</b><br>\u00b7 \u300c\uc0c1\ub2e8\u300d\uc740 \uc774\uc81c \ub450 \uac00\uc9c0: \uace0\uc744 \uc0c1\ub2e8(\ubaab \uc0ac\uace0\ud314\uae30) \u00b7 \ub0b4 \uc0c1\ub2e8(\ub0b4\uac00 \uc138\uc6c0)<br>\u00b7 \uc9d0 \uc138 \ubc88 \ub9e1\uae30\uba74 \uc7a5\ubd80\uc5d0 \u300c\ub0b4 \uc0c1\ub2e8\u300d \u2014 \uc774\ub984\uc744 \uc9c1\uc811 \uc9c0\uc5b4 \uc138\uc6b4\ub2e4 (\uc608\uc804 \uc9d0\uafbc \u00b7 \uc0c1\ub2e8\uc774 \uc788\uc73c\uba74 \uac70\uc800)<br>\u00b7 \uc9d0\uafbc\uc774 \ud589\ub82c(\uc9d0\uafbc + \uc9d0\ub9d0 + \ud638\uc704)\uc774 \ub418\uc5b4 \uae38 \uc9c0\ub3c4\uc5d0 \uc2e4\uc81c\ub85c \uac78\uc5b4 \ub2e4\ub2cc\ub2e4 \u00b7 \ub2e4\uac00\uac00 \ub9d0 \uac78\uae30<br>\u00b7 \ud589\ub82c \ubc8c\uc774\ub294 \uc7a5\ubd80 \u300c\ubc1b\uc744 \ub3c8\u300d\uc5d0 \ubaa8\uc778\ub2e4<br>\u00b7 \ud638\uc704\ub97c \ub450\uba74 \ub3c4\uc801\ub5bc\ub97c \ub9c9\uace0, \ubabb \ub9c9\uc73c\uba74 \u300c\uad6c\ud558\ub7ec \uac00\uae30\u300d \u2014 \uac00\uc11c \ub2e4 \uc7a1\uc73c\uba74 \uc9d0\uc0af 1.5\ubc30 + \ud604\uc0c1\uae08`;
   if (window.HOME663 && HOME663.compound) notes += `<div class="sep"></div><b>v675 \ub2f4\uc7a5 \uc548\uc5d0 \ud143\ubc2d \u00b7 \ub18d\uc7a5\uae4c\uc9c0</b><br>\u00b7 \uc9d1 \ub458\ub808\uc5d0 \uc6b8\ud0c0\ub9ac: \uc624\ub450\ub9c9 \u00b7 \ucd08\uac00 \u00b7 \uae30\uc640\uc9d1\uc740 \uc2f8\ub9ac \uc6b8\ud0c0\ub9ac, \u3131\uc790 \uae30\uc640\uc9d1\uc740 \uae30\uc640 \ub3cc\ub2f4 + \uc77c\uac01\ubb38<br>\u00b7 \ubc2d \uc55e \ub124 \ub450\ub451\uc740 \uc9d1 \uc55e <b>\ud143\ubc2d</b>(\uc6b8\ud0c0\ub9ac \uc548)\uc73c\ub85c, \ub2e4\uc12f\uc9f8\ubd80\ud130 \ubc14\uae65 \ubc2d<br>\u00b7 \ub300\uac13\uc9d1: \uc548\ucc44 \ub2f4(\uc9d1 \u00b7 \uc0ac\ub791\ucc44 \u00b7 \uacf3\uac04 \u00b7 \ud143\ubc2d \u00b7 \uc5f0\ubabb \uc815\uc790) \ubc14\uae65\uc73c\ub85c <b>\ud070 \ub3cc\ub2f4\uc774 \ubc2d \u00b7 \uac00\ucd95 \uc6b0\ub9ac \u00b7 \ubc8c\ud1b5\uae4c\uc9c0 \ud1b5\uc9f8\ub85c</b> \ub450\ub985\ub2c8\ub2e4`;
   if (window.HOME663 && HOME663.compound) notes += `<div class="sep"></div><b>v674 \uc9d1\uc774 \ucee4\uc9c0\uba74 \ud130\ub3c4 \ucee4\uc9c4\ub2e4</b><br>\u00b7 \ud759\ub9c8\ub2f9\uc774 \uc9d1 \ub2e8\uacc4\uc640 \ud568\uaed8 \ub113\uc5b4\uc9d1\ub2c8\ub2e4 \u2014 \uc624\ub450\ub9c9\uc740 \uc55e\ub9c8\ub2f9\ub9cc, \ub300\uac13\uc9d1\uc740 \ud130 \uc804\uccb4<br>\u00b7 \uae30\uc640\uc9d1(3)\ubd80\ud130 \uacf3\uac04, \u3131\uc790 \uae30\uc640\uc9d1(4)\uc5d4 \uc0ac\ub791\ucc44\uc640 \uc55e \ub3cc\ub2f4 \u00b7 \uc77c\uac01\ubb38, \ub300\uac13\uc9d1(5)\uc5d4 \ud589\ub791\ucc44 \uc19f\uc744\ub300\ubb38 \u00b7 \ub458\ub808 \ub3cc\ub2f4 \u00b7 \uc5f0\ubabb\uacfc \uc815\uc790\uac00 \uc12d\ub2c8\ub2e4<br>\u00b7 \uace0\uc744 \ub18d\uc7a5 \uc9d1\ub3c4 \ub18d\ub9c9 \u2192 \ucd08\uac00\uc9d1(3) \u2192 \uae30\uc640\uc9d1(5)\uc73c\ub85c \ubc14\ub01d\ub2c8\ub2e4`;
@@ -58506,7 +58507,7 @@ window.LEDGER670 = { on: true };
     h += claim ? `<button class="lg7-btn hot" data-a="claim625"><span class="i">\ud83d\udcb0</span><span><div class="t">${amt}\ubb38 \ubc1b\uae30</div><div class="s">\ub098\ub214\ub3c8 \u00b7 \uc138 \u00b7 \ud589\ub82c \ubc8c\uc774</div></span></button>`
       : `<button class="lg7-btn" disabled><span class="i">\ud83d\udcb0</span><span><div class="t">\ubc1b\uc744 \ub3c8 \uc5c6\uc74c</div><div class="s">\uc7a5\ub0a0\ub9c8\ub2e4 \uc313\uc785\ub2c8\ub2e4</div></span></button>`;
     h += B('money', '\ud83c\udfee', '\uc8fc\uad8c', mine || '\uace0\uc744 \uc0c1\ub2e8 \ubaab \uc0ac\uace0\ud314\uae30');
-    let sd = null, sdSub = ''; try { if (window.SANGDAN676 && SANGDAN676.on) { sd = p.sd676 || (p.sd519 && { name: p.sd519.name }); const L = (p.caravan && p.caravan.list) || []; sdSub = sd ? (L.length ? `\ud589\ub82c ${L.length} \u00b7 ${L.some(w => w.hold) ? '\ud83c\udff4 \ub3c4\uc801\ub5bc!' : '\uae38 \uc704\uc5d0'}` : '\ud589\ub82c\uc744 \uafb8\ub9ac\uc2dc\uc624') : '\uc0c1\ub2e8 \uc138\uc6b0\uae30 \u00b7 \ud589\ub82c \u00b7 \ud638\uc704'; } } catch (e) { }
+    let sd = null, sdSub = ''; try { if (window.SANGDAN676 && SANGDAN676.on) { sd = p.sd676 || (p.sd519 && { name: p.sd519.name }); const L = (p.caravan && p.caravan.list) || []; sdSub = sd ? (L.length ? `\ud589\ub82c ${L.length} \u00b7 ${L.some(w => w.hold) ? '\ud83c\udff4 \ub3c4\uc801\ub5bc!' : '\uae38 \uc704\uc5d0'}` : '\ud589\ub82c\uc744 \uafb8\ub9ac\uc2dc\uc624') : '\uc0c1\ub2e8 \uc138\uc6b0\uae30 \u00b7 \ud589\ub82c \u00b7 \ud638\uc704'; const ip = p.sd676 && p.sd676.ipo; if (ip && ip.px) { const d = ip.prev ? (ip.px - ip.prev) / ip.prev : 0; sdSub += ` \u00b7 \ubaab ${d >= 0 ? '\u25b2' : '\u25bc'}${Math.abs(d * 100).toFixed(1)}%`; } } } catch (e) { }
     h += window.SANGDAN676 && SANGDAN676.on ? B('trade', '\ud83c\udfef', sd ? esc(sd.name) : '\ub0b4 \uc0c1\ub2e8', cargo ? cargo + ' \u00b7 ' + sdSub : sdSub, sd && ((p.caravan && p.caravan.list) || []).some(w => w.hold) ? 'hot' : '') : B('trade', '\ud83d\udc2b', '\uc7a5\uc0ac', cargo || '\uad50\uc5ed \u00b7 \uc9d0\uafbc \u00b7 \uc9d0 \ubd80\ud0c1');
     h += B('land', '\ud83c\udfe0', '\ub545\uacfc \uc9d1', land || '\uac00\uac8c \u00b7 \ub545 \u00b7 \ub18d\uc7a5');
     h += `</div>`;
@@ -59496,7 +59497,7 @@ if (typeof SAVE_FIELDS !== 'undefined' && !SAVE_FIELDS.includes('sd676')) SAVE_F
   const tripDone = (p, w) => {
     const g = Math.round(cvTripGold(w) * rnd(.85, 1.15)); const lv0 = cvLv494(w); w.trips = (w.trips | 0) + 1;
     if (w.rf === 'lost') { w.raided = (w.raided | 0) + 1; }
-    else { const v = Math.round(g * (w.rf === 'saved' ? 1.5 : 1)); w.earned = (w.earned | 0) + v; pend(p, v); if (w.rf !== 'saved') toast(`\ud83d\udc0e ${wName(w)} \ub3cc\uc544\uc634 \u00b7 \ubc1b\uc744 \ub3c8 +${fmt(v)}\ubb38`, 'gold'); }
+    else { const v0 = Math.round(g * (w.rf === 'saved' ? 1.5 : 1)), v = K.onEarn ? K.onEarn(p, w, v0) : v0; w.earned = (w.earned | 0) + v; pend(p, v); if (w.rf !== 'saved') toast(`\ud83d\udc0e ${wName(w)} \ub3cc\uc544\uc634 \u00b7 \ubc1b\uc744 \ub3c8 +${fmt(v)}\ubb38${v < v0 ? ` (\ubaab \uac00\uc9c4 \uc774\ub4e4\uc5d0\uac8c ${fmt(v0 - v)})` : ''}`, 'gold'); }
     w.rd = Math.random() < raidP(w) ? +(rnd(.2, .8)).toFixed(3) : 0; w.rf = 0;
     const lv1 = cvLv494(w); if (lv1 > lv0) toast(`\ud83c\udf96\ufe0f ${wName(w)} \uacbd\ub825 Lv.${lv1} \u2014 \ubc8c\uc774\uac00 \ub298\uace0 \uac78\uc74c\uc774 \ube68\ub77c\uc9d1\ub2c8\ub2e4`, 'gold');
   };
@@ -59744,8 +59745,137 @@ if (typeof SAVE_FIELDS !== 'undefined' && !SAVE_FIELDS.includes('sd676')) SAVE_F
     G.c676 = null; G.c676ask = null; G.c676go = null; try { hideAsk(); } catch (e) { }
     return _sg.apply(this, arguments);
   };
-  K.where = where; K.mapsOf = mapsOf; K.live = live; K.startFight = startFight; K.raidHit = raidHit;
+  K.where = where; K.perHour = perHour; K.raidP = raidP; K.tripT = tripT; K.cv = cv; K.S = S; K.wName = wName; K.mapsOf = mapsOf; K.live = live; K.startFight = startFight; K.raidHit = raidHit;
   window.sangdan676Test = on => { K.on = on !== false; return K.on; };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zzw_p_ipo677 (\uc2dc\ud5d8\ud310 \u00b7 v677): \ub0b4 \uc0c1\ub2e8 \uc0c1\uc7a5 \u2014 \uad11\uc6b0 \u300c\ub2e4\uc74c \ub2e8\uacc4 \u3131\u3131\u300d (\uc124\uacc4\uc11c 4\ub2e8\uacc4)
+   \u00b7 \ud589\ub82c \ub458 \u00b7 \ub2e4\ub140\uc628 \ubc88 \uc218 20 \uc744 \ub118\uae30\uba74 \u300c\uc0c1\uc7a5\u300d: \ub0b4 \uc0c1\ub2e8 \ubaab 30%\ub97c \ud22c\uc790\uc790(\ud55c\uc591 \uae40\ub300\uac10 \u00b7 \ub3d9\ub798 \uc65c\uad00 \u00b7 \uac1d\uc8fc \uc870\ud569)\uc5d0\uac8c \ud310\ub2e4
+       \u2192 \uadf8 \uac12\uc744 \ud55c \ubc88\uc5d0 \ubc1b\uace0, \ud22c\uc790\uc790 \ubc11\ucc9c\uc73c\ub85c \ud589\ub82c \uc790\ub9ac +1
+       \u2192 \ub300\uc2e0 \ud589\ub82c\uc774 \ubc8c\uc5b4 \uc624\ub294 \ub3c8\uc758 30%\ub294 \ud22c\uc790\uc790 \ubaab (\ubc1b\uc744 \ub3c8\uc5d0 \ub4e4\uc5b4\uc62c \ub54c \ube60\uc9c4\ub2e4)
+   \u00b7 \ubaab \uac12(\ud55c \uc8fc, 1,000\uc8fc \uc911)\uc740 \uc7a5\ub0a0\ub9c8\ub2e4 \uc6c0\uc9c1\uc778\ub2e4: \ud589\ub82c \ubc8c\uc774(\uc2dc\uac04\ub2f9 \u00d7 30\uc2dc\uac04) + \ubc11\ucc9c\uc744 \ub530\ub77c\uac00\uace0
+       \ud638\uc704 \uc5c6\ub294 \ud589\ub82c\uc774 \uc788\uc73c\uba74 \ub0b4\ub9ac\uace0, \ub3c4\uc801\ub5bc\uc5d0\uac8c \ud138\ub9ac\uba74 \ub0b4\ub9ac\uace0, \uad6c\ud574 \ub0b4\uba74 \uc624\ub978\ub2e4 (+ \uc870\uae08\uc529 \ud754\ub4e4\ub9bc)
+   \u00b7 \uc0c1\uc7a5 \ub4a4: \ubaab \ub354 \ud314\uae30(5%\uc529, 49%\uae4c\uc9c0 \u2014 \uc0c1\ub2e8 \uc8fc\uc778\uc740 \ub298 \ub098) \u00b7 \ub418\uc0ac\uae30(5%\uc529, \uc9c0\uae08 \uac12 + 3%)
+       \u2192 \uc77c\ucc0d \ud314\uba74 \ub3c8\uc744 \uba3c\uc800 \uc950\uace0, \uc0c1\ub2e8\uc774 \ud06c\uba74 \ub418\uc0ac\uae30\uac00 \ube44\uc2f8\uc9c4\ub2e4
+   \u00b7 \ud22c\uc790\uc790 \ud55c\ub9c8\ub514 \ud55c \uc904 (\ubb34\uc5c7\uc744 \ud558\uba74 \ubaab \uac12\uc774 \uc624\ub974\ub294\uc9c0)
+   \u00b7 \uc800\uc7a5: p.sd676.ipo { out(\ud22c\uc790\uc790 \uc8fc 0~490), px, prev, hist, r0, s0, at, cash }
+   \u00b7 ipo677Test(false) \u2192 \ub054 (\ubaab\uc774 \ud314\ub9b0 \ucc44\ub85c\uba74 \ubc8c\uc774 \ub098\ub214\ub9cc \uadf8\ub300\ub85c)
+   ============================================================ */
+window.IPO677 = { on: true, SH: 1000, FIRST: 300, STEP: 50, MAX: 490, HOURS: 30, NEED_W: 2, NEED_TRIPS: 20 };
+{
+  const K = window.IPO677, D = window.SANGDAN676;
+  const I = p => (p && p.sd676 && p.sd676.ipo) || null;
+  const L = p => (D.cv(p).list || []);
+  const trips = p => L(p).reduce((a, w) => a + (w.trips | 0), 0);
+  const cnt = (p, k) => L(p).reduce((a, w) => a + (w[k] | 0), 0);
+  const fair = p => {
+    const base = D.perHour(L(p)) * K.HOURS + ((p.sd519 && p.sd519.cap) || 0) * .5;
+    const bare = L(p).filter(w => !(w.g | 0)).length;
+    let mood = 1 - .06 * bare; const ip = I(p);
+    if (ip) mood += .03 * Math.min(5, cnt(p, 'saved') - (ip.s0 | 0)) - .04 * Math.min(5, cnt(p, 'raided') - (ip.r0 | 0));
+    return Math.max(1, base * Math.max(.6, mood) / K.SH);
+  };
+  const ok = p => L(p).length >= K.NEED_W && trips(p) >= K.NEED_TRIPS;
+  const WHO = [['\ud55c\uc591 \uae40\ub300\uac10', .4], ['\ub3d9\ub798 \uc65c\uad00', .35], ['\uac1d\uc8fc \uc870\ud569', .25]];
+  /* \ubc8c\uc774 \ub098\ub214 */
+  const _oe = D.onEarn;
+  D.onEarn = (p, w, v) => { v = _oe ? _oe(p, w, v) : v; const ip = I(p); return ip && ip.out > 0 ? Math.round(v * (1 - ip.out / K.SH)) : v; };
+  /* \ud589\ub82c \uc790\ub9ac +1 */
+  const _sl = cvSlots;
+  cvSlots = function (p) { const n = _sl.apply(this, arguments); try { p = p || G.player; return I(p) && K.on ? Math.min(CARAVAN.MAX + 1, n + 1) : n; } catch (e) { return n; } };
+  /* \uc7a5\ub0a0: \ubaab \uac12 */
+  const _mu = marketUpdate;
+  marketUpdate = function (M) {
+    const r = _mu.apply(this, arguments);
+    try {
+      const p = G.player, ip = I(p); if (!ip || !K.on) return r;
+      const f = fair(p); ip.prev = ip.px; ip.px = Math.max(1, Math.round((ip.px * .7 + f * .3) * (1 + (Math.random() - .5) * .06)));
+      ip.r0 = cnt(p, 'raided'); ip.s0 = cnt(p, 'saved');   /* \ud138\ub9bc \u00b7 \uad6c\ud568\uc740 \ud55c \uc7a5\ub0a0\ub9cc \uac12\uc5d0 \ub4e0\ub2e4 */
+      (ip.hist = ip.hist || []).push(ip.px); if (ip.hist.length > 12) ip.hist.shift();
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  /* \ud55c\ub9c8\ub514 */
+  const voice = p => {
+    const ip = I(p), bare = L(p).filter(w => !(w.g | 0));
+    if (bare.length) return ['\ud55c\uc591 \uae40\ub300\uac10', `\ud638\uc704\ub3c4 \uc5c6\uc774 ${bare[0].n}\ub124 \ud589\ub82c\uc744 \ubcf4\ub0b4\ub2e4\ub2c8, \ubaab \uac00\uc9c4 \uc0ac\ub78c\uc740 \ubd88\uc548\ud558\uc624`];
+    if (ip && cnt(p, 'saved') > (ip.s0 | 0)) return ['\ub3d9\ub798 \uc65c\uad00', '\ub3c4\uc801\ub5bc\ub97c \ud589\uc218\uac00 \uc9c1\uc811 \ucad3\uc558\ub2e4\uc9c0\uc694? \ubbff\uc74c\uc9c1\ud569\ub2c8\ub2e4'];
+    if (ip && cnt(p, 'raided') > (ip.r0 | 0)) return ['\uac1d\uc8fc \uc870\ud569', '\uc9d0\uc744 \ud138\ub838\ub2e4\ub294 \uc18c\ubb38\uc5d0 \ubaab \uac12\uc774 \ud754\ub4e4\ub9ac\uc624'];
+    if (ip && ip.prev && ip.px > ip.prev) return ['\ud55c\uc591 \uae40\ub300\uac10', '\ubaab \uac12\uc774 \uc624\ub974\ub2c8 \ud750\ubb47\ud558\uc624. \uc774\ub300\ub85c\ub9cc \ud558\uc2dc\uc624'];
+    if (L(p).length < cvSlots(p)) return ['\uac1d\uc8fc \uc870\ud569', '\ud589\ub82c \uc790\ub9ac\uac00 \ube44\uc5c8\uc18c. \ud558\ub098 \ub354 \uafb8\ub9ac\uba74 \ubaab \uac12\ub3c4 \uc624\ub974\uc624'];
+    return ['\ub3d9\ub798 \uc65c\uad00', '\uba3c \uae38\uc77c\uc218\ub85d \uc9d0\uc0af\uc774 \ud07d\ub2c8\ub2e4. \ub192\uc740 \uace0\uc744 \uae38\uc744 \ub9e1\uaca8 \ubcf4\uc2dc\uc9c0\uc694'];
+  };
+  const spark = h => { if (!h || h.length < 2) return ''; const mn = Math.min(...h), mx = Math.max(...h), W = 84, H = 22; const pts = h.map((v, i) => `${Math.round(i / (h.length - 1) * W)},${Math.round(H - (mx > mn ? (v - mn) / (mx - mn) : .5) * (H - 4) - 2)}`).join(' '); return `<svg width="${W}" height="${H}" style="flex:none"><polyline points="${pts}" fill="none" stroke="${h[h.length - 1] >= h[0] ? '#b0761a' : '#b84a3a'}" stroke-width="2"/></svg>`; };
+  const css = document.createElement('style');
+  css.textContent = `
+.ip7{padding:9px 11px;border-radius:12px;background:rgba(255,246,220,.6);border:1.5px solid rgba(176,118,26,.45);margin-bottom:8px}
+.ip7 .r{display:flex;align-items:center;gap:8px}.ip7 .t1{font-weight:800;font-size:14px;color:#3a2210}.ip7 .t2{font-size:11.5px;color:#7a5a3a;line-height:1.4}
+.ip7 .px{font-size:18px;font-weight:800;color:#5a3410;font-variant-numeric:tabular-nums}
+.ip7 .vo{margin-top:6px;font-size:12px;color:#5a3a1a;font-style:italic}
+.ip7 .bt{display:flex;gap:6px;margin-top:7px}.ip7 .bt .btn{flex:1;padding:7px 6px;font-size:12px}
+.ip7 .bar{display:flex;height:7px;border-radius:4px;overflow:hidden;margin-top:5px;background:rgba(90,55,20,.15)}.ip7 .bar i{display:block;height:100%}
+`;
+  document.head.appendChild(css);
+  const ipoHTML = p => {
+    const ip = I(p), f = fair(p);
+    if (!ip) {
+      const lw = L(p).length, tr = trips(p);
+      if (!ok(p)) return `<div class="ip7"><div class="t1">\ud83d\udcdc \uc0c1\uc7a5 \u2014 \ud22c\uc790\uc790 \ubc1b\uae30</div><div class="t2">\ud589\ub82c ${Math.min(lw, K.NEED_W)}/${K.NEED_W} \u00b7 \ub2e4\ub140\uc628 \ubc88 \uc218 ${Math.min(tr, K.NEED_TRIPS)}/${K.NEED_TRIPS} \ub97c \ucc44\uc6b0\uba74 \ud22c\uc790\uc790\ub4e4\uc774 \ubaab\uc744 \uc0ac\ub7ec \uc635\ub2c8\ub2e4</div></div>`;
+      const cash = Math.round(f * K.FIRST);
+      return `<div class="ip7"><div class="t1">\ud83d\udcdc \ud22c\uc790\uc790\ub4e4\uc774 \ubaab\uc744 \uc0ac\uaca0\ub2e4\uace0 \ud569\ub2c8\ub2e4</div><div class="t2">\ud55c\uc591 \uae40\ub300\uac10 \u00b7 \ub3d9\ub798 \uc65c\uad00 \u00b7 \uac1d\uc8fc \uc870\ud569\uc774 ${esc(p.sd676.name)} \ubaab 30%\ub97c \uc0ac\uaca0\ub2f5\ub2c8\ub2e4.<br>\ubc1b\ub294 \ub3c8 <b>${fmt(cash)}\ubb38</b> \u00b7 \ud589\ub82c \uc790\ub9ac +1 \u2014 \ub300\uc2e0 \ud589\ub82c \ubc8c\uc774\uc758 30%\ub294 \uadf8\ub4e4 \ubaab\uc785\ub2c8\ub2e4</div><div class="bt"><button class="btn gold" data-a="ip7list">\ud83c\udf89 \uc0c1\uc7a5\ud55c\ub2e4 \u00b7 +${fmt(cash)}\ubb38</button></div></div>`;
+    }
+    const d = ip.prev ? (ip.px - ip.prev) / ip.prev : 0, mine = K.SH - ip.out, v = voice(p);
+    const sell = Math.round(ip.px * K.STEP), buy = Math.round(ip.px * K.STEP * 1.03);
+    let h = `<div class="ip7"><div class="r"><div style="flex:1"><div class="t2">${esc(p.sd676.name)} \ubaab \ud55c \uc8fc (1,000\uc8fc \uc911)</div><div class="px">${fmt(ip.px)}\ubb38 <span style="font-size:13px;color:${d >= 0 ? '#b0761a' : '#b84a3a'}">${d >= 0 ? '\u25b2' : '\u25bc'}${Math.abs(d * 100).toFixed(1)}%</span></div></div>${spark(ip.hist)}</div>`;
+    h += `<div class="bar"><i style="width:${mine / 10}%;background:#c9892a"></i>${WHO.map(([n, r], k) => `<i style="width:${ip.out * r / 10}%;background:${['#8a6a4a', '#a8885e', '#c4aa80'][k]}"></i>`).join('')}</div>`;
+    h += `<div class="t2" style="margin-top:3px">\ub0b4 \ubaab ${mine / 10}% \u00b7 ${WHO.map(([n, r]) => `${n} ${(ip.out * r / 10).toFixed(1)}%`).join(' \u00b7 ')}<br>\uc0c1\ub2e8 \uac12 \u2248 ${fmt(ip.px * K.SH)}\ubb38 \u00b7 \ud589\ub82c \ubc8c\uc774\uc758 ${ip.out / 10}%\ub294 \ud22c\uc790\uc790 \ubaab</div>`;
+    h += `<div class="vo">\u300c${esc(v[1])}\u300d \u2014 ${esc(v[0])}</div>`;
+    h += `<div class="bt"><button class="btn" data-a="ip7sell" ${ip.out + K.STEP > K.MAX ? 'disabled' : ''}>5% \ub354 \ud310\ub2e4<br><small>+${fmt(sell)}</small></button><button class="btn ${p.gold >= buy && ip.out > 0 ? 'gold' : 'dis'}" data-a="ip7buy" ${p.gold >= buy && ip.out > 0 ? '' : 'disabled'}>5% \ub418\uc0b0\ub2e4<br><small>${fmt(buy)}</small></button></div></div>`;
+    return h;
+  };
+  K.fair = fair; K.ipoHTML = ipoHTML;
+  const _vh = cvViewHTML;
+  cvViewHTML = function (p) {
+    const h = _vh.apply(this, arguments);
+    try {
+      if (!K.on || !D.on || !p.sd676) return h;
+      const x = ipoHTML(p), i = h.indexOf('<div class="sd6-w">');
+      return i >= 0 ? h.slice(0, i) + x + h.slice(i) : h + x;
+    } catch (e) { reportError(e); return h; }
+  };
+  /* \uc8fc\uad8c \ubaa9\ub85d \ub9e8 \uc704\uc5d0 \ub0b4 \uc0c1\ub2e8 \ud55c \uc904 */
+  const _mm = MENU.market;
+  MENU.market = function (ctx) {
+    const r = _mm.apply(this, arguments);
+    try {
+      const p = G.player, ip = I(p);
+      if (K.on && ip && ctx && ctx.tab === 'money' && Array.isArray(r)) {
+        const d = ip.prev ? (ip.px - ip.prev) / ip.prev : 0, row = `<div class="row"><div class="tx"><div class="t1">\ud83c\udfef ${esc(p.sd676.name)} <b>${fmt(ip.px)}</b> <span style="color:${d >= 0 ? '#ffd24a' : '#ff7a6a'}">${d >= 0 ? '\u25b2' : '\u25bc'}${Math.abs(d * 100).toFixed(1)}%</span></div><div class="t2">\ub0b4 \uc0c1\ub2e8 \u00b7 \ub0b4 \ubaab ${(K.SH - ip.out) / 10}%</div></div><button class="btn" data-a="tab" data-v="trade">\ubcf4\uae30</button></div>`;
+        const k = r[1].indexOf('</div>', r[1].indexOf('<div class="qsec">')); if (k >= 0) r[1] = r[1].slice(0, k + 6) + row + r[1].slice(k + 6);
+      }
+    } catch (e) { reportError(e); }
+    return r;
+  };
+  const _omc = onModalClick;
+  onModalClick = function (ev) {
+    const b = ev && ev.target && ev.target.closest && ev.target.closest('[data-a]'), a = b && b.dataset.a, p = G.player;
+    if (!K.on || !a || !p || !/^ip7/.test(a) || !p.sd676) return _omc.apply(this, arguments);
+    try {
+      if (a === 'ip7list' && !I(p) && ok(p)) {
+        const f = Math.round(fair(p)), cash = f * K.FIRST;
+        p.sd676.ipo = { out: K.FIRST, px: f, prev: f, hist: [f], r0: cnt(p, 'raided'), s0: cnt(p, 'saved'), at: p.playTime || 0, cash };
+        p.gold += cash; try { grantTitle('\uc0c1\uc7a5 \ud589\uc218'); } catch (er) { }
+        centerMsg(`\ud83c\udf89 ${p.sd676.name} \uc0c1\uc7a5`, `\ubaab 30% \u00b7 +${fmt(cash)}\ubb38 \u00b7 \ud589\ub82c \uc790\ub9ac +1`, 'legend', 3.4); try { Sfx.level && Sfx.level(); } catch (er) { }
+        if (typeof saveGame === 'function') saveGame(true); rerender(); return;
+      }
+      const ip = I(p); if (!ip) return;
+      if (a === 'ip7sell' && ip.out + K.STEP <= K.MAX) { const g = Math.round(ip.px * K.STEP); ip.out += K.STEP; ip.cash = (ip.cash | 0) + g; p.gold += g; ip.px = Math.max(1, Math.round(ip.px * .98)); toast(`\ud83d\udcdc \ubaab 5%\ub97c \ud314\uc558\uc2b5\ub2c8\ub2e4 +${fmt(g)}\ubb38 \u2014 \ud22c\uc790\uc790 \ubaab ${ip.out / 10}%`, 'gold'); try { Sfx.coin(); } catch (er) { } rerender(); return; }
+      if (a === 'ip7buy' && ip.out > 0) { const c = Math.round(ip.px * K.STEP * 1.03); if (p.gold < c) return; p.gold -= c; ip.out = Math.max(0, ip.out - K.STEP); ip.px = Math.round(ip.px * 1.01); toast(`\ud83d\udcdc \ubaab 5%\ub97c \ub418\uc0c0\uc2b5\ub2c8\ub2e4 \u2212${fmt(c)}\ubb38 \u2014 \ub0b4 \ubaab ${(K.SH - ip.out) / 10}%`, 'gold'); try { Sfx.coin(); } catch (er) { } rerender(); return; }
+    } catch (er) { reportError(er); }
+    return _omc.apply(this, arguments);
+  };
+  window.ipo677Test = on => { K.on = on !== false; return K.on; };
 }
 
 /* 99_boot: start once every file above has defined its data and renderers */
