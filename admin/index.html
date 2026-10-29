@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>동방전기 운영 장부</title>
+<style>
+:root{--bg:#15171c;--pan:#1e2129;--pan2:#262a34;--line:#343947;--tx:#e8e4da;--mut:#9a9890;--gold:#e0b45a;--red:#e06a5a;--blue:#6aa8e0;--green:#7cc47a;--font:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 var(--font);padding:0 0 60px}
+header{position:sticky;top:0;z-index:5;background:var(--pan);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+header h1{font-size:17px;margin:0;color:var(--gold)}
+header .sp{flex:1}
+header .st{color:var(--mut);font-size:12px}
+button{font:inherit;background:var(--pan2);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--gold)}
+button.pri{background:var(--gold);color:#1a1300;border-color:var(--gold);font-weight:600}
+input,select{font:inherit;background:#12141a;color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--pan);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.card h2{font-size:15px;margin:0 0 10px;color:var(--gold)}
+.card h3{font-size:13px;margin:14px 0 6px;color:var(--mut);font-weight:600}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+.tabs button.on{background:var(--gold);color:#1a1300;border-color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filters label{color:var(--mut);font-size:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--pan2);border-radius:10px;padding:10px 12px}
+.kpi .v{font-size:22px;font-weight:700;color:var(--tx)}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi .s{font-size:11px;color:var(--mut)}
+.bars{display:flex;flex-direction:column;gap:5px}
+.bar{display:grid;grid-template-columns:minmax(90px,180px) 1fr auto;gap:8px;align-items:center;font-size:13px}
+.bar .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .b{height:14px;background:var(--pan2);border-radius:4px;overflow:hidden}
+.bar .b i{display:block;height:100%;background:var(--gold)}
+.bar .b i.red{background:var(--red)}.bar .b i.blue{background:var(--blue)}.bar .b i.green{background:var(--green)}
+.bar .c{color:var(--mut);font-variant-numeric:tabular-nums;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:12px;position:sticky;top:0;background:var(--pan)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tw{overflow:auto;max-height:70vh}
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:6px;background:var(--pan2);color:var(--mut);margin-right:4px}
+.tag.test{background:#3a2d12;color:var(--gold)}.tag.main{background:#12303a;color:var(--blue)}
+.err{color:var(--red)}
+.muted{color:var(--mut)}
+.login{max-width:360px;margin:60px auto}
+.login input{width:100%;margin-bottom:10px}
+details summary{cursor:pointer}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.row2{grid-template-columns:1fr}}
+pre{white-space:pre-wrap;word-break:break-all;font-size:12px;background:#12141a;padding:8px;border-radius:8px;margin:6px 0 0}
+.hint{font-size:12px;color:var(--mut);margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <h1>동방전기 운영 장부</h1>
+  <span class="st" id="st"></span>
+  <span class="sp"></span>
+  <button id="btnReload" hidden>새로 읽기</button>
+  <button id="btnOut" hidden>나가기</button>
+</header>
+<main id="main"></main>
+<script>
+const CFG = { apiKey: 'AIzaSyDGoqLOxJfSE364fjRR65P1YJE2Hd49zKI', db: 'https://dongbanjeongi-default-rtdb.asia-southeast1.firebasedatabase.app', auth: 'https://identitytoolkit.googleapis.com/v1', tok: 'https://securetoken.googleapis.com/v1' };
+const SKEY = 'dbj_admin_session';
+let NAMES = { maps: {}, boss: {}, mobs: {}, jobs: {}, story: [] }, S = null, PLOG = {}, ERR = {}, tab = 'sum', loadedAt = 0;
+const F = { days: 30, ver: '', dv: '', quitDays: 3, errSite: '', errVer: '' };
+const $ = s => document.querySelector(s), esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmt = n => (Math.round(+n || 0)).toLocaleString('ko-KR');
+const mapN = id => !id ? '?' : (NAMES.maps[id] || NAMES.maps[String(id).replace(/_r\d+$/, '')] || id);
+const mobN = id => id === '?' ? '?' : (NAMES.boss[id] || NAMES.mobs[id] || id);
+const jobN = id => NAMES.jobs[id] || id || '?';
+const dur = s => { s = Math.round(+s || 0); if (s < 3600) return Math.round(s / 60) + '분'; if (s < 86400) return (s / 3600).toFixed(1) + '시간'; return Math.floor(s / 86400) + '일 ' + Math.round(s % 86400 / 3600) + '시간'; };
+const ago = t => { if (!t) return '-'; const d = Date.now() - t; if (d < 60e3) return '방금'; if (d < 3600e3) return Math.round(d / 60e3) + '분 전'; if (d < 86400e3) return Math.round(d / 3600e3) + '시간 전'; return Math.round(d / 86400e3) + '일 전'; };
+const dt = t => { if (!t) return '-'; const d = new Date(t); const p = n => String(n).padStart(2, '0'); return `${d.getMonth() + 1}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`; };
+const bar = (rows, cls, fmtC) => { const mx = Math.max(1, ...rows.map(r => r[1])); return `<div class="bars">${rows.map(r => `<div class="bar"><div class="n" title="${esc(r[0])}">${esc(r[0])}</div><div class="b"><i class="${cls || ''}" style="width:${(r[1] / mx * 100).toFixed(1)}%"></i></div><div class="c">${fmtC ? fmtC(r) : fmt(r[1])}</div></div>`).join('')}</div>`; };
+function status(s, bad) { $('#st').textContent = s; $('#st').className = 'st' + (bad ? ' err' : ''); }
+
+/* ---- 계정 (게임과 같은 방식: 닉네임 → 이메일) ---- */
+function normNick(n) { return String(n || '').normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase().slice(0, 12); }
+function mailOf(n) { return 'u' + Array.from(new TextEncoder().encode(normNick(n))).map(b => b.toString(16).padStart(2, '0')).join('') + '@players.dongbang.game'; }
+async function post(url, body, form) { const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': form ? 'application/x-www-form-urlencoded' : 'application/json' }, body: form ? body : JSON.stringify(body) }); const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error((j.error && j.error.message) || ('HTTP ' + r.status)); return j; }
+async function login(nick, pw) {
+  const r = await post(`${CFG.auth}/accounts:signInWithPassword?key=${CFG.apiKey}`, { email: mailOf(nick), password: pw, returnSecureToken: true });
+  S = { nick: normNick(nick), uid: r.localId, rt: r.refreshToken, tok: r.idToken, exp: Date.now() + (+r.expiresIn || 3600) * 1000 - 60000 };
+  localStorage.setItem(SKEY, JSON.stringify(S));
+}
+async function token() {
+  if (!S) throw new Error('로그인이 필요합니다');
+  if (S.tok && Date.now() < S.exp) return S.tok;
+  const r = await post(`${CFG.tok}/token?key=${CFG.apiKey}`, 'grant_type=refresh_token&refresh_token=' + encodeURIComponent(S.rt), true);
+  S.tok = r.id_token; S.rt = r.refresh_token || S.rt; S.exp = Date.now() + (+r.expires_in || 3600) * 1000 - 60000; localStorage.setItem(SKEY, JSON.stringify(S)); return S.tok;
+}
+function logout() { S = null; localStorage.removeItem(SKEY); PLOG = {}; ERR = {}; render(); }
+
+/* ---- 읽기 ---- */
+async function load() {
+  status('읽는 중…');
+  try {
+    const t = await token();
+    const [p, e] = await Promise.all([
+      fetch(`${CFG.db}/plog.json?auth=${encodeURIComponent(t)}`).then(async r => { if (r.status === 401 || r.status === 403) throw new Error('플레이 기록 읽기 거부 — 운영자 계정으로 로그인해야 합니다 (규칙의 uid)'); if (!r.ok) throw new Error('plog HTTP ' + r.status); return r.json(); }),
+      fetch(`${CFG.db}/errlog.json?orderBy=%22t%22&limitToLast=1000`).then(async r => { if (!r.ok) throw new Error('errlog HTTP ' + r.status); return r.json(); })
+    ]);
+    PLOG = p || {}; ERR = e || {}; loadedAt = Date.now();
+    status(`캐릭터 ${fmt(Object.keys(PLOG).length)} · 오류 ${fmt(Object.keys(ERR).length)} · ${dt(loadedAt)} 읽음`);
+  } catch (err) { status(err.message, true); }
+  render();
+}
+
+/* ---- 집계 ---- */
+function chars() {
+  const since = F.days ? Date.now() - F.days * 86400e3 : 0;
+  return Object.entries(PLOG).map(([id, r]) => Object.assign({ id }, r)).filter(r => r && typeof r === 'object' && (r.at || 0) >= since && (!F.ver || r.v === F.ver) && (!F.dv || r.dv === F.dv));
+}
+function errs() {
+  return Object.entries(ERR).map(([id, r]) => Object.assign({ id }, r)).filter(r => r && r.m && (!F.errSite || (F.errSite === 'test' ? r.test === 1 : !r.test)) && (!F.errVer || r.v === F.errVer)).sort((a, b) => (b.t || 0) - (a.t || 0));
+}
+const vers = list => [...new Set(list.map(r => r.v).filter(Boolean))].sort().reverse();
+const sumBy = (list, key, val) => { const o = {}; for (const r of list) { const k = key(r); if (k == null || k === '') continue; o[k] = (o[k] || 0) + (val ? val(r) : 1); } return Object.entries(o).sort((a, b) => b[1] - a[1]); };
+
+/* ---- 화면 ---- */
+function render() {
+  const m = $('#main');
+  $('#btnReload').hidden = $('#btnOut').hidden = !S;
+  if (!S) { m.innerHTML = `<div class="card login"><h2>운영자 로그인</h2><div class="muted" style="margin-bottom:10px">게임 계정과 같은 닉네임 · 비밀번호입니다. 플레이 기록은 운영자 계정으로만 읽힙니다.</div><input id="nick" placeholder="닉네임" autocomplete="username"><input id="pw" type="password" placeholder="비밀번호" autocomplete="current-password"><button class="pri" id="btnIn" style="width:100%">들어가기</button><div class="err" id="lerr" style="margin-top:8px"></div></div>`;
+    $('#btnIn').onclick = async () => { $('#lerr').textContent = ''; try { await login($('#nick').value, $('#pw').value); await load(); } catch (e) { $('#lerr').textContent = { EMAIL_NOT_FOUND: '그런 닉네임의 계정이 없습니다', INVALID_PASSWORD: '비밀번호가 다릅니다', INVALID_LOGIN_CREDENTIALS: '닉네임이나 비밀번호가 다릅니다' }[e.message] || e.message; } };
+    $('#pw').onkeydown = e => { if (e.key === 'Enter') $('#btnIn').click(); };
+    return; }
+  const C = chars(), all = Object.values(PLOG).filter(r => r && typeof r === 'object');
+  const T = { sum: '요약', death: '쓰러진 곳', quit: '그만둔 곳', lv: '레벨 · 우두머리', err: '오류', list: '캐릭터' };
+  let h = `<div class="tabs">${Object.entries(T).map(([k, v]) => `<button data-t="${k}" class="${tab === k ? 'on' : ''}">${v}${k === 'err' ? ` (${fmt(errs().length)})` : ''}</button>`).join('')}</div>`;
+  if (tab !== 'err') h += `<div class="filters"><label>기간</label><select id="fDays">${[[7, '7일'], [30, '30일'], [90, '90일'], [0, '전체']].map(([v, n]) => `<option value="${v}" ${F.days == v ? 'selected' : ''}>${n}</option>`).join('')}</select><label>판</label><select id="fVer"><option value="">전체</option>${vers(all).map(v => `<option ${F.ver === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select><label>기기</label><select id="fDv"><option value="">전체</option><option value="m" ${F.dv === 'm' ? 'selected' : ''}>폰</option><option value="pc" ${F.dv === 'pc' ? 'selected' : ''}>PC</option></select><span class="muted">캐릭터 ${fmt(C.length)}명</span></div>`;
+  h += ({ sum: rSum, death: rDeath, quit: rQuit, lv: rLv, err: rErr, list: rList })[tab](C);
+  m.innerHTML = h;
+  m.querySelectorAll('.tabs button').forEach(b => b.onclick = () => { tab = b.dataset.t; render(); });
+  const bind = (id, k, num) => { const el = $(id); if (el) el.onchange = () => { F[k] = num ? +el.value : el.value; render(); }; };
+  bind('#fDays', 'days', 1); bind('#fVer', 'ver'); bind('#fDv', 'dv'); bind('#fQuit', 'quitDays', 1); bind('#fErrSite', 'errSite'); bind('#fErrVer', 'errVer');
+}
+function rSum(C) {
+  const now = Date.now(), act7 = C.filter(r => now - r.at < 7 * 86400e3).length, act1 = C.filter(r => now - r.at < 86400e3).length;
+  const pt = C.reduce((s, r) => s + (r.pt || 0), 0), ses = C.reduce((s, r) => s + (r.ses || 0), 0), d = C.reduce((s, r) => s + (r.d || 0), 0);
+  const avgLv = C.length ? C.reduce((s, r) => s + (r.lv || 0), 0) / C.length : 0;
+  const k = [['캐릭터', fmt(C.length), '기간 안에 기록 보낸 수'], ['오늘 활동', fmt(act1), '24시간 안'], ['이번 주 활동', fmt(act7), '7일 안'], ['총 플레이', dur(pt), `접속 ${fmt(ses)}회 · 평균 ${dur(ses ? pt / ses : 0)}`], ['평균 레벨', avgLv.toFixed(1), `최고 Lv.${Math.max(0, ...C.map(r => r.lv || 0))}`], ['쓰러짐', fmt(d), `1시간당 ${(pt ? d / (pt / 3600) : 0).toFixed(2)}회`], ['로그인 비율', C.length ? Math.round(C.filter(r => r.lg).length / C.length * 100) + '%' : '-', '계정 만든 사람'], ['폰 비율', C.length ? Math.round(C.filter(r => r.dv === 'm').length / C.length * 100) + '%' : '-', '나머지는 PC']];
+  let h = `<div class="card"><h2>한눈에</h2><div class="kpis">${k.map(([l, v, s]) => `<div class="kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join('')}</div></div>`;
+  h += `<div class="row2"><div class="card"><h2>직업</h2>${bar(sumBy(C, r => jobN(r.j)))}</div><div class="card"><h2>이야기 진행 (장)</h2>${bar(sumBy(C, r => (r.ci | 0) + '장 ' + (NAMES.story[(r.ci | 0) - 1] || '')).sort((a, b) => parseInt(a[0]) - parseInt(b[0])), 'blue')}</div></div>`;
+  h += `<div class="row2"><div class="card"><h2>레벨 분포</h2>${bar(sumBy(C, r => 'Lv.' + Math.floor((r.lv | 0) / 10) * 10 + '~').sort((a, b) => parseInt(a[0].slice(3)) - parseInt(b[0].slice(3))), 'green')}</div><div class="card"><h2>판 (버전)</h2>${bar(sumBy(C, r => r.v || '?'))}</div></div>`;
+  h += `<div class="card"><h2>지금 있는 지도 (마지막 기록)</h2>${bar(sumBy(C, r => mapN(r.map)).slice(0, 20))}</div>`;
+  return h;
+}
+function rDeath(C) {
+  const dm = {}; for (const r of C) if (r.dm && typeof r.dm === 'object') for (const [map, e] of Object.entries(r.dm)) { if (!Array.isArray(e)) continue; const o = dm[map] || (dm[map] = [0, 0, 0]); o[0] += e[0] | 0; o[1] += e[1] | 0; o[2]++; }
+  const rows = Object.entries(dm).sort((a, b) => b[1][0] - a[1][0]);
+  let h = `<div class="card"><h2>어디서 많이 쓰러지나</h2>${rows.length ? bar(rows.slice(0, 30).map(([m, o]) => [mapN(m), o[0], o]), 'red', r => `${fmt(r[1])}회 · 평균 Lv.${r[2][0] ? Math.round(r[2][1] / r[2][0]) : 0} · ${r[2][2]}명`) : '<div class="muted">기록 없음</div>'}</div>`;
+  const dl = []; for (const r of C) if (Array.isArray(r.dl)) for (const x of r.dl) if (Array.isArray(x)) dl.push({ n: r.n, j: r.j, map: x[0], lv: x[1], who: x[2], t: (x[3] | 0) * 1000 });
+  dl.sort((a, b) => b.t - a.t);
+  h += `<div class="card"><h2>누구한테 쓰러지나</h2>${bar(sumBy(dl, x => mobN(x.who)).slice(0, 25), 'red')}</div>`;
+  h += `<div class="card"><h2>최근 쓰러진 기록</h2><div class="tw"><table><tr><th>때</th><th>캐릭터</th><th class="num">Lv</th><th>지도</th><th>상대</th></tr>${dl.slice(0, 200).map(x => `<tr><td>${dt(x.t)}</td><td>${esc(x.n)} <span class="tag">${jobN(x.j)}</span></td><td class="num">${x.lv}</td><td>${esc(mapN(x.map))}</td><td>${esc(mobN(x.who))}</td></tr>`).join('')}</table></div></div>`;
+  return h;
+}
+function rQuit(C) {
+  const now = Date.now(), q = C.filter(r => now - r.at > F.quitDays * 86400e3).sort((a, b) => b.at - a.at);
+  let h = `<div class="filters"><label>며칠 넘게 안 들어오면 그만둔 걸로</label><select id="fQuit">${[1, 3, 7, 14].map(v => `<option value="${v}" ${F.quitDays == v ? 'selected' : ''}>${v}일</option>`).join('')}</select><span class="muted">${fmt(q.length)}명 (기간 필터 안에서)</span></div>`;
+  h += `<div class="row2"><div class="card"><h2>그만둔 곳 (마지막 지도)</h2>${bar(sumBy(q, r => mapN(r.map)).slice(0, 25), 'red')}</div><div class="card"><h2>그만둔 때의 레벨</h2>${bar(sumBy(q, r => 'Lv.' + Math.floor((r.lv | 0) / 10) * 10 + '~').sort((a, b) => parseInt(a[0].slice(3)) - parseInt(b[0].slice(3))), 'red')}</div></div>`;
+  h += `<div class="row2"><div class="card"><h2>그만둔 때의 이야기</h2>${bar(sumBy(q, r => (r.ci | 0) + '장 ' + (NAMES.story[(r.ci | 0) - 1] || '')).sort((a, b) => parseInt(a[0]) - parseInt(b[0])), 'red')}</div><div class="card"><h2>그만둔 사람의 플레이 시간</h2>${bar(sumBy(q, r => { const m = (r.pt || 0) / 60; return m < 10 ? '10분 미만' : m < 30 ? '10~30분' : m < 60 ? '30분~1시간' : m < 180 ? '1~3시간' : m < 600 ? '3~10시간' : '10시간 이상'; }), 'red')}<div class="hint">10분 미만에 그만둔 사람이 많으면 첫 인상(시작 화면 · 첫 전투)을, 특정 장에 몰리면 그 장의 난이도를 봐야 합니다</div></div></div>`;
+  h += `<div class="card"><h2>그만둔 캐릭터</h2><div class="tw"><table><tr><th>마지막</th><th>이름</th><th class="num">Lv</th><th>장</th><th>마지막 지도</th><th class="num">플레이</th><th class="num">쓰러짐</th><th>기기</th></tr>${q.slice(0, 300).map(r => `<tr><td>${ago(r.at)}</td><td>${esc(r.n)} <span class="tag">${jobN(r.j)}</span></td><td class="num">${r.lv | 0}</td><td>${r.ci | 0}장</td><td>${esc(mapN(r.map))}</td><td class="num">${dur(r.pt)}</td><td class="num">${r.d | 0}</td><td>${r.dv === 'm' ? '폰' : 'PC'}</td></tr>`).join('')}</table></div></div>`;
+  return h;
+}
+function rLv(C) {
+  const lt = {}, bt = {};
+  for (const r of C) { if (r.lt && typeof r.lt === 'object') for (const [b, s] of Object.entries(r.lt)) { const o = lt[b] || (lt[b] = [0, 0]); o[0] += s | 0; o[1]++; } if (r.bt && typeof r.bt === 'object') for (const [k, e] of Object.entries(r.bt)) { if (!Array.isArray(e)) continue; const o = bt[k] || (bt[k] = [0, 0, 0]); o[0] += e[0] | 0; o[1] += e[1] | 0; o[2]++; } }
+  const ltRows = Object.entries(lt).sort((a, b) => +a[0] - +b[0]).map(([b, o]) => [`Lv.${b}~${+b + 9}`, o[0] / o[1], o]);
+  let h = `<div class="card"><h2>레벨 구간마다 머문 시간 (한 사람 평균)</h2>${ltRows.length ? bar(ltRows, 'green', r => `${dur(r[1])} · ${r[2][1]}명`) : '<div class="muted">기록 없음</div>'}<div class="hint">유난히 긴 구간은 지루하거나 막히는 구간입니다</div></div>`;
+  const btRows = Object.entries(bt).sort((a, b) => b[1][0] - a[1][0]);
+  h += `<div class="card"><h2>우두머리 — 도전 · 처치</h2><div class="tw"><table><tr><th>우두머리</th><th class="num">도전</th><th class="num">처치</th><th class="num">성공률</th><th class="num">도전한 사람</th></tr>${btRows.map(([k, o]) => `<tr><td>${esc(mobN(k))}</td><td class="num">${fmt(o[0])}</td><td class="num">${fmt(o[1])}</td><td class="num" style="color:${o[0] && o[1] / o[0] < .5 ? 'var(--red)' : 'inherit'}">${o[0] ? Math.round(o[1] / o[0] * 100) : 0}%</td><td class="num">${o[2]}</td></tr>`).join('')}</table></div></div>`;
+  const lh = []; for (const r of C) if (Array.isArray(r.lh)) for (let i = 1; i < r.lh.length; i++) { const a = r.lh[i - 1], b = r.lh[i]; if (Array.isArray(a) && Array.isArray(b) && b[1] > a[1]) lh.push([Math.floor(b[0] / 10) * 10, b[1] - a[1]]); }
+  const lhB = {}; for (const [b, s] of lh) { const o = lhB[b] || (lhB[b] = [0, 0]); o[0] += s; o[1]++; }
+  h += `<div class="card"><h2>레벨 하나 오르는 데 걸린 시간 (최근 레벨업 기준)</h2>${bar(Object.entries(lhB).sort((a, b) => +a[0] - +b[0]).map(([b, o]) => [`Lv.${b}~`, o[0] / o[1], o]), 'blue', r => `${dur(r[1])} · ${r[2][1]}번`)}</div>`;
+  return h;
+}
+function rErr(C) {
+  const E = errs(), allE = Object.values(ERR).filter(r => r && r.m);
+  let h = `<div class="filters"><label>판</label><select id="fErrSite"><option value="">전체</option><option value="test" ${F.errSite === 'test' ? 'selected' : ''}>시험판</option><option value="main" ${F.errSite === 'main' ? 'selected' : ''}>본편</option></select><label>버전</label><select id="fErrVer"><option value="">전체</option>${vers(allE).map(v => `<option ${F.errVer === v ? 'selected' : ''}>${esc(v)}</option>`).join('')}</select><span class="muted">${fmt(E.length)}건 (최근 1000건 안에서)</span></div>`;
+  const g = {}; for (const r of E) { const k = (r.kind === 'txt' ? '[글 신고] ' : '') + String(r.m).slice(0, 160); const o = g[k] || (g[k] = { n: 0, last: 0, first: Infinity, vs: new Set(), maps: new Set(), devs: new Set(), items: [] }); o.n++; o.last = Math.max(o.last, r.t || 0); o.first = Math.min(o.first, r.t || Infinity); if (r.v) o.vs.add(r.v); if (r.map) o.maps.add(r.map); if (r.dev) o.devs.add(String(r.dev).split(' ')[0]); o.items.push(r); }
+  const rows = Object.entries(g).sort((a, b) => b[1].last - a[1].last);
+  h += `<div class="card"><h2>오류 (같은 것끼리 묶음 · 최근 순)</h2>${rows.length ? '' : '<div class="muted">없음</div>'}${rows.map(([k, o]) => `<details style="border-bottom:1px solid var(--line);padding:8px 0"><summary><b style="color:${o.n >= 5 ? 'var(--red)' : 'inherit'}">${fmt(o.n)}건</b> · ${esc(k)}<div class="muted" style="font-size:12px;margin-top:3px">마지막 ${ago(o.last)} · 처음 ${dt(o.first)} · ${[...o.vs].map(v => `<span class="tag">${esc(v)}</span>`).join('')} ${[...o.maps].slice(0, 4).map(m => `<span class="tag">${esc(mapN(m))}</span>`).join('')} ${[...o.devs].map(d => `<span class="tag">${esc(d)}</span>`).join('')}</div></summary><div class="tw" style="max-height:40vh"><table><tr><th>때</th><th>판</th><th>위치(at)</th><th>지도</th><th class="num">Lv</th><th>직업</th><th>기기</th></tr>${o.items.slice(0, 50).map(r => `<tr><td>${dt(r.t)}</td><td><span class="tag ${r.test ? 'test' : 'main'}">${r.test ? '시험' : '본편'}</span>${esc(r.v)}</td><td style="word-break:break-all">${esc(r.at || r.title || '')}</td><td>${esc(mapN(r.map))}</td><td class="num">${r.lv | 0}</td><td>${jobN(r.job)}</td><td>${esc(r.dev)}</td></tr>`).join('')}</table></div>${o.items[0] && o.items[0].stack ? `<pre>${esc(o.items[0].stack)}</pre>` : ''}</details>`).join('')}<div class="hint">지우기는 Firebase 콘솔 → Realtime Database → errlog 에서 합니다 (게임 쪽은 새 줄만 쓸 수 있게 막아 두었습니다)</div></div>`;
+  return h;
+}
+function rList(C) {
+  const rows = C.slice().sort((a, b) => b.at - a.at);
+  return `<div class="card"><h2>캐릭터 전부 (마지막 기록 순)</h2><div class="tw"><table><tr><th>마지막</th><th>이름</th><th class="num">Lv</th><th>장</th><th>지도</th><th>마을</th><th class="num">플레이</th><th class="num">접속</th><th class="num">쓰러짐</th><th class="num">처치</th><th class="num">돈</th><th>판</th><th>기기</th></tr>${rows.map(r => `<tr><td>${ago(r.at)}</td><td>${esc(r.n)} <span class="tag">${jobN(r.j)}</span>${r.lg ? '<span class="tag">계정</span>' : ''}</td><td class="num">${r.lv | 0}</td><td>${r.ci | 0}장 ${r.st | 0}</td><td>${esc(mapN(r.map))}</td><td>${esc(mapN(r.tn))}</td><td class="num">${dur(r.pt)}</td><td class="num">${r.ses | 0}</td><td class="num">${r.d | 0}</td><td class="num">${fmt(r.k)}</td><td class="num">${fmt(r.g)}</td><td>${esc(r.v)}</td><td>${r.dv === 'm' ? '폰' : 'PC'}</td></tr>`).join('')}</table></div></div>`;
+}
+
+/* ---- 시작 ---- */
+$('#btnReload').onclick = load; $('#btnOut').onclick = logout;
+(async () => {
+  try { NAMES = await fetch('names.json?' + Date.now()).then(r => r.json()); } catch (e) { }
+  try { S = JSON.parse(localStorage.getItem(SKEY) || 'null'); } catch (e) { S = null; }
+  render();
+  if (S) load();
+})();
+</script>
+</body>
+</html>
