@@ -12,11 +12,15 @@ self.addEventListener('fetch', e => {
   const req = e.request; if (req.method !== 'GET') return;
   const url = new URL(req.url); if (url.origin !== self.location.origin) return;
   const page = req.mode === 'navigate' || /\/(index\.html)?$/.test(url.pathname);
-  const fixed = /\/audio\/[^/]+\.mp3$|\/img\/[^/]+$|\/sfx\.[0-9a-f]+\.bin$|\/icon-\d+\.png$/.test(url.pathname);   /* v513: 그림 · 효과음 묶음도 지문 이름 → 한 번 받으면 그대로 */
+  const fixed = /\/audio\/[^/]+\.mp3$|\/img\/[^/]+$|\/sfx\.[0-9a-f]+\.bin$|\/icon-\d+\.png$|\/game\.[0-9a-f]+\.js$/.test(url.pathname);   /* v513: 그림 · 효과음 묶음도 지문 이름 → 한 번 받으면 그대로 */
   if (fixed) {
     e.respondWith((async () => {
       const c = await caches.open(CACHE), hit = await c.match(req, { ignoreSearch: true }); if (hit) return hit;
-      const res = await fetch(req); if (res.ok && res.status === 200) c.put(req, res.clone()); return res;
+      const res = await fetch(req); if (res.ok && res.status === 200) { c.put(req, res.clone());
+        /* v799: 게임 코드(game.<지문>.js)는 새것을 받으면 같은 폴더의 옛것을 지운다 (버전마다 6MB씩 쌓이지 않게) */
+        if (/\/game\.[0-9a-f]+\.js$/.test(url.pathname)) { const dir = url.pathname.replace(/[^/]+$/, ''); c.keys().then(ks => { for (const k of ks) { const u = new URL(k.url); if (u.pathname !== url.pathname && u.pathname.replace(/[^/]+$/, '') === dir && /\/game\.[0-9a-f]+\.js$/.test(u.pathname)) c.delete(k); } }).catch(() => { }); }
+      }
+      return res;
     })());
     return;
   }
