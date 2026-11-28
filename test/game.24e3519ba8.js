@@ -6033,6 +6033,7 @@ const MENU = {
     let notes = '';
   if (window.WALK712 && typeof WALK712_META !== 'undefined' && WALK712_META.peddler) notes += `<div class="sep"></div><b>v718 \ub9c8\uc744 \uc0ac\ub78c \uac77\uae30 2</b><br>\u00b7 \ubcf4\ubd80\uc0c1 \u00b7 \ubc29\ubb3c\uc7a5\uc218 \u00b7 \uc57d\ucd08 \uce90\ub294 \ucc98\ub140 \u00b7 \uc120\ube44 \u00b7 \uc545\uc0ac \u00b7 \uc21c\ub840\uc790\uac00 \ubbf8\ub044\ub7ec\uc9c0\ub4ef \ub2e4\ub2c8\ub358 \uac83 \u2014 \uac77\uae30 8\uc7a5 \ucd94\uac00 \u00b7 \ubcf4\ubd80\uc0c1 \u00b7 \uc57d\ucd08\uafbc\uc740 \uc606 \u00b7 \ub4b7\ubaa8\uc2b5\ub3c4 \uc0c8\ub85c (\ub4a4\ub97c \ubd10\ub3c4 \uc55e\ubaa8\uc2b5\uc774\ub358 \uac83)`;
   notes += `<div class="sep"></div><b>v770 \uc7a5\ube44\ub294 \uc9c1\uc811</b><br>\u00b7 \uc8fc\uc6b4 \uc7a5\ube44 \u00b7 \ub808\ubca8\uc774 \uc62c\ub77c \ub084 \uc218 \uc788\uac8c \ub41c \uc7a5\ube44\ub97c \uc800\uc808\ub85c \ubc14\uafd4 \ub07c\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4 \u2014 \uc804\ud22c \ub4a4 \u300c\uc0c8 \uac11\uc637 \u00b7 \ubc29\uc5b4 +130 [\ube44\uad50]\u300d \uc904\uc744 \ub20c\ub7ec \uac00\ubc29\uc5d0\uc11c \uc9c1\uc811 \uac08\uc544\uc785\uae30 \u00b7 \ucc98\uc74c \ubb34\uae30(\uc9c1\uc5c5 \uace0\ub97c \ub54c)\ub294 \uadf8\ub300\ub85c \ub07c\uc6cc \uc90c \u00b7 \uc608\uc804\ucc98\ub7fc \ud558\ub824\uba74 \uc124\uc815 \u300c\ub354 \uc88b\uc740 \uc7a5\ube44 \uc790\ub3d9 \ucc29\uc6a9\u300d \ucf1c\uae30`;
+  notes += `<div class="sep"></div><b>v949 \u2014 \uc0ac\ub0e5 \ud654\uba74 \uc0c8 \ud2c0(G\uc548)</b><br>\u00b7 \uc67c\ucabd \uc704 \uc0c1\ud0dc \ubb36\uc74c\uc744 \uc587\uc740 \uae08\uc120 \u00b7 \ubc18\ud22c\uba85\uc73c\ub85c, HP \u00b7 MP \ub9c9\ub300\ub97c \uad75\uac8c \ud558\uace0 \uc22b\uc790\ub97c \ud06c\uac8c.<br>\u00b7 \uacbd\ud5d8\uce58\ub294 \ud654\uba74 \ub9e8 \uc544\ub798 \ub760\ub85c \uc62e\uae40 \u2014 \ud37c\uc13c\ud2b8\uc640 \uc22b\uc790\ub97c \ud568\uaed8.<br>\u00b7 \uc791\uc740 \uc9c0\ub3c4\ub294 \ub465\uae00\uac8c, \uae30\uc220 \ub2e8\ucd94\ub294 \ub465\uadfc \uce78\uc5d0 \uc774\ub984\uc774 \ub610\ub837\uc774 \ubcf4\uc774\uac8c.`;
   notes += `<div class="sep"></div><b>v948 \u2014 \uc601\ud63c\uad74 \u00b7 \ube44\ubc00\uad74 \ubcbd \ub2e4\uc2dc</b><br>\u00b7 \uc11c\uc6b8 \u00b7 \ub3c4\ucfc4 \u00b7 \uc13c\ub2e4\uc774 \u00b7 \uac1c\uc131 \ube44\ubc00\uad74\uacfc \uc601\ud63c\uad74: \ubcbd\uc774 \ubcf4\ub78f\ube5b \ubc14\ub2e5\uc5d0 \ubb3b\ud788\ub358 \uac83 \u2192 \uac80\uc740 \ubc14\uc704 + \uc605\uac8c \ube5b\ub098\ub294 \ubcf4\ub78f\ube5b \uae08\uc73c\ub85c.`;
   notes += `<div class="sep"></div><b>v947 \u2014 \uc6a9\uc554\uad74 \u00b7 \uc774\ub07c\uad74 \ubcbd \ub2e4\uc2dc</b><br>\u00b7 \uc6a9\uc554\uad74: \ubcbd \uc717\uba74\uc774 \ubc14\ub2e5\uacfc \uac19\uc740 \ubcf4\ub78f\ube5b\uc774\ub77c \ud5f7\uac08\ub9ac\ub358 \uac83 \u2192 \uac80\uc740 \ud751\uc694\uc11d + \ubd89\uc740 \ub9c8\uadf8\ub9c8 \uc904\ub85c.<br>\u00b7 \uc774\ub07c\uad74: \ubcbd \uc717\uba74\uc774 \ubc14\ub2e5\ubcf4\ub2e4 \ubc1d\uc544 \ud280\ub358 \uac83 \u2192 \ubc14\ub2e5\ubcf4\ub2e4 \uc5b4\ub450\uc6b4 \uc22f\ube5b \ubc14\uc704 + \uc9d9\uc740 \uc774\ub07c\ub85c.`;
   notes += `<div class="sep"></div><b>v946 \u2014 \uad74 \ubcbd \uc0c8 \uadf8\ub9bc</b><br>\u00b7 \uad74 \u00b7 \ub358\uc804 \ubcbd\uc774 \ubc14\ub2e5\uc5d0 \ub6ab\ub9b0 \uac80\uc740 \uad6c\uba4d\ucc98\ub7fc \ubcf4\uc774\ub358 \uac83\uc744, \uc704\ub85c \uc19f\uc740 \ubc14\uc704 \ubcbd(\uc717\uba74 + \uc55e\ucabd \uc808\ubcbd)\uc73c\ub85c \uc0c8\ub85c \uadf8\ub838\uc2b5\ub2c8\ub2e4.<br>\u00b7 \uad74\ub9c8\ub2e4 \ubcbd\uc774 \ub2e4\ub985\ub2c8\ub2e4: \ud759\uad74 \u00b7 \uc601\ud63c \uad74(\ubcf4\ub77c \uc218\uc815) \u00b7 \ubc14\ub2f7\uad74(\ub530\uac1c\ube44) \u00b7 \uc5bc\uc74c\uad74(\uace0\ub4dc\ub984) \u00b7 \ubd88\uad74(\uc6a9\uc554 \uae08) \u00b7 \uc6a9\uc554\uad74(\ud751\uc694\uc11d) \u00b7 \uc1e0\uad74(\ub179\uc2a8 \uad11\ub9e5) \u00b7 \uc774\ub07c\uad74 \u00b7 \ub2ec\uc232\uad74 \u00b7 \uc131 \u00b7 \uc131\ucc44(\ub3cc\ubcbd\ub3cc) \u00b7 \ubc30(\uac11\ud310 \uac00\uc7a5\uc790\ub9ac).<br>\u00b7 \ubcbd \ubc14\uae65 \uae4a\uc740 \uacf3\uc740 \uc5b4\ub460\uc73c\ub85c \uc7a6\uc544\ub4ed\ub2c8\ub2e4. \ubd80\ub52a\ud788\ub294 \uc790\ub9ac(\uc9c0\ub098\uac08 \uc218 \uc788\ub294 \uacf3)\ub294 \uadf8\ub300\ub85c\uc785\ub2c8\ub2e4.`;
@@ -15219,7 +15220,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v948';
+const GAME_VER = 'v949';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -80668,6 +80669,77 @@ window.ST936 = { on: true, rage: 0, hitAt: -99,
   setInterval(paint, 400);
   window.addEventListener('keydown', ev => { try { if ((ev.key === 'v' || ev.key === 'V' || ev.key === '\u314d') && !ev.repeat && isMe(G.player) && K.on && !(typeof modalOpen === 'function' && modalOpen()) && !/INPUT|TEXTAREA/.test((ev.target && ev.target.tagName) || '')) K.next(); } catch (e) { } });
   window.stance936Test = v => { if (typeof v === 'string') { K.on = true; K.set(v); return cur(); } K.on = v !== false; try { calcStats(G.player); } catch (e) { } paint(); return K.on; };
+}
+
+/* ============================================================
+   98zzzzzzz_zzzz_zzw_z_z_z_r_s_t_hud948.js (\uc2dc\ud5d8\ud310): \uc0ac\ub0e5 \ud654\uba74 HUD \u300cG\uc548\u300d \u2014 \uad11\uc6b0 \u300cG\uc548\uc73c\ub85c \uac11\uc2dc\ub2e4 \uadfc\ub370 \uae30\uc220\uba85\uc740 \ubcf4\uc774\uac8c\u300d
+   \u2460 \uc67c\ucabd \uc704 \uc0c1\ud0dc \ubb36\uc74c: \uba39\ube5b \ubc18\ud22c\uba85 \ud310 + \uac00\ub294 \uae08\uc120, \uc5bc\uad74 \ub465\uae00\uac8c, HP \u00b7 MP \ub9c9\ub300\ub97c \uad75\uac8c(\uc67c\ucabd HP/MP \uae00\uc790 \u00b7 \uc624\ub978\ucabd \uc22b\uc790)
+   \u2461 \uacbd\ud5d8\uce58\ub294 \uc0c1\ud0dc \ubb36\uc74c\uc5d0\uc11c \ube7c\uace0 \ud654\uba74 \ub9e8 \uc544\ub798 \ub05d\uc5d0\uc11c \ub05d\uae4c\uc9c0 \ub760\ub85c \u2014 \uac00\uc6b4\ub370\uc5d0 \u300cEXP 62.40%  1,532,000 / 2,455,000\u300d
+   \u2462 \uc791\uc740 \uc9c0\ub3c4 \ub465\uae00\uac8c \u00b7 \ucc28\ub9bc\ud45c \ub2e8\ucd94 \uc791\uc740 \uc6d0 \u00b7 \uae30\uc220 \ub2e8\ucd94\ub294 \ub465\uadfc \uce78 + \uc774\ub984\uc740 \uadf8\ub300\ub85c \ubcf4\uc774\uac8c(\uae00\uc790 \ud14c\ub450\ub9ac\ub85c \ub610\ub837\uc774)
+   \u00b7 \uadf8\ub9bc \u00b7 \ubc30\uce58\ub9cc \ubc14\uafbc\ub2e4(\uc800\uc7a5 \uc5c6\uc74c). hud948Test(false) \u2192 \ub054(\uc608\uc804 HUD)
+   \u00b7 \uc2dc\uc548: tools/ui930/mockFG.py \u00b7 mockFGp.py (G)
+   ============================================================ */
+window.HUD948 = { on: true };
+{
+  const K = window.HUD948;
+  const CSS = `
+body.hud948 #hud{background:rgba(12,11,16,.55)!important;border:1px solid rgba(138,114,68,.95)!important;border-radius:4px!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)!important;backdrop-filter:none!important}
+body.hud948 #meBox{background:transparent!important;border:0!important;box-shadow:none!important}
+body.hud948 #hFace{border-radius:50%!important;border:1px solid #d4b273!important;background:#0c0b10!important;overflow:hidden}
+body.hud948 #meBox .bar.xp{display:none!important}
+body.hud948 #meBox .bar.hp,body.hud948 #meBox .bar.mp{position:relative;background:#08070b!important;border:1px solid #000!important;border-radius:1px!important;overflow:hidden}
+body.hud948 #meBox .bar.hp{height:15px!important}
+body.hud948 #meBox .bar.mp{height:13px!important}
+body.hud948 #meBox .bar.hp i{background:linear-gradient(#ff8a6e 0 1px,#e0533c 1px 50%,#a4291c 50%)!important;border-radius:0!important}
+body.hud948 #meBox .bar.mp i{background:linear-gradient(#8cb6ff 0 1px,#4f86d8 1px 50%,#284f97 50%)!important;border-radius:0!important}
+body.hud948 #meBox .bar span{left:auto!important;right:5px!important;text-align:right!important;width:auto!important;font-weight:800!important;letter-spacing:0!important;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e!important}
+body.hud948 #meBox .bar.hp span{font-size:11px!important;line-height:15px!important}
+body.hud948 #meBox .bar.mp span{font-size:10px!important;line-height:13px!important}
+body.hud948 #meBox .bar.hp::before,body.hud948 #meBox .bar.mp::before{position:absolute;left:4px;top:0;z-index:2;font-weight:800;color:#fff;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e}
+body.hud948 #meBox .bar.hp::before{content:'HP';font-size:9px;line-height:15px}
+body.hud948 #meBox .bar.mp::before{content:'MP';font-size:8.5px;line-height:13px}
+body.hud948 #mini{width:80px!important;height:80px!important;border-radius:50%!important;object-fit:cover;border:2px solid #d4b273!important;box-shadow:0 0 0 1px #0b0a0e!important}
+body.hud948 #menuToggle{width:36px!important;height:36px!important;border-radius:50%!important;background:rgba(12,11,16,.66)!important;border:1px solid #8a7244!important}
+body.hud948 #actions button{background:radial-gradient(circle at 50% 40%,rgba(28,24,30,.78),rgba(10,9,13,.86))!important;border:1px solid rgba(138,114,68,.95)!important;box-shadow:0 0 0 1px rgba(0,0,0,.6)!important}
+body.hud948 #actions #bAtk{border:2px solid #dc5a40!important;background:radial-gradient(circle at 50% 40%,rgba(70,24,18,.85),rgba(20,8,8,.9))!important;box-shadow:0 0 0 1px #000,inset 0 0 0 3px rgba(138,114,68,.7)!important}
+body.hud948 .sk .nm2{color:#f3ead6!important;font-weight:800!important;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e!important;opacity:1!important;display:block!important}
+body.hud948.pc #actions{background:transparent!important;border:0!important;box-shadow:none!important;bottom:calc(18px + env(safe-area-inset-bottom))!important}
+body.hud948.pc #actions button{border-radius:50%!important}
+body.hud948 #actions{bottom:calc(40px + env(safe-area-inset-bottom))!important}
+body.hud948.pc #actions{bottom:calc(18px + env(safe-area-inset-bottom))!important}
+body.hud948 #stick{bottom:calc(30px + env(safe-area-inset-bottom))!important}
+#xp948{position:absolute;left:0;right:0;bottom:env(safe-area-inset-bottom);height:12px;z-index:5;pointer-events:none;background:#08070b;border-top:1px solid #000;display:none}
+body.hud948 #xp948{display:block}
+#xp948 i{position:absolute;left:0;top:1px;bottom:0;width:0;background:linear-gradient(#ffe08a 0 1px,#d9b45a 1px 45%,#93702c 45%)}
+#xp948 b{position:absolute;inset:0;display:grid;place-items:center;font-size:9px;line-height:12px;font-weight:800;color:#fff;letter-spacing:0;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e;white-space:pre}
+#xp948 s{position:absolute;top:1px;bottom:0;width:1px;background:rgba(0,0,0,.6);text-decoration:none}
+.intitle #xp948,body.voyage #xp948{display:none!important}
+`;
+  let bar = null, last = '';
+  const mount = () => {
+    if (!document.getElementById('st948')) { const s = document.createElement('style'); s.id = 'st948'; s.textContent = CSS; document.head.appendChild(s); }
+    if (!bar) {
+      const g = document.getElementById('game'); if (!g) return;
+      bar = document.createElement('div'); bar.id = 'xp948';
+      let ticks = ''; for (let k = 1; k < 10; k++) ticks += `<s style="left:${k * 10}%"></s>`;
+      bar.innerHTML = `<i></i>${ticks}<b></b>`; g.appendChild(bar);
+    }
+    document.body.classList.toggle('hud948', !!K.on);
+  };
+  const paint = () => {
+    if (!bar || !K.on || !G || !G.player) return;
+    const p = G.player, max = typeof MAX_LV !== 'undefined' && p.lv >= MAX_LV;
+    const need = typeof xpToNext === 'function' ? xpToNext(p.lv) : 0;
+    const pc = max ? 100 : Math.max(0, Math.min(100, need ? p.xp / need * 100 : 0));
+    const t = max ? 'EXP MAX' : `EXP ${pc.toFixed(2)}%   ${fmt(Math.floor(p.xp))} / ${fmt(need)}`;
+    if (t !== last) { last = t; bar.lastChild.textContent = t; bar.firstChild.style.width = pc + '%'; }
+  };
+  if (typeof updateHUD === 'function') {
+    const _u = updateHUD;
+    updateHUD = function () { const r = _u.apply(this, arguments); try { if (!bar || !document.body.classList.contains('hud948') !== !K.on) mount(); paint(); } catch (e) { } return r; };
+  }
+  try { mount(); } catch (e) { }
+  window.hud948Test = on => { K.on = on !== false; try { mount(); last = ''; paint(); } catch (e) { } return K.on; };
 }
 
 /* ============================================================
