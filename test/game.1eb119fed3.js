@@ -6033,6 +6033,7 @@ const MENU = {
     let notes = '';
   if (window.WALK712 && typeof WALK712_META !== 'undefined' && WALK712_META.peddler) notes += `<div class="sep"></div><b>v718 \ub9c8\uc744 \uc0ac\ub78c \uac77\uae30 2</b><br>\u00b7 \ubcf4\ubd80\uc0c1 \u00b7 \ubc29\ubb3c\uc7a5\uc218 \u00b7 \uc57d\ucd08 \uce90\ub294 \ucc98\ub140 \u00b7 \uc120\ube44 \u00b7 \uc545\uc0ac \u00b7 \uc21c\ub840\uc790\uac00 \ubbf8\ub044\ub7ec\uc9c0\ub4ef \ub2e4\ub2c8\ub358 \uac83 \u2014 \uac77\uae30 8\uc7a5 \ucd94\uac00 \u00b7 \ubcf4\ubd80\uc0c1 \u00b7 \uc57d\ucd08\uafbc\uc740 \uc606 \u00b7 \ub4b7\ubaa8\uc2b5\ub3c4 \uc0c8\ub85c (\ub4a4\ub97c \ubd10\ub3c4 \uc55e\ubaa8\uc2b5\uc774\ub358 \uac83)`;
   notes += `<div class="sep"></div><b>v770 \uc7a5\ube44\ub294 \uc9c1\uc811</b><br>\u00b7 \uc8fc\uc6b4 \uc7a5\ube44 \u00b7 \ub808\ubca8\uc774 \uc62c\ub77c \ub084 \uc218 \uc788\uac8c \ub41c \uc7a5\ube44\ub97c \uc800\uc808\ub85c \ubc14\uafd4 \ub07c\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4 \u2014 \uc804\ud22c \ub4a4 \u300c\uc0c8 \uac11\uc637 \u00b7 \ubc29\uc5b4 +130 [\ube44\uad50]\u300d \uc904\uc744 \ub20c\ub7ec \uac00\ubc29\uc5d0\uc11c \uc9c1\uc811 \uac08\uc544\uc785\uae30 \u00b7 \ucc98\uc74c \ubb34\uae30(\uc9c1\uc5c5 \uace0\ub97c \ub54c)\ub294 \uadf8\ub300\ub85c \ub07c\uc6cc \uc90c \u00b7 \uc608\uc804\ucc98\ub7fc \ud558\ub824\uba74 \uc124\uc815 \u300c\ub354 \uc88b\uc740 \uc7a5\ube44 \uc790\ub3d9 \ucc29\uc6a9\u300d \ucf1c\uae30`;
+  notes += `<div class="sep"></div><b>v950 \u2014 \uacbd\ud5d8\uce58 \ub760 \uc790\ub9ac</b><br>\u00b7 \uacbd\ud5d8\uce58 \ub760\ub97c \ud654\uba74 \ub9e8 \ubc11\uc5d0 \ub531 \ubd99\uc774\uace0, \uacf5\uaca9 \u00b7 \uae30\uc220 \ub2e8\ucd94\uc640 \uc870\uc791 \uc6d0\uc740 \uc6d0\ub798 \uc790\ub9ac\ub85c.`;
   notes += `<div class="sep"></div><b>v949 \u2014 \uc0ac\ub0e5 \ud654\uba74 \uc0c8 \ud2c0(G\uc548)</b><br>\u00b7 \uc67c\ucabd \uc704 \uc0c1\ud0dc \ubb36\uc74c\uc744 \uc587\uc740 \uae08\uc120 \u00b7 \ubc18\ud22c\uba85\uc73c\ub85c, HP \u00b7 MP \ub9c9\ub300\ub97c \uad75\uac8c \ud558\uace0 \uc22b\uc790\ub97c \ud06c\uac8c.<br>\u00b7 \uacbd\ud5d8\uce58\ub294 \ud654\uba74 \ub9e8 \uc544\ub798 \ub760\ub85c \uc62e\uae40 \u2014 \ud37c\uc13c\ud2b8\uc640 \uc22b\uc790\ub97c \ud568\uaed8.<br>\u00b7 \uc791\uc740 \uc9c0\ub3c4\ub294 \ub465\uae00\uac8c, \uae30\uc220 \ub2e8\ucd94\ub294 \ub465\uadfc \uce78\uc5d0 \uc774\ub984\uc774 \ub610\ub837\uc774 \ubcf4\uc774\uac8c.`;
   notes += `<div class="sep"></div><b>v948 \u2014 \uc601\ud63c\uad74 \u00b7 \ube44\ubc00\uad74 \ubcbd \ub2e4\uc2dc</b><br>\u00b7 \uc11c\uc6b8 \u00b7 \ub3c4\ucfc4 \u00b7 \uc13c\ub2e4\uc774 \u00b7 \uac1c\uc131 \ube44\ubc00\uad74\uacfc \uc601\ud63c\uad74: \ubcbd\uc774 \ubcf4\ub78f\ube5b \ubc14\ub2e5\uc5d0 \ubb3b\ud788\ub358 \uac83 \u2192 \uac80\uc740 \ubc14\uc704 + \uc605\uac8c \ube5b\ub098\ub294 \ubcf4\ub78f\ube5b \uae08\uc73c\ub85c.`;
   notes += `<div class="sep"></div><b>v947 \u2014 \uc6a9\uc554\uad74 \u00b7 \uc774\ub07c\uad74 \ubcbd \ub2e4\uc2dc</b><br>\u00b7 \uc6a9\uc554\uad74: \ubcbd \uc717\uba74\uc774 \ubc14\ub2e5\uacfc \uac19\uc740 \ubcf4\ub78f\ube5b\uc774\ub77c \ud5f7\uac08\ub9ac\ub358 \uac83 \u2192 \uac80\uc740 \ud751\uc694\uc11d + \ubd89\uc740 \ub9c8\uadf8\ub9c8 \uc904\ub85c.<br>\u00b7 \uc774\ub07c\uad74: \ubcbd \uc717\uba74\uc774 \ubc14\ub2e5\ubcf4\ub2e4 \ubc1d\uc544 \ud280\ub358 \uac83 \u2192 \ubc14\ub2e5\ubcf4\ub2e4 \uc5b4\ub450\uc6b4 \uc22f\ube5b \ubc14\uc704 + \uc9d9\uc740 \uc774\ub07c\ub85c.`;
@@ -15220,7 +15221,7 @@ MENU.set = function (ctx_) {
      (\uc0ac\ud30c\ub9ac\ub294 \ub05d\ub09c \uc624\ub514\uc624 \ub178\ub4dc\uac00 \uc5f0\uacb0\ub41c \ucc44 \uc313\uc774\uba74 \uba54\ubaa8\ub9ac\uac00 \ub298\uc5b4\ub0a0 \uc218 \uc788\ub2e4)
    \u00b7 iOS\uc5d0\uc11c\ub294 \ud654\uba74 \ud574\uc0c1\ub3c4 \ubc30\uc728\uc744 \uc870\uae08 \ub0ae\ucd94\uace0 \uc7a5\uc2dd \ud30c\ud2f0\ud074\uc744 \ub354 \uc904\uc778\ub2e4
    ============================================================ */
-const GAME_VER = 'v949';
+const GAME_VER = 'v950';
 const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 /* --- audio: disconnect finished one-shot sources --- */
 (function () {
@@ -80675,6 +80676,7 @@ window.ST936 = { on: true, rage: 0, hitAt: -99,
    98zzzzzzz_zzzz_zzw_z_z_z_r_s_t_hud948.js (\uc2dc\ud5d8\ud310): \uc0ac\ub0e5 \ud654\uba74 HUD \u300cG\uc548\u300d \u2014 \uad11\uc6b0 \u300cG\uc548\uc73c\ub85c \uac11\uc2dc\ub2e4 \uadfc\ub370 \uae30\uc220\uba85\uc740 \ubcf4\uc774\uac8c\u300d
    \u2460 \uc67c\ucabd \uc704 \uc0c1\ud0dc \ubb36\uc74c: \uba39\ube5b \ubc18\ud22c\uba85 \ud310 + \uac00\ub294 \uae08\uc120, \uc5bc\uad74 \ub465\uae00\uac8c, HP \u00b7 MP \ub9c9\ub300\ub97c \uad75\uac8c(\uc67c\ucabd HP/MP \uae00\uc790 \u00b7 \uc624\ub978\ucabd \uc22b\uc790)
    \u2461 \uacbd\ud5d8\uce58\ub294 \uc0c1\ud0dc \ubb36\uc74c\uc5d0\uc11c \ube7c\uace0 \ud654\uba74 \ub9e8 \uc544\ub798 \ub05d\uc5d0\uc11c \ub05d\uae4c\uc9c0 \ub760\ub85c \u2014 \uac00\uc6b4\ub370\uc5d0 \u300cEXP 62.40%  1,532,000 / 2,455,000\u300d
+   \u00b7 v950: \ub760\ub294 \ud654\uba74 \ub9e8 \ubc11\uc5d0 \ub531 \ubd99\uc774\uace0, \uacf5\uaca9 \ubb36\uc74c \u00b7 \uc870\uc791 \uc6d0 \u00b7 \ub2e8\ucd94 \uc904\uc740 \uc6d0\ub798 \uc790\ub9ac(\uad11\uc6b0 \u300c\uacbd\ud5d8\uce58 \ub760 \ub192\uc774 \uc548 \uc62c\ub824\ub3c4 \ub420 \ub4ef\u300d)
    \u2462 \uc791\uc740 \uc9c0\ub3c4 \ub465\uae00\uac8c \u00b7 \ucc28\ub9bc\ud45c \ub2e8\ucd94 \uc791\uc740 \uc6d0 \u00b7 \uae30\uc220 \ub2e8\ucd94\ub294 \ub465\uadfc \uce78 + \uc774\ub984\uc740 \uadf8\ub300\ub85c \ubcf4\uc774\uac8c(\uae00\uc790 \ud14c\ub450\ub9ac\ub85c \ub610\ub837\uc774)
    \u00b7 \uadf8\ub9bc \u00b7 \ubc30\uce58\ub9cc \ubc14\uafbc\ub2e4(\uc800\uc7a5 \uc5c6\uc74c). hud948Test(false) \u2192 \ub054(\uc608\uc804 HUD)
    \u00b7 \uc2dc\uc548: tools/ui930/mockFG.py \u00b7 mockFGp.py (G)
@@ -80703,12 +80705,9 @@ body.hud948 #menuToggle{width:36px!important;height:36px!important;border-radius
 body.hud948 #actions button{background:radial-gradient(circle at 50% 40%,rgba(28,24,30,.78),rgba(10,9,13,.86))!important;border:1px solid rgba(138,114,68,.95)!important;box-shadow:0 0 0 1px rgba(0,0,0,.6)!important}
 body.hud948 #actions #bAtk{border:2px solid #dc5a40!important;background:radial-gradient(circle at 50% 40%,rgba(70,24,18,.85),rgba(20,8,8,.9))!important;box-shadow:0 0 0 1px #000,inset 0 0 0 3px rgba(138,114,68,.7)!important}
 body.hud948 .sk .nm2{color:#f3ead6!important;font-weight:800!important;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e!important;opacity:1!important;display:block!important}
-body.hud948.pc #actions{background:transparent!important;border:0!important;box-shadow:none!important;bottom:calc(18px + env(safe-area-inset-bottom))!important}
+body.hud948.pc #actions{background:transparent!important;border:0!important;box-shadow:none!important}
 body.hud948.pc #actions button{border-radius:50%!important}
-body.hud948 #actions{bottom:calc(40px + env(safe-area-inset-bottom))!important}
-body.hud948.pc #actions{bottom:calc(18px + env(safe-area-inset-bottom))!important}
-body.hud948 #stick{bottom:calc(30px + env(safe-area-inset-bottom))!important}
-#xp948{position:absolute;left:0;right:0;bottom:env(safe-area-inset-bottom);height:12px;z-index:5;pointer-events:none;background:#08070b;border-top:1px solid #000;display:none}
+#xp948{position:absolute;left:0;right:0;bottom:0;height:12px;z-index:5;pointer-events:none;background:#08070b;border-top:1px solid #000;display:none}
 body.hud948 #xp948{display:block}
 #xp948 i{position:absolute;left:0;top:1px;bottom:0;width:0;background:linear-gradient(#ffe08a 0 1px,#d9b45a 1px 45%,#93702c 45%)}
 #xp948 b{position:absolute;inset:0;display:grid;place-items:center;font-size:9px;line-height:12px;font-weight:800;color:#fff;letter-spacing:0;text-shadow:-1px 0 #0b0a0e,1px 0 #0b0a0e,0 -1px #0b0a0e,0 1px #0b0a0e;white-space:pre}
